@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script src="image-slot.js" defer></script>
 </head>
 <body>
 
@@ -51,10 +52,9 @@
 
   <div class="hero-container">
     <div class="hero-content">
-      <p class="hero-eyebrow">BI com Inteligência Artificial</p>
       <h1 class="hero-title">
         Especialistas em<br>
-        <span class="gradient-text">Soluções para<br>Distribuidores.</span>
+        Soluções para<br>Distribuidores.
       </h1>
       <p class="hero-lead">BI com IA aplicada que transforma dados em vantagem competitiva.</p>
       <p class="hero-sub">Combinamos tecnologia de ponta com atendimento próximo e especializado, garantindo que cada insight se converta em resultado real.</p>
@@ -166,10 +166,22 @@
           Financeiro <span class="bld-plus" id="btnFin">+</span>
         </button>
 
-        <!-- PLACEHOLDER DO PRÉDIO
-             Substitua por: <img src="assets/predio-isometrico.png" alt="Prédio Sewe Group" class="bld-img" />
+        <!-- SLOT DE IMAGEM DO PRÉDIO
+             Arraste aqui a ilustração isométrica (PNG/WebP) ou clique para escolher.
+             A imagem persiste via .image-slots.state.json na raiz do projeto.
+             Para produção: coloque o arquivo em assets/ e use src="assets/predio-isometrico.png"
         -->
-        <div class="bld-placeholder" id="bldPlaceholder">
+        <image-slot
+          id="predio-distribuidor"
+          shape="rounded"
+          radius="24"
+          fit="contain"
+          placeholder="Arraste aqui a ilustração isométrica do distribuidor (PNG/WebP)"
+          style="display:block;width:100%;min-height:480px;"
+        ></image-slot>
+
+        <!-- Fallback CSS placeholder (visível enquanto não há imagem carregada) -->
+        <div class="bld-placeholder" id="bldPlaceholder" style="display:none;">
           <!-- Andar Superior: Gestão Estratégica -->
           <div class="bld-floor bld-floor--top" data-area="gestao">
             <div class="bld-floor-inner">

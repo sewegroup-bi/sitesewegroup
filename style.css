@@ -199,15 +199,17 @@ ul { list-style: none; }
 
 .hero-container { max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
 .hero-content { max-width: 680px; }
+/* eyebrow mantido para uso futuro mas não renderizado no HTML atual */
 .hero-eyebrow {
   font-family: 'Chakra Petch', sans-serif;
   font-size: .8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
   color: var(--teal-dark); margin-bottom: 16px;
 }
+/* Hero title: impacto máximo — cor sólida, sem gradiente, letra apertada */
 .hero-title {
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  font-weight: 900; line-height: 1.1; letter-spacing: -1.5px;
-  color: var(--text-main); margin-bottom: 18px;
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  font-weight: 900; line-height: 1.08; letter-spacing: -2px;
+  color: var(--text-main); margin-bottom: 20px;
 }
 .hero-lead {
   font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 12px;
@@ -461,6 +463,7 @@ ul { list-style: none; }
 }
 .client-logo:hover { border-color: var(--navy); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
 .client-name { font-size: .8rem; font-weight: 600; color: var(--text-sub); line-height: 1.4; }
+.clients-hint { text-align: center; margin-top: 28px; font-size: .78rem; color: var(--text-light); }
 
 
 /* ═══════════════════════════════════════
@@ -537,14 +540,14 @@ ul { list-style: none; }
 }
 .carousel-btn:hover { background: var(--teal); color: var(--navy); }
 
-.why-carousel-wrap { overflow: hidden; padding: 0 24px; }
+.why-carousel-wrap { overflow: hidden; padding: 0 24px; max-width: 1248px; margin: 0 auto; }
 .why-carousel {
   display: flex; gap: 20px;
   will-change: transform;
   transition: transform .4s cubic-bezier(.4,0,.2,1);
 }
 
-.test-carousel-wrap { overflow: hidden; padding: 0 24px; }
+.test-carousel-wrap { overflow: hidden; padding: 0 24px; max-width: 1248px; margin: 0 auto; }
 .test-carousel {
   display: flex; gap: 20px;
   will-change: transform;
