@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sewe Group — BI com Inteligência Artificial para Distribuição</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════ -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-sewe">SEWE</span><span class="logo-group">GROUP</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#solucoes">Soluções</a></li>
+        <li><a href="#resultados">Resultados</a></li>
+        <li><a href="#clientes">Clientes</a></li>
+        <li><a href="#planos">Planos</a></li>
+        <li><a href="#contato" class="btn-nav">Falar com Especialista</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════ -->
+  <section class="hero" id="hero">
+
+    <!-- Fundo: malha de dados -->
+    <canvas id="networkCanvas" class="network-canvas"></canvas>
+
+    <!-- Partículas flutuantes -->
+    <div class="particles" id="particles"></div>
+
+    <div class="hero-container">
+
+      <!-- Coluna de texto -->
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          IA Aplicada à Distribuição
+        </div>
+        <h1 class="hero-title">
+          Inteligência que <br/>
+          <span class="gradient-text">transforma dados</span><br/>
+          em decisões reais
+        </h1>
+        <p class="hero-subtitle">
+          A Sewe Group conecta cada andar da sua operação — do estoque à diretoria — com BI em tempo real movido por Inteligência Artificial.
+        </p>
+        <div class="hero-actions">
+          <a href="#solucoes" class="btn-primary">Ver Soluções</a>
+          <a href="#contato" class="btn-secondary">
+            <span class="play-icon">▶</span> Agendar Demo
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value">+230</span>
+            <span class="stat-label">Distribuidores Ativos</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value">98%</span>
+            <span class="stat-label">Satisfação dos Clientes</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value">3x</span>
+            <span class="stat-label">Crescimento Médio</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna do Prédio Interativo -->
+      <div class="hero-building">
+
+        <!-- SVG de linhas de dados animadas (sobreposto) -->
+        <svg class="data-lines" viewBox="0 0 420 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Linha vertical principal (eixo central do prédio) -->
+          <path id="dl-main" d="M 210 480 L 210 60" stroke="url(#lineGrad)" stroke-width="1.5" fill="none" stroke-dasharray="8 6" opacity="0.5"/>
+
+          <!-- Linhas horizontais por andar -->
+          <path id="dl-floor0" d="M 80 430 Q 145 415 210 420 Q 275 415 340 430" stroke="url(#lineGrad)" stroke-width="1.5" fill="none" stroke-dasharray="6 5"/>
+          <path id="dl-floor1" d="M 80 290 Q 145 275 210 280 Q 275 275 340 290" stroke="url(#lineGrad)" stroke-width="1.5" fill="none" stroke-dasharray="6 5"/>
+          <path id="dl-floor2" d="M 80 145 Q 145 130 210 135 Q 275 130 340 145" stroke="url(#lineGrad)" stroke-width="1.5" fill="none" stroke-dasharray="6 5"/>
+
+          <!-- Pulsos de dados (círculos viajando pelas linhas) -->
+          <circle class="pulse-dot" r="4" fill="#00c8c8">
+            <animateMotion dur="3s" repeatCount="indefinite" path="M 210 480 L 210 60"/>
+          </circle>
+          <circle class="pulse-dot" r="3" fill="#3b8beb">
+            <animateMotion dur="4.5s" repeatCount="indefinite" begin="1s" path="M 210 480 L 210 60"/>
+          </circle>
+          <circle class="pulse-dot" r="3.5" fill="#00c8c8">
+            <animateMotion dur="3.8s" repeatCount="indefinite" begin="2.2s" path="M 80 430 Q 145 415 210 420 Q 275 415 340 430"/>
+          </circle>
+          <circle class="pulse-dot" r="3" fill="#3b8beb">
+            <animateMotion dur="3.2s" repeatCount="indefinite" begin="0.8s" path="M 80 290 Q 145 275 210 280 Q 275 275 340 290"/>
+          </circle>
+          <circle class="pulse-dot" r="3.5" fill="#00c8c8">
+            <animateMotion dur="3.6s" repeatCount="indefinite" begin="1.5s" path="M 80 145 Q 145 130 210 135 Q 275 130 340 145"/>
+          </circle>
+
+          <!-- Pontos de nó nos andares -->
+          <circle cx="210" cy="420" r="5" fill="#00c8c8" opacity="0.8" class="node-pulse"/>
+          <circle cx="210" cy="280" r="5" fill="#3b8beb" opacity="0.8" class="node-pulse" style="animation-delay:0.5s"/>
+          <circle cx="210" cy="135" r="5" fill="#00c8c8" opacity="0.8" class="node-pulse" style="animation-delay:1s"/>
+
+          <!-- Gradiente da linha -->
+          <defs>
+            <linearGradient id="lineGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#00c8c8" stop-opacity="0.9"/>
+              <stop offset="50%" stop-color="#3b8beb" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#00c8c8" stop-opacity="0.9"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <!-- ── ANDARES DO PRÉDIO ── -->
+
+        <!-- Andar 2: Superior / Diretoria -->
+        <div class="floor floor-2" data-floor="2">
+          <div class="floor-image-area">
+            <!--
+              PLACEHOLDER ANDAR 2 — DIRETORIA
+              Substitua o conteúdo abaixo pelo seu arquivo de imagem/GIF:
+              <img src="assets/floor-2-diretoria.png" alt="Diretoria" />
+            -->
+            <div class="floor-placeholder">
+              <div class="placeholder-scene">
+                <div class="iso-desk iso-desk--long"></div>
+                <div class="iso-desk iso-desk--short"></div>
+                <div class="iso-screen iso-screen--big"></div>
+                <div class="iso-screen iso-screen--big" style="left:58%;top:20%;"></div>
+                <div class="iso-figure iso-figure--suit"></div>
+                <div class="iso-figure iso-figure--suit" style="left:50%;"></div>
+                <div class="iso-chart-bar"></div>
+                <div class="iso-chart-bar" style="height:28px;left:38%"></div>
+                <div class="iso-chart-bar" style="height:20px;left:46%"></div>
+                <div class="floor-label-inside">Diretoria & Financeiro</div>
+              </div>
+            </div>
+          </div>
+          <div class="floor-overlay"></div>
+          <!-- Pop-up -->
+          <div class="floor-popup popup-top">
+            <div class="popup-tag">ANDAR SUPERIOR</div>
+            <h4>INTELIGÊNCIA ESTRATÉGICA &amp; FINANCEIRA</h4>
+            <ul>
+              <li>DRE Automatizado</li>
+              <li>Análise de Rentabilidade</li>
+              <li>KPIs de Performance</li>
+              <li>Gestão de Caixa</li>
+            </ul>
+            <div class="popup-cta">Explorar solução →</div>
+          </div>
+        </div>
+
+        <!-- Andar 1: Comercial -->
+        <div class="floor floor-1" data-floor="1">
+          <div class="floor-image-area">
+            <!--
+              PLACEHOLDER ANDAR 1 — COMERCIAL
+              Substitua pelo seu arquivo:
+              <img src="assets/floor-1-comercial.png" alt="Comercial" />
+            -->
+            <div class="floor-placeholder">
+              <div class="placeholder-scene">
+                <div class="iso-desk"></div>
+                <div class="iso-desk" style="left:40%;top:35%;"></div>
+                <div class="iso-desk" style="left:62%;top:20%;"></div>
+                <div class="iso-screen"></div>
+                <div class="iso-screen" style="left:42%;top:15%;"></div>
+                <div class="iso-figure"></div>
+                <div class="iso-figure" style="left:42%;"></div>
+                <div class="iso-figure" style="left:65%;"></div>
+                <div class="iso-headset"></div>
+                <div class="floor-label-inside">Comercial & Marketing</div>
+              </div>
+            </div>
+          </div>
+          <div class="floor-overlay"></div>
+          <!-- Pop-up -->
+          <div class="floor-popup popup-right">
+            <div class="popup-tag">1º ANDAR</div>
+            <h4>INTELIGÊNCIA COMERCIAL</h4>
+            <ul>
+              <li>Gestão de Vendas</li>
+              <li>Leads Inteligentes</li>
+              <li>Novidades de Produto</li>
+              <li>Treinamento de Equipe</li>
+            </ul>
+            <div class="popup-cta">Explorar solução →</div>
+          </div>
+        </div>
+
+        <!-- Andar 0: Térreo / Logística -->
+        <div class="floor floor-0" data-floor="0">
+          <div class="floor-image-area">
+            <!--
+              PLACEHOLDER TÉRREO — LOGÍSTICA
+              Substitua pelo seu arquivo:
+              <img src="assets/floor-0-logistica.png" alt="Logística" />
+            -->
+            <div class="floor-placeholder">
+              <div class="placeholder-scene">
+                <div class="iso-shelf"></div>
+                <div class="iso-shelf" style="left:52%;top:10%;"></div>
+                <div class="iso-forklift"></div>
+                <div class="iso-box"></div>
+                <div class="iso-box" style="left:55%;top:40%;"></div>
+                <div class="iso-box" style="left:65%;top:55%;"></div>
+                <div class="iso-box iso-box--glow"></div>
+                <div class="floor-label-inside">Operação & Logística</div>
+              </div>
+            </div>
+          </div>
+          <div class="floor-overlay"></div>
+          <!-- Pop-up -->
+          <div class="floor-popup popup-left">
+            <div class="popup-tag">TÉRREO</div>
+            <h4>INTELIGÊNCIA LOGÍSTICA</h4>
+            <ul>
+              <li>Previsão de Ruptura</li>
+              <li>Otimização de Mix</li>
+              <li>Curva ABC Automatizada</li>
+            </ul>
+            <div class="popup-cta">Explorar solução →</div>
+          </div>
+        </div>
+
+        <!-- Indicador de scroll / instrução -->
+        <div class="building-hint">
+          <span>Passe o mouse sobre cada andar</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+      </div><!-- /hero-building -->
+    </div><!-- /hero-container -->
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SEÇÃO: IA APLICADA
+  ═══════════════════════════════════════ -->
+  <section class="ia-section" id="solucoes">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">IA Aplicada</span>
+        <h2>Como a Sewe Group <span class="gradient-text">transforma</span> sua distribuição</h2>
+        <p>Nossa plataforma integra dados de toda a cadeia em um único painel inteligente, entregando insights acionáveis para cada área.</p>
+      </div>
+      <div class="ia-cards">
+        <div class="ia-card">
+          <div class="ia-card-icon ia-icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3>DRE em Tempo Real</h3>
+          <p>Demonstrativo de resultado atualizado automaticamente, com drill-down por produto, região e equipe de vendas.</p>
+        </div>
+        <div class="ia-card">
+          <div class="ia-card-icon ia-icon--teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3>Previsão de Ruptura</h3>
+          <p>IA identifica produtos em risco de ruptura antes que aconteça, sugerindo reposição automática com base no histórico.</p>
+        </div>
+        <div class="ia-card">
+          <div class="ia-card-icon ia-icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3>Leads Inteligentes</h3>
+          <p>Algoritmo de scoring identifica os clientes com maior probabilidade de compra, priorizando a agenda do time comercial.</p>
+        </div>
+        <div class="ia-card">
+          <div class="ia-card-icon ia-icon--teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Gestão de Equipes</h3>
+          <p>Dashboards individuais e coletivos de performance com metas, rankings e treinamentos integrados à plataforma.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SEÇÃO: RESULTADOS
+  ═══════════════════════════════════════ -->
+  <section class="results-section" id="resultados">
+    <div class="section-container">
+      <div class="section-header section-header--light">
+        <span class="section-tag section-tag--white">Resultados Macros</span>
+        <h2>Números reais de quem já <span class="gradient-text-light">usa a Sewe</span></h2>
+      </div>
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-number">+37%</div>
+          <div class="result-desc">Aumento médio em vendas no primeiro ano</div>
+        </div>
+        <div class="result-card">
+          <div class="result-number">-28%</div>
+          <div class="result-desc">Redução em rupturas de estoque</div>
+        </div>
+        <div class="result-card">
+          <div class="result-number">4.2x</div>
+          <div class="result-desc">Retorno sobre o investimento (ROI)</div>
+        </div>
+        <div class="result-card">
+          <div class="result-number">72h</div>
+          <div class="result-desc">Para o primeiro dashboard ao vivo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SEÇÃO: PLANOS
+  ═══════════════════════════════════════ -->
+  <section class="plans-section" id="planos">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Planos</span>
+        <h2>Escolha o plano <span class="gradient-text">ideal</span> para sua operação</h2>
+      </div>
+      <div class="plans-grid">
+        <div class="plan-card">
+          <div class="plan-name">Starter</div>
+          <div class="plan-price">Sob consulta</div>
+          <div class="plan-desc">Para distribuidores em crescimento que precisam de visibilidade operacional.</div>
+          <ul class="plan-features">
+            <li>DRE Automatizado</li>
+            <li>Curva ABC</li>
+            <li>Dashboard de Estoque</li>
+            <li>Suporte por e-mail</li>
+          </ul>
+          <a href="#contato" class="btn-plan">Quero este plano</a>
+        </div>
+        <div class="plan-card plan-card--featured">
+          <div class="plan-badge">Mais Popular</div>
+          <div class="plan-name">Growth</div>
+          <div class="plan-price">Sob consulta</div>
+          <div class="plan-desc">Para operações que querem IA comercial e logística integradas.</div>
+          <ul class="plan-features">
+            <li>Tudo do Starter</li>
+            <li>Previsão de Ruptura com IA</li>
+            <li>Leads Inteligentes</li>
+            <li>Gestão de Equipe Comercial</li>
+            <li>Suporte dedicado</li>
+          </ul>
+          <a href="#contato" class="btn-plan btn-plan--featured">Quero este plano</a>
+        </div>
+        <div class="plan-card">
+          <div class="plan-name">Enterprise</div>
+          <div class="plan-price">Sob consulta</div>
+          <div class="plan-desc">Solução completa com customização e integração total ao seu ERP.</div>
+          <ul class="plan-features">
+            <li>Tudo do Growth</li>
+            <li>Integrações customizadas</li>
+            <li>Análise de Rentabilidade por produto</li>
+            <li>Treinamento presencial</li>
+            <li>SLA garantido</li>
+          </ul>
+          <a href="#contato" class="btn-plan">Quero este plano</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER / CTA FINAL
+  ═══════════════════════════════════════ -->
+  <section class="cta-section" id="contato">
+    <div class="section-container">
+      <div class="cta-inner">
+        <h2>Pronto para transformar sua distribuição?</h2>
+        <p>Fale com um especialista Sewe e descubra quanto sua operação pode crescer.</p>
+        <a href="mailto:contato@sewegroup.com.br" class="btn-primary btn-primary--lg">Falar com um Especialista</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="section-container">
+      <div class="footer-inner">
+        <span class="logo-sewe">SEWE</span><span class="logo-group">GROUP</span>
+        <span class="footer-copy">© 2026 Sewe Group. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
