@@ -59,7 +59,7 @@
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < MAX_DIST) {
           const alpha = (1 - dist / MAX_DIST) * 0.35;
-          ctx.strokeStyle = `rgba(59,139,235,${alpha})`;
+          ctx.strokeStyle = `rgba(45,67,108,${alpha})`;
           ctx.lineWidth = 0.8;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -73,7 +73,7 @@
     nodes.forEach(n => {
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0,200,200,0.55)';
+      ctx.fillStyle = 'rgba(117,227,228,0.55)';
       ctx.fill();
     });
 
@@ -112,7 +112,7 @@
       bottom: -10px;
       width:  ${size}px;
       height: ${size}px;
-      background: ${isTeal ? '#00c8c8' : '#3b8beb'};
+      background: ${isTeal ? '#75e3e4' : '#2d436c'};
       animation-duration: ${dur}s;
       animation-delay: ${delay}s;
       border-radius: 50%;

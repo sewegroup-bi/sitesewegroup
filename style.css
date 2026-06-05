@@ -1,27 +1,49 @@
 /* ══════════════════════════════════════════════════════════
    SEWE GROUP — style.css
-   Versão: 1.0
-   Paleta: Branco, Cinza Claro, Azul #3b8beb, Turquesa #00c8c8
+   Versão: 2.0
+   Paleta: Navy #2d436c | Teal #75e3e4 | Preto #000 | Branco #fff
+   Fontes: Chakra Petch (logo) | Red Hat Display (corpo)
 ══════════════════════════════════════════════════════════ */
 
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --blue:        #3b8beb;
-  --blue-dark:   #2563c7;
-  --teal:        #00c8c8;
-  --teal-dark:   #009999;
-  --bg:          #f8f9fb;
+  /* Cores principais */
+  --navy:        #2d436c;
+  --navy-dark:   #1e2f4e;
+  --navy-light:  #3d5a8a;
+  --teal:        #75e3e4;
+  --teal-dark:   #4dc8c9;
+  --black:       #000000;
+  --white:       #ffffff;
+
+  /* Produtos */
+  --integration: #00a335;
+  --minerconect: #ffda49;
+
+  /* Aliases funcionais */
+  --blue:        var(--navy);
+  --blue-dark:   var(--navy-dark);
+
+  /* Layout */
+  --bg:          #f4f6fa;
   --surface:     #ffffff;
-  --border:      #e4e8f0;
-  --text-main:   #1a2236;
-  --text-sub:    #5a6478;
+  --border:      #dde3ef;
+  --text-main:   #0d1a2e;
+  --text-sub:    #4a5568;
   --text-light:  #8a94a8;
-  --gradient:    linear-gradient(135deg, var(--blue), var(--teal));
-  --shadow-sm:   0 2px 8px rgba(30,50,100,.06);
-  --shadow-md:   0 8px 32px rgba(30,50,100,.10);
-  --shadow-lg:   0 20px 60px rgba(30,50,100,.14);
+
+  /* Gradiente principal: navy → teal */
+  --gradient:    linear-gradient(135deg, var(--navy), var(--teal));
+  --gradient-h:  linear-gradient(90deg, var(--navy), var(--teal));
+
+  /* Sombras */
+  --shadow-sm:   0 2px 8px rgba(45,67,108,.08);
+  --shadow-md:   0 8px 32px rgba(45,67,108,.12);
+  --shadow-lg:   0 20px 60px rgba(45,67,108,.16);
+
+  /* Bordas */
   --radius-sm:   8px;
   --radius-md:   14px;
   --radius-lg:   24px;
@@ -31,12 +53,15 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Red Hat Display', system-ui, sans-serif;
   background: var(--bg);
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
 }
+
+/* Chakra Petch apenas para logo e títulos de marca */
+.font-brand { font-family: 'Chakra Petch', sans-serif; }
 
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
@@ -66,9 +91,24 @@ ul { list-style: none; }
   height: 100%;
   display: flex; align-items: center; justify-content: space-between;
 }
-.nav-logo { display: flex; align-items: center; gap: 0; font-weight: 800; font-size: 1.25rem; letter-spacing: -0.5px; }
-.logo-sewe { color: var(--blue); }
-.logo-group { color: var(--teal); }
+.nav-logo {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700; font-size: 1.15rem; letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.logo-s {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px;
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700; font-size: 1rem;
+  clip-path: polygon(10% 0%,90% 0%,100% 10%,100% 90%,90% 100%,10% 100%,0% 90%,0% 10%);
+  flex-shrink: 0;
+}
+.logo-sewe { color: var(--navy); }
+.logo-group { color: var(--teal-dark); }
 .nav-links {
   display: flex; align-items: center; gap: 32px;
   font-size: .9rem; font-weight: 500;
@@ -79,10 +119,10 @@ ul { list-style: none; }
   background: var(--gradient); color: #fff !important;
   padding: 8px 20px; border-radius: 99px;
   font-weight: 600; font-size: .875rem;
-  box-shadow: 0 4px 14px rgba(59,139,235,.3);
+  box-shadow: 0 4px 14px rgba(45,67,108,.3);
   transition: transform var(--transition), box-shadow var(--transition) !important;
 }
-.btn-nav:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(59,139,235,.4) !important; }
+.btn-nav:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(45,67,108,.45) !important; }
 .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
 .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); border-radius: 2px; transition: var(--transition); }
 
@@ -95,7 +135,7 @@ ul { list-style: none; }
   min-height: 100vh;
   padding: 96px 24px 64px;
   overflow: hidden;
-  background: linear-gradient(160deg, #f0f4ff 0%, #f8f9fb 50%, #edfcfc 100%);
+  background: linear-gradient(160deg, #edf1f9 0%, #f4f6fa 50%, #eafafa 100%);
 }
 
 /* Malha de dados (canvas) */
@@ -136,11 +176,12 @@ ul { list-style: none; }
 /* ── Hero Text ── */
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(59,139,235,.1); color: var(--blue);
-  border: 1px solid rgba(59,139,235,.2);
+  background: rgba(45,67,108,.1); color: var(--navy);
+  border: 1px solid rgba(45,67,108,.2);
   padding: 6px 14px; border-radius: 99px;
   font-size: .8rem; font-weight: 600; letter-spacing: .5px;
   margin-bottom: 24px;
+  font-family: 'Chakra Petch', sans-serif;
 }
 .badge-dot {
   width: 7px; height: 7px; border-radius: 50%;
@@ -153,9 +194,10 @@ ul { list-style: none; }
   font-size: clamp(2rem, 4.5vw, 3.4rem);
   font-weight: 800;
   line-height: 1.15;
-  letter-spacing: -1.5px;
+  letter-spacing: -1px;
   color: var(--text-main);
   margin-bottom: 20px;
+  font-family: 'Red Hat Display', sans-serif;
 }
 .gradient-text {
   background: var(--gradient);
@@ -179,11 +221,12 @@ ul { list-style: none; }
   border-radius: 99px;
   font-weight: 700;
   font-size: .95rem;
-  box-shadow: 0 6px 24px rgba(59,139,235,.35);
+  font-family: 'Red Hat Display', sans-serif;
+  box-shadow: 0 6px 24px rgba(45,67,108,.35);
   transition: transform var(--transition), box-shadow var(--transition);
   display: inline-block;
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(59,139,235,.45); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(45,67,108,.5); }
 .btn-primary--lg { padding: 16px 36px; font-size: 1rem; }
 
 .btn-secondary {
@@ -195,9 +238,10 @@ ul { list-style: none; }
   border-radius: 99px;
   font-weight: 600;
   font-size: .95rem;
+  font-family: 'Red Hat Display', sans-serif;
   transition: var(--transition);
 }
-.btn-secondary:hover { border-color: var(--blue); color: var(--blue); box-shadow: var(--shadow-sm); }
+.btn-secondary:hover { border-color: var(--navy); color: var(--navy); box-shadow: var(--shadow-sm); }
 .play-icon {
   width: 28px; height: 28px;
   background: var(--gradient);
@@ -308,9 +352,9 @@ ul { list-style: none; }
 .iso-desk {
   position: absolute; left: 20%; top: 30%;
   width: 72px; height: 22px;
-  background: linear-gradient(135deg, #c8d8f8 0%, #a8bce8 100%);
+  background: linear-gradient(135deg, #c8d4e8 0%, #9aaed0 100%);
   border-radius: 4px;
-  box-shadow: 2px 3px 8px rgba(59,139,235,.2);
+  box-shadow: 2px 3px 8px rgba(45,67,108,.2);
   transform: skewX(-20deg);
 }
 .iso-desk--long { width: 100px; }
@@ -319,10 +363,10 @@ ul { list-style: none; }
 .iso-screen {
   position: absolute; left: 22%; top: 14%;
   width: 34px; height: 26px;
-  background: linear-gradient(135deg, #1a2236 0%, #2d4070 100%);
+  background: linear-gradient(135deg, #0d1a2e 0%, #1e2f4e 100%);
   border-radius: 4px 4px 2px 2px;
-  border: 2px solid #3b8beb;
-  box-shadow: 0 0 10px rgba(59,139,235,.5);
+  border: 2px solid var(--navy);
+  box-shadow: 0 0 10px rgba(45,67,108,.5);
 }
 .iso-screen::after {
   content: '';
@@ -334,9 +378,9 @@ ul { list-style: none; }
 .iso-figure {
   position: absolute; left: 30%; top: 40%;
   width: 12px; height: 28px;
-  background: var(--blue);
+  background: var(--navy);
   border-radius: 6px 6px 0 0;
-  box-shadow: 0 0 8px rgba(59,139,235,.4);
+  box-shadow: 0 0 8px rgba(45,67,108,.4);
 }
 .iso-figure::before {
   content: ''; position: absolute; top: -9px; left: 50%; transform: translateX(-50%);
@@ -395,9 +439,9 @@ ul { list-style: none; }
 .iso-box {
   position: absolute; left: 15%; top: 55%;
   width: 22px; height: 22px;
-  background: linear-gradient(135deg, #dce8ff, #bcd4f8);
-  border-radius: 3px; border: 1px solid #a8bce8;
-  box-shadow: 2px 2px 6px rgba(59,139,235,.2);
+  background: linear-gradient(135deg, #dce5f5, #b8cae8);
+  border-radius: 3px; border: 1px solid #9aaed0;
+  box-shadow: 2px 2px 6px rgba(45,67,108,.2);
 }
 .iso-box--glow {
   background: linear-gradient(135deg, rgba(0,200,200,.3), rgba(59,139,235,.3));
@@ -445,7 +489,8 @@ ul { list-style: none; }
 
 .popup-tag {
   font-size: .65rem; font-weight: 700; letter-spacing: 1px;
-  color: var(--teal); text-transform: uppercase; margin-bottom: 8px;
+  color: var(--navy); text-transform: uppercase; margin-bottom: 8px;
+  font-family: 'Chakra Petch', sans-serif;
 }
 .floor-popup h4 {
   font-size: .82rem; font-weight: 700; color: var(--text-main);
@@ -464,7 +509,7 @@ ul { list-style: none; }
 .popup-cta {
   margin-top: 12px; padding-top: 10px;
   border-top: 1px solid var(--border);
-  font-size: .75rem; font-weight: 600; color: var(--blue);
+  font-size: .75rem; font-weight: 600; color: var(--navy);
 }
 
 /* Dica de interação */
@@ -504,11 +549,12 @@ ul { list-style: none; }
 
 .section-tag {
   display: inline-block;
-  background: rgba(59,139,235,.1); color: var(--blue);
-  border: 1px solid rgba(59,139,235,.2);
+  background: rgba(45,67,108,.1); color: var(--navy);
+  border: 1px solid rgba(45,67,108,.2);
   padding: 5px 14px; border-radius: 99px;
   font-size: .78rem; font-weight: 700; letter-spacing: .5px;
   text-transform: uppercase; margin-bottom: 16px;
+  font-family: 'Chakra Petch', sans-serif;
 }
 .section-tag--white {
   background: rgba(255,255,255,.15); color: #fff;
@@ -542,8 +588,8 @@ ul { list-style: none; }
   margin-bottom: 18px;
 }
 .ia-card-icon svg { width: 22px; height: 22px; }
-.ia-icon--blue  { background: rgba(59,139,235,.12); color: var(--blue); }
-.ia-icon--teal  { background: rgba(0,200,200,.12);  color: var(--teal); }
+.ia-icon--blue  { background: rgba(45,67,108,.12);  color: var(--navy); }
+.ia-icon--teal  { background: rgba(117,227,228,.2); color: var(--teal-dark); }
 .ia-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
 .ia-card p  { font-size: .875rem; color: var(--text-sub); line-height: 1.6; }
 
@@ -551,13 +597,13 @@ ul { list-style: none; }
 /* ── RESULTADOS ── */
 .results-section {
   padding: 100px 24px;
-  background: linear-gradient(135deg, #1a2236 0%, #0f172a 60%, #0a1628 100%);
+  background: linear-gradient(135deg, var(--navy-dark) 0%, #0d1a2e 60%, #080f1c 100%);
   position: relative; overflow: hidden;
 }
 .results-section::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 20% 50%, rgba(0,200,200,.08) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 50%, rgba(59,139,235,.08) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 20% 50%, rgba(117,227,228,.1) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 50%, rgba(45,67,108,.2) 0%, transparent 60%);
 }
 .results-grid {
   display: grid;
@@ -588,7 +634,7 @@ ul { list-style: none; }
 .result-desc { font-size: .875rem; color: rgba(255,255,255,.6); line-height: 1.5; }
 
 .gradient-text-light {
-  background: linear-gradient(135deg, #7eb8ff, #00e8e8);
+  background: linear-gradient(135deg, #a8c8ff, #75e3e4);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
@@ -612,8 +658,8 @@ ul { list-style: none; }
 }
 .plan-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 .plan-card--featured {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 4px rgba(59,139,235,.1), var(--shadow-md);
+  border-color: var(--navy);
+  box-shadow: 0 0 0 4px rgba(45,67,108,.1), var(--shadow-md);
   transform: scale(1.03);
 }
 .plan-card--featured:hover { transform: scale(1.03) translateY(-4px); }
@@ -625,7 +671,7 @@ ul { list-style: none; }
   white-space: nowrap;
 }
 .plan-name  { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
-.plan-price { font-size: 1.3rem; font-weight: 800; color: var(--blue); margin-bottom: 10px; }
+.plan-price { font-size: 1.3rem; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
 .plan-desc  { font-size: .85rem; color: var(--text-sub); line-height: 1.6; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
 .plan-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
 .plan-features li {
@@ -638,12 +684,13 @@ ul { list-style: none; }
 }
 .btn-plan {
   display: block; text-align: center;
-  border: 1.5px solid var(--blue); color: var(--blue);
+  border: 1.5px solid var(--navy); color: var(--navy);
   padding: 12px; border-radius: 99px;
   font-weight: 700; font-size: .9rem;
+  font-family: 'Red Hat Display', sans-serif;
   transition: var(--transition);
 }
-.btn-plan:hover { background: var(--blue); color: #fff; }
+.btn-plan:hover { background: var(--navy); color: #fff; }
 .btn-plan--featured { background: var(--gradient); color: #fff; border-color: transparent; }
 .btn-plan--featured:hover { opacity: .92; }
 
@@ -651,7 +698,7 @@ ul { list-style: none; }
 /* ── CTA FINAL ── */
 .cta-section {
   padding: 100px 24px;
-  background: linear-gradient(135deg, #f0f4ff 0%, #edfcfc 100%);
+  background: linear-gradient(135deg, #edf1f9 0%, #e8f9f9 100%);
 }
 .cta-inner {
   max-width: 600px; margin: 0 auto; text-align: center;
@@ -668,8 +715,12 @@ ul { list-style: none; }
   max-width: 1200px; margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
 }
-.footer .logo-sewe { color: #7eb8ff; }
-.footer .logo-group { color: #00e8e8; }
+.footer .logo-sewe { color: #a8c8ff; }
+.footer .logo-group { color: var(--teal); }
+
+/* ── Produtos: cores específicas ── */
+.tag-integration { color: var(--integration); border-color: var(--integration); }
+.tag-minerconect  { color: var(--minerconect);  border-color: var(--minerconect); }
 .footer-copy { font-size: .8rem; color: rgba(255,255,255,.4); }
 
 
