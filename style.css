@@ -199,16 +199,16 @@ ul { list-style: none; }
 
 .hero-container { max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
 .hero-content { max-width: 680px; }
-/* eyebrow mantido para uso futuro mas não renderizado no HTML atual */
+/* Eyebrow: "BI COM INTELIGÊNCIA ARTIFICIAL" — teal uppercase pequeno */
 .hero-eyebrow {
   font-family: 'Chakra Petch', sans-serif;
-  font-size: .8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
-  color: var(--teal-dark); margin-bottom: 16px;
+  font-size: .8rem; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+  color: var(--teal-dark); margin-bottom: 20px;
 }
-/* Hero title: impacto máximo — cor sólida, sem gradiente, letra apertada */
+/* Hero title: primeira linha navy, "Soluções para / Distribuidores." em gradiente */
 .hero-title {
-  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
-  font-weight: 900; line-height: 1.08; letter-spacing: -2px;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 900; line-height: 1.08; letter-spacing: -1.5px;
   color: var(--text-main); margin-bottom: 20px;
 }
 .hero-lead {
