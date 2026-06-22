@@ -52,10 +52,9 @@
 
   <div class="hero-container">
     <div class="hero-content">
-      <p class="hero-eyebrow">BI com Inteligência Artificial</p>
-      <h1 class="hero-title">
+      <h1 class="hero-title" style="color:var(--navy);">
         Especialistas em<br>
-        <span class="gradient-text">Soluções para<br>Distribuidores.</span>
+        Soluções para<br>Distribuidores.
       </h1>
       <p class="hero-lead">BI com IA aplicada que transforma dados em vantagem competitiva.</p>
       <p class="hero-sub">Combinamos tecnologia de ponta com atendimento próximo e especializado, garantindo que cada insight se converta em resultado real.</p>
@@ -169,8 +168,8 @@
 
         <!-- SLOT DE IMAGEM DO PRÉDIO
              Arraste aqui a ilustração isométrica (PNG/WebP) ou clique para escolher.
-             A imagem persiste via .image-slots.state.json na raiz do projeto.
-             Para produção: coloque o arquivo em assets/ e use src="assets/predio-isometrico.png"
+             Para produção (visível a todos os visitantes): coloque o arquivo em assets/
+             e troque este <image-slot> por <img src="assets/predio-distribuidor.png" ...>.
         -->
         <image-slot
           id="predio-distribuidor"
@@ -181,85 +180,6 @@
           style="display:block;width:100%;min-height:480px;"
         ></image-slot>
 
-        <!-- Fallback CSS placeholder (visível enquanto não há imagem carregada) -->
-        <div class="bld-placeholder" id="bldPlaceholder" style="display:none;">
-          <!-- Andar Superior: Gestão Estratégica -->
-          <div class="bld-floor bld-floor--top" data-area="gestao">
-            <div class="bld-floor-inner">
-              <div class="bld-scene-top">
-                <div class="bsc-screen bsc-screen--lg"></div>
-                <div class="bsc-screen bsc-screen--lg" style="left:58%"></div>
-                <div class="bsc-desk bsc-desk--wide"></div>
-                <div class="bsc-person bsc-person--suit"></div>
-                <div class="bsc-person bsc-person--suit" style="left:52%"></div>
-                <div class="bsc-chart"></div>
-              </div>
-              <span class="bld-floor-label">KPI · DRE · Estratégia</span>
-            </div>
-          </div>
-          <!-- Mezanino: Comercial + Financeiro -->
-          <div class="bld-floor bld-floor--mid">
-            <div class="bld-mid-left" data-area="suprimentos">
-              <div class="bld-floor-inner">
-                <div class="bsc-screen"></div>
-                <div class="bsc-desk"></div>
-                <div class="bsc-person"></div>
-                <div class="bsc-person" style="left:50%"></div>
-                <span class="bld-floor-label">Análise · KPIs</span>
-              </div>
-            </div>
-            <div class="bld-mid-center" data-area="financeiro">
-              <div class="bld-floor-inner">
-                <div class="bsc-desk bsc-desk--wide"></div>
-                <div class="bsc-screen"></div>
-                <div class="bsc-person"></div>
-                <span class="bld-floor-label">DRE · Caixa</span>
-              </div>
-            </div>
-            <div class="bld-mid-right" data-area="comercial">
-              <div class="bld-floor-inner">
-                <div class="bsc-screen"></div>
-                <div class="bsc-desk"></div>
-                <div class="bsc-person"></div>
-                <div class="bsc-person" style="left:55%"></div>
-                <span class="bld-floor-label">Vendas · Leads</span>
-              </div>
-            </div>
-          </div>
-          <!-- Térreo: Suprimentos -->
-          <div class="bld-floor bld-floor--ground" data-area="suprimentos">
-            <div class="bld-floor-inner">
-              <div class="bsc-shelf"></div>
-              <div class="bsc-shelf" style="left:40%"></div>
-              <div class="bsc-forklift"></div>
-              <div class="bsc-box"></div>
-              <div class="bsc-box" style="left:48%;top:50%"></div>
-              <div class="bsc-box bsc-box--glow"></div>
-              <div class="bld-brand-tag">S | SEWE GROUP</div>
-              <span class="bld-floor-label">Estoque · Suprimentos · Logística</span>
-            </div>
-          </div>
-
-          <!-- Linhas de dados SVG -->
-          <svg class="bld-data-lines" viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="dg" x1="0%" y1="100%" x2="0%" y2="0%">
-                <stop offset="0%" stop-color="#75e3e4" stop-opacity=".9"/>
-                <stop offset="100%" stop-color="#2d436c" stop-opacity=".8"/>
-              </linearGradient>
-            </defs>
-            <path d="M200 460 L200 50" stroke="url(#dg)" stroke-width="1.5" fill="none" stroke-dasharray="8 5" opacity=".5"/>
-            <path d="M70 360 Q135 345 200 350 Q265 345 330 360" stroke="url(#dg)" stroke-width="1.2" fill="none" stroke-dasharray="6 4"/>
-            <path d="M70 220 Q135 205 200 210 Q265 205 330 220" stroke="url(#dg)" stroke-width="1.2" fill="none" stroke-dasharray="6 4"/>
-            <path d="M70 100 Q135 85 200 90 Q265 85 330 100" stroke="url(#dg)" stroke-width="1.2" fill="none" stroke-dasharray="6 4"/>
-            <circle r="4" fill="#75e3e4"><animateMotion dur="3s" repeatCount="indefinite" path="M200 460 L200 50"/></circle>
-            <circle r="3" fill="#2d436c"><animateMotion dur="4.5s" repeatCount="indefinite" begin="1.5s" path="M200 460 L200 50"/></circle>
-            <circle r="3" fill="#75e3e4"><animateMotion dur="3.5s" repeatCount="indefinite" begin=".8s" path="M70 360 Q135 345 200 350 Q265 345 330 360"/></circle>
-            <circle r="3" fill="#2d436c"><animateMotion dur="3.2s" repeatCount="indefinite" begin="1s" path="M70 220 Q135 205 200 210 Q265 205 330 220"/></circle>
-            <circle r="3.5" fill="#75e3e4"><animateMotion dur="3.8s" repeatCount="indefinite" begin="2s" path="M70 100 Q135 85 200 90 Q265 85 330 100"/></circle>
-          </svg>
-        </div>
-        <!-- /bld-placeholder -->
       </div>
     </div>
   </div>
@@ -274,26 +194,30 @@
       <span class="section-tag">Clientes e Confiança</span>
       <h2>Mais de 500 distribuidores e indústrias<br>confiam na inteligência da Sewe Group</h2>
     </div>
+    <!-- ADMIN DE LOGOS: arraste a logo de cada cliente para o respectivo espaço.
+         Para produção (visível a todos), troque cada <image-slot> por
+         <img src="assets/cliente-xxx.png" alt="Nome"> com o arquivo em assets/. -->
     <div class="clients-logos">
       <div class="client-logo">
-        <span class="client-name">eletro<br><strong>TRANSOL</strong></span>
+        <image-slot id="cliente-transol" shape="rounded" radius="8" fit="contain" placeholder="Eletro Transol" style="display:block;width:150px;height:64px;"></image-slot>
       </div>
       <div class="client-logo">
-        <span class="client-name"><strong>→DIAMAJU←</strong></span>
+        <image-slot id="cliente-diamaju" shape="rounded" radius="8" fit="contain" placeholder="Diamaju" style="display:block;width:150px;height:64px;"></image-slot>
       </div>
       <div class="client-logo">
-        <span class="client-name">P propecuária<br><small>Saúde Animal</small></span>
+        <image-slot id="cliente-propecuaria" shape="rounded" radius="8" fit="contain" placeholder="Propecuária" style="display:block;width:150px;height:64px;"></image-slot>
       </div>
       <div class="client-logo">
-        <span class="client-name"><strong>BELLFONE</strong></span>
+        <image-slot id="cliente-bellfone" shape="rounded" radius="8" fit="contain" placeholder="Bellfone" style="display:block;width:150px;height:64px;"></image-slot>
       </div>
       <div class="client-logo">
-        <span class="client-name"><strong>REALPET</strong></span>
+        <image-slot id="cliente-realpet" shape="rounded" radius="8" fit="contain" placeholder="Realpet" style="display:block;width:150px;height:64px;"></image-slot>
       </div>
       <div class="client-logo">
-        <span class="client-name"><strong>TELMAN</strong><br><small>Distribuidora</small></span>
+        <image-slot id="cliente-telman" shape="rounded" radius="8" fit="contain" placeholder="Telman" style="display:block;width:150px;height:64px;"></image-slot>
       </div>
     </div>
+    <p class="clients-hint" style="text-align:center;margin-top:28px;font-size:.78rem;color:var(--text-light);">Arraste a logo de cada cliente para o respectivo espaço.</p>
   </div>
 </section>
 
@@ -472,11 +396,8 @@
       <!-- Direita: mapa do Brasil -->
       <div class="macros-right">
         <div class="brazil-map" id="brazilMap">
-          <!-- Mapa do Brasil em pontos CSS -->
           <svg class="brazil-svg" viewBox="0 0 340 400" xmlns="http://www.w3.org/2000/svg">
-            <!-- Forma aproximada do Brasil com pontos -->
             <g fill="var(--navy)" opacity="0.7">
-              <!-- Norte -->
               <circle cx="120" cy="60" r="3"/><circle cx="140" cy="55" r="3"/><circle cx="160" cy="52" r="3"/>
               <circle cx="180" cy="50" r="3"/><circle cx="200" cy="52" r="3"/><circle cx="220" cy="55" r="3"/>
               <circle cx="240" cy="60" r="3"/><circle cx="255" cy="68" r="3"/><circle cx="265" cy="80" r="3"/>
@@ -486,13 +407,11 @@
               <circle cx="105" cy="78" r="3"/><circle cx="120" cy="85" r="3"/><circle cx="138" cy="82" r="3"/>
               <circle cx="155" cy="78" r="3"/><circle cx="175" cy="77" r="3"/><circle cx="195" cy="78" r="3"/>
               <circle cx="215" cy="80" r="3"/><circle cx="235" cy="85" r="3"/><circle cx="252" cy="95" r="3"/>
-              <!-- Nordeste -->
               <circle cx="270" cy="98" r="3"/><circle cx="282" cy="110" r="3"/><circle cx="290" cy="122" r="3"/>
               <circle cx="295" cy="135" r="3"/><circle cx="292" cy="148" r="3"/><circle cx="285" cy="158" r="3"/>
               <circle cx="275" cy="165" r="3"/><circle cx="262" cy="170" r="3"/>
               <circle cx="260" cy="108" r="3"/><circle cx="268" cy="120" r="3"/><circle cx="278" cy="132" r="3"/>
               <circle cx="283" cy="145" r="3"/><circle cx="280" cy="155" r="3"/>
-              <!-- Centro -->
               <circle cx="100" cy="95" r="3"/><circle cx="115" cy="100" r="3"/><circle cx="130" cy="98" r="3"/>
               <circle cx="145" cy="96" r="3"/><circle cx="162" cy="95" r="3"/><circle cx="178" cy="94" r="3"/>
               <circle cx="195" cy="95" r="3"/><circle cx="212" cy="97" r="3"/><circle cx="228" cy="100" r="3"/>
@@ -505,7 +424,6 @@
               <circle cx="138" cy="126" r="3"/><circle cx="155" cy="125" r="3"/><circle cx="172" cy="124" r="3"/>
               <circle cx="188" cy="126" r="3"/><circle cx="205" cy="130" r="3"/><circle cx="220" cy="135" r="3"/>
               <circle cx="235" cy="142" r="3"/>
-              <!-- Sudeste/Sul -->
               <circle cx="90" cy="145" r="3"/><circle cx="105" cy="148" r="3"/><circle cx="120" cy="146" r="3"/>
               <circle cx="135" cy="144" r="3"/><circle cx="150" cy="143" r="3"/><circle cx="165" cy="145" r="3"/>
               <circle cx="180" cy="148" r="3"/><circle cx="195" cy="152" r="3"/><circle cx="210" cy="158" r="3"/>
@@ -518,7 +436,6 @@
               <circle cx="132" cy="178" r="3"/><circle cx="146" cy="180" r="3"/><circle cx="160" cy="184" r="3"/>
               <circle cx="174" cy="190" r="3"/><circle cx="186" cy="198" r="3"/><circle cx="198" cy="208" r="3"/>
               <circle cx="208" cy="218" r="3"/>
-              <!-- Sul -->
               <circle cx="92" cy="195" r="3"/><circle cx="106" cy="196" r="3"/><circle cx="120" cy="196" r="3"/>
               <circle cx="134" cy="198" r="3"/><circle cx="148" cy="200" r="3"/><circle cx="162" cy="205" r="3"/>
               <circle cx="175" cy="212" r="3"/><circle cx="186" cy="222" r="3"/>
@@ -535,7 +452,6 @@
               <circle cx="120" cy="292" r="3"/><circle cx="132" cy="298" r="3"/>
               <circle cx="124" cy="308" r="3"/><circle cx="134" cy="312" r="3"/>
             </g>
-            <!-- Pin de localização (Florianópolis/SC) -->
             <g transform="translate(168, 260)">
               <circle cx="0" cy="0" r="6" fill="var(--navy)" opacity=".9"/>
               <circle cx="0" cy="0" r="3" fill="white"/>
