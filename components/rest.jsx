@@ -22,7 +22,7 @@ function MaturitySection() {
           <div className="eyebrow">Níveis de maturidade</div>
           <h2 style={{ marginTop: 14 }}>SMART · SCALE · STRATEGIC.</h2>
           <p style={{ color: 'var(--text-2)', marginTop: 14, fontSize: 17 }}>
-            Entre pelo nível certo para seu momento. Evolua sem trocar de plataforma — o mesmo Qlik, as mesmas suítes, cada vez mais fundo.
+            Entre pelo nível certo para seu momento. Evolua sem trocar de plataforma, o mesmo Qlik, as mesmas suítes, cada vez mais fundo.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="mat-grid">
@@ -88,7 +88,7 @@ function DifferentiatorsSection() {
     { icon: 'link', title: 'Integração nativa com ERPs', body: 'Conectores homologados para os principais ERPs do setor. Camada criptografada, sem precisar de time de TI interno.' },
     { icon: 'brain', title: 'IA invisível', body: 'Roda em background, limpa outliers, cruza dados e entrega decisão pronta. Sem prompts, sem engenharia, sem cientista de dados.' },
     { icon: 'shield', title: 'LGPD por projeto', body: 'Dados cifrados em trânsito e repouso, homologação Qlik oficial, auditoria e política de retenção desenhadas por engajamento.' },
-    { icon: 'pkg', title: 'DNA de distribuição', body: 'Consultores que falam ruptura, Curva A, positivação, rebate e capital de giro. Não traduzimos o setor — nós somos do setor.' },
+    { icon: 'pkg', title: 'DNA de distribuição', body: 'Consultores que falam ruptura, Curva A, positivação, rebate e capital de giro. Não traduzimos o setor, nós somos do setor.' },
     { icon: 'trophy', title: 'Parceria oficial Qlik', body: 'Platform Partner da Qlik, plataforma de analytics líder global, Leader no Gartner Magic Quadrant por 13 anos consecutivos.' },
   ];
   return (
@@ -99,7 +99,7 @@ function DifferentiatorsSection() {
           <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>Por que SEWE</div>
           <h2 style={{ marginTop: 14, color: '#fff' }}>Seis razões que nenhum BI genérico oferece.</h2>
           <p style={{ color: 'rgba(255,255,255,0.66)', marginTop: 14, fontSize: 17 }}>
-            Power BI e Tableau são ferramentas. Nós entregamos solução vertical pronta, com DNA de distribuição e tempo de valor em semanas.
+            Nós entregamos solução vertical pronta, com DNA de distribuição e tempo de valor em semanas.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'rgba(255,255,255,0.08)', borderRadius: 16, overflow: 'hidden' }} className="diff-grid">
@@ -125,8 +125,8 @@ function DifferentiatorsSection() {
 function CasesSection() {
   const cases = [
     { co: 'MULTISEG', metric: '-20%', unit: 'em estoque parado', quote: 'Nos 6 primeiros meses, a SEWE mostrou exatamente onde o capital estava travando. Liberamos caixa para comprar o que gira.', person: 'Diretor de Compras', place: 'Multiseg Distribuição' },
-    { co: 'PETSUL', metric: '+35%', unit: 'de produtividade de vendas', quote: 'A força de vendas externa virou previsível. Cada vendedor recebe a próxima ação no celular — e a positivação saltou de 68% para 84%.', person: 'Diretor Comercial', place: 'PETSUL Atacado' },
-    { co: 'WMG', metric: '30 dias', unit: 'do contrato ao go-live', quote: 'Implantamos a suíte Financeira no prazo combinado. No primeiro fechamento, a DRE já saiu automatizada — sem planilha.', person: 'CFO', place: 'WMG Indústria' },
+    { co: 'PETSUL', metric: '+35%', unit: 'de produtividade de vendas', quote: 'A força de vendas externa virou previsível. Cada vendedor recebe a próxima ação no celular, e a positivação saltou de 68% para 84%.', person: 'Diretor Comercial', place: 'PETSUL Atacado' },
+    { co: 'WMG', metric: '30 dias', unit: 'do contrato ao go-live', quote: 'Implantamos a suíte Financeira no prazo combinado. No primeiro fechamento, a DRE já saiu automatizada, sem planilha.', person: 'CFO', place: 'WMG Indústria' },
   ];
   return (
     <section id="cases" className="section" style={{ background: '#fff' }}>
@@ -168,13 +168,14 @@ function CasesSection() {
 function FAQSection() {
   const [open, setOpen] = React.useState(0);
   const qs = [
-    { q: 'Quanto tempo leva para o go-live?', a: 'O processo completo ocorre em até 30 dias a partir da liberação dos acessos ao seu ERP. É um processo guiado pela nossa consultoria, com entregas semanais — você enxerga valor já no primeiro mês.' },
+    { q: 'Quanto tempo leva para o go-live?', a: 'O processo completo ocorre em até 30 dias a partir da liberação dos acessos ao seu ERP. É um processo guiado pela nossa consultoria, com entregas semanais. Você enxerga valor já no primeiro mês.' },
     { q: 'Preciso de um time de BI ou TI dedicado?', a: 'Não. A SEWE é responsável pela conexão ao ERP, modelagem dos dados e configuração dos painéis. Sua equipe usa o produto; nós cuidamos da engenharia por trás.' },
-    { q: 'Vocês substituem o Power BI ou Tableau?', a: 'Somos diferentes deles. Power BI e Tableau são ferramentas genéricas que exigem projetos de desenvolvimento. Entregamos solução vertical pronta para distribuição, no Qlik Sense — com curva ABC, positivação, DRE já modelados para o seu setor.' },
+    { q: 'Posso customizar as soluções da SEWE para minha operação específica?', a: 'Sim! Uma das nossas forças é justamente personalizar módulos, dashboards e processos para refletir a realidade da sua empresa. Não entregamos pacotes genéricos, entregamos soluções ajustadas.' },
+    { q: 'O que diferencia a SEWE de outras empresas de BI e consultoria de dados?', a: 'Nosso diferencial está em combinar: um portfólio completo (BI + consultoria + integração + vendas), atendimento nacional, inteligência personalizada e foco em resultados concretos e sustentáveis.' },
     { q: 'Como funciona a parceria com a Qlik?', a: 'Somos Platform Partner oficial da Qlik no Brasil. Você recebe licenças homologadas, suporte local em português e acesso a todas as capacidades nativas da plataforma, com a camada SEWE de dashboards e IA em cima.' },
     { q: 'E a LGPD?', a: 'Conformidade end-to-end: criptografia em trânsito e repouso, controle granular de acesso, política de retenção e trilha de auditoria. Documentação de DPIA disponível em até 48h úteis após assinatura de NDA.' },
     { q: 'Meus dados saem da minha empresa?', a: 'A conexão é direta entre seu ERP e o ambiente Qlik hospedado em região brasileira. Você mantém o controle dos acessos e pode revogar a qualquer momento.' },
-    { q: 'Quanto custa?', a: 'O investimento depende do nível (SMART, SCALE ou STRATEGIC), do número de usuários e de filiais. Agende um diagnóstico gratuito de 30 minutos — mostramos o ROI estimado com base nos seus dados antes de falar em preço.' },
+    { q: 'Quanto custa?', a: 'O investimento depende do nível (SMART, SCALE ou STRATEGIC), do número de usuários e de filiais. Agende um diagnóstico gratuito de 30 minutos. Mostramos o ROI estimado com base nos seus dados antes de falar em preço.' },
   ];
   return (
     <section id="faq" className="section" style={{ background: 'var(--bg-soft)' }}>
@@ -215,14 +216,14 @@ function CTASection() {
   return (
     <section id="diagnostico" className="section grain" style={{ background: 'linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 55%, var(--turquoise-ink) 120%)', color: '#fff', position: 'relative', overflow: 'hidden' }}>
       <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'radial-gradient(600px 300px at 80% 100%, rgba(117,227,228,0.2), transparent 70%)' }}/>
-      <div className="container" style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 48, alignItems: 'center' }} className="cta-grid">
+      <div className="container cta-grid" style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 48, alignItems: 'center' }}>
         <div>
           <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>Diagnóstico consultivo · Gratuito</div>
           <h2 style={{ color: '#fff', marginTop: 14, fontSize: 'clamp(32px, 4vw, 52px)' }}>
             Uma reunião de 30 minutos. Com os seus dados. Sem compromisso.
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.78)', marginTop: 18, fontSize: 17, maxWidth: 560 }}>
-            Um diretor SEWE olha sua operação, identifica os 3 vazamentos mais caros em Curva A, ruptura ou margem — e mostra o que mudaria no primeiro mês.
+            Um diretor SEWE olha sua operação, identifica os 3 vazamentos mais caros em Curva A, ruptura ou margem, e mostra o que mudaria no primeiro mês.
           </p>
           <ul style={{ listStyle: 'none', padding: 0, margin: '24px 0 32px', display: 'flex', flexDirection: 'column', gap: 10 }}>
             {['Análise rápida com seu ERP (NDA prévio)', 'Estimativa de ROI em dinheiro real', 'Roteiro de go-live em 30 dias', 'Resposta em até 4h úteis'].map((t, i) => (
@@ -235,7 +236,7 @@ function CTASection() {
             ))}
           </ul>
         </div>
-        <form onSubmit={(e) => { e.preventDefault(); alert('Diagnóstico solicitado — um diretor SEWE retorna em até 4h úteis.'); }}
+        <form onSubmit={(e) => { e.preventDefault(); alert('Diagnóstico solicitado. Um diretor SEWE retorna em até 4h úteis.'); }}
           style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 16, padding: 24, backdropFilter: 'blur(12px)' }}>
           <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 18, color: '#fff', marginBottom: 14 }}>Agendar diagnóstico</div>
           {[
@@ -274,7 +275,7 @@ function Footer() {
   return (
     <footer style={{ background: '#0b1220', color: 'rgba(255,255,255,0.66)', paddingTop: 64 }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 32, paddingBottom: 48, borderBottom: '1px solid rgba(255,255,255,0.1)' }} className="foot-grid">
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 32, paddingBottom: 48, borderBottom: '1px solid rgba(255,255,255,0.1)' }} className="foot-grid">
           <div>
             <img src="assets/sewe-logo.png" alt="SEWE GROUP" style={{ height: 40, width: 'auto', display: 'block', filter: 'brightness(0) invert(1)' }}/>
             <p style={{ color: 'rgba(255,255,255,0.56)', marginTop: 16, fontSize: 14, lineHeight: 1.6, maxWidth: 320 }}>
@@ -283,9 +284,6 @@ function Footer() {
             <div style={{ display: 'flex', gap: 10, marginTop: 18 }}>
               <div style={{ padding: '6px 12px', borderRadius: 6, background: 'rgba(117,227,228,0.1)', color: 'var(--turquoise)', fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', border: '1px solid rgba(117,227,228,0.2)' }}>
                 PARCEIRO OFICIAL QLIK
-              </div>
-              <div style={{ padding: '6px 12px', borderRadius: 6, background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.66)', fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', border: '1px solid rgba(255,255,255,0.1)' }}>
-                LGPD COMPLIANT
               </div>
             </div>
           </div>
@@ -309,13 +307,6 @@ function Footer() {
             <a style={col.link} href="mailto:contato@sewegroup.com.br">contato@sewegroup.com.br</a>
             <div style={{ ...col.link, color: 'rgba(255,255,255,0.5)' }}>Florianópolis · SC · Brasil</div>
             <div style={{ ...col.link, color: 'rgba(255,255,255,0.5)' }}>Atendimento: seg-sex · 9h-18h</div>
-          </div>
-          <div>
-            <div style={col.title}>Maturidade</div>
-            <a style={col.link} href="#maturidade">Nível SMART</a>
-            <a style={col.link} href="#maturidade">Nível SCALE</a>
-            <a style={col.link} href="#maturidade">Nível STRATEGIC</a>
-            <a style={col.link} href="#diagnostico">Diagnóstico gratuito</a>
           </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px 0 36px', flexWrap: 'wrap', gap: 12 }}>

@@ -23,7 +23,7 @@ const SUITES = {
     label: 'Comercial', short: 'Comercial', color: '#3d5684', icon: 'trending',
     role: 'Entra na força de vendas e no cliente',
     stations: ['vendas', 'cliente'],
-    decision: 'Mocelin Atacado (Curva A) 47 dias sem comprar → ação enviada ao vendedor agora',
+    decision: 'Cliente Curva A: 47 dias sem comprar → ação enviada ao vendedor agora',
     kpis: [{ v: '+30%', l: 'reativação' }, { v: '+25%', l: 'LTV' }, { v: '+35%', l: 'produtividade' }],
   },
   financeiro: {
@@ -76,10 +76,10 @@ function EcosystemSection({ animated = true }) {
   const litSet = new Set(S.stations);
 
   return (
-    <section id="ecossistema" className="section" style={{ background: 'linear-gradient(180deg, #fff 0%, #f4f6fb 100%)', position: 'relative', overflow: 'hidden' }}>
+    <section id="bi" className="section" style={{ background: 'linear-gradient(180deg, #fff 0%, #f4f6fb 100%)', position: 'relative', overflow: 'hidden' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 840, margin: '0 auto 40px' }}>
-          <div className="eyebrow">O distribuidor operando</div>
+          <div className="eyebrow">SEWE BI · o distribuidor operando</div>
           <h2 style={{ marginTop: 14, marginBottom: 14 }}>Veja onde cada produto SEWE <br className="hide-mob"/>se acopla à sua operação.</h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17 }}>
             Da compra ao PDV, os dados correm pela sua operação em tempo real. A SEWE lê cada estação, decide nos bastidores e devolve a próxima ação para a área certa. Clique numa suíte e veja onde ela entra.

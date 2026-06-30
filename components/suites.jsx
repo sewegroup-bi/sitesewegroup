@@ -26,7 +26,7 @@ function SuitesSection() {
       label: 'Comercial',
       icon: 'trending',
       tagline: 'Cada vendedor, cada cliente, cada SKU.',
-      title: 'Positivação, churn e cross-sell — em tempo real.',
+      title: 'Positivação, churn e cross-sell em tempo real.',
       body: 'Monitora metas por vendedor, detecta carteira em risco de churn pelo padrão de compra e sugere cross-sell contextual. A força de vendas recebe a "próxima ação" direto no celular.',
       kpis: [{ v: '+30%', l: 'reativação de inativos' }, { v: '+25%', l: 'aumento de LTV' }, { v: '+35%', l: 'produtividade de vendas' }],
       bullets: [
@@ -59,7 +59,7 @@ function SuitesSection() {
       icon: 'target',
       tagline: 'Uma tela. Quatro áreas. Zero ruído.',
       title: 'A visão 360° para quem toma a decisão difícil.',
-      body: 'Um único painel com os KPIs que importam — Suprimentos, Comercial, Financeiro e Operacional — consolidados para o C-Level. Drill-down até o documento na mesma tela.',
+      body: 'Um único painel com os KPIs que importam: Suprimentos, Comercial, Financeiro e Operacional, consolidados para o C-Level. Drill-down até o documento na mesma tela.',
       kpis: [{ v: '1 painel', l: '4 áreas consolidadas' }, { v: '100%', l: 'drill-down nativo' }, { v: 'Diário', l: 'ritmo de decisão' }],
       bullets: [
         'Consolidação multi-filial com comparativo horizontal',
@@ -78,7 +78,7 @@ function SuitesSection() {
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 40px' }}>
           <div className="eyebrow">As quatro suítes</div>
-          <h2 style={{ marginTop: 14 }}>Dashboards Qlik Sense — prontos para sua operação.</h2>
+          <h2 style={{ marginTop: 14 }}>Dashboards Qlik Sense prontos para sua operação.</h2>
           <p style={{ color: 'var(--text-2)', marginTop: 14, fontSize: 17 }}>
             Mesma plataforma que movimenta os dados globais da Volvo, Samsung e Accenture. Aqui, skinada com a identidade SEWE e pré-configurada para distribuidor brasileiro.
           </p>
@@ -240,7 +240,7 @@ function SuiteDashboard({ kind }) {
             )},
           ]}
           rows={[
-            { cli: 'Mocelin Atacado',    ltv: 'R$ 142k', dias: 47, sug: 'Contato comercial hoje',       risk: 'Alto' },
+            { cli: 'Distribuidora Sul',    ltv: 'R$ 142k', dias: 47, sug: 'Contato comercial hoje',       risk: 'Alto' },
             { cli: 'Agrocenter Sul',     ltv: 'R$ 98k',  dias: 38, sug: 'Reativação + cross-sell Curva B', risk: 'Alto' },
             { cli: 'Pet House Oeste',    ltv: 'R$ 76k',  dias: 31, sug: 'Ligação de relacionamento',    risk: 'Médio' },
             { cli: 'Vetclin Distrib.',   ltv: 'R$ 64k',  dias: 28, sug: 'Oferta programa fidelidade',   risk: 'Médio' },

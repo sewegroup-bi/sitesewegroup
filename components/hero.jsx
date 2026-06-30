@@ -19,10 +19,10 @@ function Header() {
   }, []);
 
   const links = [
-    { label: 'Home', href: '#' },
-    { label: 'Soluções', href: '#suites' },
-    { label: 'Quem Somos', href: '#diferenciais' },
-    { label: 'Conteúdos', href: '#', drop: true },
+    { label: 'Sewe BI', href: '#bi' },
+    { label: 'Integration', href: '#integration' },
+    { label: 'Sewe Sales', href: '#sales' },
+    { label: 'MinerConect', href: 'minerconect.html' },
     { label: 'FAQ', href: '#faq' },
   ];
 
@@ -129,7 +129,7 @@ function Hero({ headlineVariant = 0 }) {
             <span>99,8% uptime</span>
             <span style={{ color: 'var(--line)' }}>·</span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-              <svg width="12" height="12" viewBox="0 0 12 12"><rect width="12" height="12" rx="2" fill="#009845"/></svg>
+              <img src="assets/qlik-logo.png" alt="Qlik" style={{ height: 14, width: 'auto', display: 'block' }}/>
               Parceiro Oficial Qlik
             </span>
           </div>
@@ -150,20 +150,20 @@ function Hero({ headlineVariant = 0 }) {
 
         <p style={{ textAlign: 'center', maxWidth: 720, margin: '24px auto 0', fontSize: 18, color: 'var(--text-2)', lineHeight: 1.55 }}>
           BI sob medida para distribuidores e atacadistas. Go-live em 30 dias.
-          IA invisível que limpa outliers, cruza dados e entrega <b style={{ color: 'var(--navy-900)' }}>decisões prontas</b> — não mais gráficos para interpretar.
+          IA invisível que limpa outliers, cruza dados e entrega <b style={{ color: 'var(--navy-900)' }}>decisões prontas</b>, não mais gráficos para interpretar.
         </p>
 
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginTop: 32, flexWrap: 'wrap' }}>
           <a href="#diagnostico" className="btn btn-primary btn-lg">
-            Agendar Diagnóstico com seus dados
+            Agendar Diagnóstico
             <Icon name="arrow" size={16} className="chev"/>
           </a>
-          <a href="#ecossistema" className="btn btn-outline btn-lg">
-            Ver o produto em ação
+          <a href="#suites" className="btn btn-outline btn-lg">
+            Ver Suítes em ação
           </a>
         </div>
         <div style={{ textAlign: 'center', marginTop: 14, fontSize: 12, color: 'var(--text-3)' }}>
-          Resposta em até 4h úteis · Sem cobrança de setup · Diagnóstico gratuito
+          Resposta em até 4h úteis · Diagnóstico gratuito
         </div>
 
         {/* Dashboard mockup */}
@@ -271,7 +271,7 @@ function HeroDashboard() {
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 13, color: Q.ink, marginBottom: 2 }}>
-            Mocelin Atacado em risco de churn · Curva A
+            Cliente em risco de churn · Curva A
           </div>
           <div style={{ fontSize: 11, color: Q.muted, fontFamily: 'JetBrains Mono, monospace', letterSpacing: '0.04em' }}>
             ÚLTIMA COMPRA: 47 DIAS · LTV R$ 142K · AÇÃO SUGERIDA: CONTATO COMERCIAL HOJE
@@ -300,7 +300,7 @@ function FloatingKPIs() {
           <Icon name="trending" size={18}/>
         </div>
         <div>
-          <div style={{ fontSize: 11, color: 'var(--text-3)', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>PETSUL · HOJE</div>
+          <div style={{ fontSize: 11, color: 'var(--text-3)', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>DISTRIBUIDOR · HOJE</div>
           <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 16, color: 'var(--navy-900)' }}>+R$ 382k recuperados</div>
           <div style={{ fontSize: 11, color: 'var(--text-2)' }}>cross-sell sugerido pela IA</div>
         </div>

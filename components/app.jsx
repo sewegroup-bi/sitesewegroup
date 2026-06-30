@@ -99,9 +99,13 @@ function App() {
         <Hero headlineVariant={state.headlineVariant}/>
         <LogosStrip/>
         <BragBar/>
+        <ConnectedEcosystem/>
+        <IntegrationSection/>
         <EcosystemSection animated={state.ecosystemAnimated}/>
         <SuitesSection/>
+        <SalesSection/>
         <MaturitySection/>
+        <MinerTeaser/>
         <DifferentiatorsSection/>
         <CasesSection/>
         <FAQSection/>
@@ -113,5 +117,7 @@ function App() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App/>);
+// Guard: only mount when THIS page's root exists, so importing the compiled
+// design-system bundle elsewhere never hijacks another page's #root.
+const __seweRoot = document.getElementById('sewe-root');
+if (__seweRoot) ReactDOM.createRoot(__seweRoot).render(<App/>);

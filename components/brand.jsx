@@ -75,5 +75,49 @@ const Icon = ({ name, size = 18, stroke = 1.75, className = '', style = {} }) =>
   return <svg {...common}>{paths[name]}</svg>;
 };
 
+// ── Sub-brand "S" mark, recolorable via CSS mask of the official S ──
+// BI = navy, Integration = green, Sewe Sales = orange. One asset, themed.
+function SMark({ size = 34, color = '#2d436c' }) {
+  return (
+    <span
+      aria-hidden
+      style={{
+        display: 'inline-block',
+        width: size, height: size * (948 / 688),
+        background: color,
+        WebkitMaskImage: 'url(assets/sewe-s.png)',
+        maskImage: 'url(assets/sewe-s.png)',
+        WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat',
+        WebkitMaskSize: 'contain', maskSize: 'contain',
+        WebkitMaskPosition: 'center', maskPosition: 'center',
+        flexShrink: 0,
+      }}
+    />
+  );
+}
+
+// Sub-brand lockup: S mark + "SEWE <Product>" stacked, themed by color.
+function SubBrandLogo({ product = 'BI', color = '#2d436c', size = 30, light = false }) {
+  return (
+    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 11 }}>
+      <SMark size={size} color={color}/>
+      <div style={{ lineHeight: 1.05 }}>
+        <div style={{ fontFamily: 'Chakra Petch, sans-serif', fontWeight: 700, fontSize: size * 0.5, letterSpacing: '0.04em', color: light ? '#fff' : 'var(--navy-900)' }}>SEWE</div>
+        <div style={{ fontFamily: 'Chakra Petch, sans-serif', fontWeight: 600, fontSize: size * 0.42, letterSpacing: '0.02em', color, marginTop: 1 }}>{product}</div>
+      </div>
+    </div>
+  );
+}
+
+// MinerConect lockup — its own product brand (cube mark + wordmark image).
+function MinerLogo({ height = 40, variant = 'dark' }) {
+  // 'dark' = full lockup cropped on navy; 'mark' = cube only.
+  const src = variant === 'mark' ? 'assets/minerconect-mark.png' : 'assets/minerconect-logo-dark.png';
+  return <img src={src} alt="MinerConect" style={{ height, width: 'auto', display: 'block' }}/>;
+}
+
 window.SeweLogo = SeweLogo;
+window.SMark = SMark;
+window.SubBrandLogo = SubBrandLogo;
+window.MinerLogo = MinerLogo;
 window.Icon = Icon;
