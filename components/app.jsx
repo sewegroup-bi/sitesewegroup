@@ -94,7 +94,7 @@ function App() {
 
   return (
     <>
-      <Header/>
+      <SiteHeader home/>
       <main>
         <Hero headlineVariant={state.headlineVariant}/>
         <LogosStrip/>
@@ -111,7 +111,7 @@ function App() {
         <FAQSection/>
         <CTASection/>
       </main>
-      <Footer/>
+      <SiteFooter home/>
       <TweaksPanel state={state} setState={applySet} active={tweaksActive} onClose={() => setTweaksActive(false)}/>
     </>
   );

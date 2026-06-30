@@ -269,67 +269,9 @@ function CTASection() {
   );
 }
 
-function Footer() {
-  const col = { title: { fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 12, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.9)', textTransform: 'uppercase', marginBottom: 14 },
-                link:  { display: 'block', fontSize: 13, color: 'rgba(255,255,255,0.62)', padding: '6px 0', transition: 'color .15s ease' } };
-  return (
-    <footer style={{ background: '#0b1220', color: 'rgba(255,255,255,0.66)', paddingTop: 64 }}>
-      <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 32, paddingBottom: 48, borderBottom: '1px solid rgba(255,255,255,0.1)' }} className="foot-grid">
-          <div>
-            <img src="assets/sewe-logo.png" alt="SEWE GROUP" style={{ height: 40, width: 'auto', display: 'block', filter: 'brightness(0) invert(1)' }}/>
-            <p style={{ color: 'rgba(255,255,255,0.56)', marginTop: 16, fontSize: 14, lineHeight: 1.6, maxWidth: 320 }}>
-              Inteligência de dados para distribuidores e atacadistas. Consultoria + tecnologia + Qlik.
-            </p>
-            <div style={{ display: 'flex', gap: 10, marginTop: 18 }}>
-              <div style={{ padding: '6px 12px', borderRadius: 6, background: 'rgba(117,227,228,0.1)', color: 'var(--turquoise)', fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', border: '1px solid rgba(117,227,228,0.2)' }}>
-                PARCEIRO OFICIAL QLIK
-              </div>
-            </div>
-          </div>
-          <div>
-            <div style={col.title}>Soluções</div>
-            <a style={col.link} href="#suites">Suprimentos</a>
-            <a style={col.link} href="#suites">Comercial</a>
-            <a style={col.link} href="#suites">Financeiro</a>
-            <a style={col.link} href="#suites">Gestão Estratégica</a>
-          </div>
-          <div>
-            <div style={col.title}>Empresa</div>
-            <a style={col.link} href="#">Quem Somos</a>
-            <a style={col.link} href="#">Prêmio SEWE</a>
-            <a style={col.link} href="#">Blog</a>
-            <a style={col.link} href="#">Carreiras</a>
-            <a style={col.link} href="#faq">FAQ</a>
-          </div>
-          <div>
-            <div style={col.title}>Contato</div>
-            <a style={col.link} href="mailto:contato@sewegroup.com.br">contato@sewegroup.com.br</a>
-            <div style={{ ...col.link, color: 'rgba(255,255,255,0.5)' }}>Florianópolis · SC · Brasil</div>
-            <div style={{ ...col.link, color: 'rgba(255,255,255,0.5)' }}>Atendimento: seg-sex · 9h-18h</div>
-          </div>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px 0 36px', flexWrap: 'wrap', gap: 12 }}>
-          <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.42)' }}>
-            © 2026 SEWE Group · Todos os direitos reservados · CNPJ XX.XXX.XXX/0001-XX
-          </div>
-          <div style={{ display: 'flex', gap: 18, fontSize: 12, color: 'rgba(255,255,255,0.42)' }}>
-            <a href="#" style={{ color: 'inherit' }}>Política de Privacidade</a>
-            <a href="#" style={{ color: 'inherit' }}>Termos de Uso</a>
-            <a href="#" style={{ color: 'inherit' }}>LGPD</a>
-          </div>
-        </div>
-      </div>
-      <style>{`
-        @media (max-width: 960px) {
-          .foot-grid { grid-template-columns: 1fr 1fr !important; }
-        }
-        @media (max-width: 600px) {
-          .foot-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
-    </footer>
-  );
+function Footer_DEPRECATED() {
+  // Moved to layout.jsx (SiteFooter). Kept out of the render tree.
+  return null;
 }
 
-Object.assign(window, { MaturitySection, DifferentiatorsSection, CasesSection, FAQSection, CTASection, Footer });
+Object.assign(window, { MaturitySection, DifferentiatorsSection, CasesSection, FAQSection, CTASection });

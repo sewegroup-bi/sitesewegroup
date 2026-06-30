@@ -29,19 +29,47 @@ Destaques:
 
 ```
 .
-├── Sewe Group Site.html     # Página principal (ponto de entrada)
+├── index.html               # Home (ponto de entrada)
+├── quem-somos.html          # Página: história, missão, visão, valores
+├── premio.html              # Página: Prêmio SEWE (pilares + vencedores)
+├── blog.html                # Índice do blog
+├── faq.html                 # Página de FAQ
+├── minerconect.html         # Produto à parte: MinerConect
+├── vencedor-premio-2024.html        # Post (vencedor do Prêmio) — modelo p/ duplicar
+├── curva-abc-capital-de-giro.html   # Post (artigo de blog) — modelo p/ duplicar
 ├── styles.css               # Design system: tokens, tipografia, componentes base
 ├── components/
 │   ├── brand.jsx            # Logo SEWE + biblioteca de ícones
+│   ├── layout.jsx           # Header + Footer + PageHero COMPARTILHADOS (fonte única)
 │   ├── qlik.jsx             # Componentes de dashboard estilo Qlik Sense
-│   ├── hero.jsx             # Header de navegação + Hero
+│   ├── hero.jsx             # Hero da home
 │   ├── logos.jsx            # Faixa de clientes + barra de métricas
 │   ├── ecosystem.jsx        # "Operação ao vivo" (visualização do distribuidor)
+│   ├── bus.jsx              # Ecossistema conectado + Integration + Sales
 │   ├── suites.jsx           # Seção das 4 suítes com tabs e dashboards
-│   ├── rest.jsx             # Maturidade, diferenciais, cases, FAQ, CTA, footer
-│   └── app.jsx              # Composição raiz + painel de Tweaks
+│   ├── rest.jsx             # Maturidade, diferenciais, cases, FAQ, CTA
+│   ├── blogdata.jsx         # CONTEÚDO de blog e prêmio (array SEWE_POSTS)
+│   ├── pages.jsx            # Páginas: Quem Somos, Prêmio, Blog, Post, FAQ
+│   ├── miner.jsx            # Página MinerConect
+│   └── app.jsx              # Composição raiz da home + painel de Tweaks
 └── README.md
 ```
+
+---
+
+## Páginas internas (Header/Footer compartilhados)
+
+Header, Footer e o cabeçalho de página vivem em **`components/layout.jsx`** —
+**fonte única**. Mude o menu ou o contato lá e vale para todas as páginas.
+
+### Como adicionar um post de blog OU um vencedor do Prêmio (sem admin)
+
+1. Abra **`components/blogdata.jsx`** e adicione uma entrada no array `SEWE_POSTS`
+   (copie uma existente). Use `category: 'premio'` para vencedores — eles aparecem
+   automaticamente na página do Prêmio; `category: 'blog'` para artigos comuns.
+2. **Duplique** um arquivo de post (ex.: `vencedor-premio-2024.html`), renomeie para
+   `<slug>.html` e troque o `data-slug` para o slug da nova entrada.
+3. `git add . && git commit && git push`. Pronto — aparece no Blog e no Prêmio.
 
 ---
 
@@ -91,9 +119,9 @@ Depois acesse `http://localhost:8000/Sewe%20Group%20Site.html`.
 Conecte o repositório e faça o deploy — sem configuração de build (projeto estático).
 Aponte o domínio `sewegroup.com.br` nas configurações de domínio do provedor.
 
-> **Nota:** o ponto de entrada chama-se `Sewe Group Site.html`. Para servir na raiz do
-> domínio, renomeie-o para `index.html` (e mantenha os caminhos de `styles.css` e
-> `components/` inalterados).
+> **Nota:** o ponto de entrada é `index.html` (serve direto na raiz do domínio).
+> Os caminhos de `styles.css`, `components/` e `assets/` são relativos — mantenha
+> todos os arquivos no mesmo nível.
 
 ---
 

@@ -1,92 +1,4 @@
-// Header with nav + Hero section with Qlik-skinned dashboard mockup
-
-// Print-1 style logo: official SEWE GROUP mark (horizontal lockup)
-function SeweWordmark() {
-  return (
-    <a href="#" style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none' }}>
-      <img src="assets/sewe-logo.png" alt="SEWE GROUP" style={{ height: 38, width: 'auto', display: 'block' }}/>
-    </a>
-  );
-}
-
-function Header() {
-  const [scrolled, setScrolled] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
-  React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  const links = [
-    { label: 'Sewe BI', href: '#bi' },
-    { label: 'Integration', href: '#integration' },
-    { label: 'Sewe Sales', href: '#sales' },
-    { label: 'MinerConect', href: 'minerconect.html' },
-    { label: 'FAQ', href: '#faq' },
-  ];
-
-  return (
-    <header style={{
-      position: 'sticky', top: 0, zIndex: 50,
-      background: scrolled ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.85)',
-      backdropFilter: 'saturate(1.4) blur(14px)',
-      WebkitBackdropFilter: 'saturate(1.4) blur(14px)',
-      borderBottom: scrolled ? '1px solid var(--line)' : '1px solid var(--line-2)',
-      transition: 'background .25s ease, border-color .25s ease',
-    }}>
-      <div className="container" style={{ display: 'flex', alignItems: 'center', gap: 24, padding: '12px var(--gutter)' }}>
-        <SeweWordmark/>
-        <div style={{ flex: 1 }}/>
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }} className="nav-desktop">
-          {links.map(l => (
-            <a key={l.label} href={l.href} style={{
-              padding: '8px 12px', fontSize: 14, color: 'var(--text-2)', fontWeight: 500, borderRadius: 8,
-              transition: 'color .15s ease', display: 'inline-flex', alignItems: 'center', gap: 4,
-            }} onMouseEnter={e => e.currentTarget.style.color = 'var(--navy-900)'}
-               onMouseLeave={e => e.currentTarget.style.color = 'var(--text-2)'}>
-              {l.label}{l.drop && <span style={{ fontSize: 10 }}>▾</span>}
-            </a>
-          ))}
-        </nav>
-        <a href="#diagnostico" className="nav-desktop" style={{
-          fontSize: 14, fontWeight: 600, color: 'var(--navy)', padding: '9px 22px',
-          border: '1.5px solid var(--navy)', borderRadius: 99, transition: 'all .15s ease',
-        }} onMouseEnter={e => { e.currentTarget.style.background = 'var(--navy)'; e.currentTarget.style.color = '#fff'; }}
-           onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--navy)'; }}>
-          Fale Conosco
-        </a>
-        <button
-          onClick={() => setOpen(v => !v)}
-          className="nav-mobile"
-          aria-label="Menu"
-          style={{ width: 40, height: 40, borderRadius: 8, border: '1px solid var(--line)', display: 'none', alignItems: 'center', justifyContent: 'center' }}
-        >
-          <Icon name={open ? 'minus' : 'bars'} size={18}/>
-        </button>
-      </div>
-      {open && (
-        <div className="nav-mobile-panel" style={{ borderTop: '1px solid var(--line)', background: '#fff' }}>
-          <div className="container" style={{ padding: '12px var(--gutter) 18px', display: 'flex', flexDirection: 'column', gap: 2 }}>
-            {links.map(l => (
-              <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{ padding: '12px 8px', borderBottom: '1px solid var(--line-2)', fontSize: 15, color: 'var(--navy-900)' }}>{l.label}</a>
-            ))}
-            <a href="#diagnostico" onClick={() => setOpen(false)} style={{ padding: '12px 8px', fontSize: 15, fontWeight: 600, color: 'var(--navy)' }}>Fale Conosco</a>
-          </div>
-        </div>
-      )}
-      <style>{`
-        @media (max-width: 960px) {
-          .nav-desktop { display: none !important; }
-          .nav-mobile { display: flex !important; }
-        }
-        @media (min-width: 961px) {
-          .nav-mobile-panel { display: none !important; }
-        }
-      `}</style>
-    </header>
-  );
-}
+// Hero section with Qlik-skinned dashboard mockup (header/footer now in layout.jsx)
 
 // Hero with Qlik dashboard
 function Hero({ headlineVariant = 0 }) {
@@ -339,4 +251,4 @@ function FloatingKPIs() {
   );
 }
 
-Object.assign(window, { Header, Hero });
+Object.assign(window, { Hero });
