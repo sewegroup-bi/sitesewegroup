@@ -1,4 +1,4 @@
-// Sewe Group — the connected ecosystem + the three BUs on the home page.
+// Sewe Group, the connected ecosystem + the three BUs on the home page.
 // Audience = distributor (protagonist). Integration brings industry↔distributor
 // data in; BI turns it into decisions; Sales acts on the client. MinerConect is
 // a separate product (own page) with a routing door for industry/other companies.
@@ -10,7 +10,7 @@ const BU = {
 };
 
 /* ────────────────────────────────────────────────────────────
-   CONNECTED ECOSYSTEM — three frentes, one distributor
+   CONNECTED ECOSYSTEM, three frentes, one distributor
 ──────────────────────────────────────────────────────────── */
 function ConnectedEcosystem() {
   const nodes = [
@@ -23,7 +23,7 @@ function ConnectedEcosystem() {
     {
       k: 'bi', icon: 'brain', step: '02', flow: 'Transforma em decisão',
       title: 'SEWE BI', color: BU.bi.color, soft: BU.bi.soft,
-      desc: 'A IA cruza tudo nos bastidores — suprimentos, comercial, financeiro e gestão — e entrega a próxima ação pronta.',
+      desc: 'A IA cruza tudo nos bastidores, suprimentos, comercial, financeiro e gestão, e entrega a próxima ação pronta.',
       href: '#suites',
     },
     {
@@ -44,7 +44,7 @@ function ConnectedEcosystem() {
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17 }}>
             Os dados entram pela Integration, viram decisão no BI e voltam para o cliente pela Sales.
-            Um ciclo só — com a SEWE cuidando da engenharia de ponta a ponta.
+            Um ciclo só, com a SEWE cuidando da engenharia de ponta a ponta.
           </p>
         </div>
 
@@ -76,7 +76,7 @@ function ConnectedEcosystem() {
             <SMark size={26} color="#2d436c"/>
             <div>
               <div style={{ fontFamily: 'var(--ff-display)', fontWeight: 700, fontSize: 15, color: 'var(--navy-900)' }}>O distribuidor no centro</div>
-              <div style={{ fontSize: 13, color: 'var(--text-2)' }}>Uma operação, um CRM, uma fonte de verdade — não três ferramentas soltas.</div>
+              <div style={{ fontSize: 13, color: 'var(--text-2)' }}>Uma operação, um CRM, uma fonte de verdade, não três ferramentas soltas.</div>
             </div>
             <a href="#diagnostico" className="btn btn-primary btn-sm" style={{ marginLeft: 'auto' }}>Falar com a SEWE <span className="chev">→</span></a>
           </div>
@@ -117,13 +117,13 @@ function ConnectedEcosystem() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   INTEGRATION — industry ↔ distributor, + "Para Indústrias" door
+   INTEGRATION, industry ↔ distributor, + "Para Indústrias" door
 ──────────────────────────────────────────────────────────── */
 function IntegrationSection() {
   const C = BU.integration;
   const feats = [
     { icon: 'truck',    t: 'Sellout consolidado', d: 'Vendas e estoque de cada distribuidor da rede, produto a produto, em um só painel.' },
-    { icon: 'warehouse',t: 'Estoque na ponta',    d: 'Enxergue ruptura e excesso no canal antes que virem perda — em toda a rede.' },
+    { icon: 'warehouse',t: 'Estoque na ponta',    d: 'Enxergue ruptura e excesso no canal antes que virem perda, em toda a rede.' },
     { icon: 'line',     t: 'Estratégia ponta-a-ponta', d: 'Da indústria ao PDV: ajuste mix, preço e cobertura com dado real, não estimativa.' },
     { icon: 'link',     t: 'Conexão com qualquer ERP', d: 'A SEWE cuida da integração e da modelagem. Sua equipe recebe o dado pronto.' },
   ];
@@ -140,7 +140,7 @@ function IntegrationSection() {
             </h2>
             <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 560 }}>
               A Integration traz os dados de sellout e estoque de cada distribuidor que vende os produtos da
-              indústria — e devolve para o distribuidor uma visão diferenciada, ajustando a estratégia de ponta a ponta.
+              indústria, e devolve para o distribuidor uma visão diferenciada, ajustando a estratégia de ponta a ponta.
             </p>
           </div>
         </div>
@@ -165,7 +165,7 @@ function IntegrationSection() {
             <div className="bu-aside-tag" style={{ color: '#aef0c2', background: 'rgba(0,163,53,0.18)' }}>PARA INDÚSTRIAS</div>
             <h3 style={{ color: '#fff', fontSize: 24, marginTop: 14, lineHeight: 1.25 }}>É uma indústria e quer enxergar toda a rede?</h3>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 15, marginTop: 12 }}>
-              Conecte seus distribuidores e acompanhe o sellout real, a cobertura e o giro de cada produto —
+              Conecte seus distribuidores e acompanhe o sellout real, a cobertura e o giro de cada produto,
               da fábrica ao ponto de venda.
             </p>
             <ul className="bu-aside-list">
@@ -185,12 +185,12 @@ function IntegrationSection() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SEWE SALES — sales team → B2B e-commerce + CRM
+   SEWE SALES, sales team → B2B e-commerce + CRM
 ──────────────────────────────────────────────────────────── */
 function SalesSection() {
   const C = BU.sales;
   const feats = [
-    { icon: 'store',  t: 'Portal do cliente', d: 'Seu cliente consulta produto, estoque e preço e faz o pedido sozinho — 24/7.' },
+    { icon: 'store',  t: 'Portal do cliente', d: 'Seu cliente consulta produto, estoque e preço e faz o pedido sozinho, 24/7.' },
     { icon: 'target', t: 'Ações e incentivos', d: 'Campanhas, metas e incentivos comerciais direto no portal, por carteira.' },
     { icon: 'check',  t: 'Aprovação de pedidos', d: 'Políticas de crédito e alçada garantem que todo pedido nasce dentro da regra.' },
     { icon: 'users',  t: 'CRM Sewe + carteirização', d: 'Carteira organizada por vendedor, histórico do cliente e próxima ação sugerida.' },
@@ -207,7 +207,7 @@ function SalesSection() {
               Sua equipe de vendas vira um <span style={{ color: C.color }}>e-commerce B2B</span>.
             </h2>
             <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 560 }}>
-              O cliente do distribuidor acessa um portal completo — produtos, estoque, preços e ações comerciais —
+              O cliente do distribuidor acessa um portal completo, produtos, estoque, preços e ações comerciais,
               com políticas de aprovação, incentivos e carteirização. Tudo com o CRM Sewe por trás.
             </p>
           </div>
@@ -252,7 +252,7 @@ function SalesSection() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   MINERCONECT teaser — routes to its own page
+   MINERCONECT teaser, routes to its own page
 ──────────────────────────────────────────────────────────── */
 function MinerTeaser() {
   return (
@@ -267,7 +267,7 @@ function MinerTeaser() {
             Comunicação com IA e WhatsApp oficial para falar com toda a sua base.
           </h3>
           <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: 14.5, marginTop: 8, maxWidth: 620 }}>
-            Marketing, convites, parabenização e ações comerciais — com identificação automática do
+            Marketing, convites, parabenização e ações comerciais, com identificação automática do
             contato certo de cada lead. Para distribuidores, indústrias e qualquer empresa.
           </p>
         </div>

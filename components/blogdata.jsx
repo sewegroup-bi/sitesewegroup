@@ -1,10 +1,10 @@
 // ─────────────────────────────────────────────────────────────
-// SEWE — Blog & Prêmio content
+// SEWE, Blog & Prêmio content
 // HOW TO ADD A POST (no admin needed):
 //   1. Add an entry to the SEWE_POSTS array below.
 //   2. Duplicate an existing post HTML file (e.g. vencedor-premio-2025-diamaju.html),
 //      rename it to "<slug>.html", and change data-slug to your new slug.
-//   3. Commit + push. Done — it shows up on /blog and (if category:'premio') on /premio.
+//   3. Commit + push. Done, it shows up on /blog and (if category:'premio') on /premio.
 //
 // category: 'premio'  → also listed on the Prêmio page (winners)
 //           'blog'    → general article
@@ -21,7 +21,7 @@ window.SEWE_POSTS = [
     slug: 'vencedor-premio-2025-diamaju',
     category: 'premio',
     year: '2025',
-    title: 'Diamaju — Vencedora do Prêmio SEWE 2025',
+    title: 'Diamaju, Vencedora do Prêmio SEWE 2025',
     date: '2025-12-10',
     readTime: '4 min de leitura',
     author: 'Equipe SEWE',
@@ -30,7 +30,7 @@ window.SEWE_POSTS = [
     blocks: [
       { type: 'lead', text: 'Crescimento acelerado com foco, organização e dados na palma da mão.' },
       { type: 'p', text: 'A Diamaju é uma empresa de grande porte, com atuação em múltiplas verticais. A divisão PET passou a ganhar protagonismo a partir de uma mudança estratégica de gestão e da adoção do BI SEWE no início de 2025.' },
-      { type: 'p', text: 'Com os dados centralizados e acessíveis para toda a equipe comercial — representantes, promotores, televendas e supervisores — a empresa passou a operar com mais clareza, alinhamento e foco em oportunidades reais.' },
+      { type: 'p', text: 'Com os dados centralizados e acessíveis para toda a equipe comercial, representantes, promotores, televendas e supervisores, a empresa passou a operar com mais clareza, alinhamento e foco em oportunidades reais.' },
       { type: 'h', text: 'Principais avanços com o BI' },
       { type: 'metrics', items: [
         { value: '+30,2%', label: 'de crescimento em faturamento na divisão PET' },
@@ -39,14 +39,14 @@ window.SEWE_POSTS = [
         { value: '+15%', label: 'no ticket médio por cliente' },
         { value: '114', label: 'usuários ativos no BI, incluindo campo e gestão' },
       ]},
-      { type: 'p', text: 'O reconhecimento da Diamaju mostra o que acontece quando a cultura de decisão por dados chega a toda a operação comercial — do representante à diretoria.' },
+      { type: 'p', text: 'O reconhecimento da Diamaju mostra o que acontece quando a cultura de decisão por dados chega a toda a operação comercial, do representante à diretoria.' },
     ],
   },
   {
     slug: 'vencedor-premio-2025-eletransol',
     category: 'premio',
     year: '2025',
-    title: 'Eletransol — Vencedora do Prêmio SEWE 2025',
+    title: 'Eletransol, Vencedora do Prêmio SEWE 2025',
     date: '2025-12-10',
     readTime: '4 min de leitura',
     author: 'Equipe SEWE',
@@ -68,14 +68,14 @@ window.SEWE_POSTS = [
         'Expansão da base ativa, com mais clientes atendidos por mês.',
         'Gestão comercial, financeira e de suprimentos guiada por indicadores.',
       ]},
-      { type: 'p', text: 'A trajetória da Eletransol prova que sair da planilha manual para o dado vivo não é só ganho de tempo — é decisão mais segura e menos risco concentrado.' },
+      { type: 'p', text: 'A trajetória da Eletransol prova que sair da planilha manual para o dado vivo não é só ganho de tempo, é decisão mais segura e menos risco concentrado.' },
     ],
   },
   {
     slug: 'vencedor-premio-2024-petsul',
     category: 'premio',
     year: '2024',
-    title: 'PetSul — Vencedora do 1º Prêmio SEWE',
+    title: 'PetSul, Vencedora do 1º Prêmio SEWE',
     date: '2025-02-11',
     readTime: '3 min de leitura',
     author: 'Equipe SEWE',
@@ -83,7 +83,7 @@ window.SEWE_POSTS = [
     cover: { tag: 'PRÊMIO SEWE · 2024 · 1ª ENTREGA', logo: 'assets/logo-petsul.png', logoBg: '#ffffff' },
     blocks: [
       { type: 'lead', text: 'A primeira empresa a receber o Prêmio SEWE de Gestão Inteligente e Prosperidade.' },
-      { type: 'p', text: 'A PetSul foi uma das duas empresas reconhecidas na primeira edição do prêmio por sua gestão inteligente de dados — trabalhando lado a lado com a equipe SEWE para transformar informação em resultado.' },
+      { type: 'p', text: 'A PetSul foi uma das duas empresas reconhecidas na primeira edição do prêmio por sua gestão inteligente de dados, trabalhando lado a lado com a equipe SEWE para transformar informação em resultado.' },
       { type: 'h', text: 'O que destacou a PetSul' },
       { type: 'list', items: [
         'Fortalecimento da estratégia de vendas de campo.',
@@ -92,19 +92,19 @@ window.SEWE_POSTS = [
         'Um modelo de distribuição focado nos detalhes, com visão clara de eficiência.',
       ]},
       { type: 'quote', text: 'A SEWE foi a grande ferramenta que concretizou nossas ideias, transformando nossa visão estratégica em realidade e ampliando nossa capacidade de análise e identificação de oportunidades.', who: 'Karin Cecilia · CEO da PetSul' },
-      { type: 'p', text: 'Hoje a PetSul é referência em distribuição no mercado Pet no Brasil — e segue em frente, sempre em busca do aprimoramento contínuo.' },
+      { type: 'p', text: 'Hoje a PetSul é referência em distribuição no mercado Pet no Brasil, e segue em frente, sempre em busca do aprimoramento contínuo.' },
     ],
   },
   {
     slug: 'vencedor-premio-2024-multiseg',
     category: 'premio',
     year: '2024',
-    title: 'Multiseg — Vencedora do Prêmio SEWE',
+    title: 'Multiseg, Vencedora do Prêmio SEWE',
     date: '2025-02-24',
     readTime: '3 min de leitura',
     author: 'Equipe SEWE',
     excerpt: 'A segunda entrega do Prêmio SEWE: a Multiseg se destacou pela evolução operacional, redução de estoque em 20% e autonomia das filiais apoiada em dados.',
-    cover: { tag: 'PRÊMIO SEWE · 2024 · 2ª ENTREGA', logo: 'assets/logo-multiseg.png', logoBg: '#ffffff' },
+    cover: { tag: 'PRÊMIO SEWE · 2024 · 2ª ENTREGA', logo: 'assets/logo-multiseg.png', logoBg: '#0d1320' },
     blocks: [
       { type: 'lead', text: 'Evolução operacional e autonomia das filiais, com decisão apoiada em dados.' },
       { type: 'p', text: 'A Multiseg se destacou pelo uso estratégico da análise de dados, impulsionando seu crescimento e aprimorando sua gestão ao lado da equipe SEWE. Foi a segunda empresa a receber o Prêmio SEWE de Gestão Inteligente e Prosperidade.' },
@@ -127,17 +127,17 @@ window.SEWE_POSTS = [
     excerpt: 'Estoque parado é o vazamento de caixa mais silencioso da distribuição. Veja como a Curva ABC, lida da forma certa, libera dinheiro sem cortar venda.',
     cover: { tag: 'GESTÃO · ESTOQUE', metric: 'A·B·C', metricLabel: 'participação no faturamento' },
     blocks: [
-      { type: 'lead', text: 'Na distribuição, o caixa não some de uma vez. Ele vaza devagar — em prateleiras cheias do produto errado.' },
+      { type: 'lead', text: 'Na distribuição, o caixa não some de uma vez. Ele vaza devagar, em prateleiras cheias do produto errado.' },
       { type: 'p', text: 'A Curva ABC classifica os SKUs pela participação no faturamento: poucos itens (Curva A) respondem pela maior parte do resultado, enquanto uma cauda longa (Curva C) ocupa estoque e capital sem girar.' },
       { type: 'h', text: 'O erro mais comum' },
-      { type: 'p', text: 'Comprar a Curva C com o mesmo apetite da Curva A. O resultado é capital de giro preso em itens de baixo giro, enquanto faltam os campeões de venda — gerando ruptura justamente onde dói no faturamento.' },
+      { type: 'p', text: 'Comprar a Curva C com o mesmo apetite da Curva A. O resultado é capital de giro preso em itens de baixo giro, enquanto faltam os campeões de venda, gerando ruptura justamente onde dói no faturamento.' },
       { type: 'list', items: [
-        'Priorize a disponibilidade dos itens de Curva A — ruptura aqui é venda perdida na hora.',
-        'Reavalie a recompra da Curva C — negocie prazo, reduza cobertura ou descontinue.',
+        'Priorize a disponibilidade dos itens de Curva A, ruptura aqui é venda perdida na hora.',
+        'Reavalie a recompra da Curva C, negocie prazo, reduza cobertura ou descontinue.',
         'Cruze a curva com margem: nem todo item de alto giro dá lucro.',
       ]},
       { type: 'stat', value: '68%', label: 'do faturamento costuma vir da Curva A' },
-      { type: 'p', text: 'Quando a Curva ABC é monitorada de forma automática e diária — e não em uma planilha que envelhece — a decisão de compra deixa de ser palpite. É exatamente o que a suíte de Suprimentos da SEWE entrega.' },
+      { type: 'p', text: 'Quando a Curva ABC é monitorada de forma automática e diária, e não em uma planilha que envelhece, a decisão de compra deixa de ser palpite. É exatamente o que a suíte de Suprimentos da SEWE entrega.' },
       { type: 'quote', text: 'Liberamos caixa para comprar o que gira. A SEWE mostrou onde o capital estava travado.', who: 'Diretor de Compras · distribuidor SEWE' },
     ],
   },

@@ -1,4 +1,4 @@
-// Ecosystem visualization — "O distribuidor operando ao vivo"
+// Ecosystem visualization, "O distribuidor operando ao vivo"
 // A single, polished interactive scene: the distributor's operation as a working
 // pipeline. Orders/data flow left→right through 5 stations; SEWE sits on top
 // (Gestão Estratégica) and underneath (Financeiro), reading every station.
@@ -117,7 +117,7 @@ function EcosystemSection({ animated = true }) {
           {/* isometric floor grid backdrop */}
           <div aria-hidden className="op-floor"/>
 
-          {/* TOP RAIL — Gestão Estratégica */}
+          {/* TOP RAIL, Gestão Estratégica */}
           <StrategicRail active={active} dim={active !== 'estrategica' && active !== 'financeiro' ? false : false} highlight={active === 'estrategica'} animated={animated}/>
 
           {/* OPERATION LINE */}
@@ -125,7 +125,7 @@ function EcosystemSection({ animated = true }) {
             <OperationLine litSet={litSet} activeColor={S.color} active={active} animated={animated}/>
           </div>
 
-          {/* BOTTOM RAIL — Financeiro */}
+          {/* BOTTOM RAIL, Financeiro */}
           <FinanceRail highlight={active === 'financeiro'} animated={animated}/>
 
           {/* READOUT CONSOLE */}

@@ -1,4 +1,4 @@
-// MinerConect — standalone product page (own brand: navy + gold).
+// MinerConect, standalone product page (own brand: navy + gold).
 // Audience: distributor first, but with a routing door for industry / any company.
 // Reuses Icon + MinerLogo from brand.jsx (loaded before this file).
 
@@ -41,7 +41,7 @@ function MinerHero() {
           <p>
             O MinerConect coloca o distribuidor falando com toda a sua base de clientes e leads usando
             inteligência artificial e o WhatsApp oficial da Meta. Marketing, convites, parabenização e
-            ações comerciais — em escala, sem perder a régua.
+            ações comerciais, em escala, sem perder a régua.
           </p>
           <div className="mc-hero-cta">
             <a href="#contato" className="mc-btn mc-btn-gold mc-btn-lg">Agendar demonstração <Icon name="arrow" size={18} stroke={2.2}/></a>
@@ -102,9 +102,9 @@ function MinerChat() {
 
 function MinerFeatures() {
   const feats = [
-    { icon: 'brain',  t: 'IA conversacional', d: 'A IA puxa o assunto certo para cada cliente — reativação, oferta, cobrança ou relacionamento — no tom da sua operação.' },
+    { icon: 'brain',  t: 'IA conversacional', d: 'A IA puxa o assunto certo para cada cliente, reativação, oferta, cobrança ou relacionamento, no tom da sua operação.' },
     { icon: 'search', t: 'Localizador de leads', d: 'Identifica automaticamente o contato correto do decisor de cada lead, para você falar com quem realmente compra.' },
-    { icon: 'zap',    t: 'WhatsApp oficial Meta', d: 'Disparos e conversas pela API oficial, com templates aprovados — sem risco de bloqueio, com entregabilidade real.' },
+    { icon: 'zap',    t: 'WhatsApp oficial Meta', d: 'Disparos e conversas pela API oficial, com templates aprovados, sem risco de bloqueio, com entregabilidade real.' },
     { icon: 'users',  t: 'CRM Sewe integrado', d: 'Cada conversa cai na carteira certa, com histórico e próxima ação. O comercial enxerga tudo num lugar só.' },
   ];
   return (
@@ -140,7 +140,7 @@ function MinerUses() {
       <div className="mc-container">
         <div className="mc-head">
           <div className="mc-eyebrow">COMO USAR</div>
-          <h2>Uma base inteira ativada — sem time inteiro digitando.</h2>
+          <h2>Uma base inteira ativada, sem time inteiro digitando.</h2>
         </div>
         <div className="mc-use-grid">
           {uses.map((u, i) => (

@@ -80,7 +80,7 @@ function PostBlocks({ blocks }) {
     if (b.type === 'quote') return (
       <blockquote key={i} style={{ margin: '4px 0', padding: '4px 0 4px 22px', borderLeft: '3px solid var(--turquoise)' }}>
         <p style={{ fontSize: 20, fontStyle: 'italic', color: 'var(--navy-900)', lineHeight: 1.5 }}>"{b.text}"</p>
-        {b.who && <footer style={{ marginTop: 8, fontSize: 14, color: 'var(--text-3)' }}>— {b.who}</footer>}
+        {b.who && <footer style={{ marginTop: 8, fontSize: 14, color: 'var(--text-3)' }}>, {b.who}</footer>}
       </blockquote>
     );
     return null;
@@ -150,7 +150,7 @@ function BlogPostPage({ slug }) {
 function PremioPage() {
   const winners = (window.SEWE_POSTS || []).filter(p => p.category === 'premio');
   const pillars = [
-    { icon: 'boxes',  t: 'Organização',   d: 'Dados unificados e processos claros — a casa em ordem antes de crescer.' },
+    { icon: 'boxes',  t: 'Organização',   d: 'Dados unificados e processos claros, a casa em ordem antes de crescer.' },
     { icon: 'dollar', t: 'Lucratividade', d: 'Crescer com margem saudável, controle de ruptura e mix inteligente.' },
     { icon: 'trending', t: 'Prosperidade', d: 'Resultado que se distribui: para a operação, o time e os clientes.' },
     { icon: 'target', t: 'Bons Processos', d: 'Decisão diária guiada por dado, não por achismo nem por planilha.' },
@@ -164,7 +164,7 @@ function PremioPage() {
     <>
       <SiteHeader/>
       <PageHero eyebrow="Prêmio SEWE" title="Prêmio SEWE de Gestão Inteligente e Prosperidade."
-        lead="Um reconhecimento aos distribuidores que transformam dados em decisões — e decisões em prosperidade.">
+        lead="Um reconhecimento aos distribuidores que transformam dados em decisões, e decisões em prosperidade.">
         <div style={{ marginTop: 24 }}>
           <a href="#vencedores" className="btn btn-primary">Ver vencedores <Icon name="arrow" size={16} className="chev"/></a>
         </div>
@@ -235,7 +235,7 @@ function PremioPage() {
 // ── Quem Somos (história) ──
 function QuemSomosPage() {
   const timeline = [
-    { y: '2018–2020', t: 'Nasce da operação, não do laboratório', d: 'A SEWE surge de dentro do setor de distribuição — gente que viveu o problema de afogar em dados e passar fome de decisão. O foco desde o início: traduzir dados em ação.' },
+    { y: '2018–2020', t: 'Nasce da operação, não do laboratório', d: 'A SEWE surge de dentro do setor de distribuição, gente que viveu o problema de afogar em dados e passar fome de decisão. O foco desde o início: traduzir dados em ação.' },
     { y: '2021–2022', t: 'Parceria oficial Qlik + foco no Pet/Vet', d: 'A escolha pela plataforma Qlik consolida a base tecnológica. Os primeiros distribuidores do setor Pet e Veterinário provam o modelo: BI vertical, pronto, com DNA de distribuição.' },
     { y: '2023–2025', t: 'Expansão de setores e da IA aplicada', d: 'A SEWE chega a indústrias, agro e distribuidores de tecnologia. A inteligência artificial passa a rodar nos bastidores, entregando decisões prontas em vez de mais gráficos.' },
     { y: 'Hoje', t: 'Referência nacional em dados para distribuição', d: 'São centenas de distribuidores e bilhões em faturamento monitorado, com cobertura nacional e um ecossistema completo: BI, Integration, Sales e MinerConect.' },
@@ -249,7 +249,7 @@ function QuemSomosPage() {
     <>
       <SiteHeader/>
       <PageHero eyebrow="Quem Somos" title="A inteligência de dados que nasceu dentro da distribuição."
-        lead="A SEWE não veio de um laboratório de software. Veio do chão do setor — e por isso fala a língua de quem vive ruptura, curva ABC, positivação e capital de giro."/>
+        lead="A SEWE não veio de um laboratório de software. Veio do chão do setor, e por isso fala a língua de quem vive ruptura, curva ABC, positivação e capital de giro."/>
 
       {/* Story / timeline */}
       <section className="section" style={{ background: '#fff' }}>
@@ -311,7 +311,7 @@ function FaqPage() {
     <>
       <SiteHeader/>
       <PageHero eyebrow="Perguntas frequentes" title="O que diretores perguntam antes de assinar."
-        lead="Tudo sobre go-live, ERP, LGPD, parceria Qlik e investimento — direto ao ponto."/>
+        lead="Tudo sobre go-live, ERP, LGPD, parceria Qlik e investimento, direto ao ponto."/>
       {typeof FAQSection !== 'undefined' ? <FAQSection/> : null}
       <SiteFooter/>
     </>

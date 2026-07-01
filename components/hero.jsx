@@ -90,7 +90,7 @@ function Hero({ headlineVariant = 0 }) {
 }
 
 function HeroDashboard() {
-  // The hero dashboard — a realistic "Painel Comercial · Hoje" Qlik app
+  // The hero dashboard, a realistic "Painel Comercial · Hoje" Qlik app
   const salesData = [112, 108, 120, 135, 128, 142, 148, 155, 162, 168, 175, 182];
   const labels = ['01', '03', '05', '07', '09', '11', '13', '15', '17', '19', '21', 'HOJE'];
 

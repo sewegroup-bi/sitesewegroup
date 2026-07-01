@@ -106,7 +106,7 @@ function Sparkline({ data, color = Q.turq2, fill = 'rgba(117,227,228,0.18)', hei
   );
 }
 
-// Combo chart: bars + line, with y-axis labels and x-axis labels — Qlik's staple.
+// Combo chart: bars + line, with y-axis labels and x-axis labels, Qlik's staple.
 function QlikCombo({
   bars, line, labels, height = 220,
   yMax,
@@ -187,7 +187,7 @@ function QlikCombo({
   );
 }
 
-// Horizontal bar chart — great for curva ABC, top N
+// Horizontal bar chart, great for curva ABC, top N
 function QlikHBars({ rows, valueKey = 'v', labelKey = 'label', color = Q.turq2, title, max: maxProp }) {
   const max = maxProp || Math.max(...rows.map(r => r[valueKey])) * 1.1;
   return (
@@ -257,7 +257,7 @@ function QlikArea({ data, labels, color = Q.turq2, fill = 'url(#qlikGrad)', heig
   );
 }
 
-// Data table — Qlik's staple
+// Data table, Qlik's staple
 function QlikTable({ columns, rows, title, highlightCol, compact = false }) {
   return (
     <div style={{ background: '#fff', border: `1px solid ${Q.line}`, borderRadius: 10, overflow: 'hidden' }}>
@@ -307,7 +307,7 @@ function QlikTable({ columns, rows, title, highlightCol, compact = false }) {
   );
 }
 
-// Donut / gauge — for positivação, ruptura
+// Donut / gauge, for positivação, ruptura
 function QlikDonut({ value, label, sublabel, color = Q.turq2, track = Q.grid, size = 120, thickness = 12, valueFormat }) {
   const r = (size - thickness) / 2;
   const c = 2 * Math.PI * r;
@@ -330,7 +330,7 @@ function QlikDonut({ value, label, sublabel, color = Q.turq2, track = Q.grid, si
   );
 }
 
-// Filter chips (selection pills — Qlik Sense signature)
+// Filter chips (selection pills, Qlik Sense signature)
 function QlikFilters({ filters }) {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>

@@ -1,4 +1,4 @@
-// Shared site chrome — single source of truth for header + footer + page hero.
+// Shared site chrome, single source of truth for header + footer + page hero.
 // Used by index.html and every subpage (quem-somos, premio, blog, faq, posts).
 // Depends on: brand.jsx (Icon). Exposes: SiteHeader, SiteFooter, PageHero.
 
