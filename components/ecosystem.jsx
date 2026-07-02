@@ -80,7 +80,7 @@ function EcosystemSection({ animated = true }) {
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 840, margin: '0 auto 40px' }}>
           <div className="eyebrow">SEWE BI · o distribuidor operando</div>
-          <h2 style={{ marginTop: 14, marginBottom: 14 }}>Veja onde cada produto SEWE <br className="hide-mob"/>se acopla à sua operação.</h2>
+          <h2 style={{ marginTop: 14, marginBottom: 14 }}>Veja onde cada suíte SEWE <br className="hide-mob"/>se acopla à sua operação.</h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17 }}>
             Da compra ao PDV, os dados correm pela sua operação em tempo real. A SEWE lê cada estação, decide nos bastidores e devolve a próxima ação para a área certa. Clique numa suíte e veja onde ela entra.
           </p>

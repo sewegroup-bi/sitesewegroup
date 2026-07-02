@@ -189,11 +189,21 @@ function IntegrationSection() {
 ──────────────────────────────────────────────────────────── */
 function SalesSection() {
   const C = BU.sales;
-  const feats = [
-    { icon: 'store',  t: 'Portal do cliente', d: 'Seu cliente consulta produto, estoque e preço e faz o pedido sozinho, 24/7.' },
-    { icon: 'target', t: 'Ações e incentivos', d: 'Campanhas, metas e incentivos comerciais direto no portal, por carteira.' },
-    { icon: 'check',  t: 'Aprovação de pedidos', d: 'Políticas de crédito e alçada garantem que todo pedido nasce dentro da regra.' },
-    { icon: 'users',  t: 'CRM Sewe + carteirização', d: 'Carteira organizada por vendedor, histórico do cliente e próxima ação sugerida.' },
+  const revenda = [
+    { icon: 'store',   t: 'Catálogo e pedido 24/7', d: 'A revenda consulta produto, estoque e preço e faz o pedido sozinha, a qualquer hora.' },
+    { icon: 'dollar',  t: 'Limite de crédito na hora', d: 'Cada cliente enxerga o próprio limite e compra dentro da política, sem ligar pro financeiro.' },
+    { icon: 'sparkle', t: 'Descoberta de produtos', d: 'Novidades e recompra inteligente: o portal sugere itens que fazem sentido pra cada cliente.' },
+    { icon: 'target',  t: 'Ações e promoções', d: 'Campanhas, combos e incentivos comerciais aparecem na hora certa, por carteira.' },
+  ];
+  const vendedor = [
+    { icon: 'trending', t: 'Insights de venda', d: 'O sistema sugere a próxima ação: quem reativar, o que oferecer e onde há espaço pra crescer.' },
+    { icon: 'users',    t: 'Carteira sob controle', d: 'Cada vendedor com a carteira organizada, histórico do cliente e metas na palma da mão.' },
+    { icon: 'check',    t: 'Atividades e agenda', d: 'Crie visitas, follow-ups e tarefas e acompanhe a execução do time em tempo real.' },
+    { icon: 'chart',    t: 'CRM Sewe + BI', d: 'A venda que acontece no portal já volta como dado pro BI, virando decisão.' },
+  ];
+  const chain = [
+    { icon: 'warehouse', k: 'Distribuidor + vendedor', d: 'gerencia e impulsiona' },
+    { icon: 'store',     k: 'Revenda + cliente final', d: 'compra e recompra' },
   ];
   return (
     <section id="sales" className="section" style={{ background: 'var(--bg-soft)', position: 'relative', overflow: 'hidden' }}>
@@ -204,49 +214,82 @@ function SalesSection() {
               <SMark size={16} color={C.color}/> SEWE SALES
             </div>
             <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
-              Sua equipe de vendas vira um <span style={{ color: C.color }}>e-commerce B2B</span>.
+              O elo entre você e a sua <span style={{ color: C.color }}>revenda</span>.
             </h2>
-            <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 560 }}>
-              O cliente do distribuidor acessa um portal completo, produtos, estoque, preços e ações comerciais,
-              com políticas de aprovação, incentivos e carteirização. Tudo com o CRM Sewe por trás.
+            <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 640 }}>
+              Um e-commerce B2B com CRM que liga a sua revenda à sua operação. O cliente compra sozinho
+              e o vendedor vende melhor, com o dado correndo de ponta a ponta.
             </p>
           </div>
         </div>
 
-        <div className="bu-grid">
-          <div className="bu-feats">
-            {feats.map((f, i) => (
-              <div key={i} className="bu-feat reveal" style={{ background: '#fff' }}>
-                <span className="bu-feat-icon" style={{ background: C.soft, color: C.ink }}>
-                  <Icon name={f.icon} size={20} stroke={1.8}/>
-                </span>
-                <div>
-                  <div className="bu-feat-t">{f.t}</div>
-                  <div className="bu-feat-d">{f.d}</div>
-                </div>
+        {/* connectivity chain */}
+        <div className="sx-chain reveal">
+          {chain.map((c, i) => (
+            <React.Fragment key={c.k}>
+              <div className="sx-node">
+                <span className="sx-node-icon"><Icon name={c.icon} size={22} stroke={1.8}/></span>
+                <div className="sx-node-k">{c.k}</div>
+                <div className="sx-node-d">{c.d}</div>
               </div>
-            ))}
-          </div>
+              {i < chain.length - 1 && <span className="sx-node-link" aria-hidden><Icon name="link" size={16} stroke={2}/></span>}
+            </React.Fragment>
+          ))}
+          <div className="sx-chain-cap">Sewe Sales conecta os dois</div>
+        </div>
 
-          <aside className="bu-aside reveal" style={{ background: 'linear-gradient(160deg,#3a1c05,#27160a)', '--c': C.color }}>
-            <div className="bu-aside-tag" style={{ color: '#ffd2a8', background: 'rgba(253,112,20,0.2)' }}>TAMBÉM PARA A INDÚSTRIA</div>
-            <h3 style={{ color: '#fff', fontSize: 24, marginTop: 14, lineHeight: 1.25 }}>Conecte toda a sua rede de vendas.</h3>
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 15, marginTop: 12 }}>
-              A indústria também pode contratar o Sewe Sales para colocar toda a rede de distribuidores
-              vendendo no mesmo padrão, com regras e catálogo unificados.
-            </p>
-            <ul className="bu-aside-list">
-              {['Catálogo e tabela por canal', 'Regras de pedido e alçada', 'Visão de vendas de toda a rede'].map((x, i) => (
-                <li key={i}><Icon name="check" size={16} stroke={2.4} style={{ color: C.color }}/> {x}</li>
+        {/* two audiences */}
+        <div className="sx-cols">
+          <div className="sx-col reveal">
+            <div className="sx-col-h"><Icon name="store" size={18} stroke={2}/> Para a revenda e o cliente</div>
+            <div className="sx-feats">
+              {revenda.map((f, i) => (
+                <div key={i} className="sx-feat">
+                  <span className="sx-feat-icon"><Icon name={f.icon} size={18} stroke={1.8}/></span>
+                  <div><div className="sx-feat-t">{f.t}</div><div className="sx-feat-d">{f.d}</div></div>
+                </div>
               ))}
-            </ul>
-            <a href="#diagnostico" className="bu-aside-btn" style={{ background: C.color }}>
-              Conhecer o Sewe Sales <Icon name="arrow" size={16} stroke={2.2}/>
-            </a>
-          </aside>
+            </div>
+          </div>
+          <div className="sx-col reveal">
+            <div className="sx-col-h"><Icon name="users" size={18} stroke={2}/> Para o vendedor e o distribuidor</div>
+            <div className="sx-feats">
+              {vendedor.map((f, i) => (
+                <div key={i} className="sx-feat">
+                  <span className="sx-feat-icon"><Icon name={f.icon} size={18} stroke={1.8}/></span>
+                  <div><div className="sx-feat-t">{f.t}</div><div className="sx-feat-d">{f.d}</div></div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
       <BUStyles/>
+      <style>{`
+        .sx-chain { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; margin:8px 0 40px; padding:22px 20px; background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--shadow-xs); position:relative; }
+        .sx-node { display:flex; flex-direction:column; align-items:center; text-align:center; padding:6px 22px; }
+        .sx-node-icon { width:46px; height:46px; border-radius:12px; display:grid; place-items:center; background:${C.soft}; color:${C.ink}; margin-bottom:10px; }
+        .sx-node-k { font-family:var(--ff-display); font-weight:700; font-size:15px; color:var(--navy-900); }
+        .sx-node-d { font-size:12px; color:var(--text-3); margin-top:3px; }
+        .sx-node-link { color:${C.color}; margin:0 6px; align-self:flex-start; margin-top:18px; }
+        .sx-chain-cap { position:absolute; bottom:-11px; left:50%; transform:translateX(-50%); background:${C.color}; color:#fff; font-family:var(--ff-mono); font-size:10.5px; font-weight:600; letter-spacing:.08em; padding:3px 12px; border-radius:999px; white-space:nowrap; }
+        .sx-cols { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+        .sx-col { background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:24px; box-shadow:var(--shadow-xs); }
+        .sx-col-h { display:flex; align-items:center; gap:9px; font-family:var(--ff-display); font-weight:700; font-size:15px; color:${C.ink}; padding-bottom:14px; margin-bottom:16px; border-bottom:1px solid var(--line-2); }
+        .sx-feats { display:grid; gap:16px; }
+        .sx-feat { display:flex; gap:12px; }
+        .sx-feat-icon { width:36px; height:36px; border-radius:9px; background:${C.soft}; color:${C.ink}; display:grid; place-items:center; flex-shrink:0; }
+        .sx-feat-t { font-family:var(--ff-display); font-weight:700; font-size:14.5px; color:var(--navy-900); }
+        .sx-feat-d { font-size:13px; color:var(--text-2); line-height:1.5; margin-top:3px; }
+        .sx-industry { display:grid; grid-template-columns:1.2fr 1fr; gap:28px; align-items:center; margin-top:20px; padding:30px; border-radius:var(--r-xl); background:linear-gradient(160deg,#3a1c05,#27160a); }
+        .sx-ind-tag { display:inline-block; padding:5px 12px; border-radius:999px; font-family:var(--ff-mono); font-size:11px; font-weight:700; letter-spacing:.1em; color:#ffd2a8; background:rgba(253,112,20,0.2); }
+        .sx-ind-h { color:#fff; font-size:24px; margin-top:14px; line-height:1.25; }
+        .sx-ind-p { color:rgba(255,255,255,0.72); font-size:15px; margin-top:12px; line-height:1.55; }
+        .sx-ind-list { display:grid; gap:10px; }
+        .sx-ind-li { display:flex; align-items:center; gap:10px; color:rgba(255,255,255,0.9); font-size:14.5px; }
+        .sx-ind-li svg { color:${C.color}; flex-shrink:0; }
+        @media (max-width:860px){ .sx-cols{grid-template-columns:1fr;} .sx-industry{grid-template-columns:1fr; gap:20px;} .sx-node{padding:6px 10px;} .sx-node-link{display:none;} }
+      `}</style>
     </section>
   );
 }

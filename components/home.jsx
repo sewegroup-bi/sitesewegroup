@@ -7,42 +7,12 @@ const WA = 'https://wa.me/5548984704389';
 
 function HomePositioning() {
   return (
-    <section className="hp" style={{ position: 'relative', overflow: 'hidden' }}>
-      <div aria-hidden style={{
-        position: 'absolute', inset: 0, zIndex: 0,
-        background: `
-          radial-gradient(1000px 460px at 82% -20%, rgba(117,227,228,0.16), transparent 62%),
-          radial-gradient(720px 360px at 6% 10%, rgba(45,67,108,0.05), transparent 60%),
-          linear-gradient(180deg, #ffffff 0%, #fafbfd 100%)
-        `,
-      }}/>
-      <div aria-hidden style={{
-        position: 'absolute', inset: 0, zIndex: 0, opacity: 0.5,
-        backgroundImage: 'linear-gradient(var(--line-2) 1px, transparent 1px), linear-gradient(90deg, var(--line-2) 1px, transparent 1px)',
-        backgroundSize: '58px 58px',
-        maskImage: 'radial-gradient(ellipse 78% 82% at 50% 22%, black 30%, transparent 78%)',
-        WebkitMaskImage: 'radial-gradient(ellipse 78% 82% at 50% 22%, black 30%, transparent 78%)',
-      }}/>
-
+    <section className="hp" style={{ position: 'relative' }}>
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="hp-copy reveal in">
-          <div className="hp-partner">
-            <img src="assets/qlik-logo.png" alt="Qlik" style={{ height: 15, width: 'auto', display: 'block' }}/>
-            Parceiro oficial Qlik · Referência nacional em dados
-          </div>
           <h1 className="display hp-h1">
             A tecnologia de dados e IA que vira <span className="hp-hl">decisão</span>.
           </h1>
-          <p className="hp-lead">
-            A SEWE é um grupo de tecnologia especializado em inteligência de dados, IA aplicada, BI e
-            projetos sob medida. Do dado bruto ao resultado no fim do mês, com engenharia própria de ponta a ponta.
-          </p>
-          <div className="hp-cta">
-            <a href="#escolha" className="btn btn-primary btn-lg">
-              Descubra sua solução <Icon name="arrowDown" size={16} className="chev"/>
-            </a>
-            <a href={WA} className="btn btn-outline btn-lg">Falar com a SEWE</a>
-          </div>
         </div>
       </div>
     </section>
@@ -71,16 +41,13 @@ function AudienceChooser() {
     },
   ];
   return (
-    <section id="escolha" className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
-      <div className="container">
+    <section id="escolha" className="section" style={{ position: 'relative' }}>
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 44px' }}>
           <div className="eyebrow">Por onde você começa</div>
           <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
             Qual o perfil da sua empresa?
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Cada caminho mostra só o que faz sentido para você, sem ruído. Escolha e vá direto ao ponto.
-          </p>
         </div>
 
         <div className="hc-grid">
@@ -162,10 +129,21 @@ function TrustBand() {
 function HomeLanding() {
   return (
     <>
-      <HomePositioning/>
-      <AudienceChooser/>
-      <LogosStrip/>
-      <TrustBand/>
+      <div className="home-top" style={{ position: 'relative', overflow: 'hidden' }}>
+        <div aria-hidden style={{ position: 'absolute', inset: 0, zIndex: 0, background: `
+          radial-gradient(1100px 520px at 82% -8%, rgba(117,227,228,0.16), transparent 60%),
+          radial-gradient(820px 480px at 8% 42%, rgba(117,227,228,0.07), transparent 60%),
+          linear-gradient(180deg, #ffffff 0%, #fafbfd 100%)` }}/>
+        <div aria-hidden style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.5,
+          backgroundImage: 'linear-gradient(var(--line-2) 1px, transparent 1px), linear-gradient(90deg, var(--line-2) 1px, transparent 1px)',
+          backgroundSize: '58px 58px',
+          maskImage: 'radial-gradient(ellipse 95% 88% at 55% 34%, black 62%, transparent 96%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 95% 88% at 55% 34%, black 62%, transparent 96%)' }}/>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <HomePositioning/>
+          <AudienceChooser/>
+        </div>
+      </div>
       <CTASection/>
     </>
   );

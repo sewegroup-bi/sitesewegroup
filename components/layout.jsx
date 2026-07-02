@@ -26,6 +26,8 @@ function SiteHeader({ home = false }) {
     { label: 'Blog',                 href: 'blog.html' },
   ];
 
+  const curPage = (typeof window !== 'undefined' ? (window.location.pathname.split('/').pop() || 'index.html') : 'index.html');
+
   return (
     <header style={{
       position: 'sticky', top: 0, zIndex: 50,
@@ -40,15 +42,21 @@ function SiteHeader({ home = false }) {
         </a>
         <div style={{ flex: 1 }}/>
         <nav style={{ display: 'flex', alignItems: 'center', gap: 2 }} className="nav-desktop">
-          {links.map(l => (
-            <a key={l.label} href={l.href} style={{
-              padding: '8px 11px', fontSize: 14, color: 'var(--text-2)', fontWeight: 500, borderRadius: 8,
-              transition: 'color .15s ease', whiteSpace: 'nowrap',
-            }} onMouseEnter={e => e.currentTarget.style.color = 'var(--navy-900)'}
-               onMouseLeave={e => e.currentTarget.style.color = 'var(--text-2)'}>
-              {l.label}
-            </a>
-          ))}
+          {links.map(l => {
+            const active = l.href === curPage;
+            return (
+              <a key={l.label} href={l.href} style={active ? {
+                padding: '8px 13px', fontSize: 14, color: 'var(--navy-900)', fontWeight: 600, borderRadius: 8,
+                background: '#fff', border: '1px solid var(--line)', boxShadow: 'var(--shadow-sm)', whiteSpace: 'nowrap',
+              } : {
+                padding: '8px 11px', fontSize: 14, color: 'var(--text-2)', fontWeight: 500, borderRadius: 8,
+                transition: 'color .15s ease', whiteSpace: 'nowrap',
+              }} onMouseEnter={e => { if (!active) e.currentTarget.style.color = 'var(--navy-900)'; }}
+                 onMouseLeave={e => { if (!active) e.currentTarget.style.color = 'var(--text-2)'; }}>
+                {l.label}
+              </a>
+            );
+          })}
         </nav>
         <a href={WHATSAPP} className="nav-desktop" style={{
           fontSize: 14, fontWeight: 600, color: 'var(--navy)', padding: '9px 20px',

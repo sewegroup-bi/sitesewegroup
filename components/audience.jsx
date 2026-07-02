@@ -9,6 +9,21 @@ const BU_C = {
   sales:       { color: '#fd7014', soft: 'rgba(253,112,20,0.09)', ink: '#c9550a' },
 };
 
+// Reveal-on-scroll: adds `.in` to `.reveal` elements as they enter the viewport.
+// (The home + distribuidor apps do this too; audience pages need their own.)
+function useReveal() {
+  React.useEffect(() => {
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('in'); });
+    }, { threshold: 0.08 });
+    els.forEach(el => io.observe(el));
+    // Safety net: never leave content permanently hidden if the observer misfires.
+    const fallback = setTimeout(() => els.forEach(el => el.classList.add('in')), 800);
+    return () => { io.disconnect(); clearTimeout(fallback); };
+  }, []);
+}
+
 /* ── INDÚSTRIA ───────────────────────────────────────────── */
 function IndustriaMap() {
   const fronts = [
@@ -71,12 +86,12 @@ function IndustriaNetworkPanel() {
     { v: '512', l: 'distribuidores ativos', t: 'up' },
   ];
   const rows = [
-    { n: 'Multiseg Distribuição', uf: 'SC', sellout: 'R$ 24,1M', cov: 94, rup: 1.8, w: 100 },
-    { n: 'PETSUL Atacado',        uf: 'RS', sellout: 'R$ 19,7M', cov: 91, rup: 2.2, w: 82 },
-    { n: 'WMG',                   uf: 'PR', sellout: 'R$ 16,3M', cov: 88, rup: 3.1, w: 68 },
-    { n: 'Eletro Transol',        uf: 'SC', sellout: 'R$ 12,9M', cov: 85, rup: 3.6, w: 54 },
-    { n: 'Mocelin',               uf: 'SP', sellout: 'R$ 9,4M',  cov: 79, rup: 4.9, w: 39 },
-    { n: 'KGM',                   uf: 'MG', sellout: 'R$ 7,1M',  cov: 74, rup: 5.4, w: 29 },
+    { n: 'Distribuidor Alfa',    uf: 'SC', sellout: 'R$ 24,1M', cov: 94, rup: 1.8, w: 100 },
+    { n: 'Distribuidor Beta',    uf: 'RS', sellout: 'R$ 19,7M', cov: 91, rup: 2.2, w: 82 },
+    { n: 'Distribuidor Gama',    uf: 'PR', sellout: 'R$ 16,3M', cov: 88, rup: 3.1, w: 68 },
+    { n: 'Distribuidor Delta',   uf: 'SC', sellout: 'R$ 12,9M', cov: 85, rup: 3.6, w: 54 },
+    { n: 'Distribuidor Épsilon', uf: 'SP', sellout: 'R$ 9,4M',  cov: 79, rup: 4.9, w: 39 },
+    { n: 'Distribuidor Ômega',   uf: 'MG', sellout: 'R$ 7,1M',  cov: 74, rup: 5.4, w: 29 },
   ];
   return (
     <section className="section" style={{ background: 'linear-gradient(180deg, var(--bg-soft) 0%, #f4f6fb 100%)' }}>
@@ -259,7 +274,7 @@ function IndustriaSales() {
         bg: 'linear-gradient(160deg,#3a1c05,#27160a)',
         tag: 'PADRÃO ÚNICO', tagColor: '#ffd2a8', tagBg: 'rgba(253,112,20,0.2)',
         metric: '1 catálogo', metricLabel: 'para toda a rede, da fábrica ao PDV',
-        desc: 'Todo mundo vendendo com as mesmas regras e a mesma informação, sem planilha solta em cada distribuidor.',
+        desc: 'Da fábrica ao PDV, distribuidores, vendedores e clientes vendendo com as mesmas regras e a mesma informação.',
         list: ['Catálogo e tabela unificados', 'Pedidos dentro da política', 'Vendas da rede em tempo real'],
       }}
     />
@@ -267,6 +282,7 @@ function IndustriaSales() {
 }
 
 function IndustriaPage() {
+  useReveal();
   return (
     <>
       <SiteHeader/>
@@ -285,7 +301,6 @@ function IndustriaPage() {
       <IndustriaNetworkPanel/>
       <IndustriaBI/>
       <IndustriaSales/>
-      <CasesSection/>
       <CTASection/>
       <SiteFooter/>
     </>
@@ -373,6 +388,7 @@ function SolucoesProcess() {
 }
 
 function SolucoesPage() {
+  useReveal();
   return (
     <>
       <SiteHeader/>
@@ -381,7 +397,11 @@ function SolucoesPage() {
         title="Dados e IA muito além do BI de prateleira."
         lead="Para empresas de qualquer setor: Qlik Sense, dashboards personalizados, engenharia de dados e consultoria. Um time de tecnologia da SEWE dedicado ao seu desafio."
       >
-        <div style={{ marginTop: 28, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+        <div style={{ marginTop: 22, display: 'inline-flex', alignItems: 'center', gap: 9, padding: '7px 16px', borderRadius: 999, background: '#fff', border: '1px solid var(--line)', boxShadow: 'var(--shadow-xs)', fontSize: 12.5, color: 'var(--text-2)', fontWeight: 500 }}>
+          <img src="assets/qlik-logo.png" alt="Qlik" style={{ height: 15, width: 'auto', display: 'block' }}/>
+          Parceiro oficial Qlik · Referência nacional em dados
+        </div>
+        <div style={{ marginTop: 24, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <a href="#diagnostico" className="btn btn-primary btn-lg">Falar sobre o meu projeto <Icon name="arrow" size={16} className="chev"/></a>
           <a href="https://wa.me/5548984704389" className="btn btn-outline btn-lg">WhatsApp</a>
         </div>

@@ -10,7 +10,8 @@ function App() {
       entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('in'); });
     }, { threshold: 0.1 });
     els.forEach(el => io.observe(el));
-    return () => io.disconnect();
+    const fallback = setTimeout(() => els.forEach(el => el.classList.add('in')), 800);
+    return () => { io.disconnect(); clearTimeout(fallback); };
   }, []);
 
   return (
