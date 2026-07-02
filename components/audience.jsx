@@ -153,6 +153,119 @@ function IndustriaNetworkPanel() {
   );
 }
 
+/* Reusable ecosystem-front section (BI, Sales, ...) tailored for industry */
+function EcoFront({ id, bg, c, soft, ink, eyebrow, title, hl, lead, feats, aside }) {
+  return (
+    <section id={id} className="section ef" style={{ background: bg, position: 'relative', overflow: 'hidden' }}>
+      <div className="container">
+        <div className="ef-head reveal">
+          <div className="ef-eyebrow" style={{ color: ink, background: soft }}>
+            <SMark size={16} color={c}/> {eyebrow}
+          </div>
+          <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
+            {title} <span style={{ color: c }}>{hl}</span>.
+          </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 600 }}>{lead}</p>
+        </div>
+        <div className="ef-grid">
+          <div className="ef-feats">
+            {feats.map((f, i) => (
+              <div key={i} className="ef-feat reveal">
+                <span className="ef-feat-icon" style={{ background: soft, color: ink }}><Icon name={f.icon} size={20} stroke={1.8}/></span>
+                <div>
+                  <div className="ef-feat-t">{f.t}</div>
+                  <div className="ef-feat-d">{f.d}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <aside className="ef-aside reveal" style={{ background: aside.bg }}>
+            <div className="ef-aside-tag" style={{ color: aside.tagColor, background: aside.tagBg }}>{aside.tag}</div>
+            <div className="ef-aside-metric">{aside.metric}</div>
+            <div className="ef-aside-metric-l">{aside.metricLabel}</div>
+            <p className="ef-aside-desc">{aside.desc}</p>
+            <ul className="ef-aside-list">
+              {aside.list.map((x, i) => <li key={i}><Icon name="check" size={16} stroke={2.4} style={{ color: c }}/> {x}</li>)}
+            </ul>
+          </aside>
+        </div>
+      </div>
+      <style>{`
+        .ef-head { margin-bottom: 36px; }
+        .ef-eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 10px; border-radius: 999px; font-family: var(--ff-display); font-weight: 700; font-size: 12.5px; letter-spacing: .06em; }
+        .ef-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: start; }
+        .ef-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .ef-feat { display: flex; gap: 14px; padding: 20px; background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-xs); }
+        .ef-feat-icon { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; flex-shrink: 0; }
+        .ef-feat-t { font-family: var(--ff-display); font-weight: 700; font-size: 16px; color: var(--navy-900); }
+        .ef-feat-d { font-size: 13.5px; color: var(--text-2); line-height: 1.55; margin-top: 5px; }
+        .ef-aside { border-radius: var(--r-xl); padding: 28px; position: relative; overflow: hidden; }
+        .ef-aside-tag { display: inline-block; padding: 5px 12px; border-radius: 999px; font-family: var(--ff-mono); font-size: 11px; font-weight: 700; letter-spacing: .1em; }
+        .ef-aside-metric { font-family: var(--ff-display); font-weight: 700; font-size: clamp(34px, 4vw, 46px); color: #fff; line-height: 1; margin-top: 18px; }
+        .ef-aside-metric-l { font-size: 13px; color: rgba(255,255,255,0.66); margin-top: 8px; }
+        .ef-aside-desc { color: rgba(255,255,255,0.8); font-size: 15px; line-height: 1.55; margin-top: 18px; }
+        .ef-aside-list { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 10px; }
+        .ef-aside-list li { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.85); font-size: 14.5px; }
+        @media (max-width: 860px) { .ef-grid { grid-template-columns: 1fr; } .ef-feats { grid-template-columns: 1fr; } }
+      `}</style>
+    </section>
+  );
+}
+
+function IndustriaBI() {
+  return (
+    <EcoFront
+      id="bi"
+      bg="#fff"
+      c={BU_C.bi.color} soft={BU_C.bi.soft} ink={BU_C.bi.ink}
+      eyebrow="SEWE BI + IA"
+      title="A IA lê a rede inteira e devolve"
+      hl="a próxima ação"
+      lead="Cruza sellout, estoque e cobertura de todos os distribuidores nos bastidores e mostra onde agir, por região, por canal e por produto, sem você garimpar gráfico."
+      feats={[
+        { icon: 'alert',    t: 'Ruptura no canal por SKU', d: 'Saiba quais produtos estão faltando em quais PDVs antes de perder a venda.' },
+        { icon: 'target',   t: 'Cobertura e positivação', d: 'Onde a marca está presente, onde está fraca e onde há espaço para crescer.' },
+        { icon: 'boxes',    t: 'Mix ideal por região', d: 'O sortimento certo para cada perfil de PDV, com base no que realmente gira.' },
+        { icon: 'trending', t: 'Previsão de demanda', d: 'Projeção de giro por produto e região para planejar produção e abastecimento.' },
+      ]}
+      aside={{
+        bg: 'linear-gradient(160deg,#15243d,#0d1a2e)',
+        tag: 'RESULTADO NA REDE', tagColor: '#7fe9ea', tagBg: 'rgba(117,227,228,0.14)',
+        metric: '+90%', metricLabel: 'assertividade na reposição da rede',
+        desc: 'Menos ruptura no canal e menos estoque parado, com decisão guiada por dado, não por achismo.',
+        list: ['Painel único de toda a rede', 'Alertas de ruptura e excesso', 'Recomendação de ação pronta'],
+      }}
+    />
+  );
+}
+
+function IndustriaSales() {
+  return (
+    <EcoFront
+      id="sales"
+      bg="var(--bg-soft)"
+      c={BU_C.sales.color} soft={BU_C.sales.soft} ink={BU_C.sales.ink}
+      eyebrow="SEWE SALES"
+      title="Toda a rede vendendo no"
+      hl="mesmo padrão"
+      lead="Coloque seus distribuidores em um portal B2B único, com catálogo, tabela e regras da indústria, e enxergue as vendas de ponta a ponta."
+      feats={[
+        { icon: 'store',  t: 'Portal B2B para a rede', d: 'Cada distribuidor e cliente compra em um portal com a sua identidade e o seu catálogo.' },
+        { icon: 'check',  t: 'Regras de pedido e alçada', d: 'Políticas de preço, crédito e aprovação garantem pedido dentro da regra.' },
+        { icon: 'target', t: 'Catálogo e tabela por canal', d: 'Sortimento e preço certos para cada tipo de canal, sem retrabalho.' },
+        { icon: 'users',  t: 'Visão de vendas da rede', d: 'Acompanhe o que cada distribuidor vende, para quem e com que margem.' },
+      ]}
+      aside={{
+        bg: 'linear-gradient(160deg,#3a1c05,#27160a)',
+        tag: 'PADRÃO ÚNICO', tagColor: '#ffd2a8', tagBg: 'rgba(253,112,20,0.2)',
+        metric: '1 catálogo', metricLabel: 'para toda a rede, da fábrica ao PDV',
+        desc: 'Todo mundo vendendo com as mesmas regras e a mesma informação, sem planilha solta em cada distribuidor.',
+        list: ['Catálogo e tabela unificados', 'Pedidos dentro da política', 'Vendas da rede em tempo real'],
+      }}
+    />
+  );
+}
+
 function IndustriaPage() {
   return (
     <>
@@ -160,7 +273,7 @@ function IndustriaPage() {
       <PageHero
         eyebrow="Para a Indústria"
         title="Enxergue toda a sua rede, da fábrica ao ponto de venda."
-        lead="Conecte seus distribuidores e acompanhe sellout, cobertura e giro de cada produto, do CD ao PDV. A SEWE cuida da engenharia e da modelagem, você recebe a rede inteira em um só painel."
+        lead="Integration capta os dados da rede, o BI com IA transforma em decisão e o Sales ativa o canal. Um ecossistema só, com a SEWE cuidando da engenharia de ponta a ponta."
       >
         <div style={{ marginTop: 28, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <a href="#diagnostico" className="btn btn-primary btn-lg">Falar sobre a rede <Icon name="arrow" size={16} className="chev"/></a>
@@ -168,8 +281,11 @@ function IndustriaPage() {
         </div>
       </PageHero>
       <IndustriaMap/>
-      <IndustriaNetworkPanel/>
       <IntegrationSection/>
+      <IndustriaNetworkPanel/>
+      <IndustriaBI/>
+      <IndustriaSales/>
+      <CasesSection/>
       <CTASection/>
       <SiteFooter/>
     </>
