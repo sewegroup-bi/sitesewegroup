@@ -96,6 +96,7 @@ function App() {
     <>
       <SiteHeader home/>
       <main>
+        <SeweGroupIntro/>
         <Hero headlineVariant={state.headlineVariant}/>
         <LogosStrip/>
         <BragBar/>

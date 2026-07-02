@@ -35,7 +35,7 @@ function SiteHeader({ home = false }) {
     }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '12px var(--gutter)' }}>
         <a href="index.html" style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <img src="assets/sewe-logo.png" alt="SEWE GROUP" style={{ height: 38, width: 'auto', display: 'block' }}/>
+          <img src="assets/sewe-logo.png" alt="SEWE GROUP" style={{ height: 52, width: 'auto', display: 'block' }}/>
         </a>
         <div style={{ flex: 1 }}/>
         <nav style={{ display: 'flex', alignItems: 'center', gap: 2 }} className="nav-desktop">
@@ -112,7 +112,7 @@ function SiteFooter({ home = false }) {
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 32, paddingBottom: 48, borderBottom: '1px solid rgba(255,255,255,0.1)' }} className="foot-grid">
           <div>
-            <img src="assets/sewe-logo.png" alt="SEWE GROUP" style={{ height: 40, width: 'auto', display: 'block', filter: 'brightness(0) invert(1)' }}/>
+            <img src="assets/sewe-logo.png" alt="SEWE GROUP" style={{ height: 50, width: 'auto', display: 'block', filter: 'brightness(0) invert(1)' }}/>
             <p style={{ color: 'rgba(255,255,255,0.56)', marginTop: 16, fontSize: 14, lineHeight: 1.6, maxWidth: 320 }}>
               Inteligência de dados para distribuidores e atacadistas. Consultoria + tecnologia + Qlik.
             </p>
