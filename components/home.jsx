@@ -41,7 +41,7 @@ function AudienceChooser() {
     },
   ];
   return (
-    <section id="escolha" className="section" style={{ position: 'relative' }}>
+    <section id="escolha" className="section" style={{ position: 'relative', paddingTop: 'clamp(16px, 2vw, 28px)' }}>
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 44px' }}>
           <div className="eyebrow">Por onde você começa</div>
@@ -155,7 +155,7 @@ function HomeLanding() {
   const s = document.createElement('style');
   s.id = 'hp-styles';
   s.textContent = `
-    .hp { padding: clamp(64px, 8vw, 104px) 0 clamp(56px, 7vw, 88px); }
+    .hp { padding: clamp(56px, 7vw, 92px) 0 clamp(20px, 2.5vw, 32px); }
     .hp-copy { max-width: 900px; margin: 0 auto; text-align: center; }
     .hp-partner {
       display: inline-flex; align-items: center; gap: 9px; padding: 7px 16px; border-radius: 999px;
