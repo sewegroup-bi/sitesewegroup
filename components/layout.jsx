@@ -17,12 +17,13 @@ function SiteHeader({ home = false }) {
   }, []);
 
   const links = [
-    { label: 'Sewe BI',      href: navHref(home, '#bi') },
-    { label: 'Integration',  href: navHref(home, '#integration') },
-    { label: 'Sewe Sales',   href: navHref(home, '#sales') },
-    { label: 'MinerConect',  href: 'minerconect.html' },
-    { label: 'Quem Somos',   href: 'quem-somos.html' },
-    { label: 'Blog',         href: 'blog.html' },
+    { label: 'Início',              href: 'index.html' },
+    { label: 'Indústria',            href: 'industria.html' },
+    { label: 'Distribuidor',         href: 'distribuidor.html' },
+    { label: 'Soluções Sob Medida',   href: 'solucoes.html' },
+    { label: 'MinerConect',          href: 'minerconect.html' },
+    { label: 'Quem Somos',           href: 'quem-somos.html' },
+    { label: 'Blog',                 href: 'blog.html' },
   ];
 
   return (
@@ -49,7 +50,7 @@ function SiteHeader({ home = false }) {
             </a>
           ))}
         </nav>
-        <a href={navHref(home, '#diagnostico')} className="nav-desktop" style={{
+        <a href={WHATSAPP} className="nav-desktop" style={{
           fontSize: 14, fontWeight: 600, color: 'var(--navy)', padding: '9px 20px',
           border: '1.5px solid var(--navy)', borderRadius: 99, transition: 'all .15s ease', whiteSpace: 'nowrap',
         }} onMouseEnter={e => { e.currentTarget.style.background = 'var(--navy)'; e.currentTarget.style.color = '#fff'; }}
@@ -67,7 +68,7 @@ function SiteHeader({ home = false }) {
             {links.map(l => (
               <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{ padding: '12px 8px', borderBottom: '1px solid var(--line-2)', fontSize: 15, color: 'var(--navy-900)' }}>{l.label}</a>
             ))}
-            <a href={navHref(home, '#diagnostico')} onClick={() => setOpen(false)} style={{ padding: '12px 8px', fontSize: 15, fontWeight: 600, color: 'var(--navy)' }}>Fale Conosco</a>
+            <a href={WHATSAPP} onClick={() => setOpen(false)} style={{ padding: '12px 8px', fontSize: 15, fontWeight: 600, color: 'var(--navy)' }}>Fale Conosco</a>
           </div>
         </div>
       )}
@@ -124,9 +125,9 @@ function SiteFooter({ home = false }) {
           </div>
           <div>
             <div style={col.title}>Soluções</div>
-            <a style={col.link} href={navHref(home, '#bi')} onMouseEnter={onEnter} onMouseLeave={onLeave}>Sewe BI</a>
-            <a style={col.link} href={navHref(home, '#integration')} onMouseEnter={onEnter} onMouseLeave={onLeave}>Integration</a>
-            <a style={col.link} href={navHref(home, '#sales')} onMouseEnter={onEnter} onMouseLeave={onLeave}>Sewe Sales</a>
+            <a style={col.link} href="industria.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Indústria</a>
+            <a style={col.link} href="distribuidor.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Distribuidor</a>
+            <a style={col.link} href="solucoes.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Soluções Sob Medida</a>
             <a style={col.link} href="minerconect.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>MinerConect</a>
           </div>
           <div>
