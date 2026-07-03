@@ -80,7 +80,7 @@ window.SEWE_POSTS = [
     readTime: '3 min de leitura',
     author: 'Equipe SEWE',
     excerpt: 'A primeira distribuidora reconhecida pelo Prêmio SEWE: a PetSul fortaleceu a venda de campo, organizou indicadores e acelerou o crescimento com análises estratégicas.',
-    cover: { tag: 'PRÊMIO SEWE · 2024 · 1ª ENTREGA', logo: 'assets/logo-petsul.png', logoBg: '#ffffff' },
+    cover: { tag: 'PRÊMIO SEWE · 2024', logo: 'assets/logo-petsul.png', logoBg: '#ffffff' },
     blocks: [
       { type: 'lead', text: 'A primeira empresa a receber o Prêmio SEWE de Gestão Inteligente e Prosperidade.' },
       { type: 'p', text: 'A PetSul foi uma das duas empresas reconhecidas na primeira edição do prêmio por sua gestão inteligente de dados, trabalhando lado a lado com a equipe SEWE para transformar informação em resultado.' },
@@ -104,7 +104,7 @@ window.SEWE_POSTS = [
     readTime: '3 min de leitura',
     author: 'Equipe SEWE',
     excerpt: 'A segunda entrega do Prêmio SEWE: a Multiseg se destacou pela evolução operacional, redução de estoque em 20% e autonomia das filiais apoiada em dados.',
-    cover: { tag: 'PRÊMIO SEWE · 2024 · 2ª ENTREGA', logo: 'assets/logo-multiseg.png', logoBg: '#0d1320' },
+    cover: { tag: 'PRÊMIO SEWE · 2024', logo: 'assets/logo-multiseg-black.png', logoBg: '#eef0f2' },
     blocks: [
       { type: 'lead', text: 'Evolução operacional e autonomia das filiais, com decisão apoiada em dados.' },
       { type: 'p', text: 'A Multiseg se destacou pelo uso estratégico da análise de dados, impulsionando seu crescimento e aprimorando sua gestão ao lado da equipe SEWE. Foi a segunda empresa a receber o Prêmio SEWE de Gestão Inteligente e Prosperidade.' },

@@ -131,6 +131,11 @@ function BlogPostPage({ slug }) {
       </section>
       <article className="section" style={{ background: '#fff' }}>
         <div className="container" style={{ maxWidth: 720, display: 'flex', flexDirection: 'column', gap: 18 }}>
+          {post.cover.logo && (
+            <div style={{ background: post.cover.logoBg || '#fff', border: '1px solid var(--line)', borderRadius: 16, padding: '26px 32px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 96 }}>
+              <img src={post.cover.logo} alt={post.title} style={{ maxHeight: 72, maxWidth: '70%', objectFit: 'contain', display: 'block' }}/>
+            </div>
+          )}
           <PostBlocks blocks={post.blocks}/>
           <div style={{ marginTop: 24, padding: 24, borderRadius: 16, background: 'var(--bg-soft)', border: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
             <div>
