@@ -26,108 +26,143 @@ function useReveal() {
 
 /* ── INDÚSTRIA ───────────────────────────────────────────── */
 
-/* A cadeia do setor, conectada: a informação nasce no consumo e viaja até a indústria */
+/* A cadeia do setor, conectada: pedido, produto e pagamento circulando, tudo virando dado na SEWE */
 function IndustriaCadeia() {
-  const elos = [
-    { icon: 'users', t: 'Consumidor final', roles: ['Compra na ponta', 'Gera o dado de venda'] },
-    { icon: 'store', t: 'PDV · Revenda', roles: ['Loja', 'Integrador', 'Revendedor'] },
-    { icon: 'warehouse', t: 'Distribuidor', roles: ['Vendedor', 'Supervisor', 'Gerente', 'Dono'] },
-    { icon: 'factory', t: 'Indústria', roles: ['Gerente de contas', 'Marketing', 'Diretoria', 'CEO'] },
+  const NODES = [
+    { cx: 125, t: 'Consumidor final', sub: 'Compra e gera o dado', icon: 'user' },
+    { cx: 375, t: 'PDV · Revenda', sub: 'Loja · Integrador · Revendedor', icon: 'store' },
+    { cx: 625, t: 'Distribuidor', sub: 'Vendas · Estoque · Financeiro', icon: 'wh' },
+    { cx: 875, t: 'Indústria', sub: 'Marca · Comercial · Diretoria', icon: 'fac' },
+  ];
+  const NodeIcon = ({ type, cx, cy }) => {
+    const s = { fill: 'none', stroke: '#8fd9de', strokeWidth: 1.8, strokeLinejoin: 'round', strokeLinecap: 'round' };
+    if (type === 'user') return (<g {...s}><circle cx={cx} cy={cy - 4} r={5}/><path d={`M${cx - 8},${cy + 11} a8,7 0 0 1 16,0`}/></g>);
+    if (type === 'store') return (<g {...s}><path d={`M${cx - 11},${cy - 3} L${cx - 9},${cy - 9} H${cx + 9} L${cx + 11},${cy - 3} Z`}/><path d={`M${cx - 9},${cy - 3} V${cy + 11} H${cx + 9} V${cy - 3}`}/><path d={`M${cx - 2},${cy + 11} V${cy + 4} H${cx + 5} V${cy + 11}`}/></g>);
+    if (type === 'wh') return (<g {...s}><path d={`M${cx - 11},${cy + 11} V${cy - 4} L${cx},${cy - 11} L${cx + 11},${cy - 4} V${cy + 11}`}/><path d={`M${cx - 4},${cy + 11} V${cy + 2} H${cx + 4} V${cy + 11}`}/></g>);
+    return (<g {...s}><path d={`M${cx - 11},${cy + 11} V${cy - 2} L${cx - 4},${cy + 3} V${cy - 2} L${cx + 3},${cy + 3} V${cy - 2} L${cx + 10},${cy + 3} V${cy + 11} Z`}/><path d={`M${cx - 9},${cy - 5} V${cy - 11} H${cx - 6} V${cy - 6}`}/></g>);
+  };
+  const LANES = [
+    { y: 172, color: '#aab7d0', label: 'PRODUTO', dir: 'left',  dur: '9s' },
+    { y: 206, color: '#75e3e4', label: 'PEDIDO', dir: 'right', dur: '7s' },
+    { y: 240, color: '#f0b429', label: 'PAGAMENTO', dir: 'right', dur: '11s' },
+  ];
+  const CONV = [
+    'M125,258 C125,320 300,348 486,362',
+    'M375,258 C375,318 428,344 492,358',
+    'M625,258 C625,318 572,344 508,358',
+    'M875,258 C875,320 700,348 514,362',
   ];
   return (
     <section className="section" style={{ background: 'var(--bg-soft)', overflow: 'hidden' }}>
       <div className="container">
-        <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 48px' }}>
+        <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 40px' }}>
           <div className="eyebrow">A cadeia conectada</div>
           <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            A informação nasce no consumidor <span style={{ color: 'var(--navy)' }}>e chega até a sua mesa</span>.
+            Pedido, produto e pagamento. <span style={{ color: 'var(--navy)' }}>Tudo circulando, tudo virando dado</span>.
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Cada venda na ponta vira dado. O dado atravessa a cadeia inteira e vira decisão
-            na indústria, no mesmo dia, não no fechamento do mês.
+            O pedido sobe do consumo até a fábrica. O produto desce da fábrica até a ponta.
+            O pagamento percorre o caminho de volta. A SEWE capta os três fluxos e devolve
+            um só painel, atualizado em tempo real.
           </p>
         </div>
 
-        <div className="cad-wrap">
-          <div className="cad-line" aria-hidden>
-            <span className="cad-pulse" style={{ animationDelay: '0s' }}>i</span>
-            <span className="cad-pulse" style={{ animationDelay: '2.6s' }}>i</span>
-            <span className="cad-pulse" style={{ animationDelay: '5.2s' }}>i</span>
-          </div>
-          <div className="cad-grid">
-            {elos.map((e, i) => (
-              <div key={i} className="cad-node reveal">
-                <span className="cad-icon"><Icon name={e.icon} size={24} stroke={1.8}/></span>
-                <div className="cad-t">{e.t}</div>
-                <div className="cad-roles">
-                  {e.roles.map((r, j) => <span key={j} className="cad-role">{r}</span>)}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <div className="cad2-panel">
+          <svg viewBox="0 0 1000 452" role="img" style={{ width: '100%', height: 'auto', display: 'block' }}
+            aria-label="A cadeia do setor: pedido, produto e pagamento circulando entre consumidor, revenda, distribuidor e indústria, com todos os dados convergindo para a SEWE">
+            <defs>
+              <marker id="cadmL" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M10,0 L0,5 L10,10 Z" fill="#aab7d0"/>
+              </marker>
+              <marker id="cadmT" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#75e3e4"/>
+              </marker>
+              <marker id="cadmG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#f0b429"/>
+              </marker>
+            </defs>
 
-        <div style={{ textAlign: 'center', marginTop: 26, fontSize: 13, color: 'var(--text-3)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 9 }}>
-          <span className="cad-legend" aria-hidden>i</span>
-          A informação de venda viajando do consumo até a decisão
+            {/* colunas: liga cada elo às pistas */}
+            {NODES.map((n, i) => (
+              <line key={i} x1={n.cx} y1={130} x2={n.cx} y2={258} stroke="rgba(255,255,255,0.08)" strokeWidth="1.5"/>
+            ))}
+
+            {/* pistas de fluxo */}
+            {LANES.map((l, i) => {
+              const left = l.dir === 'left';
+              return (
+                <g key={i}>
+                  <text x={62} y={l.y - 9} fontFamily="JetBrains Mono, monospace" fontSize="10" fontWeight="600" letterSpacing="2" fill={l.color} opacity="0.85">
+                    {left ? '← ' + l.label : l.label + ' →'}
+                  </text>
+                  <line x1={left ? 938 : 62} y1={l.y} x2={left ? 62 : 938} y2={l.y}
+                    stroke={l.color} strokeOpacity="0.35" strokeWidth="1.5"
+                    markerEnd={`url(#${left ? 'cadmL' : (l.label === 'PEDIDO' ? 'cadmT' : 'cadmG')})`}/>
+                  <line className={left ? 'cad2-dash-l' : 'cad2-dash-r'} x1={62} y1={l.y} x2={938} y2={l.y}
+                    stroke={l.color} strokeWidth="2.4" strokeLinecap="round"/>
+                  {[0, 1].map(k => (
+                    <circle key={k} r="4.5" fill={l.color} opacity="0.95">
+                      <animateMotion dur={l.dur} begin={`${k * (parseFloat(l.dur) / 2)}s`} repeatCount="indefinite"
+                        path={left ? `M938,${l.y} L62,${l.y}` : `M62,${l.y} L938,${l.y}`}/>
+                    </circle>
+                  ))}
+                </g>
+              );
+            })}
+
+            {/* convergência para a SEWE */}
+            {CONV.map((d, i) => (
+              <g key={i}>
+                <path d={d} fill="none" stroke="#75e3e4" strokeOpacity="0.16" strokeWidth="1.5"/>
+                <circle r="3.6" fill="#75e3e4">
+                  <animateMotion dur="3.4s" begin={`${i * 0.85}s`} repeatCount="indefinite" path={d}/>
+                </circle>
+              </g>
+            ))}
+
+            {/* elos da cadeia */}
+            {NODES.map((n, i) => (
+              <g key={i} className="cad2-node">
+                <rect x={n.cx - 102} y={30} width={204} height={100} rx={14}
+                  fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.16)" strokeWidth="1"/>
+                <NodeIcon type={n.icon} cx={n.cx} cy={58}/>
+                <text x={n.cx} y={96} textAnchor="middle" fontFamily="Chakra Petch, sans-serif" fontWeight="700" fontSize="16" fill="#fff">{n.t}</text>
+                <text x={n.cx} y={116} textAnchor="middle" fontSize="10.5" fill="rgba(255,255,255,0.55)">{n.sub}</text>
+              </g>
+            ))}
+
+            {/* hub SEWE */}
+            <rect x={392} y={338} width={216} height={54} rx={27}
+              fill="rgba(117,227,228,0.1)" stroke="#75e3e4" strokeOpacity="0.55" strokeWidth="1.5" className="cad2-hub"/>
+            <text x={500} y={361} textAnchor="middle" fontFamily="Chakra Petch, sans-serif" fontWeight="700" fontSize="19" fill="#75e3e4" letterSpacing="3">SEWE</text>
+            <text x={500} y={379} textAnchor="middle" fontSize="10.5" fill="rgba(255,255,255,0.6)" letterSpacing="1.5">DADOS · BI · IA · TEMPO REAL</text>
+
+            <text x={500} y={434} textAnchor="middle" fontSize="13" fill="rgba(255,255,255,0.55)">
+              Os três fluxos viram um só painel: sellout, estoque e financeiro de ponta a ponta, em tempo real.
+            </text>
+          </svg>
         </div>
       </div>
       <style>{`
-        .cad-wrap { position: relative; }
-        .cad-line {
-          position: absolute; left: 6%; right: 6%; top: 47px; height: 3px; z-index: 0;
-          background: linear-gradient(90deg, rgba(45,67,108,0.12), rgba(63,169,171,0.35), rgba(45,67,108,0.12));
-          border-radius: 99px;
+        .cad2-panel {
+          background: linear-gradient(150deg, #15243d, #0d1a2e);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 20px;
+          box-shadow: var(--shadow-lg);
+          padding: clamp(10px, 2vw, 26px);
         }
-        .cad-pulse {
-          position: absolute; top: -10px; left: -24px;
-          width: 23px; height: 23px; border-radius: 50%;
-          display: grid; place-items: center;
-          background: linear-gradient(135deg, var(--turquoise), var(--turquoise-ink));
-          color: var(--navy-900);
-          font-family: var(--ff-mono); font-style: italic; font-weight: 700; font-size: 13px;
-          box-shadow: 0 0 0 5px rgba(117,227,228,0.25), 0 0 18px rgba(117,227,228,0.85);
-          animation: cad-travel 7.8s linear infinite;
+        .cad2-dash-r { stroke-dasharray: 5 14; animation: cad2r 1.1s linear infinite; }
+        .cad2-dash-l { stroke-dasharray: 5 14; animation: cad2l 1.1s linear infinite; }
+        @keyframes cad2r { to { stroke-dashoffset: -19; } }
+        @keyframes cad2l { to { stroke-dashoffset: 19; } }
+        .cad2-hub { animation: cad2glow 2.6s ease-in-out infinite; }
+        @keyframes cad2glow {
+          0%, 100% { stroke-opacity: 0.4; }
+          50% { stroke-opacity: 1; }
         }
-        @keyframes cad-travel {
-          0%   { left: -24px; opacity: 0; }
-          4%   { opacity: 1; }
-          96%  { opacity: 1; }
-          100% { left: calc(100% + 2px); opacity: 0; }
+        @media (prefers-reduced-motion: reduce) {
+          .cad2-dash-r, .cad2-dash-l, .cad2-hub { animation: none; }
         }
-        .cad-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-        .cad-node {
-          background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
-          padding: 22px 20px; text-align: center; box-shadow: var(--shadow-sm);
-          transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-        }
-        .cad-node:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--turquoise-2); }
-        .cad-node:hover .cad-icon { background: var(--navy-900); color: var(--turquoise); }
-        .cad-icon {
-          width: 52px; height: 52px; border-radius: 14px; margin: 0 auto 14px;
-          display: grid; place-items: center;
-          background: rgba(45,67,108,0.08); color: var(--navy-700);
-          transition: background .2s ease, color .2s ease;
-        }
-        .cad-t { font-family: var(--ff-display); font-weight: 700; font-size: 18px; color: var(--navy-900); margin-bottom: 12px; }
-        .cad-roles { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
-        .cad-role {
-          font-size: 11.5px; font-weight: 600; color: var(--text-2);
-          background: var(--bg-soft); border: 1px solid var(--line); border-radius: 999px;
-          padding: 4px 10px; white-space: nowrap;
-        }
-        .cad-legend {
-          width: 19px; height: 19px; border-radius: 50%; display: inline-grid; place-items: center;
-          background: linear-gradient(135deg, var(--turquoise), var(--turquoise-ink)); color: var(--navy-900);
-          font-family: var(--ff-mono); font-style: italic; font-weight: 700; font-size: 11px;
-          box-shadow: 0 0 8px rgba(117,227,228,0.7);
-        }
-        @media (max-width: 900px) {
-          .cad-grid { grid-template-columns: 1fr 1fr; }
-          .cad-line { display: none; }
-        }
-        @media (max-width: 520px) { .cad-grid { grid-template-columns: 1fr; } }
-        @media (prefers-reduced-motion: reduce) { .cad-pulse { animation: none; display: none; } }
       `}</style>
     </section>
   );
