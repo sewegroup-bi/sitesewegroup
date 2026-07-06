@@ -2,12 +2,9 @@
 
 function LogosStrip() {
   const clients = [
-    { name: 'WMG', style: 'text' },
-    { name: 'Eletro Transol', style: 'text' },
-    { name: 'MOCELIN', style: 'text' },
-    { name: 'KGM', style: 'text' },
-    { name: 'PETSUL', style: 'text' },
-    { name: 'Multiseg', style: 'text' },
+    'WMG', 'Eletro Transol', 'Mocelin', 'KGM', 'PetSul', 'Multiseg',
+    'Speed Distribuidora', 'Diamaju', 'CentralPec', 'Route 66',
+    'RealPet', 'Dihol', 'Excelência', 'W&Z',
   ];
   return (
     <section style={{ padding: '56px 0 24px', background: '#fff', borderTop: '1px solid var(--line-2)' }}>
@@ -15,34 +12,37 @@ function LogosStrip() {
         <div style={{ textAlign: 'center', fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 600, color: 'var(--text-3)', marginBottom: 28 }}>
           Distribuidores que confiam na SEWE
         </div>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(6, 1fr)',
-          gap: 24,
-          alignItems: 'center',
-        }} className="logos-grid">
-          {clients.map(c => (
-            <div key={c.name} style={{
-              fontFamily: 'Chakra Petch, sans-serif',
-              fontWeight: 700,
-              fontSize: 18,
-              letterSpacing: '0.08em',
-              color: 'var(--slate)',
-              textAlign: 'center',
-              opacity: 0.78,
-              transition: 'opacity .2s ease, color .2s ease',
-              textTransform: 'uppercase',
-            }} onMouseEnter={e => { e.currentTarget.style.opacity = 1; e.currentTarget.style.color = 'var(--navy-900)'; }}
-               onMouseLeave={e => { e.currentTarget.style.opacity = 0.78; e.currentTarget.style.color = 'var(--slate)'; }}
-            >
-              {c.name}
-            </div>
+      </div>
+      <div className="logos-marquee" aria-label="Clientes SEWE">
+        <div className="logos-track">
+          {[...clients, ...clients].map((name, i) => (
+            <span key={i} className="logos-item" aria-hidden={i >= clients.length}>{name}</span>
           ))}
         </div>
       </div>
       <style>{`
-        @media (max-width: 720px) {
-          .logos-grid { grid-template-columns: repeat(3, 1fr) !important; row-gap: 32px !important; }
+        .logos-marquee {
+          overflow: hidden;
+          -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+          mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+        }
+        .logos-track {
+          display: flex; align-items: center; width: max-content; padding: 4px 0;
+          animation: logos-scroll 45s linear infinite;
+        }
+        .logos-marquee:hover .logos-track { animation-play-state: paused; }
+        .logos-item {
+          font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 18px;
+          letter-spacing: 0.08em; color: var(--slate); opacity: 0.78;
+          text-transform: uppercase; white-space: nowrap; margin-right: 64px;
+          transition: opacity .2s ease, color .2s ease;
+        }
+        .logos-item:hover { opacity: 1; color: var(--navy-900); }
+        @keyframes logos-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @media (prefers-reduced-motion: reduce) {
+          .logos-marquee { -webkit-mask-image: none; mask-image: none; }
+          .logos-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; row-gap: 18px; padding: 0 24px; }
+          .logos-track .logos-item[aria-hidden="true"] { display: none; }
         }
       `}</style>
     </section>
