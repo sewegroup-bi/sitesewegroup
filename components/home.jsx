@@ -41,9 +41,9 @@ function AudienceChooser() {
       cta: 'Ver soluções', href: 'distribuidor.html',
     },
     {
-      icon: 'cpu', kicker: 'Outra empresa · Projeto',
-      title: 'Projetos de dados sob medida',
-      desc: 'Qlik Sense, dashboards personalizados e consultoria de dados para o seu desafio específico.',
+      icon: 'cpu', kicker: 'Outra empresa · Estratégia',
+      title: 'Sua operação, mais inteligente',
+      desc: 'Para qualquer setor: tecnologia, dados, BI e IA para destravar a operação e decidir melhor.',
       cta: 'Ver soluções', href: 'solucoes.html',
     },
   ];

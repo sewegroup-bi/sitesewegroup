@@ -125,7 +125,7 @@ function DifferentiatorsSection() {
 function CasesSection() {
   const cases = [
     { co: 'MOCELIN', metric: '+15–20%', unit: 'de crescimento em vendas', quote: 'Eu associo esse crescimento ao SEWE BI: sem gestão de dados você não tem clareza de onde atacar. O BI hoje é minha principal ferramenta de gestão.', person: 'Neyla', place: 'Mocelin' },
-    { co: 'ELETRANSOL', metric: '−23,9%', unit: 'no churn de clientes', quote: 'Limitada ao ERP, a empresa ficaria parada no tempo. O BI é a nossa tela do cenário — e já projeta desempenho e atingimento de metas para o futuro.', person: 'Elioneis', place: 'Eletransol', href: 'vencedor-premio-2025-eletransol.html' },
+    { co: 'ELETRANSOL', metric: '−23,9%', unit: 'no churn de clientes', quote: 'Limitada ao ERP, a empresa ficaria parada no tempo. O BI é a nossa tela do cenário, e já projeta desempenho e atingimento de metas para o futuro.', person: 'Elioneis', place: 'Eletransol', href: 'vencedor-premio-2025-eletransol.html' },
     { co: 'WMG', metric: '1 tela', unit: 'para decidir o que antes exigia várias fontes', quote: 'As compras ficaram mais assertivas. Antes buscávamos várias informações para decidir; hoje abrimos uma tela e tomamos a decisão.', person: 'Thiago', place: 'WMG' },
   ];
   return (
@@ -246,7 +246,7 @@ function submitLead(e) {
       email: data.email,
       telefone: data.whatsapp,
       empresa: data.empresa,
-      mensagem: `Lead do site — formulário "Agendar diagnóstico" (página ${window.location.pathname})`,
+      mensagem: `Lead do site, formulário "Agendar diagnóstico" (página ${window.location.pathname})`,
       website: '',
     }),
   }).then(r => {
@@ -343,7 +343,7 @@ function AgendaSection() {
         <div style={{ maxWidth: 860, margin: '0 auto', border: '1px solid var(--line)', borderRadius: 16, overflow: 'hidden', boxShadow: 'var(--shadow-md)' }}>
           <iframe
             src={`${SEWE_AGENDA_URL}?gv=true`}
-            title="Agendar demonstração — SEWE Group"
+            title="Agendar demonstração · SEWE Group"
             style={{ border: 0, width: '100%', height: 560, display: 'block', marginTop: -64 }}
             loading="lazy"
           />

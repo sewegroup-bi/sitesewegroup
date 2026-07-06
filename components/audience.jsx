@@ -30,7 +30,7 @@ function IndustriaMap() {
     { c: BU_C.integration, icon: 'link',  step: '01', name: 'Enxergue a rede inteira', flow: 'SEWE Integration',
       d: 'O sellout, o estoque e a curva de cada distribuidor que vende os seus produtos, produto a produto, em um só painel.' },
     { c: BU_C.bi, icon: 'brain', step: '02', name: 'Decida com IA', flow: 'SEWE BI + IA',
-      d: 'Onde falta produto, onde sobra estoque e onde há espaço para crescer — com a próxima ação pronta, sem garimpar gráfico.' },
+      d: 'Onde falta produto, onde sobra estoque e onde há espaço para crescer, com a próxima ação pronta, sem garimpar gráfico.' },
     { c: BU_C.sales, icon: 'store', step: '03', name: 'Venda mais no canal', flow: 'SEWE Sales',
       d: 'Portal de pedidos, promoções, CRM e carteira de clientes: a rede inteira vendendo no padrão da indústria.' },
   ];
@@ -263,16 +263,16 @@ function IndustriaSales() {
       eyebrow="SEWE SALES"
       title="Do pedido ao CRM, a rede vendendo no"
       hl="padrão da indústria"
-      lead="Não é só um portal de pedidos: é a operação comercial da rede inteira — catálogo, promoção, aprovação, carteira e CRM — num só lugar, integrada ao ERP de cada distribuidor."
+      lead="Não é só um portal de pedidos: é a operação comercial da rede inteira. Catálogo, promoção, aprovação, carteira e CRM num só lugar, integrado ao ERP de cada distribuidor."
       feats={[
         { icon: 'store',    t: 'Portal do cliente', d: 'Catálogo digital, consulta de preço e pedido self-service, com a identidade e as regras da indústria.' },
         { icon: 'check',    t: 'Pedido dentro da política', d: 'Aprovação automática por alçada: desconto, crédito e condição comercial sempre dentro da regra.' },
         { icon: 'trophy',   t: 'Promoções e incentivos', d: 'Campanhas e incentivos comerciais para o canal, com resultado acompanhado por distribuidor.' },
-        { icon: 'users',    t: 'CRM e carteira de clientes', d: 'Histórico, frequência de compra e próxima ação de cada conta — quem parou de comprar aparece.' },
+        { icon: 'users',    t: 'CRM e carteira de clientes', d: 'Histórico, frequência de compra e próxima ação de cada conta. Quem parou de comprar aparece.' },
         { icon: 'clock',    t: 'Gestão de atividades', d: 'Workflow do time comercial: tarefas, visitas e follow-ups organizados e mensuráveis.' },
         { icon: 'link',     t: 'Integrado ao ERP do distribuidor', d: 'O pedido cai direto no ERP, sem redigitação e sem retrabalho para a rede.' },
         { icon: 'target',   t: 'Catálogo e tabela por canal', d: 'Sortimento e preço certos para cada tipo de canal, sem planilha paralela.' },
-        { icon: 'trending', t: 'Visão de vendas da rede', d: 'O que cada distribuidor vende, para quem e com que margem — em tempo real.' },
+        { icon: 'trending', t: 'Visão de vendas da rede', d: 'O que cada distribuidor vende, para quem e com que margem, em tempo real.' },
       ]}
       aside={{
         bg: 'linear-gradient(160deg,#3a1c05,#27160a)',
@@ -302,7 +302,7 @@ function IndustriaModular() {
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
             Cada entrega funciona sozinha. Contrate só a parte que resolve o seu problema de hoje
-            e amplie quando fizer sentido — sem trocar de plataforma no caminho.
+            e amplie quando fizer sentido, sem trocar de plataforma no caminho.
           </p>
         </div>
         <div className="mod-grid">
@@ -339,7 +339,7 @@ function IndustriaPage() {
       <PageHero
         eyebrow="Para a Indústria"
         title="Enxergue toda a sua rede, da fábrica ao ponto de venda."
-        lead="Quanto cada distribuidor vendeu do seu produto ontem? Onde está faltando? Quais clientes pararam de comprar? A SEWE devolve essas respostas todos os dias — e você contrata só o que precisar."
+        lead="Quanto cada distribuidor vendeu do seu produto ontem? Onde está faltando? Quais clientes pararam de comprar? A SEWE devolve essas respostas todos os dias. E você contrata só o que precisar."
       >
         <div style={{ marginTop: 28, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <a href="#diagnostico" className="btn btn-primary btn-lg">Falar sobre a rede <Icon name="arrow" size={16} className="chev"/></a>
