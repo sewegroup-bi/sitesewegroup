@@ -215,17 +215,17 @@ function FAQSection() {
 }
 
 // ── Destinos de lead ─────────────────────────────────────────
-// SEWE_CRM_ENDPOINT: cole aqui a URL do webhook/endpoint do Sewe CRM.
-// Enquanto estiver vazio, o formulário abre o WhatsApp com os dados preenchidos.
-const SEWE_CRM_ENDPOINT = '';
+// Sewe CRM via Supabase Edge Function (chave anon — pública por design, só funciona com RLS).
+const SEWE_CRM_ENDPOINT = 'https://bjohdxudealxhsumrxsg.supabase.co/functions/v1/submit-lead';
+const SEWE_CRM_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqb2hkeHVkZWFseGhzdW1yeHNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzMzQxNjYsImV4cCI6MjA5NDkxMDE2Nn0.0LvntzXgZZNJmvYP_3nrVHQibEKZhjpAa5AwzMj6wEw';
 const SEWE_WHATSAPP = 'https://wa.me/5548984704389';
 
 function submitLead(e) {
   e.preventDefault();
   const form = e.target;
   const data = Object.fromEntries(new FormData(form).entries());
-  data.origem = 'site-sewegroup';
-  data.pagina = window.location.pathname;
+
+  if (data.website) return; // honeypot preenchido → bot, descarta em silêncio
 
   const openWhats = () => {
     const msg = `Olá! Quero agendar um diagnóstico.\n\nNome: ${data.nome}\nE-mail: ${data.email}\nEmpresa: ${data.empresa}\nWhatsApp: ${data.whatsapp}`;
@@ -236,8 +236,19 @@ function submitLead(e) {
 
   fetch(SEWE_CRM_ENDPOINT, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SEWE_CRM_ANON,
+      'Authorization': `Bearer ${SEWE_CRM_ANON}`,
+    },
+    body: JSON.stringify({
+      nome: data.nome,
+      email: data.email,
+      telefone: data.whatsapp,
+      empresa: data.empresa,
+      mensagem: `Lead do site — formulário "Agendar diagnóstico" (página ${window.location.pathname})`,
+      website: '',
+    }),
   }).then(r => {
     if (!r.ok) throw new Error();
     form.reset();
@@ -289,6 +300,8 @@ function CTASection() {
                  onBlur={(e) => e.target.style.borderColor = 'rgba(255,255,255,0.18)'}/>
             </label>
           ))}
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"
+            style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}/>
           <button type="submit" className="btn btn-accent btn-lg" style={{ width: '100%', justifyContent: 'center', marginTop: 6 }}>
             Agendar agora <Icon name="arrow" size={16} className="chev"/>
           </button>
