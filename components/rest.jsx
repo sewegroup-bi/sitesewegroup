@@ -313,7 +313,7 @@ function Footer_DEPRECATED() {
 }
 
 // ── Agendamento de demonstração (Google Calendar) ────────────
-const SEWE_AGENDA_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2ylYuW6dqFpPDvnfnUMcYwXjTQxw7v6PyBYRMXHJ0j6NH3WxHeXDwASsHWi2_udeUbjPMbu0Kw';
+const SEWE_AGENDA_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2yIYuW6dqFpPDvnfnUMcYwXjTQxw7v6PyBYRMXHJ0j6NH3WxHeXDwASsHWi2_udeUbjPMbu0Kw';
 
 function AgendaSection() {
   return (

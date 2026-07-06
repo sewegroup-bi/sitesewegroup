@@ -14,7 +14,7 @@ function HomePositioning() {
             Dados que viram decisão.<br/>Decisão que vira <span className="hp-hl">margem</span>.
           </h1>
           <p className="hp-lead">
-            BI, IA e Sales para distribuidores, atacadistas e indústrias.
+            BI, IA e CRM para distribuidores, atacadistas e indústrias.
             Escolha o perfil da sua empresa e veja a solução certa para a sua operação.
           </p>
           <a href="#escolha" className="hp-down" aria-label="Ir para a escolha de perfil">
@@ -152,7 +152,6 @@ function HomeLanding() {
         </div>
       </div>
       <AgendaSection/>
-      <CTASection/>
     </>
   );
 }
