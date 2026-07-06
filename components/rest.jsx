@@ -282,7 +282,8 @@ function CTASection() {
         </div>
         <form onSubmit={submitLead}
           style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 16, padding: 24, backdropFilter: 'blur(12px)' }}>
-          <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 18, color: '#fff', marginBottom: 14 }}>Agendar diagnóstico</div>
+          <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 18, color: '#fff', marginBottom: 6 }}>Peça um diagnóstico</div>
+          <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', marginBottom: 14 }}>Deixe seus dados e a nossa equipe entra em contato.</div>
           {[
             { n: 'Nome', id: 'nome', t: 'text', p: 'Maria Silva' },
             { n: 'E-mail corporativo', id: 'email', t: 'email', p: 'maria@distribuidora.com.br' },
@@ -303,7 +304,7 @@ function CTASection() {
           <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"
             style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}/>
           <button type="submit" className="btn btn-accent btn-lg" style={{ width: '100%', justifyContent: 'center', marginTop: 6 }}>
-            Agendar agora <Icon name="arrow" size={16} className="chev"/>
+            Quero ser contatado <Icon name="arrow" size={16} className="chev"/>
           </button>
           <a href={`${SEWE_WHATSAPP}?text=${encodeURIComponent('Olá! Quero agendar um diagnóstico com a SEWE.')}`}
             target="_blank" rel="noopener" className="btn btn-outline"

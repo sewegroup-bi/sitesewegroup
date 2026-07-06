@@ -17,13 +17,19 @@ function SiteHeader({ home = false }) {
   }, []);
 
   const links = [
-    { label: 'Início',              href: 'index.html' },
-    { label: 'Indústria',            href: 'industria.html' },
-    { label: 'Distribuidor',         href: 'distribuidor.html' },
-    { label: 'Soluções Sob Medida',   href: 'solucoes.html' },
-    { label: 'MinerConect',          href: 'minerconect.html' },
-    { label: 'Quem Somos',           href: 'quem-somos.html' },
-    { label: 'Blog',                 href: 'blog.html' },
+    { label: 'Início', href: 'index.html' },
+    { label: 'Soluções', children: [
+      { label: 'Indústria',          href: 'industria.html' },
+      { label: 'Distribuidor',       href: 'distribuidor.html' },
+      { label: 'Estratégia & Dados', href: 'solucoes.html' },
+      { label: 'MinerConect',        href: 'minerconect.html' },
+    ]},
+    { label: 'Conteúdos', children: [
+      { label: 'Blog',        href: 'blog.html' },
+      { label: 'Prêmio SEWE', href: 'premio.html' },
+    ]},
+    { label: 'Quem Somos', href: 'quem-somos.html' },
+    { label: 'FAQ',        href: 'faq.html' },
   ];
 
   const curPage = (typeof window !== 'undefined' ? (window.location.pathname.split('/').pop() || 'index.html') : 'index.html');
@@ -43,18 +49,24 @@ function SiteHeader({ home = false }) {
         <div style={{ flex: 1 }}/>
         <nav style={{ display: 'flex', alignItems: 'center', gap: 2 }} className="nav-desktop">
           {links.map(l => {
-            const active = l.href === curPage;
+            const active = l.href === curPage || (l.children || []).some(c => c.href === curPage);
+            const cls = active ? 'nav-link nav-link-active' : 'nav-link';
+            if (!l.children) {
+              return <a key={l.label} href={l.href} className={cls}>{l.label}</a>;
+            }
             return (
-              <a key={l.label} href={l.href} style={active ? {
-                padding: '8px 13px', fontSize: 14, color: 'var(--navy-900)', fontWeight: 600, borderRadius: 8,
-                background: '#fff', border: '1px solid var(--line)', boxShadow: 'var(--shadow-sm)', whiteSpace: 'nowrap',
-              } : {
-                padding: '8px 11px', fontSize: 14, color: 'var(--text-2)', fontWeight: 500, borderRadius: 8,
-                transition: 'color .15s ease', whiteSpace: 'nowrap',
-              }} onMouseEnter={e => { if (!active) e.currentTarget.style.color = 'var(--navy-900)'; }}
-                 onMouseLeave={e => { if (!active) e.currentTarget.style.color = 'var(--text-2)'; }}>
-                {l.label}
-              </a>
+              <div key={l.label} className="nav-item">
+                <span className={cls} tabIndex={0}>
+                  {l.label} <Icon name="arrowDown" size={12} stroke={2.2} style={{ marginLeft: 2 }}/>
+                </span>
+                <div className="nav-dd">
+                  <div className="nav-dd-box">
+                    {l.children.map(c => (
+                      <a key={c.href} href={c.href} className={c.href === curPage ? 'nav-dd-link nav-dd-link-active' : 'nav-dd-link'}>{c.label}</a>
+                    ))}
+                  </div>
+                </div>
+              </div>
             );
           })}
         </nav>
@@ -73,7 +85,14 @@ function SiteHeader({ home = false }) {
       {open && (
         <div className="nav-mobile-panel" style={{ borderTop: '1px solid var(--line)', background: '#fff' }}>
           <div className="container" style={{ padding: '12px var(--gutter) 18px', display: 'flex', flexDirection: 'column', gap: 2 }}>
-            {links.map(l => (
+            {links.map(l => l.children ? (
+              <div key={l.label}>
+                <div style={{ padding: '12px 8px 4px', fontSize: 11.5, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-3)' }}>{l.label}</div>
+                {l.children.map(c => (
+                  <a key={c.href} href={c.href} onClick={() => setOpen(false)} style={{ display: 'block', padding: '10px 8px 10px 18px', borderBottom: '1px solid var(--line-2)', fontSize: 15, color: 'var(--navy-900)' }}>{c.label}</a>
+                ))}
+              </div>
+            ) : (
               <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{ padding: '12px 8px', borderBottom: '1px solid var(--line-2)', fontSize: 15, color: 'var(--navy-900)' }}>{l.label}</a>
             ))}
             <a href={WHATSAPP} onClick={() => setOpen(false)} style={{ padding: '12px 8px', fontSize: 15, fontWeight: 600, color: 'var(--navy)' }}>Fale Conosco</a>
@@ -81,6 +100,29 @@ function SiteHeader({ home = false }) {
         </div>
       )}
       <style>{`
+        .nav-link {
+          display: inline-flex; align-items: center; padding: 8px 12px; font-size: 14px;
+          color: var(--text-2); font-weight: 500; border-radius: 8px; white-space: nowrap;
+          transition: color .15s ease; cursor: pointer;
+        }
+        .nav-link:hover { color: var(--navy-900); }
+        .nav-link-active {
+          color: var(--navy-900); font-weight: 600; background: #fff;
+          border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+        }
+        .nav-item { position: relative; }
+        .nav-dd { position: absolute; top: 100%; left: 0; padding-top: 8px; display: none; z-index: 60; }
+        .nav-item:hover .nav-dd, .nav-item:focus-within .nav-dd { display: block; }
+        .nav-dd-box {
+          min-width: 215px; background: #fff; border: 1px solid var(--line);
+          border-radius: 12px; box-shadow: var(--shadow-md); padding: 8px;
+        }
+        .nav-dd-link {
+          display: block; padding: 10px 12px; border-radius: 8px; font-size: 14px;
+          color: var(--text-2); white-space: nowrap; transition: background .12s ease, color .12s ease;
+        }
+        .nav-dd-link:hover { background: var(--bg-soft); color: var(--navy-900); }
+        .nav-dd-link-active { color: var(--navy-900); font-weight: 600; background: var(--bg-soft); }
         @media (max-width: 1040px) { .nav-desktop { display: none !important; } .nav-mobile { display: flex !important; } }
         @media (min-width: 1041px) { .nav-mobile-panel { display: none !important; } }
       `}</style>
@@ -135,7 +177,7 @@ function SiteFooter({ home = false }) {
             <div style={col.title}>Soluções</div>
             <a style={col.link} href="industria.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Indústria</a>
             <a style={col.link} href="distribuidor.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Distribuidor</a>
-            <a style={col.link} href="solucoes.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Soluções Sob Medida</a>
+            <a style={col.link} href="solucoes.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Estratégia & Dados</a>
             <a style={col.link} href="minerconect.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>MinerConect</a>
           </div>
           <div>
@@ -158,9 +200,8 @@ function SiteFooter({ home = false }) {
             © 2026 SEWE Group · Todos os direitos reservados
           </div>
           <div style={{ display: 'flex', gap: 18, fontSize: 12, color: 'rgba(255,255,255,0.42)' }}>
-            <a href="#" style={{ color: 'inherit' }}>Política de Privacidade</a>
-            <a href="#" style={{ color: 'inherit' }}>Termos de Uso</a>
-            <a href="#" style={{ color: 'inherit' }}>LGPD</a>
+            <a href="politica-de-privacidade.html" style={{ color: 'inherit' }}>Política de Privacidade</a>
+            <a href="politica-de-privacidade.html#lgpd" style={{ color: 'inherit' }}>LGPD</a>
           </div>
         </div>
       </div>

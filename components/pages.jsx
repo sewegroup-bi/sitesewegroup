@@ -142,7 +142,7 @@ function BlogPostPage({ slug }) {
               <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 18, color: 'var(--navy-900)' }}>Quer esse nível de gestão na sua distribuição?</div>
               <div style={{ fontSize: 14, color: 'var(--text-2)', marginTop: 4 }}>Agende um diagnóstico gratuito de 30 minutos.</div>
             </div>
-            <a href="index.html#diagnostico" className="btn btn-primary">Agendar Diagnóstico <Icon name="arrow" size={16} className="chev"/></a>
+            <a href="index.html#agendar" className="btn btn-primary">Agendar Diagnóstico <Icon name="arrow" size={16} className="chev"/></a>
           </div>
         </div>
       </article>
@@ -296,7 +296,7 @@ function QuemSomosPage() {
           <h2 style={{ color: '#fff' }}>Vamos transformar sua distribuição?</h2>
           <p style={{ color: 'rgba(255,255,255,0.78)', marginTop: 16, fontSize: 18 }}>Um diagnóstico gratuito de 30 minutos, com os seus dados, sem compromisso.</p>
           <div style={{ marginTop: 28, display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="index.html#diagnostico" className="btn btn-accent btn-lg">Agendar Diagnóstico <Icon name="arrow" size={16} className="chev"/></a>
+            <a href="index.html#agendar" className="btn btn-accent btn-lg">Agendar Diagnóstico <Icon name="arrow" size={16} className="chev"/></a>
             <a href="https://wa.me/5548984704389" className="btn btn-lg" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>Falar no WhatsApp</a>
           </div>
         </div>
@@ -323,9 +323,62 @@ function FaqPage() {
   );
 }
 
+/* ── Política de Privacidade ── */
+function PrivacidadePage() {
+  const h = { fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 22, color: 'var(--navy-900)', margin: '36px 0 12px' };
+  const p = { fontSize: 15.5, color: 'var(--text-2)', lineHeight: 1.7, margin: '0 0 14px' };
+  const li = { fontSize: 15.5, color: 'var(--text-2)', lineHeight: 1.7, marginBottom: 8 };
+  return (
+    <>
+      <SiteHeader/>
+      <PageHero eyebrow="Transparência" title="Política de Privacidade."
+        lead="Como a SEWE Group coleta, usa e protege os seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018)."/>
+      <section className="section" style={{ background: '#fff' }}>
+        <div className="container" style={{ maxWidth: 780 }}>
+          <p style={p}><b>Última atualização:</b> julho de 2026.</p>
+          <p style={p}>Esta política se aplica ao site da SEWE Group (sewegroup.com.br) e aos canais de contato vinculados a ele. Controladora dos dados: SEWE Group, Florianópolis · SC · Brasil. Contato: contato@sewegroup.com.br.</p>
+
+          <h2 style={h}>1. Quais dados coletamos</h2>
+          <ul style={{ paddingLeft: 22, margin: '0 0 14px' }}>
+            <li style={li}><b>Dados de contato enviados por você</b> nos formulários do site: nome, e-mail, empresa e telefone/WhatsApp.</li>
+            <li style={li}><b>Dados de agendamento</b>, quando você reserva uma reunião pela nossa agenda: nome, e-mail, telefone e empresa informados no Google Agenda.</li>
+            <li style={li}><b>Dados de conversa</b>, quando você opta por falar conosco pelo WhatsApp.</li>
+          </ul>
+          <p style={p}>Não coletamos dados sensíveis pelo site e não utilizamos os seus dados para decisões automatizadas.</p>
+
+          <h2 style={h}>2. Para que usamos</h2>
+          <ul style={{ paddingLeft: 22, margin: '0 0 14px' }}>
+            <li style={li}>Responder ao seu contato e realizar o diagnóstico ou a demonstração solicitados.</li>
+            <li style={li}>Registrar o seu interesse em nosso sistema de relacionamento (CRM) para dar sequência ao atendimento comercial.</li>
+            <li style={li}>Cumprir obrigações legais e regulatórias, quando aplicável.</li>
+          </ul>
+          <p style={p}>Base legal: execução de procedimentos preliminares a contrato, a seu pedido (art. 7º, V, da LGPD) e legítimo interesse no atendimento comercial (art. 7º, IX), sempre com o mínimo de dados necessário.</p>
+
+          <h2 style={h}>3. Com quem compartilhamos</h2>
+          <p style={p}>Seus dados não são vendidos. Eles são processados por fornecedores que sustentam a nossa operação, contratados sob obrigações de confidencialidade e segurança: infraestrutura de banco de dados (Supabase), agenda e e-mail (Google) e ferramenta de mensagens (WhatsApp/Meta), podendo haver transferência internacional para países com grau de proteção adequado ou mediante salvaguardas contratuais.</p>
+
+          <h2 style={h}>4. Por quanto tempo guardamos</h2>
+          <p style={p}>Mantemos os dados de contato comercial enquanto durar o relacionamento ou a tratativa, e os eliminamos ou anonimizamos quando deixarem de ser necessários, salvo obrigação legal de retenção.</p>
+
+          <h2 style={h}>5. Como protegemos</h2>
+          <p style={p}>Adotamos criptografia em trânsito, controle de acesso por credencial e o princípio do menor privilégio nos sistemas que armazenam dados pessoais.</p>
+
+          <h2 style={h} id="lgpd">6. Seus direitos (LGPD)</h2>
+          <p style={p}>Nos termos dos arts. 17 a 22 da LGPD, você pode solicitar a qualquer momento: confirmação de tratamento, acesso, correção, anonimização, portabilidade, eliminação dos dados, informação sobre compartilhamentos e revogação de consentimento.</p>
+          <p style={p}>Para exercer qualquer direito, escreva para <a href="mailto:contato@sewegroup.com.br" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>contato@sewegroup.com.br</a>. Respondemos no prazo legal.</p>
+
+          <h2 style={h}>7. Alterações desta política</h2>
+          <p style={p}>Esta política pode ser atualizada para refletir mudanças no site ou na legislação. A versão vigente estará sempre nesta página, com a data de atualização no topo.</p>
+        </div>
+      </section>
+      <SiteFooter/>
+    </>
+  );
+}
+
 // ── Mount the right page based on which root exists ──
 (function mountPages() {
-  const single = { 'quemsomos-root': QuemSomosPage, 'premio-root': PremioPage, 'blog-root': BlogIndexPage, 'faq-root': FaqPage };
+  const single = { 'quemsomos-root': QuemSomosPage, 'premio-root': PremioPage, 'blog-root': BlogIndexPage, 'faq-root': FaqPage, 'privacidade-root': PrivacidadePage };
   Object.keys(single).forEach(id => {
     const el = document.getElementById(id);
     if (el) ReactDOM.createRoot(el).render(React.createElement(single[id]));
