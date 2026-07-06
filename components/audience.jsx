@@ -27,23 +27,23 @@ function useReveal() {
 /* ── INDÚSTRIA ───────────────────────────────────────────── */
 function IndustriaMap() {
   const fronts = [
-    { c: BU_C.integration, icon: 'link',  step: '01', name: 'Integration', flow: 'Capta a rede',
-      d: 'Sellout, estoque e curva de cada distribuidor que vende os seus produtos, produto a produto, em um só painel.' },
-    { c: BU_C.bi, icon: 'brain', step: '02', name: 'BI + IA', flow: 'Transforma em decisão',
-      d: 'A IA cruza os dados da rede nos bastidores e devolve cobertura, giro e ruptura no canal, com a próxima ação pronta.' },
-    { c: BU_C.sales, icon: 'store', step: '03', name: 'Sales', flow: 'Ativa o canal',
-      d: 'Coloque toda a rede de distribuidores vendendo no mesmo padrão, com catálogo, tabela e regras unificadas.' },
+    { c: BU_C.integration, icon: 'link',  step: '01', name: 'Enxergue a rede inteira', flow: 'SEWE Integration',
+      d: 'O sellout, o estoque e a curva de cada distribuidor que vende os seus produtos, produto a produto, em um só painel.' },
+    { c: BU_C.bi, icon: 'brain', step: '02', name: 'Decida com IA', flow: 'SEWE BI + IA',
+      d: 'Onde falta produto, onde sobra estoque e onde há espaço para crescer — com a próxima ação pronta, sem garimpar gráfico.' },
+    { c: BU_C.sales, icon: 'store', step: '03', name: 'Venda mais no canal', flow: 'SEWE Sales',
+      d: 'Portal de pedidos, promoções, CRM e carteira de clientes: a rede inteira vendendo no padrão da indústria.' },
   ];
   return (
     <section className="section" style={{ background: '#fff' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 44px' }}>
-          <div className="eyebrow">O ecossistema para a indústria</div>
+          <div className="eyebrow">O que você passa a ter</div>
           <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Da fábrica ao PDV, <span style={{ color: 'var(--navy)' }}>uma rede visível</span>.
+            Três entregas. <span style={{ color: 'var(--navy)' }}>Contrate juntas ou separadas</span>.
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Três frentes conectadas trazem o que acontece na ponta de volta para a sua estratégia.
+            Cada frente funciona sozinha e entrega valor por conta própria. Juntas, fecham o ciclo da fábrica ao PDV.
           </p>
         </div>
         <div className="im-grid">
@@ -54,7 +54,7 @@ function IndustriaMap() {
                 <span className="im-step">{f.step}</span>
               </div>
               <div className="im-flow" style={{ color: f.c.color }}>{f.flow}</div>
-              <div className="im-name">SEWE {f.name}</div>
+              <div className="im-name">{f.name}</div>
               <p className="im-desc">{f.d}</p>
               {i < fronts.length - 1 && <span className="im-arrow" aria-hidden><Icon name="arrow" size={18} stroke={2.2}/></span>}
             </div>
@@ -261,23 +261,73 @@ function IndustriaSales() {
       bg="var(--bg-soft)"
       c={BU_C.sales.color} soft={BU_C.sales.soft} ink={BU_C.sales.ink}
       eyebrow="SEWE SALES"
-      title="Toda a rede vendendo no"
-      hl="mesmo padrão"
-      lead="Coloque seus distribuidores em um portal B2B único, com catálogo, tabela e regras da indústria, e enxergue as vendas de ponta a ponta."
+      title="Do pedido ao CRM, a rede vendendo no"
+      hl="padrão da indústria"
+      lead="Não é só um portal de pedidos: é a operação comercial da rede inteira — catálogo, promoção, aprovação, carteira e CRM — num só lugar, integrada ao ERP de cada distribuidor."
       feats={[
-        { icon: 'store',  t: 'Portal B2B para a rede', d: 'Cada distribuidor e cliente compra em um portal com a sua identidade e o seu catálogo.' },
-        { icon: 'check',  t: 'Regras de pedido e alçada', d: 'Políticas de preço, crédito e aprovação garantem pedido dentro da regra.' },
-        { icon: 'target', t: 'Catálogo e tabela por canal', d: 'Sortimento e preço certos para cada tipo de canal, sem retrabalho.' },
-        { icon: 'users',  t: 'Visão de vendas da rede', d: 'Acompanhe o que cada distribuidor vende, para quem e com que margem.' },
+        { icon: 'store',    t: 'Portal do cliente', d: 'Catálogo digital, consulta de preço e pedido self-service, com a identidade e as regras da indústria.' },
+        { icon: 'check',    t: 'Pedido dentro da política', d: 'Aprovação automática por alçada: desconto, crédito e condição comercial sempre dentro da regra.' },
+        { icon: 'trophy',   t: 'Promoções e incentivos', d: 'Campanhas e incentivos comerciais para o canal, com resultado acompanhado por distribuidor.' },
+        { icon: 'users',    t: 'CRM e carteira de clientes', d: 'Histórico, frequência de compra e próxima ação de cada conta — quem parou de comprar aparece.' },
+        { icon: 'clock',    t: 'Gestão de atividades', d: 'Workflow do time comercial: tarefas, visitas e follow-ups organizados e mensuráveis.' },
+        { icon: 'link',     t: 'Integrado ao ERP do distribuidor', d: 'O pedido cai direto no ERP, sem redigitação e sem retrabalho para a rede.' },
+        { icon: 'target',   t: 'Catálogo e tabela por canal', d: 'Sortimento e preço certos para cada tipo de canal, sem planilha paralela.' },
+        { icon: 'trending', t: 'Visão de vendas da rede', d: 'O que cada distribuidor vende, para quem e com que margem — em tempo real.' },
       ]}
       aside={{
         bg: 'linear-gradient(160deg,#3a1c05,#27160a)',
-        tag: 'PADRÃO ÚNICO', tagColor: '#ffd2a8', tagBg: 'rgba(253,112,20,0.2)',
-        metric: '1 catálogo', metricLabel: 'para toda a rede, da fábrica ao PDV',
-        desc: 'Da fábrica ao PDV, distribuidores, vendedores e clientes vendendo com as mesmas regras e a mesma informação.',
-        list: ['Catálogo e tabela unificados', 'Pedidos dentro da política', 'Vendas da rede em tempo real'],
+        tag: 'OPERAÇÃO COMPLETA', tagColor: '#ffd2a8', tagBg: 'rgba(253,112,20,0.2)',
+        metric: '8 entregas', metricLabel: 'do catálogo ao CRM, num só módulo',
+        desc: 'Da consulta de preço ao pós-venda, distribuidores, vendedores e clientes operando com as mesmas regras e a mesma informação.',
+        list: ['Pedido dentro da política', 'CRM e carteira de clientes', 'Integração com o ERP do distribuidor'],
       }}
     />
+  );
+}
+
+/* Modularidade — contrate tudo ou só uma parte */
+function IndustriaModular() {
+  const combos = [
+    { c: BU_C.integration, t: 'Só enxergar a rede', d: 'O painel de sellout, estoque e cobertura de cada distribuidor. Visibilidade imediata, sem mexer na operação.', tag: 'PORTA DE ENTRADA' },
+    { c: BU_C.bi, t: 'Enxergar + decidir', d: 'A visibilidade da rede com a IA por cima: alertas de ruptura, mix por região e previsão de demanda.', tag: 'MAIS ESCOLHIDO' },
+    { c: BU_C.sales, t: 'Ecossistema completo', d: 'Da visibilidade à venda: painel, IA e a operação comercial da rede rodando no padrão da indústria.', tag: 'CICLO FECHADO' },
+  ];
+  return (
+    <section className="section" style={{ background: '#fff' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', maxWidth: 740, margin: '0 auto 44px' }}>
+          <div className="eyebrow">Modular de verdade</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
+            Comece por onde <span style={{ color: 'var(--navy)' }}>dói mais</span>.
+          </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
+            Cada entrega funciona sozinha. Contrate só a parte que resolve o seu problema de hoje
+            e amplie quando fizer sentido — sem trocar de plataforma no caminho.
+          </p>
+        </div>
+        <div className="mod-grid">
+          {combos.map((m, i) => (
+            <div key={i} className="mod-card reveal" style={{ borderTopColor: m.c.color }}>
+              <div className="mod-tag" style={{ color: m.c.ink, background: m.c.soft }}>{m.tag}</div>
+              <div className="mod-t">{m.t}</div>
+              <p className="mod-d">{m.d}</p>
+              <a href="#diagnostico" className="mod-cta" style={{ color: m.c.ink }}>
+                Falar sobre este recorte <Icon name="arrow" size={14} stroke={2.2}/>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+      <style>{`
+        .mod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .mod-card { display: flex; flex-direction: column; background: var(--bg-soft); border: 1px solid var(--line); border-top: 3px solid; border-radius: var(--r-lg); padding: 26px; }
+        .mod-tag { align-self: flex-start; padding: 5px 12px; border-radius: 999px; font-family: var(--ff-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .1em; margin-bottom: 16px; }
+        .mod-t { font-family: var(--ff-display); font-weight: 700; font-size: 20px; color: var(--navy-900); margin-bottom: 8px; }
+        .mod-d { font-size: 14.5px; color: var(--text-2); line-height: 1.6; flex: 1; }
+        .mod-cta { display: inline-flex; align-items: center; gap: 7px; margin-top: 18px; font-family: var(--ff-display); font-weight: 600; font-size: 14.5px; }
+        @media (max-width: 860px) { .mod-grid { grid-template-columns: 1fr; } }
+      `}</style>
+    </section>
   );
 }
 
@@ -289,7 +339,7 @@ function IndustriaPage() {
       <PageHero
         eyebrow="Para a Indústria"
         title="Enxergue toda a sua rede, da fábrica ao ponto de venda."
-        lead="Integration capta os dados da rede, o BI com IA transforma em decisão e o Sales ativa o canal. Um ecossistema só, com a SEWE cuidando da engenharia de ponta a ponta."
+        lead="Quanto cada distribuidor vendeu do seu produto ontem? Onde está faltando? Quais clientes pararam de comprar? A SEWE devolve essas respostas todos os dias — e você contrata só o que precisar."
       >
         <div style={{ marginTop: 28, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <a href="#diagnostico" className="btn btn-primary btn-lg">Falar sobre a rede <Icon name="arrow" size={16} className="chev"/></a>
@@ -301,6 +351,7 @@ function IndustriaPage() {
       <IndustriaNetworkPanel/>
       <IndustriaBI/>
       <IndustriaSales/>
+      <IndustriaModular/>
       <CTASection/>
       <SiteFooter/>
     </>
