@@ -25,6 +25,114 @@ function useReveal() {
 }
 
 /* ── INDÚSTRIA ───────────────────────────────────────────── */
+
+/* A cadeia do setor, conectada: a informação nasce no consumo e viaja até a indústria */
+function IndustriaCadeia() {
+  const elos = [
+    { icon: 'users', t: 'Consumidor final', roles: ['Compra na ponta', 'Gera o dado de venda'] },
+    { icon: 'store', t: 'PDV · Revenda', roles: ['Loja', 'Integrador', 'Revendedor'] },
+    { icon: 'warehouse', t: 'Distribuidor', roles: ['Vendedor', 'Supervisor', 'Gerente', 'Dono'] },
+    { icon: 'factory', t: 'Indústria', roles: ['Gerente de contas', 'Marketing', 'Diretoria', 'CEO'] },
+  ];
+  return (
+    <section className="section" style={{ background: 'var(--bg-soft)', overflow: 'hidden' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 48px' }}>
+          <div className="eyebrow">A cadeia conectada</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
+            A informação nasce no consumidor <span style={{ color: 'var(--navy)' }}>e chega até a sua mesa</span>.
+          </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
+            Cada venda na ponta vira dado. O dado atravessa a cadeia inteira e vira decisão
+            na indústria, no mesmo dia, não no fechamento do mês.
+          </p>
+        </div>
+
+        <div className="cad-wrap">
+          <div className="cad-line" aria-hidden>
+            <span className="cad-pulse" style={{ animationDelay: '0s' }}>i</span>
+            <span className="cad-pulse" style={{ animationDelay: '2.6s' }}>i</span>
+            <span className="cad-pulse" style={{ animationDelay: '5.2s' }}>i</span>
+          </div>
+          <div className="cad-grid">
+            {elos.map((e, i) => (
+              <div key={i} className="cad-node reveal">
+                <span className="cad-icon"><Icon name={e.icon} size={24} stroke={1.8}/></span>
+                <div className="cad-t">{e.t}</div>
+                <div className="cad-roles">
+                  {e.roles.map((r, j) => <span key={j} className="cad-role">{r}</span>)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: 26, fontSize: 13, color: 'var(--text-3)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 9 }}>
+          <span className="cad-legend" aria-hidden>i</span>
+          A informação de venda viajando do consumo até a decisão
+        </div>
+      </div>
+      <style>{`
+        .cad-wrap { position: relative; }
+        .cad-line {
+          position: absolute; left: 6%; right: 6%; top: 47px; height: 3px; z-index: 0;
+          background: linear-gradient(90deg, rgba(45,67,108,0.12), rgba(63,169,171,0.35), rgba(45,67,108,0.12));
+          border-radius: 99px;
+        }
+        .cad-pulse {
+          position: absolute; top: -10px; left: -24px;
+          width: 23px; height: 23px; border-radius: 50%;
+          display: grid; place-items: center;
+          background: linear-gradient(135deg, var(--turquoise), var(--turquoise-ink));
+          color: var(--navy-900);
+          font-family: var(--ff-mono); font-style: italic; font-weight: 700; font-size: 13px;
+          box-shadow: 0 0 0 5px rgba(117,227,228,0.25), 0 0 18px rgba(117,227,228,0.85);
+          animation: cad-travel 7.8s linear infinite;
+        }
+        @keyframes cad-travel {
+          0%   { left: -24px; opacity: 0; }
+          4%   { opacity: 1; }
+          96%  { opacity: 1; }
+          100% { left: calc(100% + 2px); opacity: 0; }
+        }
+        .cad-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+        .cad-node {
+          background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+          padding: 22px 20px; text-align: center; box-shadow: var(--shadow-sm);
+          transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        }
+        .cad-node:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--turquoise-2); }
+        .cad-node:hover .cad-icon { background: var(--navy-900); color: var(--turquoise); }
+        .cad-icon {
+          width: 52px; height: 52px; border-radius: 14px; margin: 0 auto 14px;
+          display: grid; place-items: center;
+          background: rgba(45,67,108,0.08); color: var(--navy-700);
+          transition: background .2s ease, color .2s ease;
+        }
+        .cad-t { font-family: var(--ff-display); font-weight: 700; font-size: 18px; color: var(--navy-900); margin-bottom: 12px; }
+        .cad-roles { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+        .cad-role {
+          font-size: 11.5px; font-weight: 600; color: var(--text-2);
+          background: var(--bg-soft); border: 1px solid var(--line); border-radius: 999px;
+          padding: 4px 10px; white-space: nowrap;
+        }
+        .cad-legend {
+          width: 19px; height: 19px; border-radius: 50%; display: inline-grid; place-items: center;
+          background: linear-gradient(135deg, var(--turquoise), var(--turquoise-ink)); color: var(--navy-900);
+          font-family: var(--ff-mono); font-style: italic; font-weight: 700; font-size: 11px;
+          box-shadow: 0 0 8px rgba(117,227,228,0.7);
+        }
+        @media (max-width: 900px) {
+          .cad-grid { grid-template-columns: 1fr 1fr; }
+          .cad-line { display: none; }
+        }
+        @media (max-width: 520px) { .cad-grid { grid-template-columns: 1fr; } }
+        @media (prefers-reduced-motion: reduce) { .cad-pulse { animation: none; display: none; } }
+      `}</style>
+    </section>
+  );
+}
+
 function IndustriaMap() {
   const fronts = [
     { c: BU_C.integration, icon: 'link',  step: '01', name: 'Enxergue a rede inteira', flow: 'SEWE Integration',
@@ -346,6 +454,7 @@ function IndustriaPage() {
           <a href="https://wa.me/5548984704389" className="btn btn-outline btn-lg">WhatsApp</a>
         </div>
       </PageHero>
+      <IndustriaCadeia/>
       <IndustriaMap/>
       <IntegrationSection/>
       <IndustriaNetworkPanel/>

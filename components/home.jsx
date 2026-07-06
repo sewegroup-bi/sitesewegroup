@@ -41,7 +41,7 @@ function AudienceChooser() {
       cta: 'Ver soluções', href: 'distribuidor.html',
     },
     {
-      icon: 'cpu', kicker: 'Outra empresa · Estratégia',
+      icon: 'cpu', kicker: 'Outra empresa',
       title: 'Sua operação, mais inteligente',
       desc: 'Para qualquer setor: tecnologia, dados, BI e IA para destravar a operação e decidir melhor.',
       cta: 'Ver soluções', href: 'solucoes.html',
