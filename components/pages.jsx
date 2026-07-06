@@ -276,8 +276,51 @@ function QuemSomosPage() {
         </div>
       </section>
 
-      {/* Mission / Vision / Values */}
+      {/* Atuação / mapa das Américas */}
       <section className="section" style={{ background: 'var(--bg-soft)' }}>
+        <div className="container">
+          <div className="atua-grid">
+            <div>
+              <div className="eyebrow">Onde atuamos</div>
+              <h2 style={{ marginTop: 14 }}>Do Brasil para as Américas.</h2>
+              <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 16, lineHeight: 1.65, maxWidth: 460 }}>
+                Atendemos distribuidores e indústrias em todos os estados do Brasil,
+                com operações internacionais em expansão pelo continente.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '26px 0 0', display: 'grid', gap: 14 }}>
+                {[
+                  { pais: 'Brasil', d: 'Presença em todos os estados' },
+                  { pais: 'Estados Unidos', d: 'Operação internacional' },
+                  { pais: 'Chile', d: 'Operação internacional' },
+                  { pais: 'Colômbia', d: 'Operação internacional' },
+                ].map((x, i) => (
+                  <li key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                    <span style={{ marginTop: 5, width: 14, height: 14, borderRadius: 4, background: 'linear-gradient(135deg, #2d436c, #3f7d8c)', flexShrink: 0 }}/>
+                    <div>
+                      <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 17, color: 'var(--navy-900)' }}>{x.pais}</div>
+                      <div style={{ fontSize: 13.5, color: 'var(--text-2)' }}>{x.d}</div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <div style={{ marginTop: 26, display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12.5, color: 'var(--text-3)' }}>
+                <span style={{ width: 11, height: 11, borderRadius: 3, background: 'linear-gradient(135deg, #2d436c, #3f7d8c)' }}/>
+                Países com operação SEWE
+              </div>
+            </div>
+            <div style={{ maxWidth: 480, margin: '0 auto', width: '100%' }}>
+              {typeof AmericasMap !== 'undefined' ? <AmericasMap/> : null}
+            </div>
+          </div>
+        </div>
+        <style>{`
+          .atua-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+          @media (max-width: 860px) { .atua-grid { grid-template-columns: 1fr; gap: 32px; } }
+        `}</style>
+      </section>
+
+      {/* Mission / Vision / Values */}
+      <section className="section" style={{ background: '#fff' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="pillar-grid">
             {vmv.map((v, i) => (

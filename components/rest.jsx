@@ -341,11 +341,11 @@ function AgendaSection() {
             pelo Google Meet, com um especialista SEWE.
           </p>
         </div>
-        <div style={{ maxWidth: 860, margin: '0 auto', border: '1px solid var(--line)', borderRadius: 16, overflow: 'hidden', boxShadow: 'var(--shadow-md)' }}>
+        <div style={{ maxWidth: 920, margin: '0 auto', border: '1px solid var(--line)', borderRadius: 16, overflow: 'hidden', boxShadow: 'var(--shadow-md)' }}>
           <iframe
             src={`${SEWE_AGENDA_URL}?gv=true`}
             title="Agendar demonstração · SEWE Group"
-            style={{ border: 0, width: '100%', height: 560, display: 'block', marginTop: -64 }}
+            style={{ border: 0, width: '100%', height: 900, display: 'block', marginTop: -170 }}
             loading="lazy"
           />
         </div>
