@@ -48,7 +48,7 @@ function AudienceChooser() {
     },
   ];
   return (
-    <section id="escolha" className="section" style={{ position: 'relative', paddingTop: 'clamp(16px, 2vw, 28px)' }}>
+    <section id="escolha" className="section" style={{ position: 'relative', paddingTop: 'clamp(16px, 2vw, 28px)', paddingBottom: 'clamp(16px, 2vw, 28px)' }}>
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 44px' }}>
           <div className="eyebrow">Comece aqui · Selecione uma opção</div>
@@ -149,9 +149,9 @@ function HomeLanding() {
         <div style={{ position: 'relative', zIndex: 1 }}>
           <HomePositioning/>
           <AudienceChooser/>
+          <AgendaSection bg="transparent"/>
         </div>
       </div>
-      <AgendaSection/>
     </>
   );
 }

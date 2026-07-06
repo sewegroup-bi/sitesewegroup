@@ -114,8 +114,8 @@ p { margin: 0; color: var(--text); text-wrap: pretty; }
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
-.section { padding: clamp(72px, 9vw, 128px) 0; }
-.section-sm { padding: clamp(48px, 6vw, 80px) 0; }
+.section { padding: clamp(52px, 6.5vw, 84px) 0; }
+.section-sm { padding: clamp(36px, 4.5vw, 60px) 0; }
 
 /* Buttons */
 .btn {
@@ -319,5 +319,5 @@ p { margin: 0; color: var(--text); text-wrap: pretty; }
 /* Responsive */
 @media (max-width: 860px) {
   :root { --gutter: 18px; }
-  .section { padding: 64px 0; }
+  .section { padding: 48px 0; }
 }

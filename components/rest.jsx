@@ -329,9 +329,9 @@ function Footer_DEPRECATED() {
 // ── Agendamento de demonstração (Google Calendar) ────────────
 const SEWE_AGENDA_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2yIYuW6dqFpPDvnfnUMcYwXjTQxw7v6PyBYRMXHJ0j6NH3WxHeXDwASsHWi2_udeUbjPMbu0Kw';
 
-function AgendaSection() {
+function AgendaSection({ bg = '#fff' }) {
   return (
-    <section id="agendar" className="section" style={{ background: '#fff' }}>
+    <section id="agendar" className="section" style={{ background: bg, paddingTop: 'clamp(28px, 3.5vw, 48px)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 36px' }}>
           <div className="eyebrow">Demonstração ao vivo</div>

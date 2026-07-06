@@ -322,8 +322,8 @@ function SuiteDashboard({ kind }) {
           { label: 'Campinas',      v: 68, display: '68%', color: Q.warn },
           { label: 'Goiânia',       v: 62, display: '62%', color: Q.warn },
           { label: 'Recife',        v: 54, display: '54%', color: Q.neg },
-        ]} max={100}/>
-        <QlikArea title="Receita · evolução 12m" subtitle="YoY +28%" data={[11,12,12.5,13,13.8,14.2,15,15.5,16.2,17,17.8,18.4]} labels={['M1','','','M4','','','M7','','','M10','','']} height={160}/>
+        ]} max={100} barH={18} gap={12}/>
+        <QlikArea title="Receita · evolução 12m" subtitle="YoY +28%" data={[11,12,12.5,13,13.8,14.2,15,15.5,16.2,17,17.8,18.4]} labels={['M1','','','M4','','','M7','','','M10','','']} height={250}/>
         <div style={{ background: '#fff', border: `1px solid ${Q.line}`, borderRadius: 10, padding: 14 }}>
           <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 13, color: Q.ink, marginBottom: 12 }}>Saúde do negócio</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
