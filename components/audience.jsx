@@ -400,6 +400,73 @@ function SolucoesOfferings() {
   );
 }
 
+/* Qlik por dentro — profundidade técnica */
+function SolucoesTech() {
+  const items = [
+    { icon: 'brain', t: 'Motor associativo in-memory', d: 'O Qlik indexa todas as relações entre os seus dados. Você explora em qualquer direção, sem consulta pré-montada e sem esperar o TI escrever SQL.' },
+    { icon: 'link', t: 'Pipelines e cargas incrementais', d: 'Extração do ERP com cargas incrementais agendadas, camadas de dados e modelagem dimensional. Histórico preservado e recarga sem pesar na origem.' },
+    { icon: 'shield', t: 'Segurança em nível de linha', d: 'Section Access nativo: cada usuário enxerga só a filial, a carteira ou o recorte que pode ver. SSO, criptografia e trilha de auditoria.' },
+    { icon: 'alert', t: 'Alertas orientados a dado', d: 'Alertas disparados pela condição do indicador, não por horário, direto no celular. Relatórios assinados chegam por e-mail no ritmo que você definir.' },
+    { icon: 'cpu', t: 'Embedded analytics e APIs', d: 'Dashboards embutidos em portais e sistemas próprios, com APIs REST para automação e integração ao restante do seu ecossistema.' },
+    { icon: 'trending', t: 'IA nativa + camada SEWE', d: 'A IA do Qlik somada aos algoritmos SEWE: previsão de demanda, alerta de churn e sugestão de compra rodando sobre o mesmo modelo de dados.' },
+  ];
+  const flow = [
+    { t: 'ERP e fontes', d: 'Qualquer origem de dados' },
+    { t: 'Engenharia SEWE', d: 'ETL, modelagem, governança' },
+    { t: 'Qlik Cloud', d: 'Analytics em região brasileira' },
+    { t: 'Decisão', d: 'Web, mobile, e-mail e alertas' },
+  ];
+  return (
+    <section className="section" style={{ background: '#fff' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 44px' }}>
+          <div className="eyebrow">Por dentro da tecnologia</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
+            Robustez de plataforma, <span style={{ color: 'var(--navy)' }}>sem caixa-preta</span>.
+          </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
+            Por baixo dos dashboards existe uma arquitetura de dados séria. É ela que sustenta decisão confiável em escala.
+          </p>
+        </div>
+        <div className="st-flow">
+          {flow.map((f, i) => (
+            <React.Fragment key={i}>
+              <div className="st-step reveal">
+                <div className="st-step-t">{f.t}</div>
+                <div className="st-step-d">{f.d}</div>
+              </div>
+              {i < flow.length - 1 && <span className="st-arrow" aria-hidden><Icon name="arrow" size={16} stroke={2.2}/></span>}
+            </React.Fragment>
+          ))}
+        </div>
+        <div className="st-grid">
+          {items.map((it, i) => (
+            <div key={i} className="st-card reveal">
+              <span className="st-icon"><Icon name={it.icon} size={20} stroke={1.8}/></span>
+              <div className="st-t">{it.t}</div>
+              <p className="st-d">{it.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <style>{`
+        .st-flow { display: flex; align-items: stretch; justify-content: center; gap: 10px; margin-bottom: 36px; flex-wrap: wrap; }
+        .st-step { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 20px; text-align: center; min-width: 170px; }
+        .st-step-t { font-family: var(--ff-display); font-weight: 700; font-size: 15px; color: var(--navy-900); }
+        .st-step-d { font-size: 12px; color: var(--text-3); margin-top: 4px; }
+        .st-arrow { align-self: center; color: var(--turquoise-ink); }
+        .st-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .st-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; box-shadow: var(--shadow-xs); }
+        .st-icon { width: 42px; height: 42px; border-radius: 11px; background: rgba(45,67,108,0.08); color: var(--navy-700); display: grid; place-items: center; margin-bottom: 14px; }
+        .st-t { font-family: var(--ff-display); font-weight: 700; font-size: 17px; color: var(--navy-900); margin-bottom: 8px; }
+        .st-d { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+        @media (max-width: 960px) { .st-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 640px) { .st-grid { grid-template-columns: 1fr; } .st-arrow { transform: rotate(90deg); width: 100%; display: grid; place-items: center; } }
+      `}</style>
+    </section>
+  );
+}
+
 /* How we work — 4-step process */
 function SolucoesProcess() {
   const steps = [
@@ -458,6 +525,7 @@ function SolucoesPage() {
         </div>
       </PageHero>
       <SolucoesOfferings/>
+      <SolucoesTech/>
       <SolucoesProcess/>
       <DifferentiatorsSection/>
       <CTASection/>

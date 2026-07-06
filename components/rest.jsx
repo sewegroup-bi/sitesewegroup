@@ -331,7 +331,7 @@ const SEWE_AGENDA_URL = 'https://calendar.google.com/calendar/appointments/sched
 
 function AgendaSection({ bg = '#fff' }) {
   return (
-    <section id="agendar" className="section" style={{ background: bg, paddingTop: 'clamp(28px, 3.5vw, 48px)' }}>
+    <section className="section" style={{ background: bg, paddingTop: 'clamp(28px, 3.5vw, 48px)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 36px' }}>
           <div className="eyebrow">Demonstração ao vivo</div>
@@ -341,11 +341,11 @@ function AgendaSection({ bg = '#fff' }) {
             pelo Google Meet, com um especialista SEWE.
           </p>
         </div>
-        <div style={{ maxWidth: 920, margin: '0 auto', border: '1px solid var(--line)', borderRadius: 16, overflow: 'hidden', boxShadow: 'var(--shadow-md)' }}>
+        <div id="agendar" style={{ maxWidth: 920, margin: '0 auto', border: '1px solid var(--line)', borderRadius: 16, overflow: 'hidden', boxShadow: 'var(--shadow-md)', scrollMarginTop: 90 }}>
           <iframe
             src={`${SEWE_AGENDA_URL}?gv=true`}
             title="Agendar demonstração · SEWE Group"
-            style={{ border: 0, width: '100%', height: 900, display: 'block', marginTop: -170 }}
+            style={{ border: 0, width: '100%', height: 1000, display: 'block' }}
             loading="lazy"
           />
         </div>
