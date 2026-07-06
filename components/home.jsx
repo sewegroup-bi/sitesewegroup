@@ -11,8 +11,15 @@ function HomePositioning() {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="hp-copy reveal in">
           <h1 className="display hp-h1">
-            A tecnologia de dados e IA que vira <span className="hp-hl">decisão</span>.
+            Dados que viram decisão.<br/>Decisão que vira <span className="hp-hl">margem</span>.
           </h1>
+          <p className="hp-lead">
+            BI, IA e Sales para distribuidores, atacadistas e indústrias.
+            Escolha o perfil da sua empresa e veja a solução certa para a sua operação.
+          </p>
+          <a href="#escolha" className="hp-down" aria-label="Ir para a escolha de perfil">
+            <Icon name="arrowDown" size={20} stroke={2}/>
+          </a>
         </div>
       </div>
     </section>
@@ -44,7 +51,7 @@ function AudienceChooser() {
     <section id="escolha" className="section" style={{ position: 'relative', paddingTop: 'clamp(16px, 2vw, 28px)' }}>
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 44px' }}>
-          <div className="eyebrow">Por onde você começa</div>
+          <div className="eyebrow">Comece aqui · Selecione uma opção</div>
           <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
             Qual o perfil da sua empresa?
           </h2>
@@ -90,7 +97,7 @@ function TrustBand() {
   const items = [
     { icon: 'trophy', t: 'Parceiro oficial Qlik', d: 'Analytics líder global, homologação e suporte local.' },
     { icon: 'star',   t: 'Prêmio SEWE',           d: 'Reconhecendo os distribuidores mais data-driven do país.', href: 'premio.html' },
-    { icon: 'shield', t: 'LGPD por projeto',       d: 'Dados cifrados, auditáveis e hospedados no Brasil.' },
+    { icon: 'shield', t: 'Segurança e LGPD',       d: 'Dados cifrados, auditáveis e hospedados no Brasil.' },
   ];
   return (
     <section className="section-sm" style={{ background: '#fff' }}>
@@ -144,6 +151,7 @@ function HomeLanding() {
           <AudienceChooser/>
         </div>
       </div>
+      <AgendaSection/>
       <CTASection/>
     </>
   );
@@ -169,6 +177,14 @@ function HomeLanding() {
     }
     .hp-lead { color: var(--text-2); font-size: 19px; line-height: 1.6; margin: 24px auto 0; max-width: 680px; }
     .hp-cta { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+    .hp-down {
+      display: inline-grid; place-items: center; width: 44px; height: 44px; margin-top: 30px;
+      border-radius: 999px; background: #fff; border: 1px solid var(--line);
+      color: var(--navy-900); box-shadow: var(--shadow-sm);
+      animation: hp-bounce 1.8s ease-in-out infinite;
+    }
+    @keyframes hp-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
+    @media (prefers-reduced-motion: reduce) { .hp-down { animation: none; } }
   `;
   document.head.appendChild(s);
 })();

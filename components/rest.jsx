@@ -22,7 +22,7 @@ function MaturitySection() {
           <div className="eyebrow">Níveis de maturidade</div>
           <h2 style={{ marginTop: 14 }}>SMART · SCALE · STRATEGIC.</h2>
           <p style={{ color: 'var(--text-2)', marginTop: 14, fontSize: 17 }}>
-            Entre pelo nível certo para seu momento. Evolua sem trocar de plataforma, o mesmo Qlik, as mesmas suítes, cada vez mais fundo.
+            Entre pelo nível certo para o seu momento. Evolua sem trocar de plataforma: o mesmo Qlik, as mesmas suítes, cada vez mais fundo.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="mat-grid">
@@ -87,7 +87,7 @@ function DifferentiatorsSection() {
     { icon: 'clock', title: 'Go-live em 30 dias', body: 'Do contrato à primeira decisão em produção. Processo guiado por consultoria, sem projeto longo de BI do zero.' },
     { icon: 'link', title: 'Integração nativa com ERPs', body: 'Conectores homologados para os principais ERPs do setor. Camada criptografada, sem precisar de time de TI interno.' },
     { icon: 'brain', title: 'IA invisível', body: 'Roda em background, limpa outliers, cruza dados e entrega decisão pronta. Sem prompts, sem engenharia, sem cientista de dados.' },
-    { icon: 'shield', title: 'LGPD por projeto', body: 'Dados cifrados em trânsito e repouso, homologação Qlik oficial, auditoria e política de retenção desenhadas por engajamento.' },
+    { icon: 'shield', title: 'Segurança e LGPD', body: 'Dados cifrados em trânsito e repouso, homologação Qlik oficial, auditoria e política de retenção desenhadas por projeto.' },
     { icon: 'pkg', title: 'DNA de distribuição', body: 'Consultores que falam ruptura, Curva A, positivação, rebate e capital de giro. Não traduzimos o setor, nós somos do setor.' },
     { icon: 'trophy', title: 'Parceria oficial Qlik', body: 'Platform Partner da Qlik, plataforma de analytics líder global, Leader no Gartner Magic Quadrant por 13 anos consecutivos.' },
   ];
@@ -124,9 +124,9 @@ function DifferentiatorsSection() {
 
 function CasesSection() {
   const cases = [
-    { co: 'MULTISEG', metric: '-20%', unit: 'em estoque parado', quote: 'Nos 6 primeiros meses, a SEWE mostrou exatamente onde o capital estava travando. Liberamos caixa para comprar o que gira.', person: 'Diretor de Compras', place: 'Multiseg Distribuição' },
-    { co: 'PETSUL', metric: '+35%', unit: 'de produtividade de vendas', quote: 'A força de vendas externa virou previsível. Cada vendedor recebe a próxima ação no celular, e a positivação saltou de 68% para 84%.', person: 'Diretor Comercial', place: 'PETSUL Atacado' },
-    { co: 'WMG', metric: '30 dias', unit: 'do contrato ao go-live', quote: 'Implantamos a suíte Financeira no prazo combinado. No primeiro fechamento, a DRE já saiu automatizada, sem planilha.', person: 'CFO', place: 'WMG Indústria' },
+    { co: 'MOCELIN', metric: '+15–20%', unit: 'de crescimento em vendas', quote: 'Eu associo esse crescimento ao SEWE BI: sem gestão de dados você não tem clareza de onde atacar. O BI hoje é minha principal ferramenta de gestão.', person: 'Neyla', place: 'Mocelin' },
+    { co: 'ELETRANSOL', metric: '−23,9%', unit: 'no churn de clientes', quote: 'Limitada ao ERP, a empresa ficaria parada no tempo. O BI é a nossa tela do cenário — e já projeta desempenho e atingimento de metas para o futuro.', person: 'Elioneis', place: 'Eletransol', href: 'vencedor-premio-2025-eletransol.html' },
+    { co: 'WMG', metric: '1 tela', unit: 'para decidir o que antes exigia várias fontes', quote: 'As compras ficaram mais assertivas. Antes buscávamos várias informações para decidir; hoje abrimos uma tela e tomamos a decisão.', person: 'Thiago', place: 'WMG' },
   ];
   return (
     <section id="cases" className="section" style={{ background: '#fff' }}>
@@ -136,7 +136,7 @@ function CasesSection() {
             <div className="eyebrow">Resultados que saem do papel</div>
             <h2 style={{ marginTop: 14 }}>Casos reais. Métricas reais.</h2>
           </div>
-          <a href="#" className="btn btn-outline btn-sm">Ver todos os cases <Icon name="arrow" size={12} className="chev"/></a>
+          <a href="premio.html" className="btn btn-outline btn-sm">Ver todos os cases <Icon name="arrow" size={12} className="chev"/></a>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="cases-grid">
           {cases.map((c, i) => (
@@ -153,9 +153,11 @@ function CasesSection() {
                   <div style={{ fontSize: 12, color: 'var(--text-3)' }}>{c.place}</div>
                 </div>
               </div>
-              <a href="#" style={{ marginTop: 4, fontSize: 13, color: 'var(--turquoise-ink)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                Ler case completo <Icon name="arrow" size={12}/>
-              </a>
+              {c.href && (
+                <a href={c.href} style={{ marginTop: 4, fontSize: 13, color: 'var(--turquoise-ink)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                  Ler case completo <Icon name="arrow" size={12}/>
+                </a>
+              )}
             </article>
           ))}
         </div>
@@ -212,6 +214,37 @@ function FAQSection() {
   );
 }
 
+// ── Destinos de lead ─────────────────────────────────────────
+// SEWE_CRM_ENDPOINT: cole aqui a URL do webhook/endpoint do Sewe CRM.
+// Enquanto estiver vazio, o formulário abre o WhatsApp com os dados preenchidos.
+const SEWE_CRM_ENDPOINT = '';
+const SEWE_WHATSAPP = 'https://wa.me/5548984704389';
+
+function submitLead(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form).entries());
+  data.origem = 'site-sewegroup';
+  data.pagina = window.location.pathname;
+
+  const openWhats = () => {
+    const msg = `Olá! Quero agendar um diagnóstico.\n\nNome: ${data.nome}\nE-mail: ${data.email}\nEmpresa: ${data.empresa}\nWhatsApp: ${data.whatsapp}`;
+    window.open(`${SEWE_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+  };
+
+  if (!SEWE_CRM_ENDPOINT) { openWhats(); return; }
+
+  fetch(SEWE_CRM_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  }).then(r => {
+    if (!r.ok) throw new Error();
+    form.reset();
+    alert('Recebemos seus dados! Nossa equipe entra em contato em breve.');
+  }).catch(() => openWhats()); // CRM fora do ar → lead não se perde
+}
+
 function CTASection() {
   return (
     <section id="diagnostico" className="section grain" style={{ background: 'linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 55%, var(--turquoise-ink) 120%)', color: '#fff', position: 'relative', overflow: 'hidden' }}>
@@ -236,18 +269,18 @@ function CTASection() {
             ))}
           </ul>
         </div>
-        <form onSubmit={(e) => { e.preventDefault(); alert('Diagnóstico solicitado. Um diretor SEWE retorna em até 4h úteis.'); }}
+        <form onSubmit={submitLead}
           style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 16, padding: 24, backdropFilter: 'blur(12px)' }}>
           <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 18, color: '#fff', marginBottom: 14 }}>Agendar diagnóstico</div>
           {[
-            { n: 'Nome', t: 'text', p: 'Maria Silva' },
-            { n: 'E-mail corporativo', t: 'email', p: 'maria@distribuidora.com.br' },
-            { n: 'Empresa', t: 'text', p: 'Distribuidora Sul' },
-            { n: 'Cargo', t: 'text', p: 'Diretora Comercial' },
+            { n: 'Nome', id: 'nome', t: 'text', p: 'Maria Silva' },
+            { n: 'E-mail corporativo', id: 'email', t: 'email', p: 'maria@distribuidora.com.br' },
+            { n: 'Empresa', id: 'empresa', t: 'text', p: 'Distribuidora Sul' },
+            { n: 'WhatsApp', id: 'whatsapp', t: 'tel', p: '(48) 90000-0000' },
           ].map(f => (
             <label key={f.n} style={{ display: 'block', marginBottom: 12 }}>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.66)', marginBottom: 6, fontWeight: 500 }}>{f.n}</div>
-              <input type={f.t} required placeholder={f.p} style={{
+              <input type={f.t} name={f.id} required placeholder={f.p} style={{
                 width: '100%', padding: '12px 14px', borderRadius: 8,
                 background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.18)',
                 color: '#fff', fontFamily: 'inherit', fontSize: 14,
@@ -259,6 +292,11 @@ function CTASection() {
           <button type="submit" className="btn btn-accent btn-lg" style={{ width: '100%', justifyContent: 'center', marginTop: 6 }}>
             Agendar agora <Icon name="arrow" size={16} className="chev"/>
           </button>
+          <a href={`${SEWE_WHATSAPP}?text=${encodeURIComponent('Olá! Quero agendar um diagnóstico com a SEWE.')}`}
+            target="_blank" rel="noopener" className="btn btn-outline"
+            style={{ width: '100%', justifyContent: 'center', marginTop: 10, color: '#fff', borderColor: 'rgba(255,255,255,0.35)' }}>
+            Prefiro falar no WhatsApp
+          </a>
           <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 10, textAlign: 'center' }}>
             Seus dados seguem a LGPD. Sem spam, sem vendedor insistente.
           </div>
@@ -274,4 +312,36 @@ function Footer_DEPRECATED() {
   return null;
 }
 
-Object.assign(window, { MaturitySection, DifferentiatorsSection, CasesSection, FAQSection, CTASection });
+// ── Agendamento de demonstração (Google Calendar) ────────────
+const SEWE_AGENDA_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2ylYuW6dqFpPDvnfnUMcYwXjTQxw7v6PyBYRMXHJ0j6NH3WxHeXDwASsHWi2_udeUbjPMbu0Kw';
+
+function AgendaSection() {
+  return (
+    <section id="agendar" className="section" style={{ background: '#fff' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 36px' }}>
+          <div className="eyebrow">Demonstração ao vivo</div>
+          <h2 style={{ marginTop: 14 }}>Agende uma demonstração com a nossa equipe.</h2>
+          <p style={{ color: 'var(--text-2)', marginTop: 14, fontSize: 17 }}>
+            Escolha o melhor horário na agenda abaixo. Reunião online de 60 minutos,
+            pelo Google Meet, com um especialista SEWE.
+          </p>
+        </div>
+        <div style={{ border: '1px solid var(--line)', borderRadius: 16, overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
+          <iframe
+            src={`${SEWE_AGENDA_URL}?gv=true`}
+            title="Agendar demonstração — SEWE Group"
+            style={{ border: 0, width: '100%', height: 640, display: 'block' }}
+            loading="lazy"
+          />
+        </div>
+        <div style={{ textAlign: 'center', marginTop: 14, fontSize: 13, color: 'var(--text-3)' }}>
+          Não achou horário? <a href={SEWE_AGENDA_URL} target="_blank" rel="noopener" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>Abra a agenda completa</a> ou
+          {' '}<a href={`${SEWE_WHATSAPP}?text=${encodeURIComponent('Olá! Quero agendar uma demonstração da SEWE.')}`} target="_blank" rel="noopener" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>chame no WhatsApp</a>.
+        </div>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { MaturitySection, DifferentiatorsSection, CasesSection, FAQSection, CTASection, AgendaSection });
