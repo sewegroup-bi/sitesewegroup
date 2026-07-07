@@ -26,14 +26,62 @@ function useReveal() {
 
 /* ── INDÚSTRIA ───────────────────────────────────────────── */
 
-/* A cadeia do setor, conectada: pedido, produto e pagamento circulando, tudo virando dado na SEWE */
+/* A jornada real da cadeia: cada evento (pedido, produto, pagamento) percorre o trecho
+   exato onde ele acontece de verdade, em sequência, com uma luz viajando pela linha e
+   um legendário explicando o que está rolando. Interativo: clique em qualquer etapa. */
+const CADEIA_NODES = [
+  { cx: 125, t: 'Consumidor final', sub: 'Compra e gera o dado', icon: 'user' },
+  { cx: 375, t: 'PDV · Revenda', sub: 'Loja · Integrador · Revendedor', icon: 'store' },
+  { cx: 625, t: 'Distribuidor', sub: 'Vendas · Estoque · Financeiro', icon: 'wh' },
+  { cx: 875, t: 'Indústria', sub: 'Marca · Comercial · Diretoria', icon: 'fac' },
+];
+const CADEIA_TYPES = {
+  pedido:    { color: '#75e3e4', label: 'PEDIDO',    y: 176, icon: 'receipt' },
+  produto:   { color: '#aab7d0', label: 'PRODUTO',   y: 214, icon: 'box' },
+  pagamento: { color: '#f0b429', label: 'PAGAMENTO', y: 252, icon: 'coin' },
+};
+const CADEIA_STEPS = [
+  { type: 'pedido',    a: 0, b: 1, text: 'O consumidor faz o pedido no PDV, na loja ou no integrador.' },
+  { type: 'produto',   a: 1, b: 0, text: 'O produto sai da prateleira e a compra chega às mãos do consumidor.' },
+  { type: 'pagamento', a: 0, b: 1, text: 'O consumidor paga a compra ali, na ponta.' },
+  { type: 'pedido',    a: 1, b: 2, text: 'Estoque baixou: a revenda pede reposição ao distribuidor.' },
+  { type: 'produto',   a: 2, b: 1, text: 'O distribuidor separa e despacha o estoque para a revenda.' },
+  { type: 'pagamento', a: 1, b: 2, text: 'A revenda paga o distribuidor pelo pedido recebido.' },
+  { type: 'pedido',    a: 2, b: 3, text: 'Para repor o CD, o distribuidor compra da indústria.' },
+  { type: 'produto',   a: 3, b: 2, text: 'A indústria fabrica e despacha o lote para o distribuidor.' },
+  { type: 'pagamento', a: 2, b: 3, text: 'O distribuidor paga a indústria pelo lote recebido.' },
+];
+const CADEIA_ICONS = {
+  receipt: 'M-5,-8 H5 V8 L2.5,6 L0,8 L-2.5,6 L-5,8 Z M-3,-4 H3 M-3,-1 H3 M-3,2 H1',
+  box: 'M-8,-2 L0,-6 L8,-2 L0,2 Z M-8,-2 V6 L0,10 V2 M8,-2 V6 L0,10',
+  coin: 'M0,0 m-8,0 a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0 M0,-4 V4 M-2.6,-2.2 h4.4 a2,2 0 0 1 0,4 h-3 a2,2 0 0 0 0,4 h4.6',
+};
+
+function CadeiaGlyph({ type, cx, cy, color }) {
+  return (
+    <g transform={`translate(${cx},${cy})`} fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d={CADEIA_ICONS[CADEIA_TYPES[type].icon]}/>
+    </g>
+  );
+}
+
 function IndustriaCadeia() {
-  const NODES = [
-    { cx: 125, t: 'Consumidor final', sub: 'Compra e gera o dado', icon: 'user' },
-    { cx: 375, t: 'PDV · Revenda', sub: 'Loja · Integrador · Revendedor', icon: 'store' },
-    { cx: 625, t: 'Distribuidor', sub: 'Vendas · Estoque · Financeiro', icon: 'wh' },
-    { cx: 875, t: 'Indústria', sub: 'Marca · Comercial · Diretoria', icon: 'fac' },
-  ];
+  const [active, setActive] = React.useState(0);
+  const [playing, setPlaying] = React.useState(true);
+  const reduceMotion = React.useMemo(() => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches, []);
+  const STEP_MS = 3200;
+
+  React.useEffect(() => {
+    if (!playing) return;
+    const t = setTimeout(() => setActive(i => (i + 1) % CADEIA_STEPS.length), STEP_MS);
+    return () => clearTimeout(t);
+  }, [active, playing]);
+
+  const step = CADEIA_STEPS[active];
+  const tinfo = CADEIA_TYPES[step.type];
+  const na = CADEIA_NODES[step.a], nb = CADEIA_NODES[step.b];
+  const dur = ((STEP_MS - 900) / 1000).toFixed(1) + 's';
+
   const NodeIcon = ({ type, cx, cy }) => {
     const s = { fill: 'none', stroke: '#8fd9de', strokeWidth: 1.8, strokeLinejoin: 'round', strokeLinecap: 'round' };
     if (type === 'user') return (<g {...s}><circle cx={cx} cy={cy - 4} r={5}/><path d={`M${cx - 8},${cy + 11} a8,7 0 0 1 16,0`}/></g>);
@@ -41,95 +89,113 @@ function IndustriaCadeia() {
     if (type === 'wh') return (<g {...s}><path d={`M${cx - 11},${cy + 11} V${cy - 4} L${cx},${cy - 11} L${cx + 11},${cy - 4} V${cy + 11}`}/><path d={`M${cx - 4},${cy + 11} V${cy + 2} H${cx + 4} V${cy + 11}`}/></g>);
     return (<g {...s}><path d={`M${cx - 11},${cy + 11} V${cy - 2} L${cx - 4},${cy + 3} V${cy - 2} L${cx + 3},${cy + 3} V${cy - 2} L${cx + 10},${cy + 3} V${cy + 11} Z`}/><path d={`M${cx - 9},${cy - 5} V${cy - 11} H${cx - 6} V${cy - 6}`}/></g>);
   };
-  const LANES = [
-    { y: 172, color: '#aab7d0', label: 'PRODUTO', dir: 'left',  dur: '9s' },
-    { y: 206, color: '#75e3e4', label: 'PEDIDO', dir: 'right', dur: '7s' },
-    { y: 240, color: '#f0b429', label: 'PAGAMENTO', dir: 'right', dur: '11s' },
-  ];
+
   const CONV = [
-    'M125,258 C125,320 300,348 486,362',
-    'M375,258 C375,318 428,344 492,358',
-    'M625,258 C625,318 572,344 508,358',
-    'M875,258 C875,320 700,348 514,362',
+    'M125,272 C125,326 300,350 486,362',
+    'M375,272 C375,324 428,346 492,358',
+    'M625,272 C625,324 572,346 508,358',
+    'M875,272 C875,326 700,350 514,362',
   ];
+
   return (
     <section className="section" style={{ background: 'var(--bg-soft)', overflow: 'hidden' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 40px' }}>
           <div className="eyebrow">A cadeia conectada</div>
           <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Pedido, produto e pagamento. <span style={{ color: 'var(--navy)' }}>Tudo circulando, tudo virando dado</span>.
+            Pedido, produto e pagamento. <span style={{ color: 'var(--navy)' }}>O caminho real, passo a passo</span>.
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            O pedido sobe do consumo até a fábrica. O produto desce da fábrica até a ponta.
-            O pagamento percorre o caminho de volta. A SEWE capta os três fluxos e devolve
-            um só painel, atualizado em tempo real.
+            Do consumidor até a indústria, cada pedido, cada entrega e cada pagamento segue um trajeto real.
+            Veja a informação viajando pela cadeia, exatamente como ela acontece, e clique numa etapa para pular pra ela.
           </p>
         </div>
 
         <div className="cad2-panel">
           <svg viewBox="0 0 1000 452" role="img" style={{ width: '100%', height: 'auto', display: 'block' }}
-            aria-label="A cadeia do setor: pedido, produto e pagamento circulando entre consumidor, revenda, distribuidor e indústria, com todos os dados convergindo para a SEWE">
+            aria-label={`Cadeia conectada, etapa atual: ${step.text}`}>
             <defs>
-              <marker id="cadmL" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                <path d="M10,0 L0,5 L10,10 Z" fill="#aab7d0"/>
-              </marker>
-              <marker id="cadmT" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                <path d="M0,0 L10,5 L0,10 Z" fill="#75e3e4"/>
-              </marker>
-              <marker id="cadmG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                <path d="M0,0 L10,5 L0,10 Z" fill="#f0b429"/>
-              </marker>
+              <filter id="cadGlow" x="-200%" y="-200%" width="500%" height="500%">
+                <feGaussianBlur stdDeviation="4.2" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              {Object.entries(CADEIA_TYPES).map(([k, v]) => (
+                <marker key={k} id={`arrow-${k}`} viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+                  <path d="M0,0 L10,5 L0,10 Z" fill={v.color}/>
+                </marker>
+              ))}
             </defs>
 
             {/* colunas: liga cada elo às pistas */}
-            {NODES.map((n, i) => (
-              <line key={i} x1={n.cx} y1={130} x2={n.cx} y2={258} stroke="rgba(255,255,255,0.08)" strokeWidth="1.5"/>
+            {CADEIA_NODES.map((n, i) => (
+              <line key={i} x1={n.cx} y1={130} x2={n.cx} y2={272} stroke="rgba(255,255,255,0.08)" strokeWidth="1.5"/>
             ))}
 
-            {/* pistas de fluxo */}
-            {LANES.map((l, i) => {
-              const left = l.dir === 'left';
-              return (
-                <g key={i}>
-                  <text x={62} y={l.y - 9} fontFamily="JetBrains Mono, monospace" fontSize="10" fontWeight="600" letterSpacing="2" fill={l.color} opacity="0.85">
-                    {left ? '← ' + l.label : l.label + ' →'}
-                  </text>
-                  <line x1={left ? 938 : 62} y1={l.y} x2={left ? 62 : 938} y2={l.y}
-                    stroke={l.color} strokeOpacity="0.35" strokeWidth="1.5"
-                    markerEnd={`url(#${left ? 'cadmL' : (l.label === 'PEDIDO' ? 'cadmT' : 'cadmG')})`}/>
-                  <line className={left ? 'cad2-dash-l' : 'cad2-dash-r'} x1={62} y1={l.y} x2={938} y2={l.y}
-                    stroke={l.color} strokeWidth="2.4" strokeLinecap="round"/>
-                  {[0, 1].map(k => (
-                    <circle key={k} r="4.5" fill={l.color} opacity="0.95">
-                      <animateMotion dur={l.dur} begin={`${k * (parseFloat(l.dur) / 2)}s`} repeatCount="indefinite"
-                        path={left ? `M938,${l.y} L62,${l.y}` : `M62,${l.y} L938,${l.y}`}/>
-                    </circle>
-                  ))}
-                </g>
-              );
-            })}
+            {/* pistas base (fantasma) */}
+            {Object.entries(CADEIA_TYPES).map(([k, v]) => (
+              <g key={k}>
+                <text x={62} y={v.y - 9} fontFamily="JetBrains Mono, monospace" fontSize="10" fontWeight="600" letterSpacing="2" fill={v.color} opacity={step.type === k ? 0.95 : 0.35}>
+                  {v.label}
+                </text>
+                <line x1={62} y1={v.y} x2={938} y2={v.y} stroke={v.color} strokeOpacity={step.type === k ? 0.16 : 0.08} strokeWidth="1.5"/>
+              </g>
+            ))}
 
-            {/* convergência para a SEWE */}
+            {/* segmento ativo da etapa atual */}
+            {!reduceMotion && (
+              <line key={`seg-${active}`} x1={na.cx} y1={tinfo.y} x2={nb.cx} y2={tinfo.y}
+                stroke={tinfo.color} strokeWidth="2.6" strokeLinecap="round" strokeOpacity="0.9"
+                markerEnd={`url(#arrow-${step.type})`} className="cad3-seg" style={{ '--seglen': Math.abs(nb.cx - na.cx) }}/>
+            )}
+            {reduceMotion && (
+              <line x1={na.cx} y1={tinfo.y} x2={nb.cx} y2={tinfo.y}
+                stroke={tinfo.color} strokeWidth="2.6" strokeLinecap="round" strokeOpacity="0.9"
+                markerEnd={`url(#arrow-${step.type})`}/>
+            )}
+
+            {/* luz viajando */}
+            {!reduceMotion && (
+              <g key={`dot-${active}`} filter="url(#cadGlow)">
+                <circle r="6" fill={tinfo.color}>
+                  <animateMotion dur={dur} begin="0s" fill="freeze" path={`M${na.cx},${tinfo.y} L${nb.cx},${tinfo.y}`}/>
+                </circle>
+                <g opacity="0.95">
+                  <animateMotion dur={dur} begin="0s" fill="freeze" path={`M${na.cx},${tinfo.y} L${nb.cx},${tinfo.y}`}/>
+                  <CadeiaGlyph type={step.type} cx={0} cy={-16} color={tinfo.color}/>
+                </g>
+              </g>
+            )}
+            {reduceMotion && (
+              <circle cx={nb.cx} cy={tinfo.y} r="6" fill={tinfo.color}/>
+            )}
+
+            {/* convergência ambiente para a SEWE */}
             {CONV.map((d, i) => (
               <g key={i}>
-                <path d={d} fill="none" stroke="#75e3e4" strokeOpacity="0.16" strokeWidth="1.5"/>
-                <circle r="3.6" fill="#75e3e4">
-                  <animateMotion dur="3.4s" begin={`${i * 0.85}s`} repeatCount="indefinite" path={d}/>
-                </circle>
+                <path d={d} fill="none" stroke="#75e3e4" strokeOpacity="0.14" strokeWidth="1.5"/>
+                {!reduceMotion && (
+                  <circle r="3.2" fill="#75e3e4">
+                    <animateMotion dur="3.4s" begin={`${i * 0.85}s`} repeatCount="indefinite" path={d}/>
+                  </circle>
+                )}
               </g>
             ))}
 
             {/* elos da cadeia */}
-            {NODES.map((n, i) => (
-              <g key={i} className="cad2-node">
-                <rect x={n.cx - 102} y={30} width={204} height={100} rx={14}
-                  fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.16)" strokeWidth="1"/>
-                <NodeIcon type={n.icon} cx={n.cx} cy={58}/>
-                <text x={n.cx} y={96} textAnchor="middle" fontFamily="Chakra Petch, sans-serif" fontWeight="700" fontSize="16" fill="#fff">{n.t}</text>
-                <text x={n.cx} y={116} textAnchor="middle" fontSize="10.5" fill="rgba(255,255,255,0.55)">{n.sub}</text>
-              </g>
-            ))}
+            {CADEIA_NODES.map((n, i) => {
+              const isActive = i === step.a || i === step.b;
+              return (
+                <g key={i} className={`cad3-node${isActive ? ' is-active' : ''}`} style={{ '--nc': tinfo.color }}>
+                  <rect x={n.cx - 102} y={30} width={204} height={100} rx={14}
+                    fill={isActive ? 'rgba(117,227,228,0.07)' : 'rgba(255,255,255,0.045)'}
+                    stroke={isActive ? tinfo.color : 'rgba(255,255,255,0.16)'}
+                    strokeOpacity={isActive ? 0.8 : 1} strokeWidth={isActive ? 1.6 : 1}/>
+                  <NodeIcon type={n.icon} cx={n.cx} cy={58}/>
+                  <text x={n.cx} y={96} textAnchor="middle" fontFamily="Chakra Petch, sans-serif" fontWeight="700" fontSize="16" fill="#fff">{n.t}</text>
+                  <text x={n.cx} y={116} textAnchor="middle" fontSize="10.5" fill="rgba(255,255,255,0.55)">{n.sub}</text>
+                </g>
+              );
+            })}
 
             {/* hub SEWE */}
             <rect x={392} y={338} width={216} height={54} rx={27}
@@ -138,9 +204,30 @@ function IndustriaCadeia() {
             <text x={500} y={379} textAnchor="middle" fontSize="10.5" fill="rgba(255,255,255,0.6)" letterSpacing="1.5">DADOS · BI · IA · TEMPO REAL</text>
 
             <text x={500} y={434} textAnchor="middle" fontSize="13" fill="rgba(255,255,255,0.55)">
-              Os três fluxos viram um só painel: sellout, estoque e financeiro de ponta a ponta, em tempo real.
+              Cada etapa vira dado na hora: sellout, estoque e financeiro de ponta a ponta, em tempo real.
             </text>
           </svg>
+
+          {/* legenda / controle da jornada */}
+          <div className="cad3-console">
+            <button className="cad3-play" onClick={() => setPlaying(p => !p)} aria-label={playing ? 'Pausar' : 'Reproduzir'}>
+              <Icon name={playing ? 'pause' : 'play'} size={16} stroke={2.2}/>
+            </button>
+            <div className="cad3-caption" key={active}>
+              <span className="cad3-caption-tag" style={{ '--c': tinfo.color }}>
+                <CadeiaGlyphMini type={step.type} color={tinfo.color}/> {tinfo.label}
+              </span>
+              <span className="cad3-caption-text">{step.text}</span>
+            </div>
+            <div className="cad3-steps">
+              {CADEIA_STEPS.map((s, i) => (
+                <button key={i} className={`cad3-dot${i === active ? ' is-active' : ''}`}
+                  style={{ '--c': CADEIA_TYPES[s.type].color }}
+                  onClick={() => { setActive(i); }}
+                  aria-label={`Etapa ${i + 1}: ${s.text}`}/>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
       <style>{`
@@ -151,20 +238,65 @@ function IndustriaCadeia() {
           box-shadow: var(--shadow-lg);
           padding: clamp(10px, 2vw, 26px);
         }
-        .cad2-dash-r { stroke-dasharray: 5 14; animation: cad2r 1.1s linear infinite; }
-        .cad2-dash-l { stroke-dasharray: 5 14; animation: cad2l 1.1s linear infinite; }
-        @keyframes cad2r { to { stroke-dashoffset: -19; } }
-        @keyframes cad2l { to { stroke-dashoffset: 19; } }
         .cad2-hub { animation: cad2glow 2.6s ease-in-out infinite; }
         @keyframes cad2glow {
           0%, 100% { stroke-opacity: 0.4; }
           50% { stroke-opacity: 1; }
         }
+        .cad3-node rect { transition: fill .35s ease, stroke .35s ease, stroke-width .35s ease; }
+        .cad3-node.is-active rect { filter: drop-shadow(0 0 8px var(--nc)); }
+        .cad3-seg { stroke-dasharray: 5 12; animation: cad3flow 1.1s linear infinite; }
+        @keyframes cad3flow { to { stroke-dashoffset: -17; } }
+
+        .cad3-console {
+          display: flex; align-items: center; gap: 16px;
+          margin-top: 18px; padding: 14px 18px;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 14px;
+          flex-wrap: wrap;
+        }
+        .cad3-play {
+          flex: none; width: 38px; height: 38px; border-radius: 50%;
+          background: rgba(117,227,228,0.12); border: 1px solid rgba(117,227,228,0.4);
+          color: #75e3e4; display: flex; align-items: center; justify-content: center;
+          transition: background .2s ease, transform .15s ease;
+        }
+        .cad3-play:hover { background: rgba(117,227,228,0.22); transform: translateY(-1px); }
+        .cad3-caption { flex: 1 1 320px; min-width: 240px; display: flex; flex-direction: column; gap: 4px;
+          animation: cad3fade .4s ease; }
+        @keyframes cad3fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+        .cad3-caption-tag {
+          display: inline-flex; align-items: center; gap: 6px;
+          font-family: var(--ff-mono); font-size: 11px; font-weight: 600; letter-spacing: .12em;
+          color: var(--c);
+        }
+        .cad3-caption-text { color: rgba(255,255,255,0.82); font-size: 14.5px; line-height: 1.4; }
+        .cad3-steps { display: flex; gap: 7px; flex: none; }
+        .cad3-dot {
+          width: 9px; height: 9px; border-radius: 50%;
+          background: rgba(255,255,255,0.18);
+          transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+        }
+        .cad3-dot:hover { background: rgba(255,255,255,0.4); transform: scale(1.2); }
+        .cad3-dot.is-active { background: var(--c); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 25%, transparent); transform: scale(1.25); }
+        @media (max-width: 720px) {
+          .cad3-console { flex-direction: column; align-items: stretch; }
+          .cad3-steps { justify-content: center; flex-wrap: wrap; }
+        }
         @media (prefers-reduced-motion: reduce) {
-          .cad2-dash-r, .cad2-dash-l, .cad2-hub { animation: none; }
+          .cad2-hub, .cad3-seg { animation: none; }
         }
       `}</style>
     </section>
+  );
+}
+
+function CadeiaGlyphMini({ type, color }) {
+  return (
+    <svg width="13" height="13" viewBox="-10 -10 20 20" style={{ display: 'inline-block', verticalAlign: '-2px' }}>
+      <path d={CADEIA_ICONS[CADEIA_TYPES[type].icon]} fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
   );
 }
 

@@ -71,6 +71,8 @@ const Icon = ({ name, size = 18, stroke = 1.75, className = '', style = {} }) =>
     line:        <g><path d="M3 12h4l3-7 4 14 3-7h4"/></g>,
     search:      <g><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></g>,
     chevron:     <path d="m9 6 6 6-6 6"/>,
+    play:        <path d="M6 4l14 8-14 8V4z" fill="currentColor" stroke="none"/>,
+    pause:       <g fill="currentColor" stroke="none"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></g>,
   };
   return <svg {...common}>{paths[name]}</svg>;
 };
