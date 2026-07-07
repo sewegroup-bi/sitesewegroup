@@ -31,7 +31,7 @@ function AudienceChooser() {
     {
       icon: 'factory', kicker: 'Sou indústria',
       title: 'Enxergue toda a sua rede',
-      desc: 'Do sellout ao PDV: Integration, BI e Sales conectando fábrica, distribuidor e revenda em um só mapa.',
+      desc: 'Do sellout ao PDV: Integration, Sales e BI conectando fábrica, distribuidor e revenda em um só mapa.',
       cta: 'Ver o ecossistema', href: 'industria.html',
     },
     {

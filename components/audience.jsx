@@ -26,72 +26,87 @@ function useReveal() {
 
 /* ── INDÚSTRIA ───────────────────────────────────────────── */
 
-/* A jornada real da cadeia: cada evento (pedido, produto, pagamento) percorre o trecho
-   exato onde ele acontece de verdade, em sequência, com uma luz viajando pela linha e
-   um legendário explicando o que está rolando. Interativo: clique em qualquer etapa. */
-const CADEIA_NODES = [
-  { cx: 125, t: 'Consumidor final', sub: 'Compra e gera o dado', icon: 'user' },
-  { cx: 375, t: 'PDV · Revenda', sub: 'Loja · Integrador · Revendedor', icon: 'store' },
-  { cx: 625, t: 'Distribuidor', sub: 'Vendas · Estoque · Financeiro', icon: 'wh' },
-  { cx: 875, t: 'Indústria', sub: 'Marca · Comercial · Diretoria', icon: 'fac' },
-];
-const CADEIA_TYPES = {
-  pedido:    { color: '#75e3e4', label: 'PEDIDO',    y: 176, icon: 'receipt' },
-  produto:   { color: '#aab7d0', label: 'PRODUTO',   y: 214, icon: 'box' },
-  pagamento: { color: '#f0b429', label: 'PAGAMENTO', y: 252, icon: 'coin' },
-};
-const CADEIA_STEPS = [
-  { type: 'pedido',    a: 0, b: 1, text: 'O consumidor faz o pedido no PDV, na loja ou no integrador.' },
-  { type: 'produto',   a: 1, b: 0, text: 'O produto sai da prateleira e a compra chega às mãos do consumidor.' },
-  { type: 'pagamento', a: 0, b: 1, text: 'O consumidor paga a compra ali, na ponta.' },
-  { type: 'pedido',    a: 1, b: 2, text: 'Estoque baixou: a revenda pede reposição ao distribuidor.' },
-  { type: 'produto',   a: 2, b: 1, text: 'O distribuidor separa e despacha o estoque para a revenda.' },
-  { type: 'pagamento', a: 1, b: 2, text: 'A revenda paga o distribuidor pelo pedido recebido.' },
-  { type: 'pedido',    a: 2, b: 3, text: 'Para repor o CD, o distribuidor compra da indústria.' },
-  { type: 'produto',   a: 3, b: 2, text: 'A indústria fabrica e despacha o lote para o distribuidor.' },
-  { type: 'pagamento', a: 2, b: 3, text: 'O distribuidor paga a indústria pelo lote recebido.' },
-];
-const CADEIA_ICONS = {
-  receipt: 'M-5,-8 H5 V8 L2.5,6 L0,8 L-2.5,6 L-5,8 Z M-3,-4 H3 M-3,-1 H3 M-3,2 H1',
-  box: 'M-8,-2 L0,-6 L8,-2 L0,2 Z M-8,-2 V6 L0,10 V2 M8,-2 V6 L0,10',
-  coin: 'M0,0 m-8,0 a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0 M0,-4 V4 M-2.6,-2.2 h4.4 a2,2 0 0 1 0,4 h-3 a2,2 0 0 0 0,4 h4.6',
-};
-
-function CadeiaGlyph({ type, cx, cy, color }) {
-  return (
-    <g transform={`translate(${cx},${cy})`} fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-      <path d={CADEIA_ICONS[CADEIA_TYPES[type].icon]}/>
-    </g>
-  );
-}
-
-function IndustriaCadeia() {
+/* Visão do ecossistema em 4 abas, no mesmo padrão das Suítes do distribuidor:
+   pill-tabs em cima, cópia + CTA à esquerda, dashboard estilo Qlik à direita.
+   Cada aba recorta a cadeia consumidor -> revenda -> distribuidor -> indústria
+   pela lente daquela frente, com dado ilustrativo do que a indústria passa a ver. */
+function IndustriaEcosystem() {
   const [active, setActive] = React.useState(0);
-  const [playing, setPlaying] = React.useState(true);
-  const reduceMotion = React.useMemo(() => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches, []);
-  const STEP_MS = 3200;
 
-  React.useEffect(() => {
-    if (!playing) return;
-    const t = setTimeout(() => setActive(i => (i + 1) % CADEIA_STEPS.length), STEP_MS);
-    return () => clearTimeout(t);
-  }, [active, playing]);
+  const views = [
+    {
+      key: 'todo',
+      label: 'Ecossistema Sewe',
+      icon: 'link',
+      tagline: 'Prever e agir, não só enxergar.',
+      title: 'Preveja a ruptura antes que ela vire venda perdida.',
+      body: 'Não é só visibilidade, é controle: a indústria equilibra sell-in e sell-out sem o efeito chicote, antecipa a ruptura e sabe exatamente onde crescer, sem depender de ligação do distribuidor.',
+      kpis: [{ v: 'R$ 128,4M', l: 'volume de vendas da rede' }, { v: '3,4%', l: 'ruptura média identificada' }, { v: '340', l: 'gaps de portfólio mapeados' }],
+      bullets: [
+        'Ruptura Zero: veja qual PDV ficou sem o seu produto antes do consumidor trocar de marca',
+        'Sell-in e sell-out equilibrados, sem superestocar nem desabastecer o distribuidor',
+        'Gaps de portfólio por revenda, com sugestão automática de cross-sell',
+        'Trade marketing no mesmo dia, direto na região onde o produto está encalhando',
+      ],
+      dashboard: 'todo',
+    },
+    {
+      key: 'integration',
+      label: 'Integration',
+      icon: 'link',
+      pillColor: BU_C.integration.color,
+      tagline: 'Governança comercial entre indústria e distribuidor.',
+      title: 'As regras da indústria, executadas à risca em toda a rede.',
+      body: 'O Integration não liga só sistemas: garante que preço, produto e política comercial valham para todo distribuidor. Qualquer divergência é bloqueada na hora, antes de virar prejuízo de margem.',
+      kpis: [{ v: 'R$ 42,6M', l: 'faturamento sincronizado / mês' }, { v: '126', l: 'divergências de preço bloqueadas / mês' }, { v: '98%', l: 'sem retrabalho manual' }],
+      bullets: [
+        'Governança de preço absoluta: todo distribuidor opera com a tabela e a política comercial vigente, sem espaço para desconto indevido',
+        'Visibilidade de estoque para produção: saiba o nível de estoque de toda a rede para planejar a linha de produção sem desperdício',
+        'Planejamento de demanda (S&OP) com dado real: a fábrica sabe o que produzir na próxima semana, sem achismo',
+        'Faturamento consolidado em segundos, sem esperar semanas para fechar o balanço da marca na rede',
+      ],
+      dashboard: 'integration',
+    },
+    {
+      key: 'sales',
+      label: 'Sales',
+      icon: 'store',
+      pillColor: BU_C.sales.color,
+      tagline: 'Fim do telefone sem fio entre revenda, distribuidor e indústria.',
+      title: 'Tira a venda do WhatsApp. Coloca todo mundo no mesmo trilho.',
+      body: 'Chega de orçamento perdido em PDF e aprovação que trava a venda. Vendedor, distribuidor e indústria enxergam o mesmo pedido, em tempo real, do balcão à diretoria.',
+      kpis: [{ v: '2.340', l: 'orçamentos no app / mês' }, { v: '1,8h', l: 'tempo médio de aprovação' }, { v: '78%', l: 'taxa de aprovação' }],
+      bullets: [
+        'Fim dos orçamentos em PDF pelo WhatsApp: o vendedor gera a proposta no app com preço e estoque sempre atualizados pela marca',
+        'Aprovação sem burocracia: o distribuidor recebe o alerta de desconto no sistema e aprova em minutos, média de 1,8h',
+        'Campanha de incentivo que funciona: a indústria cria e ela aparece na hora na tela do vendedor, no balcão',
+        'A mesma visão para todo mundo: o número que a indústria usa pra planejar produção é o mesmo que o distribuidor usa pra cobrar a equipe',
+      ],
+      dashboard: 'sales',
+    },
+    {
+      key: 'bi',
+      label: 'BI',
+      icon: 'brain',
+      pillColor: BU_C.bi.color,
+      tagline: 'O conselheiro estratégico da rede.',
+      title: 'A inteligência que conecta as pontas: da fábrica à gôndola.',
+      body: 'O SEWE BI cruza comercial, supply chain, financeiro e trade marketing num só modelo de dado. Não é olhar pra trás: é prever o que vem e apontar onde agir antes da concorrência.',
+      kpis: [{ v: '1,04x', l: 'índice saúde do canal · sell-in/sell-out' }, { v: '91%', l: 'assertividade da previsão de demanda' }, { v: '3,2x', l: 'ROI médio de trade marketing' }],
+      bullets: [
+        'Relacione o sell-in com o sell-out real e evite o efeito chicote nos estoques',
+        'Previsibilidade de demanda apoiada por IA, baseada no giro real da ponta',
+        'Meça o ROI das campanhas de trade e a rentabilidade real por distribuidor',
+        'Detecte anomalias de mercado, como ruptura ou queda brusca, em tempo real',
+      ],
+      dashboard: 'bi',
+    },
+  ];
 
-  const step = CADEIA_STEPS[active];
-  const tinfo = CADEIA_TYPES[step.type];
-  const na = CADEIA_NODES[step.a], nb = CADEIA_NODES[step.b];
-  const dur = ((STEP_MS - 900) / 1000).toFixed(1) + 's';
-
-  const NodeIcon = ({ type, cx, cy }) => {
-    const s = { fill: 'none', stroke: '#8fd9de', strokeWidth: 1.8, strokeLinejoin: 'round', strokeLinecap: 'round' };
-    if (type === 'user') return (<g {...s}><circle cx={cx} cy={cy - 4} r={5}/><path d={`M${cx - 8},${cy + 11} a8,7 0 0 1 16,0`}/></g>);
-    if (type === 'store') return (<g {...s}><path d={`M${cx - 11},${cy - 3} L${cx - 9},${cy - 9} H${cx + 9} L${cx + 11},${cy - 3} Z`}/><path d={`M${cx - 9},${cy - 3} V${cy + 11} H${cx + 9} V${cy - 3}`}/><path d={`M${cx - 2},${cy + 11} V${cy + 4} H${cx + 5} V${cy + 11}`}/></g>);
-    if (type === 'wh') return (<g {...s}><path d={`M${cx - 11},${cy + 11} V${cy - 4} L${cx},${cy - 11} L${cx + 11},${cy - 4} V${cy + 11}`}/><path d={`M${cx - 4},${cy + 11} V${cy + 2} H${cx + 4} V${cy + 11}`}/></g>);
-    return (<g {...s}><path d={`M${cx - 11},${cy + 11} V${cy - 2} L${cx - 4},${cy + 3} V${cy - 2} L${cx + 3},${cy + 3} V${cy - 2} L${cx + 10},${cy + 3} V${cy + 11} Z`}/><path d={`M${cx - 9},${cy - 5} V${cy - 11} H${cx - 6} V${cy - 6}`}/></g>);
-  };
+  const S = views[active];
 
   return (
-    <section className="section" style={{ background: 'var(--bg-soft)', overflow: 'hidden' }}>
+    <section className="section" style={{ background: '#fff' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 40px' }}>
           <div className="eyebrow">O ecossistema conectado</div>
@@ -99,195 +114,439 @@ function IndustriaCadeia() {
             Consumidor, revenda, distribuidor, indústria. <span style={{ color: 'var(--navy)' }}>Todos conectados, direto</span>.
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Pedido, produto e pagamento seguem um trajeto real, chegando direto a quem precisa da informação,
-            sem intermediário. Veja a informação circulando e clique numa etapa para pular pra ela.
+            Escolha uma frente e veja o recorte da cadeia que ela entrega para a indústria.
           </p>
         </div>
 
-        <div className="cad2-panel">
-          <div className="cad3-tech-badge">
-            <SMark size={13} color="#75e3e4"/> Tecnologia Sewe Group
-          </div>
-          <svg viewBox="0 0 1000 300" role="img" style={{ width: '100%', height: 'auto', display: 'block' }}
-            aria-label={`Ecossistema conectado, etapa atual: ${step.text}`}>
-            <defs>
-              <filter id="cadGlow" x="-200%" y="-200%" width="500%" height="500%">
-                <feGaussianBlur stdDeviation="4.2" result="b"/>
-                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-              {Object.entries(CADEIA_TYPES).map(([k, v]) => (
-                <marker key={k} id={`arrow-${k}`} viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
-                  <path d="M0,0 L10,5 L0,10 Z" fill={v.color}/>
-                </marker>
-              ))}
-            </defs>
-
-            {/* colunas: liga cada elo às pistas */}
-            {CADEIA_NODES.map((n, i) => (
-              <line key={i} x1={n.cx} y1={130} x2={n.cx} y2={264} stroke="rgba(255,255,255,0.08)" strokeWidth="1.5"/>
-            ))}
-
-            {/* pistas base (fantasma) */}
-            {Object.entries(CADEIA_TYPES).map(([k, v]) => (
-              <g key={k}>
-                <text x={62} y={v.y - 9} fontFamily="JetBrains Mono, monospace" fontSize="10" fontWeight="600" letterSpacing="2" fill={v.color} opacity={step.type === k ? 0.95 : 0.35}>
-                  {v.label}
-                </text>
-                <line x1={62} y1={v.y} x2={938} y2={v.y} stroke={v.color} strokeOpacity={step.type === k ? 0.16 : 0.08} strokeWidth="1.5"/>
-              </g>
-            ))}
-
-            {/* segmento ativo da etapa atual */}
-            {!reduceMotion && (
-              <line key={`seg-${active}`} x1={na.cx} y1={tinfo.y} x2={nb.cx} y2={tinfo.y}
-                stroke={tinfo.color} strokeWidth="2.6" strokeLinecap="round" strokeOpacity="0.9"
-                markerEnd={`url(#arrow-${step.type})`} className="cad3-seg" style={{ '--seglen': Math.abs(nb.cx - na.cx) }}/>
-            )}
-            {reduceMotion && (
-              <line x1={na.cx} y1={tinfo.y} x2={nb.cx} y2={tinfo.y}
-                stroke={tinfo.color} strokeWidth="2.6" strokeLinecap="round" strokeOpacity="0.9"
-                markerEnd={`url(#arrow-${step.type})`}/>
-            )}
-
-            {/* luz viajando */}
-            {!reduceMotion && (
-              <g key={`dot-${active}`} filter="url(#cadGlow)">
-                <circle r="6" fill={tinfo.color}>
-                  <animateMotion dur={dur} begin="0s" fill="freeze" path={`M${na.cx},${tinfo.y} L${nb.cx},${tinfo.y}`}/>
-                </circle>
-                <g opacity="0.95">
-                  <animateMotion dur={dur} begin="0s" fill="freeze" path={`M${na.cx},${tinfo.y} L${nb.cx},${tinfo.y}`}/>
-                  <CadeiaGlyph type={step.type} cx={0} cy={-16} color={tinfo.color}/>
-                </g>
-              </g>
-            )}
-            {reduceMotion && (
-              <circle cx={nb.cx} cy={tinfo.y} r="6" fill={tinfo.color}/>
-            )}
-
-            {/* elos da cadeia */}
-            {CADEIA_NODES.map((n, i) => {
-              const isActive = i === step.a || i === step.b;
-              return (
-                <g key={i} className={`cad3-node${isActive ? ' is-active' : ''}`} style={{ '--nc': tinfo.color }}>
-                  <rect x={n.cx - 102} y={30} width={204} height={100} rx={14}
-                    fill={isActive ? 'rgba(117,227,228,0.07)' : 'rgba(255,255,255,0.045)'}
-                    stroke={isActive ? tinfo.color : 'rgba(255,255,255,0.16)'}
-                    strokeOpacity={isActive ? 0.8 : 1} strokeWidth={isActive ? 1.6 : 1}/>
-                  <NodeIcon type={n.icon} cx={n.cx} cy={58}/>
-                  <text x={n.cx} y={96} textAnchor="middle" fontFamily="Chakra Petch, sans-serif" fontWeight="700" fontSize="16" fill="#fff">{n.t}</text>
-                  <text x={n.cx} y={116} textAnchor="middle" fontSize="10.5" fill="rgba(255,255,255,0.55)">{n.sub}</text>
-                </g>
-              );
-            })}
-
-            <text x={500} y={288} textAnchor="middle" fontSize="13" fill="rgba(255,255,255,0.55)">
-              A informação circula pela cadeia de verdade: sai de um elo e chega direto no próximo, em tempo real.
-            </text>
-          </svg>
-
-          {/* legenda / controle da jornada */}
-          <div className="cad3-console">
-            <button className="cad3-play" onClick={() => setPlaying(p => !p)} aria-label={playing ? 'Pausar' : 'Reproduzir'}>
-              <Icon name={playing ? 'pause' : 'play'} size={16} stroke={2.2}/>
+        {/* Tabs */}
+        <div style={{
+          display: 'flex', gap: 6, marginBottom: 24, padding: 6,
+          background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: 14,
+          overflowX: 'auto',
+        }}>
+          {views.map((v, i) => (
+            <button key={v.key} onClick={() => setActive(i)}
+              style={{
+                flex: 1,
+                minWidth: 150,
+                padding: '14px 18px',
+                background: active === i ? '#fff' : 'transparent',
+                border: active === i ? '1px solid var(--line)' : '1px solid transparent',
+                borderRadius: 10,
+                boxShadow: active === i ? 'var(--shadow-sm)' : 'none',
+                textAlign: 'left',
+                cursor: 'pointer',
+                transition: 'all .2s ease',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 2 }}>
+                {v.key === 'todo' ? (
+                  <span style={{ width: 24, height: 24, borderRadius: 6, background: '#fff', border: '1px solid var(--line)', display: 'grid', placeItems: 'center' }}>
+                    <SMark size={12} color="var(--navy-900)"/>
+                  </span>
+                ) : (
+                  <span className="ie-tab-icon" style={{ '--pc': v.pillColor }}>
+                    <Icon name={v.icon} size={13} stroke={2}/>
+                  </span>
+                )}
+                <span style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 15, color: 'var(--navy-900)', letterSpacing: '0.01em' }}>{v.label}</span>
+              </div>
+              <div style={{ fontSize: 11, color: 'var(--text-3)', marginLeft: 34 }}>{v.tagline}</div>
             </button>
-            <div className="cad3-caption" key={active}>
-              <span className="cad3-caption-tag" style={{ '--c': tinfo.color }}>
-                <CadeiaGlyphMini type={step.type} color={tinfo.color}/> {tinfo.label}
-              </span>
-              <span className="cad3-caption-text">{step.text}</span>
-            </div>
-            <div className="cad3-steps">
-              {CADEIA_STEPS.map((s, i) => (
-                <button key={i} className={`cad3-dot${i === active ? ' is-active' : ''}`}
-                  style={{ '--c': CADEIA_TYPES[s.type].color }}
-                  onClick={() => { setActive(i); }}
-                  aria-label={`Etapa ${i + 1}: ${s.text}`}/>
+          ))}
+        </div>
+
+        {/* Content: left text, right dashboard */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: 32, alignItems: 'start' }} className="suite-grid">
+          <div>
+            <h3 style={{ fontSize: 'clamp(22px, 2.4vw, 32px)', lineHeight: 1.15, marginBottom: 16 }}>{S.title}</h3>
+            <p style={{ color: 'var(--text-2)', fontSize: 16, marginBottom: 24 }}>{S.body}</p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 24 }}>
+              {S.kpis.map((k, i) => (
+                <div key={i} style={{ padding: '14px 12px', background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: 10 }}>
+                  <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 20, color: 'var(--navy-900)', lineHeight: 1 }}>{k.v}</div>
+                  <div style={{ fontSize: 11, color: 'var(--text-2)', marginTop: 6, letterSpacing: '0.03em' }}>{k.l}</div>
+                </div>
               ))}
             </div>
+
+            <ul style={{ padding: 0, margin: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {S.bullets.map((b, i) => (
+                <li key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                  <span style={{ marginTop: 2, width: 18, height: 18, borderRadius: 6, background: 'rgba(117,227,228,0.2)', color: 'var(--turquoise-ink)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+                    <Icon name="check" size={12} stroke={2.5}/>
+                  </span>
+                  <span style={{ fontSize: 15, color: 'var(--text)' }}>{b}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a href="#diagnostico" className="btn btn-primary" style={{ marginTop: 24 }}>
+              Ver demonstração de {S.label}
+              <Icon name="arrow" size={14} className="chev"/>
+            </a>
+          </div>
+
+          <div>
+            <IndustriaDashboard kind={S.dashboard}/>
           </div>
         </div>
       </div>
       <style>{`
-        .cad2-panel {
-          position: relative;
-          background: linear-gradient(150deg, #15243d, #0d1a2e);
-          border: 1px solid rgba(255,255,255,0.08);
-          border-radius: 20px;
-          box-shadow: var(--shadow-lg);
-          padding: clamp(10px, 2vw, 26px);
+        .ie-tab-icon {
+          width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0;
+          background: var(--pc); color: #fff; display: grid; place-items: center;
+          animation: ieTabPulse 2.6s ease-in-out infinite;
         }
-        .cad3-tech-badge {
-          position: absolute; top: 14px; right: 18px; z-index: 2;
-          display: inline-flex; align-items: center; gap: 6px;
-          font-family: var(--ff-mono); font-size: 10px; font-weight: 600; letter-spacing: .1em;
-          text-transform: uppercase; color: rgba(255,255,255,0.5);
-        }
-        .cad3-node rect { transition: fill .35s ease, stroke .35s ease, stroke-width .35s ease; }
-        .cad3-node.is-active rect { filter: drop-shadow(0 0 8px var(--nc)); }
-        .cad3-seg { stroke-dasharray: 5 12; animation: cad3flow 1.1s linear infinite; }
-        @keyframes cad3flow { to { stroke-dashoffset: -17; } }
-
-        .cad3-console {
-          display: flex; align-items: center; gap: 16px;
-          margin-top: 18px; padding: 14px 18px;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.08);
-          border-radius: 14px;
-          flex-wrap: wrap;
-        }
-        .cad3-play {
-          flex: none; width: 38px; height: 38px; border-radius: 50%;
-          background: rgba(117,227,228,0.12); border: 1px solid rgba(117,227,228,0.4);
-          color: #75e3e4; display: flex; align-items: center; justify-content: center;
-          transition: background .2s ease, transform .15s ease;
-        }
-        .cad3-play:hover { background: rgba(117,227,228,0.22); transform: translateY(-1px); }
-        .cad3-caption { flex: 1 1 320px; min-width: 240px; display: flex; flex-direction: column; gap: 4px;
-          animation: cad3fade .4s ease; }
-        @keyframes cad3fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-        .cad3-caption-tag {
-          display: inline-flex; align-items: center; gap: 6px;
-          font-family: var(--ff-mono); font-size: 11px; font-weight: 600; letter-spacing: .12em;
-          color: var(--c);
-        }
-        .cad3-caption-text { color: rgba(255,255,255,0.82); font-size: 14.5px; line-height: 1.4; }
-        .cad3-steps { display: flex; gap: 7px; flex: none; }
-        .cad3-dot {
-          width: 9px; height: 9px; border-radius: 50%;
-          background: rgba(255,255,255,0.18);
-          transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-        }
-        .cad3-dot:hover { background: rgba(255,255,255,0.4); transform: scale(1.2); }
-        .cad3-dot.is-active { background: var(--c); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 25%, transparent); transform: scale(1.25); }
-        @media (max-width: 720px) {
-          .cad3-console { flex-direction: column; align-items: stretch; }
-          .cad3-steps { justify-content: center; flex-wrap: wrap; }
+        @keyframes ieTabPulse {
+          0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--pc) 45%, transparent); opacity: 1; }
+          50% { box-shadow: 0 0 0 5px color-mix(in srgb, var(--pc) 0%, transparent); opacity: 0.82; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .cad3-seg { animation: none; }
+          .ie-tab-icon { animation: none; }
+        }
+        @media (max-width: 960px) {
+          .suite-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>
   );
 }
 
-function CadeiaGlyphMini({ type, color }) {
+/* SEWE Integration tab — governance portal, not the generic Qlik/BI skin: green
+   chrome, the "Divergências" queue as the hero (governance, not just sync plumbing),
+   plus the S&OP framing: distributor stock feeds the factory's production plan. */
+function IntegrationPortal() {
+  const c = BU_C.integration.color;
+  const divergencias = [
+    { dist: 'Distribuidor Alfa', tipo: 'Tabela de preço desatualizada (-8%)', quando: '2 min atrás', acao: 'Bloqueado' },
+    { dist: 'Distribuidor Beta', tipo: 'Produto descontinuado · SKU 4521', quando: '14 min atrás', acao: 'Redirecionado' },
+    { dist: 'Distribuidor Gama', tipo: 'Desconto fora de política (12%)', quando: '38 min atrás', acao: 'Em aprovação' },
+    { dist: 'Distribuidor Delta', tipo: 'Tabela de preço desatualizada (-5%)', quando: '1h atrás', acao: 'Bloqueado' },
+  ];
+  const acaoColor = { 'Bloqueado': c, 'Redirecionado': '#0e7a7c', 'Em aprovação': '#c27a00' };
   return (
-    <svg width="13" height="13" viewBox="-10 -10 20 20" style={{ display: 'inline-block', verticalAlign: '-2px' }}>
-      <path d={CADEIA_ICONS[CADEIA_TYPES[type].icon]} fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
+    <div className="ip-panel">
+      <div className="ip-head">
+        <div className="ip-head-l">
+          <span className="ip-head-mark">S</span>
+          SEWE INTEGRATION · GOVERNANÇA COMERCIAL
+        </div>
+        <span className="ip-live"><span className="ip-live-dot"/>AO VIVO</span>
+      </div>
+      <div className="ip-tabs">
+        {['Visão geral', 'Pedidos', 'Estoque', 'Divergências'].map((t, i) => (
+          <div key={t} className={'ip-tab' + (i === 3 ? ' is-on' : '')}>{t}</div>
+        ))}
+      </div>
+      <div className="ip-body">
+        <div className="ip-kpis">
+          <div className="ip-kpi"><div className="ip-kpi-v tnum">R$ 42,6M</div><div className="ip-kpi-l">faturamento sincronizado / mês</div></div>
+          <div className="ip-kpi"><div className="ip-kpi-v tnum">126</div><div className="ip-kpi-l">divergências bloqueadas / mês</div></div>
+          <div className="ip-kpi"><div className="ip-kpi-v tnum">3.482</div><div className="ip-kpi-l">SKUs visíveis para o S&OP</div></div>
+          <div className="ip-kpi"><div className="ip-kpi-v tnum">&lt; 2 min</div><div className="ip-kpi-l">tempo de sincronização</div></div>
+        </div>
+        <div className="ip-banner">
+          <b style={{ fontFamily: 'Chakra Petch' }}>Cada divergência bloqueada</b> evita a quebra de margem antes que o pedido saia do distribuidor, sem depender de auditoria manual.
+        </div>
+        <div className="ip-table-head">Divergências detectadas agora</div>
+        <div className="ip-table">
+          {divergencias.map((d, i) => (
+            <div key={i} className="ip-row">
+              <span className="ip-row-dist">{d.dist}</span>
+              <span className="ip-row-tipo">{d.tipo}</span>
+              <span className="ip-row-quando">{d.quando}</span>
+              <span className="ip-row-acao" style={{ color: acaoColor[d.acao], background: `color-mix(in srgb, ${acaoColor[d.acao]} 14%, transparent)` }}>{d.acao}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <style>{`
+        .ip-panel { background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-lg); overflow: hidden; }
+        .ip-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: linear-gradient(100deg, #0a7a2c, ${c}); color: #fff; }
+        .ip-head-l { display: flex; align-items: center; gap: 10px; font-family: 'Chakra Petch'; font-weight: 600; font-size: 12px; letter-spacing: 0.1em; }
+        .ip-head-mark { width: 22px; height: 22px; border-radius: 6px; background: rgba(255,255,255,0.22); display: grid; place-items: center; font-weight: 700; font-size: 13px; }
+        .ip-live { display: inline-flex; align-items: center; gap: 6px; font-family: var(--ff-mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; }
+        .ip-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,0.3); }
+        .ip-tabs { display: flex; gap: 2px; background: #fff; border-bottom: 1px solid var(--line); padding: 0 10px; overflow-x: auto; }
+        .ip-tab { padding: 10px 14px; font-size: 12px; font-weight: 500; color: var(--text-2); border-bottom: 2px solid transparent; white-space: nowrap; }
+        .ip-tab.is-on { color: var(--navy-900); font-weight: 600; border-bottom-color: ${c}; }
+        .ip-body { padding: 16px; background: var(--bg-soft); }
+        .ip-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 12px; }
+        .ip-kpi { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 13px; }
+        .ip-kpi-v { font-family: 'Chakra Petch'; font-weight: 700; font-size: 19px; color: ${c}; line-height: 1; }
+        .ip-kpi-l { font-size: 10px; color: var(--text-2); margin-top: 6px; }
+        .ip-banner { padding: 10px 14px; margin-bottom: 14px; background: color-mix(in srgb, ${c} 10%, white); border: 1px solid color-mix(in srgb, ${c} 30%, white); border-radius: 10px; font-size: 12.5px; color: var(--text); }
+        .ip-table-head { font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px; }
+        .ip-table { background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+        .ip-row { display: grid; grid-template-columns: 1.1fr 1.8fr 90px 120px; align-items: center; gap: 10px; padding: 11px 14px; font-size: 12.5px; color: var(--text); border-bottom: 1px solid var(--line-2); }
+        .ip-row:last-child { border-bottom: none; }
+        .ip-row-dist { font-weight: 600; color: var(--navy-900); }
+        .ip-row-tipo { color: var(--text-2); }
+        .ip-row-quando { color: var(--text-3); font-family: var(--ff-mono); font-size: 11px; }
+        .ip-row-acao { font-family: var(--ff-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.05em; padding: 3px 9px; border-radius: 999px; text-align: center; }
+        @media (max-width: 640px) {
+          .ip-kpis { grid-template-columns: 1fr 1fr; }
+          .ip-row { grid-template-columns: 1fr 1fr; grid-template-areas: 'dist acao' 'tipo tipo' 'quando quando'; }
+        }
+      `}</style>
+    </div>
   );
 }
+
+/* SEWE Sales tab — portal look, not the Qlik/BI skin: orange chrome, approval
+   queue and a floating phone mockup showing the vendor's app, to make the
+   "one number, three people" story visible at a glance. */
+function SalesPortal() {
+  const c = BU_C.sales.color;
+  const approvals = [
+    { rep: 'Jonas M.', dist: 'Distribuidor Sul', desconto: '8%', status: 'aprovado', t: '12 min' },
+    { rep: 'Carla R.', dist: 'Distribuidor Vale', desconto: '12%', status: 'pendente', t: '—' },
+    { rep: 'Diego A.', dist: 'Distribuidor Norte', desconto: '5%', status: 'aprovado', t: '6 min' },
+  ];
+  return (
+    <div className="sp-wrap">
+      <div className="sp-panel">
+        <div className="sp-head">
+          <div className="sp-head-l">
+            <span className="sp-head-mark">S</span>
+            SEWE SALES · PORTAL DO VENDEDOR
+          </div>
+          <span className="sp-live"><span className="sp-live-dot"/>AO VIVO</span>
+        </div>
+        <div className="sp-tabs">
+          {['Catálogo', 'Orçamentos', 'Aprovações', 'Campanhas'].map((t, i) => (
+            <div key={t} className={'sp-tab' + (i === 2 ? ' is-on' : '')}>{t}</div>
+          ))}
+        </div>
+        <div className="sp-body">
+          <div className="sp-kpis">
+            <div className="sp-kpi"><div className="sp-kpi-v tnum">2.340</div><div className="sp-kpi-l">orçamentos no app / mês</div></div>
+            <div className="sp-kpi"><div className="sp-kpi-v tnum">1,8h</div><div className="sp-kpi-l">tempo médio de aprovação</div></div>
+            <div className="sp-kpi"><div className="sp-kpi-v tnum">78%</div><div className="sp-kpi-l">taxa de aprovação</div></div>
+          </div>
+          <div className="sp-table-head">Aprovações de desconto · agora</div>
+          <div className="sp-table">
+            {approvals.map((a, i) => (
+              <div key={i} className="sp-row">
+                <span className="sp-row-rep">{a.rep}</span>
+                <span className="sp-row-dist">{a.dist}</span>
+                <span className="sp-row-desc tnum">{a.desconto}</span>
+                <span className={'sp-row-status st-' + a.status}>{a.status === 'aprovado' ? 'Aprovado · ' + a.t : 'Pendente'}</span>
+              </div>
+            ))}
+          </div>
+          <div className="sp-note">
+            O mesmo número que a indústria usa para planejar produção é o que o distribuidor usa para cobrar a equipe, e o vendedor consulta para fechar o mês.
+          </div>
+        </div>
+      </div>
+
+      <div className="sp-phone">
+        <div className="sp-phone-notch"/>
+        <div className="sp-phone-head">Orçamento · Revenda Sul</div>
+        <div className="sp-phone-list">
+          <div className="sp-phone-item"><span>Conector M8</span><span className="tnum">120 un</span></div>
+          <div className="sp-phone-item"><span>Sensor indutivo</span><span className="tnum">36 un</span></div>
+          <div className="sp-phone-item"><span>Cabo blindado</span><span className="tnum">80 m</span></div>
+        </div>
+        <div className="sp-phone-total"><span>Total</span><span className="tnum">R$ 14.280</span></div>
+        <div className="sp-phone-btn">Enviar pedido</div>
+        <div className="sp-phone-toast">Aprovado em 12 min</div>
+      </div>
+
+      <style>{`
+        .sp-wrap { display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+        .sp-panel {
+          flex: 1; min-width: 280px;
+          background: #fff; border: 1px solid var(--line); border-radius: 14px;
+          box-shadow: var(--shadow-lg); overflow: hidden;
+        }
+        .sp-head {
+          display: flex; align-items: center; justify-content: space-between;
+          padding: 12px 16px; background: linear-gradient(100deg, #c9550a, ${c});
+          color: #fff;
+        }
+        .sp-head-l { display: flex; align-items: center; gap: 10px; font-family: 'Chakra Petch'; font-weight: 600; font-size: 12px; letter-spacing: 0.1em; }
+        .sp-head-mark { width: 22px; height: 22px; border-radius: 6px; background: rgba(255,255,255,0.22); display: grid; place-items: center; font-weight: 700; font-size: 13px; }
+        .sp-live { display: inline-flex; align-items: center; gap: 6px; font-family: var(--ff-mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; }
+        .sp-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,0.3); }
+        .sp-tabs { display: flex; gap: 2px; background: #fff; border-bottom: 1px solid var(--line); padding: 0 10px; overflow-x: auto; }
+        .sp-tab { padding: 10px 14px; font-size: 12px; font-weight: 500; color: var(--text-2); border-bottom: 2px solid transparent; white-space: nowrap; }
+        .sp-tab.is-on { color: var(--navy-900); font-weight: 600; border-bottom-color: ${c}; }
+        .sp-body { padding: 16px; background: var(--bg-soft); }
+        .sp-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+        .sp-kpi { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+        .sp-kpi-v { font-family: 'Chakra Petch'; font-weight: 700; font-size: 22px; color: ${c}; line-height: 1; }
+        .sp-kpi-l { font-size: 10.5px; color: var(--text-2); margin-top: 6px; }
+        .sp-table-head { font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px; }
+        .sp-table { background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+        .sp-row { display: grid; grid-template-columns: 1fr 1.4fr 60px 120px; align-items: center; gap: 10px; padding: 10px 14px; font-size: 12.5px; color: var(--text); border-bottom: 1px solid var(--line-2); }
+        .sp-row:last-child { border-bottom: none; }
+        .sp-row-rep { font-weight: 600; color: var(--navy-900); }
+        .sp-row-dist { color: var(--text-2); }
+        .sp-row-desc { text-align: right; }
+        .sp-row-status { font-family: var(--ff-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.05em; padding: 3px 9px; border-radius: 999px; text-align: center; }
+        .sp-row-status.st-aprovado { color: var(--turquoise-ink); background: rgba(117,227,228,0.18); }
+        .sp-row-status.st-pendente { color: #c27a00; background: rgba(240,180,41,0.16); }
+        .sp-note { margin-top: 14px; font-size: 12.5px; color: var(--text-2); line-height: 1.55; padding-top: 12px; border-top: 1px dashed var(--line); }
+
+        .sp-phone {
+          flex-shrink: 0; z-index: 3;
+          width: 168px; background: linear-gradient(160deg,#2a1204,#150a03);
+          border: 1px solid rgba(255,255,255,0.12); border-radius: 22px;
+          padding: 16px 13px 14px; box-shadow: 0 24px 46px rgba(45,20,5,0.35);
+          transform: rotate(-3deg) translateY(-10px);
+        }
+        .sp-phone-notch { width: 34px; height: 5px; border-radius: 99px; background: rgba(255,255,255,0.18); margin: 0 auto 12px; }
+        .sp-phone-head { font-family: 'Chakra Petch'; font-weight: 700; font-size: 11.5px; color: ${c}; }
+        .sp-phone-list { display: grid; gap: 6px; margin: 10px 0; }
+        .sp-phone-item { display: flex; justify-content: space-between; font-size: 9.5px; color: rgba(255,255,255,0.78); padding-bottom: 5px; border-bottom: 1px dashed rgba(255,255,255,0.12); }
+        .sp-phone-total { display: flex; justify-content: space-between; font-family: 'Chakra Petch'; font-weight: 700; font-size: 11px; color: #fff; margin-top: 8px; }
+        .sp-phone-btn { margin-top: 10px; text-align: center; padding: 8px; border-radius: 8px; background: ${c}; color: #fff; font-family: 'Chakra Petch'; font-weight: 600; font-size: 10.5px; }
+        .sp-phone-toast { margin-top: 10px; text-align: center; font-family: var(--ff-mono); font-size: 8.5px; font-weight: 600; letter-spacing: 0.04em; color: var(--turquoise); background: rgba(117,227,228,0.12); border: 1px solid rgba(117,227,228,0.3); border-radius: 999px; padding: 4px 8px; }
+
+        @media (max-width: 640px) {
+          .sp-wrap { flex-direction: column; align-items: stretch; }
+          .sp-phone { align-self: center; transform: none; }
+          .sp-row { grid-template-columns: 1fr 1fr; grid-template-areas: 'rep status' 'dist desc'; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+/* SEWE Ecossistema inteiro — the top-of-pyramid view: black chrome (not the BI
+   navy skin) so it reads as its own vantage point above Integration/Sales/BI,
+   reusing the same neutral KPI/table/chart building blocks underneath. */
+function EcosystemFrame({ title, subtitle, tabs, activeTab = 0, children }) {
+  return (
+    <div className="ecf">
+      <div className="ecf-head">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div className="ecf-mark">S</div>
+          <div style={{ fontFamily: 'Chakra Petch, sans-serif', fontWeight: 600, fontSize: 12, letterSpacing: '0.12em' }}>SEWE · ECOSSISTEMA</div>
+        </div>
+        <div style={{ flex: 1 }}/>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: 'rgba(255,255,255,0.6)', fontFamily: 'JetBrains Mono, monospace' }}>
+          <span>HOJE · 14:22</span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+            <span className="ecf-live-dot"/>LIVE
+          </span>
+        </div>
+      </div>
+      <div className="ecf-sub">
+        <div style={{ fontFamily: 'Chakra Petch', fontSize: 13, fontWeight: 600, color: 'var(--navy-900)', letterSpacing: '0.02em' }}>{title}</div>
+        {subtitle && <div style={{ fontSize: 11, color: 'var(--text-3)' }}>{subtitle}</div>}
+      </div>
+      {tabs && (
+        <div className="ecf-tabs">
+          {tabs.map((t, i) => (
+            <div key={i} className={'ecf-tab' + (i === activeTab ? ' active' : '')}>{t}</div>
+          ))}
+        </div>
+      )}
+      <div style={{ padding: 16, background: 'var(--bg-soft)' }}>{children}</div>
+      <style>{`
+        .ecf { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-lg); overflow: hidden; }
+        .ecf-head { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: linear-gradient(120deg, #0b0c10, #1a1c22); color: #fff; }
+        .ecf-mark { width: 22px; height: 22px; background: #fff; border-radius: 4px; display: grid; place-items: center; color: var(--navy-900); font-family: 'Chakra Petch'; font-weight: 700; font-size: 13px; }
+        .ecf-live-dot { width: 6px; height: 6px; border-radius: 99px; background: var(--turquoise); box-shadow: 0 0 0 3px rgba(117,227,228,0.25); }
+        .ecf-sub { padding: 10px 14px; background: #fff; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 12px; }
+        .ecf-tabs { display: flex; gap: 2px; background: #fff; border-bottom: 1px solid var(--line); padding: 0 10px; overflow-x: auto; }
+        .ecf-tab { padding: 10px 14px; font-size: 12px; font-weight: 500; color: var(--text-2); border-bottom: 2px solid transparent; white-space: nowrap; }
+        .ecf-tab.active { color: var(--navy-900); font-weight: 600; border-bottom-color: #0b0c10; }
+      `}</style>
+    </div>
+  );
+}
+
+function IndustriaDashboard({ kind }) {
+  if (kind === 'todo') {
+    return (
+      <EcosystemFrame title="ECOSSISTEMA · SELL-IN × SELL-OUT" subtitle="MTD · Nacional" tabs={['Visão geral', 'Ruptura', 'Gaps', 'Sell-out']} activeTab={2}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginBottom: 10 }}>
+          <QlikKPI compact label="Volume de Vendas" value="R$ 128,4M" delta="+18%" trend="up" color={Q.navy} spark={<Sparkline data={[98,104,109,113,118,122,128]}/>}/>
+          <QlikKPI compact label="Ruptura Média" value="3,4%" delta="-0,6pp" trend="up" color={Q.neg}/>
+          <QlikKPI compact label="Gaps Mapeados" value="340" delta="+52" trend="up" color={Q.navy}/>
+          <QlikKPI compact label="Potencial Cross-sell" value="R$ 6,8M" delta="+9%" trend="up" color={Q.pos}/>
+        </div>
+        <div style={{ padding: '10px 14px', marginBottom: 10, background: '#fff4dc', border: `1px solid #f0d9a8`, borderRadius: 10, fontSize: 12.5, color: Q.ink }}>
+          <b style={{ fontFamily: 'Chakra Petch' }}>Cada 1pp de ruptura reduzida</b> recupera cerca de R$ 1,3M em vendas por mês, antes que o consumidor troque de marca no PDV.
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 10 }}>
+          <QlikTable
+            title="Top gaps de portfólio por revenda · cross-sell sugerido"
+            columns={[
+              { key: 'revenda', label: 'Revenda' },
+              { key: 'gap', label: 'Produto ausente' },
+              { key: 'contexto', label: 'Contexto' },
+              { key: 'acao', label: 'Ação', align: 'center', render: (v) => (
+                <span style={{ padding: '2px 8px', borderRadius: 4, background: 'rgba(117,227,228,0.18)', color: Q.turqDk, fontSize: 10, fontWeight: 700, letterSpacing: '0.06em' }}>{v.toUpperCase()}</span>
+              )},
+            ]}
+            rows={[
+              { revenda: 'Revenda Sul · SC', gap: 'Condicionador Linha X', contexto: 'Compra o Shampoo há 8 meses', acao: 'Cross-sell' },
+              { revenda: 'Revenda Vale', gap: 'Sabonete Kids', contexto: 'Compra a linha adulto', acao: 'Cross-sell' },
+              { revenda: 'Revenda Norte', gap: 'Refil 500ml', contexto: 'Compra só o frasco 1L', acao: 'Cross-sell' },
+              { revenda: 'Revenda Litoral', gap: 'Kit Presente', contexto: 'Alto giro em datas sazonais', acao: 'Trade mkt' },
+            ]}
+            compact
+          />
+          <QlikArea title="Ruptura média · evolução 12m" subtitle="Queda sustentada com alerta antecipado" data={[5.8,5.5,5.2,4.9,4.6,4.3,4.1,3.9,3.7,3.6,3.5,3.4]} labels={['M1','','','M4','','','M7','','','M10','','']} height={230}/>
+        </div>
+      </EcosystemFrame>
+    );
+  }
+
+  if (kind === 'integration') {
+    return <IntegrationPortal/>;
+  }
+
+  if (kind === 'sales') {
+    return <SalesPortal/>;
+  }
+
+  // bi
+  return (
+    <QlikFrame title="BI · CONSELHEIRO ESTRATÉGICO DA REDE" subtitle="Consolidado · MTD" tabs={['Sell-in × Sell-out', 'Simulação IA', 'Trade ROI', 'Mapa de Gaps']} activeTab={1}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginBottom: 10 }}>
+        <QlikKPI compact label="Saúde do Canal" value="1,04x" delta="+0,06" trend="down" color={Q.warn}/>
+        <QlikKPI compact label="Assertividade IA" value="91%" delta="+3pp" trend="up" color={Q.pos}/>
+        <QlikKPI compact label="ROI Trade Marketing" value="3,2x" delta="+0,4x" trend="up" color={Q.navy}/>
+        <QlikKPI compact label="Valor Latente · Cross-sell" value="R$ 6,8M" delta="+9%" trend="up" color={Q.navy}/>
+      </div>
+      <div style={{ padding: '10px 14px', marginBottom: 10, background: '#fff4dc', border: `1px solid #f0d9a8`, borderRadius: 10, fontSize: 12.5, color: Q.ink }}>
+        <b style={{ fontFamily: 'Chakra Petch' }}>Sell-in alto com sell-out baixo é efeito chicote:</b> a IA já identificou 4 distribuidores nesse padrão este mês, antes do estoque travar o pedido seguinte.
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 10 }}>
+        <QlikHBars
+          title="Índice sell-in × sell-out por distribuidor"
+          rows={[
+            { label: 'Distribuidor Alfa', v: 98, display: '0,98x', color: Q.pos },
+            { label: 'Distribuidor Beta', v: 102, display: '1,02x', color: Q.pos },
+            { label: 'Distribuidor Gama', v: 118, display: '1,18x', color: Q.warn },
+            { label: 'Distribuidor Delta', v: 134, display: '1,34x', color: Q.neg },
+            { label: 'Distribuidor Épsilon', v: 141, display: '1,41x', color: Q.neg },
+          ]}
+          max={150}
+        />
+        <QlikArea title="Previsão de demanda (IA) × giro real" subtitle="Próx. 30 dias · assertividade 91%" data={[82,78,84,88,92,95,98,104,108,112,118,125]} labels={['D+1','','','','D+15','','','','','','D+30','']} height={230}/>
+      </div>
+    </QlikFrame>
+  );
+}
+
 
 function IndustriaMap() {
   const fronts = [
     { c: BU_C.integration, icon: 'link',  step: '01', name: 'Enxergue a rede inteira', flow: 'SEWE Integration',
       d: 'O sellout, o estoque e a curva de cada distribuidor que vende os seus produtos, produto a produto, em um só painel.' },
-    { c: BU_C.bi, icon: 'brain', step: '02', name: 'Decida com IA', flow: 'SEWE BI + IA',
-      d: 'Onde falta produto, onde sobra estoque e onde há espaço para crescer, com a próxima ação pronta, sem garimpar gráfico.' },
-    { c: BU_C.sales, icon: 'store', step: '03', name: 'Venda mais no canal', flow: 'SEWE Sales',
+    { c: BU_C.sales, icon: 'store', step: '02', name: 'Venda mais no canal', flow: 'SEWE Sales',
       d: 'Portal de pedidos, promoções, CRM e carteira de clientes: a rede inteira vendendo no padrão da indústria.' },
+    { c: BU_C.bi, icon: 'brain', step: '03', name: 'Decida com IA', flow: 'SEWE BI + IA',
+      d: 'Onde falta produto, onde sobra estoque e onde há espaço para crescer, com a próxima ação pronta, sem garimpar gráfico.' },
   ];
   return (
     <section className="section" style={{ background: '#fff' }}>
@@ -334,6 +593,7 @@ function IndustriaMap() {
 
 /* Industry's live view of its distributor network */
 function IndustriaNetworkPanel() {
+  const [expanded, setExpanded] = React.useState(null);
   const kpis = [
     { v: 'R$ 128,4M', l: 'sellout da rede · MTD', t: 'up' },
     { v: '87,2%', l: 'cobertura de PDV', t: 'up' },
@@ -341,12 +601,18 @@ function IndustriaNetworkPanel() {
     { v: '512', l: 'distribuidores ativos', t: 'up' },
   ];
   const rows = [
-    { n: 'Distribuidor Alfa',    uf: 'SC', sellout: 'R$ 24,1M', cov: 94, rup: 1.8, w: 100 },
-    { n: 'Distribuidor Beta',    uf: 'RS', sellout: 'R$ 19,7M', cov: 91, rup: 2.2, w: 82 },
-    { n: 'Distribuidor Gama',    uf: 'PR', sellout: 'R$ 16,3M', cov: 88, rup: 3.1, w: 68 },
-    { n: 'Distribuidor Delta',   uf: 'SC', sellout: 'R$ 12,9M', cov: 85, rup: 3.6, w: 54 },
-    { n: 'Distribuidor Épsilon', uf: 'SP', sellout: 'R$ 9,4M',  cov: 79, rup: 4.9, w: 39 },
-    { n: 'Distribuidor Ômega',   uf: 'MG', sellout: 'R$ 7,1M',  cov: 74, rup: 5.4, w: 29 },
+    { n: 'Distribuidor Alfa',    uf: 'SC', sellout: 'R$ 24,1M', cov: 94, rup: 1.8, w: 100,
+      products: [{ n: 'Ração Premier 15kg', v: 'R$ 6,2M' }, { n: 'Suplemento Linha A', v: 'R$ 4,8M' }, { n: 'Acessório Pet Pro', v: 'R$ 3,1M' }] },
+    { n: 'Distribuidor Beta',    uf: 'RS', sellout: 'R$ 19,7M', cov: 91, rup: 2.2, w: 82,
+      products: [{ n: 'Ração Premier 15kg', v: 'R$ 5,1M' }, { n: 'Shampoo Pet 5L', v: 'R$ 3,4M' }, { n: 'Coleira Antipulgas', v: 'R$ 2,6M' }] },
+    { n: 'Distribuidor Gama',    uf: 'PR', sellout: 'R$ 16,3M', cov: 88, rup: 3.1, w: 68,
+      products: [{ n: 'Ração Felina Adult', v: 'R$ 3,9M' }, { n: 'Vacina Pol. V8', v: 'R$ 2,8M' }, { n: 'Cama Grande', v: 'R$ 1,9M' }] },
+    { n: 'Distribuidor Delta',   uf: 'SC', sellout: 'R$ 12,9M', cov: 85, rup: 3.6, w: 54,
+      products: [{ n: 'Ração Premier 15kg', v: 'R$ 3,2M' }, { n: 'Brinquedo Mordedor', v: 'R$ 1,8M' }, { n: 'Areia Sanitária 4kg', v: 'R$ 1,4M' }] },
+    { n: 'Distribuidor Épsilon', uf: 'SP', sellout: 'R$ 9,4M',  cov: 79, rup: 4.9, w: 39,
+      products: [{ n: 'Ração Premier 15kg', v: 'R$ 2,1M' }, { n: 'Shampoo Pet 5L', v: 'R$ 1,4M' }, { n: 'Coleira Antipulgas', v: 'R$ 0,9M' }] },
+    { n: 'Distribuidor Ômega',   uf: 'MG', sellout: 'R$ 7,1M',  cov: 74, rup: 5.4, w: 29,
+      products: [{ n: 'Ração Premier 15kg', v: 'R$ 1,6M' }, { n: 'Vacina Pol. V8', v: 'R$ 1,1M' }, { n: 'Cama Grande', v: 'R$ 0,7M' }] },
   ];
   return (
     <section className="section" style={{ background: 'linear-gradient(180deg, var(--bg-soft) 0%, #f4f6fb 100%)' }}>
@@ -354,7 +620,7 @@ function IndustriaNetworkPanel() {
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 40px' }}>
           <div className="eyebrow">A rede em um só painel</div>
           <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            O sellout de cada distribuidor, <span style={{ color: 'var(--navy)' }}>produto a produto</span>.
+            O sellout de cada distribuidor, <span style={{ color: 'var(--navy)' }}>com abertura até o nível de produto</span>.
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
             Um recorte do que a indústria enxerga: quem vende, onde há cobertura e onde a ruptura está custando venda.
@@ -382,8 +648,9 @@ function IndustriaNetworkPanel() {
               <span>Distribuidor</span><span>Sellout MTD</span><span className="inp-hide">Cobertura</span><span>Ruptura</span>
             </div>
             {rows.map((r, i) => (
-              <div key={i} className="inp-tr">
-                <span className="inp-name"><b>{r.n}</b><em>{r.uf}</em></span>
+              <React.Fragment key={i}>
+              <div className={'inp-tr' + (expanded === i ? ' is-open' : '')} onClick={() => setExpanded(expanded === i ? null : i)} style={{ cursor: 'pointer' }}>
+                <span className="inp-name"><b>{r.n}</b><em>{r.uf}</em><Icon name="chevron" size={13} stroke={2.2} className="inp-drill"/></span>
                 <span className="inp-sellout">
                   <span className="inp-bar"><span className="inp-bar-fill" style={{ width: r.w + '%' }}/></span>
                   <span className="tnum">{r.sellout}</span>
@@ -391,6 +658,15 @@ function IndustriaNetworkPanel() {
                 <span className="inp-hide tnum" style={{ color: r.cov >= 85 ? 'var(--turquoise-ink)' : 'var(--text-2)' }}>{r.cov}%</span>
                 <span className="tnum" style={{ color: r.rup > 4 ? 'var(--danger)' : 'var(--text-2)', fontWeight: 600 }}>{r.rup}%</span>
               </div>
+              {expanded === i && (
+                <div className="inp-drilldown">
+                  <div className="inp-drill-head">Produto a produto · {r.n}</div>
+                  {r.products.map((p, j) => (
+                    <div key={j} className="inp-drill-row"><span>{p.n}</span><span className="tnum">{p.v}</span></div>
+                  ))}
+                </div>
+              )}
+              </React.Fragment>
             ))}
           </div>
         </div>
@@ -410,6 +686,14 @@ function IndustriaNetworkPanel() {
         .inp-th { font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); font-weight: 600; }
         .inp-name b { font-weight: 600; color: #fff; }
         .inp-name em { font-style: normal; font-family: var(--ff-mono); font-size: 10.5px; color: rgba(255,255,255,0.45); margin-left: 8px; }
+        .inp-drill { color: rgba(255,255,255,0.35); margin-left: auto; flex-shrink: 0; transition: transform .2s ease; }
+        .inp-tr.is-open .inp-drill { transform: rotate(90deg); color: var(--turquoise); }
+        .inp-tr:hover { background: rgba(255,255,255,0.03); }
+        .inp-drilldown { padding: 6px 12px 12px 34px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .inp-drill-head { font-family: var(--ff-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+        .inp-drill-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; color: rgba(255,255,255,0.8); border-bottom: 1px dashed rgba(255,255,255,0.06); }
+        .inp-drill-row:last-child { border-bottom: none; }
+        .inp-name { display: flex; align-items: center; }
         .inp-sellout { display: flex; align-items: center; gap: 12px; }
         .inp-bar { flex: 1; height: 7px; border-radius: 99px; background: rgba(255,255,255,0.09); overflow: hidden; min-width: 60px; }
         .inp-bar-fill { display: block; height: 100%; border-radius: 99px; background: linear-gradient(90deg, #3fc9cb, #75e3e4); }
@@ -443,6 +727,7 @@ function EcoFront({ id, bg, c, soft, ink, eyebrow, title, hl, lead, feats, aside
               <div key={i} className="ef-feat reveal">
                 <span className="ef-feat-icon" style={{ background: soft, color: ink }}><Icon name={f.icon} size={20} stroke={1.8}/></span>
                 <div>
+                  {f.persona && <div className="ef-feat-persona" style={{ color: ink, background: soft }}>{f.persona}</div>}
                   <div className="ef-feat-t">{f.t}</div>
                   <div className="ef-feat-d">{f.d}</div>
                 </div>
@@ -468,6 +753,7 @@ function EcoFront({ id, bg, c, soft, ink, eyebrow, title, hl, lead, feats, aside
         .ef-feat { display: flex; gap: 14px; padding: 20px; background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-xs); }
         .ef-feat-icon { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; flex-shrink: 0; }
         .ef-feat-t { font-family: var(--ff-display); font-weight: 700; font-size: 16px; color: var(--navy-900); }
+        .ef-feat-persona { display: inline-block; font-family: var(--ff-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-bottom: 7px; }
         .ef-feat-d { font-size: 13.5px; color: var(--text-2); line-height: 1.55; margin-top: 5px; }
         .ef-aside { border-radius: var(--r-xl); padding: 28px; position: relative; overflow: hidden; }
         .ef-aside-tag { display: inline-block; padding: 5px 12px; border-radius: 999px; font-family: var(--ff-mono); font-size: 11px; font-weight: 700; letter-spacing: .1em; }
@@ -503,49 +789,221 @@ function IndustriaBI() {
         tag: 'RESULTADO NA REDE', tagColor: '#7fe9ea', tagBg: 'rgba(117,227,228,0.14)',
         metric: '+90%', metricLabel: 'assertividade na reposição da rede',
         desc: 'Menos ruptura no canal e menos estoque parado, com decisão guiada por dado, não por achismo.',
-        list: ['Painel único de toda a rede', 'Alertas de ruptura e excesso', 'Recomendação de ação pronta'],
+        list: ['Decisões totalmente preditivas: antecipe a necessidade de estoque antes que os pedidos parem', 'Prevenção ativa de perdas: a IA detecta anomalias e avisa onde agir imediatamente', 'Ação mastigada para o time: menos relatório abstrato, mais direcionamento prático de venda'],
       }}
     />
   );
 }
 
-function IndustriaSales() {
+/* SEWE Sales — bespoke layout (not the generic EcoFront grid): a phone hero
+   showing the resale's real app screen sits beside the "8 entregas" close card,
+   with the 8 feature cards flowing below as their own wide 4-col band. */
+function IndustriaSalesPhone() {
+  const c = BU_C.sales.color;
+  const ink = BU_C.sales.ink;
   return (
-    <EcoFront
-      id="sales"
-      bg="var(--bg-soft)"
-      c={BU_C.sales.color} soft={BU_C.sales.soft} ink={BU_C.sales.ink}
-      eyebrow="SEWE SALES"
-      title="Do pedido ao CRM, a rede vendendo no"
-      hl="padrão da indústria"
-      lead="Não é só um portal de pedidos: é a operação comercial da rede inteira. Catálogo, promoção, aprovação, carteira e CRM num só lugar, integrado ao ERP de cada distribuidor."
-      feats={[
-        { icon: 'store',    t: 'Portal do cliente', d: 'Catálogo digital, consulta de preço e pedido self-service, com a identidade e as regras da indústria.' },
-        { icon: 'check',    t: 'Pedido dentro da política', d: 'Aprovação automática por alçada: desconto, crédito e condição comercial sempre dentro da regra.' },
-        { icon: 'trophy',   t: 'Promoções e incentivos', d: 'Campanhas e incentivos comerciais para o canal, com resultado acompanhado por distribuidor.' },
-        { icon: 'users',    t: 'CRM e carteira de clientes', d: 'Histórico, frequência de compra e próxima ação de cada conta. Quem parou de comprar aparece.' },
-        { icon: 'clock',    t: 'Gestão de atividades', d: 'Workflow do time comercial: tarefas, visitas e follow-ups organizados e mensuráveis.' },
-        { icon: 'link',     t: 'Integrado ao ERP do distribuidor', d: 'O pedido cai direto no ERP, sem redigitação e sem retrabalho para a rede.' },
-        { icon: 'target',   t: 'Catálogo e tabela por canal', d: 'Sortimento e preço certos para cada tipo de canal, sem planilha paralela.' },
-        { icon: 'trending', t: 'Visão de vendas da rede', d: 'O que cada distribuidor vende, para quem e com que margem, em tempo real.' },
-      ]}
-      aside={{
-        bg: 'linear-gradient(160deg,#3a1c05,#27160a)',
-        tag: 'OPERAÇÃO COMPLETA', tagColor: '#ffd2a8', tagBg: 'rgba(253,112,20,0.2)',
-        metric: '8 entregas', metricLabel: 'do catálogo ao CRM, num só módulo',
-        desc: 'Da consulta de preço ao pós-venda, distribuidores, vendedores e clientes operando com as mesmas regras e a mesma informação.',
-        list: ['Pedido dentro da política', 'CRM e carteira de clientes', 'Integração com o ERP do distribuidor'],
-      }}
-    />
+    <div className="isp-wrap">
+      <div className="isp-phone">
+        <div className="isp-notch"/>
+        <div className="isp-topbar">
+          <span className="isp-logo">SEWE SALES</span>
+          <span className="isp-topicons">
+            <Icon name="search" size={14} stroke={2}/>
+            <span className="isp-cart"><Icon name="pkg" size={14} stroke={2}/><i>3</i></span>
+          </span>
+        </div>
+        <div className="isp-greeting">Olá, Comercial Silva <span>· Criciúma/SC</span></div>
+        <div className="isp-banner">
+          <div className="isp-banner-tag">Campanha de inverno</div>
+          <div className="isp-banner-text">50 un. do SKU Premium com 8% off na hora</div>
+        </div>
+        <div className="isp-product">
+          <div className="isp-product-thumb" style={{ backgroundImage: 'url(https://picsum.photos/seed/racaosewe/80/80)' }}/>
+          <div className="isp-product-info">
+            <div className="isp-product-name">Ração Premier 15kg</div>
+            <div className="isp-product-price">R$ 45,00 <span>un.</span></div>
+            <div className="isp-product-stock"><Icon name="check" size={10} stroke={3}/> Estoque garantido</div>
+          </div>
+          <div className="isp-stepper"><span>–</span><b>2</b><span>+</span></div>
+        </div>
+        <div className="isp-order">
+          <div className="isp-order-h">Pedido #48210 · Distribuidor Alfa</div>
+          <div className="isp-order-steps">
+            <span className="isp-step done">Realizado</span>
+            <span className="isp-step done">Aprovado</span>
+            <span className="isp-step">Em rota</span>
+          </div>
+        </div>
+        <div className="isp-summary">
+          <div className="isp-summary-item"><b>6</b><span>pedidos no mês</span></div>
+          <div className="isp-summary-div"/>
+          <div className="isp-summary-item"><b>R$ 16,4K</b><span>aprovado</span></div>
+        </div>
+        <div className="isp-tabbar">
+          <span className="on"><Icon name="store" size={15} stroke={1.8}/></span>
+          <span><Icon name="boxes" size={15} stroke={1.8}/></span>
+          <span><Icon name="clock" size={15} stroke={1.8}/></span>
+          <span><Icon name="users" size={15} stroke={1.8}/></span>
+        </div>
+      </div>
+      <span className="isp-tip isp-tip-1">Tabela de preço e catálogo por região, sempre atualizados.</span>
+      <span className="isp-tip isp-tip-2">Estoque real da rede, direto do ERP do distribuidor.</span>
+      <span className="isp-tip isp-tip-3">Status do pedido, do orçamento à entrega, em tempo real.</span>
+      <span className="isp-tip isp-tip-4">Campanhas da indústria aparecem na hora, pro vendedor certo.</span>
+      <span className="isp-tip isp-tip-5">Desconto e política comercial aprovados automaticamente.</span>
+      <style>{`
+        .isp-wrap { position: relative; display: flex; justify-content: center; padding: 20px 40px 10px; }
+        .isp-wrap::before {
+          content: ''; position: absolute; top: 10%; left: 50%; transform: translateX(-50%);
+          width: 260px; height: 260px; border-radius: 50%;
+          background: radial-gradient(circle, color-mix(in srgb, ${c} 16%, transparent), transparent 70%);
+          z-index: 0;
+        }
+        .isp-phone { position: relative; z-index: 1;
+          width: 220px; aspect-ratio: 9 / 19.5; box-sizing: border-box;
+          background: #fff;
+          border: 2.5px solid var(--navy-900); border-radius: 36px;
+          padding: 20px 14px 16px; box-shadow: var(--shadow-lg);
+          transform: rotate(-5deg);
+          display: flex; flex-direction: column;
+        }
+        .isp-notch { width: 44px; height: 5px; border-radius: 99px; background: var(--line); margin: 0 auto 14px; }
+        .isp-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+        .isp-logo { font-family: 'Chakra Petch'; font-weight: 700; font-size: 10px; letter-spacing: 0.08em; color: var(--navy-900); }
+        .isp-topicons { display: flex; align-items: center; gap: 10px; color: var(--text-3); }
+        .isp-cart { position: relative; display: inline-flex; }
+        .isp-cart i { position: absolute; top: -6px; right: -8px; background: ${c}; color: #fff; font-size: 8px; font-style: normal; font-weight: 700; border-radius: 99px; width: 13px; height: 13px; display: grid; place-items: center; }
+        .isp-greeting { font-size: 11px; color: var(--navy-900); font-weight: 600; margin-bottom: 12px; }
+        .isp-greeting span { color: var(--text-3); font-weight: 400; }
+        .isp-banner { background: var(--bg-soft); border: 1px solid var(--line); border-left: 3px solid ${c}; border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; }
+        .isp-banner-tag { font-family: var(--ff-mono); font-size: 8.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: ${ink}; }
+        .isp-banner-text { font-size: 10.5px; color: var(--navy-900); margin-top: 4px; line-height: 1.4; }
+        .isp-product { display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 10px; margin-bottom: 12px; }
+        .isp-product-thumb { width: 40px; height: 40px; border-radius: 8px; background-size: cover; background-position: center; flex-shrink: 0; border: 1px solid var(--line); }
+        .isp-product-info { flex: 1; min-width: 0; }
+        .isp-product-name { font-size: 10.5px; color: var(--navy-900); font-weight: 600; }
+        .isp-product-price { font-family: 'Chakra Petch'; font-weight: 700; font-size: 12.5px; color: var(--navy-900); margin-top: 2px; }
+        .isp-product-price span { font-size: 9px; color: var(--text-3); font-weight: 400; }
+        .isp-product-stock { display: inline-flex; align-items: center; gap: 3px; font-size: 8.5px; color: var(--success); font-weight: 600; margin-top: 3px; }
+        .isp-stepper { display: flex; align-items: center; gap: 7px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 8px; padding: 4px 8px; font-size: 11px; color: var(--navy-900); }
+        .isp-order { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin-bottom: 10px; }
+        .isp-order-h { font-size: 9.5px; color: var(--text-3); margin-bottom: 8px; }
+        .isp-order-steps { display: flex; gap: 4px; }
+        .isp-step { flex: 1; text-align: center; font-size: 8px; padding: 5px 2px; border-radius: 999px; background: #fff; border: 1px solid var(--line); color: var(--text-3); }
+        .isp-step.done { background: rgba(46,139,87,0.12); border-color: rgba(46,139,87,0.35); color: var(--success); font-weight: 600; }
+        .isp-summary { display: flex; align-items: center; gap: 10px; padding: 8px 12px; margin-bottom: 12px; }
+        .isp-summary-item { display: flex; flex-direction: column; }
+        .isp-summary-item b { font-family: 'Chakra Petch'; font-weight: 700; font-size: 13px; color: var(--navy-900); }
+        .isp-summary-item span { font-size: 8.5px; color: var(--text-3); margin-top: 2px; }
+        .isp-summary-div { width: 1px; align-self: stretch; background: var(--line); }
+        .isp-tabbar { display: flex; justify-content: space-around; padding-top: 10px; border-top: 1px solid var(--line); color: var(--text-3); margin-top: auto; }
+        .isp-tabbar .on { color: ${c}; }
+        .isp-tip {
+          position: absolute; max-width: 132px; font-size: 11px; line-height: 1.4;
+          background: #fff; border: 1px solid var(--line); border-radius: 9px; padding: 8px 11px;
+          box-shadow: var(--shadow-sm); color: var(--text); display: none;
+        }
+        .isp-tip::after { content: ''; position: absolute; top: 50%; width: 30px; height: 1px; background: var(--line); }
+        .isp-tip-1, .isp-tip-2, .isp-tip-3 { right: calc(50% + 148px); }
+        .isp-tip-1::after, .isp-tip-2::after, .isp-tip-3::after { right: -30px; }
+        .isp-tip-4, .isp-tip-5 { left: calc(50% + 148px); }
+        .isp-tip-4::after, .isp-tip-5::after { left: -30px; }
+        .isp-tip-1 { top: 10px; }
+        .isp-tip-2 { top: 155px; }
+        .isp-tip-3 { top: 300px; }
+        .isp-tip-4 { top: 55px; }
+        .isp-tip-5 { top: 220px; }
+        @media (min-width: 1180px) {
+          .isp-tip { display: block; }
+        }
+        @media (max-width: 720px) {
+          .isp-wrap { padding: 10px 10px 0; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+function IndustriaSales() {
+  const c = BU_C.sales.color;
+  const soft = BU_C.sales.soft;
+  const ink = BU_C.sales.ink;
+  const feats = [
+    { icon: 'store',    t: 'Portal do cliente', persona: 'Para a revenda', d: 'Venda B2B self-service: libere a rede para comprar 24h por dia via catálogo digital, respeitando regras e estoque da indústria.' },
+    { icon: 'check',    t: 'Pedido dentro da política', persona: 'Para o distribuidor e a indústria', d: 'Aprovação automática por alçada: desconto, crédito e condição comercial sempre dentro da regra.' },
+    { icon: 'trophy',   t: 'Promoções e incentivos', persona: 'Para a indústria', d: 'Campanhas e incentivos comerciais para o canal, com resultado acompanhado por distribuidor.' },
+    { icon: 'users',    t: 'CRM e carteira de clientes', persona: 'Para o vendedor do distribuidor', d: 'Histórico, frequência de compra e próxima ação de cada conta. Quem parou de comprar aparece.' },
+    { icon: 'clock',    t: 'Gestão de atividades', persona: 'Para o vendedor do distribuidor', d: 'Workflow do time comercial: tarefas, visitas e follow-ups organizados e mensuráveis.' },
+    { icon: 'link',     t: 'Integrado ao ERP do distribuidor', persona: 'Para o distribuidor', d: 'O pedido cai direto no ERP, sem redigitação e sem retrabalho para a rede.' },
+    { icon: 'target',   t: 'Catálogo e tabela por canal', persona: 'Para a indústria', d: 'Fim das planilhas paralelas: garanta o sortimento de SKUs e a tabela de preços exata para cada perfil de canal, automaticamente.' },
+    { icon: 'trending', t: 'Visão de vendas da rede', persona: 'Para a indústria', d: 'O que cada distribuidor vende, para quem e com que margem, em tempo real.' },
+  ];
+  return (
+    <section id="sales" className="section ef" style={{ background: 'var(--bg-soft)', position: 'relative', overflow: 'hidden' }}>
+      <div className="container">
+        <div className="ef-head reveal">
+          <div className="ef-eyebrow" style={{ color: ink, background: soft }}>
+            <SMark size={16} color={c}/> SEWE SALES
+          </div>
+          <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
+            Do pedido ao CRM, a rede vendendo no <span style={{ color: c }}>padrão da indústria</span>.
+          </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 600 }}>
+            Não é só um portal de pedidos: é a operação comercial da rede inteira. Catálogo, promoção, aprovação, carteira e CRM num só lugar, integrado ao ERP de cada distribuidor.
+          </p>
+        </div>
+
+        <div className="isv-hero reveal">
+          <IndustriaSalesPhone/>
+          <div className="isv-close">
+            <div className="isv-close-tag">OPERAÇÃO COMPLETA</div>
+            <div className="isv-close-metric">8 entregas</div>
+            <div className="isv-close-metric-l">do catálogo ao CRM, num só módulo</div>
+            <p className="isv-close-desc">Da consulta de preço ao pós-venda, distribuidores, vendedores e clientes operando com as mesmas regras e a mesma informação.</p>
+            <ul className="isv-close-list">
+              {['Identidade e preço blindados, sem canibalização na ponta', 'Recompra automatizada: o sistema avisa quem parou de comprar', 'Zero retrabalho: vendedor vende, distribuidor fatura, ERP atualiza sozinho'].map((x, i) => (
+                <li key={i}><Icon name="check" size={16} stroke={2.4} style={{ color: c }}/> {x}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="isv-feats">
+          {feats.map((f, i) => (
+            <div key={i} className="ef-feat reveal">
+              <span className="ef-feat-icon" style={{ background: soft, color: ink }}><Icon name={f.icon} size={20} stroke={1.8}/></span>
+              <div>
+                {f.persona && <div className="ef-feat-persona" style={{ color: ink, background: soft }}>{f.persona}</div>}
+                <div className="ef-feat-t">{f.t}</div>
+                <div className="ef-feat-d">{f.d}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <style>{`
+        .isv-hero { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: center; margin-bottom: 44px; }
+        .isv-close-tag { display: inline-block; padding: 5px 12px; border-radius: 999px; font-family: var(--ff-mono); font-size: 11px; font-weight: 700; letter-spacing: .1em; color: ${ink}; background: ${soft}; }
+        .isv-close-metric { font-family: var(--ff-display); font-weight: 700; font-size: clamp(38px, 4.4vw, 52px); color: var(--navy-900); line-height: 1; margin-top: 18px; }
+        .isv-close-metric-l { font-size: 14px; color: var(--text-2); margin-top: 8px; }
+        .isv-close-desc { color: var(--text-2); font-size: 15px; line-height: 1.55; margin-top: 18px; max-width: 460px; }
+        .isv-close-list { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 12px; }
+        .isv-close-list li { display: flex; align-items: center; gap: 10px; color: var(--text); font-size: 14.5px; }
+        .isv-feats { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+        .isv-feats .ef-feat { flex: 0 1 calc(33.333% - 11px); }
+        @media (max-width: 960px) { .isv-hero { grid-template-columns: 1fr; } .isv-feats .ef-feat { flex-basis: calc(50% - 8px); } }
+        @media (max-width: 560px) { .isv-feats .ef-feat { flex-basis: 100%; } }
+      `}</style>
+    </section>
   );
 }
 
 /* Modularidade — contrate tudo ou só uma parte */
 function IndustriaModular() {
   const combos = [
-    { c: BU_C.integration, t: 'Só enxergar a rede', d: 'O painel de sellout, estoque e cobertura de cada distribuidor. Visibilidade imediata, sem mexer na operação.', tag: 'PORTA DE ENTRADA' },
-    { c: BU_C.bi, t: 'Enxergar + decidir', d: 'A visibilidade da rede com a IA por cima: alertas de ruptura, mix por região e previsão de demanda.', tag: 'MAIS ESCOLHIDO' },
-    { c: BU_C.sales, t: 'Ecossistema completo', d: 'Da visibilidade à venda: painel, IA e a operação comercial da rede rodando no padrão da indústria.', tag: 'CICLO FECHADO' },
+    { c: BU_C.integration, t: 'Enxergar a rede', d: 'O painel de sellout, estoque e cobertura de cada distribuidor. Visibilidade imediata, sem mexer na operação.', tag: 'PORTA DE ENTRADA' },
+    { c: BU_C.sales, t: 'Enxergar + vender', d: 'A visibilidade da rede com o portal comercial por cima: orçamento, aprovação e CRM rodando no padrão da indústria.', tag: 'MAIS ESCOLHIDO' },
+    { c: BU_C.bi, t: 'Ecossistema completo', d: 'O cérebro por cima de tudo: a IA cruza visibilidade e venda para prever demanda, evitar ruptura e fechar o ciclo.', tag: 'CICLO FECHADO' },
   ];
   return (
     <section className="section" style={{ background: '#fff' }}>
@@ -601,12 +1059,12 @@ function IndustriaPage() {
           <a href="https://wa.me/5548984704389" className="btn btn-outline btn-lg">WhatsApp</a>
         </div>
       </PageHero>
-      <IndustriaCadeia/>
+      <IndustriaEcosystem/>
       <IndustriaMap/>
       <IntegrationSection/>
       <IndustriaNetworkPanel/>
-      <IndustriaBI/>
       <IndustriaSales/>
+      <IndustriaBI/>
       <IndustriaModular/>
       <CTASection/>
       <SiteFooter/>

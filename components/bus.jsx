@@ -21,16 +21,16 @@ function ConnectedEcosystem() {
       href: '#integration',
     },
     {
-      k: 'bi', icon: 'brain', step: '02', flow: 'Transforma em decisão',
-      title: 'SEWE BI', color: BU.bi.color, soft: BU.bi.soft,
-      desc: 'A IA cruza tudo nos bastidores, suprimentos, comercial, financeiro e gestão, e entrega a próxima ação pronta.',
-      href: '#suites',
-    },
-    {
-      k: 'sales', icon: 'store', step: '03', flow: 'Age no cliente',
+      k: 'sales', icon: 'store', step: '02', flow: 'Age no cliente',
       title: 'SEWE Sales', color: BU.sales.color, soft: BU.sales.soft,
       desc: 'Vira a força de vendas num e-commerce B2B. O cliente do distribuidor compra sozinho, com CRM e regras comerciais.',
       href: '#sales',
+    },
+    {
+      k: 'bi', icon: 'brain', step: '03', flow: 'Fecha o ciclo com decisão',
+      title: 'SEWE BI', color: BU.bi.color, soft: BU.bi.soft,
+      desc: 'A IA cruza tudo nos bastidores, suprimentos, comercial, financeiro e gestão, e entrega a próxima ação pronta.',
+      href: '#suites',
     },
   ];
 
@@ -43,7 +43,7 @@ function ConnectedEcosystem() {
             Conectadas em volta do <span style={{ color: 'var(--navy)' }}>distribuidor</span>.
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17 }}>
-            Os dados entram pela Integration, viram decisão no BI e voltam para o cliente pela Sales.
+            Os dados entram pela Integration, a Sales vende e gera mais dado na ponta, e o BI fecha o ciclo virando tudo em decisão.
             Um ciclo só, com a SEWE cuidando da engenharia de ponta a ponta.
           </p>
         </div>
@@ -122,10 +122,10 @@ function ConnectedEcosystem() {
 function IntegrationSection() {
   const C = BU.integration;
   const feats = [
-    { icon: 'truck',    t: 'Sellout consolidado', d: 'Vendas e estoque de cada distribuidor da rede, produto a produto, em um só painel.' },
+    { icon: 'truck',    t: 'Sellout consolidado', d: 'Fim dos relatórios atrasados: consolide vendas e estoques de toda a rede, produto a produto, sem depender de planilha manual.' },
     { icon: 'warehouse',t: 'Estoque na ponta',    d: 'Enxergue ruptura e excesso no canal antes que virem perda, em toda a rede.' },
-    { icon: 'line',     t: 'Estratégia ponta-a-ponta', d: 'Da indústria ao PDV: ajuste mix, preço e cobertura com dado real, não estimativa.' },
-    { icon: 'link',     t: 'Conexão com qualquer ERP', d: 'A SEWE cuida da integração e da modelagem. Sua equipe recebe o dado pronto.' },
+    { icon: 'line',     t: 'Estratégia ponta a ponta', d: 'Decisões baseadas em fatos, não estimativas: direcione o mix, ajuste preço e expanda a cobertura sabendo o que o mercado absorve.' },
+    { icon: 'link',     t: 'Conexão com qualquer ERP', d: 'Zero esforço para a sua TI: a SEWE cuida da integração de forma agnóstica. Sua equipe só recebe o dado pronto e limpo.' },
   ];
   return (
     <section id="integration" className="section" style={{ background: '#fff', position: 'relative', overflow: 'hidden' }}>
@@ -139,8 +139,8 @@ function IntegrationSection() {
               A ponte de dados entre <span style={{ color: C.color }}>indústria e distribuidor</span>.
             </h2>
             <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 560 }}>
-              A Integration traz os dados de sellout e estoque de cada distribuidor que vende os produtos da
-              indústria, e devolve para o distribuidor uma visão diferenciada, ajustando a estratégia de ponta a ponta.
+              A SEWE Integration conecta o ERP dos seus distribuidores à indústria em tempo real, gerando uma via de
+              mão dupla: inteligência estratégica para o seu negócio e eficiência operacional para o seu canal.
             </p>
           </div>
         </div>
@@ -163,7 +163,7 @@ function IntegrationSection() {
           {/* Industry routing door */}
           <aside className="bu-aside reveal" style={{ background: 'linear-gradient(160deg,#0c2f17,#06250f)', '--c': C.color }}>
             <div className="bu-aside-tag" style={{ color: '#aef0c2', background: 'rgba(0,163,53,0.18)' }}>PARA INDÚSTRIAS</div>
-            <h3 style={{ color: '#fff', fontSize: 24, marginTop: 14, lineHeight: 1.25 }}>É uma indústria e quer enxergar toda a rede?</h3>
+            <h3 style={{ color: '#fff', fontSize: 24, marginTop: 14, lineHeight: 1.25 }}>Assuma o controle estratégico da sua rede de distribuição.</h3>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 15, marginTop: 12 }}>
               Conecte seus distribuidores e acompanhe o sellout real, a cobertura e o giro de cada produto,
               da fábrica ao ponto de venda.
