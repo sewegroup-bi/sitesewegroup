@@ -90,30 +90,26 @@ function IndustriaCadeia() {
     return (<g {...s}><path d={`M${cx - 11},${cy + 11} V${cy - 2} L${cx - 4},${cy + 3} V${cy - 2} L${cx + 3},${cy + 3} V${cy - 2} L${cx + 10},${cy + 3} V${cy + 11} Z`}/><path d={`M${cx - 9},${cy - 5} V${cy - 11} H${cx - 6} V${cy - 6}`}/></g>);
   };
 
-  const CONV = [
-    'M125,272 C125,326 300,350 486,362',
-    'M375,272 C375,324 428,346 492,358',
-    'M625,272 C625,324 572,346 508,358',
-    'M875,272 C875,326 700,350 514,362',
-  ];
-
   return (
     <section className="section" style={{ background: 'var(--bg-soft)', overflow: 'hidden' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 40px' }}>
-          <div className="eyebrow">A cadeia conectada</div>
+          <div className="eyebrow">O ecossistema conectado</div>
           <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Pedido, produto e pagamento. <span style={{ color: 'var(--navy)' }}>O caminho real, passo a passo</span>.
+            Consumidor, revenda, distribuidor, indústria. <span style={{ color: 'var(--navy)' }}>Todos conectados, direto</span>.
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Do consumidor até a indústria, cada pedido, cada entrega e cada pagamento segue um trajeto real.
-            Veja a informação viajando pela cadeia, exatamente como ela acontece, e clique numa etapa para pular pra ela.
+            Pedido, produto e pagamento seguem um trajeto real, chegando direto a quem precisa da informação,
+            sem intermediário. Veja a informação circulando e clique numa etapa para pular pra ela.
           </p>
         </div>
 
         <div className="cad2-panel">
-          <svg viewBox="0 0 1000 452" role="img" style={{ width: '100%', height: 'auto', display: 'block' }}
-            aria-label={`Cadeia conectada, etapa atual: ${step.text}`}>
+          <div className="cad3-tech-badge">
+            <SMark size={13} color="#75e3e4"/> Tecnologia Sewe Group
+          </div>
+          <svg viewBox="0 0 1000 300" role="img" style={{ width: '100%', height: 'auto', display: 'block' }}
+            aria-label={`Ecossistema conectado, etapa atual: ${step.text}`}>
             <defs>
               <filter id="cadGlow" x="-200%" y="-200%" width="500%" height="500%">
                 <feGaussianBlur stdDeviation="4.2" result="b"/>
@@ -128,7 +124,7 @@ function IndustriaCadeia() {
 
             {/* colunas: liga cada elo às pistas */}
             {CADEIA_NODES.map((n, i) => (
-              <line key={i} x1={n.cx} y1={130} x2={n.cx} y2={272} stroke="rgba(255,255,255,0.08)" strokeWidth="1.5"/>
+              <line key={i} x1={n.cx} y1={130} x2={n.cx} y2={264} stroke="rgba(255,255,255,0.08)" strokeWidth="1.5"/>
             ))}
 
             {/* pistas base (fantasma) */}
@@ -169,18 +165,6 @@ function IndustriaCadeia() {
               <circle cx={nb.cx} cy={tinfo.y} r="6" fill={tinfo.color}/>
             )}
 
-            {/* convergência ambiente para a SEWE */}
-            {CONV.map((d, i) => (
-              <g key={i}>
-                <path d={d} fill="none" stroke="#75e3e4" strokeOpacity="0.14" strokeWidth="1.5"/>
-                {!reduceMotion && (
-                  <circle r="3.2" fill="#75e3e4">
-                    <animateMotion dur="3.4s" begin={`${i * 0.85}s`} repeatCount="indefinite" path={d}/>
-                  </circle>
-                )}
-              </g>
-            ))}
-
             {/* elos da cadeia */}
             {CADEIA_NODES.map((n, i) => {
               const isActive = i === step.a || i === step.b;
@@ -197,14 +181,8 @@ function IndustriaCadeia() {
               );
             })}
 
-            {/* hub SEWE */}
-            <rect x={392} y={338} width={216} height={54} rx={27}
-              fill="rgba(117,227,228,0.1)" stroke="#75e3e4" strokeOpacity="0.55" strokeWidth="1.5" className="cad2-hub"/>
-            <text x={500} y={361} textAnchor="middle" fontFamily="Chakra Petch, sans-serif" fontWeight="700" fontSize="19" fill="#75e3e4" letterSpacing="3">SEWE</text>
-            <text x={500} y={379} textAnchor="middle" fontSize="10.5" fill="rgba(255,255,255,0.6)" letterSpacing="1.5">DADOS · BI · IA · TEMPO REAL</text>
-
-            <text x={500} y={434} textAnchor="middle" fontSize="13" fill="rgba(255,255,255,0.55)">
-              Cada etapa vira dado na hora: sellout, estoque e financeiro de ponta a ponta, em tempo real.
+            <text x={500} y={288} textAnchor="middle" fontSize="13" fill="rgba(255,255,255,0.55)">
+              A informação circula pela cadeia de verdade: sai de um elo e chega direto no próximo, em tempo real.
             </text>
           </svg>
 
@@ -232,16 +210,18 @@ function IndustriaCadeia() {
       </div>
       <style>{`
         .cad2-panel {
+          position: relative;
           background: linear-gradient(150deg, #15243d, #0d1a2e);
           border: 1px solid rgba(255,255,255,0.08);
           border-radius: 20px;
           box-shadow: var(--shadow-lg);
           padding: clamp(10px, 2vw, 26px);
         }
-        .cad2-hub { animation: cad2glow 2.6s ease-in-out infinite; }
-        @keyframes cad2glow {
-          0%, 100% { stroke-opacity: 0.4; }
-          50% { stroke-opacity: 1; }
+        .cad3-tech-badge {
+          position: absolute; top: 14px; right: 18px; z-index: 2;
+          display: inline-flex; align-items: center; gap: 6px;
+          font-family: var(--ff-mono); font-size: 10px; font-weight: 600; letter-spacing: .1em;
+          text-transform: uppercase; color: rgba(255,255,255,0.5);
         }
         .cad3-node rect { transition: fill .35s ease, stroke .35s ease, stroke-width .35s ease; }
         .cad3-node.is-active rect { filter: drop-shadow(0 0 8px var(--nc)); }
@@ -285,7 +265,7 @@ function IndustriaCadeia() {
           .cad3-steps { justify-content: center; flex-wrap: wrap; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .cad2-hub, .cad3-seg { animation: none; }
+          .cad3-seg { animation: none; }
         }
       `}</style>
     </section>
