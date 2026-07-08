@@ -6,20 +6,20 @@ function SuitesSection() {
 
   const suites = [
     {
-      key: 'suprimentos',
-      label: 'Suprimentos',
-      icon: 'boxes',
-      tagline: 'Estoque na medida exata.',
-      title: 'Compre pela demanda real. Zere a ruptura de Curva A.',
-      body: 'IA preditiva que lê 18 meses de histórico e ajusta pedidos em tempo real. Evita excesso de mercadoria parada e zera a ruptura nos itens que pagam a conta.',
-      kpis: [{ v: '-15%', l: 'custos operacionais' }, { v: '+90%', l: 'assertividade' }, { v: '-20%', l: 'estoque parado' }],
+      key: 'estrategica',
+      label: 'Gestão Estratégica',
+      icon: 'target',
+      tagline: 'Uma tela. Quatro áreas. Zero ruído.',
+      title: 'A visão 360° para quem toma a decisão difícil.',
+      body: 'Um único painel com os KPIs que importam: Suprimentos, Comercial, Financeiro e Operacional, consolidados para o C-Level. Drill-down até o documento na mesma tela.',
+      kpis: [{ v: '7 filiais', l: 'unificadas em tempo real' }, { v: 'Zero', l: 'planilhas paralelas na diretoria' }, { v: '< 2 min', l: 'para consolidar toda a DRE' }],
       bullets: [
-        'Alerta de ruptura antes que o item falte na prateleira',
-        'Sugestão de compra automática enviada ao ERP',
-        'Curva ABC viva com reclassificação contínua',
-        'Identifica fornecedores com performance declinante',
+        'Consolidação multi-filial em uma única tela, sem planilha manual',
+        'Simulação de cenários (what-if) para preço e custo logístico',
+        'Crescimento YoY, ciclo de caixa e produtividade lado a lado',
+        'Alerta automático quando EBITDA ou ruptura fogem do planejado',
       ],
-      dashboard: 'suprimentos',
+      dashboard: 'estrategica',
     },
     {
       key: 'comercial',
@@ -38,6 +38,22 @@ function SuitesSection() {
       dashboard: 'comercial',
     },
     {
+      key: 'suprimentos',
+      label: 'Suprimentos',
+      icon: 'boxes',
+      tagline: 'Estoque na medida exata.',
+      title: 'Compre pela demanda real. Zere a ruptura de Curva A.',
+      body: 'IA preditiva que lê 18 meses de histórico e ajusta pedidos em tempo real. Evita excesso de mercadoria parada e zera a ruptura nos itens que pagam a conta.',
+      kpis: [{ v: '-15%', l: 'custos operacionais' }, { v: '+90%', l: 'assertividade' }, { v: '-20%', l: 'estoque parado' }],
+      bullets: [
+        'Alerta de ruptura antes que o item falte na prateleira',
+        'Sugestão de compra automática enviada ao ERP',
+        'Curva ABC viva com reclassificação contínua',
+        'Identifica fornecedores com performance declinante',
+      ],
+      dashboard: 'suprimentos',
+    },
+    {
       key: 'financeiro',
       label: 'Financeiro',
       icon: 'dollar',
@@ -52,22 +68,6 @@ function SuitesSection() {
         'Conciliação automática de rebate e verba',
       ],
       dashboard: 'financeiro',
-    },
-    {
-      key: 'estrategica',
-      label: 'Gestão Estratégica',
-      icon: 'target',
-      tagline: 'Uma tela. Quatro áreas. Zero ruído.',
-      title: 'A visão 360° para quem toma a decisão difícil.',
-      body: 'Um único painel com os KPIs que importam: Suprimentos, Comercial, Financeiro e Operacional, consolidados para o C-Level. Drill-down até o documento na mesma tela.',
-      kpis: [{ v: '1 painel', l: '4 áreas consolidadas' }, { v: '100%', l: 'drill-down nativo' }, { v: 'Diário', l: 'ritmo de decisão' }],
-      bullets: [
-        'Consolidação multi-filial com comparativo horizontal',
-        'Simulação de cenários (what-if) integrada',
-        'Ranking de indicadores vs. benchmark setorial',
-        'Relatório executivo semanal em e-mail',
-      ],
-      dashboard: 'estrategica',
     },
   ];
 
@@ -308,32 +308,104 @@ function SuiteDashboard({ kind }) {
   return (
     <QlikFrame title="GESTÃO ESTRATÉGICA · VISÃO 360° · C-LEVEL" subtitle="Consolidado · 7 filiais · MTD" tabs={['Visão 360°', 'Comparativo YoY', 'Simulação', 'Benchmark']} activeTab={0}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginBottom: 10 }}>
-        <QlikKPI compact label="Receita MTD" value="R$ 18,4M" delta="+14%" trend="up" color={Q.navy} spark={<Sparkline data={[12,13,14,15,16,17,18]}/>}/>
+        <QlikKPI compact label="Faturamento Líquido" value="R$ 18,4M" delta="+14%" trend="up" color={Q.navy} spark={<Sparkline data={[12,13,14,15,16,17,18]}/>}/>
         <QlikKPI compact label="EBITDA" value="25,4%" delta="+2,1pp" trend="up" color={Q.navy} spark={<Sparkline data={[22,22.5,23,23.5,24.1,25,25.4]}/>}/>
-        <QlikKPI compact label="Capital Giro" value="R$ 8,2M" delta="-12%" trend="up" color={Q.pos} spark={<Sparkline data={[9.5,9.2,9.0,8.8,8.5,8.3,8.2]} color={Q.pos} fill="rgba(46,139,87,0.15)"/>}/>
-        <QlikKPI compact label="NPS clientes" value="72" delta="+8" trend="up" color={Q.navy} spark={<Sparkline data={[58,62,65,67,69,71,72]}/>}/>
+        <QlikKPI compact label="Ciclo de Caixa" value="42 dias" delta="-6 dias" trend="up" color={Q.pos} spark={<Sparkline data={[52,50,48,47,45,43,42]} color={Q.pos} fill="rgba(46,139,87,0.15)"/>}/>
+        <QlikKPI compact label="OTIF Global" value="94,2%" delta="+1,8pp" trend="up" color={Q.navy} spark={<Sparkline data={[89,90,91,92,92.8,93.5,94.2]}/>}/>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10, marginBottom: 10 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.25fr 0.85fr', gap: 10, marginBottom: 10 }}>
         <QlikHBars title="Performance por filial" rows={[
           { label: 'Florianópolis', v: 94, display: '94%', color: Q.pos },
-          { label: 'Curitiba',      v: 88, display: '88%', color: Q.turq2 },
+          { label: 'Curitiba',      v: 88, display: '88%', color: Q.pos },
           { label: 'Porto Alegre',  v: 82, display: '82%', color: Q.turq2 },
-          { label: 'São Paulo',     v: 76, display: '76%', color: Q.navy },
+          { label: 'São Paulo',     v: 76, display: '76%', color: Q.warn },
           { label: 'Campinas',      v: 68, display: '68%', color: Q.warn },
           { label: 'Goiânia',       v: 62, display: '62%', color: Q.warn },
           { label: 'Recife',        v: 54, display: '54%', color: Q.neg },
-        ]} max={100} barH={18} gap={12}/>
-        <QlikArea title="Receita · evolução 12m" subtitle="YoY +28%" data={[11,12,12.5,13,13.8,14.2,15,15.5,16.2,17,17.8,18.4]} labels={['M1','','','M4','','','M7','','','M10','','']} height={250}/>
-        <div style={{ background: '#fff', border: `1px solid ${Q.line}`, borderRadius: 10, padding: 14 }}>
-          <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 13, color: Q.ink, marginBottom: 12 }}>Saúde do negócio</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <QlikDonut value={84} label="Positivação" sublabel="Meta 80%" color={Q.turq2} size={80} thickness={9}/>
-            <QlikDonut value={72} label="NPS" sublabel="Benchmark 58" color={Q.navy} size={80} thickness={9}/>
-            <QlikDonut value={91} label="Assertividade IA" sublabel="Meta 85%" color={Q.pos} size={80} thickness={9}/>
+        ]} max={100} barH={16} gap={12} labelW={86} valueW={40}/>
+        <StratRevenueChart/>
+        <div style={{ background: '#fff', border: `1px solid ${Q.line}`, borderRadius: 10, padding: 14, display: 'flex', flexDirection: 'column' }}>
+          <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 13, color: Q.ink, marginBottom: 10 }}>Saúde do negócio</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flex: 1, justifyContent: 'space-evenly' }}>
+            {[
+              { v: '84%', l: 'Positivação', s: 'Meta 80%', color: Q.turq2, data: [76,78,79,80,81,83,84] },
+              { v: '94%', l: 'OTIF', s: 'Meta 90%', color: Q.navy, data: [88,89,90,91,92,93,94] },
+              { v: '91%', l: 'Assertividade IA', s: 'Meta 85%', color: Q.pos, data: [84,85,87,88,89,90,91] },
+            ].map((k, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, padding: '8px 10px', background: Q.bgSoft, borderRadius: 8 }}>
+                <div>
+                  <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 22, color: k.color, lineHeight: 1.1 }}>{k.v}</div>
+                  <div style={{ fontSize: 10.5, fontWeight: 600, color: Q.ink, textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: 2 }}>{k.l}</div>
+                  <div style={{ fontSize: 10, color: Q.muted }}>{k.s}</div>
+                </div>
+                <Sparkline data={k.data} color={k.color} fill="rgba(117,227,228,0.12)" width={72} height={30}/>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </QlikFrame>
+  );
+}
+
+// Receita 12m + projeção IA pontilhada, para o painel estratégico
+function StratRevenueChart() {
+  const hist = [14.2, 15.1, 16.0, 17.2, 19.8, 18.9, 17.6, 18.1, 17.4, 18.0, 18.2, 18.4];
+  const proj = [18.4, 19.2, 20.1];
+  const W = 520, H = 250;
+  const padL = 34, padR = 14, padT = 16, padB = 40;
+  const iw = W - padL - padR, ih = H - padT - padB;
+  const n = hist.length + proj.length - 1;
+  const all = hist.concat(proj);
+  const max = Math.max(...all) * 1.08, min = Math.min(...all) * 0.9;
+  const X = i => padL + (i / n) * iw;
+  const Y = v => padT + ih - ((v - min) / (max - min)) * ih;
+  const histPts = hist.map((v, i) => [X(i), Y(v)]);
+  const projPts = proj.map((v, i) => [X(hist.length - 1 + i), Y(v)]);
+  const line = histPts.map((p, i) => (i === 0 ? `M${p[0]},${p[1]}` : `L${p[0]},${p[1]}`)).join(' ');
+  const area = line + ` L${histPts[histPts.length-1][0]},${padT+ih} L${histPts[0][0]},${padT+ih} Z`;
+  const projLine = projPts.map((p, i) => (i === 0 ? `M${p[0]},${p[1]}` : `L${p[0]},${p[1]}`)).join(' ');
+  const bestI = hist.indexOf(Math.max(...hist));
+  const worstI = hist.indexOf(Math.min(...hist));
+  return (
+    <div style={{ background: '#fff', border: `1px solid ${Q.line}`, borderRadius: 10, padding: 14, display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 6 }}>
+        <div>
+          <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 13, color: Q.ink }}>Receita · evolução 12m</div>
+          <div style={{ fontSize: 11, color: Q.muted, marginTop: 2 }}>YoY +28%</div>
+        </div>
+        <div style={{ fontSize: 9.5, fontWeight: 600, color: Q.navy, background: 'rgba(117,227,228,0.22)', border: `1px solid ${Q.turq2}`, borderRadius: 99, padding: '3px 9px', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>Projeção IA</div>
+      </div>
+      <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', flex: 1 }}>
+        <defs>
+          <linearGradient id="stratGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={Q.turq} stopOpacity="0.5"/>
+            <stop offset="100%" stopColor={Q.turq} stopOpacity="0"/>
+          </linearGradient>
+        </defs>
+        {[0, 0.25, 0.5, 0.75, 1].map((f, i) => (
+          <line key={i} x1={padL} x2={W-padR} y1={padT + ih*f} y2={padT + ih*f} stroke={Q.grid} strokeWidth="1"/>
+        ))}
+        <path d={area} fill="url(#stratGrad)"/>
+        <path d={line} fill="none" stroke={Q.turq2} strokeWidth="2.5"/>
+        <path d={projLine} fill="none" stroke={Q.navy} strokeWidth="2" strokeDasharray="5 5"/>
+        {histPts.map((p, i) => (
+          <circle key={i} cx={p[0]} cy={p[1]} r={i === bestI || i === worstI ? 4 : 2.5} fill={i === bestI ? Q.pos : i === worstI ? Q.neg : '#fff'} stroke={Q.turq2} strokeWidth="1.5"/>
+        ))}
+        <circle cx={projPts[projPts.length-1][0]} cy={projPts[projPts.length-1][1]} r="4" fill={Q.navy}/>
+        <circle cx={projPts[projPts.length-1][0]} cy={projPts[projPts.length-1][1]} r="8" fill={Q.navy} opacity="0.18"/>
+        <text x={histPts[bestI][0]} y={histPts[bestI][1] - 9} fontSize="10" fontWeight="600" fill={Q.pos} textAnchor="middle" fontFamily="JetBrains Mono, monospace">R$ 19,8M</text>
+        <text x={histPts[worstI][0] + 6} y={histPts[worstI][1] + 16} fontSize="10" fontWeight="600" fill={Q.neg} textAnchor="start" fontFamily="JetBrains Mono, monospace">R$ 14,2M</text>
+        {['Jan','','Mar','','Mai','','Jul','','Set','','Nov','','Jan+','Fev+'].map((l, i) => (
+          l ? <text key={i} x={X(i)} y={H - 24} fontSize="9" fill={Q.muted} textAnchor="middle" fontFamily="JetBrains Mono, monospace">{l}</text> : null
+        ))}
+      </svg>
+      <div style={{ display: 'flex', gap: 14, fontSize: 10.5, color: Q.muted, marginTop: 4, flexWrap: 'wrap' }}>
+        <span><span style={{ color: Q.pos, fontWeight: 700 }}>●</span> Melhor mês: R$ 19,8M (Mai/25)</span>
+        <span><span style={{ color: Q.neg, fontWeight: 700 }}>●</span> Pior mês: R$ 14,2M (Jan/25)</span>
+        <span><span style={{ color: Q.navy, fontWeight: 700 }}>┄</span> Projeção IA · próx. 2 meses</span>
+      </div>
+    </div>
   );
 }
 

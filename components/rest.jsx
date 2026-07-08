@@ -88,7 +88,7 @@ function DifferentiatorsSection() {
     { icon: 'link', title: 'Integração nativa com ERPs', body: 'Conectores homologados para os principais ERPs do setor. Camada criptografada, sem precisar de time de TI interno.' },
     { icon: 'brain', title: 'IA invisível', body: 'Roda em background, limpa outliers, cruza dados e entrega decisão pronta. Sem prompts, sem engenharia, sem cientista de dados.' },
     { icon: 'shield', title: 'Segurança e LGPD', body: 'Dados cifrados em trânsito e repouso, homologação Qlik oficial, auditoria e política de retenção desenhadas por projeto.' },
-    { icon: 'pkg', title: 'DNA de distribuição', body: 'Consultores que falam ruptura, Curva A, positivação, rebate e capital de giro. Não traduzimos o setor, nós somos do setor.' },
+    { icon: 'pkg', title: 'DNA de Atacado e Distribuição', body: 'Consultores que falam ruptura, Curva A, positivação, rebate e capital de giro. Não traduzimos o setor, nós somos do setor.' },
     { icon: 'trophy', title: 'Parceria oficial Qlik', body: 'Platform Partner da Qlik, plataforma de analytics líder global, Leader no Gartner Magic Quadrant por 13 anos consecutivos.' },
   ];
   return (
@@ -99,7 +99,7 @@ function DifferentiatorsSection() {
           <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>Por que SEWE</div>
           <h2 style={{ marginTop: 14, color: '#fff' }}>Seis razões que nenhum BI genérico oferece.</h2>
           <p style={{ color: 'rgba(255,255,255,0.66)', marginTop: 14, fontSize: 17 }}>
-            Nós entregamos solução vertical pronta, com DNA de distribuição e tempo de valor em semanas.
+            Nós entregamos solução vertical pronta, com DNA de atacado e distribuição e tempo de valor em semanas.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'rgba(255,255,255,0.08)', borderRadius: 16, overflow: 'hidden' }} className="diff-grid">
@@ -334,11 +334,11 @@ function AgendaSection({ bg = '#fff' }) {
     <section className="section" style={{ background: bg, paddingTop: 'clamp(28px, 3.5vw, 48px)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 36px' }}>
-          <div className="eyebrow">Demonstração ao vivo</div>
-          <h2 style={{ marginTop: 14 }}>Agende uma demonstração com a nossa equipe.</h2>
+          <div className="eyebrow">Sessão estratégica</div>
+          <h2 style={{ marginTop: 14 }}>Agende uma sessão estratégica de diagnóstico.</h2>
           <p style={{ color: 'var(--text-2)', marginTop: 14, fontSize: 17 }}>
-            Escolha o melhor horário na agenda abaixo. Reunião online de 60 minutos,
-            pelo Google Meet, com um especialista SEWE.
+            Escolha o melhor horário na agenda abaixo. Conversa online, pelo Google Meet,
+            com um especialista SEWE sobre o potencial da sua operação.
           </p>
         </div>
         <div id="agendar" style={{ maxWidth: 920, margin: '0 auto', border: '1px solid var(--line)', borderRadius: 16, overflow: 'hidden', boxShadow: 'var(--shadow-md)', scrollMarginTop: 90 }}>
@@ -351,7 +351,7 @@ function AgendaSection({ bg = '#fff' }) {
         </div>
         <div style={{ textAlign: 'center', marginTop: 14, fontSize: 13, color: 'var(--text-3)' }}>
           Não achou horário? <a href={SEWE_AGENDA_URL} target="_blank" rel="noopener" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>Abra a agenda completa</a> ou
-          {' '}<a href={`${SEWE_WHATSAPP}?text=${encodeURIComponent('Olá! Quero agendar uma demonstração da SEWE.')}`} target="_blank" rel="noopener" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>chame no WhatsApp</a>.
+          {' '}<a href={`${SEWE_WHATSAPP}?text=${encodeURIComponent('Olá! Quero agendar uma sessão estratégica com a SEWE.')}`} target="_blank" rel="noopener" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>chame no WhatsApp</a>.
         </div>
       </div>
     </section>

@@ -188,14 +188,14 @@ function QlikCombo({
 }
 
 // Horizontal bar chart, great for curva ABC, top N
-function QlikHBars({ rows, valueKey = 'v', labelKey = 'label', color = Q.turq2, title, max: maxProp, barH = 14, gap = 8 }) {
+function QlikHBars({ rows, valueKey = 'v', labelKey = 'label', color = Q.turq2, title, max: maxProp, barH = 14, gap = 8, labelW = 110, valueW = 60 }) {
   const max = maxProp || Math.max(...rows.map(r => r[valueKey])) * 1.1;
   return (
     <div style={{ background: '#fff', border: `1px solid ${Q.line}`, borderRadius: 10, padding: 14, height: '100%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
       {title && <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 13, color: Q.ink, marginBottom: 10 }}>{title}</div>}
       <div style={{ display: 'flex', flexDirection: 'column', gap, flex: 1, justifyContent: 'space-evenly' }}>
         {rows.map((r, i) => (
-          <div key={i} style={{ display: 'grid', gridTemplateColumns: '110px 1fr 60px', alignItems: 'center', gap: 10, fontSize: 11 }}>
+          <div key={i} style={{ display: 'grid', gridTemplateColumns: `${labelW}px 1fr ${valueW}px`, alignItems: 'center', gap: 10, fontSize: 11 }}>
             <div style={{ color: Q.ink, fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r[labelKey]}</div>
             <div style={{ background: Q.grid, height: barH, borderRadius: 2, overflow: 'hidden', position: 'relative' }}>
               <div style={{ width: `${(r[valueKey] / max) * 100}%`, height: '100%', background: r.color || color, borderRadius: 2, transition: 'width .6s ease' }}/>

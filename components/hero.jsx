@@ -48,7 +48,7 @@ function Hero({ headlineVariant = 0 }) {
         </div>
 
         <p style={{ textAlign: 'center', fontFamily: 'var(--ff-display)', fontWeight: 600, color: 'var(--navy-700)', fontSize: 'clamp(16px, 2vw, 22px)', letterSpacing: '0.01em', margin: '0 auto 14px' }}>
-          Especialistas em Soluções para Distribuidores.
+          Especialistas em Soluções para Distribuidores e Atacadistas.
         </p>
 
         <h1 className="display" style={{ textAlign: 'center', maxWidth: 1100, margin: '0 auto', fontSize: 'clamp(40px, 5.6vw, 74px)' }}>

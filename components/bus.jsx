@@ -187,19 +187,111 @@ function IntegrationSection() {
 /* ────────────────────────────────────────────────────────────
    SEWE SALES, sales team → B2B e-commerce + CRM
 ──────────────────────────────────────────────────────────── */
+
+// Celular reto entre as duas colunas: catálogo do cliente em cima,
+// visão de metas do vendedor embaixo — o mesmo app para os dois.
+function SalesPhone() {
+  const c = BU.sales.color;
+  const ink = BU.sales.ink;
+  return (
+    <div className="sxp-wrap">
+      <div className="sxp-phone">
+        <div className="sxp-notch"></div>
+        <div className="sxp-topbar">
+          <span className="sxp-logo">SEWE SALES</span>
+          <span className="sxp-live">● online</span>
+        </div>
+
+        <div className="sxp-mode"><Icon name="store" size={11} stroke={2}/> Visão da revenda</div>
+        <div className="sxp-product">
+          <div className="sxp-thumb" style={{ backgroundImage: 'url(https://picsum.photos/seed/racaosewe/80/80)' }}></div>
+          <div className="sxp-pinfo">
+            <div className="sxp-pname">Ração Premier 15kg</div>
+            <div className="sxp-pprice">R$ 45,00 <span>un.</span></div>
+          </div>
+          <div className="sxp-stepper"><span>–</span><b>2</b><span>+</span></div>
+        </div>
+        <div className="sxp-credit">
+          <div className="sxp-credit-l"><span>Limite disponível</span><b>R$ 12,5K</b></div>
+          <div className="sxp-credit-bar"><i style={{ width: '62%' }}></i></div>
+        </div>
+
+        <div className="sxp-divider"><span><Icon name="link" size={11} stroke={2}/> mesmo app</span></div>
+
+        <div className="sxp-mode"><Icon name="users" size={11} stroke={2}/> Visão do vendedor</div>
+        <div className="sxp-meta">
+          <div className="sxp-meta-h"><span>Meta do mês</span><b>82%</b></div>
+          <div className="sxp-meta-bar"><i style={{ width: '82%' }}></i></div>
+        </div>
+        <div className="sxp-insight">
+          <span className="sxp-insight-tag">Próxima ação</span>
+          <div className="sxp-insight-t">Reativar Pet Center Sul · sem pedido há 34 dias</div>
+        </div>
+
+        <div className="sxp-tabbar">
+          <span className="on"><Icon name="store" size={14} stroke={1.8}/></span>
+          <span><Icon name="boxes" size={14} stroke={1.8}/></span>
+          <span><Icon name="trending" size={14} stroke={1.8}/></span>
+          <span><Icon name="users" size={14} stroke={1.8}/></span>
+        </div>
+      </div>
+      <style>{`
+        .sxp-wrap { position:relative; display:flex; justify-content:center; }
+        .sxp-wrap::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+          width:280px; height:280px; border-radius:50%;
+          background:radial-gradient(circle, color-mix(in srgb, ${c} 15%, transparent), transparent 70%); }
+        .sxp-phone { position:relative; width:228px; box-sizing:border-box; background:#fff;
+          border:2.5px solid var(--navy-900); border-radius:34px; padding:16px 14px 14px;
+          box-shadow:var(--shadow-lg); display:flex; flex-direction:column; }
+        .sxp-notch { width:44px; height:5px; border-radius:99px; background:var(--line); margin:0 auto 12px; }
+        .sxp-topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+        .sxp-logo { font-family:'Chakra Petch'; font-weight:700; font-size:10px; letter-spacing:0.08em; color:var(--navy-900); }
+        .sxp-live { font-size:8.5px; color:var(--success); font-weight:600; }
+        .sxp-mode { display:inline-flex; align-items:center; gap:5px; font-family:var(--ff-mono); font-size:8.5px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:${ink}; background:${BU.sales.soft}; border-radius:999px; padding:3px 9px; margin-bottom:8px; align-self:flex-start; }
+        .sxp-product { display:flex; align-items:center; gap:9px; border:1px solid var(--line); border-radius:11px; padding:8px; margin-bottom:8px; }
+        .sxp-thumb { width:36px; height:36px; border-radius:8px; background-size:cover; background-position:center; border:1px solid var(--line); flex-shrink:0; }
+        .sxp-pinfo { flex:1; min-width:0; }
+        .sxp-pname { font-size:10px; color:var(--navy-900); font-weight:600; }
+        .sxp-pprice { font-family:'Chakra Petch'; font-weight:700; font-size:12px; color:var(--navy-900); margin-top:2px; }
+        .sxp-pprice span { font-size:8.5px; color:var(--text-3); font-weight:400; }
+        .sxp-stepper { display:flex; align-items:center; gap:6px; background:var(--bg-soft); border:1px solid var(--line); border-radius:8px; padding:3px 7px; font-size:10.5px; color:var(--navy-900); }
+        .sxp-credit { border:1px solid var(--line); border-radius:11px; padding:8px 10px; margin-bottom:4px; }
+        .sxp-credit-l { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px; }
+        .sxp-credit-l span { font-size:9px; color:var(--text-3); }
+        .sxp-credit-l b { font-family:'Chakra Petch'; font-size:11.5px; color:var(--navy-900); }
+        .sxp-credit-bar, .sxp-meta-bar { height:5px; border-radius:99px; background:var(--bg-soft); overflow:hidden; }
+        .sxp-credit-bar i { display:block; height:100%; border-radius:99px; background:var(--success); }
+        .sxp-divider { display:flex; align-items:center; gap:8px; margin:10px 0; color:var(--text-3); }
+        .sxp-divider::before, .sxp-divider::after { content:''; flex:1; height:1px; background:var(--line); }
+        .sxp-divider span { display:inline-flex; align-items:center; gap:4px; font-family:var(--ff-mono); font-size:8px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:${c}; }
+        .sxp-meta { border:1px solid var(--line); border-radius:11px; padding:8px 10px; margin-bottom:8px; }
+        .sxp-meta-h { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px; }
+        .sxp-meta-h span { font-size:9px; color:var(--text-3); }
+        .sxp-meta-h b { font-family:'Chakra Petch'; font-size:11.5px; color:${ink}; }
+        .sxp-meta-bar i { display:block; height:100%; border-radius:99px; background:${c}; }
+        .sxp-insight { border:1px solid var(--line); border-left:3px solid ${c}; border-radius:10px; padding:8px 10px; margin-bottom:12px; background:var(--bg-soft); }
+        .sxp-insight-tag { font-family:var(--ff-mono); font-size:8px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:${ink}; }
+        .sxp-insight-t { font-size:9.5px; color:var(--navy-900); line-height:1.4; margin-top:3px; }
+        .sxp-tabbar { display:flex; justify-content:space-around; padding-top:9px; border-top:1px solid var(--line); color:var(--text-3); margin-top:auto; }
+        .sxp-tabbar .on { color:${c}; }
+      `}</style>
+    </div>
+  );
+}
+
 function SalesSection() {
   const C = BU.sales;
   const revenda = [
     { icon: 'store',   t: 'Catálogo e pedido 24/7', d: 'A revenda consulta produto, estoque e preço e faz o pedido sozinha, a qualquer hora.' },
-    { icon: 'dollar',  t: 'Limite de crédito na hora', d: 'Cada cliente enxerga o próprio limite e compra dentro da política, sem ligar pro financeiro.' },
-    { icon: 'sparkle', t: 'Descoberta de produtos', d: 'Novidades e recompra inteligente: o portal sugere itens que fazem sentido pra cada cliente.' },
+    { icon: 'dollar',  t: 'Limite de crédito na hora', d: 'O cliente enxerga o limite disponível atualizado e compra dentro das regras da empresa, com aprovação instantânea e zero burocracia.' },
+    { icon: 'sparkle', t: 'Recompra inteligente e cross-sell', d: 'O portal sugere automaticamente os produtos certos com base no histórico do cliente, aumentando o ticket médio sem esforço humano.' },
     { icon: 'target',  t: 'Ações e promoções', d: 'Campanhas, combos e incentivos comerciais aparecem na hora certa, por carteira.' },
   ];
   const vendedor = [
-    { icon: 'trending', t: 'Insights de venda', d: 'O sistema sugere a próxima ação: quem reativar, o que oferecer e onde há espaço pra crescer.' },
+    { icon: 'trending', t: 'Ações prontas para o vendedor', d: 'O sistema analisa os dados nos bastidores e avisa o vendedor no celular quem reativar, o que oferecer e onde estão as oportunidades.' },
     { icon: 'users',    t: 'Carteira sob controle', d: 'Cada vendedor com a carteira organizada, histórico do cliente e metas na palma da mão.' },
     { icon: 'check',    t: 'Atividades e agenda', d: 'Crie visitas, follow-ups e tarefas e acompanhe a execução do time em tempo real.' },
-    { icon: 'chart',    t: 'CRM Sewe + BI', d: 'A venda que acontece no portal já volta como dado pro BI, virando decisão.' },
+    { icon: 'chart',    t: 'Fechamento do ciclo de dados', d: 'Cada pedido digitado ou alterado na rua alimenta o BI em tempo real, transformando a venda do balcão em previsão de caixa imediata.' },
   ];
   const chain = [
     { icon: 'warehouse', k: 'Distribuidor + vendedor', d: 'gerencia e impulsiona' },
@@ -214,11 +306,11 @@ function SalesSection() {
               <SMark size={16} color={C.color}/> SEWE SALES
             </div>
             <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
-              O elo entre você e a sua <span style={{ color: C.color }}>revenda</span>.
+              O aplicativo que digitaliza suas vendas e potencializa seu <span style={{ color: C.color }}>time de rua</span>.
             </h2>
             <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 640 }}>
-              Um e-commerce B2B com CRM que liga a sua revenda à sua operação. O cliente compra sozinho
-              e o vendedor vende melhor, com o dado correndo de ponta a ponta.
+              Um e-commerce B2B com CRM integrado que dá autonomia para a sua revenda comprar sozinha
+              e fornece inteligência preditiva para o seu vendedor vender mais e melhor.
             </p>
           </div>
         </div>
@@ -238,7 +330,7 @@ function SalesSection() {
           <div className="sx-chain-cap">Sewe Sales conecta os dois</div>
         </div>
 
-        {/* two audiences */}
+        {/* two audiences flanking the app */}
         <div className="sx-cols">
           <div className="sx-col reveal">
             <div className="sx-col-h"><Icon name="store" size={18} stroke={2}/> Para a revenda e o cliente</div>
@@ -251,6 +343,7 @@ function SalesSection() {
               ))}
             </div>
           </div>
+          <div className="sx-phone-slot reveal"><SalesPhone/></div>
           <div className="sx-col reveal">
             <div className="sx-col-h"><Icon name="users" size={18} stroke={2}/> Para o vendedor e o distribuidor</div>
             <div className="sx-feats">
@@ -273,7 +366,12 @@ function SalesSection() {
         .sx-node-d { font-size:12px; color:var(--text-3); margin-top:3px; }
         .sx-node-link { color:${C.color}; margin:0 6px; align-self:flex-start; margin-top:18px; }
         .sx-chain-cap { position:absolute; bottom:-11px; left:50%; transform:translateX(-50%); background:${C.color}; color:#fff; font-family:var(--ff-mono); font-size:10.5px; font-weight:600; letter-spacing:.08em; padding:3px 12px; border-radius:999px; white-space:nowrap; }
-        .sx-cols { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+        .sx-cols { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:stretch; }
+        .sx-phone-slot { display:none; }
+        @media (min-width:1100px){
+          .sx-cols { grid-template-columns:1fr 264px 1fr; }
+          .sx-phone-slot { display:flex; align-items:center; justify-content:center; position:relative; }
+        }
         .sx-col { background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:24px; box-shadow:var(--shadow-xs); }
         .sx-col-h { display:flex; align-items:center; gap:9px; font-family:var(--ff-display); font-weight:700; font-size:15px; color:${C.ink}; padding-bottom:14px; margin-bottom:16px; border-bottom:1px solid var(--line-2); }
         .sx-feats { display:grid; gap:16px; }

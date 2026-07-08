@@ -20,7 +20,7 @@ function SiteHeader({ home = false }) {
     { label: 'Início', href: 'index.html' },
     { label: 'Soluções', children: [
       { label: 'Indústria',          href: 'industria.html' },
-      { label: 'Distribuidor',       href: 'distribuidor.html' },
+      { label: 'Distribuidor & Atacado', href: 'distribuidor.html' },
       { label: 'Estratégia & Dados', href: 'solucoes.html' },
       { label: 'MinerConect',        href: 'minerconect.html' },
     ]},
@@ -43,8 +43,13 @@ function SiteHeader({ home = false }) {
       transition: 'background .25s ease, border-color .25s ease',
     }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '12px var(--gutter)' }}>
-        <a href="index.html" style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <img src="assets/sewe-logo.png" alt="SEWE GROUP" style={{ height: 52, width: 'auto', display: 'block' }}/>
+        <a href="index.html" style={{ display: 'inline-flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
+          <img src="assets/sewe-icon.png" alt="SEWE GROUP" style={{ height: 36, width: 36, display: 'block', borderRadius: 9 }}/>
+          <span style={{ width: 1, alignSelf: 'stretch', background: 'var(--line)' }}></span>
+          <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
+            <span style={{ fontFamily: 'var(--ff-display)', fontWeight: 700, fontSize: 21, letterSpacing: '0.04em', color: 'var(--navy-900)' }}>SEWE</span>
+            <span style={{ fontFamily: 'var(--ff-display)', fontWeight: 500, fontSize: 10.5, letterSpacing: '0.34em', color: 'var(--text-3)', textTransform: 'uppercase', marginTop: 3 }}>Group</span>
+          </span>
         </a>
         <div style={{ flex: 1 }}/>
         <nav style={{ display: 'flex', alignItems: 'center', gap: 2 }} className="nav-desktop">
@@ -163,7 +168,14 @@ function SiteFooter({ home = false }) {
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 32, paddingBottom: 48, borderBottom: '1px solid rgba(255,255,255,0.1)' }} className="foot-grid">
           <div>
-            <img src="assets/sewe-logo.png" alt="SEWE GROUP" style={{ height: 50, width: 'auto', display: 'block', filter: 'brightness(0) invert(1)' }}/>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+              <img src="assets/sewe-icon.png" alt="SEWE GROUP" style={{ height: 36, width: 36, display: 'block', borderRadius: 9, filter: 'invert(1)' }}/>
+              <span style={{ width: 1, alignSelf: 'stretch', background: 'rgba(255,255,255,0.25)' }}></span>
+              <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
+                <span style={{ fontFamily: 'var(--ff-display)', fontWeight: 700, fontSize: 21, letterSpacing: '0.04em', color: '#fff' }}>SEWE</span>
+                <span style={{ fontFamily: 'var(--ff-display)', fontWeight: 500, fontSize: 10.5, letterSpacing: '0.34em', color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase', marginTop: 3 }}>Group</span>
+              </span>
+            </span>
             <p style={{ color: 'rgba(255,255,255,0.56)', marginTop: 16, fontSize: 14, lineHeight: 1.6, maxWidth: 320 }}>
               Inteligência de dados para distribuidores e atacadistas. Consultoria + tecnologia + Qlik.
             </p>
@@ -194,7 +206,7 @@ function SiteFooter({ home = false }) {
           <div>
             <div style={col.title}>Soluções</div>
             <a style={col.link} href="industria.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Indústria</a>
-            <a style={col.link} href="distribuidor.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Distribuidor</a>
+            <a style={col.link} href="distribuidor.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Distribuidor & Atacado</a>
             <a style={col.link} href="solucoes.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Estratégia & Dados</a>
             <a style={col.link} href="minerconect.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>MinerConect</a>
           </div>

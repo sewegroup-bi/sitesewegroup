@@ -29,21 +29,21 @@ function HomePositioning() {
 function AudienceChooser() {
   const doors = [
     {
-      icon: 'factory', kicker: 'Sou indústria',
+      icon: 'factory', kicker: 'Sou indústria', accent: '#00a335', soft: 'rgba(0,163,53,0.10)',
       title: 'Enxergue toda a sua rede',
       desc: 'Do sellout ao PDV: Integration, Sales e BI conectando fábrica, distribuidor e revenda em um só mapa.',
       cta: 'Ver o ecossistema', href: 'industria.html',
     },
     {
-      icon: 'warehouse', kicker: 'Sou distribuidor',
+      icon: 'warehouse', kicker: 'Sou distribuidor ou atacadista', accent: '#fd7014', soft: 'rgba(253,112,20,0.10)',
       title: 'Decida com o dado na mão',
       desc: 'Menos ruptura, mais positivação, capital de giro livre. BI, IA e Sales sob medida para a sua operação.',
       cta: 'Ver soluções', href: 'distribuidor.html',
     },
     {
-      icon: 'cpu', kicker: 'Outra empresa',
+      icon: 'cpu', kicker: 'Outra empresa', accent: 'var(--navy-700)', soft: 'rgba(45,67,108,0.10)',
       title: 'Sua operação, mais inteligente',
-      desc: 'Para qualquer setor: tecnologia, dados, BI e IA para destravar a operação e decidir melhor.',
+      desc: 'Para outros setores: inteligência de dados, BI e IA sob medida para destravar qualquer modelo de operação.',
       cta: 'Ver soluções', href: 'solucoes.html',
     },
   ];
@@ -59,7 +59,7 @@ function AudienceChooser() {
 
         <div className="hc-grid">
           {doors.map(d => (
-            <a key={d.href} href={d.href} className="hc-card card-hover reveal">
+            <a key={d.href} href={d.href} className="hc-card card-hover reveal" style={{ '--hca': d.accent, '--hcs': d.soft }}>
               <span className="hc-icon"><Icon name={d.icon} size={26} stroke={1.7}/></span>
               <div className="hc-kicker">{d.kicker}</div>
               <div className="hc-title">{d.title}</div>
@@ -77,7 +77,9 @@ function AudienceChooser() {
           border: 1px solid var(--line); border-top: 3px solid var(--navy-900); border-radius: var(--r-lg);
           padding: 30px 26px; box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
         }
-        .hc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-top-color: var(--turquoise-2); }
+        .hc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-top-color: var(--hca); }
+        .hc-card:hover .hc-icon { background: var(--hcs); color: var(--hca); }
+        .hc-card:hover .hc-kicker { color: var(--hca); }
         .hc-icon {
           width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center;
           background: rgba(117,227,228,0.14); color: var(--turquoise-ink); margin-bottom: 20px;
@@ -86,7 +88,8 @@ function AudienceChooser() {
         .hc-title { font-family: var(--ff-display); font-weight: 700; font-size: 22px; color: var(--navy-900); margin-bottom: 10px; }
         .hc-desc { font-size: 14.5px; color: var(--text-2); line-height: 1.6; flex: 1; }
         .hc-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; font-family: var(--ff-display); font-weight: 600; font-size: 15px; color: var(--navy-900); }
-        .hc-card:hover .hc-cta { color: var(--turquoise-ink); }
+        .hc-card:hover .hc-cta { color: var(--hca); }
+        .hc-icon, .hc-kicker, .hc-cta { transition: color .2s ease, background .2s ease; }
         @media (max-width: 900px) { .hc-grid { grid-template-columns: 1fr; } }
       `}</style>
     </section>
