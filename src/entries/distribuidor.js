@@ -1,0 +1,11 @@
+import '../globals.js';
+import '../../components/brand.jsx';
+import '../../components/layout.jsx';
+import '../../components/qlik.jsx';
+import '../../components/hero.jsx';
+import '../../components/logos.jsx';
+import '../../components/ecosystem.jsx';
+import '../../components/bus.jsx';
+import '../../components/suites.jsx';
+import '../../components/rest.jsx';
+import '../../components/distribuidor.jsx';

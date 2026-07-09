@@ -41,7 +41,7 @@ function Hero({ headlineVariant = 0 }) {
             <span>99,8% uptime</span>
             <span style={{ color: 'var(--line)' }}>·</span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-              <img src="assets/qlik-logo.png" alt="Qlik" style={{ height: 14, width: 'auto', display: 'block' }}/>
+              <img src="/assets/qlik-logo.png" alt="Qlik" style={{ height: 14, width: 'auto', display: 'block' }}/>
               Parceiro Oficial Qlik
             </span>
           </div>

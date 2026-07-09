@@ -16,7 +16,7 @@ const COVER = {
 function PostCard({ post }) {
   const c = COVER[post.category] || COVER.blog;
   return (
-    <a href={post.slug + '.html'} className="card card-hover" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden', textDecoration: 'none' }}>
+    <a href={'/' + post.slug} className="card card-hover" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden', textDecoration: 'none' }}>
       <div className="grain" style={{ background: c.bg, padding: '22px 22px 20px', color: '#fff', position: 'relative', minHeight: 132, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
         <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.12em', color: c.chip, fontWeight: 600 }}>{post.cover.tag}</div>
         {post.cover.logo && (
@@ -111,9 +111,9 @@ function BlogIndexPage() {
 // ── Single blog post ──
 function BlogPostPage({ slug }) {
   const post = (window.SEWE_POSTS || []).find(p => p.slug === slug);
-  if (!post) return (<><SiteHeader/><div className="container" style={{ padding: '120px 0', textAlign: 'center' }}><h1>Post não encontrado</h1><p style={{ marginTop: 12 }}><a href="blog.html" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>Voltar para o blog</a></p></div><SiteFooter/></>);
+  if (!post) return (<><SiteHeader/><div className="container" style={{ padding: '120px 0', textAlign: 'center' }}><h1>Post não encontrado</h1><p style={{ marginTop: 12 }}><a href="/blog" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>Voltar para o blog</a></p></div><SiteFooter/></>);
   const c = COVER[post.category] || COVER.blog;
-  const backHref = post.category === 'premio' ? 'premio.html' : 'blog.html';
+  const backHref = post.category === 'premio' ? '/premio' : '/blog';
   const backLabel = post.category === 'premio' ? 'Prêmio SEWE' : 'Blog';
   return (
     <>
@@ -142,7 +142,7 @@ function BlogPostPage({ slug }) {
               <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 18, color: 'var(--navy-900)' }}>Quer esse nível de gestão na sua distribuição?</div>
               <div style={{ fontSize: 14, color: 'var(--text-2)', marginTop: 4 }}>Agende um diagnóstico gratuito de 30 minutos.</div>
             </div>
-            <a href="index.html#agendar" className="btn btn-primary">Agendar Diagnóstico <Icon name="arrow" size={16} className="chev"/></a>
+            <a href="/#agendar" className="btn btn-primary">Agendar Diagnóstico <Icon name="arrow" size={16} className="chev"/></a>
           </div>
         </div>
       </article>
@@ -339,7 +339,7 @@ function QuemSomosPage() {
           <h2 style={{ color: '#fff' }}>Vamos transformar sua distribuição?</h2>
           <p style={{ color: 'rgba(255,255,255,0.78)', marginTop: 16, fontSize: 18 }}>Um diagnóstico gratuito de 30 minutos, com os seus dados, sem compromisso.</p>
           <div style={{ marginTop: 28, display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="index.html#agendar" className="btn btn-accent btn-lg">Agendar Diagnóstico <Icon name="arrow" size={16} className="chev"/></a>
+            <a href="/#agendar" className="btn btn-accent btn-lg">Agendar Diagnóstico <Icon name="arrow" size={16} className="chev"/></a>
             <a href="https://wa.me/5548984704389" className="btn btn-lg" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>Falar no WhatsApp</a>
           </div>
         </div>

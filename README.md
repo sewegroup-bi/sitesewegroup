@@ -9,8 +9,8 @@ especializada em distribuidores e atacadistas, parceira oficial Qlik.
 
 ## Visão geral
 
-Site de página única (long-form) construído em **HTML + CSS + React (via Babel no navegador)**.
-Não exige build, bundler ou Node — abre direto no navegador ou em qualquer hospedagem estática.
+Site multi-página construído em **HTML + CSS + React**, empacotado com **Vite**.
+Rode `npm install` e `npm run dev` para desenvolver; o Vercel roda `npm run build` a cada push (ver LANCAMENTO.md).
 
 Destaques:
 

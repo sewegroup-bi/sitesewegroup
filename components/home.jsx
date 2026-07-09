@@ -32,19 +32,19 @@ function AudienceChooser() {
       icon: 'factory', kicker: 'Sou indústria', accent: '#00a335', soft: 'rgba(0,163,53,0.10)',
       title: 'Enxergue toda a sua rede',
       desc: 'Do sellout ao PDV: Integration, Sales e BI conectando fábrica, distribuidor e revenda em um só mapa.',
-      cta: 'Ver o ecossistema', href: 'industria.html',
+      cta: 'Ver o ecossistema', href: '/industria',
     },
     {
       icon: 'warehouse', kicker: 'Sou distribuidor ou atacadista', accent: '#fd7014', soft: 'rgba(253,112,20,0.10)',
       title: 'Decida com o dado na mão',
       desc: 'Menos ruptura, mais positivação, capital de giro livre. BI, IA e Sales sob medida para a sua operação.',
-      cta: 'Ver soluções', href: 'distribuidor.html',
+      cta: 'Ver soluções', href: '/distribuidor',
     },
     {
       icon: 'cpu', kicker: 'Outra empresa', accent: 'var(--navy-700)', soft: 'rgba(45,67,108,0.10)',
       title: 'Sua operação, mais inteligente',
       desc: 'Para outros setores: inteligência de dados, BI e IA sob medida para destravar qualquer modelo de operação.',
-      cta: 'Ver soluções', href: 'solucoes.html',
+      cta: 'Ver soluções', href: '/solucoes',
     },
   ];
   return (
@@ -99,7 +99,7 @@ function AudienceChooser() {
 function TrustBand() {
   const items = [
     { icon: 'trophy', t: 'Parceiro oficial Qlik', d: 'Analytics líder global, homologação e suporte local.' },
-    { icon: 'star',   t: 'Prêmio SEWE',           d: 'Reconhecendo os distribuidores mais data-driven do país.', href: 'premio.html' },
+    { icon: 'star',   t: 'Prêmio SEWE',           d: 'Reconhecendo os distribuidores mais data-driven do país.', href: '/premio' },
     { icon: 'shield', t: 'Segurança e LGPD',       d: 'Dados cifrados, auditáveis e hospedados no Brasil.' },
   ];
   return (

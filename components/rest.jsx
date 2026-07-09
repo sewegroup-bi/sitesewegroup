@@ -125,7 +125,7 @@ function DifferentiatorsSection() {
 function CasesSection() {
   const cases = [
     { co: 'MOCELIN', metric: '+15–20%', unit: 'de crescimento em vendas', quote: 'Eu associo esse crescimento ao SEWE BI: sem gestão de dados você não tem clareza de onde atacar. O BI hoje é minha principal ferramenta de gestão.', person: 'Neyla', place: 'Mocelin' },
-    { co: 'ELETRANSOL', metric: '−23,9%', unit: 'no churn de clientes', quote: 'Limitada ao ERP, a empresa ficaria parada no tempo. O BI é a nossa tela do cenário, e já projeta desempenho e atingimento de metas para o futuro.', person: 'Elioneis', place: 'Eletransol', href: 'vencedor-premio-2025-eletransol.html' },
+    { co: 'ELETRANSOL', metric: '−23,9%', unit: 'no churn de clientes', quote: 'Limitada ao ERP, a empresa ficaria parada no tempo. O BI é a nossa tela do cenário, e já projeta desempenho e atingimento de metas para o futuro.', person: 'Elioneis', place: 'Eletransol', href: '/vencedor-premio-2025-eletransol' },
     { co: 'WMG', metric: '1 tela', unit: 'para decidir o que antes exigia várias fontes', quote: 'As compras ficaram mais assertivas. Antes buscávamos várias informações para decidir; hoje abrimos uma tela e tomamos a decisão.', person: 'Thiago', place: 'WMG' },
   ];
   return (
@@ -136,7 +136,7 @@ function CasesSection() {
             <div className="eyebrow">Resultados que saem do papel</div>
             <h2 style={{ marginTop: 14 }}>Casos reais. Métricas reais.</h2>
           </div>
-          <a href="premio.html" className="btn btn-outline btn-sm">Ver todos os cases <Icon name="arrow" size={12} className="chev"/></a>
+          <a href="/premio" className="btn btn-outline btn-sm">Ver todos os cases <Icon name="arrow" size={12} className="chev"/></a>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="cases-grid">
           {cases.map((c, i) => (

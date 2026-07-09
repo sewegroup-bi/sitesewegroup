@@ -15,12 +15,12 @@ function MinerHeader() {
   return (
     <header className="mc-header">
       <div className="mc-container mc-nav">
-        <a href="minerconect.html" style={{ display: 'inline-flex' }}><MinerLogo height={34}/></a>
+        <a href="/minerconect" style={{ display: 'inline-flex' }}><MinerLogo height={34}/></a>
         <nav className="mc-nav-links">
           {links.map(l => <a key={l.label} href={l.href}>{l.label}</a>)}
         </nav>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <a href="index.html" className="mc-back">← SEWE Group</a>
+          <a href="/" className="mc-back">← SEWE Group</a>
           <a href="#contato" className="mc-btn mc-btn-gold mc-hide-mob">Agendar demo</a>
         </div>
       </div>
@@ -195,7 +195,7 @@ function MinerCTA() {
         <p>Agende uma demonstração e veja o MinerConect ativando clientes e leads em tempo real.</p>
         <div className="mc-hero-cta" style={{ justifyContent: 'center' }}>
           <a href="https://wa.me/5548984704389" className="mc-btn mc-btn-gold mc-btn-lg">Falar no WhatsApp <Icon name="arrow" size={18} stroke={2.2}/></a>
-          <a href="index.html" className="mc-btn mc-btn-ghost mc-btn-lg">Voltar para SEWE Group</a>
+          <a href="/" className="mc-btn mc-btn-ghost mc-btn-lg">Voltar para SEWE Group</a>
         </div>
       </div>
     </section>
@@ -208,7 +208,7 @@ function MinerFooter() {
       <div className="mc-container mc-footer-inner">
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
           <MinerLogo height={30}/>
-          <span className="mc-footer-by">um produto <a href="index.html">SEWE Group</a></span>
+          <span className="mc-footer-by">um produto <a href="/">SEWE Group</a></span>
         </div>
         <div className="mc-footer-meta">© {new Date().getFullYear()} SEWE Group · Inteligência no seu negócio!</div>
       </div>

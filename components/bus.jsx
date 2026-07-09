@@ -412,7 +412,7 @@ function MinerTeaser() {
             contato certo de cada lead. Para distribuidores, indústrias e qualquer empresa.
           </p>
         </div>
-        <a href="minerconect.html" className="btn btn-lg" style={{ background: '#f5a623', color: '#1a2440', fontWeight: 700 }}>
+        <a href="/minerconect" className="btn btn-lg" style={{ background: '#f5a623', color: '#1a2440', fontWeight: 700 }}>
           Conhecer o MinerConect <span className="chev">→</span>
         </a>
       </div>

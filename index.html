@@ -8,7 +8,7 @@
   <!-- DEV: remover a linha abaixo no lançamento (libera indexação) -->
   <meta name="robots" content="noindex, nofollow"/>
   <link rel="canonical" href="https://www.sewegroup.com.br/"/>
-  <link rel="icon" type="image/png" href="assets/sewe-icon.png"/>
+  <link rel="icon" type="image/png" href="/assets/sewe-icon.png"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://www.sewegroup.com.br/"/>
   <meta property="og:title" content="SEWE Group · Inteligência de dados para distribuidores"/>
@@ -17,23 +17,32 @@
   <meta property="og:locale" content="pt_BR"/>
   <meta property="og:site_name" content="SEWE Group"/>
   <meta name="twitter:card" content="summary_large_image"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SEWE Group",
+    "url": "https://www.sewegroup.com.br/",
+    "logo": "https://www.sewegroup.com.br/assets/sewe-logo-tagline.png",
+    "description": "Consultoria e plataforma de Business Intelligence e IA para distribuidores, atacadistas e indústrias. Parceira oficial Qlik.",
+    "email": "contato@sewegroup.com.br",
+    "telephone": "+55-48-98470-4389",
+    "address": { "@type": "PostalAddress", "addressLocality": "Florianópolis", "addressRegion": "SC", "addressCountry": "BR" },
+    "sameAs": [
+      "https://www.instagram.com/sewegroup/",
+      "https://www.linkedin.com/company/sewegroup/",
+      "https://www.youtube.com/@sewegroup"
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="/styles.css"/>
 </head>
 <body>
   <div id="sewe-root"></div>
 
-  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-
-  <script type="text/babel" src="components/brand.jsx"></script>
-  <script type="text/babel" src="components/layout.jsx"></script>
-  <script type="text/babel" src="components/logos.jsx"></script>
-  <script type="text/babel" src="components/rest.jsx"></script>
-  <script type="text/babel" src="components/home.jsx"></script>
-  <script type="text/babel" src="components/app.jsx"></script>
+  <script type="module" src="/src/entries/home.js"></script>
 </body>
 </html>

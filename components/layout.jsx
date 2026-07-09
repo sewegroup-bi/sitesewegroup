@@ -5,7 +5,7 @@
 const WHATSAPP = 'https://wa.me/5548984704389';
 
 // hash link that works from any page: on the home use "#x", elsewhere "index.html#x"
-function navHref(home, hash) { return home ? hash : 'index.html' + hash; }
+function navHref(home, hash) { return home ? hash : '/' + hash; }
 
 function SiteHeader({ home = false }) {
   const [scrolled, setScrolled] = React.useState(false);
@@ -17,22 +17,22 @@ function SiteHeader({ home = false }) {
   }, []);
 
   const links = [
-    { label: 'Início', href: 'index.html' },
+    { label: 'Início', href: '/' },
     { label: 'Soluções', children: [
-      { label: 'Indústria',          href: 'industria.html' },
-      { label: 'Distribuidor & Atacado', href: 'distribuidor.html' },
-      { label: 'Estratégia & Dados', href: 'solucoes.html' },
-      { label: 'MinerConect',        href: 'minerconect.html' },
+      { label: 'Indústria',          href: '/industria' },
+      { label: 'Distribuidor & Atacado', href: '/distribuidor' },
+      { label: 'Estratégia & Dados', href: '/solucoes' },
+      { label: 'MinerConect',        href: '/minerconect' },
     ]},
     { label: 'Conteúdos', children: [
-      { label: 'Blog',        href: 'blog.html' },
-      { label: 'Prêmio SEWE', href: 'premio.html' },
+      { label: 'Blog',        href: '/blog' },
+      { label: 'Prêmio SEWE', href: '/premio' },
     ]},
-    { label: 'Quem Somos', href: 'quem-somos.html' },
-    { label: 'FAQ',        href: 'faq.html' },
+    { label: 'Quem Somos', href: '/quem-somos' },
+    { label: 'FAQ',        href: '/faq' },
   ];
 
-  const curPage = (typeof window !== 'undefined' ? (window.location.pathname.split('/').pop() || 'index.html') : 'index.html');
+  const curPage = (typeof window !== 'undefined' ? (window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/') : '/');
 
   return (
     <header style={{
@@ -43,8 +43,8 @@ function SiteHeader({ home = false }) {
       transition: 'background .25s ease, border-color .25s ease',
     }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '12px var(--gutter)' }}>
-        <a href="index.html" style={{ display: 'inline-flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
-          <img src="assets/sewe-icon.png" alt="SEWE GROUP" style={{ height: 36, width: 36, display: 'block', borderRadius: 9 }}/>
+        <a href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
+          <img src="/assets/sewe-icon.png" alt="SEWE GROUP" style={{ height: 36, width: 36, display: 'block', borderRadius: 9 }}/>
           <span style={{ width: 1, alignSelf: 'stretch', background: 'var(--line)' }}></span>
           <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
             <span style={{ fontFamily: 'var(--ff-display)', fontWeight: 700, fontSize: 21, letterSpacing: '0.04em', color: 'var(--navy-900)' }}>SEWE</span>
@@ -169,7 +169,7 @@ function SiteFooter({ home = false }) {
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 32, paddingBottom: 48, borderBottom: '1px solid rgba(255,255,255,0.1)' }} className="foot-grid">
           <div>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-              <img src="assets/sewe-icon.png" alt="SEWE GROUP" style={{ height: 36, width: 36, display: 'block', borderRadius: 9, filter: 'invert(1)' }}/>
+              <img src="/assets/sewe-icon.png" alt="SEWE GROUP" style={{ height: 36, width: 36, display: 'block', borderRadius: 9, filter: 'invert(1)' }}/>
               <span style={{ width: 1, alignSelf: 'stretch', background: 'rgba(255,255,255,0.25)' }}></span>
               <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
                 <span style={{ fontFamily: 'var(--ff-display)', fontWeight: 700, fontSize: 21, letterSpacing: '0.04em', color: '#fff' }}>SEWE</span>
@@ -205,17 +205,17 @@ function SiteFooter({ home = false }) {
           </div>
           <div>
             <div style={col.title}>Soluções</div>
-            <a style={col.link} href="industria.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Indústria</a>
-            <a style={col.link} href="distribuidor.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Distribuidor & Atacado</a>
-            <a style={col.link} href="solucoes.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Estratégia & Dados</a>
-            <a style={col.link} href="minerconect.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>MinerConect</a>
+            <a style={col.link} href="/industria" onMouseEnter={onEnter} onMouseLeave={onLeave}>Indústria</a>
+            <a style={col.link} href="/distribuidor" onMouseEnter={onEnter} onMouseLeave={onLeave}>Distribuidor & Atacado</a>
+            <a style={col.link} href="/solucoes" onMouseEnter={onEnter} onMouseLeave={onLeave}>Estratégia & Dados</a>
+            <a style={col.link} href="/minerconect" onMouseEnter={onEnter} onMouseLeave={onLeave}>MinerConect</a>
           </div>
           <div>
             <div style={col.title}>Empresa</div>
-            <a style={col.link} href="quem-somos.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Quem Somos</a>
-            <a style={col.link} href="premio.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Prêmio SEWE</a>
-            <a style={col.link} href="blog.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>Blog</a>
-            <a style={col.link} href="faq.html" onMouseEnter={onEnter} onMouseLeave={onLeave}>FAQ</a>
+            <a style={col.link} href="/quem-somos" onMouseEnter={onEnter} onMouseLeave={onLeave}>Quem Somos</a>
+            <a style={col.link} href="/premio" onMouseEnter={onEnter} onMouseLeave={onLeave}>Prêmio SEWE</a>
+            <a style={col.link} href="/blog" onMouseEnter={onEnter} onMouseLeave={onLeave}>Blog</a>
+            <a style={col.link} href="/faq" onMouseEnter={onEnter} onMouseLeave={onLeave}>FAQ</a>
           </div>
           <div>
             <div style={col.title}>Contato</div>
@@ -230,8 +230,8 @@ function SiteFooter({ home = false }) {
             © 2026 SEWE Group · Todos os direitos reservados
           </div>
           <div style={{ display: 'flex', gap: 18, fontSize: 12, color: 'rgba(255,255,255,0.42)' }}>
-            <a href="politica-de-privacidade.html" style={{ color: 'inherit' }}>Política de Privacidade</a>
-            <a href="politica-de-privacidade.html#lgpd" style={{ color: 'inherit' }}>LGPD</a>
+            <a href="/politica-de-privacidade" style={{ color: 'inherit' }}>Política de Privacidade</a>
+            <a href="/politica-de-privacidade#lgpd" style={{ color: 'inherit' }}>LGPD</a>
           </div>
         </div>
       </div>

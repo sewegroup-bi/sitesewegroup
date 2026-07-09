@@ -41,7 +41,7 @@ function SeweGroupIntro() {
           </p>
 
           <div className="grp-cta">
-            <a href="quem-somos.html" className="btn btn-primary btn-lg">
+            <a href="/quem-somos" className="btn btn-primary btn-lg">
               Conheça o grupo <Icon name="arrow" size={16} className="chev"/>
             </a>
             <a href="#diagnostico" className="btn btn-outline btn-lg">
