@@ -1075,10 +1075,10 @@ function IndustriaPage() {
 /* ── SOLUÇÕES SOB MEDIDA ─────────────────────────────────── */
 function SolucoesOfferings() {
   const items = [
-    { icon: 'chart', t: 'Qlik Sense', d: 'Parceiro oficial: licenças homologadas, ambiente na nuvem hospedado no Brasil e a camada SEWE de dashboards e IA em cima.' },
-    { icon: 'cpu',   t: 'BI e dashboards sob medida', d: 'Modelagem, ETL e painéis desenhados para o seu processo, não um pacote genérico. Cada indicador ligado a uma decisão.' },
-    { icon: 'link',  t: 'Engenharia de dados', d: 'Conexão com qualquer ERP ou fonte, pipelines e governança. Sua equipe recebe o dado pronto, confiável e no lugar certo.' },
-    { icon: 'users', t: 'Consultoria e squad', d: 'Diagnóstico, roadmap e um time SEWE acompanhando de perto, do primeiro dado ao resultado sustentado.' },
+    { icon: 'chart', t: 'Plataforma analytics líder', d: 'Qlik Cloud, AWS ou Azure: ambiente em nuvem flexível, alta performance de processamento, segurança corporativa e licenças de parceiro oficial.' },
+    { icon: 'cpu',   t: 'Dashboards prescritivos', d: 'Painéis construídos do zero para o seu modelo de negócio. Indicadores inteligentes associados a ações imediatas, sem poluição visual.' },
+    { icon: 'link',  t: 'Pipelines de dados automatizados', d: 'Extração, transformação e governança centralizadas. Conectamos qualquer fonte ou ERP e entregamos o dado limpo, sem carregar o seu banco de origem.' },
+    { icon: 'shield', t: 'Governança e segurança absoluta', d: 'Nada de dado sensível solto em máquina de funcionário: desenvolvimento e acesso 100% via browser, em conformidade com a LGPD.' },
   ];
   return (
     <section className="section" style={{ background: '#fff' }}>
@@ -1086,10 +1086,10 @@ function SolucoesOfferings() {
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 44px' }}>
           <div className="eyebrow">O que entregamos</div>
           <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Um squad de tecnologia <span style={{ color: 'var(--navy)' }}>sob medida</span>.
+            A engenharia que a sua <span style={{ color: 'var(--navy)' }}>tomada de decisão</span> exige.
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Para empresas de qualquer setor que precisam de dados confiáveis e decisões mais rápidas.
+            Ingestão, transformação e visualização na mesma plataforma, para empresas de qualquer setor.
           </p>
         </div>
         <div className="so-grid">
@@ -1114,15 +1114,174 @@ function SolucoesOfferings() {
   );
 }
 
+/* TCO: uma plataforma única vs colcha de retalhos */
+function SolucoesPlatform() {
+  const patch = [
+    { t: 'Licenças por usuário', rot: -1.5 },
+    { t: 'Serviço de ETL à parte', rot: 1 },
+    { t: 'Data warehouse dedicado', rot: -0.8 },
+    { t: 'Nós de capacidade extra', rot: 1.4 },
+    { t: 'Gateway e servidor local', rot: -1.2 },
+  ];
+  const uni = [
+    { icon: 'link', t: 'Integração e ETL' },
+    { icon: 'boxes', t: 'Armazenamento .qvd comprimido' },
+    { icon: 'chart', t: 'Analytics + IA' },
+    { icon: 'alert', t: 'Alertas, mobile e e-mail' },
+  ];
+  const proofs = [
+    { v: 'TCO menor', d: 'Um contrato, uma plataforma. Sem colcha de retalhos de serviços de nuvem cobrados à parte.' },
+    { v: 'Bilhões de linhas', d: 'Painéis rápidos mesmo cruzando bilhões de registros, sem assinar nós de servidor caros.' },
+    { v: '100% web', d: 'Desenvolvimento e uso direto no navegador. Zero software pesado instalado em desktop.' },
+  ];
+  return (
+    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 44px' }}>
+          <div className="eyebrow">TCO · Custo total de propriedade</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
+            Uma plataforma única contra a <span style={{ color: 'var(--navy)' }}>colcha de retalhos</span>.
+          </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
+            Ferramentas genéricas parecem baratas por usuário, até a conta dos serviços extras chegar.
+          </p>
+        </div>
+        <div className="tco-duel">
+          <div className="tco-side reveal">
+            <div className="tco-side-h">BI genérico</div>
+            <div className="tco-patch">
+              {patch.map((p, i) => (
+                <div key={i} className="tco-patch-box" style={{ transform: `rotate(${p.rot}deg)` }}>
+                  {p.t} <span className="tco-fee">+ $</span>
+                </div>
+              ))}
+            </div>
+            <div className="tco-side-f">até 5 serviços cobrados à parte para aguentar volume real</div>
+          </div>
+          <div className="tco-vs" aria-hidden>vs</div>
+          <div className="tco-side tco-side-qlik reveal">
+            <div className="tco-side-h" style={{ color: 'var(--turquoise-2)' }}>Qlik + SEWE</div>
+            <div className="tco-uni">
+              {uni.map((u, i) => (
+                <div key={i} className="tco-uni-layer">
+                  <Icon name={u.icon} size={15} stroke={1.8}/> {u.t}
+                </div>
+              ))}
+            </div>
+            <div className="tco-side-f" style={{ color: 'rgba(255,255,255,0.65)' }}>tudo nativo, em uma única ponta</div>
+          </div>
+        </div>
+        <div className="tco-proofs">
+          {proofs.map((p, i) => (
+            <div key={i} className="tco-proof reveal">
+              <div className="tco-proof-v">{p.v}</div>
+              <p className="tco-proof-d">{p.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <style>{`
+        .tco-duel { display: grid; grid-template-columns: 1fr 56px 1fr; gap: 8px; align-items: stretch; max-width: 900px; margin: 0 auto; }
+        .tco-side { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; box-shadow: var(--shadow-xs); display: flex; flex-direction: column; }
+        .tco-side-qlik { background: var(--navy-900); border-color: var(--navy-900); }
+        .tco-side-h { font-family: var(--ff-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; text-align: center; }
+        .tco-patch { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+        .tco-patch-box { border: 1px dashed var(--text-3); border-radius: 8px; padding: 9px 12px; font-size: 13px; color: var(--text-2); background: var(--bg-soft); display: flex; justify-content: space-between; align-items: center; }
+        .tco-fee { font-family: var(--ff-mono); font-size: 11px; font-weight: 700; color: var(--danger, #c0392b); }
+        .tco-uni { display: flex; flex-direction: column; gap: 8px; flex: 1; border: 1.5px solid var(--turquoise-2); border-radius: 12px; padding: 10px; }
+        .tco-uni-layer { display: flex; align-items: center; gap: 9px; padding: 9px 12px; border-radius: 8px; background: rgba(117,227,228,0.1); color: #fff; font-size: 13px; }
+        .tco-uni-layer svg { color: var(--turquoise-2); flex-shrink: 0; }
+        .tco-vs { display: grid; place-items: center; font-family: var(--ff-mono); font-size: 12px; font-weight: 700; color: var(--text-3); }
+        .tco-side-f { margin-top: 14px; font-size: 12px; color: var(--text-3); text-align: center; }
+        .tco-proofs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; margin: 28px auto 0; }
+        .tco-proof { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px 22px; box-shadow: var(--shadow-xs); }
+        .tco-proof-v { font-family: var(--ff-display); font-weight: 700; font-size: 20px; color: var(--navy-900); }
+        .tco-proof-d { font-size: 13.5px; color: var(--text-2); line-height: 1.55; margin-top: 6px; }
+        @media (max-width: 820px) { .tco-duel { grid-template-columns: 1fr; } .tco-vs { padding: 4px 0; } .tco-proofs { grid-template-columns: 1fr; } }
+      `}</style>
+    </section>
+  );
+}
+
+/* Demo interativa do motor associativo: verde, branco e cinza */
+function AssocDemo() {
+  const clients = ['Cliente Alfa', 'Cliente Beta', 'Cliente Gama'];
+  const products = ['Linha Premium', 'Linha Standard', 'Serviços', 'Acessórios', 'Manutenção', 'Consumíveis'];
+  const bought = {
+    'Cliente Alfa': ['Linha Premium', 'Serviços', 'Consumíveis'],
+    'Cliente Beta': ['Linha Standard', 'Acessórios'],
+    'Cliente Gama': ['Linha Premium', 'Linha Standard', 'Manutenção', 'Consumíveis'],
+  };
+  const [sel, setSel] = React.useState('Cliente Beta');
+  return (
+    <div className="ad-panel reveal">
+      <div className="ad-head">
+        <div>
+          <div className="ad-t">Clique em um cliente e veja o motor associativo reagir.</div>
+          <div className="ad-d">O cinza é o segredo: ele mostra o que <b>não</b> aconteceu — as linhas que esse cliente nunca comprou. É aí que mora a próxima venda.</div>
+        </div>
+        <div className="ad-legend">
+          <span><i className="ad-dot ad-g"></i> selecionado</span>
+          <span><i className="ad-dot ad-w"></i> associado</span>
+          <span><i className="ad-dot ad-x"></i> excluído</span>
+        </div>
+      </div>
+      <div className="ad-row">
+        <span className="ad-lbl">Clientes</span>
+        <div className="ad-chips">
+          {clients.map(c => (
+            <button key={c} type="button" className={`ad-chip ${sel === c ? 'ad-sel' : ''}`} onClick={() => setSel(c)}>{c}</button>
+          ))}
+        </div>
+      </div>
+      <div className="ad-row">
+        <span className="ad-lbl">Linhas de produto</span>
+        <div className="ad-chips">
+          {products.map(p => {
+            const on = bought[sel].includes(p);
+            return (
+              <span key={p} className={`ad-chip ad-ro ${on ? 'ad-assoc' : 'ad-excl'}`}>
+                {p}{!on && <em>oportunidade</em>}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+      <style>{`
+        .ad-panel { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px 26px; margin-bottom: 36px; }
+        .ad-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; margin-bottom: 18px; }
+        .ad-t { font-family: var(--ff-display); font-weight: 700; font-size: 17px; color: var(--navy-900); }
+        .ad-d { font-size: 13.5px; color: var(--text-2); margin-top: 5px; max-width: 560px; line-height: 1.55; }
+        .ad-legend { display: flex; gap: 14px; font-size: 11.5px; color: var(--text-3); white-space: nowrap; padding-top: 4px; }
+        .ad-legend span { display: inline-flex; align-items: center; gap: 5px; }
+        .ad-dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+        .ad-g { background: #21a35c; }
+        .ad-w { background: #fff; border: 1px solid var(--line); }
+        .ad-x { background: #b9c0cc; }
+        .ad-row { display: flex; align-items: baseline; gap: 14px; margin-top: 12px; flex-wrap: wrap; }
+        .ad-lbl { font-family: var(--ff-mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); min-width: 118px; }
+        .ad-chips { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; }
+        .ad-chip { border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; font-size: 13px; font-family: var(--ff-body, Inter); background: #fff; color: var(--navy-900); cursor: pointer; transition: all .15s ease; white-space: nowrap; flex-shrink: 0; }
+        .ad-chip:hover { border-color: #21a35c; }
+        .ad-sel { background: #21a35c; border-color: #21a35c; color: #fff; font-weight: 600; }
+        .ad-ro { cursor: default; display: inline-flex; align-items: center; gap: 7px; }
+        .ad-assoc { background: #fff; }
+        .ad-excl { background: #e4e7ec; border-color: #d3d8e0; color: #8b93a2; }
+        .ad-excl em { font-style: normal; font-family: var(--ff-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--turquoise-ink); background: rgba(117,227,228,0.25); border-radius: 99px; padding: 2px 7px; }
+      `}</style>
+    </div>
+  );
+}
+
 /* Qlik por dentro — profundidade técnica */
 function SolucoesTech() {
   const items = [
-    { icon: 'brain', t: 'Motor associativo in-memory', d: 'O Qlik indexa todas as relações entre os seus dados. Você explora em qualquer direção, sem consulta pré-montada e sem esperar o TI escrever SQL.' },
-    { icon: 'link', t: 'Pipelines e cargas incrementais', d: 'Extração do ERP com cargas incrementais agendadas, camadas de dados e modelagem dimensional. Histórico preservado e recarga sem pesar na origem.' },
+    { icon: 'brain', t: 'Motor associativo in-memory', d: 'Sem modelo rígido de entidade-relacionamento: o Qlik indexa todas as relações e você explora em qualquer direção. Inclusive o que NÃO aconteceu: o motor destaca os dados excluídos que as ferramentas SQL escondem.' },
+    { icon: 'link', t: 'Pipelines e cargas incrementais', d: 'Cargas incrementais agendadas e arquivos .qvd comprimidos: histórico preservado, recarga sem pesar a origem e sem obrigar você a montar um data warehouse só para rodar o BI.' },
     { icon: 'shield', t: 'Segurança em nível de linha', d: 'Section Access nativo: cada usuário enxerga só a filial, a carteira ou o recorte que pode ver. SSO, criptografia e trilha de auditoria.' },
     { icon: 'alert', t: 'Alertas orientados a dado', d: 'Alertas disparados pela condição do indicador, não por horário, direto no celular. Relatórios assinados chegam por e-mail no ritmo que você definir.' },
     { icon: 'cpu', t: 'Embedded analytics e APIs', d: 'Dashboards embutidos em portais e sistemas próprios, com APIs REST para automação e integração ao restante do seu ecossistema.' },
-    { icon: 'trending', t: 'IA nativa + camada SEWE', d: 'A IA do Qlik somada aos algoritmos SEWE: previsão de demanda, alerta de churn e sugestão de compra rodando sobre o mesmo modelo de dados.' },
+    { icon: 'trending', t: 'IA nativa + camada SEWE', d: 'Inteligência preditiva ativa: anomalias detectadas automaticamente e avisadas no e-mail ou no celular, sem prompts e sem contratar cientista de dados. Previsão de demanda e churn no mesmo modelo.' },
   ];
   const flow = [
     { t: 'ERP e fontes', d: 'Qualquer origem de dados' },
@@ -1153,6 +1312,7 @@ function SolucoesTech() {
             </React.Fragment>
           ))}
         </div>
+        <AssocDemo/>
         <div className="st-grid">
           {items.map((it, i) => (
             <div key={i} className="st-card reveal">
@@ -1185,9 +1345,9 @@ function SolucoesTech() {
 function SolucoesProcess() {
   const steps = [
     { n: '01', t: 'Diagnóstico', d: 'Entendemos o desafio, as fontes de dados e o resultado esperado. Sem compromisso.' },
-    { n: '02', t: 'Modelagem & engenharia', d: 'Conexão às fontes, pipelines e modelagem. A base confiável que sustenta tudo.' },
+    { n: '02', t: 'Arquitetura sem limites', d: 'Nossa engenharia desenvolve regras de negócio customizadas, painéis complexos e integrações exclusivas. Se a sua empresa precisa, nós modelamos.' },
     { n: '03', t: 'Go-live', d: 'Dashboards e IA no ar, com a sua equipe treinada e usando no dia a dia.' },
-    { n: '04', t: 'Evolução contínua', d: 'Um squad SEWE acompanhando, ajustando e ampliando conforme você cresce.' },
+    { n: '04', t: 'Squad dedicado ao crescimento', d: 'Seu negócio muda, seus gráficos também. O time SEWE continua criando novas visões, relatórios e ferramentas conforme a operação evolui.' },
   ];
   return (
     <section className="section" style={{ background: 'var(--bg-soft)' }}>
@@ -1227,11 +1387,17 @@ function SolucoesPage() {
       <PageHero
         eyebrow="Soluções Sob Medida"
         title="Dados e IA muito além do BI de prateleira."
-        lead="Para empresas de qualquer setor: Qlik Sense, dashboards personalizados, engenharia de dados e consultoria. Um time de tecnologia da SEWE dedicado ao seu desafio."
+        lead="Para empresas de qualquer setor: a plataforma Qlik de ponta a ponta, integração, analytics e IA, com a engenharia de dados da SEWE por trás. Dado governado, painel rápido e decisão direto no navegador."
       >
-        <div style={{ marginTop: 22, display: 'inline-flex', alignItems: 'center', gap: 9, padding: '7px 16px', borderRadius: 999, background: '#fff', border: '1px solid var(--line)', boxShadow: 'var(--shadow-xs)', fontSize: 12.5, color: 'var(--text-2)', fontWeight: 500 }}>
-          <img src="assets/qlik-logo.png" alt="Qlik" style={{ height: 15, width: 'auto', display: 'block' }}/>
-          Parceiro oficial Qlik · Referência nacional em dados
+        <div style={{ marginTop: 22, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '7px 16px', borderRadius: 999, background: '#fff', border: '1px solid var(--line)', boxShadow: 'var(--shadow-xs)', fontSize: 12.5, color: 'var(--text-2)', fontWeight: 500 }}>
+            <img src="assets/qlik-logo.png" alt="Qlik" style={{ height: 15, width: 'auto', display: 'block' }}/>
+            Parceiro oficial Qlik
+          </span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '7px 16px', borderRadius: 999, background: '#fff', border: '1px solid var(--line)', boxShadow: 'var(--shadow-xs)', fontSize: 12.5, color: 'var(--text-2)', fontWeight: 500 }}>
+            <span style={{ color: 'var(--turquoise-ink)', display: 'inline-flex' }}><Icon name="trophy" size={14} stroke={1.8}/></span>
+            Líder do Quadrante Mágico da Gartner em Analytics por 14 anos consecutivos
+          </span>
         </div>
         <div style={{ marginTop: 24, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <a href="#diagnostico" className="btn btn-primary btn-lg">Falar sobre o meu projeto <Icon name="arrow" size={16} className="chev"/></a>
@@ -1239,6 +1405,7 @@ function SolucoesPage() {
         </div>
       </PageHero>
       <SolucoesOfferings/>
+      <SolucoesPlatform/>
       <SolucoesTech/>
       <SolucoesProcess/>
       <DifferentiatorsSection/>
