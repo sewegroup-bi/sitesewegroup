@@ -548,7 +548,7 @@ function DistribuidorScene() {
           <DForklift x={428} y={148}/>
           <DPerson x={412} y={185} shirt="#e09a3b" hair="#241d15"/>
           <DPallet x={298} y={358}/>
-          <DPerson x={374} y={392} shirt={DIST_C.navy700} hair="#3d3128" pose="clipboard"/>
+          <DPerson x={398} y={394} shirt={DIST_C.navy700} hair="#3d3128" pose="clipboard"/>
           <DPallet x={64} y={243}/>
 
           {/* recepção dentro da laje, canto dos fundos junto às docas */}
@@ -575,8 +575,11 @@ function DistribuidorScene() {
             {/* balcão na mesma orientação dos caminhões */}
             <DSlab x={515} y={50} z={0} w={42} d={13} h={15} rTop={3} top="#eef3fa" front="#cfd9ea" side="#bfcbdf"
               topChildren={<div style={{ position: 'absolute', inset: 1.5, borderRadius: 2, border: '1px solid rgba(122,138,165,0.35)', boxSizing: 'border-box' }}></div>}/>
-            <DChair x={529} y={26} z={0}/>
-            <DPerson x={535} y={33} shirt={DIST_C.turq2} hair="#3d3128" pose="sit"/>
+            {/* computador da recepcionista: tela voltada para ela (vista mostra a traseira) */}
+            <DSlab x={527} y={55} z={15} w={20} d={2.5} h={10} rTop={2} top="#223558" front="#141f38" side="#0f1830"/>
+            <DSlab x={535} y={55.5} z={13.5} w={5} d={1.8} h={1.5} top="#223558" front="#141f38" side="#0f1830"/>
+            <DChair x={533} y={26} z={0}/>
+            <DPerson x={539} y={33} shirt={DIST_C.turq2} hair="#3d3128" pose="sit"/>
             {/* sofá encostado na parede de vidro existente do distribuidor */}
             <DSlab x={560} y={3} z={0} w={34} d={5} h={19} rTop={3} top="#3a4d6f" front="#2d3f5e" side="#243554"/>
             <DSlab x={560} y={7} z={0} w={34} d={12} h={9} rTop={3} top="#4a5f85" front="#3a4d6f" side="#2d3f5e"/>
