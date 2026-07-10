@@ -548,7 +548,7 @@ function DistribuidorScene() {
           <DForklift x={428} y={148}/>
           <DPerson x={412} y={185} shirt="#e09a3b" hair="#241d15"/>
           <DPallet x={298} y={358}/>
-          <DPerson x={352} y={390} shirt={DIST_C.navy700} hair="#3d3128" pose="clipboard"/>
+          <DPerson x={374} y={392} shirt={DIST_C.navy700} hair="#3d3128" pose="clipboard"/>
           <DPallet x={64} y={243}/>
 
           {/* recepção dentro da laje, canto dos fundos junto às docas */}
@@ -566,6 +566,9 @@ function DistribuidorScene() {
                   <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 3, background: 'rgba(122,138,165,0.3)' }}></div>
                 </React.Fragment>
               }/>
+            {/* parede de fundo da recepção (fecha o canto em L) */}
+            <DSlab x={480} y={0} z={0} w={5} d={135} h={55} top="#e4eaf4" front="#eef2f8" side="#dfe6f2"
+              sideChildren={<div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 3, background: 'rgba(122,138,165,0.3)' }}></div>}/>
             {/* faixa de vidro seguindo ao lado da plataforma dos caminhões até a doca */}
             <DSlab x={604} y={140} z={0} w={4} d={100} h={55} top="rgba(214,230,244,0.75)" front="rgba(196,219,240,0.38)" side="rgba(196,219,240,0.3)"/>
             {/* balcão + recepcionista */}
@@ -573,7 +576,7 @@ function DistribuidorScene() {
             <DSlab x={515} y={50} z={0} w={42} d={13} h={15} rTop={3} top="#eef3fa" front="#cfd9ea" side="#bfcbdf"
               topChildren={<div style={{ position: 'absolute', inset: 1.5, borderRadius: 2, border: '1px solid rgba(122,138,165,0.35)', boxSizing: 'border-box' }}></div>}/>
             <DChair x={529} y={26} z={0}/>
-            <DPerson x={536} y={43} shirt={DIST_C.turq2} hair="#3d3128" pose="sit"/>
+            <DPerson x={535} y={33} shirt={DIST_C.turq2} hair="#3d3128" pose="sit"/>
             {/* sofá encostado na parede de vidro existente do distribuidor */}
             <DSlab x={560} y={3} z={0} w={34} d={5} h={19} rTop={3} top="#3a4d6f" front="#2d3f5e" side="#243554"/>
             <DSlab x={560} y={7} z={0} w={34} d={12} h={9} rTop={3} top="#4a5f85" front="#3a4d6f" side="#2d3f5e"/>
