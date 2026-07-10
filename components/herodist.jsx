@@ -458,7 +458,7 @@ function DistribuidorScene() {
     { key: 'estrategica', label: 'Gestão Estratégica', icon: 'target',   l: 12, t: 12, ax: 48,   ay: 12.5 },
     { key: 'suprimentos', label: 'Suprimentos',        icon: 'boxes',    l: 12, t: 42, ax: 30,   ay: 32 },
     { key: 'comercial',   label: 'Comercial',          icon: 'trending', l: 88, t: 18, ax: 72,   ay: 30 },
-    { key: 'financeiro',  label: 'Financeiro',         icon: 'dollar',   l: 91, t: 56, ax: 51.5, ay: 44 },
+    { key: 'financeiro',  label: 'Financeiro',         icon: 'dollar',   l: 90, t: 70, ax: 51.5, ay: 44 },
   ];
   const salesLeader = { key: 'sales', l: 44, t: 90, ax: 8, ay: 67 };
 
@@ -749,7 +749,11 @@ function DistribuidorScene() {
       </button>
 
       {/* etiqueta do cliente (espaço de tela, nítida) */}
-      <div className="dist-hutlabel" style={{ left: '17.5%', top: '84%' }}>Cliente Distribuidor</div>
+      <button className="dist-hutlabel" style={{ left: '10.5%', top: '84%' }}
+        onClick={() => scrollToId('sales')}
+        onMouseEnter={() => setHover('sales')} onMouseLeave={() => setHover(null)}
+        onFocus={() => setHover('sales')} onBlur={() => setHover(null)}
+        aria-label="Ver Sewe Sales">Cliente Distribuidor</button>
 
       {/* linha de mensagem do segmento (hover nas suítes) */}
       <div className="dist-msgline" aria-live="polite">
@@ -792,13 +796,20 @@ function DistribuidorScene() {
         }
         .dist-hutlabel {
           position: absolute; transform: translate(-50%, -50%);
-          padding: 6px 14px; border-radius: 999px;
+          padding: 4px 10px; border-radius: 999px;
           background: rgba(255,255,255,0.9); border: 1px solid rgba(26,40,68,0.12);
           box-shadow: 0 4px 12px rgba(26,40,68,0.10);
           font-family: 'Chakra Petch', 'Inter', sans-serif;
-          font-size: 11px; font-weight: 600; letter-spacing: 0.09em;
+          font-size: 10px; font-weight: 600; letter-spacing: 0.07em;
           text-transform: uppercase; color: var(--navy-900); white-space: nowrap;
-          pointer-events: none; z-index: 4;
+          cursor: pointer; z-index: 5;
+          transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
+        }
+        .dist-hutlabel:hover, .dist-hutlabel:focus-visible {
+          transform: translate(-50%, calc(-50% - 3px));
+          background: rgba(255,255,255,1);
+          border-color: rgba(63,201,203,0.55);
+          box-shadow: 0 0 0 5px rgba(117,227,228,0.18), 0 10px 22px rgba(63,201,203,0.25);
         }
         .dist-msgline {
           position: absolute; left: 50%; bottom: -9%; transform: translateX(-50%);
