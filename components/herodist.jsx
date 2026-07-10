@@ -783,7 +783,7 @@ function DistribuidorScene() {
         onMouseEnter={() => setHover('sales')} onMouseLeave={() => setHover(null)}
         onFocus={() => setHover('sales')} onBlur={() => setHover(null)}
         aria-label="Ver Sewe Sales">Cliente Distribuidor
-        <span className="dist-pill-drop" aria-hidden="true">
+        <span className="dist-pill-drop dist-drop-up" aria-hidden="true">
           {['Pedido sem vendedor', 'Crédito na hora', 'Recompra em 1 clique'].map((it, i) => (
             <span key={i} className="dist-pill-item" style={{ transitionDelay: (i * 90) + 'ms' }}>{it}</span>
           ))}
@@ -835,7 +835,7 @@ function DistribuidorScene() {
           background: rgba(255,255,255,0.9); border: 1px solid rgba(26,40,68,0.12);
           box-shadow: 0 4px 12px rgba(26,40,68,0.10);
           font-family: 'Chakra Petch', 'Inter', sans-serif;
-          font-size: 10px; font-weight: 600; letter-spacing: 0.07em;
+          font-size: 10px; font-weight: 700; letter-spacing: 0.07em;
           text-transform: uppercase; color: var(--navy-900); white-space: nowrap;
           cursor: pointer; z-index: 5;
           transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
