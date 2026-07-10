@@ -330,6 +330,19 @@ function Footer_DEPRECATED() {
 const SEWE_AGENDA_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2yIYuW6dqFpPDvnfnUMcYwXjTQxw7v6PyBYRMXHJ0j6NH3WxHeXDwASsHWi2_udeUbjPMbu0Kw';
 
 function AgendaSection({ bg = '#fff' }) {
+  // Perf: só monta o iframe do Google Agenda quando a seção se aproxima da viewport
+  const agendaRef = React.useRef(null);
+  const [agendaLoad, setAgendaLoad] = React.useState(false);
+  React.useEffect(() => {
+    const el = agendaRef.current;
+    if (!el) return;
+    if (!('IntersectionObserver' in window)) { setAgendaLoad(true); return; }
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) { setAgendaLoad(true); io.disconnect(); }
+    }, { rootMargin: '600px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   return (
     <section className="section" style={{ background: bg, paddingTop: 'clamp(28px, 3.5vw, 48px)' }}>
       <div className="container">
@@ -341,13 +354,21 @@ function AgendaSection({ bg = '#fff' }) {
             com um especialista SEWE sobre o potencial da sua operação.
           </p>
         </div>
-        <div id="agendar" style={{ maxWidth: 920, margin: '0 auto', border: '1px solid var(--line)', borderRadius: 16, overflow: 'hidden', boxShadow: 'var(--shadow-md)', scrollMarginTop: 90 }}>
-          <iframe
-            src={`${SEWE_AGENDA_URL}?gv=true`}
-            title="Agendar demonstração · SEWE Group"
-            style={{ border: 0, width: '100%', height: 1000, display: 'block' }}
-            loading="lazy"
-          />
+        <div id="agendar" ref={agendaRef} style={{ maxWidth: 920, margin: '0 auto', border: '1px solid var(--line)', borderRadius: 16, overflow: 'hidden', boxShadow: 'var(--shadow-md)', scrollMarginTop: 90 }}>
+          {agendaLoad ? (
+            <iframe
+              src={`${SEWE_AGENDA_URL}?gv=true`}
+              title="Agendar demonstração · SEWE Group"
+              style={{ border: 0, width: '100%', height: 1000, display: 'block' }}
+              loading="lazy"
+            />
+          ) : (
+            <div style={{ width: '100%', height: 1000, display: 'grid', placeItems: 'center', background: 'var(--bg-soft, #f6f8fb)' }}>
+              <div style={{ textAlign: 'center', color: 'var(--text-3)', fontSize: 14 }}>
+                Carregando agenda…
+              </div>
+            </div>
+          )}
         </div>
         <div style={{ textAlign: 'center', marginTop: 14, fontSize: 13, color: 'var(--text-3)' }}>
           Não achou horário? <a href={SEWE_AGENDA_URL} target="_blank" rel="noopener" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>Abra a agenda completa</a> ou
