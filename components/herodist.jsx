@@ -458,7 +458,7 @@ function DistribuidorScene() {
     { key: 'estrategica', label: 'Gestão Estratégica', icon: 'target',   l: 12, t: 12, ax: 48,   ay: 12.5 },
     { key: 'suprimentos', label: 'Suprimentos',        icon: 'boxes',    l: 12, t: 42, ax: 30,   ay: 32 },
     { key: 'comercial',   label: 'Comercial',          icon: 'trending', l: 88, t: 18, ax: 72,   ay: 30 },
-    { key: 'financeiro',  label: 'Financeiro',         icon: 'dollar',   l: 89, t: 47, ax: 51.5, ay: 44 },
+    { key: 'financeiro',  label: 'Financeiro',         icon: 'dollar',   l: 91, t: 56, ax: 51.5, ay: 44 },
   ];
   const salesLeader = { key: 'sales', l: 44, t: 90, ax: 8, ay: 67 };
 
@@ -704,10 +704,7 @@ function DistribuidorScene() {
             <DPerson x={314} y={708} shirt={DIST_C.turq2} hair="#3d3128" pose="clipboard"/>
             {/* venda fechada: dinheiro no ar */}
             <DBadge x={301} y={705} z={84} kind="money" shadowZ={0}/>
-            {/* etiqueta discreta */}
-            <DBill x={378} y={762} z={0} w={190} h={26}>
-              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.88)', border: '1px solid rgba(26,40,68,0.12)', borderRadius: 999, boxShadow: '0 4px 12px rgba(26,40,68,0.10)', fontFamily: "'Chakra Petch', 'Inter', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.09em', textTransform: 'uppercase', color: 'var(--navy-900)', whiteSpace: 'nowrap' }}>Cliente Distribuidor</div>
-            </DBill>
+
           </div>
         </div>
       </div>
@@ -751,6 +748,9 @@ function DistribuidorScene() {
         <span className="dist-pill-plus"><Icon name="plus" size={14} stroke={2.2}></Icon></span>
       </button>
 
+      {/* etiqueta do cliente (espaço de tela, nítida) */}
+      <div className="dist-hutlabel" style={{ left: '17.5%', top: '84%' }}>Cliente Distribuidor</div>
+
       {/* linha de mensagem do segmento (hover nas suítes) */}
       <div className="dist-msgline" aria-live="polite">
         <span className="dist-msg-chev">›</span>
@@ -789,6 +789,16 @@ function DistribuidorScene() {
           0% { transform: scale(0.45); opacity: 0.85; }
           70% { transform: scale(2.1); opacity: 0; }
           100% { transform: scale(2.1); opacity: 0; }
+        }
+        .dist-hutlabel {
+          position: absolute; transform: translate(-50%, -50%);
+          padding: 6px 14px; border-radius: 999px;
+          background: rgba(255,255,255,0.9); border: 1px solid rgba(26,40,68,0.12);
+          box-shadow: 0 4px 12px rgba(26,40,68,0.10);
+          font-family: 'Chakra Petch', 'Inter', sans-serif;
+          font-size: 11px; font-weight: 600; letter-spacing: 0.09em;
+          text-transform: uppercase; color: var(--navy-900); white-space: nowrap;
+          pointer-events: none; z-index: 4;
         }
         .dist-msgline {
           position: absolute; left: 50%; bottom: -9%; transform: translateX(-50%);
