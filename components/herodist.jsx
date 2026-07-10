@@ -582,7 +582,7 @@ function DistribuidorScene() {
             <div style={{ position: 'absolute', left: 529, top: 23, width: 22, height: 22, borderRadius: '50%', transform: 'translateZ(0.4px)', background: 'radial-gradient(circle, rgba(26,40,68,0.22) 0%, transparent 70%)' }}></div>
             <DSlab x={533} y={29} z={0} w={14} d={13} h={9} rTop={4} top="#2d3f5e" front="#243554" side="#1c2b45"/>
             <DSlab x={533} y={26} z={0} w={14} d={3.5} h={23} rTop={2.5} top="#2d3f5e" front="#243554" side="#1c2b45"/>
-            <DPerson x={539} y={33} shirt={DIST_C.turq2} hair="#3d3128" pose="sit"/>
+            <DPerson x={540} y={34} z={9} shirt={DIST_C.turq2} hair="#3d3128" pose="sit"/>
             {/* sofá encostado na parede de vidro existente do distribuidor */}
             <DSlab x={560} y={3} z={0} w={34} d={5} h={19} rTop={3} top="#3a4d6f" front="#2d3f5e" side="#243554"/>
             <DSlab x={560} y={7} z={0} w={34} d={12} h={9} rTop={3} top="#4a5f85" front="#3a4d6f" side="#2d3f5e"/>
