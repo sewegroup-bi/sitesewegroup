@@ -483,8 +483,9 @@ function SalesLaptop() {
   );
 }
 
-function SalesSection() {
+function SalesSection({ audience = 'distribuidor' }) {
   const C = BU.sales;
+  const isInd = audience === 'industria';
   const tabs = [
     { key: 'ia', label: 'Sewe IA', icon: 'sparkle',
       h: 'A inteligência que trabalha nos bastidores.',
@@ -504,7 +505,7 @@ function SalesSection() {
       ] },
     { key: 'b2b', label: 'Pedidos B2B', icon: 'store',
       h: 'Sua rede compra sozinha, você só acompanha.',
-      d: 'O pedido nasce digitado: ninguém digita o mesmo pedido duas vezes, e nada chega por telefone sem preço nem estoque.',
+      d: isInd ? 'Seus distribuidores e varejos compram direto no seu portal, no catálogo e preço de cada um. O pedido nasce digitado.' : 'O pedido nasce digitado: ninguém digita o mesmo pedido duas vezes, e nada chega por telefone sem preço nem estoque.',
       feats: [
         { icon: 'store', t: 'Portal de compra da rede', d: 'Catálogo, promoções e limite de crédito por revenda, com compra 24/7.' },
         { icon: 'check', t: 'Fluxo completo', d: 'Carrinho, entrega, pagamento e confirmação num só caminho, sem redigitação.' },
@@ -560,7 +561,10 @@ function SalesSection() {
   ];
   const [tab, setTab] = React.useState(0);
   const t = tabs[tab];
-  const chain = [
+  const chain = isInd ? [
+    { icon: 'factory', k: 'Indústria + representantes', d: 'define regras e impulsiona' },
+    { icon: 'store',   k: 'Distribuidores e varejos', d: 'compram direto no portal' },
+  ] : [
     { icon: 'warehouse', k: 'Distribuidor + vendedor', d: 'gerencia e impulsiona' },
     { icon: 'store',     k: 'Revenda + cliente final', d: 'compra e recompra' },
   ];
@@ -573,11 +577,14 @@ function SalesSection() {
               <SMark size={16} color={C.color}/> ECOSSISTEMA COMERCIAL · SEWE SALES
             </div>
             <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
-              Toda a sua operação comercial, da tabela de preço ao pedido aprovado, em <span style={{ color: C.color }}>uma única plataforma</span>.
+              {isInd
+                ? <React.Fragment>Sua indústria vendendo para toda a rede: sem redigitação, sem tabela velha, sem <span style={{ color: C.color }}>desconto fora da política</span>.</React.Fragment>
+                : <React.Fragment>Toda a sua operação comercial, da tabela de preço ao pedido aprovado, em <span style={{ color: C.color }}>uma única plataforma</span>.</React.Fragment>}
             </h2>
             <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 700 }}>
-              Catálogo e preço por cliente, pedidos B2B, venda direta, carteiras, aprovações, WhatsApp oficial e relatórios,
-              com a política comercial da sua empresa garantida em cada venda. E, por ser Sewe, tudo nativo do BI.
+              {isInd
+                ? 'Distribuidores e varejos compram direto no seu portal, com o catálogo e o preço de cada um. Seus representantes vendem em campo com carteira, metas e follow-up. Você acompanha tudo em tempo real, com a política comercial garantida em cada venda.'
+                : 'Catálogo e preço por cliente, pedidos B2B, venda direta, carteiras, aprovações, WhatsApp oficial e relatórios, com a política comercial da sua empresa garantida em cada venda. E, por ser Sewe, tudo nativo do BI.'}
             </p>
           </div>
         </div>
