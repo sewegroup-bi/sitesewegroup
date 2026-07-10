@@ -458,7 +458,7 @@ function DistribuidorScene() {
     { key: 'estrategica', label: 'Gestão Estratégica', icon: 'target',   l: 12, t: 12, ax: 48,   ay: 12.5 },
     { key: 'suprimentos', label: 'Suprimentos',        icon: 'boxes',    l: 12, t: 42, ax: 30,   ay: 32 },
     { key: 'comercial',   label: 'Comercial',          icon: 'trending', l: 88, t: 18, ax: 72,   ay: 30 },
-    { key: 'financeiro',  label: 'Financeiro',         icon: 'dollar',   l: 90, t: 70, ax: 51.5, ay: 44 },
+    { key: 'financeiro',  label: 'Financeiro',         icon: 'dollar',   l: 92, t: 63, ax: 51.5, ay: 44 },
   ];
   const salesLeader = { key: 'sales', l: 44, t: 90, ax: 8, ay: 67 };
 
@@ -749,7 +749,7 @@ function DistribuidorScene() {
       </button>
 
       {/* etiqueta do cliente (espaço de tela, nítida) */}
-      <button className="dist-hutlabel" style={{ left: '10.5%', top: '84%' }}
+      <button className="dist-hutlabel" style={{ left: '5%', top: '88%' }}
         onClick={() => scrollToId('sales')}
         onMouseEnter={() => setHover('sales')} onMouseLeave={() => setHover(null)}
         onFocus={() => setHover('sales')} onBlur={() => setHover(null)}
