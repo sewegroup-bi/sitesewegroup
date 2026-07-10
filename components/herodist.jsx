@@ -782,7 +782,13 @@ function DistribuidorScene() {
         onClick={() => scrollToId('sales')}
         onMouseEnter={() => setHover('sales')} onMouseLeave={() => setHover(null)}
         onFocus={() => setHover('sales')} onBlur={() => setHover(null)}
-        aria-label="Ver Sewe Sales">Cliente Distribuidor</button>
+        aria-label="Ver Sewe Sales">Cliente Distribuidor
+        <span className="dist-pill-drop" aria-hidden="true">
+          {['Pedido sem vendedor', 'Crédito na hora', 'Recompra em 1 clique'].map((it, i) => (
+            <span key={i} className="dist-pill-item" style={{ transitionDelay: (i * 90) + 'ms' }}>{it}</span>
+          ))}
+        </span>
+      </button>
 
       {/* linha de mensagem do segmento (hover nas suítes) */}
       <div className="dist-msgline" aria-live="polite">
@@ -909,7 +915,7 @@ function DistribuidorScene() {
           transition: opacity .25s ease, transform .25s ease;
         }
         .dist-drop-up .dist-pill-item { transform: translateY(6px); }
-        .dist-pill:hover .dist-pill-item, .dist-pill:focus-visible .dist-pill-item { opacity: 1; transform: translateY(0); }
+        .dist-pill:hover .dist-pill-item, .dist-pill:focus-visible .dist-pill-item, .dist-hutlabel:hover .dist-pill-item, .dist-hutlabel:focus-visible .dist-pill-item { opacity: 1; transform: translateY(0); }
         .dist-pill-plus {
           width: 26px; height: 26px; border-radius: 50%;
           background: var(--turquoise); color: var(--navy-900);
