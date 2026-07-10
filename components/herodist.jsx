@@ -578,7 +578,10 @@ function DistribuidorScene() {
             {/* computador da recepcionista: tela voltada para ela (vista mostra a traseira) */}
             <DSlab x={527} y={55} z={15} w={20} d={2.5} h={10} rTop={2} top="#223558" front="#141f38" side="#0f1830"/>
             <DSlab x={535} y={55.5} z={13.5} w={5} d={1.8} h={1.5} top="#223558" front="#141f38" side="#0f1830"/>
-            <DChair x={533} y={26} z={0}/>
+            {/* cadeira virada para o balcão (encosto às costas dela) */}
+            <div style={{ position: 'absolute', left: 529, top: 23, width: 22, height: 22, borderRadius: '50%', transform: 'translateZ(0.4px)', background: 'radial-gradient(circle, rgba(26,40,68,0.22) 0%, transparent 70%)' }}></div>
+            <DSlab x={533} y={29} z={0} w={14} d={13} h={9} rTop={4} top="#2d3f5e" front="#243554" side="#1c2b45"/>
+            <DSlab x={533} y={26} z={0} w={14} d={3.5} h={23} rTop={2.5} top="#2d3f5e" front="#243554" side="#1c2b45"/>
             <DPerson x={539} y={33} shirt={DIST_C.turq2} hair="#3d3128" pose="sit"/>
             {/* sofá encostado na parede de vidro existente do distribuidor */}
             <DSlab x={560} y={3} z={0} w={34} d={5} h={19} rTop={3} top="#3a4d6f" front="#2d3f5e" side="#243554"/>
