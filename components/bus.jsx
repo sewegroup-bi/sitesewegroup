@@ -516,7 +516,7 @@ function SalesSection({ audience = 'distribuidor' }) {
       d: 'A venda ao cliente final dentro do sistema, com margem controlada: produtos, serviços, entrega e pagamento num passo a passo guiado.',
       feats: [
         { icon: 'check', t: 'Passo a passo guiado', d: 'Produtos, carrinho, serviços, entrega, pagamento e confirmação, sem etapa esquecida.' },
-        { icon: 'shield', t: 'Desconto sempre no limite', d: 'Capado ao limite da filial; acima disso, vai automaticamente para aprovação.' },
+        { icon: 'shield', t: 'Gestão total do desconto', d: 'Alçadas de desconto por perfil e teto máximo gerenciável, para que nada fuja do controle.' },
         { icon: 'clock', t: 'Status claros', d: 'Rascunho, aguardando confirmação, aprovado ou perdido: todo mundo sabe onde a venda está.' },
       ] },
     { key: 'carteiras', label: 'Carteiras & Atividades', icon: 'users',
