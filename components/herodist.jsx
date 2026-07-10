@@ -115,8 +115,8 @@ function DBadge({ x, y, z, kind = 'ok', shadowZ = null }) {
       {shadowZ != null ? (
         <div style={{ position: 'absolute', left: x - 21, top: y - 21, width: 42, height: 42, borderRadius: '50%', transform: 'translateZ(' + (shadowZ + 0.5) + 'px)', background: 'radial-gradient(circle, rgba(26,40,68,0.30) 0%, rgba(26,40,68,0.10) 45%, transparent 70%)' }}></div>
       ) : null}
-      <div style={{ position: 'absolute', left: x - 21, top: y - 21, width: 42, height: 42, transform: 'translateZ(' + z + 'px) rotateZ(-45deg)', transformStyle: 'preserve-3d' }}>
-        <div className="dist-bob-z" style={{ position: 'absolute', inset: 0 }}>
+      <div style={{ position: 'absolute', left: x - 21, top: y - 21, width: 42, height: 42, transform: 'translateZ(' + z + 'px) rotateZ(-45deg) rotateX(-57deg)', transformStyle: 'preserve-3d' }}>
+        <div className="dist-bob" style={{ position: 'absolute', inset: 0 }}>
           {kind === 'warn' ? (
             <div style={{ ...base, color: '#6b4e00', background: '#ffd23e', clipPath: 'polygon(50% 0, 100% 100%, 0 100%)', fontSize: 19, paddingTop: 15 }}>!</div>
           ) : kind === 'risk' ? (
