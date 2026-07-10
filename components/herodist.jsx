@@ -458,7 +458,7 @@ function DistribuidorScene() {
     { key: 'estrategica', label: 'Gestão Estratégica', icon: 'target',   l: 12, t: 12, ax: 48,   ay: 12.5 },
     { key: 'suprimentos', label: 'Suprimentos',        icon: 'boxes',    l: 12, t: 42, ax: 30,   ay: 32 },
     { key: 'comercial',   label: 'Comercial',          icon: 'trending', l: 88, t: 18, ax: 72,   ay: 30 },
-    { key: 'financeiro',  label: 'Financeiro',         icon: 'dollar',   l: 76, t: 43, ax: 51.5, ay: 44 },
+    { key: 'financeiro',  label: 'Financeiro',         icon: 'dollar',   l: 89, t: 47, ax: 51.5, ay: 44 },
   ];
   const salesLeader = { key: 'sales', l: 44, t: 90, ax: 8, ay: 67 };
 
@@ -705,8 +705,8 @@ function DistribuidorScene() {
             {/* venda fechada: dinheiro no ar */}
             <DBadge x={301} y={705} z={84} kind="money" shadowZ={0}/>
             {/* etiqueta discreta */}
-            <DBill x={378} y={758} z={0} w={130} h={14}>
-              <div style={{ width: '100%', textAlign: 'center', fontFamily: "'Chakra Petch', 'Inter', sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#44536f', whiteSpace: 'nowrap' }}>Cliente Distribuidor</div>
+            <DBill x={378} y={762} z={0} w={190} h={26}>
+              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.88)', border: '1px solid rgba(26,40,68,0.12)', borderRadius: 999, boxShadow: '0 4px 12px rgba(26,40,68,0.10)', fontFamily: "'Chakra Petch', 'Inter', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.09em', textTransform: 'uppercase', color: 'var(--navy-900)', whiteSpace: 'nowrap' }}>Cliente Distribuidor</div>
             </DBill>
           </div>
         </div>
