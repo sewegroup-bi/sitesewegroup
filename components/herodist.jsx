@@ -669,8 +669,8 @@ function DistribuidorScene() {
             top="#f2f6fb" front="#e3e9f3" side="#fbfcfe"
             sideChildren={
               <div style={{ width: '100%', height: '100%', position: 'relative', boxSizing: 'border-box' }}>
-                <div style={{ position: 'absolute', left: 0, right: 0, top: 8, height: 26, background: 'linear-gradient(90deg, ' + DIST_C.navy900 + ', ' + DIST_C.navy700 + ')', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, borderTop: '2px solid ' + DIST_C.turq2, borderBottom: '2px solid ' + DIST_C.turq2 }}>
-                  <span style={{ fontFamily: 'Chakra Petch, sans-serif', fontWeight: 700, fontSize: 12, letterSpacing: '0.22em', color: '#fff' }}>S | SEWE GROUP</span>
+                <div style={{ position: 'absolute', left: 0, right: 0, top: 5, height: 38, background: 'linear-gradient(90deg, ' + DIST_C.navy900 + ', ' + DIST_C.navy700 + ')', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, borderTop: '2.5px solid ' + DIST_C.turq2, borderBottom: '2.5px solid ' + DIST_C.turq2, boxShadow: '0 0 16px rgba(63,201,203,0.30)' }}>
+                  <span style={{ fontFamily: 'Chakra Petch, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '0.24em', color: '#fff', textShadow: '0 0 10px rgba(117,227,228,0.55)' }}>S | SEWE GROUP</span>
                 </div>
                 <div style={{ position: 'absolute', left: 14, right: 14, bottom: 0, display: 'flex', justifyContent: 'space-between' }}>
                   {[0, 1, 2].map(i => {
