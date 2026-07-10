@@ -464,19 +464,19 @@ function DistribuidorScene() {
 
   // Pills on the outer margins; ax/ay = anchor point (%) on the matching floor.
   const pills = [
-    { key: 'estrategica', label: 'Gestão Estratégica', icon: 'target',   l: 12, t: 12, ax: 48,   ay: 12.5 },
-    { key: 'suprimentos', label: 'Suprimentos',        icon: 'boxes',    l: 12, t: 42, ax: 30,   ay: 32 },
-    { key: 'comercial',   label: 'Comercial',          icon: 'trending', l: 88, t: 18, ax: 72,   ay: 30 },
-    { key: 'financeiro',  label: 'Financeiro',         icon: 'dollar',   l: 92, t: 63, ax: 51.5, ay: 44 },
+    { key: 'estrategica', label: 'Gestão Estratégica', icon: 'target',   l: 12, t: 12, ax: 48,   ay: 12.5, items: ['DRE ao vivo', 'KPIs por filial', 'Visão 360°'] },
+    { key: 'suprimentos', label: 'Suprimentos',        icon: 'boxes',    l: 12, t: 42, ax: 30,   ay: 32, items: ['Previsão de ruptura', 'Curva ABC', 'Sugestão de compra'] },
+    { key: 'comercial',   label: 'Comercial',          icon: 'trending', l: 88, t: 18, ax: 72,   ay: 30, items: ['Metas por vendedor', 'Leads inteligentes', 'Reativação de clientes'] },
+    { key: 'financeiro',  label: 'Financeiro',         icon: 'dollar',   l: 92, t: 63, ax: 51.5, ay: 44, items: ['Fluxo de caixa', 'Margem por SKU', 'DRE automatizado'] },
   ];
-  const salesLeader = { key: 'sales', l: 44, t: 90, ax: 8, ay: 67 };
+  const salesLeader = { key: 'sales', l: 44, t: 85, ax: 8, ay: 67, items: ['Pedido 24/7 no app', 'Catálogo e preço', 'Carteira do vendedor'] };
 
   const suiteMsgs = {
-    estrategica: 'A operação inteira — margem, ruptura e positivação — em uma só tela. Decisão de dono tomada em minutos, não no fechamento do mês.',
-    suprimentos: 'A IA prevê a demanda e avisa antes de a ruptura chegar à gôndola. Menos estoque parado, mais capital de giro livre.',
-    comercial: 'Funil, metas e positivação por vendedor, em tempo real. O sistema aponta quem reativar e o que ofertar — antes do concorrente.',
-    financeiro: 'Entradas, saídas e caixa projetado direto do ERP. Margem real por SKU e DRE fechado em dias, não em semanas.',
-    sales: 'Seu cliente pede sozinho pelo app, 24/7, e a venda cai na hora no CD. O vendedor ganha tempo para vender mais.',
+    estrategica: 'Assuma o controle: a operação inteira em uma tela e a decisão do dia já priorizada.',
+    suprimentos: 'Acabe com a ruptura: a IA prevê a demanda e sugere a compra certa antes da falta.',
+    comercial: 'Venda mais com a mesma equipe: o sistema aponta quem reativar e o que ofertar.',
+    financeiro: 'Feche o mês em dias: caixa projetado e margem real por SKU direto do ERP.',
+    sales: 'Deixe o cliente comprar sozinho: pedido no app 24/7 caindo direto no CD.',
   };
 
   return (
@@ -756,6 +756,11 @@ function DistribuidorScene() {
           <span className="dist-pill-ic"><Icon name={p.icon} size={13} stroke={2}></Icon></span>
           <span className="dist-pill-lb">{p.label}</span>
           <span className="dist-pill-plus"><Icon name="plus" size={14} stroke={2.2}></Icon></span>
+          <span className="dist-pill-drop" aria-hidden="true">
+            {(p.items || []).map((it, i) => (
+              <span key={i} className="dist-pill-item" style={{ transitionDelay: (i * 90) + 'ms' }}>{it}</span>
+            ))}
+          </span>
         </button>
       ))}
       <button onClick={() => scrollToId('sales')}
@@ -765,6 +770,11 @@ function DistribuidorScene() {
         <span className="dist-pill-ic"><Icon name="store" size={13} stroke={2}></Icon></span>
         <span className="dist-pill-lb">Sewe Sales</span>
         <span className="dist-pill-plus"><Icon name="plus" size={14} stroke={2.2}></Icon></span>
+        <span className="dist-pill-drop dist-drop-up" aria-hidden="true">
+          {salesLeader.items.map((it, i) => (
+            <span key={i} className="dist-pill-item" style={{ transitionDelay: (i * 90) + 'ms' }}>{it}</span>
+          ))}
+        </span>
       </button>
 
       {/* etiqueta do cliente (espaço de tela, nítida) */}
@@ -884,6 +894,22 @@ function DistribuidorScene() {
           display: grid; place-items: center; flex-shrink: 0;
         }
         .dist-pill-lb { font-size: 13px; color: var(--navy-900); letter-spacing: 0.01em; }
+        .dist-pill-drop {
+          position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+          display: flex; flex-direction: column; gap: 5px; align-items: center;
+          pointer-events: none;
+        }
+        .dist-drop-up { top: auto; bottom: calc(100% + 8px); flex-direction: column-reverse; }
+        .dist-pill-item {
+          padding: 3px 10px; border-radius: 999px; white-space: nowrap;
+          background: rgba(255,255,255,0.95); border: 1px solid rgba(63,201,203,0.45);
+          box-shadow: 0 4px 10px rgba(26,40,68,0.10);
+          font-size: 10px; font-weight: 600; color: var(--navy-900); letter-spacing: 0.03em;
+          opacity: 0; transform: translateY(-6px);
+          transition: opacity .25s ease, transform .25s ease;
+        }
+        .dist-drop-up .dist-pill-item { transform: translateY(6px); }
+        .dist-pill:hover .dist-pill-item, .dist-pill:focus-visible .dist-pill-item { opacity: 1; transform: translateY(0); }
         .dist-pill-plus {
           width: 26px; height: 26px; border-radius: 50%;
           background: var(--turquoise); color: var(--navy-900);
