@@ -418,6 +418,19 @@ function DistribuidorScene() {
     return () => ro.disconnect();
   }, []);
 
+  // Perf: pausa todas as animações quando a cena sai da viewport
+  const [paused, setPaused] = React.useState(false);
+  React.useEffect(() => {
+    const el = wrapRef.current;
+    if (!el || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(
+      (entries) => setPaused(!entries[0].isIntersecting),
+      { rootMargin: '120px' }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   const scrollToId = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -458,12 +471,12 @@ function DistribuidorScene() {
   };
 
   return (
-    <div className="dist-scene" ref={wrapRef}>
+    <div className={'dist-scene' + (paused ? ' dist-paused' : '')} ref={wrapRef}>
       <div className="dist-stage" aria-hidden style={{ transform: 'scale(' + (scale || 0.001) + ')', opacity: scale ? 1 : 0 }}>
         <div className="dist-plane">
           {/* projected shadow: contact occlusion rim + soft ambient spread, in-plane so it follows the isometric tilt */}
-          <div style={{ position: 'absolute', left: -14, top: -14, width: 700, height: 700, borderRadius: 70, transform: 'translateZ(-15.5px)', background: 'radial-gradient(closest-side, rgba(26,40,68,0.26) 52%, rgba(26,40,68,0.10) 75%, transparent 100%)', filter: 'blur(24px)', pointerEvents: 'none' }}></div>
-          <div style={{ position: 'absolute', left: -9, top: -9, width: 638, height: 638, borderRadius: 34, transform: 'translateZ(-14.8px)', background: 'rgba(26,40,68,0.30)', filter: 'blur(9px)', pointerEvents: 'none' }}></div>
+          <div style={{ position: 'absolute', left: -14, top: -14, width: 700, height: 700, borderRadius: 70, transform: 'translateZ(-15.5px)', background: 'radial-gradient(closest-side, rgba(26,40,68,0.26) 42%, rgba(26,40,68,0.10) 70%, transparent 100%)', pointerEvents: 'none' }}></div>
+          <div style={{ position: 'absolute', left: -9, top: -9, width: 638, height: 638, borderRadius: 34, transform: 'translateZ(-14.8px)', background: 'rgba(26,40,68,0.30)', boxShadow: '0 0 9px 9px rgba(26,40,68,0.30)', pointerEvents: 'none' }}></div>
           {/* ground plate: sunk so its TOP face sits at z=0 — objects placed at z=0 stand ON the floor instead of inside it */}
           <DSlab x={0} y={0} z={-14} w={620} d={620} h={14} rTop={24}
             top="#eaeff7" front="#c9d4e6" side="#b9c6db"
@@ -830,11 +843,13 @@ function DistribuidorScene() {
           transition: background .2s ease;
         }
         .dist-pill:hover .dist-pill-plus { background: var(--turquoise-2); }
-        .dist-belt-anim {
+        .dist-belt-anim { overflow: hidden; }
+        .dist-belt-anim::before {
+          content: ''; position: absolute; top: 0; bottom: 0; left: -22px; right: 0;
           background: repeating-linear-gradient(90deg, transparent 0 14px, rgba(117,227,228,0.4) 14px 22px);
           animation: distBeltMove 1.6s linear infinite;
         }
-        @keyframes distBeltMove { to { background-position: 22px 0; } }
+        @keyframes distBeltMove { to { transform: translateX(22px); } }
         .dist-mover { animation: distConvey 6s linear infinite; }
         .dist-mover-b { animation: distConveyB 6.5s linear infinite; }
         @keyframes distConveyB {
@@ -860,17 +875,27 @@ function DistribuidorScene() {
         .dist-flow { animation: distFlow 5.4s linear infinite; }
         @keyframes distFlow { to { stroke-dashoffset: -486; } }
         .dist-rise {
-          background: repeating-linear-gradient(to top, rgba(127,240,241,0.16) 0 9px, rgba(127,240,241,0.95) 9px 16px);
+          overflow: hidden;
           box-shadow: 0 0 14px rgba(117,227,228,0.75);
+        }
+        .dist-rise::before {
+          content: ''; position: absolute; left: 0; right: 0; top: 0; bottom: -32px;
+          background: repeating-linear-gradient(to top, rgba(127,240,241,0.16) 0 9px, rgba(127,240,241,0.95) 9px 16px);
           animation: distRise 1.4s linear infinite;
+          animation-delay: inherit;
         }
-        @keyframes distRise { to { background-position: 0 -32px; } }
+        @keyframes distRise { to { transform: translateY(-32px); } }
         .dist-fall {
-          background: repeating-linear-gradient(to bottom, rgba(127,240,241,0.18) 0 10px, rgba(174,247,247,1) 10px 18px);
+          overflow: hidden;
           box-shadow: 0 0 18px rgba(117,227,228,0.9), 0 0 34px rgba(117,227,228,0.4);
-          animation: distFall 1.1s linear infinite;
         }
-        @keyframes distFall { to { background-position: 0 28px; } }
+        .dist-fall::before {
+          content: ''; position: absolute; left: 0; right: 0; top: -28px; bottom: 0;
+          background: repeating-linear-gradient(to bottom, rgba(127,240,241,0.18) 0 10px, rgba(174,247,247,1) 10px 18px);
+          animation: distFall 1.1s linear infinite;
+          animation-delay: inherit;
+        }
+        @keyframes distFall { to { transform: translateY(28px); } }
         .dist-bob { animation: distBob 3s ease-in-out infinite; }
         @keyframes distBob {
           0%, 100% { transform: translateY(0); }
@@ -881,8 +906,11 @@ function DistribuidorScene() {
           0%, 100% { transform: translateZ(0); }
           50% { transform: translateZ(7px); }
         }
+        .dist-paused *, .dist-paused *::before, .dist-paused *::after {
+          animation-play-state: paused !important;
+        }
         @media (prefers-reduced-motion: reduce) {
-          .dist-belt-anim, .dist-mover, .dist-mover-b, .dist-pulse, .dist-blink, .dist-flow, .dist-bob, .dist-bob-z, .dist-rise, .dist-fall, .dist-dot-ping { animation: none; }
+          .dist-belt-anim, .dist-belt-anim::before, .dist-mover, .dist-mover-b, .dist-pulse, .dist-blink, .dist-flow, .dist-bob, .dist-bob-z, .dist-rise, .dist-rise::before, .dist-fall, .dist-fall::before, .dist-dot-ping { animation: none; }
         }
         @media (max-width: 640px) {
           .dist-pill-lb { font-size: 11px; }
