@@ -463,11 +463,11 @@ function DistribuidorScene() {
   const salesLeader = { key: 'sales', l: 44, t: 90, ax: 8, ay: 67 };
 
   const suiteMsgs = {
-    estrategica: 'Consolidando filiais · margem, ruptura e positivação em uma só tela',
-    suprimentos: 'Previsão de demanda e alerta de ruptura antes da falta na gôndola',
-    comercial: 'Funil, metas e positivação por vendedor — em tempo real',
-    financeiro: 'Entradas × saídas × caixa projetado, direto do ERP',
-    sales: 'Pedido fechado no PDV do cliente cai na hora no CD',
+    estrategica: 'A operação inteira — margem, ruptura e positivação — em uma só tela. Decisão de dono tomada em minutos, não no fechamento do mês.',
+    suprimentos: 'A IA prevê a demanda e avisa antes de a ruptura chegar à gôndola. Menos estoque parado, mais capital de giro livre.',
+    comercial: 'Funil, metas e positivação por vendedor, em tempo real. O sistema aponta quem reativar e o que ofertar — antes do concorrente.',
+    financeiro: 'Entradas, saídas e caixa projetado direto do ERP. Margem real por SKU e DRE fechado em dias, não em semanas.',
+    sales: 'Seu cliente pede sozinho pelo app, 24/7, e a venda cai na hora no CD. O vendedor ganha tempo para vender mais.',
   };
 
   return (
@@ -755,7 +755,7 @@ function DistribuidorScene() {
       <div className="dist-msgline" aria-live="polite">
         <span className="dist-msg-chev">›</span>
         <span className="dist-msg-txt" style={{ opacity: hover && suiteMsgs[hover] ? 1 : 0.45 }}>
-          {hover && suiteMsgs[hover] ? suiteMsgs[hover] : 'Passe o mouse sobre uma suíte para ver o que ela faz'}
+          {hover && suiteMsgs[hover] ? suiteMsgs[hover] : 'Passe o mouse sobre uma suíte e veja o que ela faz pela sua operação'}
         </span>
         <span className="dist-msg-cursor"></span>
       </div>
@@ -792,16 +792,24 @@ function DistribuidorScene() {
         }
         .dist-msgline {
           position: absolute; left: 50%; bottom: -9%; transform: translateX(-50%);
-          display: flex; align-items: center; gap: 8px; max-width: 92%;
-          padding: 9px 18px; border-radius: 999px;
-          background: rgba(255,255,255,0.85); border: 1px solid rgba(63,201,203,0.35);
+          display: flex; align-items: flex-start; gap: 8px;
+          width: max-content; max-width: min(620px, 94%);
+          padding: 10px 20px; border-radius: 22px;
+          background: rgba(255,255,255,0.9); border: 1px solid rgba(63,201,203,0.35);
           box-shadow: 0 6px 18px rgba(26,40,68,0.08);
           font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.02em;
-          color: var(--navy-900); white-space: nowrap; overflow: hidden;
+          line-height: 1.5; color: var(--navy-900);
           pointer-events: none; z-index: 4;
         }
         .dist-msg-chev { color: var(--turquoise-2); font-weight: 700; flex-shrink: 0; }
-        .dist-msg-txt { transition: opacity 0.25s ease; overflow: hidden; text-overflow: ellipsis; }
+        .dist-msg-txt {
+          transition: opacity 0.25s ease; overflow: hidden;
+          display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+        }
+        @media (max-width: 640px) {
+          .dist-msgline { font-size: 11px; -webkit-line-clamp: 3; }
+          .dist-msg-txt { -webkit-line-clamp: 3; }
+        }
         .dist-msg-cursor {
           width: 7px; height: 14px; background: var(--turquoise-2); flex-shrink: 0;
           animation: distBlink 1.1s steps(1) infinite;
