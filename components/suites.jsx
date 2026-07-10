@@ -71,6 +71,16 @@ function SuitesSection() {
     },
   ];
 
+  // Selection coming from the hero's interactive distributor scene
+  React.useEffect(() => {
+    const onSel = (e) => {
+      const i = suites.findIndex(s => s.key === e.detail);
+      if (i >= 0) setActive(i);
+    };
+    window.addEventListener('sewe:suite', onSel);
+    return () => window.removeEventListener('sewe:suite', onSel);
+  }, []);
+
   const S = suites[active];
 
   return (

@@ -3,6 +3,7 @@ import '../../components/brand.jsx';
 import '../../components/layout.jsx';
 import '../../components/qlik.jsx';
 import '../../components/hero.jsx';
+import '../../components/herodist.jsx';
 import '../../components/logos.jsx';
 import '../../components/ecosystem.jsx';
 import '../../components/bus.jsx';

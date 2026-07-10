@@ -30,9 +30,11 @@ function Hero({ headlineVariant = 0 }) {
       }}/>
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="hero-split" style={{ display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 48, alignItems: 'center' }}>
+        <div className="hero-copy">
         {/* proof pill above headline */}
-        <div className="reveal in" style={{ display: 'flex', justifyContent: 'center', marginBottom: 28 }}>
-          <div className="badge badge-outline" style={{ padding: '8px 14px', gap: 16, fontSize: 12, fontWeight: 500, color: 'var(--text)', border: '1px solid var(--line)' }}>
+        <div className="reveal in" style={{ display: 'flex', marginBottom: 24 }}>
+          <div className="badge badge-outline" style={{ padding: '8px 14px', gap: 12, fontSize: 12, fontWeight: 500, color: 'var(--text)', border: '1px solid var(--line)', flexWrap: 'wrap' }}>
             <span className="dot"/>
             <span>+500 distribuidores</span>
             <span style={{ color: 'var(--line)' }}>·</span>
@@ -47,11 +49,11 @@ function Hero({ headlineVariant = 0 }) {
           </div>
         </div>
 
-        <p style={{ textAlign: 'center', fontFamily: 'var(--ff-display)', fontWeight: 600, color: 'var(--navy-700)', fontSize: 'clamp(16px, 2vw, 22px)', letterSpacing: '0.01em', margin: '0 auto 14px' }}>
+        <p style={{ fontFamily: 'var(--ff-display)', fontWeight: 600, color: 'var(--navy-700)', fontSize: 'clamp(15px, 1.6vw, 19px)', letterSpacing: '0.01em', margin: '0 0 14px' }}>
           Especialistas em Soluções para Distribuidores e Atacadistas.
         </p>
 
-        <h1 className="display" style={{ textAlign: 'center', maxWidth: 1100, margin: '0 auto', fontSize: 'clamp(40px, 5.6vw, 74px)' }}>
+        <h1 className="display" style={{ margin: 0, fontSize: 'clamp(36px, 4.2vw, 58px)' }}>
           <span style={{ color: 'var(--navy-900)' }}>{H.a}</span>{' '}
           <span style={{ color: 'var(--navy-900)' }}>{H.b}</span><br/>
           <span style={{
@@ -60,12 +62,12 @@ function Hero({ headlineVariant = 0 }) {
           }}>{H.c}</span>
         </h1>
 
-        <p style={{ textAlign: 'center', maxWidth: 720, margin: '24px auto 0', fontSize: 18, color: 'var(--text-2)', lineHeight: 1.55 }}>
+        <p style={{ maxWidth: 560, margin: '22px 0 0', fontSize: 17, color: 'var(--text-2)', lineHeight: 1.55 }}>
           BI sob medida para distribuidores e atacadistas. Go-live em 30 dias.
           IA invisível que limpa outliers, cruza dados e entrega <b style={{ color: 'var(--navy-900)' }}>decisões prontas</b>, não mais gráficos para interpretar.
         </p>
 
-        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginTop: 32, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: 12, marginTop: 30, flexWrap: 'wrap' }}>
           <a href="#diagnostico" className="btn btn-primary btn-lg">
             Agendar Diagnóstico
             <Icon name="arrow" size={16} className="chev"/>
@@ -74,9 +76,26 @@ function Hero({ headlineVariant = 0 }) {
             Ver Suítes em ação
           </a>
         </div>
-        <div style={{ textAlign: 'center', marginTop: 14, fontSize: 12, color: 'var(--text-3)' }}>
+        <div style={{ marginTop: 14, fontSize: 12, color: 'var(--text-3)' }}>
           Resposta em até 4h úteis · Diagnóstico gratuito
         </div>
+        </div>
+
+        {/* interactive distributor scene */}
+        <div className="hero-scene reveal in">
+          <DistribuidorScene/>
+        </div>
+        </div>
+
+        <style>{`
+          @media (max-width: 1080px) {
+            .hero-split { grid-template-columns: 1fr !important; gap: 40px !important; }
+            .hero-copy { text-align: center; }
+            .hero-copy .reveal, .hero-copy > div { justify-content: center; }
+            .hero-copy p { margin-left: auto !important; margin-right: auto !important; }
+            .hero-scene { max-width: 520px; margin: 0 auto; width: 100%; }
+          }
+        `}</style>
 
         {/* Dashboard mockup */}
         <div className="reveal" style={{ marginTop: 72, position: 'relative' }}>
