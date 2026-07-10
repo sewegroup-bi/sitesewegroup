@@ -272,7 +272,7 @@ function DPlatform({ x, y, w, d, z, active, kind, screen, room, people = [] }) {
 // Holographic data beam: two crossed translucent walls + glow base
 function DBeam({ cx, cy, h, active }) {
   const grad = 'linear-gradient(to bottom, rgba(117,227,228,0.06), rgba(117,227,228,' + (active ? 0.7 : 0.42) + '))';
-  const sz = 46;
+  const sz = 62;
   return (
     <div style={{ position: 'absolute', left: 0, top: 0, transformStyle: 'preserve-3d', pointerEvents: 'none' }}>
       <div className="dist-pulse" style={{ position: 'absolute', left: cx - sz / 2, top: cy, width: sz, height: h, transformOrigin: '0 0', transform: 'translateZ(' + h + 'px) rotateX(-90deg)', background: grad }}></div>
@@ -288,21 +288,21 @@ function DBeam({ cx, cy, h, active }) {
 // Central data spine: thick neon waterfall descending from a platform to the floor
 function DTrunk({ cx, cy, h }) {
   const halo = 'linear-gradient(to bottom, rgba(117,227,228,0.08), rgba(117,227,228,0.5))';
-  const hw = 64;
+  const hw = 96;
   return (
     <div style={{ position: 'absolute', left: 0, top: 0, transformStyle: 'preserve-3d', pointerEvents: 'none' }}>
       {/* wide holographic curtains */}
       <div className="dist-pulse" style={{ position: 'absolute', left: cx - hw / 2, top: cy, width: hw, height: h, transformOrigin: '0 0', transform: 'translateZ(' + h + 'px) rotateX(-90deg)', background: halo }}></div>
       <div className="dist-pulse" style={{ position: 'absolute', left: cx, top: cy - hw / 2, width: hw, height: h, transformOrigin: '0 0', transform: 'translateZ(' + h + 'px) rotateZ(90deg) rotateX(-90deg)', background: halo }}></div>
       {/* fiber bundle: 3 falling tubes per plane */}
-      {[-15, 0, 15].map((o, i) => (
-        <div key={'a' + i} className="dist-fall" style={{ position: 'absolute', left: cx - 4.5 + o, top: cy, width: 9, height: h, transformOrigin: '0 0', transform: 'translateZ(' + h + 'px) rotateX(-90deg)', borderRadius: 4.5, animationDelay: (i * -0.45) + 's' }}></div>
+      {[-27, -9, 9, 27].map((o, i) => (
+        <div key={'a' + i} className="dist-fall" style={{ position: 'absolute', left: cx - 4.5 + o, top: cy, width: 9, height: h, transformOrigin: '0 0', transform: 'translateZ(' + h + 'px) rotateX(-90deg)', borderRadius: 4.5, animationDelay: (i * -0.37) + 's' }}></div>
       ))}
-      {[-15, 0, 15].map((o, i) => (
-        <div key={'b' + i} className="dist-fall" style={{ position: 'absolute', left: cx, top: cy - 4.5 + o, width: 9, height: h, transformOrigin: '0 0', transform: 'translateZ(' + h + 'px) rotateZ(90deg) rotateX(-90deg)', borderRadius: 4.5, animationDelay: (i * -0.45 - 0.2) + 's' }}></div>
+      {[-27, -9, 9, 27].map((o, i) => (
+        <div key={'b' + i} className="dist-fall" style={{ position: 'absolute', left: cx, top: cy - 4.5 + o, width: 9, height: h, transformOrigin: '0 0', transform: 'translateZ(' + h + 'px) rotateZ(90deg) rotateX(-90deg)', borderRadius: 4.5, animationDelay: (i * -0.37 - 0.2) + 's' }}></div>
       ))}
       {/* impact glow on the ground + connector glow at the top */}
-      <div className="dist-pulse" style={{ position: 'absolute', left: cx - 52, top: cy - 52, width: 104, height: 104, borderRadius: '50%', transform: 'translateZ(1px)', background: 'radial-gradient(circle, rgba(127,240,241,0.75) 0%, rgba(127,240,241,0.25) 45%, transparent 70%)' }}></div>
+      <div className="dist-pulse" style={{ position: 'absolute', left: cx - 66, top: cy - 66, width: 132, height: 132, borderRadius: '50%', transform: 'translateZ(1px)', background: 'radial-gradient(circle, rgba(127,240,241,0.75) 0%, rgba(127,240,241,0.25) 45%, transparent 70%)' }}></div>
       <div style={{ position: 'absolute', left: cx - 26, top: cy - 26, width: 52, height: 52, borderRadius: '50%', transform: 'translateZ(' + (h - 1) + 'px)', background: 'radial-gradient(circle, rgba(174,247,247,0.9) 0%, transparent 70%)' }}></div>
     </div>
   );
@@ -514,10 +514,10 @@ function DistribuidorScene() {
               <g fill="none" strokeLinecap="round">
                 {layer.paths.map((p, i) => (
                   <g key={i}>
-                    <path d={p} stroke="rgba(63,201,203,0.20)" strokeWidth="18"></path>
-                    <path d={p} stroke="rgba(117,227,228,0.5)" strokeWidth="9" filter={'url(#distNeon' + layer.id + ')'}></path>
-                    <path d={p} stroke="#9df4f5" strokeWidth="3.5" filter={'url(#distNeon' + layer.id + ')'}></path>
-                    <path d={p} stroke="#ffffff" strokeWidth="4" strokeDasharray="20 142" className="dist-flow" style={{ animationDelay: (i * -1.6) + 's' }} filter={'url(#distNeon' + layer.id + ')'}></path>
+                    <path d={p} stroke="rgba(63,201,203,0.22)" strokeWidth="30"></path>
+                    <path d={p} stroke="rgba(117,227,228,0.55)" strokeWidth="15" filter={'url(#distNeon' + layer.id + ')'}></path>
+                    <path d={p} stroke="#9df4f5" strokeWidth="5" filter={'url(#distNeon' + layer.id + ')'}></path>
+                    <path d={p} stroke="#ffffff" strokeWidth="5.5" strokeDasharray="24 96" className="dist-flow" style={{ animationDelay: (i * -1.6) + 's' }} filter={'url(#distNeon' + layer.id + ')'}></path>
                   </g>
                 ))}
                 {layer.nodes.map((n, i) => (
