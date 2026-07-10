@@ -279,20 +279,151 @@ function SalesPhone() {
   );
 }
 
+function SalesTabCard({ kind }) {
+  const c = BU.sales.color;
+  const ink = BU.sales.ink;
+  const body = {
+    ia: (
+      <React.Fragment>
+        <div className="sxv-h"><Icon name="sparkle" size={13} stroke={2}/> SEWE IA · BASTIDORES</div>
+        {[
+          ['Reativar', 'Pet Center Sul · sem pedido há 34 dias', 'agir hoje'],
+          ['Oferecer', 'Linha Premium p/ Agro Boa Vista', 'alta afinidade'],
+          ['Risco', 'Meta da carteira Leste em 71%', 'reforçar rota'],
+        ].map((r, i) => (
+          <div key={i} className="sxv-row">
+            <span className="sxv-tag">{r[0]}</span>
+            <span className="sxv-txt">{r[1]}</span>
+            <em className="sxv-note">{r[2]}</em>
+          </div>
+        ))}
+      </React.Fragment>
+    ),
+    crm: (
+      <React.Fragment>
+        <div className="sxv-h"><Icon name="check" size={13} stroke={2}/> WORKFLOW · VISITA COMERCIAL</div>
+        {[
+          ['Check-in no cliente', true],
+          ['Pedido ou orçamento', true],
+          ['Follow-up agendado', false],
+        ].map((s, i) => (
+          <div key={i} className={'sxv-step' + (s[1] ? ' done' : '')}>
+            <span className="sxv-step-dot">{s[1] ? '✓' : i + 1}</span>{s[0]}
+          </div>
+        ))}
+        <div className="sxv-meter"><span>Execução do time · hoje</span><b>87%</b></div>
+        <div className="sxv-bar"><i style={{ width: '87%' }}></i></div>
+      </React.Fragment>
+    ),
+    whats: (
+      <React.Fragment>
+        <div className="sxv-h"><Icon name="chat" size={13} stroke={2}/> WHATSAPP OFICIAL · META ✓</div>
+        <div className="sxv-bub">Pedido <b>#48210</b> confirmado ✅ Previsão de entrega: quinta-feira.</div>
+        <div className="sxv-bub">Sua nota fiscal chegou 📄</div>
+        <div className="sxv-bub me">Perfeito, obrigado!</div>
+        <div className="sxv-foot">conversa registrada no CRM</div>
+      </React.Fragment>
+    ),
+    bi: (
+      <React.Fragment>
+        <div className="sxv-h dark"><Icon name="chart" size={13} stroke={2}/> SEWE BI · TEMPO REAL</div>
+        <div className="sxv-kpis">
+          {[['R$ 382k', 'vendas hoje', '▲'], ['18,4%', 'margem líquida', '▲'], ['2,1%', 'ruptura curva A', '▼']].map((k, i) => (
+            <div key={i} className="sxv-kpi"><b>{k[0]} <i>{k[2]}</i></b><span>{k[1]}</span></div>
+          ))}
+        </div>
+        <div className="sxv-foot">o pedido da rua já está no DRE</div>
+      </React.Fragment>
+    ),
+  }[kind];
+  return (
+    <div className={'sxv-card' + (kind === 'bi' ? ' sxv-dark' : '')}>
+      {body}
+      <style>{`
+        .sxv-card { width: 100%; max-width: 320px; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 18px; box-shadow: var(--shadow-lg); }
+        .sxv-dark { background: linear-gradient(160deg, #17284e, #0b1530); border-color: #223558; }
+        .sxv-h { display: flex; align-items: center; gap: 6px; font-family: var(--ff-mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.09em; color: ${ink}; margin-bottom: 12px; }
+        .sxv-dark .sxv-h { color: #7ff0f1; }
+        .sxv-row { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-left: 3px solid ${c}; border-radius: 10px; padding: 8px 10px; margin-bottom: 8px; }
+        .sxv-tag { font-family: var(--ff-mono); font-size: 8.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: ${ink}; background: ${BU.sales.soft}; border-radius: 99px; padding: 2px 7px; flex-shrink: 0; }
+        .sxv-txt { font-size: 11px; color: var(--navy-900); line-height: 1.35; flex: 1; }
+        .sxv-note { font-style: normal; font-size: 9px; color: var(--text-3); white-space: nowrap; }
+        .sxv-step { display: flex; align-items: center; gap: 9px; font-size: 12px; color: var(--text-2); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; margin-bottom: 7px; }
+        .sxv-step.done { color: var(--navy-900); background: var(--bg-soft); }
+        .sxv-step-dot { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-size: 10px; font-weight: 700; background: ${BU.sales.soft}; color: ${ink}; flex-shrink: 0; }
+        .sxv-step.done .sxv-step-dot { background: var(--success); color: #fff; }
+        .sxv-meter { display: flex; justify-content: space-between; align-items: baseline; margin-top: 12px; font-size: 10px; color: var(--text-3); }
+        .sxv-meter b { font-family: 'Chakra Petch'; font-size: 13px; color: ${ink}; }
+        .sxv-bar { height: 6px; border-radius: 99px; background: var(--bg-soft); overflow: hidden; margin-top: 6px; }
+        .sxv-bar i { display: block; height: 100%; border-radius: 99px; background: ${c}; }
+        .sxv-bub { background: #eafff2; border: 1px solid #bfe8cd; border-radius: 12px 12px 12px 4px; padding: 9px 12px; font-size: 11.5px; color: #163b26; line-height: 1.45; margin-bottom: 8px; max-width: 92%; }
+        .sxv-bub.me { background: var(--bg-soft); border-color: var(--line); border-radius: 12px 12px 4px 12px; margin-left: auto; }
+        .sxv-foot { font-family: var(--ff-mono); font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-3); text-align: center; margin-top: 10px; }
+        .sxv-dark .sxv-foot { color: rgba(174,247,247,0.75); }
+        .sxv-kpis { display: grid; gap: 10px; }
+        .sxv-kpi { display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 10px 12px; }
+        .sxv-kpi b { font-family: 'Chakra Petch'; font-size: 18px; color: #fff; }
+        .sxv-kpi b i { font-style: normal; font-size: 11px; color: #4ade80; }
+        .sxv-kpi span { font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 3px; }
+      `}</style>
+    </div>
+  );
+}
+
 function SalesSection() {
   const C = BU.sales;
-  const revenda = [
-    { icon: 'store',   t: 'Catálogo e pedido 24/7', d: 'A revenda consulta produto, estoque e preço e faz o pedido sozinha, a qualquer hora.' },
-    { icon: 'dollar',  t: 'Limite de crédito na hora', d: 'O cliente enxerga o limite disponível atualizado e compra dentro das regras da empresa, com aprovação instantânea e zero burocracia.' },
-    { icon: 'sparkle', t: 'Recompra inteligente e cross-sell', d: 'O portal sugere automaticamente os produtos certos com base no histórico do cliente, aumentando o ticket médio sem esforço humano.' },
-    { icon: 'target',  t: 'Ações e promoções', d: 'Campanhas, combos e incentivos comerciais aparecem na hora certa, por carteira.' },
+  const tabs = [
+    { key: 'ia', label: 'Sewe IA', icon: 'sparkle',
+      h: 'A inteligência que trabalha nos bastidores.',
+      d: 'A IA cruza histórico, mix e frequência de compra e entrega a próxima ação pronta, direto no fluxo de quem vende.',
+      feats: [
+        { icon: 'sparkle', t: 'Reativação sugerida', d: 'Quem parou de comprar aparece com a ação recomendada e o momento certo de agir.' },
+        { icon: 'boxes', t: 'Mix e cross-sell por cliente', d: 'Sugestão do produto certo com base no comportamento de clientes parecidos.' },
+        { icon: 'alert', t: 'Alertas no celular', d: 'O vendedor é avisado na rua: oportunidade, risco de churn e meta em risco.' },
+      ] },
+    { key: 'forca', label: 'Força de Vendas', icon: 'users',
+      h: 'O time de rua com o dado na mão.',
+      d: 'Carteira organizada, metas em tempo real e a agenda do dia, no mesmo app em que o pedido é feito.',
+      feats: [
+        { icon: 'users', t: 'Carteira sob controle', d: 'Cada vendedor com seus clientes, histórico e frequência de compra na palma da mão.' },
+        { icon: 'target', t: 'Metas em tempo real', d: 'Atingimento por vendedor, por carteira e por produto, sem esperar o fechamento.' },
+        { icon: 'calendar', t: 'Agenda e rota do dia', d: 'Visitas e follow-ups priorizados pelo potencial de cada conta.' },
+      ] },
+    { key: 'b2b', label: 'E-commerce B2B', icon: 'store',
+      h: 'Seu cliente compra sozinho, 24/7.',
+      d: 'Catálogo digital com preço, estoque e limite de crédito em tempo real: a revenda compra quando quiser, dentro das suas regras.',
+      feats: [
+        { icon: 'store', t: 'Catálogo e pedido 24/7', d: 'A revenda consulta produto, estoque e preço e fecha o pedido sozinha, a qualquer hora.' },
+        { icon: 'dollar', t: 'Limite de crédito na hora', d: 'Aprovação instantânea dentro das regras da empresa, sem burocracia.' },
+        { icon: 'zap', t: 'Recompra em 1 clique', d: 'O portal sugere a recompra certa com base no histórico: ticket maior sem esforço humano.' },
+      ] },
+    { key: 'crm', label: 'CRM & Atividades', icon: 'check',
+      h: 'Nenhum cliente esquecido, nenhuma tarefa perdida.',
+      d: 'Funil, histórico e workflows de atividades: o gestor desenha o processo comercial e acompanha a execução do time em tempo real.',
+      feats: [
+        { icon: 'trending', t: 'Funil por vendedor', d: 'Oportunidades, propostas e fechamentos organizados por carteira.' },
+        { icon: 'check', t: 'Workflows de atividades', d: 'Visita, proposta, follow-up: fluxos padronizados que guiam o vendedor etapa por etapa.' },
+        { icon: 'clock', t: 'Execução mensurável', d: 'Quem fez o quê, quando e com que resultado: a gestão enxerga o time inteiro.' },
+      ] },
+    { key: 'whats', label: 'WhatsApp Oficial', icon: 'chat',
+      h: 'A conversa onde o seu cliente já está.',
+      d: 'Integração oficial com a API da Meta: confirmações, campanhas e atendimento pelo WhatsApp, com tudo registrado no CRM.',
+      feats: [
+        { icon: 'chat', t: 'API oficial da Meta', d: 'Número verificado e conversas dentro das políticas do WhatsApp, sem risco de bloqueio.' },
+        { icon: 'zap', t: 'Pedido e status automáticos', d: 'Confirmação de pedido, faturamento e entrega chegam ao cliente sem ninguém digitar.' },
+        { icon: 'link', t: 'Registrado no CRM', d: 'Cada conversa vira histórico do cliente: contexto completo para o vendedor e para a gestão.' },
+      ] },
+    { key: 'bi', label: 'Gestão & BI', icon: 'chart',
+      h: 'Cada pedido vira decisão em tempo real.',
+      d: 'O diferencial Sewe: o ecossistema comercial é nativo do BI. A venda da rua atualiza margem, DRE, ruptura e previsão de caixa na hora.',
+      feats: [
+        { icon: 'chart', t: 'Venda vira DRE na hora', d: 'O pedido fechado na rua já entra na margem e no resultado do dia.' },
+        { icon: 'boxes', t: 'Estoque e ruptura conectados', d: 'A venda conversa com o suprimento: ruptura prevista antes de acontecer.' },
+        { icon: 'brain', t: 'Uma só plataforma', d: 'Comercial, financeiro e operação lendo o mesmo dado, sem planilha paralela.' },
+      ] },
   ];
-  const vendedor = [
-    { icon: 'trending', t: 'Ações prontas para o vendedor', d: 'O sistema analisa os dados nos bastidores e avisa o vendedor no celular quem reativar, o que oferecer e onde estão as oportunidades.' },
-    { icon: 'users',    t: 'Carteira sob controle', d: 'Cada vendedor com a carteira organizada, histórico do cliente e metas na palma da mão.' },
-    { icon: 'check',    t: 'Atividades e agenda', d: 'Crie visitas, follow-ups e tarefas e acompanhe a execução do time em tempo real.' },
-    { icon: 'chart',    t: 'Fechamento do ciclo de dados', d: 'Cada pedido digitado ou alterado na rua alimenta o BI em tempo real, transformando a venda do balcão em previsão de caixa imediata.' },
-  ];
+  const [tab, setTab] = React.useState(0);
+  const t = tabs[tab];
   const chain = [
     { icon: 'warehouse', k: 'Distribuidor + vendedor', d: 'gerencia e impulsiona' },
     { icon: 'store',     k: 'Revenda + cliente final', d: 'compra e recompra' },
@@ -303,14 +434,14 @@ function SalesSection() {
         <div className="bu-head reveal">
           <div>
             <div className="bu-eyebrow" style={{ color: C.ink, background: C.soft }}>
-              <SMark size={16} color={C.color}/> SEWE SALES
+              <SMark size={16} color={C.color}/> ECOSSISTEMA COMERCIAL · SEWE SALES
             </div>
             <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
-              O aplicativo que digitaliza suas vendas e potencializa seu <span style={{ color: C.color }}>time de rua</span>.
+              Não é um aplicativo de vendas. É a sua operação comercial <span style={{ color: C.color }}>inteira</span>, conectada à inteligência da empresa.
             </h2>
-            <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 640 }}>
-              Um e-commerce B2B com CRM integrado que dá autonomia para a sua revenda comprar sozinha
-              e fornece inteligência preditiva para o seu vendedor vender mais e melhor.
+            <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 680 }}>
+              IA, força de vendas, e-commerce B2B, CRM com workflows de atividades e WhatsApp oficial da Meta,
+              em uma única plataforma, nativa do BI.
             </p>
           </div>
         </div>
@@ -330,12 +461,21 @@ function SalesSection() {
           <div className="sx-chain-cap">Sewe Sales conecta os dois</div>
         </div>
 
-        {/* two audiences flanking the app */}
-        <div className="sx-cols">
-          <div className="sx-col reveal">
-            <div className="sx-col-h"><Icon name="store" size={18} stroke={2}/> Para a revenda e o cliente</div>
-            <div className="sx-feats">
-              {revenda.map((f, i) => (
+        {/* ecosystem tabs */}
+        <div className="sx-tabs reveal">
+          {tabs.map((x, i) => (
+            <button key={x.key} type="button" className={'sx-tab' + (i === tab ? ' on' : '')} onClick={() => setTab(i)}>
+              <Icon name={x.icon} size={15} stroke={2}/> {x.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="sx-panel" key={t.key}>
+          <div className="sx-panel-copy">
+            <h3 className="sx-panel-h">{t.h}</h3>
+            <p className="sx-panel-d">{t.d}</p>
+            <div className="sx-feats" style={{ marginTop: 22 }}>
+              {t.feats.map((f, i) => (
                 <div key={i} className="sx-feat">
                   <span className="sx-feat-icon"><Icon name={f.icon} size={18} stroke={1.8}/></span>
                   <div><div className="sx-feat-t">{f.t}</div><div className="sx-feat-d">{f.d}</div></div>
@@ -343,50 +483,40 @@ function SalesSection() {
               ))}
             </div>
           </div>
-          <div className="sx-phone-slot reveal"><SalesPhone/></div>
-          <div className="sx-col reveal">
-            <div className="sx-col-h"><Icon name="users" size={18} stroke={2}/> Para o vendedor e o distribuidor</div>
-            <div className="sx-feats">
-              {vendedor.map((f, i) => (
-                <div key={i} className="sx-feat">
-                  <span className="sx-feat-icon"><Icon name={f.icon} size={18} stroke={1.8}/></span>
-                  <div><div className="sx-feat-t">{f.t}</div><div className="sx-feat-d">{f.d}</div></div>
-                </div>
-              ))}
-            </div>
+          <div className="sx-panel-visual">
+            {(t.key === 'forca' || t.key === 'b2b') ? <SalesPhone/> : <SalesTabCard kind={t.key}/>}
           </div>
         </div>
       </div>
       <BUStyles/>
       <style>{`
-        .sx-chain { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; margin:8px 0 40px; padding:22px 20px; background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--shadow-xs); position:relative; }
+        .sx-chain { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; margin:8px 0 36px; padding:22px 20px; background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--shadow-xs); position:relative; }
         .sx-node { display:flex; flex-direction:column; align-items:center; text-align:center; padding:6px 22px; }
         .sx-node-icon { width:46px; height:46px; border-radius:12px; display:grid; place-items:center; background:${C.soft}; color:${C.ink}; margin-bottom:10px; }
         .sx-node-k { font-family:var(--ff-display); font-weight:700; font-size:15px; color:var(--navy-900); }
         .sx-node-d { font-size:12px; color:var(--text-3); margin-top:3px; }
         .sx-node-link { color:${C.color}; margin:0 6px; align-self:flex-start; margin-top:18px; }
         .sx-chain-cap { position:absolute; bottom:-11px; left:50%; transform:translateX(-50%); background:${C.color}; color:#fff; font-family:var(--ff-mono); font-size:10.5px; font-weight:600; letter-spacing:.08em; padding:3px 12px; border-radius:999px; white-space:nowrap; }
-        .sx-cols { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:stretch; }
-        .sx-phone-slot { display:none; }
-        @media (min-width:1100px){
-          .sx-cols { grid-template-columns:1fr 264px 1fr; }
-          .sx-phone-slot { display:flex; align-items:center; justify-content:center; position:relative; }
-        }
-        .sx-col { background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:24px; box-shadow:var(--shadow-xs); }
-        .sx-col-h { display:flex; align-items:center; gap:9px; font-family:var(--ff-display); font-weight:700; font-size:15px; color:${C.ink}; padding-bottom:14px; margin-bottom:16px; border-bottom:1px solid var(--line-2); }
+        .sx-tabs { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin:26px 0 22px; }
+        .sx-tab { display:inline-flex; align-items:center; gap:7px; padding:10px 16px; border-radius:999px;
+          background:#fff; border:1px solid var(--line); color:var(--navy-900);
+          font-family:var(--ff-display); font-weight:600; font-size:13.5px; cursor:pointer;
+          transition:all .18s ease; }
+        .sx-tab:hover { border-color:${C.color}; }
+        .sx-tab.on { background:${C.color}; border-color:${C.color}; color:#fff; box-shadow:0 8px 20px ${C.soft}; }
+        .sx-panel { display:grid; grid-template-columns:1.15fr 0.85fr; gap:32px; align-items:center;
+          background:#fff; border:1px solid var(--line); border-radius:var(--r-xl); padding:32px 36px;
+          box-shadow:var(--shadow-xs); animation:sxFade .3s ease; }
+        @keyframes sxFade { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+        .sx-panel-h { font-family:var(--ff-display); font-weight:700; font-size:clamp(20px,2.2vw,26px); color:var(--navy-900); }
+        .sx-panel-d { color:var(--text-2); font-size:15.5px; line-height:1.6; margin-top:10px; max-width:560px; }
+        .sx-panel-visual { display:flex; justify-content:center; }
         .sx-feats { display:grid; gap:16px; }
         .sx-feat { display:flex; gap:12px; }
         .sx-feat-icon { width:36px; height:36px; border-radius:9px; background:${C.soft}; color:${C.ink}; display:grid; place-items:center; flex-shrink:0; }
         .sx-feat-t { font-family:var(--ff-display); font-weight:700; font-size:14.5px; color:var(--navy-900); }
         .sx-feat-d { font-size:13px; color:var(--text-2); line-height:1.5; margin-top:3px; }
-        .sx-industry { display:grid; grid-template-columns:1.2fr 1fr; gap:28px; align-items:center; margin-top:20px; padding:30px; border-radius:var(--r-xl); background:linear-gradient(160deg,#3a1c05,#27160a); }
-        .sx-ind-tag { display:inline-block; padding:5px 12px; border-radius:999px; font-family:var(--ff-mono); font-size:11px; font-weight:700; letter-spacing:.1em; color:#ffd2a8; background:rgba(253,112,20,0.2); }
-        .sx-ind-h { color:#fff; font-size:24px; margin-top:14px; line-height:1.25; }
-        .sx-ind-p { color:rgba(255,255,255,0.72); font-size:15px; margin-top:12px; line-height:1.55; }
-        .sx-ind-list { display:grid; gap:10px; }
-        .sx-ind-li { display:flex; align-items:center; gap:10px; color:rgba(255,255,255,0.9); font-size:14.5px; }
-        .sx-ind-li svg { color:${C.color}; flex-shrink:0; }
-        @media (max-width:860px){ .sx-cols{grid-template-columns:1fr;} .sx-industry{grid-template-columns:1fr; gap:20px;} .sx-node{padding:6px 10px;} .sx-node-link{display:none;} }
+        @media (max-width:860px){ .sx-panel{grid-template-columns:1fr; padding:24px;} .sx-node{padding:6px 10px;} .sx-node-link{display:none;} .sx-tab{font-size:12.5px; padding:9px 13px;} }
       `}</style>
     </section>
   );

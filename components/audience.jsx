@@ -937,6 +937,7 @@ function IndustriaSales() {
     { icon: 'link',     t: 'Integrado ao ERP do distribuidor', persona: 'Para o distribuidor', d: 'O pedido cai direto no ERP, sem redigitação e sem retrabalho para a rede.' },
     { icon: 'target',   t: 'Catálogo e tabela por canal', persona: 'Para a indústria', d: 'Fim das planilhas paralelas: garanta o sortimento de SKUs e a tabela de preços exata para cada perfil de canal, automaticamente.' },
     { icon: 'trending', t: 'Visão de vendas da rede', persona: 'Para a indústria', d: 'O que cada distribuidor vende, para quem e com que margem, em tempo real.' },
+    { icon: 'chat', t: 'WhatsApp oficial da Meta', persona: 'Para o vendedor e a revenda', d: 'Confirmação de pedido, campanhas e atendimento pela API oficial, com cada conversa registrada no CRM.' },
   ];
   return (
     <section id="sales" className="section ef" style={{ background: 'var(--bg-soft)', position: 'relative', overflow: 'hidden' }}>
@@ -949,7 +950,7 @@ function IndustriaSales() {
             Do pedido ao CRM, a rede vendendo no <span style={{ color: c }}>padrão da indústria</span>.
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 600 }}>
-            Não é só um portal de pedidos: é a operação comercial da rede inteira. Catálogo, promoção, aprovação, carteira e CRM num só lugar, integrado ao ERP de cada distribuidor.
+            Não é só um portal de pedidos: é o ecossistema comercial da rede inteira. Catálogo, promoção, aprovação, carteira, CRM com workflows de atividades e WhatsApp oficial da Meta, integrado ao ERP de cada distribuidor.
           </p>
         </div>
 
@@ -957,7 +958,7 @@ function IndustriaSales() {
           <IndustriaSalesPhone/>
           <div className="isv-close">
             <div className="isv-close-tag">OPERAÇÃO COMPLETA</div>
-            <div className="isv-close-metric">8 entregas</div>
+            <div className="isv-close-metric">9 entregas</div>
             <div className="isv-close-metric-l">do catálogo ao CRM, num só módulo</div>
             <p className="isv-close-desc">Da consulta de preço ao pós-venda, distribuidores, vendedores e clientes operando com as mesmas regras e a mesma informação.</p>
             <ul className="isv-close-list">

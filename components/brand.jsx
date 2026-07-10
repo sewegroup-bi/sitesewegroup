@@ -65,6 +65,7 @@ const Icon = ({ name, size = 18, stroke = 1.75, className = '', style = {} }) =>
     lock:        <g><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></g>,
     calendar:    <g><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></g>,
     link:        <g><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></g>,
+    chat:        <g><path d="M21 11.5a8 8 0 0 1-8 8H6l-3 3v-11a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z"/><path d="M8 10h8M8 13.5h5"/></g>,
     star:        <path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7L12 17.7 5.7 21.3 7.3 14.3 2 9.6 9 9z"/>,
     trophy:      <g><path d="M6 9H4a2 2 0 0 1-2-2V5h4M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 3h12v6a6 6 0 1 1-12 0V3zM9 21h6M10 17h4v4h-4z"/></g>,
     bolt:        <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/>,
