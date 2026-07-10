@@ -593,7 +593,7 @@ function IndustriaMap() {
 
 /* Industry's live view of its distributor network */
 function IndustriaNetworkPanel() {
-  const [expanded, setExpanded] = React.useState(null);
+  const [expanded, setExpanded] = React.useState(0);
   const kpis = [
     { v: 'R$ 128,4M', l: 'sellout da rede · MTD', t: 'up' },
     { v: '87,2%', l: 'cobertura de PDV', t: 'up' },
@@ -1212,6 +1212,12 @@ function AssocDemo() {
     'Cliente Beta': ['Linha Standard', 'Acessórios'],
     'Cliente Gama': ['Linha Premium', 'Linha Standard', 'Manutenção', 'Consumíveis'],
   };
+  const segments = ['Pet Shop', 'Agropecuária', 'Varejo Alimentar', 'Farma', 'Construção'];
+  const inSegs = {
+    'Cliente Alfa': ['Pet Shop', 'Agropecuária'],
+    'Cliente Beta': ['Varejo Alimentar', 'Construção'],
+    'Cliente Gama': ['Pet Shop', 'Farma', 'Varejo Alimentar'],
+  };
   const [sel, setSel] = React.useState('Cliente Beta');
   return (
     <div className="ad-panel reveal">
@@ -1232,6 +1238,19 @@ function AssocDemo() {
           {clients.map(c => (
             <button key={c} type="button" className={`ad-chip ${sel === c ? 'ad-sel' : ''}`} onClick={() => setSel(c)}>{c}</button>
           ))}
+        </div>
+      </div>
+      <div className="ad-row">
+        <span className="ad-lbl">Segmentos</span>
+        <div className="ad-chips">
+          {segments.map(s => {
+            const on = inSegs[sel].includes(s);
+            return (
+              <span key={s} className={`ad-chip ad-ro ${on ? 'ad-assoc' : 'ad-excl'}`}>
+                {s}{!on && <em>oportunidade</em>}
+              </span>
+            );
+          })}
         </div>
       </div>
       <div className="ad-row">
