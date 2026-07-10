@@ -287,9 +287,9 @@ function SalesTabCard({ kind }) {
       <React.Fragment>
         <div className="sxv-h"><Icon name="sparkle" size={13} stroke={2}/> SEWE IA · BASTIDORES</div>
         {[
-          ['Reativar', 'Pet Center Sul · sem pedido há 34 dias', 'agir hoje'],
+          ['Radar', 'Pet Center Sul esfriando · sem pedido há 34 dias', 'follow-up quente'],
           ['Oferecer', 'Linha Premium p/ Agro Boa Vista', 'alta afinidade'],
-          ['Risco', 'Meta da carteira Leste em 71%', 'reforçar rota'],
+          ['Meta', 'Carteira Leste em 71% do alvo', 'reforçar rota'],
         ].map((r, i) => (
           <div key={i} className="sxv-row">
             <span className="sxv-tag">{r[0]}</span>
@@ -299,20 +299,52 @@ function SalesTabCard({ kind }) {
         ))}
       </React.Fragment>
     ),
-    crm: (
+    direta: (
       <React.Fragment>
-        <div className="sxv-h"><Icon name="check" size={13} stroke={2}/> WORKFLOW · VISITA COMERCIAL</div>
+        <div className="sxv-h"><Icon name="dollar" size={13} stroke={2}/> VENDA DIRETA · PASSO A PASSO</div>
         {[
-          ['Check-in no cliente', true],
-          ['Pedido ou orçamento', true],
-          ['Follow-up agendado', false],
+          ['Produtos e carrinho', true],
+          ['Serviços e entrega', true],
+          ['Pagamento', false],
+          ['Confirmação', false],
         ].map((s, i) => (
           <div key={i} className={'sxv-step' + (s[1] ? ' done' : '')}>
             <span className="sxv-step-dot">{s[1] ? '✓' : i + 1}</span>{s[0]}
           </div>
         ))}
-        <div className="sxv-meter"><span>Execução do time · hoje</span><b>87%</b></div>
-        <div className="sxv-bar"><i style={{ width: '87%' }}></i></div>
+        <div className="sxv-foot">desconto dentro do limite da filial ✓</div>
+      </React.Fragment>
+    ),
+    carteiras: (
+      <React.Fragment>
+        <div className="sxv-h"><Icon name="users" size={13} stroke={2}/> CARTEIRA · KANBAN DE ATIVIDADES</div>
+        {[
+          ['Visita Agro Boa Vista', true],
+          ['Proposta Pet Center Sul', true],
+          ['Follow-up Mercado União', false],
+        ].map((s, i) => (
+          <div key={i} className={'sxv-step' + (s[1] ? ' done' : '')}>
+            <span className="sxv-step-dot">{s[1] ? '✓' : i + 1}</span>{s[0]}
+          </div>
+        ))}
+        <div className="sxv-meter"><span>Meta do mês · gamificação</span><b>82%</b></div>
+        <div className="sxv-bar"><i style={{ width: '82%' }}></i></div>
+      </React.Fragment>
+    ),
+    aprova: (
+      <React.Fragment>
+        <div className="sxv-h"><Icon name="shield" size={13} stroke={2}/> FILA DE APROVAÇÕES</div>
+        <div className="sxv-row">
+          <span className="sxv-tag">14% off</span>
+          <span className="sxv-txt">Pedido #48211 · acima do limite do canal</span>
+          <em className="sxv-note">aguarda gestor</em>
+        </div>
+        <div className="sxv-row">
+          <span className="sxv-tag">Aprovado</span>
+          <span className="sxv-txt">Pedido #48198 · 9% off, dentro da regra</span>
+          <em className="sxv-note">automático</em>
+        </div>
+        <div className="sxv-foot">histórico completo: quem aprovou o quê</div>
       </React.Fragment>
     ),
     whats: (
@@ -326,9 +358,9 @@ function SalesTabCard({ kind }) {
     ),
     bi: (
       <React.Fragment>
-        <div className="sxv-h dark"><Icon name="chart" size={13} stroke={2}/> SEWE BI · TEMPO REAL</div>
+        <div className="sxv-h dark"><Icon name="chart" size={13} stroke={2}/> RELATÓRIOS · TEMPO REAL</div>
         <div className="sxv-kpis">
-          {[['R$ 382k', 'vendas hoje', '▲'], ['18,4%', 'margem líquida', '▲'], ['2,1%', 'ruptura curva A', '▼']].map((k, i) => (
+          {[['R$ 382k', 'vendas hoje', '▲'], ['R$ 1.8k', 'ticket médio', '▲'], ['12', 'orçamentos a vencer', '!']].map((k, i) => (
             <div key={i} className="sxv-kpi"><b>{k[0]} <i>{k[2]}</i></b><span>{k[1]}</span></div>
           ))}
         </div>
@@ -377,33 +409,49 @@ function SalesSection() {
       h: 'A inteligência que trabalha nos bastidores.',
       d: 'A IA cruza histórico, mix e frequência de compra e entrega a próxima ação pronta, direto no fluxo de quem vende.',
       feats: [
-        { icon: 'sparkle', t: 'Reativação sugerida', d: 'Quem parou de comprar aparece com a ação recomendada e o momento certo de agir.' },
+        { icon: 'sparkle', t: 'Radar de clientes esfriando', d: 'Quem parou de comprar aparece com follow-up quente sugerido e o momento certo de agir.' },
         { icon: 'boxes', t: 'Mix e cross-sell por cliente', d: 'Sugestão do produto certo com base no comportamento de clientes parecidos.' },
         { icon: 'alert', t: 'Alertas no celular', d: 'O vendedor é avisado na rua: oportunidade, risco de churn e meta em risco.' },
       ] },
-    { key: 'forca', label: 'Força de Vendas', icon: 'users',
-      h: 'O time de rua com o dado na mão.',
-      d: 'Carteira organizada, metas em tempo real e a agenda do dia, no mesmo app em que o pedido é feito.',
+    { key: 'catalogos', label: 'Catálogos & Preços', icon: 'boxes',
+      h: 'O preço certo para cada cliente, sempre.',
+      d: 'O preço combinado não muda no meio da negociação: catálogo por cliente, markup por filial e proteção pela vigência do orçamento.',
       feats: [
-        { icon: 'users', t: 'Carteira sob controle', d: 'Cada vendedor com seus clientes, histórico e frequência de compra na palma da mão.' },
-        { icon: 'target', t: 'Metas em tempo real', d: 'Atingimento por vendedor, por carteira e por produto, sem esperar o fechamento.' },
-        { icon: 'calendar', t: 'Agenda e rota do dia', d: 'Visitas e follow-ups priorizados pelo potencial de cada conta.' },
+        { icon: 'boxes', t: 'Catálogo por cliente', d: 'Cada cliente vê o próprio catálogo e as próprias promoções, com precedência sobre o padrão da empresa.' },
+        { icon: 'dollar', t: 'Markup por filial e canal', d: 'Mudou o custo, mudou o preço na hora, em todas as pontas de uma vez.' },
+        { icon: 'lock', t: 'Preço protegido por vigência', d: 'Mudança de tabela não surpreende o cliente no meio do orçamento.' },
       ] },
-    { key: 'b2b', label: 'E-commerce B2B', icon: 'store',
-      h: 'Seu cliente compra sozinho, 24/7.',
-      d: 'Catálogo digital com preço, estoque e limite de crédito em tempo real: a revenda compra quando quiser, dentro das suas regras.',
+    { key: 'b2b', label: 'Pedidos B2B', icon: 'store',
+      h: 'Sua rede compra sozinha, você só acompanha.',
+      d: 'O pedido nasce digitado: ninguém digita o mesmo pedido duas vezes, e nada chega por telefone sem preço nem estoque.',
       feats: [
-        { icon: 'store', t: 'Catálogo e pedido 24/7', d: 'A revenda consulta produto, estoque e preço e fecha o pedido sozinha, a qualquer hora.' },
-        { icon: 'dollar', t: 'Limite de crédito na hora', d: 'Aprovação instantânea dentro das regras da empresa, sem burocracia.' },
-        { icon: 'zap', t: 'Recompra em 1 clique', d: 'O portal sugere a recompra certa com base no histórico: ticket maior sem esforço humano.' },
+        { icon: 'store', t: 'Portal de compra da rede', d: 'Catálogo, promoções e limite de crédito por revenda, com compra 24/7.' },
+        { icon: 'check', t: 'Fluxo completo', d: 'Carrinho, entrega, pagamento e confirmação num só caminho, sem redigitação.' },
+        { icon: 'link', t: 'Histórico por filial', d: 'Numeração própria por filial e o rastro completo de cada pedido.' },
       ] },
-    { key: 'crm', label: 'CRM & Atividades', icon: 'check',
-      h: 'Nenhum cliente esquecido, nenhuma tarefa perdida.',
-      d: 'Funil, histórico e workflows de atividades: o gestor desenha o processo comercial e acompanha a execução do time em tempo real.',
+    { key: 'direta', label: 'Venda Direta', icon: 'dollar',
+      h: 'Do orçamento ao pedido aprovado, em seis passos.',
+      d: 'A venda ao cliente final dentro do sistema, com margem controlada: produtos, serviços, entrega e pagamento num passo a passo guiado.',
       feats: [
-        { icon: 'trending', t: 'Funil por vendedor', d: 'Oportunidades, propostas e fechamentos organizados por carteira.' },
-        { icon: 'check', t: 'Workflows de atividades', d: 'Visita, proposta, follow-up: fluxos padronizados que guiam o vendedor etapa por etapa.' },
-        { icon: 'clock', t: 'Execução mensurável', d: 'Quem fez o quê, quando e com que resultado: a gestão enxerga o time inteiro.' },
+        { icon: 'check', t: 'Passo a passo guiado', d: 'Produtos, carrinho, serviços, entrega, pagamento e confirmação, sem etapa esquecida.' },
+        { icon: 'shield', t: 'Desconto sempre no limite', d: 'Capado ao limite da filial; acima disso, vai automaticamente para aprovação.' },
+        { icon: 'clock', t: 'Status claros', d: 'Rascunho, aguardando confirmação, aprovado ou perdido: todo mundo sabe onde a venda está.' },
+      ] },
+    { key: 'carteiras', label: 'Carteiras & Atividades', icon: 'users',
+      h: 'Cada vendedor com a sua carteira, e motivo para bater meta.',
+      d: 'Carteiras por filial com gamificação de metas e kanban de atividades: a gestão vê o funil inteiro sem pedir relatório a ninguém.',
+      feats: [
+        { icon: 'users', t: 'Carteira por vendedor', d: 'Cada um enxerga só a própria carteira, com clientes estratégicos marcados.' },
+        { icon: 'trophy', t: 'Gamificação de metas', d: 'Metas, radar de churn e follow-up quente: motivo diário para vender mais.' },
+        { icon: 'calendar', t: 'Kanban com auditoria', d: 'Visitas, tarefas e follow-ups organizados e mensuráveis, com histórico completo.' },
+      ] },
+    { key: 'aprova', label: 'Aprovações', icon: 'shield',
+      h: 'A política comercial da empresa, aplicada pelo sistema.',
+      d: 'Desconto combinado no corredor e margem descoberta no fim do mês acabam aqui: a regra da diretoria vale em 100% dos pedidos.',
+      feats: [
+        { icon: 'shield', t: 'Regras por gatilho', d: 'Desconto acima do limite do canal dispara aprovação automaticamente.' },
+        { icon: 'check', t: 'Fila com justificativa', d: 'Cada aprovação com contexto, justificativa e histórico de quem decidiu o quê.' },
+        { icon: 'users', t: 'Roteamento por papel', d: 'O que é do gestor não passa por cima dele, e o vendedor não trava esperando.' },
       ] },
     { key: 'whats', label: 'WhatsApp Oficial', icon: 'chat',
       h: 'A conversa onde o seu cliente já está.',
@@ -413,14 +461,21 @@ function SalesSection() {
         { icon: 'zap', t: 'Pedido e status automáticos', d: 'Confirmação de pedido, faturamento e entrega chegam ao cliente sem ninguém digitar.' },
         { icon: 'link', t: 'Registrado no CRM', d: 'Cada conversa vira histórico do cliente: contexto completo para o vendedor e para a gestão.' },
       ] },
-    { key: 'bi', label: 'Gestão & BI', icon: 'chart',
-      h: 'Cada pedido vira decisão em tempo real.',
-      d: 'O diferencial Sewe: o ecossistema comercial é nativo do BI. A venda da rua atualiza margem, DRE, ruptura e previsão de caixa na hora.',
+    { key: 'bi', label: 'Relatórios & BI', icon: 'chart',
+      h: 'Decisão com número, não com impressão.',
+      d: 'KPIs, curva ABC e análise de carteira, e o diferencial Sewe: tudo nativo do BI, com a venda da rua caindo no DRE na hora.',
       feats: [
-        { icon: 'chart', t: 'Venda vira DRE na hora', d: 'O pedido fechado na rua já entra na margem e no resultado do dia.' },
-        { icon: 'boxes', t: 'Estoque e ruptura conectados', d: 'A venda conversa com o suprimento: ruptura prevista antes de acontecer.' },
-        { icon: 'brain', t: 'Uma só plataforma', d: 'Comercial, financeiro e operação lendo o mesmo dado, sem planilha paralela.' },
+        { icon: 'chart', t: 'KPIs comerciais prontos', d: 'Vendas, clientes ativos, ticket médio e orçamentos a vencer, por vendedor, filial e período.' },
+        { icon: 'boxes', t: 'Curva ABC e carteira', d: 'O que vende, para quem e com que margem, sem montar planilha.' },
+        { icon: 'brain', t: 'Nativo do BI Sewe', d: 'O pedido fechado na rua atualiza margem, DRE e previsão de caixa em tempo real.' },
       ] },
+  ];
+  const facts = [
+    { icon: 'users', t: 'Implantação conduzida de ponta a ponta', d: 'Catálogos, usuários, regras e integração com ERP configurados com o nosso time.' },
+    { icon: 'link', t: 'Venda digital em um único fluxo', d: 'Portal B2B, força de vendas, propostas, pedidos e aprovações na mesma operação.' },
+    { icon: 'shield', t: 'Política comercial aplicada na origem', d: 'Preços, descontos e limites validados antes de o pedido ser confirmado.' },
+    { icon: 'lock', t: 'Cada um vê só o que é seu', d: 'Segregação de dados por operação, aplicada no servidor, com rastreabilidade.' },
+    { icon: 'cpu', t: 'Integrado ao ERP que você já usa', d: 'Digitalize a venda sem trocar o sistema que sustenta a operação.' },
   ];
   const [tab, setTab] = React.useState(0);
   const t = tabs[tab];
@@ -437,11 +492,11 @@ function SalesSection() {
               <SMark size={16} color={C.color}/> ECOSSISTEMA COMERCIAL · SEWE SALES
             </div>
             <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
-              Não é um aplicativo de vendas. É a sua operação comercial <span style={{ color: C.color }}>inteira</span>, conectada à inteligência da empresa.
+              Toda a sua operação comercial — da tabela de preço ao pedido aprovado — em <span style={{ color: C.color }}>uma única plataforma</span>.
             </h2>
-            <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 680 }}>
-              IA, força de vendas, e-commerce B2B, CRM com workflows de atividades e WhatsApp oficial da Meta,
-              em uma única plataforma, nativa do BI.
+            <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 700 }}>
+              Catálogo e preço por cliente, pedidos B2B, venda direta, carteiras, aprovações, WhatsApp oficial e relatórios,
+              com a política comercial da sua empresa garantida em cada venda. E, por ser Sewe, tudo nativo do BI.
             </p>
           </div>
         </div>
@@ -484,8 +539,26 @@ function SalesSection() {
             </div>
           </div>
           <div className="sx-panel-visual">
-            {(t.key === 'forca' || t.key === 'b2b') ? <SalesPhone/> : <SalesTabCard kind={t.key}/>}
+            {(t.key === 'catalogos' || t.key === 'b2b') ? <SalesPhone/> : <SalesTabCard kind={t.key === 'carteiras' ? 'carteiras' : t.key}/>}
           </div>
+        </div>
+
+        {/* barra de fatos: garantias no lugar de métricas */}
+        <div className="sx-facts reveal">
+          {facts.map((f, i) => (
+            <div key={i} className="sx-fact">
+              <span className="sx-fact-icon"><Icon name={f.icon} size={16} stroke={1.8}/></span>
+              <div className="sx-fact-t">{f.t}</div>
+              <div className="sx-fact-d">{f.d}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTAs padronizados */}
+        <div className="sx-cta reveal">
+          <a href="/#agendar" className="btn btn-primary btn-lg">Peça uma demonstração</a>
+          <a href="https://wa.me/5548984704389?text=Quero%20falar%20com%20um%20especialista%20sobre%20o%20SEWE%20SALES" className="btn btn-outline btn-lg">Fale com um especialista</a>
+          <div className="sx-cta-micro">Demonstração guiada, sem compromisso e sem cartão de crédito.</div>
         </div>
       </div>
       <BUStyles/>
@@ -516,7 +589,18 @@ function SalesSection() {
         .sx-feat-icon { width:36px; height:36px; border-radius:9px; background:${C.soft}; color:${C.ink}; display:grid; place-items:center; flex-shrink:0; }
         .sx-feat-t { font-family:var(--ff-display); font-weight:700; font-size:14.5px; color:var(--navy-900); }
         .sx-feat-d { font-size:13px; color:var(--text-2); line-height:1.5; margin-top:3px; }
+        .sx-facts { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:28px; }
+        .sx-fact { background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:16px; box-shadow:var(--shadow-xs); }
+        .sx-fact-icon { width:30px; height:30px; border-radius:8px; background:${C.soft}; color:${C.ink}; display:grid; place-items:center; margin-bottom:10px; }
+        .sx-fact-t { font-family:var(--ff-display); font-weight:700; font-size:13px; color:var(--navy-900); line-height:1.35; }
+        .sx-fact-d { font-size:11.5px; color:var(--text-2); line-height:1.5; margin-top:5px; }
+        .sx-cta { text-align:center; margin-top:34px; display:flex; flex-direction:column; align-items:center; gap:0; }
+        .sx-cta .btn { margin:0 6px 12px; display:inline-flex; }
+        .sx-cta { flex-direction:row; flex-wrap:wrap; justify-content:center; align-items:center; }
+        .sx-cta-micro { flex-basis:100%; font-size:12px; color:var(--text-3); margin-top:2px; text-align:center; }
+        @media (max-width:1100px){ .sx-facts{grid-template-columns:repeat(2,1fr);} .sx-facts .sx-fact:last-child{grid-column:span 2;} }
         @media (max-width:860px){ .sx-panel{grid-template-columns:1fr; padding:24px;} .sx-node{padding:6px 10px;} .sx-node-link{display:none;} .sx-tab{font-size:12.5px; padding:9px 13px;} }
+        @media (max-width:560px){ .sx-facts{grid-template-columns:1fr;} .sx-facts .sx-fact:last-child{grid-column:auto;} }
       `}</style>
     </section>
   );

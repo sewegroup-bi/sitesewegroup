@@ -929,12 +929,12 @@ function IndustriaSales() {
   const soft = BU_C.sales.soft;
   const ink = BU_C.sales.ink;
   const feats = [
-    { icon: 'store',    t: 'Portal do cliente', persona: 'Para a revenda', d: 'Venda B2B self-service: libere a rede para comprar 24h por dia via catálogo digital, respeitando regras e estoque da indústria.' },
-    { icon: 'check',    t: 'Pedido dentro da política', persona: 'Para o distribuidor e a indústria', d: 'Aprovação automática por alçada: desconto, crédito e condição comercial sempre dentro da regra.' },
+    { icon: 'store',    t: 'Portal de compra da rede', persona: 'Para a revenda', d: 'Distribuidores e varejos fazem o pedido sozinhos, no catálogo certo, com o preço e as promoções de cada um. O pedido nasce digitado.' },
+    { icon: 'shield',   t: 'Política comercial garantida', persona: 'Para a indústria', d: 'Desconto máximo por canal, aprovação automática acima do limite e preço protegido pela vigência do orçamento. A regra vale em 100% dos pedidos.' },
     { icon: 'trophy',   t: 'Promoções e incentivos', persona: 'Para a indústria', d: 'Campanhas e incentivos comerciais para o canal, com resultado acompanhado por distribuidor.' },
-    { icon: 'users',    t: 'CRM e carteira de clientes', persona: 'Para o vendedor do distribuidor', d: 'Histórico, frequência de compra e próxima ação de cada conta. Quem parou de comprar aparece.' },
-    { icon: 'clock',    t: 'Gestão de atividades', persona: 'Para o vendedor do distribuidor', d: 'Workflow do time comercial: tarefas, visitas e follow-ups organizados e mensuráveis.' },
-    { icon: 'link',     t: 'Integrado ao ERP do distribuidor', persona: 'Para o distribuidor', d: 'O pedido cai direto no ERP, sem redigitação e sem retrabalho para a rede.' },
+    { icon: 'users',    t: 'Equipe de campo com direção', persona: 'Para o representante', d: 'Carteira própria, radar de clientes esfriando e follow-up sugerido. A gestão vê o funil inteiro sem pedir relatório a ninguém.' },
+    { icon: 'clock',    t: 'Atividades com auditoria', persona: 'Para o gestor comercial', d: 'Kanban de visitas, tarefas e follow-ups, mensurável e com histórico completo de quem fez o quê.' },
+    { icon: 'link',     t: 'Integrado ao ERP', persona: 'Para o distribuidor', d: 'O pedido cai direto no ERP: ninguém digita o mesmo pedido duas vezes.' },
     { icon: 'target',   t: 'Catálogo e tabela por canal', persona: 'Para a indústria', d: 'Fim das planilhas paralelas: garanta o sortimento de SKUs e a tabela de preços exata para cada perfil de canal, automaticamente.' },
     { icon: 'trending', t: 'Visão de vendas da rede', persona: 'Para a indústria', d: 'O que cada distribuidor vende, para quem e com que margem, em tempo real.' },
     { icon: 'chat', t: 'WhatsApp oficial da Meta', persona: 'Para o vendedor e a revenda', d: 'Confirmação de pedido, campanhas e atendimento pela API oficial, com cada conversa registrada no CRM.' },
@@ -947,10 +947,10 @@ function IndustriaSales() {
             <SMark size={16} color={c}/> SEWE SALES
           </div>
           <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
-            Do pedido ao CRM, a rede vendendo no <span style={{ color: c }}>padrão da indústria</span>.
+            Sua indústria vendendo para toda a rede — sem redigitação, sem tabela velha, sem <span style={{ color: c }}>desconto fora da política</span>.
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 600 }}>
-            Não é só um portal de pedidos: é o ecossistema comercial da rede inteira. Catálogo, promoção, aprovação, carteira, CRM com workflows de atividades e WhatsApp oficial da Meta, integrado ao ERP de cada distribuidor.
+            Distribuidores e varejos compram direto no seu portal, com o catálogo e o preço de cada um. Seus representantes vendem em campo com carteira, metas e follow-up. Você acompanha tudo em tempo real.
           </p>
         </div>
 
@@ -980,6 +980,11 @@ function IndustriaSales() {
               </div>
             </div>
           ))}
+        </div>
+        <div style={{ textAlign: 'center', marginTop: 34 }}>
+          <a href="/#agendar" className="btn btn-primary btn-lg" style={{ margin: '0 6px 12px' }}>Peça uma demonstração</a>
+          <a href="https://wa.me/5548984704389?text=Quero%20falar%20com%20um%20especialista%20sobre%20o%20SEWE%20SALES" className="btn btn-outline btn-lg" style={{ margin: '0 6px 12px' }}>Fale com um especialista</a>
+          <div style={{ fontSize: 12, color: 'var(--text-3)', marginTop: 2 }}>Demonstração guiada, sem compromisso e sem cartão de crédito.</div>
         </div>
       </div>
       <style>{`
