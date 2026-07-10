@@ -91,7 +91,7 @@ function IndustriaEcosystem() {
       pillColor: BU_C.bi.color,
       tagline: 'O conselheiro estratégico da rede.',
       title: 'A inteligência que conecta as pontas: da fábrica à gôndola.',
-      body: 'O SEWE BI cruza comercial, supply chain, financeiro e trade marketing num só modelo de dado. Não é olhar pra trás: é prever o que vem e apontar onde agir antes da concorrência.',
+      body: 'O SEWE BI cruza comercial, supply chain, financeiro e trade marketing num só modelo de dado. Não é olhar para trás: é prever o que vem e apontar onde agir antes da concorrência.',
       kpis: [{ v: '1,04x', l: 'índice saúde do canal · sell-in/sell-out' }, { v: '91%', l: 'assertividade da previsão de demanda' }, { v: '3,2x', l: 'ROI médio de trade marketing' }],
       bullets: [
         'Relacione o sell-in com o sell-out real e evite o efeito chicote nos estoques',
@@ -322,7 +322,7 @@ function SalesPortal() {
         </div>
         <div className="sp-body">
           <div className="sp-kpis">
-            <div className="sp-kpi"><div className="sp-kpi-v tnum">2.340</div><div className="sp-kpi-l">orçamentos no app / mês</div></div>
+            <div className="sp-kpi"><div className="sp-kpi-v tnum">2.340</div><div className="sp-kpi-l">orçamentos digitais / mês</div></div>
             <div className="sp-kpi"><div className="sp-kpi-v tnum">1,8h</div><div className="sp-kpi-l">tempo médio de aprovação</div></div>
             <div className="sp-kpi"><div className="sp-kpi-v tnum">78%</div><div className="sp-kpi-l">taxa de aprovação</div></div>
           </div>
