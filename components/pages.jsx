@@ -243,7 +243,7 @@ function QuemSomosPage() {
     { y: '2018–2020', t: 'Nasce da operação, não do laboratório', d: 'A SEWE surge de dentro do setor de distribuição, gente que viveu o problema de afogar em dados e passar fome de decisão. O foco desde o início: traduzir dados em ação.' },
     { y: '2021–2022', t: 'Parceria oficial Qlik + foco no Pet/Vet', d: 'A escolha pela plataforma Qlik consolida a base tecnológica. Os primeiros distribuidores do setor Pet e Veterinário provam o modelo: BI vertical, pronto, com DNA de distribuição.' },
     { y: '2023–2025', t: 'Expansão de setores e da IA aplicada', d: 'A SEWE chega a indústrias, agro e distribuidores de tecnologia. A inteligência artificial passa a rodar nos bastidores, entregando decisões prontas em vez de mais gráficos.' },
-    { y: 'Hoje', t: 'Referência nacional em dados para distribuição', d: 'São centenas de distribuidores e bilhões em faturamento monitorado, com cobertura nacional e um ecossistema completo: BI, Integration, Sales e MinerConect.' },
+    { y: 'Hoje', t: 'Referência nacional em dados para distribuição', d: 'São centenas de distribuidores e bilhões em faturamento monitorado, com cobertura nacional e um ecossistema completo: BI, Integration e Sales.' },
   ];
   const vmv = [
     { k: 'Missão', d: 'Transformar dados em decisões que geram prosperidade para distribuidores e seus clientes.' },

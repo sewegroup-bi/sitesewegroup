@@ -392,34 +392,6 @@ function SalesSection() {
   );
 }
 
-/* ────────────────────────────────────────────────────────────
-   MINERCONECT teaser, routes to its own page
-──────────────────────────────────────────────────────────── */
-function MinerTeaser() {
-  return (
-    <section className="section-sm" style={{ background: 'linear-gradient(135deg,#1a2440,#0e1830)', position: 'relative', overflow: 'hidden' }}>
-      <div aria-hidden style={{ position: 'absolute', inset: 0, opacity: .5,
-        backgroundImage: 'radial-gradient(600px 300px at 85% 20%, rgba(245,166,35,0.14), transparent 60%)' }}/>
-      <div className="container" style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 32, flexWrap: 'wrap' }}>
-        <MinerLogo height={46}/>
-        <div style={{ flex: 1, minWidth: 280 }}>
-          <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '.14em', color: '#f5b94a', fontWeight: 600, textTransform: 'uppercase' }}>Produto à parte</div>
-          <h3 style={{ color: '#fff', fontSize: 22, marginTop: 8, lineHeight: 1.3 }}>
-            Comunicação com IA e WhatsApp oficial para falar com toda a sua base.
-          </h3>
-          <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: 14.5, marginTop: 8, maxWidth: 620 }}>
-            Marketing, convites, parabenização e ações comerciais, com identificação automática do
-            contato certo de cada lead. Para distribuidores, indústrias e qualquer empresa.
-          </p>
-        </div>
-        <a href="/minerconect" className="btn btn-lg" style={{ background: '#f5a623', color: '#1a2440', fontWeight: 700 }}>
-          Conhecer o MinerConect <span className="chev">→</span>
-        </a>
-      </div>
-    </section>
-  );
-}
-
 function BUStyles() {
   return (
     <style>{`
@@ -449,4 +421,4 @@ function BUStyles() {
   );
 }
 
-Object.assign(window, { ConnectedEcosystem, IntegrationSection, SalesSection, MinerTeaser });
+Object.assign(window, { ConnectedEcosystem, IntegrationSection, SalesSection });

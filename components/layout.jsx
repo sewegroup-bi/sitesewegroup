@@ -22,7 +22,6 @@ function SiteHeader({ home = false }) {
       { label: 'Indústria',          href: '/industria' },
       { label: 'Distribuidor & Atacado', href: '/distribuidor' },
       { label: 'Estratégia & Dados', href: '/solucoes' },
-      { label: 'MinerConect',        href: '/minerconect' },
     ]},
     { label: 'Conteúdos', children: [
       { label: 'Blog',        href: '/blog' },
@@ -208,7 +207,6 @@ function SiteFooter({ home = false }) {
             <a style={col.link} href="/industria" onMouseEnter={onEnter} onMouseLeave={onLeave}>Indústria</a>
             <a style={col.link} href="/distribuidor" onMouseEnter={onEnter} onMouseLeave={onLeave}>Distribuidor & Atacado</a>
             <a style={col.link} href="/solucoes" onMouseEnter={onEnter} onMouseLeave={onLeave}>Estratégia & Dados</a>
-            <a style={col.link} href="/minerconect" onMouseEnter={onEnter} onMouseLeave={onLeave}>MinerConect</a>
           </div>
           <div>
             <div style={col.title}>Empresa</div>

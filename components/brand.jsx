@@ -111,15 +111,7 @@ function SubBrandLogo({ product = 'BI', color = '#2d436c', size = 30, light = fa
   );
 }
 
-// MinerConect lockup — its own product brand (cube mark + wordmark image).
-function MinerLogo({ height = 40, variant = 'dark' }) {
-  // 'dark' = full lockup cropped on navy; 'mark' = cube only.
-  const src = variant === 'mark' ? 'assets/minerconect-mark.png' : 'assets/minerconect-logo-dark.png';
-  return <img src={src} alt="MinerConect" style={{ height, width: 'auto', display: 'block' }}/>;
-}
-
 window.SeweLogo = SeweLogo;
 window.SMark = SMark;
 window.SubBrandLogo = SubBrandLogo;
-window.MinerLogo = MinerLogo;
 window.Icon = Icon;

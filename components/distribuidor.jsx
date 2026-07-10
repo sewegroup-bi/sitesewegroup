@@ -105,7 +105,6 @@ function DistribuidorApp() {
         <SuitesSection/>
         <SalesSection/>
         <MaturitySection/>
-        <MinerTeaser/>
         <DifferentiatorsSection/>
         <CasesSection/>
         <FAQSection/>

@@ -34,7 +34,6 @@ Destaques:
 ├── premio.html              # Página: Prêmio SEWE (pilares + vencedores)
 ├── blog.html                # Índice do blog
 ├── faq.html                 # Página de FAQ
-├── minerconect.html         # Produto à parte: MinerConect
 ├── vencedor-premio-2024.html        # Post (vencedor do Prêmio) — modelo p/ duplicar
 ├── curva-abc-capital-de-giro.html   # Post (artigo de blog) — modelo p/ duplicar
 ├── styles.css               # Design system: tokens, tipografia, componentes base
@@ -50,7 +49,6 @@ Destaques:
 │   ├── rest.jsx             # Maturidade, diferenciais, cases, FAQ, CTA
 │   ├── blogdata.jsx         # CONTEÚDO de blog e prêmio (array SEWE_POSTS)
 │   ├── pages.jsx            # Páginas: Quem Somos, Prêmio, Blog, Post, FAQ
-│   ├── miner.jsx            # Página MinerConect
 │   └── app.jsx              # Composição raiz da home + painel de Tweaks
 └── README.md
 ```
