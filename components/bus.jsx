@@ -402,6 +402,87 @@ function SalesTabCard({ kind }) {
   );
 }
 
+function SalesLaptop() {
+  const c = BU.sales.color;
+  const ink = BU.sales.ink;
+  return (
+    <div className="sxl-wrap">
+      <div className="sxl-screen">
+        <div className="sxl-chrome">
+          <span className="sxl-dots"><i></i><i></i><i></i></span>
+          <span className="sxl-url">portal.sewesales.com.br</span>
+        </div>
+        <div className="sxl-body">
+          <div className="sxl-head">
+            <span className="sxl-logo">SEWE SALES · PORTAL</span>
+            <span className="sxl-client">Pet Center Sul</span>
+          </div>
+          {[
+            ['racaosewe', 'Ração Premier 15kg', 'R$ 45,00', '2'],
+            ['suplemsewe', 'Suplemento Linha A', 'R$ 32,90', '1'],
+          ].map((p, i) => (
+            <div key={i} className="sxl-prod">
+              <div className="sxl-thumb" style={{ backgroundImage: 'url(https://picsum.photos/seed/' + p[0] + '/64/64)' }}></div>
+              <div className="sxl-pinfo">
+                <div className="sxl-pname">{p[1]}</div>
+                <div className="sxl-pprice">{p[2]} <span>un.</span></div>
+              </div>
+              <div className="sxl-stepper"><span>–</span><b>{p[3]}</b><span>+</span></div>
+            </div>
+          ))}
+          <div className="sxl-credit">
+            <div className="sxl-credit-l"><span>Limite disponível</span><b>R$ 12,5K</b></div>
+            <div className="sxl-credit-bar"><i style={{ width: '62%' }}></i></div>
+          </div>
+          <div className="sxl-foot">
+            <span className="sxl-total">Total <b>R$ 122,90</b></span>
+            <span className="sxl-btn">Fechar pedido</span>
+          </div>
+        </div>
+      </div>
+      <div className="sxl-base"></div>
+      <style>{`
+        .sxl-wrap { position:relative; display:flex; flex-direction:column; align-items:center; width:100%; max-width:380px; }
+        .sxl-wrap::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+          width:320px; height:260px; border-radius:50%;
+          background:radial-gradient(circle, color-mix(in srgb, ${c} 14%, transparent), transparent 70%); }
+        .sxl-screen { position:relative; width:100%; background:#fff; border:2.5px solid var(--navy-900);
+          border-radius:14px 14px 0 0; overflow:hidden; box-shadow:var(--shadow-lg); }
+        .sxl-base { position:relative; width:116%; height:11px; background:linear-gradient(180deg, #dfe6f2, #b9c6db);
+          border-radius:0 0 12px 12px; border:1px solid #a9b8cf; border-top:none; }
+        .sxl-base::before { content:''; position:absolute; left:50%; top:0; transform:translateX(-50%);
+          width:56px; height:4px; border-radius:0 0 6px 6px; background:#a9b8cf; }
+        .sxl-chrome { display:flex; align-items:center; gap:10px; padding:7px 10px; background:var(--bg-soft); border-bottom:1px solid var(--line); }
+        .sxl-dots { display:flex; gap:4px; }
+        .sxl-dots i { width:7px; height:7px; border-radius:50%; background:var(--line); display:block; }
+        .sxl-url { flex:1; text-align:center; background:#fff; border:1px solid var(--line); border-radius:999px;
+          font-family:var(--ff-mono); font-size:8.5px; color:var(--text-3); padding:3px 10px; }
+        .sxl-body { padding:10px 12px 12px; }
+        .sxl-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:9px; }
+        .sxl-logo { font-family:'Chakra Petch'; font-weight:700; font-size:9.5px; letter-spacing:0.08em; color:var(--navy-900); }
+        .sxl-client { font-family:var(--ff-mono); font-size:8px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:${ink}; background:${BU.sales.soft}; border-radius:999px; padding:3px 9px; }
+        .sxl-prod { display:flex; align-items:center; gap:9px; border:1px solid var(--line); border-radius:10px; padding:7px 8px; margin-bottom:7px; }
+        .sxl-thumb { width:30px; height:30px; border-radius:7px; background-size:cover; background-position:center; border:1px solid var(--line); flex-shrink:0; }
+        .sxl-pinfo { flex:1; min-width:0; }
+        .sxl-pname { font-size:10px; color:var(--navy-900); font-weight:600; }
+        .sxl-pprice { font-family:'Chakra Petch'; font-weight:700; font-size:11px; color:var(--navy-900); margin-top:1px; }
+        .sxl-pprice span { font-size:8px; color:var(--text-3); font-weight:400; }
+        .sxl-stepper { display:flex; align-items:center; gap:6px; background:var(--bg-soft); border:1px solid var(--line); border-radius:8px; padding:3px 7px; font-size:10px; color:var(--navy-900); }
+        .sxl-credit { border:1px solid var(--line); border-radius:10px; padding:7px 9px; margin-bottom:8px; }
+        .sxl-credit-l { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:5px; }
+        .sxl-credit-l span { font-size:8.5px; color:var(--text-3); }
+        .sxl-credit-l b { font-family:'Chakra Petch'; font-size:10.5px; color:var(--navy-900); }
+        .sxl-credit-bar { height:4px; border-radius:99px; background:var(--bg-soft); overflow:hidden; }
+        .sxl-credit-bar i { display:block; height:100%; border-radius:99px; background:var(--success); }
+        .sxl-foot { display:flex; align-items:center; justify-content:space-between; }
+        .sxl-total { font-size:9.5px; color:var(--text-2); }
+        .sxl-total b { font-family:'Chakra Petch'; font-size:12px; color:var(--navy-900); margin-left:4px; }
+        .sxl-btn { background:${c}; color:#fff; font-family:'Chakra Petch'; font-weight:700; font-size:9.5px; letter-spacing:0.04em; border-radius:999px; padding:6px 14px; }
+      `}</style>
+    </div>
+  );
+}
+
 function SalesSection() {
   const C = BU.sales;
   const tabs = [
@@ -539,7 +620,7 @@ function SalesSection() {
             </div>
           </div>
           <div className="sx-panel-visual">
-            {(t.key === 'catalogos' || t.key === 'b2b') ? <SalesPhone/> : <SalesTabCard kind={t.key === 'carteiras' ? 'carteiras' : t.key}/>}
+            {t.key === 'b2b' ? <SalesLaptop/> : t.key === 'catalogos' ? <SalesPhone/> : <SalesTabCard kind={t.key === 'carteiras' ? 'carteiras' : t.key}/>}
           </div>
         </div>
 
