@@ -947,7 +947,7 @@ function IndustriaSales() {
             <SMark size={16} color={c}/> SEWE SALES
           </div>
           <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
-            Sua indústria vendendo para toda a rede — sem redigitação, sem tabela velha, sem <span style={{ color: c }}>desconto fora da política</span>.
+            Sua indústria vendendo para toda a rede: sem redigitação, sem tabela velha, sem <span style={{ color: c }}>desconto fora da política</span>.
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 600 }}>
             Distribuidores e varejos compram direto no seu portal, com o catálogo e o preço de cada um. Seus representantes vendem em campo com carteira, metas e follow-up. Você acompanha tudo em tempo real.

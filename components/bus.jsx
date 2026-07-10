@@ -573,7 +573,7 @@ function SalesSection() {
               <SMark size={16} color={C.color}/> ECOSSISTEMA COMERCIAL · SEWE SALES
             </div>
             <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
-              Toda a sua operação comercial — da tabela de preço ao pedido aprovado — em <span style={{ color: C.color }}>uma única plataforma</span>.
+              Toda a sua operação comercial, da tabela de preço ao pedido aprovado, em <span style={{ color: C.color }}>uma única plataforma</span>.
             </h2>
             <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 700 }}>
               Catálogo e preço por cliente, pedidos B2B, venda direta, carteiras, aprovações, WhatsApp oficial e relatórios,
