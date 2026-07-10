@@ -218,7 +218,7 @@ function DPlatform({ x, y, w, d, z, active, kind, screen, room, people = [] }) {
           sideChildren={<div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(to right, transparent 0 26px, rgba(122,138,165,0.16) 26px 27px)' }}></div>}/>
       ) : null}
       <DSlab x={x} y={y} z={z} w={w} d={d} h={12} rTop={8}
-        top={active ? '#ffffff' : '#fbfcfe'} front="#dfe6f2" side="#cfd9ea"
+        top={active ? '#ffffff' : '#f7f2e8'} front="#e3ddd0" side="#d4cdbd"
         topShadow={active ? 'inset 0 0 0 2px ' + DIST_C.turq2 : 'inset 0 0 0 1px #e2e8f2'}/>
       {/* dashboard screen wall */}
       <DSlab x={x + 20} y={y + 8} z={z + 12} w={w - 40} d={7} h={52} rTop={3}
@@ -262,6 +262,15 @@ function DPlatform({ x, y, w, d, z, active, kind, screen, room, people = [] }) {
           <DSlab x={x + w / 2 - 2} y={y + d - 74} z={z + 12} w={4} d={62} h={24} rTop={2} top="rgba(214,230,244,0.75)" front="rgba(196,219,240,0.4)" side="rgba(196,219,240,0.32)"/>
         </div>
       )}
+      {/* planta no canto dos fundos */}
+      <DSlab x={x + w - 28} y={y + 22} z={z + 12} w={9} d={9} h={8} rTop={2} top="#d4a373" front="#c08a5a" side="#a06f42"/>
+      <DBill x={x + w - 23.5} y={y + 30} z={z + 20} w={22} h={22}>
+        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+          <div style={{ position: 'absolute', left: 6, bottom: 8, width: 10, height: 14, borderRadius: '50% 50% 40% 40%', background: '#2e9e5b' }}></div>
+          <div style={{ position: 'absolute', left: 1, bottom: 4, width: 9, height: 11, borderRadius: '50% 50% 40% 40%', background: '#27ae60', transform: 'rotate(-24deg)' }}></div>
+          <div style={{ position: 'absolute', right: 1, bottom: 4, width: 9, height: 11, borderRadius: '50% 50% 40% 40%', background: '#1f8a4c', transform: 'rotate(24deg)' }}></div>
+        </div>
+      </DBill>
       {people.map((p, i) => (
         <DPerson key={i} x={x + p[0]} y={y + p[1]} z={z + 12} shirt={p[2]} hair={p[3]} pose={p[4]}/>
       ))}
@@ -446,11 +455,11 @@ function DistribuidorScene() {
     { key: 'estrategica', x: 60,  y: 60,  w: 185, d: 145, z: 140, kind: 'boardroom', screen: 'kpi',
       people: [[34, 94, DIST_C.navy700, '#3d3128', 'sit'], [152, 94, DIST_C.turq2, '#1f1a14', 'point'], [72, 130, '#586580', '#4a3826', 'point'], [110, 130, DIST_C.navy700, '#241d15', 'sit']] },
     { key: 'suprimentos', x: 55,  y: 330, w: 160, d: 145, z: 100, screen: 'stock',
-      people: [[43, 110, DIST_C.navy700, '#241d15', 'sit'], [82, 124, '#586580', '#3d3128', 'clipboard']] },
+      people: [[43, 110, DIST_C.navy700, '#241d15', 'sit'], [82, 124, '#586580', '#3d3128', 'clipboard'], [122, 64, '#586580', '#241d15', 'point']] },
     { key: 'comercial',   x: 330, y: 55,  w: 160, d: 145, z: 100, screen: 'funnel',
-      people: [[117, 110, DIST_C.navy700, '#171310', 'sit'], [80, 124, DIST_C.turq2, '#3d3128', 'phone']] },
+      people: [[117, 110, DIST_C.navy700, '#171310', 'sit'], [80, 124, DIST_C.turq2, '#3d3128', 'phone'], [44, 64, DIST_C.navy700, '#241d15', 'clipboard']] },
     { key: 'financeiro',  x: 245, y: 250, w: 150, d: 130, z: 55, screen: 'cashflow',
-      people: [[43, 96, DIST_C.navy700, '#3d3128', 'sit'], [107, 96, '#586580', '#241d15', 'sit']] },
+      people: [[43, 96, DIST_C.navy700, '#3d3128', 'sit'], [107, 96, '#586580', '#241d15', 'sit'], [75, 50, '#586580', '#3d3128', 'phone']] },
   ];
 
   // Pills on the outer margins; ax/ay = anchor point (%) on the matching floor.
@@ -502,7 +511,8 @@ function DistribuidorScene() {
               'M152 132 C 214 262, 268 392, 348 470 C 414 484, 482 484, 549 474',
               'M152 132 C 188 240, 228 344, 312 436 C 392 452, 466 452, 538 448',
               'M152 132 C 226 272, 292 404, 388 482 C 446 494, 506 496, 558 488',
-            ], nodes: [[543, 462], [549, 474], [538, 448], [558, 488]] },
+              'M255 868 C 322 768, 392 662, 462 582 C 506 532, 536 502, 552 478',
+            ], nodes: [[543, 462], [549, 474], [538, 448], [558, 488], [255, 868]] },
           ].map(layer => (
             <svg key={layer.id} viewBox="0 0 620 620" style={{ position: 'absolute', left: 0, top: 0, width: 620, height: 620, transform: 'translateZ(' + layer.z + 'px)', pointerEvents: 'none', overflow: 'visible' }}>
               <defs>
