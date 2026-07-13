@@ -89,7 +89,7 @@ function DifferentiatorsSection() {
     { icon: 'brain', title: 'IA invisível', body: 'Roda em background, limpa outliers, cruza dados e entrega decisão pronta. Sem prompts, sem engenharia, sem cientista de dados.' },
     { icon: 'shield', title: 'Segurança e LGPD', body: 'Dados cifrados em trânsito e repouso, homologação Qlik oficial, auditoria e política de retenção desenhadas por projeto.' },
     { icon: 'pkg', title: 'DNA de Atacado e Distribuição', body: 'Consultores que falam ruptura, Curva A, positivação, rebate e capital de giro. Não traduzimos o setor, nós somos do setor.' },
-    { icon: 'trophy', title: 'Parceria oficial Qlik', body: 'Platform Partner da Qlik, plataforma de analytics líder global, Leader no Gartner Magic Quadrant por 13 anos consecutivos.' },
+    { icon: 'trophy', title: 'Parceria oficial Qlik', body: 'Platform Partner da Qlik, plataforma de analytics líder global, Leader no Gartner® Magic Quadrant™ de Analytics & BI por 16 anos consecutivos (2026).' },
   ];
   return (
     <section id="diferenciais" className="section grain" style={{ background: '#0e1729', color: '#fff', position: 'relative', overflow: 'hidden' }}>

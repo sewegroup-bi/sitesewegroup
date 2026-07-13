@@ -1212,7 +1212,7 @@ function SolucoesPage() {
           </span>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '7px 16px', borderRadius: 999, background: '#fff', border: '1px solid var(--line)', boxShadow: 'var(--shadow-xs)', fontSize: 12.5, color: 'var(--text-2)', fontWeight: 500 }}>
             <span style={{ color: 'var(--turquoise-ink)', display: 'inline-flex' }}><Icon name="trophy" size={14} stroke={1.8}/></span>
-            Líder do Quadrante Mágico da Gartner em Analytics por 14 anos consecutivos
+            Leader no Gartner® Magic Quadrant™ de Analytics & BI por 16 anos consecutivos (2026)
           </span>
         </div>
         <div style={{ marginTop: 24, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
