@@ -41,7 +41,7 @@ function AudienceChooser() {
       cta: 'Ver soluções', href: '/distribuidor',
     },
     {
-      icon: 'cpu', kicker: 'Outra empresa', accent: 'var(--navy-700)', soft: 'rgba(45,67,108,0.10)',
+      icon: 'cpu', kicker: 'Outros setores', accent: 'var(--navy-700)', soft: 'rgba(45,67,108,0.10)',
       title: 'Sua operação, mais inteligente',
       desc: 'Para outros setores: inteligência de dados, BI e IA sob medida para destravar qualquer modelo de operação.',
       cta: 'Ver soluções', href: '/solucoes',

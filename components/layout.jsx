@@ -21,7 +21,7 @@ function SiteHeader({ home = false }) {
     { label: 'Soluções', children: [
       { label: 'Indústria',          href: '/industria' },
       { label: 'Distribuidor & Atacado', href: '/distribuidor' },
-      { label: 'Estratégia & Dados', href: '/solucoes' },
+      { label: 'Outros setores', href: '/solucoes' },
     ]},
     { label: 'Conteúdos', children: [
       { label: 'Blog',        href: '/blog' },
@@ -206,7 +206,7 @@ function SiteFooter({ home = false }) {
             <div style={col.title}>Soluções</div>
             <a style={col.link} href="/industria" onMouseEnter={onEnter} onMouseLeave={onLeave}>Indústria</a>
             <a style={col.link} href="/distribuidor" onMouseEnter={onEnter} onMouseLeave={onLeave}>Distribuidor & Atacado</a>
-            <a style={col.link} href="/solucoes" onMouseEnter={onEnter} onMouseLeave={onLeave}>Estratégia & Dados</a>
+            <a style={col.link} href="/solucoes" onMouseEnter={onEnter} onMouseLeave={onLeave}>Outros setores</a>
           </div>
           <div>
             <div style={col.title}>Empresa</div>

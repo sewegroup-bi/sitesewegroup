@@ -243,7 +243,7 @@ function QuemSomosPage() {
     { y: '2018–2020', t: 'Nasce da operação, não do laboratório', d: 'A SEWE surge de dentro do setor de distribuição, gente que viveu o problema de afogar em dados e passar fome de decisão. O foco desde o início: traduzir dados em ação.' },
     { y: '2021–2022', t: 'Parceria oficial Qlik + foco no Pet/Vet', d: 'A escolha pela plataforma Qlik consolida a base tecnológica. Os primeiros distribuidores do setor Pet e Veterinário provam o modelo: BI vertical, pronto, com DNA de distribuição.' },
     { y: '2023–2025', t: 'Expansão de setores e da IA aplicada', d: 'A SEWE chega a indústrias, agro e distribuidores de tecnologia. A inteligência artificial passa a rodar nos bastidores, entregando decisões prontas em vez de mais gráficos.' },
-    { y: 'Hoje', t: 'Referência nacional em dados para distribuição', d: 'São centenas de distribuidores e bilhões em faturamento monitorado, com cobertura nacional e um ecossistema completo: BI, Integration e Sales.' },
+    { y: 'Hoje', t: 'Referência nacional em dados para distribuição', d: 'São mais de 500 distribuidores e R$ 5 bilhões em faturamento monitorado, com cobertura nacional e um ecossistema completo: BI, Integration e Sales.' },
   ];
   const vmv = [
     { k: 'Missão', d: 'Transformar dados em decisões que geram prosperidade para distribuidores e seus clientes.' },
@@ -290,9 +290,9 @@ function QuemSomosPage() {
               <ul style={{ listStyle: 'none', padding: 0, margin: '26px 0 0', display: 'grid', gap: 14 }}>
                 {[
                   { pais: 'Brasil', d: 'Presença em todos os estados' },
-                  { pais: 'Estados Unidos', d: 'Operação internacional' },
-                  { pais: 'Chile', d: 'Operação internacional' },
-                  { pais: 'Colômbia', d: 'Operação internacional' },
+                  { pais: 'Estados Unidos', d: 'Operação internacional · Sewe Integration' },
+                  { pais: 'Chile', d: 'Operação internacional · Sewe Integration' },
+                  { pais: 'Colômbia', d: 'Operação internacional · Sewe Integration' },
                 ].map((x, i) => (
                   <li key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
                     <span style={{ marginTop: 5, width: 14, height: 14, borderRadius: 4, background: 'linear-gradient(135deg, #2d436c, #3f7d8c)', flexShrink: 0 }}/>
