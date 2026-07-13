@@ -179,9 +179,11 @@ function SiteFooter({ home = false }) {
               Inteligência de dados para distribuidores e atacadistas. Consultoria + tecnologia + Qlik.
             </p>
             <div style={{ display: 'flex', gap: 10, marginTop: 18 }}>
-              <div style={{ padding: '6px 12px', borderRadius: 6, background: 'rgba(117,227,228,0.1)', color: 'var(--turquoise)', fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', border: '1px solid rgba(117,227,228,0.2)' }}>
+              <a href="https://www.qlik.com/pt-br" target="_blank" rel="noopener" style={{ padding: '6px 12px', borderRadius: 6, background: 'rgba(117,227,228,0.1)', color: 'var(--turquoise)', fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', border: '1px solid rgba(117,227,228,0.2)', textDecoration: 'none', transition: 'background .2s ease, border-color .2s ease' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(117,227,228,0.2)'; e.currentTarget.style.borderColor = 'rgba(117,227,228,0.45)'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(117,227,228,0.1)'; e.currentTarget.style.borderColor = 'rgba(117,227,228,0.2)'; }}>
                 PARCEIRO OFICIAL QLIK
-              </div>
+              </a>
             </div>
             <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
               {[
