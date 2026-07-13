@@ -150,6 +150,8 @@ p { margin: 0; color: var(--text); text-wrap: pretty; }
   border: 1px solid var(--line);
 }
 .btn-outline:hover { background: var(--bg-soft); border-color: var(--slate-soft); }
+.btn-outline-inverse { background: #fff; color: var(--navy-900); border: 1.5px solid rgba(255,255,255,0.35); }
+.btn-outline-inverse:hover { background: #fff; color: var(--navy-800); border-color: #fff; box-shadow: var(--shadow-md); }
 .btn-ghost {
   background: transparent;
   color: var(--navy-900);

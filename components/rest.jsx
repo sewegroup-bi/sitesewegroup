@@ -307,8 +307,8 @@ function CTASection() {
             Quero ser contatado <Icon name="arrow" size={16} className="chev"/>
           </button>
           <a href={`${SEWE_WHATSAPP}?text=${encodeURIComponent('Olá! Quero agendar um diagnóstico com a SEWE.')}`}
-            target="_blank" rel="noopener" className="btn btn-outline"
-            style={{ width: '100%', justifyContent: 'center', marginTop: 10, color: '#fff', borderColor: 'rgba(255,255,255,0.35)' }}>
+            target="_blank" rel="noopener" className="btn btn-outline-inverse"
+            style={{ width: '100%', justifyContent: 'center', marginTop: 10 }}>
             Prefiro falar no WhatsApp
           </a>
           <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 10, textAlign: 'center' }}>
