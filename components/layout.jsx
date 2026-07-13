@@ -231,12 +231,14 @@ function SiteFooter({ home = false }) {
             © 2026 SEWE Group · Todos os direitos reservados
           </div>
           <div style={{ display: 'flex', gap: 18, fontSize: 12, color: 'rgba(255,255,255,0.42)' }}>
-            <a href="/politica-de-privacidade" style={{ color: 'inherit' }}>Política de Privacidade</a>
-            <a href="/politica-de-privacidade#lgpd" style={{ color: 'inherit' }}>LGPD</a>
+            <a href="/politica-de-privacidade" className="foot-legal">Política de Privacidade</a>
+            <a href="/politica-de-privacidade#lgpd" className="foot-legal">LGPD</a>
           </div>
         </div>
       </div>
       <style>{`
+        .foot-legal { color: inherit; transition: color .2s ease; }
+        .foot-legal:hover { color: var(--turquoise); }
         @media (max-width: 960px) { .foot-grid { grid-template-columns: 1fr 1fr !important; } }
         @media (max-width: 600px) { .foot-grid { grid-template-columns: 1fr !important; } }
       `}</style>
