@@ -214,6 +214,7 @@ function SiteFooter({ home = false }) {
             <a style={col.link} href="/premio" onMouseEnter={onEnter} onMouseLeave={onLeave}>Prêmio SEWE</a>
             <a style={col.link} href="/blog" onMouseEnter={onEnter} onMouseLeave={onLeave}>Blog</a>
             <a style={col.link} href="/faq" onMouseEnter={onEnter} onMouseLeave={onLeave}>FAQ</a>
+            <a style={col.link} href="https://sewecrm.com/indicacao.html" target="_blank" rel="noopener" onMouseEnter={onEnter} onMouseLeave={onLeave}>Indique e Ganhe</a>
           </div>
           <div>
             <div style={col.title}>Contato</div>
