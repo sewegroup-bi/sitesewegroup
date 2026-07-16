@@ -1,9 +1,4 @@
-# SITE EM DESENVOLVIMENTO — bloqueia toda indexação.
-# NO LANÇAMENTO: substituir o conteúdo deste arquivo pelo bloco comentado abaixo.
 User-agent: *
-Disallow: /
+Allow: /
 
-# ===== VERSÃO PARA O LANÇAMENTO (descomente e apague o bloco acima) =====
-# User-agent: *
-# Allow: /
-# Sitemap: https://www.sewegroup.com.br/sitemap.xml
+Sitemap: https://www.sewegroup.com.br/sitemap.xml
