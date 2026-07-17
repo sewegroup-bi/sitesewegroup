@@ -28,6 +28,42 @@ window.SEWE_AUTHORS = {
 
 window.SEWE_POSTS = [
   {
+    slug: 'split-payment-distribuicao',
+    category: 'blog',
+    title: 'Split Payment na distribuição: o fim do float tributário',
+    date: '2026-07-17',
+    readTime: '7 min de leitura',
+    author: 'Alex de Souza',
+    excerpt: 'O Split Payment (IBS/CBS) acaba com o float tributário e pressiona o capital de giro da distribuição. Veja como a inteligência de dados protege o caixa.',
+    cover: { tag: 'FINANÇAS AVANÇADAS · REFORMA TRIBUTÁRIA · SUPPLY CHAIN', metric: 'IBS·CBS', metricLabel: 'recolhimento automático na fonte' },
+    cta: { primary: 'Agendar Diagnóstico de Impacto de Caixa e Reforma Tributária', secondary: 'Falar com um Especialista' },
+    blocks: [
+      { type: 'lead', text: 'O ecossistema de distribuição no Brasil sempre usou uma ferramenta informal, porém vital, para financiar suas operações: o float tributário. No modelo tradicional, a empresa fatura a mercadoria, recebe o valor bruto do cliente e usa esse montante como um "empréstimo involuntário" e sem juros do governo por 30, 40 ou até 60 dias, recolhendo os impostos apenas no mês seguinte. Com a chegada definitiva do Split Payment sob a égide do IBS e da CBS, esse pulmão financeiro deixa de existir.' },
+      { type: 'p', text: 'O funcionamento do novo mecanismo é implacável: no exato instante em que o comprador liquida a transação eletrônica (seja via Pix, boleto ou cartão), o arranjo de pagamento segrega os valores. O montante devido ao Fisco é direcionado automaticamente para a conta do Comitê Gestor (CGIBS) e da Receita Federal. O distribuidor, portanto, só toca no valor líquido da mercadoria. O imposto nunca mais transita pela esfera patrimonial ou pelo caixa da sua empresa.' },
+      { type: 'h', text: 'O descasamento de prazos: a armadilha do Split Payment no capital de giro' },
+      { type: 'p', text: 'Para o setor de distribuição, o Split Payment gera uma assimetria temporal perigosa. Se a sua empresa vende em prazos longos ao cliente final (60 ou 90 dias), mas o regime de competência exige o reconhecimento do débito tributário na emissão da nota, o seu caixa será severamente pressionado. Você precisará financiar o tributo retido na origem muito antes de ver a cor do dinheiro da venda, exigindo uma injeção massiva de capital de giro próprio ou a contratação de linhas de crédito bancárias caras.' },
+      { type: 'list', items: [
+        'O fim da liquidez artificial: empresas que usavam o dinheiro do imposto acumulado no mês para pagar fornecedores de curto prazo enfrentarão uma crise imediata de liquidez se não recalcularem sua Demonstração do Fluxo de Caixa (DFC).',
+        'Risco duplicado na inadimplência: se um cliente fica inadimplente numa venda a prazo em que o Split Payment foi acionado, o distribuidor perde a mercadoria, o lucro e ainda tem o imposto retido de forma compulsória na transação originária, dependendo de complexos processos de ressarcimento.',
+        'Exigência de compliance em tempo real: erros de parametrização fiscal ou falhas na vinculação entre a nota fiscal e a liquidação financeira travarão o recebimento do valor líquido da empresa, gerando gargalos operacionais imediatos no faturamento.',
+      ]},
+      { type: 'callout', text: 'Estudos de grandes auditorias apontam que a perda do float tributário pode exigir que distribuidoras aumentem suas reservas de capital de giro em até 25% para manter o mesmo volume de compras atual.' },
+      { type: 'h', text: 'Como a inteligência de dados compensa o imposto retido na fonte' },
+      { type: 'p', text: 'Se o governo removeu o colchão financeiro dos tributos, a eficiência necessária para manter a operação saudável precisa vir de dentro. A resposta para o Split Payment não está na busca por mais crédito bancário, mas na inteligência de dados aplicada à eficiência de caixa e estoque. É aqui que o ecossistema da Sewe Group atua como o escudo da sua operação. Através da plataforma de Inteligência de Negócios e IA preditiva, mitigamos o impacto em três frentes cirúrgicas:' },
+      { type: 'list', items: [
+        'Visibilidade dinâmica de fluxo de caixa: desenhamos cenários de DFC prevendo as entradas já líquidas de IBS/CBS, alertando o CFO sobre descasamentos de prazos antes que virem uma crise de liquidez.',
+        'Análise de crédito avançada com BI: automatizamos e refinamos a concessão de crédito para combater a inadimplência, garantindo que o capital não seja alocado em clientes de alto risco sob o novo regime tributário.',
+        'Otimização extrema de estoque (IA por SKU): se o imposto drena o caixa, devolvemos o equilíbrio financeiro eliminando o aging (produtos parados). A IA da Sewe calcula os dias úteis ideais de estoque por SKU, destravando capital que antes ficava paralisado em mercadorias obsoletas e devolvendo a liquidez que o Split Payment confiscou.',
+      ]},
+      { type: 'quote', text: 'Gerenciar uma distribuidora com a regra do Split Payment exige precisão absoluta. Não há mais espaço para gerir o caixa com base no faturamento bruto. A Sewe Group nos deu a visibilidade granular do fluxo de caixa e o controle de estoque necessários para digerir a perda do float tributário sem comprometer nossa capacidade de investimento.', who: 'Alessandro · CEO da Multiseg Distribuidora' },
+    ],
+    references: [
+      { source: 'EY Brasil (Ernst & Young)', label: 'Reforma Tributária e o Mecanismo de Split Payment: Impactos Estruturais no Capital de Giro', url: 'https://www.ey.com/pt_br/tax', note: 'Análises técnicas sobre os impactos da transição tributária do IBS/CBS no caixa corporativo.' },
+      { source: 'FGV Direito SP (Núcleo de Estudos Fiscais)', label: 'A Assimetria Temporal do IBS/CBS e os Desafios do Fluxo de Caixa Empresarial', url: 'https://direitosp.fgv.br', note: 'Pesquisas jurídicas e econômicas sobre os gargalos do recolhimento na fonte para o setor produtivo.' },
+      { source: 'Portal da Legislação Federal (Planalto)', label: 'Lei Complementar nº 214/2025 e Lei Complementar nº 227/2026, regulamentação do sistema de arrecadação unificada', url: 'https://www.planalto.gov.br', note: 'Atos normativos e textos consolidados das leis complementares que regem o novo ecossistema fiscal brasileiro.' },
+    ],
+  },
+  {
     slug: 'vencedor-premio-2025-diamaju',
     category: 'premio',
     year: '2025',
