@@ -173,7 +173,12 @@ function BlogPostPage({ slug }) {
               <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 18, color: 'var(--navy-900)' }}>Quer esse nível de gestão na sua distribuição?</div>
               <div style={{ fontSize: 14, color: 'var(--text-2)', marginTop: 4 }}>Agende um diagnóstico gratuito de 30 minutos.</div>
             </div>
-            <a href="/#agendar" className="btn btn-primary">Agendar Diagnóstico <Icon name="arrow" size={16} className="chev"/></a>
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <a href="/#agendar" className="btn btn-primary">{(post.cta && post.cta.primary) || 'Agendar Diagnóstico'} <Icon name="arrow" size={16} className="chev"/></a>
+              {post.cta && post.cta.secondary && (
+                <a href="https://wa.me/5548984704389" target="_blank" rel="noopener noreferrer" className="btn" style={{ background: '#fff', color: 'var(--navy-900)', border: '1px solid var(--line)' }}>{post.cta.secondary}</a>
+              )}
+            </div>
           </div>
         </div>
       </article>
