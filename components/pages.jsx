@@ -137,6 +137,37 @@ function BlogPostPage({ slug }) {
             </div>
           )}
           <PostBlocks blocks={post.blocks}/>
+          {post.references && post.references.length > 0 && (
+            <div style={{ marginTop: 20, paddingTop: 20, borderTop: '1px solid var(--line)' }}>
+              <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 14, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-3)', marginBottom: 12 }}>Referências</div>
+              <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {post.references.map((r, i) => (
+                  <li key={i} style={{ fontSize: 14.5, color: 'var(--text-2)', lineHeight: 1.55 }}>
+                    <a href={r.url} target="_blank" rel="noopener noreferrer nofollow" style={{ color: 'var(--turquoise-ink)', fontWeight: 500 }}>{r.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {(() => {
+            const a = (window.SEWE_AUTHORS || {})[post.author];
+            if (!a) return null;
+            const initials = post.author.split(' ').filter(Boolean).map(w => w[0]).slice(0, 2).join('').toUpperCase();
+            return (
+              <div style={{ marginTop: 20, padding: 24, borderRadius: 16, border: '1px solid var(--line)', display: 'flex', gap: 18, alignItems: 'flex-start' }}>
+                {a.photo
+                  ? <img src={a.photo} alt={post.author} style={{ width: 64, height: 64, borderRadius: 99, objectFit: 'cover', flexShrink: 0 }}/>
+                  : <div aria-hidden style={{ width: 64, height: 64, borderRadius: 99, flexShrink: 0, display: 'grid', placeItems: 'center', background: 'linear-gradient(135deg, var(--navy-900), var(--turquoise-ink))', color: '#fff', fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 22 }}>{initials}</div>}
+                <div>
+                  <div style={{ fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-3)', fontWeight: 600 }}>Sobre o autor</div>
+                  <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 18, color: 'var(--navy-900)', marginTop: 4 }}>{post.author}</div>
+                  <div style={{ fontSize: 13.5, color: 'var(--turquoise-ink)', fontWeight: 600, marginTop: 2 }}>{a.role}</div>
+                  <p style={{ fontSize: 14.5, color: 'var(--text-2)', lineHeight: 1.6, marginTop: 8 }}>{a.bio}</p>
+                  {a.linkedin && <a href={a.linkedin} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 10, fontSize: 13.5, color: 'var(--turquoise-ink)', fontWeight: 600 }}>LinkedIn <Icon name="arrow" size={13}/></a>}
+                </div>
+              </div>
+            );
+          })()}
           <div style={{ marginTop: 24, padding: 24, borderRadius: 16, background: 'var(--bg-soft)', border: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
             <div>
               <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 18, color: 'var(--navy-900)' }}>Quer esse nível de gestão na sua distribuição?</div>

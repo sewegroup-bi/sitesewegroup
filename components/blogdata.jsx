@@ -14,7 +14,17 @@
 //   { type:'list', items:[...] } · { type:'lead', text } big intro line
 //   { type:'metrics', items:[{value,label}] } highlighted result grid
 // logo: optional path to the winner's logo (shown on the cover instead of a metric)
+// references: optional [{ label, url }] — fontes de autoridade citadas no texto
 // ─────────────────────────────────────────────────────────────
+
+// Perfis de autor (caixa do autor + JSON-LD author/sameAs). Chave = post.author.
+window.SEWE_AUTHORS = {
+  'Alex de Souza': {
+    role: 'Diretor Comercial · Sócio-fundador da SEWE Group',
+    bio: 'Sócio-fundador da SEWE Group, acompanha de perto distribuidores de todo o Brasil na jornada de transformar dados em decisão comercial, do estoque à diretoria.',
+    linkedin: 'https://www.linkedin.com/in/alexsouzasewegroup/',
+  },
+};
 
 window.SEWE_POSTS = [
   {
@@ -24,7 +34,7 @@ window.SEWE_POSTS = [
     title: 'Diamaju, Vencedora do Prêmio SEWE 2025',
     date: '2025-12-10',
     readTime: '4 min de leitura',
-    author: 'Equipe SEWE',
+    author: 'Alex de Souza',
     excerpt: 'Crescimento acelerado com foco, organização e dados na palma da mão: a divisão PET da Diamaju cresceu +30,2% em faturamento após adotar o BI SEWE.',
     cover: { tag: 'PRÊMIO SEWE · 2025', logo: 'assets/logo-diamaju.png', logoBg: '#eef0f2' },
     blocks: [
@@ -49,7 +59,7 @@ window.SEWE_POSTS = [
     title: 'Eletransol, Vencedora do Prêmio SEWE 2025',
     date: '2025-12-10',
     readTime: '4 min de leitura',
-    author: 'Equipe SEWE',
+    author: 'Alex de Souza',
     excerpt: 'Mais organização, menos dependência e decisões mais seguras: a Eletransol reduziu churn em 23,9% e a dependência dos Top 10 clientes com o BI SEWE.',
     cover: { tag: 'PRÊMIO SEWE · 2025', logo: 'assets/logo-eletransol.png', logoBg: '#eef0f2' },
     blocks: [
@@ -78,7 +88,7 @@ window.SEWE_POSTS = [
     title: 'PetSul, Vencedora do 1º Prêmio SEWE',
     date: '2025-02-11',
     readTime: '3 min de leitura',
-    author: 'Equipe SEWE',
+    author: 'Alex de Souza',
     excerpt: 'A primeira distribuidora reconhecida pelo Prêmio SEWE: a PetSul fortaleceu a venda de campo, organizou indicadores e acelerou o crescimento com análises estratégicas.',
     cover: { tag: 'PRÊMIO SEWE · 2024', logo: 'assets/logo-petsul.png', logoBg: '#ffffff' },
     blocks: [
@@ -102,7 +112,7 @@ window.SEWE_POSTS = [
     title: 'Multiseg, Vencedora do Prêmio SEWE',
     date: '2025-02-24',
     readTime: '3 min de leitura',
-    author: 'Equipe SEWE',
+    author: 'Alex de Souza',
     excerpt: 'A segunda entrega do Prêmio SEWE: a Multiseg se destacou pela evolução operacional, redução de estoque em 20% e autonomia das filiais apoiada em dados.',
     cover: { tag: 'PRÊMIO SEWE · 2024', logo: 'assets/logo-multiseg-black.png', logoBg: '#eef0f2' },
     blocks: [
@@ -123,7 +133,7 @@ window.SEWE_POSTS = [
     title: 'Curva ABC: o mapa para destravar capital de giro parado',
     date: '2026-05-28',
     readTime: '5 min de leitura',
-    author: 'Equipe SEWE',
+    author: 'Alex de Souza',
     excerpt: 'Estoque parado é o vazamento de caixa mais silencioso da distribuição. Veja como a Curva ABC, lida da forma certa, libera dinheiro sem cortar venda.',
     cover: { tag: 'GESTÃO · ESTOQUE', metric: 'A·B·C', metricLabel: 'participação no faturamento' },
     blocks: [
@@ -139,6 +149,9 @@ window.SEWE_POSTS = [
       { type: 'stat', value: '68%', label: 'do faturamento costuma vir da Curva A' },
       { type: 'p', text: 'Quando a Curva ABC é monitorada de forma automática e diária, e não em uma planilha que envelhece, a decisão de compra deixa de ser palpite. É exatamente o que a suíte de Suprimentos da SEWE entrega.' },
       { type: 'quote', text: 'Liberamos caixa para comprar o que gira. A SEWE mostrou onde o capital estava travado.', who: 'Diretor de Compras · distribuidor SEWE' },
+    ],
+    references: [
+      { label: 'Curva ABC (análise de Pareto / regra 80-20), princípio de Juran e Pareto — Wikipédia', url: 'https://pt.wikipedia.org/wiki/Curva_ABC' },
     ],
   },
 ];
