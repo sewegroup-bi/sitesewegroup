@@ -55,6 +55,12 @@ Além do render via `blogdata.jsx`, o corpo completo do artigo deve existir como
 dentro do `<slug>.html` (dentro do div raiz, que o React substitui ao hidratar). Assim o Google
 indexa o texto integral mesmo sem executar JS. Manter os dois sincronizados.
 
+**Não edite esse HTML estático à mão.** Rode `npm run sync:posts` (script `scripts/gen-static-posts.mjs`):
+ele lê `blogdata.jsx` (fonte da verdade) e regenera o JSON-LD `BlogPosting` e o corpo estático de
+todos os posts. Tipos de bloco suportados: `lead`, `h`, `p`, `list`, `metrics`, `callout`, `stat`, `quote`.
+Autor vem de `SEWE_AUTHORS` (chave = `post.author`); referências aceitam `{ source, label, url, note }`;
+CTA por-post via `post.cta { primary, secondary }`. Sempre rode o sync após mexer em `blogdata.jsx`.
+
 ### 2.4 Imagens
 - Pasta: `public/assets/blog/<slug>/` (ex.: `public/assets/blog/ruptura-estoque/capa.png`)
 - Referenciar como `/assets/blog/<slug>/arquivo.png`

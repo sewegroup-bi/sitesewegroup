@@ -71,6 +71,11 @@ function PostBlocks({ blocks }) {
         ))}
       </div>
     );
+    if (b.type === 'callout') return (
+      <div key={i} style={{ padding: '18px 22px', background: 'var(--bg-soft)', border: '1px solid var(--line)', borderLeft: '3px solid var(--turquoise)', borderRadius: 14, margin: '4px 0' }}>
+        <p style={{ fontSize: 18.5, lineHeight: 1.6, color: 'var(--navy-900)', fontWeight: 500, margin: 0 }}>{b.text}</p>
+      </div>
+    );
     if (b.type === 'stat') return (
       <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: 14, padding: '20px 24px', background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: 14, margin: '4px 0' }}>
         <span className="display" style={{ fontSize: 48, color: 'var(--navy-900)', lineHeight: 1 }}>{b.value}</span>

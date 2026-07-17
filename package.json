@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync:posts": "node scripts/gen-static-posts.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
