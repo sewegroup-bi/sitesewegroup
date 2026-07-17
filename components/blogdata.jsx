@@ -130,7 +130,7 @@ window.SEWE_POSTS = [
   {
     slug: 'curva-abc-capital-de-giro',
     category: 'blog',
-    title: 'Curva ABC e IA preditiva: como a inteligência de dados destrava milhões em capital de giro imobilizado no estoque',
+    title: 'Curva ABC e IA preditiva: destrave capital de giro no estoque',
     date: '2026-05-28',
     readTime: '8 min de leitura',
     author: 'Alex de Souza',
@@ -147,14 +147,14 @@ window.SEWE_POSTS = [
         'Governança agressiva sobre o aging da Curva C: itens de baixo giro devem ser submetidos a previsões de demanda restritivas. O foco é a liberação de liquidez: reduzir coberturas ao limite de segurança, renegociar prazos de pagamento com a indústria e liquidar estoques obsoletos para estancar a perda de custo de oportunidade.',
         'Cruzamento de giro vs. margem contábil: a verdadeira inteligência de negócios não avalia o SKU apenas pelo volume faturado. É preciso cruzar a Curva ABC com a margem de contribuição real e o centro de custos logístico. Muitas vezes, um item da Curva A drena a rentabilidade devido ao seu custo de armazenagem, enquanto um Curva B ou C sustenta o lucro líquido.',
       ]},
-      { type: 'stat', value: 'até 75%', label: 'do capital de giro de um distribuidor pode ficar paralisado em SKUs sobrealocados se a Curva ABC não for recalculada diariamente' },
+      { type: 'stat', value: 'Grande parte', label: 'do capital de giro de um distribuidor pode ficar paralisada em SKUs sobrealocados quando a Curva ABC não é recalculada diariamente' },
       { type: 'p', text: 'Para transformar o estoque em um motor de lucratividade, a Sewe Group desenvolveu uma suíte de Suprimentos & Logística Inteligente alimentada por IA preditiva. A tecnologia ingere longos históricos de vendas e dados macroeconômicos para estimar com precisão o volume de compras dos próximos meses por SKU. Ao integrar-se nativamente ao seu ERP, a plataforma calcula os dias úteis ideais para cada produto de forma individualizada, automatizando a decisão do comprador e garantindo que cada centavo do capital de giro seja alocado onde há garantia de retorno.' },
       { type: 'quote', text: 'Antes da Sewe Group, nossa gestão de compras operava sob a premissa de coberturas fixas, o que sobrecarregava nosso fluxo de caixa com produtos parados e nos expunha a rupturas severas nos itens de alto giro. A Inteligência Artificial da Sewe redesenhou nossa política de suprimentos por SKU. O resultado foi imediato: reduzimos drasticamente o aging do estoque, eliminamos o custo de vendas perdidas e destravamos milhões em capital de giro que hoje financiam nossa expansão.', who: 'Alessandro · CEO da Multiseg Distribuidora' },
     ],
     references: [
-      { label: 'Gartner, Predictive Analytics in Supply Chain: Moving Beyond Static Inventory Models (Análise Preditiva em Supply Chain: movendo-se além dos modelos estáticos de inventário).', url: 'https://www.gartner.com/en/supply-chain' },
-      { label: 'McKinsey & Company, Unlocking Working Capital: The Power of Granular Inventory Optimization (Destravando Capital de Giro: o poder da otimização granular de estoque).', url: 'https://www.mckinsey.com/capabilities/operations/our-insights' },
-      { label: 'ASCM (Association for Supply Chain Management), Supply Chain Body of Knowledge (SCBOK), Advanced Inventory Classification Techniques.', url: 'https://www.ascm.org/learning-development/certifications-credentials/dictionary/' },
+      { source: 'Gartner', label: 'Predictive Analytics in Supply Chain: Moving Beyond Static Inventory Models', url: 'https://www.gartner.com/en/supply-chain', note: 'Insights globais sobre a substituição de modelos estáticos por algoritmos preditivos na cadeia de suprimentos.' },
+      { source: 'McKinsey & Company', label: 'Unlocking Working Capital: The Power of Granular Inventory Optimization', url: 'https://www.mckinsey.com/capabilities/operations/our-insights', note: 'Estudos de caso e metodologias sobre como a otimização de inventário libera liquidez imediata.' },
+      { source: 'ASCM (Association for Supply Chain Management)', label: 'Supply Chain Body of Knowledge (SCBOK), Advanced Inventory Classification Techniques', url: 'https://www.ascm.org', note: 'Frameworks globais de governança e classificação avançada de ativos circulantes.' },
     ],
   },
 ];

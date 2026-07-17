@@ -143,7 +143,9 @@ function BlogPostPage({ slug }) {
               <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {post.references.map((r, i) => (
                   <li key={i} style={{ fontSize: 14.5, color: 'var(--text-2)', lineHeight: 1.55 }}>
+                    {r.source && <strong style={{ color: 'var(--navy-900)' }}>{r.source}: </strong>}
                     <a href={r.url} target="_blank" rel="noopener noreferrer nofollow" style={{ color: 'var(--turquoise-ink)', fontWeight: 500 }}>{r.label}</a>
+                    {r.note && <span> &mdash; {r.note}</span>}
                   </li>
                 ))}
               </ul>
