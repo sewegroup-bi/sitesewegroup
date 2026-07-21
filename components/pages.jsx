@@ -291,8 +291,39 @@ function QuemSomosPage() {
   const vmv = [
     { k: 'Missão', d: 'Facilitar a vida dos clientes, por meio de uma atuação consultiva e colaborativa que transforma tecnologia em resultados.' },
     { k: 'Visão', d: 'Ser reconhecido por nossos clientes como o melhor parceiro estratégico de tecnologia.' },
-    { k: 'Valores', d: 'Comprometimento, Eficiência, Entendimento de Negócios, Colaboração, Inovação Aplicada, Resultados Consistentes e Desenvolvimento Integrado.' },
   ];
+  const valores = [
+    { k: 'Comprometimento', icon: 'shield',
+      sig: 'Agimos com responsabilidade, propósito e dedicação, buscando sempre o melhor resultado para clientes, equipe e parceiros.',
+      com: 'Cumprimos o que prometemos, cultivamos relações de confiança e buscamos excelência em cada entrega.',
+      imp: 'Clientes que confiam na nossa marca e percebem consistência e credibilidade em tudo o que fazemos.' },
+    { k: 'Eficiência', icon: 'zap',
+      sig: 'Buscamos produtividade e qualidade em tudo o que fazemos, eliminando desperdícios e simplificando processos.',
+      com: 'Planejamos com clareza, executamos com foco e revisamos as práticas para o melhor resultado com o menor esforço.',
+      imp: 'Clientes percebem agilidade, organização e confiança em cada interação com a SEWE.' },
+    { k: 'Entendimento de Negócios', icon: 'search',
+      sig: 'Antes de aplicar tecnologia, compreendemos a essência e os desafios do negócio do cliente, adaptando-nos ao seu contexto.',
+      com: 'Atuamos como consultores: questionando, analisando e traduzindo tecnologia em resultados práticos.',
+      imp: 'Soluções personalizadas, com aderência real e mensurável ao negócio de cada cliente.' },
+    { k: 'Colaboração', icon: 'users',
+      sig: 'Acreditamos que resultados sustentáveis nascem da colaboração entre pessoas, dentro da equipe e com os clientes.',
+      com: 'Compartilhamos conhecimento, ouvimos diferentes perspectivas e trabalhamos de forma integrada e transparente.',
+      imp: 'Um ambiente saudável, com alto engajamento interno e relacionamentos de longo prazo com os clientes.' },
+    { k: 'Inovação Aplicada', icon: 'sparkle',
+      sig: 'Usamos dados, tecnologia e conhecimento para transformar complexidade em simplicidade e informação em valor.',
+      com: 'Incentivamos o aprendizado contínuo, a experimentação e a busca por novas formas de gerar impacto real.',
+      imp: 'Clientes desenvolvem novas capacidades e evoluem continuamente com as nossas soluções.' },
+    { k: 'Resultados Consistentes', icon: 'trophy',
+      sig: 'O que fazemos deve gerar impacto tangível: resultados concretos para os clientes e aprendizado para a equipe.',
+      com: 'Estabelecemos metas claras, medimos desempenho e celebramos conquistas.',
+      imp: 'Resultados sustentáveis e consistentes, que reforçam a nossa credibilidade e propósito.' },
+    { k: 'Desenvolvimento Integrado', icon: 'link',
+      sig: 'Unimos pessoas, processos e tecnologia para o crescimento equilibrado de clientes, colaboradores e parceiros.',
+      com: 'Atuamos como construtores de soluções e conhecimento, com troca constante de experiências e metodologias.',
+      imp: 'Um ambiente de evolução conectada, onde todos prosperam em conjunto.' },
+  ];
+  const [valAtivo, setValAtivo] = React.useState(0);
+  const V = valores[valAtivo];
   return (
     <>
       <SiteHeader/>
@@ -374,6 +405,72 @@ function QuemSomosPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Nossos Valores — interativo */}
+      <section className="section" style={{ background: 'var(--bg-soft)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 40px' }}>
+            <div className="eyebrow">Nossos valores</div>
+            <h2 style={{ marginTop: 14 }}>O que nos guia, na prática.</h2>
+            <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
+              Selecione um valor e veja o que ele significa, como praticamos e o que ele gera para você.
+            </p>
+          </div>
+          <div className="val-grid">
+            <div className="val-list">
+              {valores.map((v, i) => (
+                <button key={i} type="button" className={'val-chip' + (i === valAtivo ? ' on' : '')} onClick={() => setValAtivo(i)}>
+                  <span className="val-chip-ic"><Icon name={v.icon} size={16} stroke={1.9}/></span>
+                  {v.k}
+                </button>
+              ))}
+            </div>
+            <div className="val-panel" key={valAtivo}>
+              <div className="val-panel-h"><span className="val-panel-ic"><Icon name={V.icon} size={22} stroke={1.8}/></span>{V.k}</div>
+              <p className="val-sig">{V.sig}</p>
+              <div className="val-detail">
+                <div className="val-block">
+                  <div className="val-block-t">Como praticamos</div>
+                  <p>{V.com}</p>
+                </div>
+                <div className="val-block">
+                  <div className="val-block-t">O que gera para você</div>
+                  <p>{V.imp}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <style>{`
+          .val-grid { display: grid; grid-template-columns: 300px 1fr; gap: 24px; align-items: start; }
+          .val-list { display: flex; flex-direction: column; gap: 8px; }
+          .val-chip { display: flex; align-items: center; gap: 11px; text-align: left; padding: 13px 16px; border-radius: 12px;
+            background: #fff; border: 1px solid var(--line); color: var(--navy-900);
+            font-family: var(--ff-display); font-weight: 600; font-size: 14.5px; cursor: pointer; transition: all .18s ease; }
+          .val-chip:hover { border-color: var(--turquoise-2); }
+          .val-chip.on { background: var(--navy-900); border-color: var(--navy-900); color: #fff; }
+          .val-chip-ic { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; flex-shrink: 0;
+            background: rgba(117,227,228,0.18); color: var(--turquoise-ink); }
+          .val-chip.on .val-chip-ic { background: rgba(117,227,228,0.22); color: var(--turquoise); }
+          .val-panel { background: #fff; border: 1px solid var(--line); border-radius: var(--r-xl); padding: 34px 38px;
+            box-shadow: var(--shadow-sm); animation: valFade .3s ease; }
+          @keyframes valFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+          .val-panel-h { display: flex; align-items: center; gap: 14px; font-family: var(--ff-display); font-weight: 700;
+            font-size: clamp(21px, 2.4vw, 27px); color: var(--navy-900); }
+          .val-panel-ic { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; flex-shrink: 0;
+            background: rgba(117,227,228,0.18); color: var(--turquoise-ink); }
+          .val-sig { font-size: 17px; color: var(--navy-900); line-height: 1.6; margin-top: 18px; }
+          .val-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--line-2); }
+          .val-block-t { font-family: var(--ff-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--turquoise-ink); margin-bottom: 8px; }
+          .val-block p { font-size: 14.5px; color: var(--text-2); line-height: 1.6; }
+          @media (max-width: 860px) {
+            .val-grid { grid-template-columns: 1fr; }
+            .val-list { flex-direction: row; flex-wrap: wrap; }
+            .val-chip { flex: 1 1 auto; }
+            .val-detail { grid-template-columns: 1fr; gap: 18px; }
+          }
+        `}</style>
       </section>
 
       {/* CTA */}
