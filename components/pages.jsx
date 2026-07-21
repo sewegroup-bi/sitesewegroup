@@ -365,7 +365,7 @@ function QuemSomosPage() {
       {/* Mission / Vision / Values */}
       <section className="section" style={{ background: '#fff' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="pillar-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, maxWidth: 820, margin: '0 auto' }} className="pillar-grid">
             {vmv.map((v, i) => (
               <div key={i} className="card" style={{ padding: 28 }}>
                 <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 13, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--turquoise-ink)' }}>{v.k}</div>
