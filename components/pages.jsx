@@ -289,9 +289,9 @@ function QuemSomosPage() {
     { y: 'Hoje', t: 'Referência nacional em dados para distribuição', d: 'São mais de 500 distribuidores e R$ 5 bilhões em faturamento monitorado, com cobertura nacional e um ecossistema completo: BI, Integration e Sales.' },
   ];
   const vmv = [
-    { k: 'Missão', d: 'Transformar dados em decisões que geram prosperidade para distribuidores e seus clientes.' },
-    { k: 'Visão', d: 'Ser a inteligência de dados padrão do setor de distribuição no Brasil.' },
-    { k: 'Valores', d: 'Parceria de verdade, DNA de distribuição e resultado acima de relatório. Dado vira ação, todo dia.' },
+    { k: 'Missão', d: 'Facilitar a vida dos clientes, por meio de uma atuação consultiva e colaborativa que transforma tecnologia em resultados.' },
+    { k: 'Visão', d: 'Ser reconhecido por nossos clientes como o melhor parceiro estratégico de tecnologia.' },
+    { k: 'Valores', d: 'Comprometimento, Eficiência, Entendimento de Negócios, Colaboração, Inovação Aplicada, Resultados Consistentes e Desenvolvimento Integrado.' },
   ];
   return (
     <>
