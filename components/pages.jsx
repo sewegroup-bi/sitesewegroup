@@ -289,8 +289,8 @@ function QuemSomosPage() {
     { y: 'Hoje', t: 'Referência nacional em dados para distribuição', d: 'São mais de 500 distribuidores e R$ 5 bilhões em faturamento monitorado, com cobertura nacional e um ecossistema completo: BI, Integration e Sales.' },
   ];
   const vmv = [
-    { k: 'Missão', d: 'Facilitar a vida dos clientes, por meio de uma atuação consultiva e colaborativa que transforma tecnologia em resultados.' },
-    { k: 'Visão', d: 'Ser reconhecido por nossos clientes como o melhor parceiro estratégico de tecnologia.' },
+    { k: 'Missão', icon: 'target', theme: 'turq', d: 'Facilitar a vida dos clientes, por meio de uma atuação consultiva e colaborativa que transforma tecnologia em resultados.' },
+    { k: 'Visão', icon: 'zap', theme: 'navy', d: 'Ser reconhecido por nossos clientes como o melhor parceiro estratégico de tecnologia.' },
   ];
   const valores = [
     { k: 'Comprometimento', icon: 'shield',
@@ -396,11 +396,12 @@ function QuemSomosPage() {
       {/* Mission / Vision / Values */}
       <section className="section" style={{ background: '#fff' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, maxWidth: 820, margin: '0 auto' }} className="pillar-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24, maxWidth: 940, margin: '0 auto' }} className="mv-grid">
             {vmv.map((v, i) => (
-              <div key={i} className="card" style={{ padding: 28 }}>
-                <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 13, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--turquoise-ink)' }}>{v.k}</div>
-                <p style={{ fontSize: 17, color: 'var(--navy-900)', marginTop: 12, lineHeight: 1.6 }}>{v.d}</p>
+              <div key={i} className={'mv-card mv-' + v.theme}>
+                <span className="mv-ic"><Icon name={v.icon} size={26} stroke={1.9}/></span>
+                <div className="mv-k">{v.k}</div>
+                <p className="mv-d">{v.d}</p>
               </div>
             ))}
           </div>
@@ -488,6 +489,20 @@ function QuemSomosPage() {
       <style>{`
         @media(max-width:960px){.pillar-grid{grid-template-columns:1fr !important;}}
         @media(max-width:600px){.tl-row{grid-template-columns:1fr !important;gap:6px !important;}}
+        .mv-card { position: relative; overflow: hidden; border-radius: var(--r-xl); padding: 40px 38px;
+          border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+        .mv-turq { background: linear-gradient(155deg, rgba(117,227,228,0.16) 0%, rgba(117,227,228,0.05) 55%, #ffffff 100%); }
+        .mv-navy { background: linear-gradient(155deg, var(--navy-900) 0%, var(--navy-800, #223558) 70%, var(--turquoise-ink) 150%); border-color: var(--navy-900); }
+        .mv-ic { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 16px; margin-bottom: 22px; }
+        .mv-turq .mv-ic { background: rgba(117,227,228,0.25); color: var(--turquoise-ink); }
+        .mv-navy .mv-ic { background: rgba(117,227,228,0.16); color: var(--turquoise); }
+        .mv-k { font-family: var(--ff-display); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+        .mv-turq .mv-k { color: var(--turquoise-ink); }
+        .mv-navy .mv-k { color: var(--turquoise); }
+        .mv-d { font-family: var(--ff-display); font-weight: 600; font-size: clamp(19px, 2vw, 23px); line-height: 1.45; margin-top: 12px; }
+        .mv-turq .mv-d { color: var(--navy-900); }
+        .mv-navy .mv-d { color: #fff; }
+        @media(max-width:860px){ .mv-grid{grid-template-columns:1fr !important;} }
       `}</style>
     </>
   );
