@@ -22,7 +22,7 @@ function ConnectedEcosystem() {
     },
     {
       k: 'sales', icon: 'store', step: '02', flow: 'Age no cliente',
-      title: 'SEWE Sales', color: BU.sales.color, soft: BU.sales.soft,
+      title: 'Ecossistema de Vendas', color: BU.sales.color, soft: BU.sales.soft,
       desc: 'Vira a força de vendas num e-commerce B2B. O cliente do distribuidor compra sozinho, com CRM e regras comerciais.',
       href: '#sales',
     },
@@ -43,7 +43,7 @@ function ConnectedEcosystem() {
             Conectadas em volta do <span style={{ color: 'var(--navy)' }}>distribuidor</span>.
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17 }}>
-            Os dados entram pela Integration, a Sales vende e gera mais dado na ponta, e o BI fecha o ciclo virando tudo em decisão.
+            Os dados entram pela Integration, o ecossistema de vendas vende e gera mais dado na ponta, e o BI fecha o ciclo virando tudo em decisão.
             Um ciclo só, com a SEWE cuidando da engenharia de ponta a ponta.
           </p>
         </div>
@@ -185,7 +185,7 @@ function IntegrationSection() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SEWE SALES, sales team → B2B e-commerce + CRM
+   Ecossistema de vendas, sales team → B2B e-commerce + CRM
 ──────────────────────────────────────────────────────────── */
 
 // Celular reto entre as duas colunas: catálogo do cliente em cima,
@@ -198,7 +198,7 @@ function SalesPhone() {
       <div className="sxp-phone">
         <div className="sxp-notch"></div>
         <div className="sxp-topbar">
-          <span className="sxp-logo">SEWE SALES</span>
+          <span className="sxp-logo">PORTAL DE VENDAS</span>
           <span className="sxp-live">● online</span>
         </div>
 
@@ -410,11 +410,11 @@ function SalesLaptop() {
       <div className="sxl-screen">
         <div className="sxl-chrome">
           <span className="sxl-dots"><i></i><i></i><i></i></span>
-          <span className="sxl-url">portal.sewesales.com.br</span>
+          <span className="sxl-url">portal.seudistribuidor.com.br</span>
         </div>
         <div className="sxl-body">
           <div className="sxl-head">
-            <span className="sxl-logo">SEWE SALES · PORTAL</span>
+            <span className="sxl-logo">PORTAL DE VENDAS B2B2C</span>
             <span className="sxl-client">Pet Center Sul</span>
           </div>
           {[
@@ -574,7 +574,7 @@ function SalesSection({ audience = 'distribuidor' }) {
         <div className="bu-head reveal">
           <div>
             <div className="bu-eyebrow" style={{ color: C.ink, background: C.soft }}>
-              <SMark size={16} color={C.color}/> ECOSSISTEMA COMERCIAL · SEWE SALES
+              <SMark size={16} color={C.color}/> ECOSSISTEMA DE VENDAS
             </div>
             <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
               {isInd
@@ -601,7 +601,7 @@ function SalesSection({ audience = 'distribuidor' }) {
               {i < chain.length - 1 && <span className="sx-node-link" aria-hidden><Icon name="link" size={16} stroke={2}/></span>}
             </React.Fragment>
           ))}
-          <div className="sx-chain-cap">Sewe Sales conecta os dois</div>
+          <div className="sx-chain-cap">O ecossistema de vendas conecta os dois</div>
         </div>
 
         {/* ecosystem tabs */}

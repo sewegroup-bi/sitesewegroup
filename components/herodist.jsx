@@ -1,7 +1,7 @@
 // DistribuidorScene — CSS-3D isometric distribution center, fully code-drawn.
 // Mezzanine offices (suítes) with dashboards + people, data beams, warehouse
 // racks, forklift, conveyor, SEWE GROUP dock building, trucks and street.
-// Clickable pills: suítes → #suites (event 'sewe:suite'), Sewe Sales → #sales.
+// Clickable pills: suítes → #suites (event 'sewe:suite'), canais de venda → #sales.
 
 const DIST_C = {
   navy900: '#1a2844', navy800: '#223558', navy700: '#2d436c',
@@ -469,14 +469,35 @@ function DistribuidorScene() {
     { key: 'comercial',   label: 'Comercial',          icon: 'trending', l: 88, t: 18, ax: 72,   ay: 30, items: ['Metas por vendedor', 'Leads inteligentes', 'Reativação de clientes'] },
     { key: 'financeiro',  label: 'Financeiro',         icon: 'dollar',   l: 92, t: 63, ax: 51.5, ay: 44, items: ['Fluxo de caixa', 'Margem por SKU', 'DRE automatizado'] },
   ];
-  const salesLeader = { key: 'sales', l: 44, t: 85, ax: 8, ay: 67, items: ['Pedido 24/7 no app', 'Catálogo e preço', 'Carteira do vendedor'] };
+  // Âncora do ecossistema de vendas. Os itens são os módulos compartilhados:
+  // no orçamento eles reaparecem em cada suíte, mas o produto é um só — aqui
+  // aparecem uma vez, como camada que serve todos os canais.
+  const salesLeader = {
+    key: 'sales', l: 50, t: 85, ax: 8, ay: 67,
+    items: ['Integração ERP', 'Promoções', 'Alçada de aprovações', 'Incentivos comerciais', 'WorkFlow', 'Propostas comerciais'],
+  };
+
+  // Canais de venda em volta do CD: os que atendem o cliente ficam do lado da
+  // lojinha; os que atendem a equipe interna, do lado oposto.
+  const canais = [
+    { key: 'portal',   label: 'Portal B2B2C',    icon: 'store',     l: 11, t: 58 },
+    { key: 'b2b',      label: 'E-commerce B2B',  icon: 'warehouse', l: 11, t: 68 },
+    { key: 'b2c',      label: 'E-commerce B2C',  icon: 'pkg',       l: 11, t: 78 },
+    { key: 'vendedor', label: 'Força de Vendas', icon: 'users',     l: 89, t: 76 },
+    { key: 'crm',      label: 'CRM',             icon: 'calendar',  l: 89, t: 86 },
+  ];
 
   const suiteMsgs = {
     estrategica: 'Assuma o controle: a operação inteira em uma tela e a decisão do dia já priorizada.',
     suprimentos: 'Acabe com a ruptura: a IA prevê a demanda e sugere a compra certa antes da falta.',
     comercial: 'Venda mais com a mesma equipe: o sistema aponta quem reativar e o que ofertar.',
     financeiro: 'Feche o mês em dias: caixa projetado e margem real por SKU direto do ERP.',
-    sales: 'Deixe o cliente comprar sozinho: pedido no app 24/7 caindo direto no CD.',
+    sales: 'Cinco canais, uma plataforma: integração, promoções, alçadas, incentivos, workflow e propostas valem para todos, sem contratar duas vezes.',
+    portal: 'Portal de vendas B2B2C: seu cliente consulta produto, preço, estoque e condição comercial e fecha o pedido sozinho.',
+    b2b: 'E-commerce B2B personalizado: loja com carrinho e checkout modernos, para o cliente comprar sem depender de ninguém.',
+    b2c: 'E-commerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço da operação.',
+    vendedor: 'Ambiente do vendedor: carteira, metas, atividades e pedido digitado em campo, já dentro da política comercial.',
+    crm: 'CRM, clientes e atividades: histórico, follow-up e processo comercial estruturado do primeiro contato até o pedido.',
   };
 
   return (
@@ -699,7 +720,7 @@ function DistribuidorScene() {
             <DTruck y={430}/>
           </div>
 
-          {/* cliente do distribuidor: lojinha fora do CD + vendedor externo (Sewe Sales) */}
+          {/* cliente do distribuidor: lojinha fora do CD + vendedor externo */}
           <div style={{ position: 'absolute', left: 0, top: 0, transformStyle: 'preserve-3d', transform: 'translate3d(-40px, 200px, 0)' }}>
             <div style={{ position: 'absolute', left: 226, top: 616, width: 138, height: 118, borderRadius: 24, transform: 'translateZ(-7.5px)', background: 'rgba(26,40,68,0.22)', filter: 'blur(9px)' }}></div>
             {/* calçada da loja */}
@@ -744,6 +765,15 @@ function DistribuidorScene() {
             </g>
           );
         })}
+        {/* leque laranja: do rótulo do ecossistema até cada canal de venda */}
+        {canais.map(cv => {
+          const x1 = salesLeader.l * 9, y1 = salesLeader.t * 6.6, x2 = cv.l * 9, y2 = cv.t * 6.6;
+          const on = hover === cv.key;
+          return (
+            <line key={cv.key} x1={x1} y1={y1} x2={x2} y2={y2} strokeDasharray="5 5"
+              stroke={on ? 'rgba(253,112,20,0.9)' : 'rgba(253,112,20,0.3)'} strokeWidth={on ? 2 : 1}></line>
+          );
+        })}
       </svg>
 
       {/* clickable product pills (screen space) */}
@@ -766,23 +796,36 @@ function DistribuidorScene() {
       <button onClick={() => scrollToId('sales')}
         onMouseEnter={() => setHover('sales')} onMouseLeave={() => setHover(null)}
         onFocus={() => setHover('sales')} onBlur={() => setHover(null)}
-        className="dist-pill" style={{ left: salesLeader.l + '%', top: salesLeader.t + '%' }} aria-label="Ver Sewe Sales">
+        className="dist-pill dist-pill-sales" style={{ left: salesLeader.l + '%', top: salesLeader.t + '%' }}
+        aria-label="Ver o ecossistema de vendas">
         <span className="dist-pill-ic"><Icon name="store" size={13} stroke={2}></Icon></span>
-        <span className="dist-pill-lb">Sewe Sales</span>
+        <span className="dist-pill-lb">Ecossistema de vendas</span>
         <span className="dist-pill-plus"><Icon name="plus" size={14} stroke={2.2}></Icon></span>
         <span className="dist-pill-drop dist-drop-up" aria-hidden="true">
           {salesLeader.items.map((it, i) => (
-            <span key={i} className="dist-pill-item" style={{ transitionDelay: (i * 90) + 'ms' }}>{it}</span>
+            <span key={i} className="dist-pill-item dist-pill-mod" style={{ transitionDelay: (i * 70) + 'ms' }}>{it}</span>
           ))}
         </span>
       </button>
+
+      {/* canais de venda: chips compactos em volta do CD */}
+      {canais.map(cv => (
+        <button key={cv.key} onClick={() => scrollToId('sales')}
+          onMouseEnter={() => setHover(cv.key)} onMouseLeave={() => setHover(null)}
+          onFocus={() => setHover(cv.key)} onBlur={() => setHover(null)}
+          className="dist-chan" style={{ left: cv.l + '%', top: cv.t + '%' }}
+          aria-label={'Ver o canal ' + cv.label}>
+          <span className="dist-chan-ic"><Icon name={cv.icon} size={13} stroke={2}></Icon></span>
+          {cv.label}
+        </button>
+      ))}
 
       {/* etiqueta do cliente (espaço de tela, nítida) */}
       <button className="dist-hutlabel" style={{ left: '5%', top: '88%' }}
         onClick={() => scrollToId('sales')}
         onMouseEnter={() => setHover('sales')} onMouseLeave={() => setHover(null)}
         onFocus={() => setHover('sales')} onBlur={() => setHover(null)}
-        aria-label="Ver Sewe Sales">Cliente Distribuidor
+        aria-label="Ver o ecossistema de vendas">Cliente Distribuidor
         <span className="dist-pill-drop dist-drop-up" aria-hidden="true">
           {['Pedido sem vendedor', 'Crédito na hora', 'Recompra em 1 clique'].map((it, i) => (
             <span key={i} className="dist-pill-item" style={{ transitionDelay: (i * 90) + 'ms' }}>{it}</span>
@@ -923,6 +966,38 @@ function DistribuidorScene() {
           transition: background .2s ease;
         }
         .dist-pill:hover .dist-pill-plus { background: var(--turquoise-2); }
+        /* âncora do ecossistema de vendas: laranja, para separar da camada de BI */
+        .dist-pill-sales { border-color: rgba(253,112,20,0.28); }
+        .dist-pill-sales .dist-pill-ic { background: rgba(253,112,20,0.16); color: #c9550a; }
+        .dist-pill-sales .dist-pill-plus { background: #fd7014; color: #fff; }
+        .dist-pill-sales:hover, .dist-pill-sales:focus-visible {
+          border-color: rgba(253,112,20,0.6);
+          box-shadow: 0 0 0 6px rgba(253,112,20,0.14), 0 14px 30px rgba(253,112,20,0.24);
+        }
+        .dist-pill-sales:hover .dist-pill-plus { background: #c9550a; }
+        .dist-pill-mod { border-color: rgba(253,112,20,0.4); }
+        /* canais de venda: chip compacto, sem o botão de + das suítes */
+        .dist-chan {
+          position: absolute; transform: translate(-50%, -50%);
+          display: inline-flex; align-items: center; gap: 7px;
+          padding: 6px 13px; border-radius: 999px;
+          background: rgba(255,255,255,0.78);
+          -webkit-backdrop-filter: blur(10px) saturate(1.3);
+          backdrop-filter: blur(10px) saturate(1.3);
+          border: 1px solid rgba(253,112,20,0.26);
+          box-shadow: 0 6px 18px rgba(26,40,68,0.10), inset 0 1px 0 rgba(255,255,255,0.9);
+          cursor: pointer; z-index: 5; white-space: nowrap;
+          font-family: 'Chakra Petch', sans-serif; font-weight: 600;
+          font-size: 11.5px; letter-spacing: 0.01em; color: var(--navy-900);
+          transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
+        }
+        .dist-chan:hover, .dist-chan:focus-visible {
+          transform: translate(-50%, calc(-50% - 3px));
+          background: rgba(255,255,255,0.96);
+          border-color: rgba(253,112,20,0.62);
+          box-shadow: 0 0 0 5px rgba(253,112,20,0.14), 0 12px 26px rgba(253,112,20,0.22);
+        }
+        .dist-chan-ic { color: #c9550a; display: inline-flex; flex-shrink: 0; }
         .dist-belt-anim { overflow: hidden; }
         .dist-belt-anim::before {
           content: ''; position: absolute; top: 0; bottom: 0; left: -22px; right: 0;
@@ -995,6 +1070,14 @@ function DistribuidorScene() {
         @media (max-width: 640px) {
           .dist-pill-lb { font-size: 11px; }
           .dist-pill-ic { display: none; }
+          /* onze elementos flutuando numa cena de 340px não cabem: chips e
+             âncora do ecossistema encolhem e perdem ícone e botão de + */
+          .dist-chan { font-size: 8.5px; padding: 3px 8px; gap: 0; }
+          .dist-chan-ic { display: none; }
+          .dist-pill-sales { padding: 5px 11px; }
+          .dist-pill-sales .dist-pill-plus { display: none; }
+          .dist-pill-sales .dist-pill-lb { font-size: 9px; }
+          .dist-pill-item { font-size: 8.5px; padding: 2px 8px; }
         }
       `}</style>
     </div>
