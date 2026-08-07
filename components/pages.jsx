@@ -535,7 +535,7 @@ function PrivacidadePage() {
         lead="Como a SEWE Group coleta, usa e protege os seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018)."/>
       <section className="section" style={{ background: '#fff' }}>
         <div className="container" style={{ maxWidth: 780 }}>
-          <p style={p}><b>Última atualização:</b> julho de 2026.</p>
+          <p style={p}><b>Última atualização:</b> agosto de 2026.</p>
           <p style={p}>Esta política se aplica ao site da SEWE Group (sewegroup.com.br) e aos canais de contato vinculados a ele. Controladora dos dados: SEWE Group, Florianópolis · SC · Brasil. Contato: contato@sewegroup.com.br.</p>
 
           <h2 style={h}>1. Quais dados coletamos</h2>
@@ -543,6 +543,8 @@ function PrivacidadePage() {
             <li style={li}><b>Dados de contato enviados por você</b> nos formulários do site: nome, e-mail, empresa e telefone/WhatsApp.</li>
             <li style={li}><b>Dados de agendamento</b>, quando você reserva uma reunião pela nossa agenda: nome, e-mail, telefone e empresa informados no Google Agenda.</li>
             <li style={li}><b>Dados de conversa</b>, quando você opta por falar conosco pelo WhatsApp.</li>
+            <li style={li}><b>Dados de comentário no blog</b>, quando você comenta um artigo: nome, sobrenome, e-mail, o texto do comentário, a data do envio, o seu endereço IP (guardado apenas como código embaralhado, sem possibilidade de leitura) e o navegador utilizado.</li>
+            <li style={li}><b>Curtidas em artigos</b>, registradas com um identificador aleatório gerado no seu navegador. Esse identificador não é ligado ao seu nome nem ao seu e-mail, e serve só para não contar a mesma curtida duas vezes.</li>
           </ul>
           <p style={p}>Não coletamos dados sensíveis pelo site e não utilizamos os seus dados para decisões automatizadas.</p>
 
@@ -550,6 +552,7 @@ function PrivacidadePage() {
           <ul style={{ paddingLeft: 22, margin: '0 0 14px' }}>
             <li style={li}>Responder ao seu contato e realizar o diagnóstico ou a demonstração solicitados.</li>
             <li style={li}>Registrar o seu interesse em nosso sistema de relacionamento (CRM) para dar sequência ao atendimento comercial.</li>
+            <li style={li}>Publicar o seu comentário no blog e manter essa área livre de spam e de conteúdo abusivo.</li>
             <li style={li}>Cumprir obrigações legais e regulatórias, quando aplicável.</li>
           </ul>
           <p style={p}>Base legal: execução de procedimentos preliminares a contrato, a seu pedido (art. 7º, V, da LGPD) e legítimo interesse no atendimento comercial (art. 7º, IX), sempre com o mínimo de dados necessário.</p>
@@ -559,15 +562,22 @@ function PrivacidadePage() {
 
           <h2 style={h}>4. Por quanto tempo guardamos</h2>
           <p style={p}>Mantemos os dados de contato comercial enquanto durar o relacionamento ou a tratativa, e os eliminamos ou anonimizamos quando deixarem de ser necessários, salvo obrigação legal de retenção.</p>
+          <p style={p}>Comentários permanecem publicados enquanto o artigo estiver no ar, ou até que você peça a exclusão.</p>
 
           <h2 style={h}>5. Como protegemos</h2>
           <p style={p}>Adotamos criptografia em trânsito, controle de acesso por credencial e o princípio do menor privilégio nos sistemas que armazenam dados pessoais.</p>
 
-          <h2 style={h} id="lgpd">6. Seus direitos (LGPD)</h2>
+          <h2 style={h} id="comentarios">6. Comentários e curtidas no blog</h2>
+          <p style={p}>Ao enviar um comentário, você autoriza a publicação do <b>seu nome e do texto que escreveu</b> na página do artigo, de forma pública e acessível a qualquer visitante. Base legal: o seu consentimento (art. 7º, I, da LGPD), manifestado na caixa de seleção do formulário.</p>
+          <p style={p}>O <b>seu e-mail nunca é publicado</b>. Ele fica registrado apenas no nosso banco de dados, para que possamos identificar o autor e responder, se for o caso. O endereço IP é guardado como código embaralhado (hash), com a única finalidade de conter spam e envios automatizados, com base no nosso legítimo interesse em manter o site seguro (art. 7º, IX).</p>
+          <p style={p}>Comentários são publicados imediatamente, sem aprovação prévia. A SEWE Group pode remover, a qualquer momento e sem aviso, comentários com spam, propaganda, conteúdo ofensivo, ilegal ou alheio ao tema do artigo.</p>
+          <p style={p}>Para pedir a exclusão de um comentário seu, escreva para <a href="mailto:contato@sewegroup.com.br" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>contato@sewegroup.com.br</a> informando o artigo e o nome utilizado. Curtidas podem ser desfeitas por você mesmo, clicando novamente no botão.</p>
+
+          <h2 style={h} id="lgpd">7. Seus direitos (LGPD)</h2>
           <p style={p}>Nos termos dos arts. 17 a 22 da LGPD, você pode solicitar a qualquer momento: confirmação de tratamento, acesso, correção, anonimização, portabilidade, eliminação dos dados, informação sobre compartilhamentos e revogação de consentimento.</p>
           <p style={p}>Para exercer qualquer direito, escreva para <a href="mailto:contato@sewegroup.com.br" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>contato@sewegroup.com.br</a>. Respondemos no prazo legal.</p>
 
-          <h2 style={h}>7. Alterações desta política</h2>
+          <h2 style={h}>8. Alterações desta política</h2>
           <p style={p}>Esta política pode ser atualizada para refletir mudanças no site ou na legislação. A versão vigente estará sempre nesta página, com a data de atualização no topo.</p>
         </div>
       </section>
