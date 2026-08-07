@@ -841,6 +841,433 @@ function IndustriaModular() {
   );
 }
 
+/* Diagnóstico: por que o sell-out que a indústria recebe hoje não fecha.
+   Fundo escuro porque é a seção do problema — o resto da página é claro. */
+function IndustriaDiagnostico() {
+  const limites = [
+    {
+      n: '01', t: 'Apenas notas emitidas',
+      d: 'A leitura pega só o XML das notas que o distribuidor emitiu. A devolução que o cliente emite de volta não entra na conta.',
+      c: ['Verba e bonificação pagas em duplicidade: o produto é vendido, a devolução não abate e a nova venda é contabilizada de novo.'],
+    },
+    {
+      n: '02', t: 'Estoque por planilha',
+      d: 'Um retrato parcial: não enxerga transferência entre lojas, item aguardando entrada nem estoque pós-venda. E não separa estoque fiscal de gerencial.',
+      c: ['Visão incorreta do nível de estoque em campo.', 'Sugestão de compra incorreta.', 'Impacto direto nas estratégias comerciais.'],
+    },
+    {
+      n: '03', t: 'Cadastro de produtos',
+      d: 'Cadastros divergentes entre indústria e distribuidor, e produtos de outras marcas processados como se fossem sell-out da sua linha.',
+      c: ['Verba paga sobre produto de outro fabricante.', 'Produto seu que não entra na apuração por cadastro incorreto.'],
+    },
+    {
+      n: '04', t: 'Frequência e falhas de atualização',
+      d: 'Indisponibilidade da SEFAZ gera reprocessamento histórico. Nova filial ou alteração sistêmica no distribuidor deixa o estoque defasado.',
+      c: ['A credibilidade da apuração cai.', 'A reunião comercial debate o dado, não o negócio.', 'Análise e estratégia ficam limitadas pela insegurança.'],
+    },
+  ];
+  return (
+    <section className="section id-sec">
+      <div className="container">
+        <div className="id-head reveal">
+          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>Diagnóstico · causa-raiz</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)', color: '#fff' }}>
+            Hoje você enxerga o distribuidor <span style={{ color: 'var(--turquoise-2)' }}>por fora</span>.
+          </h2>
+          <p className="id-lead">
+            O sell-out chega por relatório, o estoque por planilha e o cadastro não bate.
+            O número existe, mas chega tarde, incompleto e sem ninguém que responda por ele.
+            Não é falta de esforço do parceiro: é limitação do método.
+          </p>
+        </div>
+
+        <div className="id-grid">
+          {limites.map((l, i) => (
+            <div key={i} className="id-card reveal">
+              <div className="id-n">Limitação {l.n}</div>
+              <div className="id-t">{l.t}</div>
+              <p className="id-d">{l.d}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="id-cons-h">Consequência</div>
+        <div className="id-cons">
+          {limites.map((l, i) => (
+            <ul key={i} className="id-cons-col reveal">
+              {l.c.map((x, j) => <li key={j}>{x}</li>)}
+            </ul>
+          ))}
+        </div>
+
+        <div className="id-bridge reveal">
+          <SMark size={20} color="var(--turquoise-2)"/>
+          <div>
+            <b>Por isso o problema não se resolve cobrando mais qualidade do fornecedor atual.</b>
+            <span>A SEWE lê a operação de dentro: direto no ERP do distribuidor, nota a nota, item a item.</span>
+          </div>
+        </div>
+      </div>
+      <style>{`
+        .id-sec { background: linear-gradient(160deg, #12100f 0%, #16130f 55%, #0f1512 100%); position: relative; overflow: hidden; }
+        .id-sec::after { content: ''; position: absolute; bottom: -180px; left: -120px; width: 460px; height: 460px; border-radius: 50%; background: radial-gradient(circle, rgba(117,227,228,0.12), transparent 70%); pointer-events: none; }
+        .id-head { max-width: 800px; margin: 0 auto 42px; text-align: center; position: relative; z-index: 1; }
+        .id-lead { color: rgba(255,255,255,0.7); font-size: 17px; margin-top: 14px; line-height: 1.65; }
+        .id-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; position: relative; z-index: 1; }
+        .id-card { background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r-lg); padding: 22px 20px; }
+        .id-n { font-family: var(--ff-mono); font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--turquoise-2); }
+        .id-t { font-family: var(--ff-display); font-weight: 700; font-size: 18px; color: #fff; line-height: 1.25; margin-top: 9px; }
+        .id-d { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-top: 12px; }
+        .id-cons-h { font-family: var(--ff-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: #e0715f; margin: 30px 0 14px; position: relative; z-index: 1; }
+        .id-cons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; position: relative; z-index: 1; }
+        .id-cons-col { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 2px solid rgba(224,113,95,0.45); display: grid; gap: 10px; align-content: start; }
+        .id-cons-col li { font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.55; }
+        .id-bridge { display: flex; gap: 14px; align-items: flex-start; margin-top: 40px; padding: 20px 22px; background: rgba(117,227,228,0.07); border: 1px solid rgba(117,227,228,0.2); border-radius: var(--r-lg); position: relative; z-index: 1; }
+        .id-bridge b { display: block; font-family: var(--ff-display); font-weight: 700; font-size: 16px; color: #fff; line-height: 1.35; }
+        .id-bridge span { display: block; font-size: 14px; color: rgba(255,255,255,0.68); line-height: 1.55; margin-top: 6px; }
+        @media (max-width: 1000px) { .id-grid, .id-cons { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 620px) { .id-grid, .id-cons { grid-template-columns: 1fr; } }
+      `}</style>
+    </section>
+  );
+}
+
+/* Como o dado sai do ERP do distribuidor e chega íntegro na indústria.
+   Responde o "como?" que toda indústria pergunta depois do diagnóstico. */
+function IndustriaConexao() {
+  const passos = [
+    { n: '01', t: 'Extração no ERP', d: 'Dados capturados direto na origem, sem intermediário e sem depender de exportação manual do parceiro.' },
+    { n: '02', t: 'Processamento', d: 'Regras de negócio, padronização, limpeza e enriquecimento: cadastro conciliado entre a sua linha e a do distribuidor.' },
+    { n: '03', t: 'Base tratada', d: 'Sell-out e estoque consistentes, item a item, com devolução abatida e estoque fiscal separado do gerencial.' },
+    { n: '04', t: 'Entrega', d: 'API e painel para a indústria, e painel para o distribuidor, lendo exatamente a mesma base.' },
+  ];
+  return (
+    <section className="section" style={{ background: '#fff' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 40px' }}>
+          <div className="eyebrow">Conexão · integração ponto a ponto</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
+            O ganho só existe quando o dado é <span style={{ color: 'var(--navy)' }}>íntegro do início ao fim</span>.
+          </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
+            Nenhuma etapa depende de alguém lembrar de exportar uma planilha. A conexão é nossa, do ERP até o painel.
+          </p>
+        </div>
+
+        <div className="cx-flow">
+          {passos.map((p, i) => (
+            <React.Fragment key={i}>
+              <div className="cx-step reveal">
+                <div className="cx-n">{p.n}</div>
+                <div className="cx-t">{p.t}</div>
+                <p className="cx-d">{p.d}</p>
+              </div>
+              {i < passos.length - 1 && <span className="cx-arrow" aria-hidden><Icon name="arrow" size={16} stroke={2.2}/></span>}
+            </React.Fragment>
+          ))}
+        </div>
+
+        <div className="cx-audit reveal">
+          <div className="cx-audit-tag">Auditoria</div>
+          <p>
+            Cada venda é auditável pela captura do XML: <b>nota a nota, item a item</b>.
+            Se a apuração for questionada, existe o documento fiscal por trás dela.
+          </p>
+        </div>
+      </div>
+      <style>{`
+        .cx-flow { display: flex; align-items: stretch; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .cx-step { flex: 1; min-width: 200px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px; }
+        .cx-n { font-family: var(--ff-mono); font-size: 11px; font-weight: 600; letter-spacing: .14em; color: var(--turquoise-ink); }
+        .cx-t { font-family: var(--ff-display); font-weight: 700; font-size: 18px; color: var(--navy-900); margin: 10px 0 8px; }
+        .cx-d { font-size: 13.5px; color: var(--text-2); line-height: 1.6; }
+        .cx-arrow { align-self: center; color: var(--turquoise-ink); flex-shrink: 0; }
+        .cx-audit { display: flex; gap: 20px; align-items: center; max-width: 900px; margin: 26px auto 0; padding: 20px 24px; background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--turquoise-2); border-radius: var(--r-md); box-shadow: var(--shadow-xs); }
+        .cx-audit-tag { font-family: var(--ff-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--turquoise-ink); flex-shrink: 0; }
+        .cx-audit p { font-size: 15px; color: var(--text); line-height: 1.6; margin: 0; }
+        @media (max-width: 860px) {
+          .cx-flow { flex-direction: column; }
+          .cx-arrow { transform: rotate(90deg); align-self: center; }
+          .cx-audit { flex-direction: column; align-items: flex-start; gap: 10px; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+/* Mercado potencial: base pública de CNPJs ativos cruzada com a carteira,
+   para mostrar onde a marca simplesmente não está. */
+function IndustriaProspeccao() {
+  const filtros = ['UF e cidade', 'CNAE', 'Porte', 'Data de abertura', 'Capital social', 'Já é cliente'];
+  return (
+    <section className="section" style={{ background: '#fff' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto 40px' }}>
+          <div className="eyebrow">Inteligência comercial · mercado potencial</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
+            Quem existe no seu mercado e <span style={{ color: 'var(--navy)' }}>você ainda não atende</span>.
+          </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
+            Cruzamos a base pública de empresas ativas com a carteira da sua rede.
+            O resultado é o mapa de onde a sua marca não chegou, com nome, CNPJ e endereço.
+          </p>
+        </div>
+
+        <div className="pr-panel">
+          <div className="pr-head">
+            <span className="pr-head-l"><SMark size={16} color="var(--turquoise-2)"/> PROSPECÇÃO DE MERCADO</span>
+            <span className="pr-chip">Recorte ilustrativo</span>
+          </div>
+          <div className="pr-body">
+            <div className="pr-kpis">
+              <div className="pr-kpi"><div className="pr-kpi-v tnum">455.052</div><div className="pr-kpi-l">empresas ativas no recorte</div></div>
+              <div className="pr-kpi"><div className="pr-kpi-v tnum">13.264</div><div className="pr-kpi-l">abertas nos últimos 12 meses</div></div>
+              <div className="pr-kpi"><div className="pr-kpi-v tnum">8,4%</div><div className="pr-kpi-l">share de positivação da rede</div></div>
+              <div className="pr-kpi pr-kpi-hl"><div className="pr-kpi-v tnum">417 mil</div><div className="pr-kpi-l">fora da base · mercado endereçável</div></div>
+            </div>
+            <div className="pr-cols">
+              <div className="pr-col">
+                <div className="pr-col-h">Filtre por</div>
+                <div className="pr-chips">{filtros.map(f => <span key={f} className="pr-f">{f}</span>)}</div>
+              </div>
+              <div className="pr-col">
+                <div className="pr-col-h">E responda</div>
+                <ul className="pr-ul">
+                  <li>Em quais cidades existe demanda e a rede não positivou ninguém?</li>
+                  <li>Qual distribuidor tem cobertura ociosa na própria praça?</li>
+                  <li>Quantas empresas do seu CNAE-alvo abriram no trimestre?</li>
+                  <li>Onde vale abrir um novo canal e onde vale reforçar o atual?</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>{`
+        .pr-panel { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+        .pr-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 20px; background: linear-gradient(120deg, #15243d, #0d1a2e); }
+        .pr-head-l { display: inline-flex; align-items: center; gap: 10px; font-family: var(--ff-display); font-weight: 600; font-size: 12.5px; letter-spacing: .1em; color: #fff; }
+        .pr-chip { font-family: var(--ff-mono); font-size: 10px; letter-spacing: .08em; color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; padding: 3px 10px; }
+        .pr-body { padding: 20px; }
+        .pr-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .pr-kpi { background: #fff; border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px 18px; }
+        .pr-kpi-hl { border-color: var(--turquoise-2); box-shadow: 0 0 0 1px var(--turquoise-2); }
+        .pr-kpi-v { font-family: var(--ff-display); font-weight: 700; font-size: 26px; line-height: 1; color: var(--navy-900); }
+        .pr-kpi-hl .pr-kpi-v { color: var(--turquoise-ink); }
+        .pr-kpi-l { font-size: 11.5px; color: var(--text-2); margin-top: 8px; line-height: 1.4; }
+        .pr-cols { display: grid; grid-template-columns: 1fr 1.3fr; gap: 20px; margin-top: 18px; padding-top: 18px; border-top: 1px dashed var(--line); }
+        .pr-col-h { font-family: var(--ff-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); margin-bottom: 12px; }
+        .pr-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .pr-f { padding: 7px 14px; background: #fff; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--text-2); }
+        .pr-ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+        .pr-ul li { position: relative; padding-left: 20px; font-size: 14.5px; color: var(--text); line-height: 1.5; }
+        .pr-ul li::before { content: ''; position: absolute; left: 0; top: 8px; width: 7px; height: 7px; border-radius: 2px; background: var(--turquoise-2); }
+        @media (max-width: 900px) { .pr-kpis { grid-template-columns: 1fr 1fr; } .pr-cols { grid-template-columns: 1fr; } }
+      `}</style>
+    </section>
+  );
+}
+
+/* A camada de comércio digital: por que a indústria perde o controle da
+   experiência exatamente no momento da compra da revenda. */
+function IndustriaCamadaComercio() {
+  const camadas = [
+    {
+      k: 'Camada de experiência', dono: 'A indústria controla', c: '#00a335', soft: 'rgba(0,163,53,0.1)',
+      itens: ['Portfólio', 'Lançamentos', 'Preço', 'Tabelas específicas', 'Campanhas', 'Promoções', 'Segmentação', 'Produtos estratégicos', 'Recomendações'],
+    },
+    {
+      k: 'Camada operacional', dono: 'O distribuidor segue dono', c: '#fd7014', soft: 'rgba(253,112,20,0.1)',
+      itens: ['Estoque', 'Crédito', 'Faturamento', 'Separação', 'Logística', 'Entrega', 'Relacionamento local'],
+    },
+    {
+      k: 'Camada da revenda', dono: 'A revenda passa a ter', c: '#2d436c', soft: 'rgba(45,67,108,0.1)',
+      itens: ['Ambiente único', 'Distribuidores habilitados', 'Estoque', 'Preço e condições', 'Promoções', 'Lançamentos', 'Substitutos', 'Orçamento com precificação própria', 'Acompanhamento do pedido'],
+    },
+  ];
+  return (
+    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
+      <div className="container">
+        <div className="cc-quote reveal">
+          <div className="eyebrow">SEWE Sales · camada de comércio digital</div>
+          <blockquote>
+            A indústria investe em produto, marca, campanhas, canais e geração de demanda.
+            Mas no momento em que a revenda decide comprar, a experiência fica praticamente
+            inteira nas mãos do vendedor do distribuidor.
+          </blockquote>
+          <p className="cc-quote-d">
+            Não é um e-commerce por cima do canal. É uma camada sobre a operação que já existe:
+            a indústria recupera a experiência de compra sem tirar do distribuidor nada do que é dele.
+          </p>
+        </div>
+
+        <div className="cc-stack">
+          {camadas.map((c, i) => (
+            <div key={i} className="cc-row reveal" style={{ '--c': c.c, '--cs': c.soft }}>
+              <div className="cc-rail">
+                <div className="cc-k">{c.k}</div>
+                <div className="cc-dono">{c.dono}</div>
+              </div>
+              <div className="cc-items">
+                {c.itens.map(it => <span key={it} className="cc-it">{it}</span>)}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="cc-foot reveal">Centraliza-se a experiência sem centralizar a operação.</div>
+      </div>
+      <style>{`
+        .cc-quote { max-width: 860px; margin: 0 auto 40px; text-align: center; }
+        .cc-quote blockquote { margin: 18px 0 0; font-family: var(--ff-display); font-weight: 600; font-size: clamp(20px, 2.6vw, 30px); line-height: 1.35; color: var(--navy-900); }
+        .cc-quote-d { font-size: 16px; color: var(--text-2); line-height: 1.65; margin-top: 18px; }
+        .cc-stack { display: grid; gap: 12px; }
+        .cc-row { display: grid; grid-template-columns: 230px 1fr; gap: 20px; align-items: center; background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--c); border-radius: var(--r-lg); padding: 20px 24px; box-shadow: var(--shadow-xs); }
+        .cc-k { font-family: var(--ff-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--c); }
+        .cc-dono { font-family: var(--ff-display); font-weight: 700; font-size: 17px; color: var(--navy-900); margin-top: 6px; line-height: 1.25; }
+        .cc-items { display: flex; flex-wrap: wrap; gap: 8px; }
+        .cc-it { padding: 7px 14px; background: var(--cs); border: 1px solid color-mix(in srgb, var(--c) 22%, transparent); border-radius: 8px; font-size: 13px; color: var(--text); }
+        .cc-foot { text-align: center; font-family: var(--ff-display); font-weight: 700; font-size: clamp(18px, 2vw, 23px); color: var(--navy-900); margin-top: 30px; }
+        @media (max-width: 860px) { .cc-row { grid-template-columns: 1fr; gap: 14px; } }
+      `}</style>
+    </section>
+  );
+}
+
+/* O eixo: as três perguntas que sustentam qualquer decisão de canal,
+   e os oito ganhos que aparecem quando elas passam a ter resposta. */
+function IndustriaEixo() {
+  const ganhos = [
+    { n: '01', t: 'S&OP com sell-out e estoque', d: 'Dado confiável sobre o que a rede realmente tem e vende. Menos custo operacional, menos desperdício.' },
+    { n: '02', t: 'Promoções otimizadas', d: 'O investimento vai para os produtos e as regiões com potencial real de venda.' },
+    { n: '03', t: 'Agilidade e segurança na decisão', d: 'Decisão estratégica tomada no tempo do mercado, com dado atualizado e confiável.' },
+    { n: '04', t: 'Mais previsibilidade, menos ruptura', d: 'Com o estoque da rede confiável, o impacto de cada estratégia comercial é avaliado com segurança.' },
+    { n: '05', t: 'Fonte única de consulta', d: 'Distribuidor e fábrica olham o mesmo número, com a mesma premissa de cálculo.' },
+    { n: '06', t: 'Desenvolvimento dos distribuidores', d: 'Painéis padronizados: indústria e distribuidores lendo a mesma informação.' },
+    { n: '07', t: 'Política comercial mais forte', d: 'Transparência fortalece a relação e torna a comunicação com a rede mais clara e colaborativa.' },
+    { n: '08', t: 'Remuneração pelo sell-out', d: 'A equipe é remunerada sobre o que saiu de verdade. O foco deixa de ser só vender e passa a ser a efetividade na ponta.' },
+  ];
+  return (
+    <section className="section ex-sec">
+      <div className="container">
+        <div className="ex-head reveal">
+          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>Futuro · ecossistema integrado</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)', color: '#fff' }}>
+            O que muda quando a rede inteira <span style={{ color: 'var(--turquoise-2)' }}>fala a mesma língua</span>.
+          </h2>
+        </div>
+
+        <div className="ex-axis reveal">
+          <div className="ex-axis-l">O eixo</div>
+          <p>
+            Resultado só faz sentido quando dá para responder três perguntas:
+            <b> o que aconteceu?</b> <b>o que está sendo feito agora?</b> <b>e para onde isso vai nos levar?</b>
+          </p>
+        </div>
+
+        <div className="ex-grid">
+          {ganhos.map((g, i) => (
+            <div key={i} className="ex-card reveal">
+              <div className="ex-n">{g.n}</div>
+              <div>
+                <div className="ex-t">{g.t}</div>
+                <p className="ex-d">{g.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <style>{`
+        .ex-sec { background: linear-gradient(160deg, #0f1512 0%, #12100f 60%, #15243d 100%); position: relative; overflow: hidden; }
+        .ex-sec::after { content: ''; position: absolute; top: 40px; right: -140px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(0,163,53,0.14), transparent 70%); pointer-events: none; }
+        .ex-head { max-width: 780px; margin: 0 auto 28px; text-align: center; position: relative; z-index: 1; }
+        .ex-axis { max-width: 820px; margin: 0 auto 34px; padding: 22px 26px; background: rgba(117,227,228,0.07); border: 1px solid rgba(117,227,228,0.2); border-radius: var(--r-lg); text-align: center; position: relative; z-index: 1; }
+        .ex-axis-l { font-family: var(--ff-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--turquoise); }
+        .ex-axis p { font-size: 17px; color: rgba(255,255,255,0.82); line-height: 1.65; margin: 12px 0 0; }
+        .ex-axis b { color: #fff; font-weight: 600; }
+        .ex-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; position: relative; z-index: 1; }
+        .ex-card { display: flex; gap: 13px; align-items: flex-start; background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r-lg); padding: 20px; }
+        .ex-n { font-family: var(--ff-mono); font-size: 11px; font-weight: 700; letter-spacing: .06em; color: var(--turquoise-2); flex-shrink: 0; padding-top: 2px; }
+        .ex-t { font-family: var(--ff-display); font-weight: 700; font-size: 15.5px; color: #fff; line-height: 1.3; }
+        .ex-d { font-size: 13px; color: rgba(255,255,255,0.62); line-height: 1.55; margin-top: 8px; }
+        @media (max-width: 1040px) { .ex-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 620px) { .ex-grid { grid-template-columns: 1fr; } }
+      `}</style>
+    </section>
+  );
+}
+
+/* Método: por que projeto de canal falha. Cada dupla de eixos tem um
+   modo de falha conhecido — o ponto ótimo é a interseção dos três. */
+function IndustriaMetodo() {
+  const falhas = [
+    { par: 'Processo + Tecnologia', sem: 'sem Pessoas', t: 'Alienação', d: 'Sistema impecável que ninguém usa.' },
+    { par: 'Processo + Pessoas', sem: 'sem Tecnologia', t: 'Frustração', d: 'Time engajado preso em rotina manual que não escala.' },
+    { par: 'Tecnologia + Pessoas', sem: 'sem Processo', t: 'Caos automatizado', d: 'Velocidade em cima de um processo errado.' },
+  ];
+  return (
+    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
+      <div className="container">
+        <div className="mt-grid">
+          <div>
+            <div className="eyebrow">Método · forma de atuação</div>
+            <h2 style={{ marginTop: 14, fontSize: 'clamp(26px,3.2vw,38px)' }}>
+              O ponto ótimo não é tecnologia. <span style={{ color: 'var(--navy)' }}>É a interseção</span>.
+            </h2>
+            <p style={{ color: 'var(--text-2)', fontSize: 16.5, marginTop: 16, lineHeight: 1.65 }}>
+              Atuamos nos três eixos ao mesmo tempo. Cada dupla sozinha tem um modo de falha conhecido,
+              e é para onde a maior parte dos projetos de canal escorrega.
+            </p>
+            <div className="mt-falhas">
+              {falhas.map((f, i) => (
+                <div key={i} className="mt-falha reveal">
+                  <div className="mt-par">{f.par} <em>{f.sem}</em></div>
+                  <div className="mt-fd"><b>{f.t}.</b> {f.d}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-venn reveal">
+            <svg viewBox="0 0 340 320" role="img" aria-label="Diagrama de interseção entre Processo, Tecnologia e Pessoas">
+              <circle cx="122" cy="126" r="98" fill="rgba(45,67,108,0.16)" stroke="rgba(45,67,108,0.4)"/>
+              <circle cx="218" cy="126" r="98" fill="rgba(0,163,53,0.16)" stroke="rgba(0,163,53,0.42)"/>
+              <circle cx="170" cy="208" r="98" fill="rgba(117,227,228,0.2)" stroke="rgba(14,122,124,0.4)"/>
+              <text x="70" y="118" className="vn-l" textAnchor="middle">PROCESSO</text>
+              <text x="266" y="118" className="vn-l" textAnchor="middle">TECNOLOGIA</text>
+              <text x="170" y="282" className="vn-l" textAnchor="middle">PESSOAS</text>
+              <text x="170" y="88" className="vn-s" textAnchor="middle">Alienação</text>
+              <text x="110" y="199" className="vn-s" textAnchor="middle">Frustração</text>
+              <text x="228" y="191" className="vn-s" textAnchor="middle">Caos</text>
+              <text x="228" y="204" className="vn-s vn-xs" textAnchor="middle">automatizado</text>
+              <text x="170" y="150" className="vn-c" textAnchor="middle">PONTO</text>
+              <text x="170" y="170" className="vn-c" textAnchor="middle">ÓTIMO</text>
+            </svg>
+            <div className="mt-venn-f">Engenharia · sucesso do cliente · plataforma</div>
+          </div>
+        </div>
+      </div>
+      <style>{`
+        .mt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .mt-falhas { display: grid; gap: 0; margin-top: 26px; }
+        .mt-falha { display: grid; grid-template-columns: 190px 1fr; gap: 18px; padding: 16px 0; border-top: 1px solid var(--line); }
+        .mt-par { font-family: var(--ff-mono); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy-900); line-height: 1.5; }
+        .mt-par em { display: block; font-style: normal; font-weight: 500; color: var(--text-3); letter-spacing: .04em; }
+        .mt-fd { font-size: 14.5px; color: var(--text-2); line-height: 1.55; }
+        .mt-fd b { font-family: var(--ff-display); font-weight: 700; color: var(--navy-900); }
+        .mt-venn { text-align: center; }
+        .mt-venn svg { width: 100%; max-width: 380px; height: auto; }
+        .vn-l { font-family: var(--ff-display); font-weight: 700; font-size: 13px; letter-spacing: .1em; fill: var(--navy-900); }
+        .vn-s { font-family: var(--ff-body); font-size: 11.5px; fill: var(--text-2); }
+        .vn-xs { font-size: 10.5px; }
+        .vn-c { font-family: var(--ff-display); font-weight: 700; font-size: 15px; letter-spacing: .08em; fill: var(--turquoise-ink); }
+        .mt-venn-f { font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); margin-top: 10px; }
+        @media (max-width: 900px) { .mt-grid { grid-template-columns: 1fr; gap: 30px; } .mt-falha { grid-template-columns: 1fr; gap: 6px; } }
+      `}</style>
+    </section>
+  );
+}
+
 function IndustriaPage() {
   useReveal();
   return (
@@ -856,12 +1283,18 @@ function IndustriaPage() {
           <a href="https://wa.me/5548984704389" className="btn btn-outline btn-lg">WhatsApp</a>
         </div>
       </PageHero>
+      <IndustriaDiagnostico/>
       <IndustriaEcosystem/>
       <IndustriaMap/>
+      <IndustriaConexao/>
       <IntegrationSection/>
       <IndustriaNetworkPanel/>
+      <IndustriaProspeccao/>
+      <IndustriaCamadaComercio/>
       <SalesSection audience="industria"/>
       <IndustriaBI/>
+      <IndustriaEixo/>
+      <IndustriaMetodo/>
       <IndustriaModular/>
       <CTASection/>
       <SiteFooter/>
