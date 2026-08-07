@@ -1118,6 +1118,10 @@ const DP_AREAS = [
   { key: 'financeiro', kind: 'bi', label: 'Financeiro', icon: 'dollar', l: 57, t: 39,
     items: ['Fluxo de caixa', 'Margem por SKU', 'DRE automatizado'],
     msg: 'Feche o mês em dias, não em semanas: caixa projetado e margem real por SKU direto do ERP.' },
+  // abre para cima: para baixo bateria no CRM e no Pós-Venda
+  { key: 'contabil', kind: 'bi', label: 'Contábil', icon: 'bars', l: 67, t: 42, up: true,
+    items: ['Balancete contábil', 'Balanço patrimonial', 'DRE contábil'],
+    msg: 'Contábil: balancete, balanço patrimonial e DRE contábil saindo do mesmo dado da operação, sem esperar o fechamento chegar de fora.' },
 
   // módulos transversais: no orçamento eles se repetem por suíte, aqui cada um
   // aparece uma vez só, ancorado no lugar do CD onde de fato atua
@@ -1142,7 +1146,7 @@ const DP_AREAS = [
     items: ['Produto, preço e estoque', 'Condição comercial', 'Pedido com autonomia', 'Promoções e campanhas'],
     msg: 'Portal de vendas B2B2C: seu cliente consulta produto, preço, estoque e condição comercial e fecha o pedido sozinho, 24 horas por dia.' },
   // abre para cima: para baixo esbarraria no Portal B2B2C, logo abaixo
-  { key: 'b2b', kind: 'sales', label: 'E-commerce B2B', icon: 'warehouse', l: 78, t: 44, up: true,
+  { key: 'b2b', kind: 'sales', label: 'E-commerce B2B', icon: 'warehouse', l: 80, t: 44, up: true,
     items: ['Loja personalizada', 'Carrinho e checkout', 'Compra sem intermediário', 'Promoções e campanhas'],
     msg: 'E-commerce B2B personalizado: loja com experiência moderna, carrinho e checkout, para o cliente comprar sem depender de ninguém.' },
   { key: 'b2c', kind: 'sales', label: 'E-commerce B2C', icon: 'pkg', l: 78, t: 79,
