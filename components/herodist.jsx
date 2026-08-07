@@ -1096,16 +1096,16 @@ function DistribuidorScene() {
    reajustar este array — nada mais depende delas. */
 const DP_AREAS = [
   // camada de BI: as suítes que leem a operação
-  { key: 'estrategica', kind: 'bi', label: 'Gestão Estratégica', icon: 'target', l: 24, t: 25,
+  { key: 'estrategica', kind: 'bi', label: 'Gestão Estratégica', icon: 'target', l: 24, t: 22,
     items: ['DRE ao vivo', 'KPIs por filial', 'Visão 360°'],
     msg: 'Assuma o controle: a operação inteira em uma tela e a decisão do dia já priorizada, sem pedir relatório a ninguém.' },
   { key: 'suprimentos', kind: 'bi', label: 'Suprimentos', icon: 'boxes', l: 42, t: 12,
     items: ['Previsão de ruptura', 'Curva ABC', 'Sugestão de compra'],
     msg: 'Acabe com a ruptura: a IA prevê a demanda por SKU e sugere a compra certa antes de a prateleira esvaziar.' },
-  { key: 'comercial', kind: 'bi', label: 'Comercial', icon: 'trending', l: 23, t: 46,
+  { key: 'comercial', kind: 'bi', label: 'Comercial', icon: 'trending', l: 19, t: 50,
     items: ['Metas por vendedor', 'Leads inteligentes', 'Reativação de clientes'],
     msg: 'Venda mais com a mesma equipe: o sistema aponta quem reativar, o que ofertar e onde a meta está em risco.' },
-  { key: 'financeiro', kind: 'bi', label: 'Financeiro', icon: 'dollar', l: 57, t: 43,
+  { key: 'financeiro', kind: 'bi', label: 'Financeiro', icon: 'dollar', l: 57, t: 39,
     items: ['Fluxo de caixa', 'Margem por SKU', 'DRE automatizado'],
     msg: 'Feche o mês em dias, não em semanas: caixa projetado e margem real por SKU direto do ERP.' },
   // camada de vendas: os canais por onde o pedido entra
@@ -1115,13 +1115,14 @@ const DP_AREAS = [
   { key: 'crm', kind: 'sales', label: 'CRM', icon: 'calendar', l: 56.5, t: 59,
     items: ['Histórico do cliente', 'Follow-up e agenda', 'Processo estruturado'],
     msg: 'CRM, clientes e atividades: histórico completo, follow-up no tempo certo e processo comercial estruturado do primeiro contato até o pedido.' },
-  { key: 'portal', kind: 'sales', label: 'Portal B2B2C', icon: 'store', l: 77.5, t: 60,
+  { key: 'portal', kind: 'sales', label: 'Portal B2B2C', icon: 'store', l: 86, t: 55,
     items: ['Produto, preço e estoque', 'Condição comercial', 'Pedido com autonomia'],
     msg: 'Portal de vendas B2B2C: seu cliente consulta produto, preço, estoque e condição comercial e fecha o pedido sozinho, 24 horas por dia.' },
-  { key: 'b2b', kind: 'sales', label: 'E-commerce B2B', icon: 'warehouse', l: 78, t: 44,
+  // abre para cima: para baixo esbarraria no Portal B2B2C, logo abaixo
+  { key: 'b2b', kind: 'sales', label: 'E-commerce B2B', icon: 'warehouse', l: 78, t: 44, up: true,
     items: ['Loja personalizada', 'Carrinho e checkout', 'Compra sem intermediário'],
     msg: 'E-commerce B2B personalizado: loja com experiência moderna, carrinho e checkout, para o cliente comprar sem depender de ninguém.' },
-  { key: 'b2c', kind: 'sales', label: 'E-commerce B2C', icon: 'pkg', l: 78, t: 76,
+  { key: 'b2c', kind: 'sales', label: 'E-commerce B2C', icon: 'pkg', l: 78, t: 79,
     items: ['Loja para o consumidor', 'Mesmo estoque', 'Mesma regra de preço'],
     msg: 'E-commerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço do resto da operação.' },
 ];
@@ -1162,7 +1163,7 @@ function DistribuidorPhoto() {
             aria-label={'Ver ' + a.label}>
             <span className="dp-pin-ic"><Icon name={a.icon} size={12} stroke={2}/></span>
             <span className="dp-pin-lb">{a.label}</span>
-            <span className="dp-drop" aria-hidden="true">
+            <span className={'dp-drop' + (a.up ? ' dp-drop-up' : '')} aria-hidden="true">
               {a.items.map((it, i) => (
                 <span key={i} className="dp-drop-i" style={{ transitionDelay: (i * 70) + 'ms' }}>{it}</span>
               ))}
@@ -1272,6 +1273,8 @@ function DistribuidorPhoto() {
           opacity: 0; transform: translateY(-5px);
           transition: opacity .22s ease, transform .22s ease;
         }
+        .dp-drop-up { top: auto; bottom: calc(100% + 7px); flex-direction: column-reverse; }
+        .dp-drop-up .dp-drop-i { transform: translateY(5px); }
         .dp-pin:hover .dp-drop-i, .dp-pin:focus-visible .dp-drop-i { opacity: 1; transform: translateY(0); }
 
         .dp-readout {
