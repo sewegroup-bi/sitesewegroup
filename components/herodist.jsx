@@ -1102,6 +1102,16 @@ const DP_AREAS = [
   { key: 'suprimentos', kind: 'bi', label: 'Suprimentos', icon: 'boxes', l: 55, t: 20,
     items: ['Previsão de ruptura', 'Curva ABC', 'Sugestão de compra'],
     msg: 'Acabe com a ruptura: a IA prevê a demanda por SKU e sugere a compra certa antes de a prateleira esvaziar.' },
+  { key: 'saude', kind: 'bi', label: 'Saúde Estoque', icon: 'shield', l: 36, t: 11,
+    items: ['Cobertura em dias', 'Estoque parado', 'Giro por SKU'],
+    msg: 'Saúde do estoque: cobertura em dias, o que está parado, o que está girando e onde o seu capital ficou preso na prateleira.' },
+  { key: 'produtos', kind: 'bi', label: 'Gestão de Produtos', icon: 'pkg', l: 49, t: 15,
+    items: ['Cadastro padronizado', 'Curva e mix ideal', 'Margem por produto'],
+    msg: 'Gestão de produtos: cadastro padronizado, curva de cada item e margem real por produto, para o mix parar de ser decidido no achismo.' },
+  // abre para cima: a estrada acima do caminhão é a única área livre ali
+  { key: 'reabastece', kind: 'bi', label: 'Reabastecimento', icon: 'truck', l: 73, t: 20, up: true,
+    items: ['Ponto de pedido por SKU', 'Sugestão automática', 'Prazo do fornecedor'],
+    msg: 'Reabastecimento: ponto de pedido calculado por SKU, sugestão de compra automática e o prazo real de cada fornecedor entrando na conta.' },
   { key: 'comercial', kind: 'bi', label: 'Comercial', icon: 'trending', l: 19, t: 50,
     items: ['Metas por vendedor', 'Leads inteligentes', 'Reativação de clientes'],
     msg: 'Venda mais com a mesma equipe: o sistema aponta quem reativar, o que ofertar e onde a meta está em risco.' },
@@ -1138,6 +1148,9 @@ const DP_AREAS = [
   { key: 'b2c', kind: 'sales', label: 'E-commerce B2C', icon: 'pkg', l: 78, t: 79,
     items: ['Loja para o consumidor', 'Mesmo estoque', 'Mesma regra de preço', 'Promoções e campanhas'],
     msg: 'E-commerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço do resto da operação.' },
+  { key: 'posvenda', kind: 'sales', label: 'Pós-Venda', icon: 'chat', l: 70, t: 64, up: true,
+    items: ['Devolução e troca', 'Chamados de assistência', 'Recompra e reativação'],
+    msg: 'Pós-venda: devolução, troca e chamado de assistência com histórico no mesmo lugar, e o gatilho de recompra saindo do próprio comportamento do cliente.' },
 ];
 
 function DistribuidorPhoto() {
@@ -1166,12 +1179,12 @@ function DistribuidorPhoto() {
         </picture>
         <span className="dp-veil" aria-hidden/>
         <p className="dp-kicker">Especialistas em Soluções para Distribuidores e Atacadistas.</p>
-        {DP_AREAS.map(a => (
+        {DP_AREAS.map((a, i) => (
           <button key={a.key} type="button" onClick={() => go(a)}
             onMouseEnter={() => setHover(a.key)} onMouseLeave={() => setHover(null)}
             onFocus={() => setHover(a.key)} onBlur={() => setHover(null)}
             className={'dp-pin dp-pin-' + a.kind + (hover === a.key ? ' is-on' : '')}
-            style={{ left: a.l + '%', top: a.t + '%' }}
+            style={{ left: a.l + '%', top: a.t + '%', '--pd': (i * 0.24).toFixed(2) + 's' }}
             aria-label={'Ver ' + a.label}>
             <span className="dp-pin-ic"><Icon name={a.icon} size={12} stroke={2}/></span>
             <span className="dp-pin-lb">{a.label}</span>
@@ -1268,6 +1281,18 @@ function DistribuidorPhoto() {
           transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
         }
         .dp-pin:hover, .dp-pin:focus-visible { transform: translate(-50%, calc(-50% - 3px)); background: #fff; z-index: 6; }
+        /* pulso fraco, escalonado por balão para não piscarem todos juntos.
+           Para no hover, para não competir com o estado ativo. */
+        .dp-pin::after {
+          content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+          animation: dpPulse 3.4s ease-out infinite; animation-delay: var(--pd, 0s);
+        }
+        .dp-pin:hover::after, .dp-pin:focus-visible::after, .dp-pin.is-on::after { animation: none; }
+        @keyframes dpPulse {
+          0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.55); }
+          60%  { box-shadow: 0 0 0 9px rgba(255,255,255,0); }
+          100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+        }
         .dp-pin-ic { display: inline-flex; flex-shrink: 0; }
         .dp-pin-bi .dp-pin-ic { color: var(--turquoise-ink); }
         .dp-pin-bi.is-on { border-color: rgba(63,201,203,0.7); box-shadow: 0 0 0 5px rgba(117,227,228,0.28), 0 12px 26px rgba(12,20,36,0.3); }
@@ -1341,7 +1366,7 @@ function DistribuidorPhoto() {
             color: var(--navy-700); text-shadow: none; font-size: 15px; }
         }
         @media (max-width: 520px) { .dp-list { grid-template-columns: 1fr; } }
-        @media (prefers-reduced-motion: reduce) { .dp-pin, .dp-drop-i { transition: none; } }
+        @media (prefers-reduced-motion: reduce) { .dp-pin, .dp-drop-i { transition: none; } .dp-pin::after { animation: none; } }
       `}</style>
     </div>
   );
