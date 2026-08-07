@@ -799,7 +799,7 @@ function DistribuidorScene() {
         className="dist-pill dist-pill-sales" style={{ left: salesLeader.l + '%', top: salesLeader.t + '%' }}
         aria-label="Ver o ecossistema de vendas">
         <span className="dist-pill-ic"><Icon name="store" size={13} stroke={2}></Icon></span>
-        <span className="dist-pill-lb">Ecossistema de vendas</span>
+        <span className="dist-pill-lb">Sewe Sales</span>
         <span className="dist-pill-plus"><Icon name="plus" size={14} stroke={2.2}></Icon></span>
         <span className="dist-pill-drop dist-drop-up" aria-hidden="true">
           {salesLeader.items.map((it, i) => (
@@ -1096,7 +1096,7 @@ function DistribuidorScene() {
    reajustar este array — nada mais depende delas. */
 const DP_AREAS = [
   // camada de BI: as suítes que leem a operação
-  { key: 'estrategica', kind: 'bi', label: 'Gestão Estratégica', icon: 'target', l: 24, t: 22,
+  { key: 'estrategica', kind: 'bi', label: 'Gestão Estratégica', icon: 'target', l: 24, t: 22, up: true,
     items: ['DRE ao vivo', 'KPIs por filial', 'Visão 360°'],
     msg: 'Assuma o controle: a operação inteira em uma tela e a decisão do dia já priorizada, sem pedir relatório a ninguém.' },
   { key: 'suprimentos', kind: 'bi', label: 'Suprimentos', icon: 'boxes', l: 55, t: 20,
@@ -1108,26 +1108,37 @@ const DP_AREAS = [
   { key: 'financeiro', kind: 'bi', label: 'Financeiro', icon: 'dollar', l: 57, t: 39,
     items: ['Fluxo de caixa', 'Margem por SKU', 'DRE automatizado'],
     msg: 'Feche o mês em dias, não em semanas: caixa projetado e margem real por SKU direto do ERP.' },
+
+  // módulos transversais: no orçamento eles se repetem por suíte, aqui cada um
+  // aparece uma vez só, ancorado no lugar do CD onde de fato atua
+  { key: 'erp', kind: 'mod', label: 'Integração ERP', icon: 'link', l: 10, t: 33,
+    items: ['Conecta a qualquer ERP', 'Leitura direta na origem', 'Devolve pedido ao sistema'],
+    msg: 'Integração ERP: ligamos a plataforma ao sistema que você já usa, lemos o dado direto na origem e devolvemos pedido e status para dentro do ERP, sem ninguém redigitar nada.' },
+  { key: 'incentivos', kind: 'mod', label: 'Incentivos Comerciais', icon: 'trophy', l: 43, t: 40,
+    items: ['Metas por equipe e vendedor', 'Missões e campanhas internas', 'Premiação apurada no dado'],
+    msg: 'Incentivos comerciais: metas, missões e premiações para direcionar vendedores, representantes e equipes, com a apuração saindo da venda real e não de planilha paralela.' },
+  { key: 'alcada', kind: 'mod', label: 'Alçada de aprovações', icon: 'shield', l: 38, t: 66, up: true,
+    items: ['Regra por cargo e limite', 'Encaminhamento automático', 'Justificativa e rastro'],
+    msg: 'Alçada de aprovações: a exceção comercial sobe sozinha para quem pode decidir, com justificativa registrada e rastro de quem aprovou o quê.' },
+
   // camada de vendas: os canais por onde o pedido entra
   { key: 'vendedor', kind: 'sales', label: 'Força de Vendas', icon: 'users', l: 16, t: 75,
-    items: ['Carteira do vendedor', 'Metas e atividades', 'Pedido digitado em campo'],
+    items: ['Carteira do vendedor', 'Metas e atividades', 'Pedido digitado em campo', 'Promoções e campanhas'],
     msg: 'Ambiente do vendedor: carteira, metas, atividades e pedido digitado na rua, já dentro da política comercial da empresa.' },
   { key: 'crm', kind: 'sales', label: 'CRM', icon: 'calendar', l: 56.5, t: 59,
-    items: ['Histórico do cliente', 'Follow-up e agenda', 'Processo estruturado'],
-    msg: 'CRM, clientes e atividades: histórico completo, follow-up no tempo certo e processo comercial estruturado do primeiro contato até o pedido.' },
+    items: ['Histórico do cliente', 'Follow-up e agenda', 'Carteira e segmentação', 'WorkFlow de processos', 'Propostas comerciais'],
+    msg: 'CRM, clientes e atividades: histórico completo, follow-up no tempo certo, processo estruturado em workflow e a proposta acompanhada até virar pedido.' },
   { key: 'portal', kind: 'sales', label: 'Portal B2B2C', icon: 'store', l: 86, t: 55,
-    items: ['Produto, preço e estoque', 'Condição comercial', 'Pedido com autonomia'],
+    items: ['Produto, preço e estoque', 'Condição comercial', 'Pedido com autonomia', 'Promoções e campanhas'],
     msg: 'Portal de vendas B2B2C: seu cliente consulta produto, preço, estoque e condição comercial e fecha o pedido sozinho, 24 horas por dia.' },
   // abre para cima: para baixo esbarraria no Portal B2B2C, logo abaixo
   { key: 'b2b', kind: 'sales', label: 'E-commerce B2B', icon: 'warehouse', l: 78, t: 44, up: true,
-    items: ['Loja personalizada', 'Carrinho e checkout', 'Compra sem intermediário'],
+    items: ['Loja personalizada', 'Carrinho e checkout', 'Compra sem intermediário', 'Promoções e campanhas'],
     msg: 'E-commerce B2B personalizado: loja com experiência moderna, carrinho e checkout, para o cliente comprar sem depender de ninguém.' },
   { key: 'b2c', kind: 'sales', label: 'E-commerce B2C', icon: 'pkg', l: 78, t: 79,
-    items: ['Loja para o consumidor', 'Mesmo estoque', 'Mesma regra de preço'],
+    items: ['Loja para o consumidor', 'Mesmo estoque', 'Mesma regra de preço', 'Promoções e campanhas'],
     msg: 'E-commerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço do resto da operação.' },
 ];
-
-const DP_MODULOS = ['Integração ERP', 'Promoções', 'Alçada de aprovações', 'Incentivos comerciais', 'WorkFlow', 'Propostas comerciais'];
 
 function DistribuidorPhoto() {
   const [hover, setHover] = React.useState(null);
@@ -1199,14 +1210,6 @@ function DistribuidorPhoto() {
         </p>
       </div>
 
-      {/* a camada que não é um lugar: vale para todos os canais, uma vez só */}
-      <div className="dp-shared">
-        <span className="dp-shared-k">Valem para todos os canais</span>
-        <span className="dp-shared-chips">
-          {DP_MODULOS.map(m => <span key={m} className="dp-mod">{m}</span>)}
-        </span>
-      </div>
-
       {/* mobile: sem balões sobre a foto, as áreas viram cartões */}
       <div className="dp-list">
         {DP_AREAS.map(a => (
@@ -1270,6 +1273,10 @@ function DistribuidorPhoto() {
         .dp-pin-bi.is-on { border-color: rgba(63,201,203,0.7); box-shadow: 0 0 0 5px rgba(117,227,228,0.28), 0 12px 26px rgba(12,20,36,0.3); }
         .dp-pin-sales .dp-pin-ic { color: #c9550a; }
         .dp-pin-sales.is-on { border-color: rgba(253,112,20,0.7); box-shadow: 0 0 0 5px rgba(253,112,20,0.24), 0 12px 26px rgba(12,20,36,0.3); }
+        /* módulos transversais: navy, para não se confundir nem com o BI
+           (turquesa) nem com os canais de venda (laranja) */
+        .dp-pin-mod .dp-pin-ic { color: var(--navy-700); }
+        .dp-pin-mod.is-on { border-color: rgba(45,67,108,0.7); box-shadow: 0 0 0 5px rgba(45,67,108,0.22), 0 12px 26px rgba(12,20,36,0.3); }
 
         .dp-drop {
           position: absolute; top: calc(100% + 7px); left: 50%; transform: translateX(-50%);
@@ -1303,16 +1310,13 @@ function DistribuidorPhoto() {
         }
         .dp-k-bi { color: var(--turquoise-ink); background: rgba(117,227,228,0.16); border-color: rgba(63,201,203,0.4); }
         .dp-k-sales { color: #c9550a; background: rgba(253,112,20,0.1); border-color: rgba(253,112,20,0.35); }
+        .dp-k-mod { color: var(--navy-700); background: rgba(45,67,108,0.09); border-color: rgba(45,67,108,0.3); }
         .dp-readout-t { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--text); }
-
-        .dp-shared { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 12px; padding: 0 4px; }
-        .dp-shared-k { font-family: var(--ff-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); }
-        .dp-shared-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-        .dp-mod { padding: 4px 11px; border-radius: 999px; background: rgba(253,112,20,0.07); border: 1px solid rgba(253,112,20,0.24); font-size: 11.5px; color: var(--text-2); }
 
         .dp-list { display: none; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
         .dp-card { text-align: left; padding: 12px 14px; border-radius: var(--r-md); background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--turquoise-2); cursor: pointer; }
         .dp-card-sales { border-left-color: #fd7014; }
+        .dp-card-mod { border-left-color: var(--navy-700); }
         .dp-card-h { display: flex; align-items: center; gap: 7px; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 13px; color: var(--navy-900); }
         .dp-card-i { display: block; font-size: 11px; color: var(--text-2); line-height: 1.45; margin-top: 5px; }
 

@@ -69,7 +69,7 @@ function IndustriaEcosystem() {
     },
     {
       key: 'sales',
-      label: 'Vendas',
+      label: 'Sales',
       icon: 'store',
       pillColor: BU_C.sales.color,
       tagline: 'A operação comercial da rede em um único fluxo.',
@@ -311,7 +311,7 @@ function SalesPortal() {
         <div className="sp-head">
           <div className="sp-head-l">
             <span className="sp-head-mark">S</span>
-            PORTAL DO VENDEDOR
+            SEWE SALES · PORTAL DO VENDEDOR
           </div>
           <span className="sp-live"><span className="sp-live-dot"/>AO VIVO</span>
         </div>
@@ -543,7 +543,7 @@ function IndustriaMap() {
   const fronts = [
     { c: BU_C.integration, icon: 'link',  step: '01', name: 'Enxergue a rede inteira', flow: 'SEWE Integration',
       d: 'O sellout, o estoque e a curva de cada distribuidor que vende os seus produtos, produto a produto, em um só painel.' },
-    { c: BU_C.sales, icon: 'store', step: '02', name: 'Venda mais no canal', flow: 'Ecossistema de Vendas',
+    { c: BU_C.sales, icon: 'store', step: '02', name: 'Venda mais no canal', flow: 'SEWE Sales',
       d: 'Portal de pedidos, promoções, CRM e carteira de clientes: a rede inteira vendendo no padrão da indústria.' },
     { c: BU_C.bi, icon: 'brain', step: '03', name: 'Decida com IA', flow: 'SEWE BI + IA',
       d: 'Onde falta produto, onde sobra estoque e onde há espaço para crescer, com a próxima ação pronta, sem garimpar gráfico.' },
@@ -1089,7 +1089,7 @@ function IndustriaCamadaComercio() {
     <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
       <div className="container">
         <div className="cc-quote reveal">
-          <div className="eyebrow">Ecossistema de vendas · camada de comércio digital</div>
+          <div className="eyebrow">SEWE Sales · camada de comércio digital</div>
           <blockquote>
             A indústria investe em produto, marca, campanhas, canais e geração de demanda.
             Mas no momento em que a revenda decide comprar, a experiência fica praticamente
