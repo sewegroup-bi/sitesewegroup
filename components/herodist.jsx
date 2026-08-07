@@ -1114,7 +1114,7 @@ const DP_AREAS = [
   { key: 'erp', kind: 'mod', label: 'Integração ERP', icon: 'link', l: 10, t: 33,
     items: ['Conecta a qualquer ERP', 'Leitura direta na origem', 'Devolve pedido ao sistema'],
     msg: 'Integração ERP: ligamos a plataforma ao sistema que você já usa, lemos o dado direto na origem e devolvemos pedido e status para dentro do ERP, sem ninguém redigitar nada.' },
-  { key: 'incentivos', kind: 'mod', label: 'Incentivos Comerciais', icon: 'trophy', l: 43, t: 40,
+  { key: 'incentivos', kind: 'mod', label: 'Incentivos Comerciais', icon: 'trophy', l: 43, t: 37,
     items: ['Metas por equipe e vendedor', 'Missões e campanhas internas', 'Premiação apurada no dado'],
     msg: 'Incentivos comerciais: metas, missões e premiações para direcionar vendedores, representantes e equipes, com a apuração saindo da venda real e não de planilha paralela.' },
   { key: 'alcada', kind: 'mod', label: 'Alçada de aprovações', icon: 'shield', l: 38, t: 66, up: true,
