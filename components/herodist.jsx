@@ -1099,7 +1099,7 @@ const DP_AREAS = [
   { key: 'estrategica', kind: 'bi', label: 'Gestão Estratégica', icon: 'target', l: 24, t: 22,
     items: ['DRE ao vivo', 'KPIs por filial', 'Visão 360°'],
     msg: 'Assuma o controle: a operação inteira em uma tela e a decisão do dia já priorizada, sem pedir relatório a ninguém.' },
-  { key: 'suprimentos', kind: 'bi', label: 'Suprimentos', icon: 'boxes', l: 42, t: 12,
+  { key: 'suprimentos', kind: 'bi', label: 'Suprimentos', icon: 'boxes', l: 55, t: 20,
     items: ['Previsão de ruptura', 'Curva ABC', 'Sugestão de compra'],
     msg: 'Acabe com a ruptura: a IA prevê a demanda por SKU e sugere a compra certa antes de a prateleira esvaziar.' },
   { key: 'comercial', kind: 'bi', label: 'Comercial', icon: 'trending', l: 19, t: 50,
@@ -1154,6 +1154,7 @@ function DistribuidorPhoto() {
             alt="Vista aérea de um centro de distribuição: estoque, escritório comercial, sala financeira, recepção, showroom, expedição e frota de vendedores."/>
         </picture>
         <span className="dp-veil" aria-hidden/>
+        <p className="dp-kicker">Especialistas em Soluções para Distribuidores e Atacadistas.</p>
         {DP_AREAS.map(a => (
           <button key={a.key} type="button" onClick={() => go(a)}
             onMouseEnter={() => setHover(a.key)} onMouseLeave={() => setHover(null)}
@@ -1228,7 +1229,17 @@ function DistribuidorPhoto() {
         /* véu: dá contraste para os balões brancos e escurece o rodapé,
            onde ficam os botões */
         .dp-veil { position: absolute; inset: 0; pointer-events: none; border-radius: var(--r-xl);
-          background: linear-gradient(180deg, rgba(12,20,36,0.18) 0%, rgba(12,20,36,0.04) 34%, rgba(12,20,36,0.16) 68%, rgba(12,20,36,0.52) 100%); }
+          background:
+            /* escurece só o canto onde a frase cai, para ela não brigar
+               com o concreto claro do muro */
+            radial-gradient(115% 46% at 0% 0%, rgba(8,14,26,0.72) 0%, rgba(8,14,26,0.34) 40%, transparent 72%),
+            linear-gradient(180deg, rgba(12,20,36,0.28) 0%, rgba(12,20,36,0.08) 18%, rgba(12,20,36,0.04) 36%, rgba(12,20,36,0.16) 68%, rgba(12,20,36,0.52) 100%); }
+
+        /* a frase de posicionamento vive dentro da foto, no topo */
+        .dp-kicker { position: absolute; left: 3%; top: 4.5%; margin: 0; z-index: 4; max-width: 60%;
+          font-family: 'Chakra Petch', sans-serif; font-weight: 600; letter-spacing: 0.01em;
+          font-size: clamp(14px, 1.35vw, 19px); line-height: 1.3; color: #fff;
+          text-shadow: 0 2px 10px rgba(8,14,26,0.85), 0 1px 3px rgba(8,14,26,0.9); }
 
         .dp-cta { position: absolute; left: 50%; bottom: 5%; transform: translateX(-50%); z-index: 7;
           display: flex; flex-direction: column; align-items: center; gap: 10px; line-height: 1.4; }
@@ -1320,6 +1331,10 @@ function DistribuidorPhoto() {
           .dp-pin, .dp-veil { display: none; }
           .dp-list { display: grid; }
           .dp-readout { display: none; }
+          /* a frase sai de dentro da foto e volta a ser texto, acima dela */
+          .dp-stage { display: flex; flex-direction: column; }
+          .dp-kicker { position: static; order: -1; max-width: none; margin: 0 0 14px;
+            color: var(--navy-700); text-shadow: none; font-size: 15px; }
         }
         @media (max-width: 520px) { .dp-list { grid-template-columns: 1fr; } }
         @media (prefers-reduced-motion: reduce) { .dp-pin, .dp-drop-i { transition: none; } }

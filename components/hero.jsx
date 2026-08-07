@@ -44,16 +44,9 @@ function Hero({ headlineVariant = 0 }) {
             <span style={{ color: 'var(--line)' }}>·</span>
             <span>99,8% uptime</span>
             <span style={{ color: 'var(--line)' }}>·</span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-              <img src="/assets/qlik-logo.png" alt="Qlik" style={{ height: 14, width: 'auto', display: 'block' }}/>
-              Parceiro Oficial Qlik
-            </span>
+            <span>Go-live em 30 dias</span>
           </div>
         </div>
-
-        <p style={{ fontFamily: 'var(--ff-display)', fontWeight: 600, color: 'var(--navy-700)', fontSize: 'clamp(15px, 1.6vw, 19px)', letterSpacing: '0.01em', margin: '0 0 14px' }}>
-          Especialistas em Soluções para Distribuidores e Atacadistas.
-        </p>
 
         {/* headline e lead lado a lado para o bloco de texto ocupar a mesma
             largura da foto abaixo, sem estourar a medida de leitura do lead */}
@@ -67,10 +60,24 @@ function Hero({ headlineVariant = 0 }) {
             }}>{H.c}</span>
           </h1>
 
-          <p className="hero-lead">
-            BI sob medida para distribuidores e atacadistas. Go-live em 30 dias.
-            IA invisível que limpa outliers, cruza dados e entrega <b style={{ color: 'var(--navy-900)' }}>decisões prontas</b>, não mais gráficos para interpretar.
-          </p>
+          {/* coluna direita: lead no topo e credenciais embaixo, para o bloco
+              encostar na base da headline em vez de deixar o canto vazio */}
+          <div className="hero-side">
+            <p className="hero-lead">
+              BI sob medida para distribuidores e atacadistas. Go-live em 30 dias.
+              IA invisível que limpa outliers, cruza dados e entrega <b style={{ color: 'var(--navy-900)' }}>decisões prontas</b>, não mais gráficos para interpretar.
+            </p>
+            <div className="hero-cred">
+              <span className="hero-cred-row">
+                <img src="/assets/qlik-logo.png" alt="Qlik" style={{ height: 15, width: 'auto', display: 'block' }}/>
+                Parceiro oficial Qlik no Brasil
+              </span>
+              <span className="hero-cred-row">
+                <span className="hero-cred-ic"><Icon name="trophy" size={14} stroke={1.9}/></span>
+                Leader no Gartner<sup>®</sup> Magic Quadrant<sup>™</sup> de Analytics &amp; BI por 16 anos consecutivos
+              </span>
+            </div>
+          </div>
         </div>
         </div>
 
@@ -82,13 +89,20 @@ function Hero({ headlineVariant = 0 }) {
 
         <style>{`
           .hero-split { display: grid; gap: 32px; }
-          .hero-line { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: end; }
-          .hero-lead { margin: 0 0 6px; font-size: 17px; color: var(--text-2); line-height: 1.6; }
+          .hero-line { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: stretch; }
+          .hero-side { display: flex; flex-direction: column; justify-content: space-between; gap: 20px; padding-top: 6px; }
+          .hero-lead { margin: 0; font-size: 17px; color: var(--text-2); line-height: 1.6; }
+          .hero-cred { display: grid; gap: 9px; padding-top: 16px; border-top: 1px solid var(--line); }
+          .hero-cred-row { display: flex; align-items: flex-start; gap: 9px; font-size: 12.5px; color: var(--text-2); line-height: 1.45; }
+          .hero-cred-row img { flex-shrink: 0; margin-top: 1px; }
+          .hero-cred-ic { color: var(--turquoise-ink); display: inline-flex; flex-shrink: 0; margin-top: 1px; }
+          .hero-cred sup { font-size: 0.7em; }
           @media (max-width: 1080px) {
-            .hero-line { grid-template-columns: 1fr; gap: 20px; align-items: start; }
+            .hero-line { grid-template-columns: 1fr; gap: 22px; }
             .hero-copy { text-align: center; }
             .hero-copy .reveal, .hero-copy > div { justify-content: center; }
-            .hero-lead { max-width: 640px; margin: 0 auto; }
+            .hero-side { max-width: 640px; margin: 0 auto; gap: 18px; }
+            .hero-cred-row { justify-content: center; text-align: left; }
           }
         `}</style>
 
