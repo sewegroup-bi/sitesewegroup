@@ -55,31 +55,22 @@ function Hero({ headlineVariant = 0 }) {
           Especialistas em Soluções para Distribuidores e Atacadistas.
         </p>
 
-        <h1 className="display" style={{ margin: 0, fontSize: 'clamp(36px, 4.2vw, 58px)' }}>
-          <span style={{ color: 'var(--navy-900)' }}>{H.a}</span>{' '}
-          <span style={{ color: 'var(--navy-900)' }}>{H.b}</span><br/>
-          <span style={{
-            background: 'linear-gradient(120deg, var(--navy-900) 0%, var(--navy-700) 40%, var(--turquoise-ink) 100%)',
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-          }}>{H.c}</span>
-        </h1>
+        {/* headline e lead lado a lado para o bloco de texto ocupar a mesma
+            largura da foto abaixo, sem estourar a medida de leitura do lead */}
+        <div className="hero-line">
+          <h1 className="display" style={{ margin: 0, fontSize: 'clamp(36px, 4.2vw, 58px)' }}>
+            <span style={{ color: 'var(--navy-900)' }}>{H.a}</span>{' '}
+            <span style={{ color: 'var(--navy-900)' }}>{H.b}</span><br/>
+            <span style={{
+              background: 'linear-gradient(120deg, var(--navy-900) 0%, var(--navy-700) 40%, var(--turquoise-ink) 100%)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+            }}>{H.c}</span>
+          </h1>
 
-        <p style={{ maxWidth: 560, margin: '22px 0 0', fontSize: 17, color: 'var(--text-2)', lineHeight: 1.55 }}>
-          BI sob medida para distribuidores e atacadistas. Go-live em 30 dias.
-          IA invisível que limpa outliers, cruza dados e entrega <b style={{ color: 'var(--navy-900)' }}>decisões prontas</b>, não mais gráficos para interpretar.
-        </p>
-
-        <div style={{ display: 'flex', gap: 12, marginTop: 30, flexWrap: 'wrap' }}>
-          <a href="#diagnostico" className="btn btn-primary btn-lg">
-            Agendar Diagnóstico
-            <Icon name="arrow" size={16} className="chev"/>
-          </a>
-          <a href="#suites" className="btn btn-outline btn-lg">
-            Ver Suítes em ação
-          </a>
-        </div>
-        <div style={{ marginTop: 14, fontSize: 12, color: 'var(--text-3)' }}>
-          Resposta em até 4h úteis · Diagnóstico gratuito
+          <p className="hero-lead">
+            BI sob medida para distribuidores e atacadistas. Go-live em 30 dias.
+            IA invisível que limpa outliers, cruza dados e entrega <b style={{ color: 'var(--navy-900)' }}>decisões prontas</b>, não mais gráficos para interpretar.
+          </p>
         </div>
         </div>
 
@@ -90,13 +81,14 @@ function Hero({ headlineVariant = 0 }) {
         </div>
 
         <style>{`
-          .hero-split { display: grid; gap: 36px; }
-          .hero-copy { max-width: 780px; }
-          .hero-copy p { max-width: 680px; }
+          .hero-split { display: grid; gap: 32px; }
+          .hero-line { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: end; }
+          .hero-lead { margin: 0 0 6px; font-size: 17px; color: var(--text-2); line-height: 1.6; }
           @media (max-width: 1080px) {
-            .hero-copy { text-align: center; margin: 0 auto; }
+            .hero-line { grid-template-columns: 1fr; gap: 20px; align-items: start; }
+            .hero-copy { text-align: center; }
             .hero-copy .reveal, .hero-copy > div { justify-content: center; }
-            .hero-copy p { margin-left: auto !important; margin-right: auto !important; }
+            .hero-lead { max-width: 640px; margin: 0 auto; }
           }
         `}</style>
 

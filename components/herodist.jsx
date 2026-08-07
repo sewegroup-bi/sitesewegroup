@@ -1169,6 +1169,22 @@ function DistribuidorPhoto() {
             </span>
           </button>
         ))}
+
+        {/* CTAs sobre o estacionamento, na faixa vazia do rodapé da foto.
+            Abaixo de 860px saem da imagem e viram bloco normal. */}
+        <div className="dp-cta">
+          <span className="dp-cta-glow" aria-hidden/>
+          <span className="dp-cta-btns">
+            <a href="#diagnostico" className="btn btn-primary btn-lg">
+              Agendar Diagnóstico
+              <Icon name="arrow" size={16} className="chev"/>
+            </a>
+            <a href="#suites" className="btn btn-outline-inverse btn-lg">
+              Ver Suítes em ação
+            </a>
+          </span>
+          <span className="dp-cta-note">Resposta em até 4h úteis · Diagnóstico gratuito</span>
+        </div>
       </div>
 
       {/* leitura longa: fora do CD, como pediu a referência */}
@@ -1204,11 +1220,24 @@ function DistribuidorPhoto() {
 
       <style>{`
         .dp-wrap { width: 100%; }
-        .dp-stage { position: relative; border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-lg); line-height: 0; }
-        .dp-img { display: block; width: 100%; height: auto; }
-        /* véu leve: os balões brancos precisam de contraste sobre a foto */
-        .dp-veil { position: absolute; inset: 0; pointer-events: none;
-          background: linear-gradient(180deg, rgba(12,20,36,0.18) 0%, rgba(12,20,36,0.05) 38%, rgba(12,20,36,0.22) 100%); }
+        /* sem overflow:hidden aqui: no mobile o bloco de CTA sai da foto e
+           precisa renderizar abaixo dela. O raio vai na própria imagem. */
+        .dp-stage { position: relative; line-height: 0; }
+        .dp-img { display: block; width: 100%; height: auto; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); }
+        /* véu: dá contraste para os balões brancos e escurece o rodapé,
+           onde ficam os botões */
+        .dp-veil { position: absolute; inset: 0; pointer-events: none; border-radius: var(--r-xl);
+          background: linear-gradient(180deg, rgba(12,20,36,0.18) 0%, rgba(12,20,36,0.04) 34%, rgba(12,20,36,0.16) 68%, rgba(12,20,36,0.52) 100%); }
+
+        .dp-cta { position: absolute; left: 50%; bottom: 5%; transform: translateX(-50%); z-index: 7;
+          display: flex; flex-direction: column; align-items: center; gap: 10px; line-height: 1.4; }
+        .dp-cta-glow { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+          width: 150%; height: 260%; pointer-events: none; z-index: -1;
+          background: radial-gradient(closest-side, rgba(8,14,26,0.62), rgba(8,14,26,0.28) 58%, transparent 100%); }
+        .dp-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+        .dp-cta .btn-primary { box-shadow: 0 10px 28px rgba(8,14,26,0.5); }
+        .dp-cta .btn-outline-inverse { box-shadow: 0 10px 28px rgba(8,14,26,0.4); }
+        .dp-cta-note { font-size: 12.5px; color: rgba(255,255,255,0.9); text-shadow: 0 1px 6px rgba(8,14,26,0.8); white-space: nowrap; }
 
         .dp-pin {
           position: absolute; transform: translate(-50%, -50%);
@@ -1274,6 +1303,15 @@ function DistribuidorPhoto() {
         .dp-card-i { display: block; font-size: 11px; color: var(--text-2); line-height: 1.45; margin-top: 5px; }
 
         @media (max-width: 1100px) { .dp-pin { font-size: 10.5px; padding: 5px 10px; gap: 5px; } .dp-drop-i { font-size: 9px; padding: 2px 8px; } }
+        /* abaixo de 1100px os botões ocupam metade da largura da foto e
+           encostam no dropdown do canto inferior direito: saem da imagem */
+        @media (max-width: 1100px) {
+          .dp-cta { position: static; transform: none; margin-top: 16px; }
+          .dp-cta-glow { display: none; }
+          .dp-cta .btn-primary, .dp-cta .btn-outline-inverse { box-shadow: var(--shadow-sm); }
+          .dp-cta .btn-outline-inverse { border-color: var(--line); }
+          .dp-cta-note { color: var(--text-3); text-shadow: none; white-space: normal; text-align: center; }
+        }
         @media (max-width: 860px) {
           /* nove balões sobre uma foto de 340px viram sopa: viram cartões */
           .dp-pin, .dp-veil { display: none; }
