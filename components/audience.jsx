@@ -1,4 +1,4 @@
-// Audience pages: Indústria + Soluções Sob Medida. Each mounts into its own root.
+// Audience pages: Indústria + Plataforma de Dados & IA. Each mounts into its own root.
 // Reuses shared sections (PageHero, IntegrationSection, DifferentiatorsSection,
 // CTASection, SiteHeader/Footer) plus a few tailored blocks. Phase-1 scope:
 // coherent, navigable pages; deeper build lands in phase 2.
@@ -869,7 +869,563 @@ function IndustriaPage() {
   );
 }
 
-/* ── SOLUÇÕES SOB MEDIDA ─────────────────────────────────── */
+/* ── PLATAFORMA DE DADOS & IA ────────────────────────────── */
+
+/* O problema real: 95% das iniciativas de IA travam antes de virar valor, e o
+   gargalo não é modelo — é dado. Fonte: pesquisa Qlik sobre barreiras de adoção. */
+function SolucoesBarreiras() {
+  const barreiras = [
+    { pct: '56%', t: 'Qualidade, disponibilidade e acesso ao dado', d: 'O dado existe, mas está espalhado, sujo ou trancado em um sistema que ninguém consulta.' },
+    { pct: '49%', t: 'Integração com os sistemas existentes', d: 'ERP, CRM, planilha e legado que nunca conversaram entre si — e ninguém quer trocar tudo para começar.' },
+    { pct: '47%', t: 'Lacunas de governança, segurança e compliance', d: 'Sem trilha de acesso e sem controle por linha, o dado sensível vira risco antes de virar decisão.' },
+  ];
+  const armadilhas = [
+    { icon: 'dollar', t: 'Custo de processamento nas alturas', d: 'Cada pergunta do usuário vira uma query cobrada no data warehouse.' },
+    { icon: 'lock',   t: 'Opacidade financeira e lock-in', d: 'Você descobre o custo real depois da fatura, preso a um sistema inflexível.' },
+    { icon: 'link',   t: 'Complexidade de integração', d: 'Mais uma ferramenta para conectar, monitorar e manter de pé.' },
+    { icon: 'boxes',  t: 'Solução apenas parcial', d: 'Resolve um pedaço do problema e deixa o resto para você resolver.' },
+  ];
+  return (
+    <section className="section sb-sec">
+      <div className="container">
+        <div className="sb-head reveal">
+          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>O problema real</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)', color: '#fff' }}>
+            A tecnologia não é a <span style={{ color: 'var(--turquoise-2)' }}>maior barreira</span>.
+          </h2>
+          <p className="sb-lead">
+            A maior parte das iniciativas de dados e IA não trava no modelo nem na ferramenta.
+            Trava na base: dado que ninguém confia, sistema que não conversa e governança que não existe.
+          </p>
+        </div>
+
+        <div className="sb-grid">
+          {barreiras.map((b, i) => (
+            <div key={i} className="sb-card reveal">
+              <div className="sb-pct">{b.pct}</div>
+              <div className="sb-bar"><span style={{ width: b.pct }}/></div>
+              <div className="sb-t">{b.t}</div>
+              <p className="sb-d">{b.d}</p>
+            </div>
+          ))}
+        </div>
+        <div className="sb-src">Principais barreiras de adoção apontadas por empresas · pesquisa Qlik</div>
+
+        <div className="sb-trap-head reveal">
+          <span className="sb-trap-badge"><Icon name="alert" size={15} stroke={2}/></span>
+          <div>
+            <div className="sb-trap-t">E a “solução” costuma trazer o problema seguinte</div>
+            <div className="sb-trap-d">O que mais vemos em empresa que já tentou resolver com ferramenta de prateleira.</div>
+          </div>
+        </div>
+        <div className="sb-traps">
+          {armadilhas.map((a, i) => (
+            <div key={i} className="sb-trap reveal">
+              <span className="sb-trap-i"><Icon name={a.icon} size={17} stroke={1.9}/></span>
+              <div>
+                <div className="sb-trap-ct">{a.t}</div>
+                <div className="sb-trap-cd">{a.d}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <style>{`
+        .sb-sec { background: linear-gradient(155deg, #15243d 0%, #0d1a2e 60%, #0b1626 100%); position: relative; overflow: hidden; }
+        .sb-sec::after { content: ''; position: absolute; top: -160px; right: -120px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(117,227,228,0.16), transparent 68%); pointer-events: none; }
+        .sb-head { max-width: 760px; margin: 0 auto 40px; text-align: center; position: relative; z-index: 1; }
+        .sb-lead { color: rgba(255,255,255,0.72); font-size: 17px; margin-top: 14px; line-height: 1.6; }
+        .sb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; position: relative; z-index: 1; }
+        .sb-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r-lg); padding: 26px 24px; backdrop-filter: blur(4px); }
+        .sb-pct { font-family: var(--ff-display); font-weight: 700; font-size: clamp(38px, 4.6vw, 52px); line-height: 1; color: var(--turquoise); }
+        .sb-bar { height: 5px; border-radius: 99px; background: rgba(255,255,255,0.1); margin: 14px 0 16px; overflow: hidden; }
+        .sb-bar span { display: block; height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--turquoise-2), var(--turquoise)); }
+        .sb-t { font-family: var(--ff-display); font-weight: 700; font-size: 17px; color: #fff; line-height: 1.3; }
+        .sb-d { font-size: 13.5px; color: rgba(255,255,255,0.62); line-height: 1.6; margin-top: 9px; }
+        .sb-src { font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: .06em; color: rgba(255,255,255,0.38); text-align: center; margin-top: 16px; }
+        .sb-trap-head { display: flex; align-items: center; gap: 14px; margin: 46px 0 18px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 1; }
+        .sb-trap-badge { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; display: grid; place-items: center; background: rgba(240,180,41,0.16); color: #f0b429; }
+        .sb-trap-t { font-family: var(--ff-display); font-weight: 700; font-size: 18px; color: #fff; }
+        .sb-trap-d { font-size: 13.5px; color: rgba(255,255,255,0.55); margin-top: 3px; }
+        .sb-traps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; position: relative; z-index: 1; }
+        .sb-trap { display: flex; gap: 12px; padding: 18px; background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.14); border-radius: var(--r-md); }
+        .sb-trap-i { width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0; display: grid; place-items: center; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.7); }
+        .sb-trap-ct { font-family: var(--ff-display); font-weight: 600; font-size: 14px; color: #fff; line-height: 1.35; }
+        .sb-trap-cd { font-size: 12.5px; color: rgba(255,255,255,0.55); line-height: 1.5; margin-top: 5px; }
+        @media (max-width: 900px) { .sb-grid { grid-template-columns: 1fr; } .sb-traps { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 560px) { .sb-traps { grid-template-columns: 1fr; } }
+      `}</style>
+    </section>
+  );
+}
+
+/* As três camadas da plataforma. É o núcleo do argumento: confiança no dado,
+   contexto no cálculo, adaptabilidade na ponta. Tabs para não virar parede de texto. */
+function SolucoesCamadas() {
+  const [active, setActive] = React.useState(1);
+  const camadas = [
+    {
+      key: 'trust', badge: 'CONFIANÇA', c: '#2d436c', soft: 'rgba(45,67,108,0.09)',
+      icon: 'shield', label: 'Dado confiável', tagline: 'Trusted Data Products',
+      title: 'Dado no tempo certo, correto e governado.',
+      body: 'Antes de qualquer painel ou agente, o dado precisa ser confiável. Essa camada cuida da entrada: captura, movimenta, trata e certifica a origem, com a engenharia SEWE definindo as regras do seu negócio.',
+      bullets: [
+        'Change Data Capture e replicação em tempo real, sem travar o sistema de origem',
+        'Datasets curados, prontos para uso, governados e ricos em contexto',
+        'Qlik Trust Score: validade e completude medidas e monitoradas continuamente',
+        'Catálogo e linhagem: cada número tem origem rastreável até a fonte',
+      ],
+      metric: '93,4%', metricLabel: 'Trust Score do dataset · validade e completude aferidas',
+    },
+    {
+      key: 'engine', badge: 'CONTEXTO', c: '#0e7a7c', soft: 'rgba(117,227,228,0.2)',
+      icon: 'cpu', label: 'Motor analítico', tagline: 'Analytics Engine',
+      title: 'Inteligência guiada por IA, rica em contexto.',
+      body: 'É o coração da Qlik e o que nenhuma ferramenta SQL entrega: um motor associativo in-memory que guarda todas as relações do seu dado e responde qualquer pergunta na hora, inclusive a pergunta que você ainda não fez.',
+      bullets: [
+        'Revela padrões, associações e pontos cegos que as outras ferramentas escondem',
+        'Mostra o que É e o que NÃO É: o dado excluído é tão revelador quanto o selecionado',
+        'Cálculo de alta velocidade, preciso e eficiente em custo, mesmo em volume massivo',
+        'Reconhecido como diferencial da Qlik por Gartner e IDC',
+      ],
+      metric: '< 2,2s', metricLabel: 'para devolver qualquer mudança de contexto ou filtro',
+    },
+    {
+      key: 'agentic', badge: 'ADAPTABILIDADE', c: '#00a335', soft: 'rgba(0,163,53,0.09)',
+      icon: 'brain', label: 'Experiência agêntica', tagline: 'Agentic Experience',
+      title: 'Seus dados, agentes e plataformas falando a mesma língua.',
+      body: 'A tecnologia muda mais rápido do que o ciclo de um projeto. Essa camada existe para você acompanhar sem trocar de plataforma: o dado governado fica disponível para o assistente, o agente e o sistema que vierem depois.',
+      bullets: [
+        'Qualquer dado, em qualquer lugar: nuvem híbrida e ambientes multiplataforma',
+        'Conexão com os seus agentes por padrões de interoperabilidade como MCP',
+        'Agentes que consultam o dado, geram o insight e executam a ação',
+        'IA preditiva e detecção de anomalias avisando antes de o problema aparecer',
+      ],
+      metric: 'MCP', metricLabel: 'servidor nativo para conectar agentes ao seu dado governado',
+    },
+  ];
+  const S = camadas[active];
+  return (
+    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 36px' }}>
+          <div className="eyebrow">Como a plataforma resolve</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
+            Três camadas que <span style={{ color: 'var(--navy)' }}>trabalham juntas</span>.
+          </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
+            Confiança no dado que entra, contexto no cálculo que roda, adaptabilidade na ponta que consome.
+            Tirar uma delas é o motivo pelo qual a maioria dos projetos de dados para no meio.
+          </p>
+        </div>
+
+        <div className="sc-tabs">
+          {camadas.map((c, i) => (
+            <button key={c.key} type="button" onClick={() => setActive(i)}
+              className={'sc-tab' + (active === i ? ' is-on' : '')} style={{ '--c': c.c, '--cs': c.soft }}>
+              <span className="sc-tab-i"><Icon name={c.icon} size={17} stroke={1.9}/></span>
+              <span>
+                <span className="sc-tab-badge">{c.badge}</span>
+                <span className="sc-tab-l">{c.label}</span>
+                <span className="sc-tab-tag">{c.tagline}</span>
+              </span>
+            </button>
+          ))}
+        </div>
+
+        <div className="sc-body" style={{ '--c': S.c, '--cs': S.soft }}>
+          <div>
+            <h3 className="sc-title">{S.title}</h3>
+            <p className="sc-lead">{S.body}</p>
+            <ul className="sc-list">
+              {S.bullets.map((b, i) => (
+                <li key={i}>
+                  <span className="sc-check"><Icon name="check" size={12} stroke={2.6}/></span>
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <aside className="sc-aside">
+            <div className="sc-aside-badge">{S.badge}</div>
+            <div className="sc-aside-metric">{S.metric}</div>
+            <div className="sc-aside-l">{S.metricLabel}</div>
+            <div className="sc-aside-foot">
+              <SMark size={16} color="var(--turquoise-2)"/>
+              A camada é da Qlik. A modelagem que faz ela responder ao seu negócio é da SEWE.
+            </div>
+          </aside>
+        </div>
+      </div>
+      <style>{`
+        .sc-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+        .sc-tab { display: flex; align-items: center; gap: 13px; text-align: left; padding: 16px 18px; cursor: pointer; background: #fff; border: 1px solid var(--line); border-radius: var(--r-md); transition: all .18s ease; }
+        .sc-tab:hover { border-color: var(--c); }
+        .sc-tab.is-on { border-color: var(--c); box-shadow: 0 0 0 1px var(--c), var(--shadow-sm); }
+        .sc-tab-i { width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0; display: grid; place-items: center; background: var(--cs); color: var(--c); }
+        .sc-tab.is-on .sc-tab-i { background: var(--c); color: #fff; }
+        .sc-tab-badge { display: block; font-family: var(--ff-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .12em; color: var(--c); }
+        .sc-tab-l { display: block; font-family: var(--ff-display); font-weight: 700; font-size: 16px; color: var(--navy-900); margin-top: 3px; }
+        .sc-tab-tag { display: block; font-size: 11.5px; color: var(--text-3); margin-top: 2px; }
+        .sc-body { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; align-items: stretch; background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--c); border-radius: var(--r-lg); padding: 30px; box-shadow: var(--shadow-sm); }
+        .sc-title { font-size: clamp(21px, 2.3vw, 28px); line-height: 1.2; color: var(--navy-900); }
+        .sc-lead { font-size: 15.5px; color: var(--text-2); line-height: 1.65; margin-top: 12px; }
+        .sc-list { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 11px; }
+        .sc-list li { display: flex; gap: 11px; align-items: flex-start; font-size: 14.5px; color: var(--text); line-height: 1.5; }
+        .sc-check { margin-top: 2px; width: 19px; height: 19px; border-radius: 6px; flex-shrink: 0; display: grid; place-items: center; background: var(--cs); color: var(--c); }
+        .sc-aside { background: linear-gradient(160deg, #15243d, #0d1a2e); border-radius: var(--r-lg); padding: 26px; display: flex; flex-direction: column; }
+        .sc-aside-badge { align-self: flex-start; font-family: var(--ff-mono); font-size: 10px; font-weight: 700; letter-spacing: .12em; color: var(--turquoise); background: rgba(117,227,228,0.12); border: 1px solid rgba(117,227,228,0.24); border-radius: 999px; padding: 4px 11px; }
+        .sc-aside-metric { font-family: var(--ff-display); font-weight: 700; font-size: clamp(34px, 4vw, 46px); color: #fff; line-height: 1; margin-top: 22px; }
+        .sc-aside-l { font-size: 13px; color: rgba(255,255,255,0.62); line-height: 1.55; margin-top: 10px; flex: 1; }
+        .sc-aside-foot { display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; color: rgba(255,255,255,0.72); line-height: 1.5; margin-top: 22px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+        @media (max-width: 900px) { .sc-tabs { grid-template-columns: 1fr; } .sc-body { grid-template-columns: 1fr; padding: 24px; } }
+      `}</style>
+    </section>
+  );
+}
+
+/* O portfólio completo, em matriz. Responde à pergunta "o que exatamente
+   vem junto?" sem obrigar o visitante a abrir o site da Qlik. */
+function SolucoesPortfolio() {
+  const linhas = [
+    {
+      camada: 'Experiência agêntica', eixo: 'IA', c: '#00a335', soft: 'rgba(0,163,53,0.09)', icon: 'brain',
+      itens: [
+        { t: 'Assistente de IA agêntica', d: 'Pergunte em linguagem natural e receba a resposta com o dado por trás.' },
+        { t: 'Agentes de IA', d: 'Agentes que consultam, cruzam e executam ação no seu fluxo.' },
+        { t: 'IA preditiva', d: 'Previsão de demanda, churn e giro no mesmo modelo de dado.' },
+        { t: 'Detecção de anomalias', d: 'O desvio te procura, você não precisa caçar gráfico.' },
+        { t: 'Automação de fluxos', d: 'Do alerta à ação no ERP, sem passo manual no meio.' },
+      ],
+    },
+    {
+      camada: 'Motor analítico', eixo: 'Analytics', c: '#0e7a7c', soft: 'rgba(117,227,228,0.2)', icon: 'chart',
+      itens: [
+        { t: 'Analytics agêntico', d: 'A análise conduzida por IA, com você no controle da pergunta.' },
+        { t: 'Visualizações e dashboards', d: 'Painéis prescritivos construídos do zero para o seu negócio.' },
+        { t: 'Relatórios gerenciados', d: 'Relatório assinado, no formato e no horário que você definir.' },
+        { t: 'Analytics embarcado', d: 'Painel dentro do seu portal ou sistema próprio, via API.' },
+        { t: 'Alertas e colaboração', d: 'Alerta por condição do indicador, direto no celular ou e-mail.' },
+      ],
+    },
+    {
+      camada: 'Dado confiável', eixo: 'Dados', c: '#2d436c', soft: 'rgba(45,67,108,0.09)', icon: 'boxes',
+      itens: [
+        { t: 'Change Data Capture', d: 'Só o que mudou, sem varrer a base inteira a cada carga.' },
+        { t: 'Movimentação em tempo real', d: 'Dado da origem ao destino em streaming contínuo.' },
+        { t: 'Transformação de dados', d: 'ETL e regras de negócio modeladas pela engenharia SEWE.' },
+        { t: 'Qualidade de dados', d: 'Validade e completude medidas antes de virar decisão.' },
+        { t: 'Catálogo e linhagem', d: 'De onde veio cada número, quem usa e o que quebra se mudar.' },
+      ],
+    },
+  ];
+  const stack = ['AWS', 'Azure', 'Google Cloud', 'Databricks', 'Snowflake', 'SAP', 'Apache Iceberg', 'OpenAI', 'Anthropic'];
+  return (
+    <section className="section" style={{ background: '#fff' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto 40px' }}>
+          <div className="eyebrow">O portfólio completo</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
+            Quinze entregas, <span style={{ color: 'var(--navy)' }}>uma só plataforma</span>.
+          </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
+            Do dado bruto no ERP ao agente que executa a ação. Você contrata o recorte que precisa hoje
+            e cresce dentro da mesma plataforma, sem migração no meio do caminho.
+          </p>
+        </div>
+
+        <div className="pf">
+          {linhas.map((l, i) => (
+            <div key={i} className="pf-row reveal" style={{ '--c': l.c, '--cs': l.soft }}>
+              <div className="pf-rail">
+                <span className="pf-rail-i"><Icon name={l.icon} size={19} stroke={1.9}/></span>
+                <div className="pf-rail-eixo">{l.eixo}</div>
+                <div className="pf-rail-camada">{l.camada}</div>
+              </div>
+              <div className="pf-items">
+                {l.itens.map((it, j) => (
+                  <div key={j} className="pf-item">
+                    <div className="pf-item-t">{it.t}</div>
+                    <div className="pf-item-d">{it.d}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+          <div className="pf-gov">
+            <Icon name="shield" size={15} stroke={2}/>
+            Governança, segurança e conformidade atravessando as três camadas · LGPD, SSO e segurança em nível de linha
+          </div>
+        </div>
+
+        <div className="pf-stack">
+          <div className="pf-stack-l">Roda sobre o que você já tem</div>
+          <div className="pf-stack-chips">
+            {stack.map(s => <span key={s} className="pf-chip">{s}</span>)}
+          </div>
+          <div className="pf-stack-n">Nuvem híbrida e on-premise também disponíveis. Não trocamos o seu ecossistema — conectamos.</div>
+        </div>
+      </div>
+      <style>{`
+        .pf { border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+        .pf-row { display: grid; grid-template-columns: 190px 1fr; border-bottom: 1px solid var(--line); }
+        .pf-rail { padding: 22px 20px; background: var(--cs); border-right: 1px solid var(--line); }
+        .pf-rail-i { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: var(--c); color: #fff; margin-bottom: 12px; }
+        .pf-rail-eixo { font-family: var(--ff-display); font-weight: 700; font-size: 19px; color: var(--navy-900); }
+        .pf-rail-camada { font-family: var(--ff-mono); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--c); margin-top: 5px; }
+        .pf-items { display: grid; grid-template-columns: repeat(5, 1fr); }
+        .pf-item { padding: 20px 18px; border-right: 1px solid var(--line-2); transition: background .18s ease; }
+        .pf-item:last-child { border-right: none; }
+        .pf-item:hover { background: var(--cs); }
+        .pf-item-t { font-family: var(--ff-display); font-weight: 700; font-size: 14px; color: var(--navy-900); line-height: 1.3; }
+        .pf-item-d { font-size: 12.5px; color: var(--text-2); line-height: 1.5; margin-top: 7px; }
+        .pf-gov { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 20px; background: var(--bg-soft); font-size: 12.5px; color: var(--text-2); text-align: center; }
+        .pf-gov svg { color: var(--turquoise-ink); flex-shrink: 0; }
+        .pf-stack { margin-top: 28px; text-align: center; }
+        .pf-stack-l { font-family: var(--ff-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); }
+        .pf-stack-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 14px; }
+        .pf-chip { padding: 7px 15px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-soft); font-size: 13px; color: var(--text-2); font-weight: 500; }
+        .pf-stack-n { font-size: 13px; color: var(--text-3); margin-top: 14px; }
+        @media (max-width: 1040px) { .pf-items { grid-template-columns: repeat(3, 1fr); } .pf-item { border-bottom: 1px solid var(--line-2); } }
+        @media (max-width: 780px) { .pf-row { grid-template-columns: 1fr; } .pf-rail { border-right: none; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 12px; padding: 14px 18px; } .pf-rail-i { margin-bottom: 0; } .pf-rail-camada { margin-top: 0; } .pf-items { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 520px) { .pf-items { grid-template-columns: 1fr; } }
+      `}</style>
+    </section>
+  );
+}
+
+/* A objeção mais comum de quem já tem data warehouse: "não dá para só cachear
+   a query?". Aqui é onde o motor associativo vira argumento de custo. */
+function SolucoesCusto() {
+  const linhas = [
+    { q: 'Devolve um resultado limitado', qd: 'A query cacheada guarda a resposta de uma única pergunta já definida.',
+      e: 'Guarda o conjunto de dados inteiro', ed: 'O motor carrega e comprime toda a base com indexação binária.' },
+    { q: 'Só aceita filtro simples', qd: 'Cálculo novo, pergunta inesperada ou dado alterado exige rodar a query de novo.',
+      e: 'Descoberta ilimitada', ed: 'Qualquer pergunta, por mais complexa, é resolvida em memória na hora.' },
+    { q: 'Perde contexto e relações', qd: 'O que não se encaixa no filtro simplesmente some da tela.',
+      e: 'Consciente de contexto', ed: 'Por inferência lógica, o dado associado e o não associado continuam visíveis.' },
+  ];
+  return (
+    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto 40px' }}>
+          <div className="eyebrow">Custo de operação</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
+            Cada clique do seu time <span style={{ color: 'var(--navy)' }}>não precisa virar fatura</span>.
+          </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
+            Em analytics baseado em SQL, toda interação do usuário dispara uma query cobrada no data warehouse.
+            Com motor associativo, a interação acontece em memória e não custa nada.
+          </p>
+        </div>
+
+        <div className="cu-duel">
+          <div className="cu-side reveal">
+            <div className="cu-side-h">Analytics baseado em SQL</div>
+            <div className="cu-price">$$$</div>
+            <div className="cu-flow">
+              {['Usuário clica', 'Query dispara', 'Warehouse processa', 'Fatura sobe'].map((s, i) => (
+                <div key={i} className="cu-flow-s">{s}</div>
+              ))}
+            </div>
+            <ul className="cu-ul">
+              <li>Uma query para cada pergunta</li>
+              <li>Custo imprevisível no fim do mês</li>
+              <li>Tempo de resposta que oscila com a concorrência de usuários</li>
+            </ul>
+          </div>
+          <div className="cu-vs" aria-hidden><Icon name="arrow" size={18} stroke={2.2}/></div>
+          <div className="cu-side cu-side-on reveal">
+            <div className="cu-side-h" style={{ color: 'var(--turquoise-2)' }}>Analytics guiado por motor</div>
+            <div className="cu-price cu-price-on">livre</div>
+            <div className="cu-flow">
+              {['Usuário clica', 'Motor responde em memória', 'Warehouse em repouso', 'Custo estável'].map((s, i) => (
+                <div key={i} className="cu-flow-s cu-flow-on">{s}</div>
+              ))}
+            </div>
+            <ul className="cu-ul cu-ul-on">
+              <li>Carga agendada, não uma query por clique</li>
+              <li>Cache binário comprimido da base inteira</li>
+              <li>Resposta previsível mesmo com o time todo dentro</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="cu-q reveal">
+          <div className="cu-q-h">
+            <span className="cu-q-mark">?</span>
+            <div>
+              <div className="cu-q-t">“Mas eu não posso só cachear a query?”</div>
+              <div className="cu-q-d">Pode — se você quiser fazer sempre a mesma pergunta.</div>
+            </div>
+          </div>
+          <div className="cu-tbl">
+            <div className="cu-tr cu-th"><span>Query SQL cacheada</span><span/><span>Motor associativo Qlik</span></div>
+            {linhas.map((l, i) => (
+              <div key={i} className="cu-tr">
+                <span className="cu-cell cu-cell-x" data-lbl="Query SQL cacheada">
+                  <span className="cu-tag cu-tag-x">✕</span>
+                  <span><b>{l.q}</b><em>{l.qd}</em></span>
+                </span>
+                <span className="cu-mid" aria-hidden/>
+                <span className="cu-cell" data-lbl="Motor associativo Qlik">
+                  <span className="cu-tag cu-tag-o"><Icon name="check" size={11} stroke={3}/></span>
+                  <span><b>{l.e}</b><em>{l.ed}</em></span>
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <style>{`
+        .cu-duel { display: grid; grid-template-columns: 1fr 56px 1fr; gap: 8px; align-items: stretch; max-width: 900px; margin: 0 auto; }
+        .cu-side { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; box-shadow: var(--shadow-xs); display: flex; flex-direction: column; }
+        .cu-side-on { background: var(--navy-900); border-color: var(--navy-900); }
+        .cu-side-h { font-family: var(--ff-mono); font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--text-3); text-align: center; }
+        .cu-price { font-family: var(--ff-display); font-weight: 700; font-size: 40px; line-height: 1; text-align: center; color: var(--danger); margin: 14px 0 18px; }
+        .cu-price-on { color: var(--turquoise); font-size: 32px; margin-top: 20px; }
+        .cu-flow { display: flex; flex-direction: column; gap: 6px; }
+        .cu-flow-s { position: relative; padding: 9px 12px; border-radius: 8px; background: var(--bg-soft); border: 1px solid var(--line); font-size: 12.5px; color: var(--text-2); text-align: center; }
+        .cu-flow-s + .cu-flow-s::before { content: '↓'; position: absolute; top: -13px; left: 50%; transform: translateX(-50%); font-size: 10px; color: var(--text-3); }
+        .cu-flow-on { background: rgba(117,227,228,0.1); border-color: rgba(117,227,228,0.22); color: rgba(255,255,255,0.86); }
+        .cu-flow-on + .cu-flow-on::before { color: rgba(255,255,255,0.4); }
+        .cu-ul { list-style: none; padding: 16px 0 0; margin: 16px 0 0; border-top: 1px dashed var(--line); display: grid; gap: 8px; font-size: 13px; color: var(--text-2); }
+        .cu-ul li::before { content: '·'; margin-right: 7px; color: var(--text-3); }
+        .cu-ul-on { border-top-color: rgba(255,255,255,0.14); color: rgba(255,255,255,0.75); }
+        .cu-vs { display: grid; place-items: center; color: var(--text-3); }
+        .cu-q { max-width: 900px; margin: 30px auto 0; background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px; box-shadow: var(--shadow-xs); }
+        .cu-q-h { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+        .cu-q-mark { width: 38px; height: 38px; border-radius: 11px; flex-shrink: 0; display: grid; place-items: center; background: rgba(117,227,228,0.18); color: var(--turquoise-ink); font-family: var(--ff-display); font-weight: 700; font-size: 20px; }
+        .cu-q-t { font-family: var(--ff-display); font-weight: 700; font-size: 18px; color: var(--navy-900); }
+        .cu-q-d { font-size: 13.5px; color: var(--text-2); margin-top: 3px; }
+        .cu-tbl { border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; }
+        .cu-tr { display: grid; grid-template-columns: 1fr 34px 1fr; align-items: stretch; border-bottom: 1px solid var(--line-2); }
+        .cu-tr:last-child { border-bottom: none; }
+        .cu-th { background: var(--bg-soft); font-family: var(--ff-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); }
+        .cu-th span { padding: 10px 16px; }
+        .cu-cell { display: flex; gap: 11px; align-items: flex-start; padding: 15px 16px; }
+        .cu-cell b { display: block; font-family: var(--ff-display); font-weight: 700; font-size: 14px; color: var(--navy-900); }
+        .cu-cell em { display: block; font-style: normal; font-size: 12.5px; color: var(--text-2); line-height: 1.5; margin-top: 4px; }
+        .cu-cell-x { background: var(--bg-soft); }
+        .cu-cell-x b { color: var(--text-2); }
+        .cu-tag { width: 20px; height: 20px; border-radius: 6px; flex-shrink: 0; display: grid; place-items: center; margin-top: 2px; font-size: 11px; font-weight: 700; }
+        .cu-tag-x { background: rgba(197,48,48,0.1); color: var(--danger); }
+        .cu-tag-o { background: rgba(117,227,228,0.2); color: var(--turquoise-ink); }
+        .cu-mid { background: var(--bg-soft); border-left: 1px solid var(--line-2); border-right: 1px solid var(--line-2); }
+        @media (max-width: 820px) {
+          .cu-duel { grid-template-columns: 1fr; }
+          .cu-vs { padding: 6px 0; transform: rotate(90deg); }
+          .cu-tr { grid-template-columns: 1fr; }
+          .cu-mid, .cu-th { display: none; }
+          /* sem cabeçalho na coluna única, cada célula carrega o próprio rótulo */
+          .cu-cell { position: relative; padding-top: 34px; border-top: 1px solid var(--line-2); }
+          .cu-cell::before { content: attr(data-lbl); position: absolute; top: 11px; left: 16px; font-family: var(--ff-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); }
+          .cu-tr:first-of-type .cu-cell-x { border-top: none; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+/* Prova externa: benchmark independente BARC 2025. Números publicados pela Qlik,
+   com a fonte visível — é comparativo direto com concorrente. */
+function SolucoesBenchmark() {
+  const scores = [
+    { l: 'Produtividade', d: 'quão rápido a sessão de análise se completa, considerando interações e tempo de resposta', qlik: 100, rival: 31 },
+    { l: 'Escalabilidade', d: 'quão rápido as sessões se completam à medida que usuários e volume de dados crescem', qlik: 100, rival: 48 },
+  ];
+  const kpis = [
+    { v: '3x', l: 'mais rápido no tempo de resposta' },
+    { v: '30%', l: 'menos interações do usuário para chegar à mesma resposta' },
+    { v: '2x', l: 'mais sessões concluídas em escala' },
+    { v: '0%', l: 'de degradação mensurável de performance sob carga' },
+  ];
+  return (
+    <section className="section" style={{ background: '#fff' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto 40px' }}>
+          <div className="eyebrow">Prova independente</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
+            Não é só a nossa palavra: <span style={{ color: 'var(--navy)' }}>tem benchmark</span>.
+          </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
+            Em 2025 o instituto BARC conduziu um estudo independente comparando Qlik e Power BI
+            em condições reais de uso, medindo produtividade e escalabilidade.
+          </p>
+        </div>
+
+        <div className="bm-scores">
+          {scores.map((s, i) => (
+            <div key={i} className="bm-score reveal">
+              <div className="bm-score-l">{s.l}</div>
+              <div className="bm-score-d">{s.d}</div>
+              <div className="bm-bars">
+                <div className="bm-bar-row">
+                  <span className="bm-bar-n">Qlik</span>
+                  <span className="bm-bar"><span className="bm-fill bm-fill-on" style={{ width: s.qlik + '%' }}/></span>
+                  <span className="bm-bar-v tnum">{s.qlik}*</span>
+                </div>
+                <div className="bm-bar-row">
+                  <span className="bm-bar-n bm-bar-n-off">Power BI</span>
+                  <span className="bm-bar"><span className="bm-fill" style={{ width: s.rival + '%' }}/></span>
+                  <span className="bm-bar-v bm-bar-v-off tnum">{s.rival}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="bm-kpis">
+          {kpis.map((k, i) => (
+            <div key={i} className="bm-kpi reveal">
+              <div className="bm-kpi-v">{k.v}</div>
+              <div className="bm-kpi-l">{k.l}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="bm-note reveal">
+          <p>
+            O estudo apontou performance consistente e previsível do Qlik em todos os níveis de concorrência testados,
+            enquanto o Power BI apresentou tempos de resposta notavelmente inconsistentes sob carga alta de usuários.
+          </p>
+          <p style={{ marginTop: 10 }}>
+            Com IA agêntica em cena, performance deixou de ser detalhe: um único agente pode gerar centenas de consultas
+            e levar a arquitetura ao limite. É por isso que a camada de motor importa tanto quanto a camada de painel.
+          </p>
+          <div className="bm-src">
+            * 100 é o valor de referência estabelecido para o teste, não uma nota máxima.
+            <br/>Fonte: BARC Performance Benchmark 2025 (estudo independente), divulgado pela Qlik.
+          </div>
+        </div>
+      </div>
+      <style>{`
+        .bm-scores { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .bm-score { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px; }
+        .bm-score-l { font-family: var(--ff-display); font-weight: 700; font-size: 20px; color: var(--navy-900); }
+        .bm-score-d { font-size: 13px; color: var(--text-2); line-height: 1.5; margin-top: 6px; }
+        .bm-bars { display: grid; gap: 12px; margin-top: 20px; }
+        .bm-bar-row { display: grid; grid-template-columns: 76px 1fr 46px; align-items: center; gap: 12px; }
+        .bm-bar-n { font-family: var(--ff-display); font-weight: 700; font-size: 13.5px; color: var(--navy-900); }
+        .bm-bar-n-off { color: var(--text-3); font-weight: 500; }
+        .bm-bar { height: 12px; border-radius: 99px; background: #e4e7ec; overflow: hidden; }
+        .bm-fill { display: block; height: 100%; border-radius: 99px; background: #b9c0cc; }
+        .bm-fill-on { background: linear-gradient(90deg, var(--turquoise-2), var(--turquoise)); }
+        .bm-bar-v { font-family: var(--ff-display); font-weight: 700; font-size: 17px; color: var(--turquoise-ink); text-align: right; }
+        .bm-bar-v-off { color: var(--text-3); }
+        .bm-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 18px; }
+        .bm-kpi { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px; box-shadow: var(--shadow-xs); }
+        .bm-kpi-v { font-family: var(--ff-display); font-weight: 700; font-size: 34px; line-height: 1; color: var(--navy-900); }
+        .bm-kpi-l { font-size: 13px; color: var(--text-2); line-height: 1.5; margin-top: 10px; }
+        .bm-note { max-width: 860px; margin: 30px auto 0; font-size: 14.5px; color: var(--text-2); line-height: 1.65; }
+        .bm-src { font-family: var(--ff-mono); font-size: 10.5px; line-height: 1.7; color: var(--text-3); margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+        @media (max-width: 900px) { .bm-scores { grid-template-columns: 1fr; } .bm-kpis { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 520px) { .bm-kpis { grid-template-columns: 1fr; } }
+      `}</style>
+    </section>
+  );
+}
+
 function SolucoesOfferings() {
   const items = [
     { icon: 'chart', t: 'Plataforma analytics líder', d: 'Qlik Cloud, AWS ou Azure: ambiente em nuvem flexível, alta performance de processamento, segurança corporativa e licenças de parceiro oficial.' },
@@ -886,7 +1442,8 @@ function SolucoesOfferings() {
             A engenharia que a sua <span style={{ color: 'var(--navy)' }}>tomada de decisão</span> exige.
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Ingestão, transformação e visualização na mesma plataforma, para empresas de qualquer setor.
+            A plataforma é a Qlik, líder do Gartner. A engenharia que faz ela responder ao seu negócio é a SEWE.
+            Ingestão, transformação e visualização na mesma ponta, para empresas de qualquer setor.
           </p>
         </div>
         <div className="so-grid">
@@ -1201,9 +1758,9 @@ function SolucoesPage() {
     <>
       <SiteHeader/>
       <PageHero
-        eyebrow="Soluções Sob Medida"
+        eyebrow="Plataforma de Dados & IA"
         title="Dados e IA muito além do BI de prateleira."
-        lead="Para empresas de qualquer setor: a plataforma Qlik de ponta a ponta, integração, analytics e IA, com a engenharia de dados da SEWE por trás. Dado governado, painel rápido e decisão direto no navegador."
+        lead="Para empresas de qualquer setor: a plataforma Qlik de ponta a ponta, do dado bruto ao agente que executa a ação, com a engenharia de dados da SEWE por trás. Dado governado, painel rápido e decisão direto no navegador."
       >
         <div style={{ marginTop: 22, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '7px 16px', borderRadius: 999, background: '#fff', border: '1px solid var(--line)', boxShadow: 'var(--shadow-xs)', fontSize: 12.5, color: 'var(--text-2)', fontWeight: 500 }}>
@@ -1220,9 +1777,14 @@ function SolucoesPage() {
           <a href="https://wa.me/5548984704389" className="btn btn-outline btn-lg">WhatsApp</a>
         </div>
       </PageHero>
+      <SolucoesBarreiras/>
       <SolucoesOfferings/>
-      <SolucoesPlatform/>
+      <SolucoesCamadas/>
+      <SolucoesPortfolio/>
       <SolucoesTech/>
+      <SolucoesCusto/>
+      <SolucoesPlatform/>
+      <SolucoesBenchmark/>
       <SolucoesProcess/>
       <DifferentiatorsSection/>
       <CTASection/>

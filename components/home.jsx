@@ -1,6 +1,6 @@
 // Home landing — audience-first. High-level positioning of SEWE as a technology
 // & AI company (reference in Brazil), then a 3-door chooser that routes each
-// visitor to the page built for them: Indústria, Distribuidor, Soluções Sob Medida.
+// visitor to the page built for them: Indústria, Distribuidor, Plataforma de Dados & IA.
 // Depends on: brand.jsx (Icon). Exposes: HomeLanding.
 
 const WA = 'https://wa.me/5548984704389';
@@ -41,10 +41,10 @@ function AudienceChooser() {
       cta: 'Ver soluções', href: '/distribuidor',
     },
     {
-      icon: 'cpu', kicker: 'Outros setores', accent: 'var(--turquoise-2)', soft: 'rgba(117,227,228,0.28)',
-      title: 'Sua operação, mais inteligente',
-      desc: 'Para outros setores: inteligência de dados, BI e IA sob medida para destravar qualquer modelo de operação.',
-      cta: 'Ver soluções', href: '/solucoes',
+      icon: 'cpu', kicker: 'Qualquer setor', accent: 'var(--turquoise-2)', soft: 'rgba(117,227,228,0.28)',
+      title: 'Plataforma de Dados & IA',
+      desc: 'Do dado bruto no ERP ao agente que executa a ação: Qlik de ponta a ponta, com a engenharia de dados da SEWE por trás.',
+      cta: 'Ver a plataforma', href: '/solucoes',
     },
   ];
   return (
