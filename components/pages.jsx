@@ -187,6 +187,8 @@ function BlogPostPage({ slug }) {
               )}
             </div>
           </div>
+          {/* Compartilhar, curtir e comentar — engage.jsx, só carregado nas páginas de post */}
+          {typeof PostEngagement === 'function' && <PostEngagement slug={post.slug} title={post.title}/>}
         </div>
       </article>
       <SiteFooter/>

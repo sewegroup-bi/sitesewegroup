@@ -3,4 +3,5 @@ import '../globals.js';
 import '../../components/brand.jsx';
 import '../../components/layout.jsx';
 import '../../components/blogdata.jsx';
+import '../../components/engage.jsx';
 import '../../components/pages.jsx';
