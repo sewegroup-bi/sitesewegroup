@@ -3,3 +3,5 @@ dist/
 .DS_Store
 design-drop/
 vite.config.js.timestamp-*.mjs
+.claude/
+supabase/.temp/

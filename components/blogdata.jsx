@@ -29,6 +29,40 @@ window.SEWE_AUTHORS = {
 
 window.SEWE_POSTS = [
   {
+    slug: 'qlik-cloud-ia-governanca-distribuicao',
+    category: 'blog',
+    title: 'Qlik Cloud: IA e governança de dados na distribuição',
+    date: '2026-08-07',
+    readTime: '6 min de leitura',
+    author: 'Alex de Souza',
+    excerpt: 'Os avanços do Qlik Cloud em IA, governança e produtividade mudam o jogo dos dados. Veja o que isso significa para a gestão da sua distribuidora.',
+    cover: { tag: 'BUSINESS INTELLIGENCE · QLIK · IA APLICADA', metric: 'Qlik', metricLabel: 'parceira oficial · BI para distribuição' },
+    cta: { primary: 'Agendar Diagnóstico de Dados e BI', secondary: 'Falar com um Especialista' },
+    blocks: [
+      { type: 'lead', text: 'Os avanços recentes do Qlik Cloud deixam clara uma direção: inteligência artificial, governança e produtividade de dados estão convergindo para uma só estratégia. Para a distribuição, que decide todo dia sobre ruptura, mix, crédito e capital de giro, isso significa transformar dado confiável em decisão mais rápida, sem abrir mão de controle. Como parceira oficial Qlik, a SEWE traduz esses avanços na linguagem do seu negócio.' },
+      { type: 'h', text: 'IA mais perto de quem decide' },
+      { type: 'p', text: 'A maior mudança não é ter mais gráficos, e sim conversar com os dados. Com analytics aumentada e busca em linguagem natural sobre bases governadas, o usuário deixa de esperar pelo relatório e passa a perguntar. No chão da distribuição, é o gerente perguntando "quais clientes da Curva A caíram de positivação neste mês?" e recebendo a resposta na hora, a partir do dado que já estava na plataforma, e não em uma planilha paralela.' },
+      { type: 'h', text: 'Governança: IA só vale com dado confiável' },
+      { type: 'p', text: 'Quanto mais a IA entra na decisão, mais importa de onde vem o dado. É por isso que governança deixou de ser burocracia e virou pré-requisito. Definições consistentes, segurança e rastreabilidade são o que permitem confiar em uma resposta automática, ainda mais numa operação com várias filiais, dezenas de representantes e um ERP no centro.' },
+      { type: 'list', items: [
+        'Definições únicas dos indicadores (margem, ruptura, positivação) para toda a empresa, do campo à diretoria.',
+        'Segurança em nível de linha: cada filial e cada representante enxerga apenas o que é seu.',
+        'Rastreabilidade do dado, da origem no ERP até o painel de quem decide.',
+      ]},
+      { type: 'h', text: 'Produtividade: menos atrito entre o dado e a decisão' },
+      { type: 'p', text: 'O terceiro vetor é operacional: integrar dados, automatizar rotinas e concentrar tudo em um só ambiente. Pipelines governados mantêm os dados do ERP sempre atualizados, e automações disparam o alerta certo na hora certa (ruptura iminente na Curva A, cliente em risco de churn, desvio de meta) antes que o problema apareça no fechamento do mês.' },
+      { type: 'callout', text: 'A vantagem competitiva não está em ter mais dashboards. Está em encurtar a distância entre um dado confiável e a decisão de comprar, vender ou conceder crédito.' },
+      { type: 'h', text: 'O papel da SEWE sobre o Qlik' },
+      { type: 'p', text: 'A plataforma da Qlik é de classe mundial, mas é horizontal: serve a qualquer setor. O trabalho da SEWE é verticalizar, entregando sobre o Qlik um BI com DNA de distribuição, já modelado para Curva ABC, ruptura, mix, positivação, DRE e capital de giro. Você não recebe mais uma ferramenta para configurar; recebe decisão pronta para agir.' },
+      { type: 'quote', text: 'A tecnologia da Qlik é de classe mundial. O nosso trabalho é fazer com que ela fale a língua da distribuição, transformando associação de dados em decisão de compra, venda e crédito.', who: 'Alex de Souza · Diretor Comercial, SEWE Group' },
+    ],
+    references: [
+      { source: 'Qlik', label: 'Qlik Cloud: analytics, IA e integração de dados', url: 'https://www.qlik.com/us/products/qlik-cloud', note: 'Plataforma de dados e IA que sustenta o BI da SEWE.' },
+      { source: 'Qlik', label: 'Qlik Talend Data Integration e governança de dados', url: 'https://www.qlik.com/us/data-integration', note: 'Integração e governança que garantem dado confiável para alimentar a IA.' },
+      { source: 'NowVertical / Grupo IN', label: 'Qlik Cloud avança em IA, governança e produtividade de dados', url: 'https://nowvertical-pt.in1.com.br/blog/qlik-cloud-avanca-em-ia-governanca-e-produtividade-de-dados', note: 'Panorama das atualizações recentes do Qlik Cloud que inspirou esta análise.' },
+    ],
+  },
+  {
     slug: 'churn-silencioso-distribuicao',
     category: 'blog',
     title: 'O Inimigo Oculto das Vendas: Como Identificar e Reverter o Churn Silencioso',
