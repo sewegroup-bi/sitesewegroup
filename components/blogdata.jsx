@@ -21,6 +21,7 @@
 window.SEWE_AUTHORS = {
   'Alex de Souza': {
     role: 'Diretor Comercial · Sócio-fundador da SEWE Group',
+    photo: '/assets/autor-alex-souza.jpg',
     bio: 'Sócio-fundador da SEWE Group, acompanha de perto distribuidores de todo o Brasil na jornada de transformar dados em decisão comercial, do estoque à diretoria.',
     linkedin: 'https://www.linkedin.com/in/alexsouzasewegroup/',
   },

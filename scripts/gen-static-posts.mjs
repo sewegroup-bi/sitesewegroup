@@ -60,6 +60,7 @@ function staticBody(post){
   if(a){
     p.push(`    <section aria-label="Sobre o autor" style="margin-top:24px;padding-top:20px;border-top:1px solid var(--line);">`);
     p.push(`      <p style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);font-weight:600;">Sobre o autor</p>`);
+    if(a.photo) p.push(`      <p><img src="${escAttr(a.photo)}" alt="${escAttr(post.author)}" width="64" height="64" loading="lazy" style="width:64px;height:64px;border-radius:99px;object-fit:cover;"/></p>`);
     p.push(`      <p><strong>${esc(post.author)}</strong> — ${esc(a.role)}</p>`);
     p.push(`      <p>${esc(a.bio)}</p>`);
     if(a.linkedin) p.push(`      <p><a href="${escAttr(a.linkedin)}" target="_blank" rel="noopener noreferrer">LinkedIn de ${esc(post.author)}</a></p>`);
