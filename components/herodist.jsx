@@ -1084,4 +1084,207 @@ function DistribuidorScene() {
   );
 }
 
-Object.assign(window, { DistribuidorScene });
+/* ── HERO EM FOTO ────────────────────────────────────────────
+   O CD real com balões sobre cada área. Substitui a cena 3D no hero;
+   DistribuidorScene continua no arquivo, só não é mais renderizada.
+
+   Hover/foco no balão → 3 micro-explicações sobre a foto + o texto longo
+   na caixa abaixo. Os módulos compartilhados ficam FORA da foto: não são
+   um lugar do CD, são a camada que serve todos os canais.
+
+   As coordenadas (l, t) são % da foto. Se a imagem for trocada, é só
+   reajustar este array — nada mais depende delas. */
+const DP_AREAS = [
+  // camada de BI: as suítes que leem a operação
+  { key: 'estrategica', kind: 'bi', label: 'Gestão Estratégica', icon: 'target', l: 24, t: 25,
+    items: ['DRE ao vivo', 'KPIs por filial', 'Visão 360°'],
+    msg: 'Assuma o controle: a operação inteira em uma tela e a decisão do dia já priorizada, sem pedir relatório a ninguém.' },
+  { key: 'suprimentos', kind: 'bi', label: 'Suprimentos', icon: 'boxes', l: 42, t: 12,
+    items: ['Previsão de ruptura', 'Curva ABC', 'Sugestão de compra'],
+    msg: 'Acabe com a ruptura: a IA prevê a demanda por SKU e sugere a compra certa antes de a prateleira esvaziar.' },
+  { key: 'comercial', kind: 'bi', label: 'Comercial', icon: 'trending', l: 23, t: 46,
+    items: ['Metas por vendedor', 'Leads inteligentes', 'Reativação de clientes'],
+    msg: 'Venda mais com a mesma equipe: o sistema aponta quem reativar, o que ofertar e onde a meta está em risco.' },
+  { key: 'financeiro', kind: 'bi', label: 'Financeiro', icon: 'dollar', l: 57, t: 43,
+    items: ['Fluxo de caixa', 'Margem por SKU', 'DRE automatizado'],
+    msg: 'Feche o mês em dias, não em semanas: caixa projetado e margem real por SKU direto do ERP.' },
+  // camada de vendas: os canais por onde o pedido entra
+  { key: 'vendedor', kind: 'sales', label: 'Força de Vendas', icon: 'users', l: 16, t: 75,
+    items: ['Carteira do vendedor', 'Metas e atividades', 'Pedido digitado em campo'],
+    msg: 'Ambiente do vendedor: carteira, metas, atividades e pedido digitado na rua, já dentro da política comercial da empresa.' },
+  { key: 'crm', kind: 'sales', label: 'CRM', icon: 'calendar', l: 56.5, t: 59,
+    items: ['Histórico do cliente', 'Follow-up e agenda', 'Processo estruturado'],
+    msg: 'CRM, clientes e atividades: histórico completo, follow-up no tempo certo e processo comercial estruturado do primeiro contato até o pedido.' },
+  { key: 'portal', kind: 'sales', label: 'Portal B2B2C', icon: 'store', l: 77.5, t: 60,
+    items: ['Produto, preço e estoque', 'Condição comercial', 'Pedido com autonomia'],
+    msg: 'Portal de vendas B2B2C: seu cliente consulta produto, preço, estoque e condição comercial e fecha o pedido sozinho, 24 horas por dia.' },
+  { key: 'b2b', kind: 'sales', label: 'E-commerce B2B', icon: 'warehouse', l: 78, t: 44,
+    items: ['Loja personalizada', 'Carrinho e checkout', 'Compra sem intermediário'],
+    msg: 'E-commerce B2B personalizado: loja com experiência moderna, carrinho e checkout, para o cliente comprar sem depender de ninguém.' },
+  { key: 'b2c', kind: 'sales', label: 'E-commerce B2C', icon: 'pkg', l: 78, t: 76,
+    items: ['Loja para o consumidor', 'Mesmo estoque', 'Mesma regra de preço'],
+    msg: 'E-commerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço do resto da operação.' },
+];
+
+const DP_MODULOS = ['Integração ERP', 'Promoções', 'Alçada de aprovações', 'Incentivos comerciais', 'WorkFlow', 'Propostas comerciais'];
+
+function DistribuidorPhoto() {
+  const [hover, setHover] = React.useState(null);
+  const A = DP_AREAS.find(a => a.key === hover) || null;
+
+  const go = (a) => {
+    const id = a.kind === 'bi' ? 'suites' : 'sales';
+    if (a.kind === 'bi') {
+      try { window.dispatchEvent(new CustomEvent('sewe:suite', { detail: a.key })); } catch {}
+    }
+    const el = document.getElementById(id);
+    if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 72, behavior: 'smooth' });
+  };
+
+  return (
+    <div className="dp-wrap">
+      <div className="dp-stage">
+        {/* LCP da página: webp de 302 KB no lugar do png de 3 MB, com o png de reserva */}
+        <picture>
+          <source srcSet="/assets/distribuidor-cd.webp" type="image/webp"/>
+          <img className="dp-img" src="/assets/distribuidor-cd.png" width="1650" height="953"
+            fetchpriority="high" decoding="async"
+            alt="Vista aérea de um centro de distribuição: estoque, escritório comercial, sala financeira, recepção, showroom, expedição e frota de vendedores."/>
+        </picture>
+        <span className="dp-veil" aria-hidden/>
+        {DP_AREAS.map(a => (
+          <button key={a.key} type="button" onClick={() => go(a)}
+            onMouseEnter={() => setHover(a.key)} onMouseLeave={() => setHover(null)}
+            onFocus={() => setHover(a.key)} onBlur={() => setHover(null)}
+            className={'dp-pin dp-pin-' + a.kind + (hover === a.key ? ' is-on' : '')}
+            style={{ left: a.l + '%', top: a.t + '%' }}
+            aria-label={'Ver ' + a.label}>
+            <span className="dp-pin-ic"><Icon name={a.icon} size={12} stroke={2}/></span>
+            <span className="dp-pin-lb">{a.label}</span>
+            <span className="dp-drop" aria-hidden="true">
+              {a.items.map((it, i) => (
+                <span key={i} className="dp-drop-i" style={{ transitionDelay: (i * 70) + 'ms' }}>{it}</span>
+              ))}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      {/* leitura longa: fora do CD, como pediu a referência */}
+      <div className="dp-readout" aria-live="polite">
+        <span className={'dp-readout-k' + (A ? ' dp-k-' + A.kind : '')}>
+          {A ? A.label : 'Ecossistema completo'}
+        </span>
+        <p className="dp-readout-t">
+          {A ? A.msg : 'Passe o mouse sobre uma área do centro de distribuição e veja o que a SEWE entrega ali.'}
+        </p>
+      </div>
+
+      {/* a camada que não é um lugar: vale para todos os canais, uma vez só */}
+      <div className="dp-shared">
+        <span className="dp-shared-k">Valem para todos os canais</span>
+        <span className="dp-shared-chips">
+          {DP_MODULOS.map(m => <span key={m} className="dp-mod">{m}</span>)}
+        </span>
+      </div>
+
+      {/* mobile: sem balões sobre a foto, as áreas viram cartões */}
+      <div className="dp-list">
+        {DP_AREAS.map(a => (
+          <button key={a.key} type="button" onClick={() => go(a)} className={'dp-card dp-card-' + a.kind}>
+            <span className="dp-card-h">
+              <span className="dp-pin-ic"><Icon name={a.icon} size={12} stroke={2}/></span>
+              {a.label}
+            </span>
+            <span className="dp-card-i">{a.items.join(' · ')}</span>
+          </button>
+        ))}
+      </div>
+
+      <style>{`
+        .dp-wrap { width: 100%; }
+        .dp-stage { position: relative; border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-lg); line-height: 0; }
+        .dp-img { display: block; width: 100%; height: auto; }
+        /* véu leve: os balões brancos precisam de contraste sobre a foto */
+        .dp-veil { position: absolute; inset: 0; pointer-events: none;
+          background: linear-gradient(180deg, rgba(12,20,36,0.18) 0%, rgba(12,20,36,0.05) 38%, rgba(12,20,36,0.22) 100%); }
+
+        .dp-pin {
+          position: absolute; transform: translate(-50%, -50%);
+          display: inline-flex; align-items: center; gap: 7px;
+          padding: 6px 13px; border-radius: 999px;
+          background: rgba(255,255,255,0.93);
+          -webkit-backdrop-filter: blur(8px) saturate(1.3); backdrop-filter: blur(8px) saturate(1.3);
+          border: 1px solid rgba(26,40,68,0.1);
+          box-shadow: 0 6px 18px rgba(12,20,36,0.28);
+          font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 12px;
+          color: var(--navy-900); letter-spacing: 0.01em; white-space: nowrap;
+          cursor: pointer; z-index: 3; line-height: 1.2;
+          transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+        }
+        .dp-pin:hover, .dp-pin:focus-visible { transform: translate(-50%, calc(-50% - 3px)); background: #fff; z-index: 6; }
+        .dp-pin-ic { display: inline-flex; flex-shrink: 0; }
+        .dp-pin-bi .dp-pin-ic { color: var(--turquoise-ink); }
+        .dp-pin-bi.is-on { border-color: rgba(63,201,203,0.7); box-shadow: 0 0 0 5px rgba(117,227,228,0.28), 0 12px 26px rgba(12,20,36,0.3); }
+        .dp-pin-sales .dp-pin-ic { color: #c9550a; }
+        .dp-pin-sales.is-on { border-color: rgba(253,112,20,0.7); box-shadow: 0 0 0 5px rgba(253,112,20,0.24), 0 12px 26px rgba(12,20,36,0.3); }
+
+        .dp-drop {
+          position: absolute; top: calc(100% + 7px); left: 50%; transform: translateX(-50%);
+          display: flex; flex-direction: column; align-items: center; gap: 4px; pointer-events: none;
+        }
+        .dp-drop-i {
+          padding: 3px 10px; border-radius: 999px; white-space: nowrap;
+          background: rgba(12,20,36,0.82); color: #fff;
+          -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+          border: 1px solid rgba(255,255,255,0.2);
+          font-size: 10px; font-weight: 600; letter-spacing: 0.02em;
+          opacity: 0; transform: translateY(-5px);
+          transition: opacity .22s ease, transform .22s ease;
+        }
+        .dp-pin:hover .dp-drop-i, .dp-pin:focus-visible .dp-drop-i { opacity: 1; transform: translateY(0); }
+
+        .dp-readout {
+          display: flex; align-items: flex-start; gap: 14px;
+          margin-top: 16px; padding: 16px 20px;
+          background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+          box-shadow: var(--shadow-sm); min-height: 72px;
+        }
+        .dp-readout-k {
+          flex-shrink: 0; padding: 5px 12px; border-radius: 999px;
+          background: var(--bg-soft); border: 1px solid var(--line);
+          font-family: var(--ff-mono); font-size: 10px; font-weight: 700;
+          letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3);
+          transition: color .2s ease, background .2s ease, border-color .2s ease;
+        }
+        .dp-k-bi { color: var(--turquoise-ink); background: rgba(117,227,228,0.16); border-color: rgba(63,201,203,0.4); }
+        .dp-k-sales { color: #c9550a; background: rgba(253,112,20,0.1); border-color: rgba(253,112,20,0.35); }
+        .dp-readout-t { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--text); }
+
+        .dp-shared { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 12px; padding: 0 4px; }
+        .dp-shared-k { font-family: var(--ff-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); }
+        .dp-shared-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+        .dp-mod { padding: 4px 11px; border-radius: 999px; background: rgba(253,112,20,0.07); border: 1px solid rgba(253,112,20,0.24); font-size: 11.5px; color: var(--text-2); }
+
+        .dp-list { display: none; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+        .dp-card { text-align: left; padding: 12px 14px; border-radius: var(--r-md); background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--turquoise-2); cursor: pointer; }
+        .dp-card-sales { border-left-color: #fd7014; }
+        .dp-card-h { display: flex; align-items: center; gap: 7px; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 13px; color: var(--navy-900); }
+        .dp-card-i { display: block; font-size: 11px; color: var(--text-2); line-height: 1.45; margin-top: 5px; }
+
+        @media (max-width: 1100px) { .dp-pin { font-size: 10.5px; padding: 5px 10px; gap: 5px; } .dp-drop-i { font-size: 9px; padding: 2px 8px; } }
+        @media (max-width: 860px) {
+          /* nove balões sobre uma foto de 340px viram sopa: viram cartões */
+          .dp-pin, .dp-veil { display: none; }
+          .dp-list { display: grid; }
+          .dp-readout { display: none; }
+        }
+        @media (max-width: 520px) { .dp-list { grid-template-columns: 1fr; } }
+        @media (prefers-reduced-motion: reduce) { .dp-pin, .dp-drop-i { transition: none; } }
+      `}</style>
+    </div>
+  );
+}
+
+Object.assign(window, { DistribuidorScene, DistribuidorPhoto });

@@ -30,7 +30,9 @@ function Hero({ headlineVariant = 0 }) {
       }}/>
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="hero-split" style={{ display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 48, alignItems: 'center' }}>
+        {/* Empilhado: a foto do CD precisa da largura inteira para os balões
+            caberem legíveis. Em duas colunas ela ficaria com ~520px. */}
+        <div className="hero-split">
         <div className="hero-copy">
         {/* proof pill above headline */}
         <div className="reveal in" style={{ display: 'flex', marginBottom: 24 }}>
@@ -81,19 +83,20 @@ function Hero({ headlineVariant = 0 }) {
         </div>
         </div>
 
-        {/* interactive distributor scene */}
+        {/* o CD com os balões sobre cada área */}
         <div className="hero-scene reveal in">
-          <DistribuidorScene/>
+          <DistribuidorPhoto/>
         </div>
         </div>
 
         <style>{`
+          .hero-split { display: grid; gap: 36px; }
+          .hero-copy { max-width: 780px; }
+          .hero-copy p { max-width: 680px; }
           @media (max-width: 1080px) {
-            .hero-split { grid-template-columns: 1fr !important; gap: 40px !important; }
-            .hero-copy { text-align: center; }
+            .hero-copy { text-align: center; margin: 0 auto; }
             .hero-copy .reveal, .hero-copy > div { justify-content: center; }
             .hero-copy p { margin-left: auto !important; margin-right: auto !important; }
-            .hero-scene { max-width: 520px; margin: 0 auto; width: 100%; }
           }
         `}</style>
 
