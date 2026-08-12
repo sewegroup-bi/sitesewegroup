@@ -5,3 +5,6 @@ design-drop/
 vite.config.js.timestamp-*.mjs
 .claude/
 supabase/.temp/
+# doc de resposta a incidente: descreve reproducao e rollback de uma
+# falha ja corrigida — nao versionar em repo publico. Copia com o Alex.
+HANDOFF-SEGURANCA-CRM.md
