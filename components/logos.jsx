@@ -55,7 +55,7 @@ function BragBar() {
     { value: '30 dias',  label: tx('até o go-live'),            detail: tx('do contrato à primeira decisão em produção') },
   ];
   return (
-    <section style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)', borderBottom: '1px solid var(--line-2)', padding: '48px 0' }}>
+    <section style={{ background: 'var(--band)', borderTop: '1px solid var(--line-2)', borderBottom: '1px solid var(--line-2)', padding: '48px 0' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }} className="brag-grid">
           {stats.map((s, i) => (

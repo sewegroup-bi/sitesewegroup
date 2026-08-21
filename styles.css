@@ -28,6 +28,9 @@
   --bg:        #ffffff;
   --bg-soft:   #f7f8fb;
   --bg-soft-2: #eef1f6;
+  /* Faixa de secao. Passo de luminancia 0,12 contra o branco — o dobro do
+     --bg-soft, que a 0,06 nao era percebido e fazia 8 secoes lerem como uma. */
+  --band:      #eef1f6;
   --bg-tinted: #f3f6fb;
 
   /* Status */

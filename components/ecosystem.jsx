@@ -79,7 +79,7 @@ function EcosystemSection({ animated = true }) {
   const litSet = new Set(S.stations);
 
   return (
-    <section id="bi" className="section" style={{ background: 'linear-gradient(180deg, #fff 0%, #f4f6fb 100%)', position: 'relative', overflow: 'hidden' }}>
+    <section id="bi" className="section" style={{ background: '#fff', position: 'relative', overflow: 'hidden' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 840, margin: '0 auto 40px' }}>
           {/* mesmo rótulo-pílula do Sewe Integration e do Sewe Sales */}

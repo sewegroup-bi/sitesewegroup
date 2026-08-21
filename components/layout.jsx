@@ -207,7 +207,7 @@ function DemoNote({ align = 'right' }) {
 // Compact page header for subpages: eyebrow + title + optional lead, on a soft tinted band.
 function PageHero({ eyebrow, title, lead, children }) {
   return (
-    <section style={{ position: 'relative', overflow: 'hidden', paddingTop: 64, paddingBottom: 56, background: 'var(--bg-soft)', borderBottom: '1px solid var(--line)' }}>
+    <section style={{ position: 'relative', overflow: 'hidden', paddingTop: 64, paddingBottom: 56, background: 'var(--band)', borderBottom: '1px solid var(--line)' }}>
       <div aria-hidden style={{
         position: 'absolute', inset: 0, zIndex: 0, opacity: 0.5,
         backgroundImage: 'linear-gradient(var(--line-2) 1px, transparent 1px), linear-gradient(90deg, var(--line-2) 1px, transparent 1px)',

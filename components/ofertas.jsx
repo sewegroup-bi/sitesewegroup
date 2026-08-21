@@ -103,7 +103,7 @@ function IndustriaCamadaComercio() {
     },
   ];
   return (
-    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
+    <section className="section" style={{ background: 'var(--band)', borderTop: '1px solid var(--line-2)' }}>
       <div className="container">
         <div className="cc-quote reveal">
           <div className="eyebrow">{tx('SEWE Sales · camada de comércio digital')}</div>
@@ -158,7 +158,7 @@ function ProspeccaoComoFunciona() {
       d: tx('As empresas que ninguém da rede positivou, com nome, CNPJ e endereço, por praça e por distribuidor.') },
   ];
   return (
-    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line)' }}>
+    <section className="section" style={{ background: 'var(--band)', borderTop: '1px solid var(--line)' }}>
       <div className="container">
         <div style={{ maxWidth: 720, marginBottom: 36 }}>
           <div className="eyebrow">{tx('Como funciona')}</div>

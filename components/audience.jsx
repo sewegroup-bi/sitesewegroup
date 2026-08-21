@@ -558,7 +558,7 @@ function IndustriaNetworkPanel() {
       products: [{ n: tx('Ração Premier 15kg'), v: 'R$ 1,6M' }, { n: tx('Vacina Pol. V8'), v: 'R$ 1,1M' }, { n: tx('Cama Grande'), v: 'R$ 0,7M' }] },
   ];
   return (
-    <section className="section" style={{ background: 'linear-gradient(180deg, var(--bg-soft) 0%, #f4f6fb 100%)' }}>
+    <section className="section" style={{ background: 'var(--band)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 40px' }}>
           <div className="eyebrow">{tx('A rede em um só painel')}</div>
@@ -940,7 +940,7 @@ function IndustriaOutrasOfertas() {
       d: tx('Portfólio, preço e campanha definidos pela indústria; crédito, faturamento e entrega seguem no distribuidor.') },
   ];
   return (
-    <section className="section-sm" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line)' }}>
+    <section className="section-sm" style={{ background: '#fff', borderTop: '1px solid var(--line)' }}>
       <div className="container">
         <div className="eyebrow" style={{ marginBottom: 20 }}>{tx('Também para a indústria')}</div>
         <div className="oo-grid">
@@ -1138,7 +1138,7 @@ function SolucoesCamadas() {
   ];
   const S = camadas[active];
   return (
-    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
+    <section className="section" style={{ background: 'var(--band)', borderTop: '1px solid var(--line-2)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 36px' }}>
           <div className="eyebrow">{tx('Como a plataforma resolve')}</div>
@@ -1326,7 +1326,7 @@ function SolucoesCusto() {
       e: tx('Consciente de contexto'), ed: tx('Por inferência lógica, o dado associado e o não associado continuam visíveis.') },
   ];
   return (
-    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
+    <section className="section" style={{ background: 'var(--band)', borderTop: '1px solid var(--line-2)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto 40px' }}>
           <div className="eyebrow">{tx('Custo de operação')}</div>
@@ -1547,7 +1547,7 @@ function SolucoesPlatform() {
   // Segunda metade do argumento de custo: entra colada em "Custo de operacao",
   // sem cabecalho proprio — as duas secoes faziam a mesma pergunta duas vezes.
   return (
-    <section className="section" style={{ background: 'var(--bg-soft)', paddingTop: 'clamp(8px, 1.2vw, 18px)' }}>
+    <section className="section" style={{ background: 'var(--band)', paddingTop: 'clamp(8px, 1.2vw, 18px)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 26px' }}>
           <div className="eyebrow">{tx('TCO · Custo total de propriedade')}</div>
@@ -1765,7 +1765,7 @@ function SolucoesProcess() {
     { n: '04', t: tx('Squad dedicado ao crescimento'), d: tx('Seu negócio muda, seus gráficos também. O time SEWE continua criando novas visões, relatórios e ferramentas conforme a operação evolui.') },
   ];
   return (
-    <section className="section" style={{ background: 'var(--bg-soft)' }}>
+    <section className="section" style={{ background: '#fff' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 44px' }}>
           <div className="eyebrow">{tx('Como trabalhamos')}</div>
@@ -1807,7 +1807,7 @@ function SolucoesCamadaSewe() {
       d: tx('Positivação por rota, ruptura de Curva A por filial, cobertura ociosa por praça. Nenhum deles vem de fábrica em um BI genérico.') },
   ];
   return (
-    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line)' }}>
+    <section className="section" style={{ background: 'var(--band)', borderTop: '1px solid var(--line)' }}>
       <div className="container">
         <div style={{ maxWidth: 780, marginBottom: 40 }}>
           <div className="eyebrow">{tx('A camada SEWE')}</div>

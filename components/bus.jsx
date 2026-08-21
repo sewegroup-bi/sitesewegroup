@@ -555,7 +555,7 @@ function SalesSection({ audience = 'distribuidor' }) {
     { icon: 'store',     k: tx('Revenda + cliente final'), d: tx('compra e recompra') },
   ];
   return (
-    <section id="sales" className="section" style={{ background: 'var(--bg-soft)', position: 'relative', overflow: 'hidden' }}>
+    <section id="sales" className="section" style={{ background: 'var(--band)', position: 'relative', overflow: 'hidden' }}>
       <div className="container">
         <div className="bu-head reveal">
           <div>

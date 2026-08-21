@@ -247,7 +247,7 @@ function PremioPage() {
       </section>
 
       {/* Process */}
-      <section className="section" style={{ background: 'var(--bg-soft)' }}>
+      <section className="section" style={{ background: 'var(--band)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 48px' }}>
             <div className="eyebrow">{tx('Como funciona')}</div>
@@ -374,7 +374,7 @@ function QuemSomosPage() {
       </section>
 
       {/* Atuação / mapa das Américas */}
-      <section className="section" style={{ background: 'var(--bg-soft)' }}>
+      <section className="section" style={{ background: 'var(--band)' }}>
         <div className="container">
           <div className="atua-grid">
             <div>
@@ -427,7 +427,7 @@ function QuemSomosPage() {
       </section>
 
       {/* Nossos Valores — interativo */}
-      <section className="section" style={{ background: 'var(--bg-soft)' }}>
+      <section className="section" style={{ background: 'var(--band)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 40px' }}>
             <div className="eyebrow">{tx('Nossos valores')}</div>

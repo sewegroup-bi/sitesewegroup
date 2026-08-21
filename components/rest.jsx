@@ -16,7 +16,7 @@ function MaturitySection() {
       includes: [tx('Tudo do SCALE'), tx('DRE automatizado'), tx('Sugestão de compras · IA'), tx('Visão 360° C-Level'), tx('Simulação de cenários'), tx('Comitê executivo trimestral')] },
   ];
   return (
-    <section id="maturidade" className="section" style={{ background: 'var(--bg-soft)' }}>
+    <section id="maturidade" className="section" style={{ background: 'var(--band)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 48px' }}>
           <div className="eyebrow">{tx('Níveis de maturidade')}</div>
@@ -173,7 +173,7 @@ function FAQSection() {
     { q: tx('Quanto custa?'), a: tx('O investimento depende da suíte, do nível (Smart, Scale ou Strategic), dos add-ons e da quantidade de usuários. Agende um diagnóstico gratuito de 30 minutos. Mostramos o ROI estimado com base nos seus dados antes de falar em preço.') },
   ];
   return (
-    <section id="faq" className="section" style={{ background: 'var(--bg-soft)' }}>
+    <section id="faq" className="section" style={{ background: 'var(--band)' }}>
       <div className="container" style={{ maxWidth: 880 }}>
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
           <div className="eyebrow">{tx('Perguntas frequentes')}</div>
