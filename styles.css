@@ -335,3 +335,13 @@ p { margin: 0; color: var(--text); text-wrap: pretty; }
   opacity: 0.8;
   text-align: right;
 }
+
+/* Rótulo de produto (Sewe Integration · Sewe Sales · Sewe BI): pílula com a marca S.
+   Fica aqui, e não dentro de um componente, porque as três seções vivem em
+   arquivos diferentes e o rótulo tem de ser idêntico nas três. */
+.bu-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px 6px 10px; border-radius: 999px;
+  font-family: var(--ff-display); font-weight: 700; font-size: 12.5px;
+  letter-spacing: 0.06em;
+}

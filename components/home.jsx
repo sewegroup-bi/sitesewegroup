@@ -23,9 +23,6 @@ function HomePositioning() {
             </a>
             <a href="#escolha" className="btn btn-outline btn-lg">{tr('cta.secondary')}</a>
           </div>
-          <a href="#escolha" className="hp-down" aria-label={tr('home.scroll')}>
-            <Icon name="arrowDown" size={20} stroke={2}/>
-          </a>
         </div>
       </div>
     </section>
@@ -63,6 +60,10 @@ function AudienceChooser() {
             {tr('home.pick.title')}
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 16.5, marginTop: 12 }}>{tr('home.pick.lead')}</p>
+          {/* Seta decorativa: leva o olho da frase para os três cards logo abaixo. */}
+          <span className="hp-down" aria-hidden="true">
+            <Icon name="arrowDown" size={20} stroke={2}/>
+          </span>
         </div>
 
         <div className="hc-grid">
@@ -189,7 +190,7 @@ function HomeLanding() {
     .hp-lead { color: var(--text-2); font-size: 19px; line-height: 1.6; margin: 24px auto 0; max-width: 680px; }
     .hp-cta { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
     .hp-down {
-      display: inline-grid; place-items: center; width: 44px; height: 44px; margin-top: 30px;
+      display: inline-grid; place-items: center; width: 44px; height: 44px; margin-top: 20px;
       border-radius: 999px; background: #fff; border: 1px solid var(--line);
       color: var(--navy-900); box-shadow: var(--shadow-sm);
       animation: hp-bounce 1.8s ease-in-out infinite;

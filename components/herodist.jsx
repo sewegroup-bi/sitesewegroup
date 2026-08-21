@@ -1099,7 +1099,8 @@ const dpAreas = () => [
   { key: 'estrategica', kind: 'bi', label: tx('Gestão Estratégica'), icon: 'target', l: 24, t: 22, up: true,
     items: [tx('DRE ao vivo'), tx('KPIs por filial'), tx('Visão 360°')],
     msg: tx('Assuma o controle: a operação inteira em uma tela e a decisão do dia já priorizada, sem pedir relatório a ninguém.') },
-  { key: 'suprimentos', kind: 'bi', label: tx('Suprimentos'), icon: 'boxes', l: 55, t: 20,
+  // l: 62 (era 55) — em 55 o painel aberto de "Gestão de Produtos" cobria esta pílula
+  { key: 'suprimentos', kind: 'bi', label: tx('Suprimentos'), icon: 'boxes', l: 62, t: 20,
     items: [tx('Previsão de ruptura'), tx('Curva ABC'), tx('Sugestão de compra')],
     msg: tx('Acabe com a ruptura: a IA prevê a demanda por SKU e sugere a compra certa antes de a prateleira esvaziar.') },
   { key: 'saude', kind: 'bi', label: tx('Saúde Estoque'), icon: 'shield', l: 36, t: 11,

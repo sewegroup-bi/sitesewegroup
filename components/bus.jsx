@@ -128,7 +128,7 @@ function IntegrationSection() {
         <div className="bu-head reveal">
           <div>
             <div className="bu-eyebrow" style={{ color: C.ink, background: C.soft }}>
-              <SMark size={16} color={C.color}/> {tx('SEWE INTEGRATION')}</div>
+              <SMark size={16} color={C.color}/> {tx('Sewe Integration')}</div>
             <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>{tx('A ponte de dados entre')} <span style={{ color: C.color }}>{tx('indústria e distribuidor')}</span>.
             </h2>
             <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 560 }}>{tx('A SEWE Integration conecta o ERP dos seus distribuidores à indústria em tempo real, gerando uma via de mão dupla: inteligência estratégica para o seu negócio e eficiência operacional para o seu canal.')}</p>
@@ -560,7 +560,7 @@ function SalesSection({ audience = 'distribuidor' }) {
         <div className="bu-head reveal">
           <div>
             <div className="bu-eyebrow" style={{ color: C.ink, background: C.soft }}>
-              <SMark size={16} color={C.color}/> {tx('ECOSSISTEMA COMERCIAL · SEWE SALES')}</div>
+              <SMark size={16} color={C.color}/> {tx('Sewe Sales')}</div>
             <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
               {isInd
                 ? <React.Fragment>{tx('Sua indústria vendendo para toda a rede: sem redigitação, sem tabela velha, sem')} <span style={{ color: C.color }}>{tx('desconto fora da política')}</span>.</React.Fragment>

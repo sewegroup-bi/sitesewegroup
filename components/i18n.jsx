@@ -27,7 +27,7 @@ const SEWE_STRINGS = {
   'nav.distributor': { pt: 'Distribuidor & Atacado', en: 'Distribution & Wholesale', es: 'Distribuidor & Mayorista' },
   'nav.platform':    { pt: 'Plataforma de Dados & IA', en: 'Data & AI Platform', es: 'Plataforma de Datos e IA' },
   'nav.prospecting': { pt: 'Prospecção de Mercado', en: 'Market Prospecting', es: 'Prospección de Mercado' },
-  'nav.commerce':    { pt: 'Comércio Digital B2B',  en: 'B2B Digital Commerce', es: 'Comercio Digital B2B' },
+  'nav.commerce':    { pt: 'Comércio Digital B2B2C', en: 'B2B2C Digital Commerce', es: 'Comercio Digital B2B2C' },
   'nav.content':     { pt: 'Conteúdos',           en: 'Content',             es: 'Contenidos' },
   'nav.blog':        { pt: 'Blog',                en: 'Blog',                es: 'Blog' },
   'nav.award':       { pt: 'Prêmio SEWE',         en: 'SEWE Award',          es: 'Premio SEWE' },
@@ -66,7 +66,6 @@ const SEWE_STRINGS = {
   'home.lead':       { pt: 'BI, IA e CRM para distribuidores, atacadistas e indústrias.',
                        en: 'BI, AI and CRM for distributors, wholesalers and manufacturers.',
                        es: 'BI, IA y CRM para distribuidores, mayoristas e industrias.' },
-  'home.scroll':     { pt: 'Ir para a escolha de perfil', en: 'Go to profile selection', es: 'Ir a la selección de perfil' },
 
   // CTA padrão do site: dois rótulos, repetidos sem variação em todas as páginas.
   'cta.primary':     { pt: 'Agendar diagnóstico de 30 min', en: 'Book a 30-min assessment', es: 'Agendar diagnóstico de 30 min' },

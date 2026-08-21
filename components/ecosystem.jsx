@@ -82,7 +82,10 @@ function EcosystemSection({ animated = true }) {
     <section id="bi" className="section" style={{ background: 'linear-gradient(180deg, #fff 0%, #f4f6fb 100%)', position: 'relative', overflow: 'hidden' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 840, margin: '0 auto 40px' }}>
-          <div className="eyebrow">{tx('SEWE BI · o distribuidor operando')}</div>
+          {/* mesmo rótulo-pílula do Sewe Integration e do Sewe Sales */}
+          <div className="bu-eyebrow" style={{ color: 'var(--turquoise-ink)', background: 'rgba(117,227,228,0.18)' }}>
+            <SMark size={16} color="var(--turquoise-ink)"/> {tx('Sewe BI')}
+          </div>
           <h2 style={{ marginTop: 14, marginBottom: 14 }}>{tx('Veja onde cada suíte SEWE')} <br className="hide-mob"/>{tx('se acopla à sua operação.')}</h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17 }}>{tx('Da compra ao PDV, os dados correm pela sua operação em tempo real. A SEWE lê cada estação, decide nos bastidores e devolve a próxima ação para a área certa. Clique numa suíte e veja onde ela entra.')}</p>
         </div>

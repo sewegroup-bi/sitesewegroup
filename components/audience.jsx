@@ -1107,7 +1107,7 @@ function IndustriaOutrasOfertas() {
     { href: '/prospeccao', eyebrow: tx('Prospecção de Mercado'),
       t: tx('O mercado que a sua rede ainda não atende'),
       d: tx('A base pública de empresas ativas cruzada com a carteira da rede: onde a sua marca não chegou, com nome, CNPJ e endereço.') },
-    { href: '/comercio-digital', eyebrow: tx('Comércio Digital B2B'),
+    { href: '/comercio-digital', eyebrow: tx('Comércio Digital B2B2C'),
       t: tx('A revenda comprando no seu padrão'),
       d: tx('Portfólio, preço e campanha definidos pela indústria; crédito, faturamento e entrega seguem no distribuidor.') },
   ];
@@ -1422,7 +1422,7 @@ function SolucoesPortfolio() {
   ];
   const stack = ['AWS', 'Azure', 'Google Cloud', 'Databricks', 'Snowflake', 'SAP', 'Apache Iceberg', 'OpenAI', 'Anthropic'];
   return (
-    <section className="section" style={{ background: '#fff' }}>
+    <section className="section" style={{ background: '#fff', paddingBottom: 'clamp(20px, 2.6vw, 36px)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto 40px' }}>
           <div className="eyebrow">{tx('O portfólio completo')}</div>
@@ -1935,7 +1935,7 @@ function SolucoesTech() {
     { t: tx('Decisão'), d: tx('Web, mobile, e-mail e alertas') },
   ];
   return (
-    <section className="section" style={{ background: '#fff' }}>
+    <section className="section" style={{ background: '#fff', paddingTop: 'clamp(24px, 3vw, 40px)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 44px' }}>
           <div className="eyebrow">{tx('Por dentro da tecnologia')}</div>
@@ -2039,10 +2039,10 @@ function SolucoesCamadaSewe() {
         <div style={{ maxWidth: 780, marginBottom: 40 }}>
           <div className="eyebrow">{tx('A camada SEWE')}</div>
           <h2 style={{ marginTop: 14, fontSize: 'clamp(26px,3.4vw,40px)' }}>
-            {tx('O que a Qlik entrega, qualquer parceiro instala.')} <span style={{ color: 'var(--navy)' }}>{tx('A modelagem é nossa.')}</span>
+            {tx('A Qlik é a melhor plataforma do mercado.')} <span style={{ color: 'var(--navy)' }}>{tx('E fica melhor ainda modelada por quem conhece a sua operação.')}</span>
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            {tx('A plataforma é a mesma para todo mundo. O que muda o resultado é quem escreve a regra de negócio, conecta o ERP que ninguém conecta e decide qual indicador merece existir.')}
+            {tx('Líder do Gartner há 16 anos, com um motor associativo que nenhuma ferramenta SQL alcança: a base é excelente. O que transforma essa base em resultado é a camada de engenharia por cima dela — quem escreve a regra de negócio, conecta o ERP e define qual indicador merece existir.')}
           </p>
         </div>
         <div className="cs-grid">

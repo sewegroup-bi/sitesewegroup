@@ -772,6 +772,9 @@ export const SEWE_TX = {
   'PARA INDÚSTRIAS': { en: 'FOR MANUFACTURERS', es: 'PARA INDUSTRIAS' },
 
   // Integration
+  'Sewe Integration': { en: 'Sewe Integration', es: 'Sewe Integration' },
+  'Sewe Sales': { en: 'Sewe Sales', es: 'Sewe Sales' },
+  'Sewe BI': { en: 'Sewe BI', es: 'Sewe BI' },
   'SEWE INTEGRATION': { en: 'SEWE INTEGRATION', es: 'SEWE INTEGRATION' },
   'A ponte de dados entre': { en: 'The data bridge between', es: 'El puente de datos entre' },
   'indústria e distribuidor': { en: 'manufacturer and distributor', es: 'industria y distribuidor' },
@@ -792,7 +795,6 @@ export const SEWE_TX = {
 
   // Sales
   'SEWE SALES': { en: 'SEWE SALES', es: 'SEWE SALES' },
-  'ECOSSISTEMA COMERCIAL · SEWE SALES': { en: 'COMMERCIAL ECOSYSTEM · SEWE SALES', es: 'ECOSISTEMA COMERCIAL · SEWE SALES' },
   'Sua indústria vendendo para toda a rede: sem redigitação, sem tabela velha, sem': { en: 'Your company selling to the whole network: no re-typing, no stale price list, no', es: 'Su industria vendiendo a toda la red: sin retipeo, sin lista de precios vieja, sin' },
   'desconto fora da política': { en: 'discount outside policy', es: 'descuento fuera de política' },
   'Toda a sua operação comercial, da tabela de preço ao pedido aprovado, em': { en: 'Your entire sales operation, from the price list to the approved order, in', es: 'Toda su operación comercial, de la lista de precios al pedido aprobado, en' },
@@ -1004,7 +1006,6 @@ export const SEWE_TX = {
 
   // Operação ao vivo (ecosystem.jsx)
   'O distribuidor operando ao vivo': { en: 'The distributor operating live', es: 'El distribuidor operando en vivo' },
-  'SEWE BI · o distribuidor operando': { en: 'SEWE BI · the distributor in operation', es: 'SEWE BI · el distribuidor operando' },
   'Veja onde cada suíte SEWE': { en: 'See where each SEWE suite', es: 'Vea dónde cada suite SEWE' },
   'se acopla à sua operação.': { en: 'plugs into your operation.', es: 'se acopla a su operación.' },
   'Da compra ao PDV, os dados correm pela sua operação em tempo real. A SEWE lê cada estação, decide nos bastidores e devolve a próxima ação para a área certa. Clique numa suíte e veja onde ela entra.': { en: 'From purchasing to the point of sale, data runs through your operation in real time. SEWE reads every station, decides behind the scenes and returns the next action to the right area. Click a suite and see where it plugs in.', es: 'De la compra al punto de venta, los datos corren por su operación en tiempo real. SEWE lee cada estación, decide tras bastidores y devuelve la próxima acción al área correcta. Haga clic en una suite y vea dónde entra.' },
@@ -1394,9 +1395,9 @@ export const SEWE_TX = {
   // Plataforma — lead e camada SEWE
   'Para quem já tem time de dados e não tem tempo de montar plataforma: o Qlik de ponta a ponta, do dado bruto ao agente que executa a ação, com a engenharia de dados da SEWE por trás. Dado governado, painel rápido e decisão direto no navegador.': { en: 'For companies that already have a data team and no time to build a platform: Qlik end to end, from raw data to the agent that takes action, backed by SEWE data engineering. Governed data, fast dashboards and decisions straight from the browser.', es: 'Para quien ya tiene equipo de datos y no tiene tiempo de montar una plataforma: Qlik de punta a punta, del dato bruto al agente que ejecuta la acción, con la ingeniería de datos de SEWE detrás. Dato gobernado, panel rápido y decisión directo en el navegador.' },
   'A camada SEWE': { en: 'The SEWE layer', es: 'La capa SEWE' },
-  'O que a Qlik entrega, qualquer parceiro instala.': { en: 'What Qlik delivers, any partner can install.', es: 'Lo que entrega Qlik, cualquier partner lo instala.' },
-  'A modelagem é nossa.': { en: 'The modelling is ours.', es: 'El modelado es nuestro.' },
-  'A plataforma é a mesma para todo mundo. O que muda o resultado é quem escreve a regra de negócio, conecta o ERP que ninguém conecta e decide qual indicador merece existir.': { en: 'The platform is the same for everyone. What changes the result is who writes the business rule, connects the ERP nobody connects and decides which metric deserves to exist.', es: 'La plataforma es la misma para todos. Lo que cambia el resultado es quién escribe la regla de negocio, conecta el ERP que nadie conecta y decide qué indicador merece existir.' },
+  'A Qlik é a melhor plataforma do mercado.': { en: 'Qlik is the best platform on the market.', es: 'Qlik es la mejor plataforma del mercado.' },
+  'E fica melhor ainda modelada por quem conhece a sua operação.': { en: 'And it gets even better modelled by people who know your operation.', es: 'Y mejora aún más modelada por quien conoce su operación.' },
+  'Líder do Gartner há 16 anos, com um motor associativo que nenhuma ferramenta SQL alcança: a base é excelente. O que transforma essa base em resultado é a camada de engenharia por cima dela — quem escreve a regra de negócio, conecta o ERP e define qual indicador merece existir.': { en: 'A Gartner Leader for 16 years, with an associative engine no SQL tool matches: the foundation is excellent. What turns that foundation into results is the engineering layer on top of it — who writes the business rule, connects the ERP and defines which metric deserves to exist.', es: 'Líder de Gartner desde hace 16 años, con un motor asociativo que ninguna herramienta SQL alcanza: la base es excelente. Lo que transforma esa base en resultado es la capa de ingeniería encima de ella — quién escribe la regla de negocio, conecta el ERP y define qué indicador merece existir.' },
   'Regra de negócio modelada, não configurada': { en: 'Business rules modelled, not configured', es: 'Regla de negocio modelada, no configurada' },
   'Margem líquida por SKU descontando rebate, frete, verba, imposto e devolução. Isso não vem pronto em ferramenta nenhuma: é modelagem, escrita junto com a sua controladoria.': { en: 'Net margin per SKU, net of rebates, freight, trade funds, tax and returns. No tool ships that ready-made: it is modelling, written together with your controllership.', es: 'Margen neto por SKU descontando rebate, flete, fondos, impuesto y devolución. Eso no viene listo en ninguna herramienta: es modelado, escrito junto con su controladuría.' },
   'O ERP que ninguém quis conectar': { en: 'The ERP nobody wanted to connect', es: 'El ERP que nadie quiso conectar' },
@@ -1435,7 +1436,7 @@ export const SEWE_TX = {
   'Filtrada pelo perfil que interessa: CNAE, porte, cidade, data de abertura e capital social.': { en: 'Filtered by the profile that matters: industry code, company size, city, opening date and share capital.', es: 'Filtrada por el perfil que interesa: código de actividad, tamaño, ciudad, fecha de apertura y capital social.' },
   'Entregamos o mapa do que falta': { en: 'We deliver the map of what is missing', es: 'Entregamos el mapa de lo que falta' },
   'As empresas que ninguém da rede positivou, com nome, CNPJ e endereço, por praça e por distribuidor.': { en: 'The companies nobody in the network has sold to, with name, tax ID and address, by territory and by distributor.', es: 'Las empresas a las que nadie de la red vendió, con nombre, identificación fiscal y dirección, por territorio y por distribuidor.' },
-  'Comércio Digital B2B': { en: 'B2B Digital Commerce', es: 'Comercio Digital B2B' },
+  'Comércio Digital B2B2C': { en: 'B2B2C Digital Commerce', es: 'Comercio Digital B2B2C' },
   'A revenda compra da sua marca, no seu padrão, sem tirar nada do distribuidor.': { en: 'The reseller buys from your brand, to your standard, without taking anything away from the distributor.', es: 'La reventa compra de su marca, con su estándar, sin quitarle nada al distribuidor.' },
   'Uma camada de compra sobre a operação que já existe: a indústria define portfólio, preço e campanha; o distribuidor segue dono do crédito, do faturamento e da entrega.': { en: 'A buying layer over the operation that already exists: the manufacturer sets portfolio, price and campaign; the distributor stays in charge of credit, invoicing and delivery.', es: 'Una capa de compra sobre la operación que ya existe: la industria define portafolio, precio y campaña; el distribuidor sigue siendo dueño del crédito, la facturación y la entrega.' },
 

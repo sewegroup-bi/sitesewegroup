@@ -220,7 +220,7 @@ function ComercioDigitalPage() {
     <>
       <SiteHeader translated/>
       <PageHero
-        eyebrow={tx('Comércio Digital B2B')}
+        eyebrow={tx('Comércio Digital B2B2C')}
         title={tx('A revenda compra da sua marca, no seu padrão, sem tirar nada do distribuidor.')}
         lead={tx('Uma camada de compra sobre a operação que já existe: a indústria define portfólio, preço e campanha; o distribuidor segue dono do crédito, do faturamento e da entrega.')}
       >
