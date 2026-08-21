@@ -108,7 +108,7 @@ function DistribuidorApp() {
         <MaturitySection/>
         <DifferentiatorsSection/>
         <CasesSection/>
-        <FAQSection/>
+        <ObjectionBlock/>
         <CTASection/>
       </main>
       <SiteFooter/>

@@ -534,55 +534,6 @@ function IndustriaDashboard({ kind }) {
 }
 
 
-function IndustriaMap() {
-  const fronts = [
-    { c: BU_C.integration, icon: 'link',  step: '01', name: tx('Enxergue a rede inteira'), flow: 'SEWE Integration',
-      d: tx('O sellout, o estoque e a curva de cada distribuidor que vende os seus produtos, produto a produto, em um só painel.') },
-    { c: BU_C.sales, icon: 'store', step: '02', name: tx('Venda mais no canal'), flow: 'SEWE Sales',
-      d: tx('Portal de pedidos, promoções, CRM e carteira de clientes: a rede inteira vendendo no padrão da indústria.') },
-    { c: BU_C.bi, icon: 'brain', step: '03', name: tx('Decida com IA'), flow: 'SEWE BI + IA',
-      d: tx('Onde falta produto, onde sobra estoque e onde há espaço para crescer, com a próxima ação pronta, sem garimpar gráfico.') },
-  ];
-  return (
-    <section className="section" style={{ background: '#fff' }}>
-      <div className="container">
-        <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 44px' }}>
-          <div className="eyebrow">{tx('O que você passa a ter')}</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Três entregas.')} <span style={{ color: 'var(--navy)' }}>{tx('Contrate juntas ou separadas')}</span>.
-          </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Cada frente funciona sozinha e entrega valor por conta própria. Juntas, fecham o ciclo da fábrica ao PDV.')}</p>
-        </div>
-        <div className="im-grid">
-          {fronts.map((f, i) => (
-            <div key={i} className="im-card reveal" style={{ '--c': f.c.color, '--cs': f.c.soft }}>
-              <div className="im-top">
-                <span className="im-icon" style={{ background: f.c.color }}><Icon name={f.icon} size={22} stroke={1.85}/></span>
-                <span className="im-step">{f.step}</span>
-              </div>
-              <div className="im-flow" style={{ color: f.c.color }}>{f.flow}</div>
-              <div className="im-name">{f.name}</div>
-              <p className="im-desc">{f.d}</p>
-              {i < fronts.length - 1 && <span className="im-arrow" aria-hidden><Icon name="arrow" size={18} stroke={2.2}/></span>}
-            </div>
-          ))}
-        </div>
-      </div>
-      <style>{`
-        .im-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; position: relative; }
-        .im-card { position: relative; background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--c); border-radius: var(--r-lg); padding: 26px; box-shadow: var(--shadow-sm); }
-        .im-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-        .im-icon { width: 46px; height: 46px; border-radius: 12px; color: #fff; display: grid; place-items: center; box-shadow: 0 8px 20px var(--cs); }
-        .im-step { font-family: var(--ff-mono); font-size: 13px; font-weight: 600; color: var(--text-3); letter-spacing: .08em; }
-        .im-flow { font-family: var(--ff-mono); font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px; }
-        .im-name { font-family: var(--ff-display); font-weight: 700; font-size: 20px; color: var(--navy-900); margin-bottom: 8px; }
-        .im-desc { font-size: 14px; color: var(--text-2); line-height: 1.6; }
-        .im-arrow { position: absolute; right: -28px; top: 50px; z-index: 3; width: 34px; height: 34px; border-radius: 50%; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; color: var(--slate); box-shadow: var(--shadow-sm); }
-        @media (max-width: 860px) { .im-grid { grid-template-columns: 1fr; gap: 28px; } .im-arrow { right: 50%; top: auto; bottom: -24px; transform: translateX(50%) rotate(90deg); } }
-      `}</style>
-    </section>
-  );
-}
-
 /* Industry's live view of its distributor network */
 function IndustriaNetworkPanel() {
   const [expanded, setExpanded] = React.useState(0);
@@ -975,131 +926,8 @@ function IndustriaConexao() {
    experiência exatamente no momento da compra da revenda. */
 /* O eixo: as três perguntas que sustentam qualquer decisão de canal,
    e os oito ganhos que aparecem quando elas passam a ter resposta. */
-function IndustriaEixo() {
-  const ganhos = [
-    { n: '01', t: tx('S&OP com sell-out e estoque'), d: tx('Dado confiável sobre o que a rede realmente tem e vende. Menos custo operacional, menos desperdício.') },
-    { n: '02', t: tx('Promoções otimizadas'), d: tx('O investimento vai para os produtos e as regiões com potencial real de venda.') },
-    { n: '03', t: tx('Agilidade e segurança na decisão'), d: tx('Decisão estratégica tomada no tempo do mercado, com dado atualizado e confiável.') },
-    { n: '04', t: tx('Mais previsibilidade, menos ruptura'), d: tx('Com o estoque da rede confiável, o impacto de cada estratégia comercial é avaliado com segurança.') },
-    { n: '05', t: tx('Fonte única de consulta'), d: tx('Distribuidor e fábrica olham o mesmo número, com a mesma premissa de cálculo.') },
-    { n: '06', t: tx('Desenvolvimento dos distribuidores'), d: tx('Painéis padronizados: indústria e distribuidores lendo a mesma informação.') },
-    { n: '07', t: tx('Política comercial mais forte'), d: tx('Transparência fortalece a relação e torna a comunicação com a rede mais clara e colaborativa.') },
-    { n: '08', t: tx('Remuneração pelo sell-out'), d: tx('A equipe é remunerada sobre o que saiu de verdade. O foco deixa de ser só vender e passa a ser a efetividade na ponta.') },
-  ];
-  return (
-    <section className="section ex-sec">
-      <div className="container">
-        <div className="ex-head reveal">
-          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>{tx('Futuro · ecossistema integrado')}</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)', color: '#fff' }}>{tx('O que muda quando a rede inteira')} <span style={{ color: 'var(--turquoise-2)' }}>{tx('fala a mesma língua')}</span>.
-          </h2>
-        </div>
-
-        <div className="ex-axis reveal">
-          <div className="ex-axis-l">{tx('O eixo')}</div>
-          <p>{tx('Resultado só faz sentido quando dá para responder três perguntas:')}<b> {tx('o que aconteceu?')}</b> <b>{tx('o que está sendo feito agora?')}</b> <b>{tx('e para onde isso vai nos levar?')}</b>
-          </p>
-        </div>
-
-        <div className="ex-grid">
-          {ganhos.map((g, i) => (
-            <div key={i} className="ex-card reveal">
-              <div className="ex-n">{g.n}</div>
-              <div>
-                <div className="ex-t">{g.t}</div>
-                <p className="ex-d">{g.d}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <style>{`
-        .ex-sec { background: linear-gradient(160deg, #0f1512 0%, #12100f 60%, #15243d 100%); position: relative; overflow: hidden; }
-        .ex-sec::after { content: ''; position: absolute; top: 40px; right: -140px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(0,163,53,0.14), transparent 70%); pointer-events: none; }
-        .ex-head { max-width: 780px; margin: 0 auto 28px; text-align: center; position: relative; z-index: 1; }
-        .ex-axis { max-width: 820px; margin: 0 auto 34px; padding: 22px 26px; background: rgba(117,227,228,0.07); border: 1px solid rgba(117,227,228,0.2); border-radius: var(--r-lg); text-align: center; position: relative; z-index: 1; }
-        .ex-axis-l { font-family: var(--ff-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--turquoise); }
-        .ex-axis p { font-size: 17px; color: rgba(255,255,255,0.82); line-height: 1.65; margin: 12px 0 0; }
-        .ex-axis b { color: #fff; font-weight: 600; }
-        .ex-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; position: relative; z-index: 1; }
-        .ex-card { display: flex; gap: 13px; align-items: flex-start; background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r-lg); padding: 20px; }
-        .ex-n { font-family: var(--ff-mono); font-size: 11px; font-weight: 700; letter-spacing: .06em; color: var(--turquoise-2); flex-shrink: 0; padding-top: 2px; }
-        .ex-t { font-family: var(--ff-display); font-weight: 700; font-size: 15.5px; color: #fff; line-height: 1.3; }
-        .ex-d { font-size: 13px; color: rgba(255,255,255,0.62); line-height: 1.55; margin-top: 8px; }
-        @media (max-width: 1040px) { .ex-grid { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 620px) { .ex-grid { grid-template-columns: 1fr; } }
-      `}</style>
-    </section>
-  );
-}
-
 /* Método: por que projeto de canal falha. Cada dupla de eixos tem um
    modo de falha conhecido — o ponto ótimo é a interseção dos três. */
-function IndustriaMetodo() {
-  const falhas = [
-    { par: tx('Processo + Tecnologia'), sem: tx('sem Pessoas'), t: tx('Alienação'), d: tx('Sistema impecável que ninguém usa.') },
-    { par: tx('Processo + Pessoas'), sem: tx('sem Tecnologia'), t: tx('Frustração'), d: tx('Time engajado preso em rotina manual que não escala.') },
-    { par: tx('Tecnologia + Pessoas'), sem: tx('sem Processo'), t: tx('Caos automatizado'), d: tx('Velocidade em cima de um processo errado.') },
-  ];
-  return (
-    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
-      <div className="container">
-        <div className="mt-grid">
-          <div>
-            <div className="eyebrow">{tx('Método · forma de atuação')}</div>
-            <h2 style={{ marginTop: 14, fontSize: 'clamp(26px,3.2vw,38px)' }}>{tx('O ponto ótimo não é tecnologia.')} <span style={{ color: 'var(--navy)' }}>{tx('É a interseção')}</span>.
-            </h2>
-            <p style={{ color: 'var(--text-2)', fontSize: 16.5, marginTop: 16, lineHeight: 1.65 }}>{tx('Atuamos nos três eixos ao mesmo tempo. Cada dupla sozinha tem um modo de falha conhecido, e é para onde a maior parte dos projetos de canal escorrega.')}</p>
-            <div className="mt-falhas">
-              {falhas.map((f, i) => (
-                <div key={i} className="mt-falha reveal">
-                  <div className="mt-par">{f.par} <em>{f.sem}</em></div>
-                  <div className="mt-fd"><b>{f.t}.</b> {f.d}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-venn reveal">
-            <svg viewBox="0 0 340 320" role="img" aria-label={tx('Diagrama de interseção entre Processo, Tecnologia e Pessoas')}>
-              <circle cx="122" cy="126" r="98" fill="rgba(45,67,108,0.16)" stroke="rgba(45,67,108,0.4)"/>
-              <circle cx="218" cy="126" r="98" fill="rgba(0,163,53,0.16)" stroke="rgba(0,163,53,0.42)"/>
-              <circle cx="170" cy="208" r="98" fill="rgba(117,227,228,0.2)" stroke="rgba(14,122,124,0.4)"/>
-              <text x="70" y="118" className="vn-l" textAnchor="middle">{tx('PROCESSO')}</text>
-              <text x="266" y="118" className="vn-l" textAnchor="middle">{tx('TECNOLOGIA')}</text>
-              <text x="170" y="282" className="vn-l" textAnchor="middle">{tx('PESSOAS')}</text>
-              <text x="170" y="88" className="vn-s" textAnchor="middle">{tx('Alienação')}</text>
-              <text x="110" y="199" className="vn-s" textAnchor="middle">{tx('Frustração')}</text>
-              <text x="228" y="191" className="vn-s" textAnchor="middle">{tx('Caos')}</text>
-              <text x="228" y="204" className="vn-s vn-xs" textAnchor="middle">automatizado</text>
-              <text x="170" y="150" className="vn-c" textAnchor="middle">{tx('PONTO')}</text>
-              <text x="170" y="170" className="vn-c" textAnchor="middle">{tx('ÓTIMO')}</text>
-            </svg>
-            <div className="mt-venn-f">{tx('Engenharia · sucesso do cliente · plataforma')}</div>
-          </div>
-        </div>
-      </div>
-      <style>{`
-        .mt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .mt-falhas { display: grid; gap: 0; margin-top: 26px; }
-        .mt-falha { display: grid; grid-template-columns: 190px 1fr; gap: 18px; padding: 16px 0; border-top: 1px solid var(--line); }
-        .mt-par { font-family: var(--ff-mono); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy-900); line-height: 1.5; }
-        .mt-par em { display: block; font-style: normal; font-weight: 500; color: var(--text-3); letter-spacing: .04em; }
-        .mt-fd { font-size: 14.5px; color: var(--text-2); line-height: 1.55; }
-        .mt-fd b { font-family: var(--ff-display); font-weight: 700; color: var(--navy-900); }
-        .mt-venn { text-align: center; }
-        .mt-venn svg { width: 100%; max-width: 380px; height: auto; }
-        .vn-l { font-family: var(--ff-display); font-weight: 700; font-size: 13px; letter-spacing: .1em; fill: var(--navy-900); }
-        .vn-s { font-family: var(--ff-body); font-size: 11.5px; fill: var(--text-2); }
-        .vn-xs { font-size: 10.5px; }
-        .vn-c { font-family: var(--ff-display); font-weight: 700; font-size: 15px; letter-spacing: .08em; fill: var(--turquoise-ink); }
-        .mt-venn-f { font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); margin-top: 10px; }
-        @media (max-width: 900px) { .mt-grid { grid-template-columns: 1fr; gap: 30px; } .mt-falha { grid-template-columns: 1fr; gap: 6px; } }
-      `}</style>
-    </section>
-  );
-}
-
 /* As duas ofertas que saíram desta página e ganharam página própria. Ficam como
    porta de saída, não como mais 300 linhas de argumento no meio do caminho. */
 function IndustriaOutrasOfertas() {
@@ -1163,14 +991,11 @@ function IndustriaPage() {
       <ProofBar/>
       <IndustriaDiagnostico/>
       <IndustriaEcosystem/>
-      <IndustriaMap/>
       <IndustriaConexao/>
       <IntegrationSection/>
       <IndustriaNetworkPanel/>
       <SalesSection audience="industria"/>
       <IndustriaBI/>
-      <IndustriaEixo/>
-      <IndustriaMetodo/>
       <IndustriaModular/>
       <IndustriaOutrasOfertas/>
       <ObjectionBlock/>
@@ -1704,43 +1529,6 @@ function SolucoesBenchmark() {
   );
 }
 
-function SolucoesOfferings() {
-  const items = [
-    { icon: 'chart', t: tx('Plataforma analytics líder'), d: tx('Qlik Cloud, AWS ou Azure: ambiente em nuvem flexível, alta performance de processamento, segurança corporativa e licenças de parceiro oficial.') },
-    { icon: 'cpu',   t: tx('Dashboards prescritivos'), d: tx('Painéis construídos do zero para o seu modelo de negócio. Indicadores inteligentes associados a ações imediatas, sem poluição visual.') },
-    { icon: 'link',  t: tx('Pipelines de dados automatizados'), d: tx('Extração, transformação e governança centralizadas. Conectamos qualquer fonte ou ERP e entregamos o dado limpo, sem carregar o seu banco de origem.') },
-    { icon: 'shield', t: tx('Governança e segurança absoluta'), d: tx('Nada de dado sensível solto em máquina de funcionário: desenvolvimento e acesso 100% via browser, em conformidade com a LGPD.') },
-  ];
-  return (
-    <section className="section" style={{ background: '#fff' }}>
-      <div className="container">
-        <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 44px' }}>
-          <div className="eyebrow">{tx('O que entregamos')}</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('A engenharia que a sua')} <span style={{ color: 'var(--navy)' }}>{tx('tomada de decisão')}</span> {tx('exige.')}</h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('A plataforma é a Qlik, líder do Gartner. A engenharia que faz ela responder ao seu negócio é a SEWE. Ingestão, transformação e visualização na mesma ponta, para empresas de qualquer setor.')}</p>
-        </div>
-        <div className="so-grid">
-          {items.map((it, i) => (
-            <div key={i} className="so-card reveal">
-              <span className="so-icon"><Icon name={it.icon} size={22} stroke={1.8}/></span>
-              <div className="so-t">{it.t}</div>
-              <p className="so-d">{it.d}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-      <style>{`
-        .so-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-        .so-card { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px; }
-        .so-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(45,67,108,0.08); color: var(--navy-700); display: grid; place-items: center; margin-bottom: 16px; }
-        .so-t { font-family: var(--ff-display); font-weight: 700; font-size: 19px; color: var(--navy-900); margin-bottom: 8px; }
-        .so-d { font-size: 14.5px; color: var(--text-2); line-height: 1.6; }
-        @media (max-width: 780px) { .so-grid { grid-template-columns: 1fr; } }
-      `}</style>
-    </section>
-  );
-}
-
 /* TCO: uma plataforma única vs colcha de retalhos */
 function SolucoesPlatform() {
   const patch = [
@@ -1756,19 +1544,14 @@ function SolucoesPlatform() {
     { icon: 'chart', t: tx('Analytics + IA') },
     { icon: 'alert', t: tx('Alertas, mobile e e-mail') },
   ];
-  const proofs = [
-    { v: tx('TCO menor'), d: tx('Um contrato, uma plataforma. Sem colcha de retalhos de serviços de nuvem cobrados à parte.') },
-    { v: tx('Bilhões de linhas'), d: tx('Painéis rápidos mesmo cruzando bilhões de registros, sem assinar nós de servidor caros.') },
-    { v: '100% web', d: tx('Desenvolvimento e uso direto no navegador. Zero software pesado instalado em desktop.') },
-  ];
+  // Segunda metade do argumento de custo: entra colada em "Custo de operacao",
+  // sem cabecalho proprio — as duas secoes faziam a mesma pergunta duas vezes.
   return (
-    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
+    <section className="section" style={{ background: 'var(--bg-soft)', paddingTop: 'clamp(8px, 1.2vw, 18px)' }}>
       <div className="container">
-        <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 44px' }}>
+        <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 26px' }}>
           <div className="eyebrow">{tx('TCO · Custo total de propriedade')}</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Uma plataforma única contra a')} <span style={{ color: 'var(--navy)' }}>{tx('colcha de retalhos')}</span>.
-          </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Ferramentas genéricas parecem baratas por usuário, até a conta dos serviços extras chegar.')}</p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 10 }}>{tx('E ferramenta genérica parece barata por usuário, até a conta dos serviços extras chegar.')}</p>
         </div>
         <div className="tco-duel">
           <div className="tco-side reveal">
@@ -1794,14 +1577,6 @@ function SolucoesPlatform() {
             </div>
             <div className="tco-side-f" style={{ color: 'rgba(255,255,255,0.65)' }}>{tx('tudo nativo, em uma única ponta')}</div>
           </div>
-        </div>
-        <div className="tco-proofs">
-          {proofs.map((p, i) => (
-            <div key={i} className="tco-proof reveal">
-              <div className="tco-proof-v">{p.v}</div>
-              <p className="tco-proof-d">{p.d}</p>
-            </div>
-          ))}
         </div>
       </div>
       <style>{`
@@ -1922,9 +1697,7 @@ function AssocDemo() {
 function SolucoesTech() {
   const items = [
     { icon: 'brain', t: tx('Motor associativo in-memory'), d: tx('Sem modelo rígido de entidade-relacionamento: o Qlik indexa todas as relações e você explora em qualquer direção. Inclusive o que NÃO aconteceu: o motor destaca os dados excluídos que as ferramentas SQL escondem.') },
-    { icon: 'link', t: tx('Pipelines e cargas incrementais'), d: tx('Cargas incrementais agendadas e arquivos .qvd comprimidos: histórico preservado, recarga sem pesar a origem e sem obrigar você a montar um data warehouse só para rodar o BI.') },
     { icon: 'shield', t: tx('Segurança em nível de linha'), d: tx('Section Access nativo: cada usuário enxerga só a filial, a carteira ou o recorte que pode ver. SSO, criptografia e trilha de auditoria.') },
-    { icon: 'alert', t: tx('Alertas orientados a dado'), d: tx('Alertas disparados pela condição do indicador, não por horário, direto no celular. Relatórios assinados chegam por e-mail no ritmo que você definir.') },
     { icon: 'cpu', t: tx('Embedded analytics e APIs'), d: tx('Dashboards embutidos em portais e sistemas próprios, com APIs REST para automação e integração ao restante do seu ecossistema.') },
     { icon: 'trending', t: tx('IA nativa + camada SEWE'), d: tx('Inteligência preditiva ativa: anomalias detectadas automaticamente e avisadas no e-mail ou no celular, sem prompts e sem contratar cientista de dados. Previsão de demanda e churn no mesmo modelo.') },
   ];
@@ -2109,7 +1882,6 @@ function SolucoesPage() {
       </PageHero>
       <ProofBar/>
       <SolucoesBarreiras/>
-      <SolucoesOfferings/>
       <SolucoesCamadas/>
       <SolucoesCamadaSewe/>
       <SolucoesPortfolio/>
@@ -2118,7 +1890,6 @@ function SolucoesPage() {
       <SolucoesPlatform/>
       <SolucoesBenchmark/>
       <SolucoesProcess/>
-      <DifferentiatorsSection/>
       <ObjectionBlock/>
       <CTASection/>
       <SiteFooter/>
