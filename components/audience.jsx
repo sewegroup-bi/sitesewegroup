@@ -36,17 +36,17 @@ function IndustriaEcosystem() {
   const views = [
     {
       key: 'todo',
-      label: 'Ecossistema Sewe',
+      label: tx('Ecossistema Sewe'),
       icon: 'link',
-      tagline: 'Prever e agir, não só enxergar.',
-      title: 'Preveja a ruptura antes que ela vire venda perdida.',
-      body: 'Não é só visibilidade, é controle: a indústria equilibra sell-in e sell-out sem o efeito chicote, antecipa a ruptura e sabe exatamente onde crescer, sem depender de ligação do distribuidor.',
-      kpis: [{ v: 'R$ 128,4M', l: 'volume de vendas da rede' }, { v: '3,4%', l: 'ruptura média identificada' }, { v: '340', l: 'gaps de portfólio mapeados' }],
+      tagline: tx('Prever e agir, não só enxergar.'),
+      title: tx('Preveja a ruptura antes que ela vire venda perdida.'),
+      body: tx('Não é só visibilidade, é controle: a indústria equilibra sell-in e sell-out sem o efeito chicote, antecipa a ruptura e sabe exatamente onde crescer, sem depender de ligação do distribuidor.'),
+      kpis: [{ v: 'R$ 128,4M', l: tx('volume de vendas da rede') }, { v: '3,4%', l: tx('ruptura média identificada') }, { v: '340', l: tx('gaps de portfólio mapeados') }],
       bullets: [
-        'Ruptura Zero: veja qual PDV ficou sem o seu produto antes do consumidor trocar de marca',
-        'Sell-in e sell-out equilibrados, sem superestocar nem desabastecer o distribuidor',
-        'Gaps de portfólio por revenda, com sugestão automática de cross-sell',
-        'Trade marketing no mesmo dia, direto na região onde o produto está encalhando',
+        tx('Ruptura Zero: veja qual PDV ficou sem o seu produto antes do consumidor trocar de marca'),
+        tx('Sell-in e sell-out equilibrados, sem superestocar nem desabastecer o distribuidor'),
+        tx('Gaps de portfólio por revenda, com sugestão automática de cross-sell'),
+        tx('Trade marketing no mesmo dia, direto na região onde o produto está encalhando'),
       ],
       dashboard: 'todo',
     },
@@ -55,15 +55,15 @@ function IndustriaEcosystem() {
       label: 'Integration',
       icon: 'link',
       pillColor: BU_C.integration.color,
-      tagline: 'Governança comercial entre indústria e distribuidor.',
-      title: 'As regras da indústria, executadas à risca em toda a rede.',
-      body: 'O Integration não liga só sistemas: garante que preço, produto e política comercial valham para todo distribuidor. Qualquer divergência é bloqueada na hora, antes de virar prejuízo de margem.',
-      kpis: [{ v: 'R$ 42,6M', l: 'faturamento sincronizado / mês' }, { v: '126', l: 'divergências de preço bloqueadas / mês' }, { v: '98%', l: 'sem retrabalho manual' }],
+      tagline: tx('Governança comercial entre indústria e distribuidor.'),
+      title: tx('As regras da indústria, executadas à risca em toda a rede.'),
+      body: tx('O Integration não liga só sistemas: garante que preço, produto e política comercial valham para todo distribuidor. Qualquer divergência é bloqueada na hora, antes de virar prejuízo de margem.'),
+      kpis: [{ v: 'R$ 42,6M', l: tx('faturamento sincronizado / mês') }, { v: '126', l: tx('divergências de preço bloqueadas / mês') }, { v: '98%', l: tx('sem retrabalho manual') }],
       bullets: [
-        'Governança de preço absoluta: todo distribuidor opera com a tabela e a política comercial vigente, sem espaço para desconto indevido',
-        'Visibilidade de estoque para produção: saiba o nível de estoque de toda a rede para planejar a linha de produção sem desperdício',
-        'Planejamento de demanda (S&OP) com dado real: a fábrica sabe o que produzir na próxima semana, sem achismo',
-        'Faturamento consolidado em segundos, sem esperar semanas para fechar o balanço da marca na rede',
+        tx('Governança de preço absoluta: todo distribuidor opera com a tabela e a política comercial vigente, sem espaço para desconto indevido'),
+        tx('Visibilidade de estoque para produção: saiba o nível de estoque de toda a rede para planejar a linha de produção sem desperdício'),
+        tx('Planejamento de demanda (S&OP) com dado real: a fábrica sabe o que produzir na próxima semana, sem achismo'),
+        tx('Faturamento consolidado em segundos, sem esperar semanas para fechar o balanço da marca na rede'),
       ],
       dashboard: 'integration',
     },
@@ -72,15 +72,15 @@ function IndustriaEcosystem() {
       label: 'Sales',
       icon: 'store',
       pillColor: BU_C.sales.color,
-      tagline: 'A operação comercial da rede em um único fluxo.',
-      title: 'Vendedor, distribuidor e indústria enxergando o mesmo pedido, em tempo real.',
+      tagline: tx('A operação comercial da rede em um único fluxo.'),
+      title: tx('Vendedor, distribuidor e indústria enxergando o mesmo pedido, em tempo real.'),
       body: 'Você define catálogo, preço e política comercial; sua rede vende dentro deles. O orçamento nasce digitado, a aprovação acontece no sistema e você acompanha tudo, do balcão à diretoria.',
-      kpis: [{ v: '2.340', l: 'orçamentos digitais / mês' }, { v: '1,8h', l: 'tempo médio de aprovação' }, { v: '78%', l: 'taxa de aprovação' }],
+      kpis: [{ v: '2.340', l: tx('orçamentos digitais / mês') }, { v: '1,8h', l: tx('tempo médio de aprovação') }, { v: '78%', l: tx('taxa de aprovação') }],
       bullets: [
-        'Fim do orçamento em PDF pelo WhatsApp: a proposta nasce no sistema, com o preço e o estoque que a sua marca definiu',
-        'Aprovação sem burocracia: o desconto fora da alçada chega ao aprovador certo e é decidido em minutos, com histórico completo',
-        'Campanha de incentivo que funciona: você cria e ela aparece na hora na tela do vendedor, no balcão',
-        'Um número só para todo mundo: o que você usa para planejar a produção é o mesmo que o distribuidor usa para acompanhar a equipe',
+        tx('Fim do orçamento em PDF pelo WhatsApp: a proposta nasce no sistema, com o preço e o estoque que a sua marca definiu'),
+        tx('Aprovação sem burocracia: o desconto fora da alçada chega ao aprovador certo e é decidido em minutos, com histórico completo'),
+        tx('Campanha de incentivo que funciona: você cria e ela aparece na hora na tela do vendedor, no balcão'),
+        tx('Um número só para todo mundo: o que você usa para planejar a produção é o mesmo que o distribuidor usa para acompanhar a equipe'),
       ],
       dashboard: 'sales',
     },
@@ -89,15 +89,15 @@ function IndustriaEcosystem() {
       label: 'BI',
       icon: 'brain',
       pillColor: BU_C.bi.color,
-      tagline: 'O conselheiro estratégico da rede.',
-      title: 'A inteligência que conecta as pontas: da fábrica à gôndola.',
-      body: 'O SEWE BI cruza comercial, supply chain, financeiro e trade marketing num só modelo de dado. Não é olhar para trás: é prever o que vem e apontar onde agir antes da concorrência.',
-      kpis: [{ v: '1,04x', l: 'índice saúde do canal · sell-in/sell-out' }, { v: '91%', l: 'assertividade da previsão de demanda' }, { v: '3,2x', l: 'ROI médio de trade marketing' }],
+      tagline: tx('O conselheiro estratégico da rede.'),
+      title: tx('A inteligência que conecta as pontas: da fábrica à gôndola.'),
+      body: tx('O SEWE BI cruza comercial, supply chain, financeiro e trade marketing num só modelo de dado. Não é olhar para trás: é prever o que vem e apontar onde agir antes da concorrência.'),
+      kpis: [{ v: '1,04x', l: tx('índice saúde do canal · sell-in/sell-out') }, { v: '91%', l: tx('assertividade da previsão de demanda') }, { v: '3,2x', l: tx('ROI médio de trade marketing') }],
       bullets: [
-        'Relacione o sell-in com o sell-out real e evite o efeito chicote nos estoques',
-        'Previsibilidade de demanda apoiada por IA, baseada no giro real da ponta',
-        'Meça o ROI das campanhas de trade e a rentabilidade real por distribuidor',
-        'Detecte anomalias de mercado, como ruptura ou queda brusca, em tempo real',
+        tx('Relacione o sell-in com o sell-out real e evite o efeito chicote nos estoques'),
+        tx('Previsibilidade de demanda apoiada por IA, baseada no giro real da ponta'),
+        tx('Meça o ROI das campanhas de trade e a rentabilidade real por distribuidor'),
+        tx('Detecte anomalias de mercado, como ruptura ou queda brusca, em tempo real'),
       ],
       dashboard: 'bi',
     },
@@ -106,16 +106,13 @@ function IndustriaEcosystem() {
   const S = views[active];
 
   return (
-    <section className="section" style={{ background: '#fff' }}>
+    <section id="ecossistema" className="section" style={{ background: '#fff' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 40px' }}>
-          <div className="eyebrow">O ecossistema conectado</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Consumidor, revenda, distribuidor, indústria. <span style={{ color: 'var(--navy)' }}>Todos conectados, direto</span>.
+          <div className="eyebrow">{tx('O ecossistema conectado')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Consumidor, revenda, distribuidor, indústria.')} <span style={{ color: 'var(--navy)' }}>{tx('Todos conectados, direto')}</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Escolha uma frente e veja o recorte da cadeia que ela entrega para a indústria.
-          </p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Escolha uma frente e veja o recorte da cadeia que ela entrega para a indústria.')}</p>
         </div>
 
         {/* Tabs */}
@@ -182,8 +179,7 @@ function IndustriaEcosystem() {
               ))}
             </ul>
 
-            <a href="#diagnostico" className="btn btn-primary" style={{ marginTop: 24 }}>
-              Ver demonstração de {S.label}
+            <a href="#diagnostico" className="btn btn-primary" style={{ marginTop: 24 }}>{tx('Ver demonstração de')} {S.label}
               <Icon name="arrow" size={14} className="chev"/>
             </a>
           </div>
@@ -220,48 +216,46 @@ function IndustriaEcosystem() {
 function IntegrationPortal() {
   const c = BU_C.integration.color;
   const divergencias = [
-    { dist: 'Distribuidor Alfa', tipo: 'Tabela de preço desatualizada (-8%)', quando: '2 min atrás', acao: 'Bloqueado' },
-    { dist: 'Distribuidor Beta', tipo: 'Produto descontinuado · SKU 4521', quando: '14 min atrás', acao: 'Redirecionado' },
-    { dist: 'Distribuidor Gama', tipo: 'Desconto fora de política (12%)', quando: '38 min atrás', acao: 'Em aprovação' },
-    { dist: 'Distribuidor Delta', tipo: 'Tabela de preço desatualizada (-5%)', quando: '1h atrás', acao: 'Bloqueado' },
+    { dist: tx('Distribuidor Alfa'), tipo: tx('Tabela de preço desatualizada (-8%)'), quando: tx('2 min atrás'), acao: tx('Bloqueado'), cor: c },
+    { dist: tx('Distribuidor Beta'), tipo: tx('Produto descontinuado · SKU 4521'), quando: tx('14 min atrás'), acao: tx('Redirecionado'), cor: '#0e7a7c' },
+    { dist: tx('Distribuidor Gama'), tipo: tx('Desconto fora de política (12%)'), quando: tx('38 min atrás'), acao: tx('Em aprovação'), cor: '#c27a00' },
+    { dist: tx('Distribuidor Delta'), tipo: tx('Tabela de preço desatualizada (-5%)'), quando: tx('1h atrás'), acao: tx('Bloqueado'), cor: c },
   ];
-  const acaoColor = { 'Bloqueado': c, 'Redirecionado': '#0e7a7c', 'Em aprovação': '#c27a00' };
+  // cor por acao: guardada na propria linha, para o rotulo poder ser traduzido
   return (
     <div className="ip-panel">
       <div className="ip-head">
         <div className="ip-head-l">
-          <span className="ip-head-mark">S</span>
-          SEWE INTEGRATION · GOVERNANÇA COMERCIAL
-        </div>
-        <span className="ip-live"><span className="ip-live-dot"/>AO VIVO</span>
+          <span className="ip-head-mark">S</span>{tx('SEWE INTEGRATION · GOVERNANÇA COMERCIAL')}</div>
+        <span className="ip-live"><span className="ip-live-dot"/>{tx('AO VIVO')}</span>
       </div>
       <div className="ip-tabs">
-        {['Visão geral', 'Pedidos', 'Estoque', 'Divergências'].map((t, i) => (
+        {[tx('Visão geral'), tx('Pedidos'), tx('Estoque'), tx('Divergências')].map((t, i) => (
           <div key={t} className={'ip-tab' + (i === 3 ? ' is-on' : '')}>{t}</div>
         ))}
       </div>
       <div className="ip-body">
         <div className="ip-kpis">
-          <div className="ip-kpi"><div className="ip-kpi-v tnum">R$ 42,6M</div><div className="ip-kpi-l">faturamento sincronizado / mês</div></div>
-          <div className="ip-kpi"><div className="ip-kpi-v tnum">126</div><div className="ip-kpi-l">divergências bloqueadas / mês</div></div>
-          <div className="ip-kpi"><div className="ip-kpi-v tnum">3.482</div><div className="ip-kpi-l">SKUs visíveis para o S&OP</div></div>
-          <div className="ip-kpi"><div className="ip-kpi-v tnum">&lt; 2 min</div><div className="ip-kpi-l">tempo de sincronização</div></div>
+          <div className="ip-kpi"><div className="ip-kpi-v tnum">R$ 42,6M</div><div className="ip-kpi-l">{tx('faturamento sincronizado / mês')}</div></div>
+          <div className="ip-kpi"><div className="ip-kpi-v tnum">126</div><div className="ip-kpi-l">{tx('divergências bloqueadas / mês')}</div></div>
+          <div className="ip-kpi"><div className="ip-kpi-v tnum">3.482</div><div className="ip-kpi-l">{tx('SKUs visíveis para o S&OP')}</div></div>
+          <div className="ip-kpi"><div className="ip-kpi-v tnum">&lt; 2 min</div><div className="ip-kpi-l">{tx('tempo de sincronização')}</div></div>
         </div>
         <div className="ip-banner">
-          <b style={{ fontFamily: 'Chakra Petch' }}>Cada divergência bloqueada</b> evita a quebra de margem antes que o pedido saia do distribuidor, sem depender de auditoria manual.
-        </div>
-        <div className="ip-table-head">Divergências detectadas agora</div>
+          <b style={{ fontFamily: 'Chakra Petch' }}>{tx('Cada divergência bloqueada')}</b> {tx('evita a quebra de margem antes que o pedido saia do distribuidor, sem depender de auditoria manual.')}</div>
+        <div className="ip-table-head">{tx('Divergências detectadas agora')}</div>
         <div className="ip-table">
           {divergencias.map((d, i) => (
             <div key={i} className="ip-row">
               <span className="ip-row-dist">{d.dist}</span>
               <span className="ip-row-tipo">{d.tipo}</span>
               <span className="ip-row-quando">{d.quando}</span>
-              <span className="ip-row-acao" style={{ color: acaoColor[d.acao], background: `color-mix(in srgb, ${acaoColor[d.acao]} 14%, transparent)` }}>{d.acao}</span>
+              <span className="ip-row-acao" style={{ color: d.cor, background: `color-mix(in srgb, ${d.cor} 14%, transparent)` }}>{d.acao}</span>
             </div>
           ))}
         </div>
       </div>
+      <div className="demo-foot">{tx('dados ilustrativos')}</div>
       <style>{`
         .ip-panel { background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-lg); overflow: hidden; }
         .ip-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: linear-gradient(100deg, #0a7a2c, ${c}); color: #fff; }
@@ -301,61 +295,58 @@ function IntegrationPortal() {
 function SalesPortal() {
   const c = BU_C.sales.color;
   const approvals = [
-    { rep: 'Jonas M.', dist: 'Distribuidor Sul', desconto: '8%', status: 'aprovado', t: '12 min' },
-    { rep: 'Carla R.', dist: 'Distribuidor Vale', desconto: '12%', status: 'pendente', t: '—' },
-    { rep: 'Diego A.', dist: 'Distribuidor Norte', desconto: '5%', status: 'aprovado', t: '6 min' },
+    { rep: 'Jonas M.', dist: tx('Distribuidor Sul'), desconto: '8%', status: 'aprovado', t: '12 min' },
+    { rep: 'Carla R.', dist: tx('Distribuidor Vale'), desconto: '12%', status: 'pendente', t: '—' },
+    { rep: 'Diego A.', dist: tx('Distribuidor Norte'), desconto: '5%', status: 'aprovado', t: '6 min' },
   ];
   return (
     <div className="sp-wrap">
       <div className="sp-panel">
         <div className="sp-head">
           <div className="sp-head-l">
-            <span className="sp-head-mark">S</span>
-            SEWE SALES · PORTAL DO VENDEDOR
-          </div>
-          <span className="sp-live"><span className="sp-live-dot"/>AO VIVO</span>
+            <span className="sp-head-mark">S</span>{tx('SEWE SALES · PORTAL DO VENDEDOR')}</div>
+          <span className="sp-live"><span className="sp-live-dot"/>{tx('AO VIVO')}</span>
         </div>
         <div className="sp-tabs">
-          {['Catálogo', 'Orçamentos', 'Aprovações', 'Campanhas'].map((t, i) => (
+          {[tx('Catálogo'), tx('Orçamentos'), tx('Aprovações'), tx('Campanhas')].map((t, i) => (
             <div key={t} className={'sp-tab' + (i === 2 ? ' is-on' : '')}>{t}</div>
           ))}
         </div>
         <div className="sp-body">
           <div className="sp-kpis">
-            <div className="sp-kpi"><div className="sp-kpi-v tnum">2.340</div><div className="sp-kpi-l">orçamentos digitais / mês</div></div>
-            <div className="sp-kpi"><div className="sp-kpi-v tnum">1,8h</div><div className="sp-kpi-l">tempo médio de aprovação</div></div>
-            <div className="sp-kpi"><div className="sp-kpi-v tnum">78%</div><div className="sp-kpi-l">taxa de aprovação</div></div>
+            <div className="sp-kpi"><div className="sp-kpi-v tnum">2.340</div><div className="sp-kpi-l">{tx('orçamentos digitais / mês')}</div></div>
+            <div className="sp-kpi"><div className="sp-kpi-v tnum">1,8h</div><div className="sp-kpi-l">{tx('tempo médio de aprovação')}</div></div>
+            <div className="sp-kpi"><div className="sp-kpi-v tnum">78%</div><div className="sp-kpi-l">{tx('taxa de aprovação')}</div></div>
           </div>
-          <div className="sp-table-head">Aprovações de desconto · agora</div>
+          <div className="sp-table-head">{tx('Aprovações de desconto · agora')}</div>
           <div className="sp-table">
             {approvals.map((a, i) => (
               <div key={i} className="sp-row">
                 <span className="sp-row-rep">{a.rep}</span>
                 <span className="sp-row-dist">{a.dist}</span>
                 <span className="sp-row-desc tnum">{a.desconto}</span>
-                <span className={'sp-row-status st-' + a.status}>{a.status === 'aprovado' ? 'Aprovado · ' + a.t : 'Pendente'}</span>
+                <span className={'sp-row-status st-' + a.status}>{a.status === 'aprovado' ? tx('Aprovado · ') + a.t : tx('Pendente')}</span>
               </div>
             ))}
           </div>
-          <div className="sp-note">
-            O mesmo número que a indústria usa para planejar produção é o que o distribuidor usa para cobrar a equipe, e o vendedor consulta para fechar o mês.
-          </div>
+          <div className="sp-note">{tx('O mesmo número que a indústria usa para planejar produção é o que o distribuidor usa para cobrar a equipe, e o vendedor consulta para fechar o mês.')}</div>
         </div>
       </div>
 
       <div className="sp-phone">
         <div className="sp-phone-notch"/>
-        <div className="sp-phone-head">Orçamento · Revenda Sul</div>
+        <div className="sp-phone-head">{tx('Orçamento · Revenda Sul')}</div>
         <div className="sp-phone-list">
-          <div className="sp-phone-item"><span>Conector M8</span><span className="tnum">120 un</span></div>
-          <div className="sp-phone-item"><span>Sensor indutivo</span><span className="tnum">36 un</span></div>
-          <div className="sp-phone-item"><span>Cabo blindado</span><span className="tnum">80 m</span></div>
+          <div className="sp-phone-item"><span>{tx('Conector M8')}</span><span className="tnum">120 un</span></div>
+          <div className="sp-phone-item"><span>{tx('Sensor indutivo')}</span><span className="tnum">36 un</span></div>
+          <div className="sp-phone-item"><span>{tx('Cabo blindado')}</span><span className="tnum">80 m</span></div>
         </div>
-        <div className="sp-phone-total"><span>Total</span><span className="tnum">R$ 14.280</span></div>
-        <div className="sp-phone-btn">Enviar pedido</div>
-        <div className="sp-phone-toast">Aprovado em 12 min</div>
+        <div className="sp-phone-total"><span>{tx('Total')}</span><span className="tnum">R$ 14.280</span></div>
+        <div className="sp-phone-btn">{tx('Enviar pedido')}</div>
+        <div className="sp-phone-toast">{tx('Aprovado em 12 min')}</div>
       </div>
 
+      <div className="demo-foot">{tx('dados ilustrativos')}</div>
       <style>{`
         .sp-wrap { display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
         .sp-panel {
@@ -426,11 +417,11 @@ function EcosystemFrame({ title, subtitle, tabs, activeTab = 0, children }) {
       <div className="ecf-head">
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div className="ecf-mark">S</div>
-          <div style={{ fontFamily: 'Chakra Petch, sans-serif', fontWeight: 600, fontSize: 12, letterSpacing: '0.12em' }}>SEWE · ECOSSISTEMA</div>
+          <div style={{ fontFamily: 'Chakra Petch, sans-serif', fontWeight: 600, fontSize: 12, letterSpacing: '0.12em' }}>{tx('SEWE · ECOSSISTEMA')}</div>
         </div>
         <div style={{ flex: 1 }}/>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: 'rgba(255,255,255,0.6)', fontFamily: 'JetBrains Mono, monospace' }}>
-          <span>HOJE · 14:22</span>
+          <span>{tx('HOJE · 14:22')}</span>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
             <span className="ecf-live-dot"/>LIVE
           </span>
@@ -448,7 +439,13 @@ function EcosystemFrame({ title, subtitle, tabs, activeTab = 0, children }) {
         </div>
       )}
       <div style={{ padding: 16, background: 'var(--bg-soft)' }}>{children}</div>
+      <div className="ecf-foot">{tx('dados ilustrativos')}</div>
       <style>{`
+        .ecf-foot {
+          padding: 7px 14px; background: #fff; border-top: 1px solid var(--line);
+          font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .1em;
+          text-transform: uppercase; color: var(--text-3); text-align: right;
+        }
         .ecf { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-lg); overflow: hidden; }
         .ecf-head { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: linear-gradient(120deg, #0b0c10, #1a1c22); color: #fff; }
         .ecf-mark { width: 22px; height: 22px; background: #fff; border-radius: 4px; display: grid; place-items: center; color: var(--navy-900); font-family: 'Chakra Petch'; font-weight: 700; font-size: 13px; }
@@ -465,36 +462,35 @@ function EcosystemFrame({ title, subtitle, tabs, activeTab = 0, children }) {
 function IndustriaDashboard({ kind }) {
   if (kind === 'todo') {
     return (
-      <EcosystemFrame title="ECOSSISTEMA · SELL-IN × SELL-OUT" subtitle="MTD · Nacional" tabs={['Visão geral', 'Ruptura', 'Gaps', 'Sell-out']} activeTab={2}>
+      <EcosystemFrame title={tx('ECOSSISTEMA · SELL-IN × SELL-OUT')} subtitle={tx('MTD · Nacional')} tabs={[tx('Visão geral'), tx('Ruptura'), tx('Gaps'), tx('Sell-out')]} activeTab={2}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginBottom: 10 }}>
-          <QlikKPI compact label="Volume de Vendas" value="R$ 128,4M" delta="+18%" trend="up" color={Q.navy} spark={<Sparkline data={[98,104,109,113,118,122,128]}/>}/>
-          <QlikKPI compact label="Ruptura Média" value="3,4%" delta="-0,6pp" trend="up" color={Q.neg}/>
-          <QlikKPI compact label="Gaps Mapeados" value="340" delta="+52" trend="up" color={Q.navy}/>
-          <QlikKPI compact label="Potencial Cross-sell" value="R$ 6,8M" delta="+9%" trend="up" color={Q.pos}/>
+          <QlikKPI compact label={tx('Volume de Vendas')} value="R$ 128,4M" delta="+18%" trend="up" color={Q.navy} spark={<Sparkline data={[98,104,109,113,118,122,128]}/>}/>
+          <QlikKPI compact label={tx('Ruptura Média')} value="3,4%" delta="-0,6pp" trend="up" color={Q.neg}/>
+          <QlikKPI compact label={tx('Gaps Mapeados')} value="340" delta="+52" trend="up" color={Q.navy}/>
+          <QlikKPI compact label={tx('Potencial Cross-sell')} value="R$ 6,8M" delta="+9%" trend="up" color={Q.pos}/>
         </div>
         <div style={{ padding: '10px 14px', marginBottom: 10, background: '#fff4dc', border: `1px solid #f0d9a8`, borderRadius: 10, fontSize: 12.5, color: Q.ink }}>
-          <b style={{ fontFamily: 'Chakra Petch' }}>Cada 1pp de ruptura reduzida</b> recupera cerca de R$ 1,3M em vendas por mês, antes que o consumidor troque de marca no PDV.
-        </div>
+          <b style={{ fontFamily: 'Chakra Petch' }}>{tx('Numa rede de R$ 130M por ano')}</b> {tx('cada 1pp de ruptura reduzida devolve cerca de R$ 1,3M em vendas — dinheiro que hoje vira troca de marca no PDV.')}</div>
         <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 10 }}>
           <QlikTable
-            title="Top gaps de portfólio por revenda · cross-sell sugerido"
+            title={tx('Top gaps de portfólio por revenda · cross-sell sugerido')}
             columns={[
-              { key: 'revenda', label: 'Revenda' },
-              { key: 'gap', label: 'Produto ausente' },
-              { key: 'contexto', label: 'Contexto' },
-              { key: 'acao', label: 'Ação', align: 'center', render: (v) => (
+              { key: 'revenda', label: tx('Revenda') },
+              { key: 'gap', label: tx('Produto ausente') },
+              { key: 'contexto', label: tx('Contexto') },
+              { key: 'acao', label: tx('Ação'), align: 'center', render: (v) => (
                 <span style={{ padding: '2px 8px', borderRadius: 4, background: 'rgba(117,227,228,0.18)', color: Q.turqDk, fontSize: 10, fontWeight: 700, letterSpacing: '0.06em' }}>{v.toUpperCase()}</span>
               )},
             ]}
             rows={[
-              { revenda: 'Revenda Sul · SC', gap: 'Condicionador Linha X', contexto: 'Compra o Shampoo há 8 meses', acao: 'Cross-sell' },
-              { revenda: 'Revenda Vale', gap: 'Sabonete Kids', contexto: 'Compra a linha adulto', acao: 'Cross-sell' },
-              { revenda: 'Revenda Norte', gap: 'Refil 500ml', contexto: 'Compra só o frasco 1L', acao: 'Cross-sell' },
-              { revenda: 'Revenda Litoral', gap: 'Kit Presente', contexto: 'Alto giro em datas sazonais', acao: 'Trade mkt' },
+              { revenda: tx('Revenda Sul · SC'), gap: tx('Condicionador Linha X'), contexto: tx('Compra o Shampoo há 8 meses'), acao: tx('Cross-sell') },
+              { revenda: tx('Revenda Vale'), gap: tx('Sabonete Kids'), contexto: tx('Compra a linha adulto'), acao: tx('Cross-sell') },
+              { revenda: tx('Revenda Norte'), gap: tx('Refil 500ml'), contexto: tx('Compra só o frasco 1L'), acao: tx('Cross-sell') },
+              { revenda: tx('Revenda Litoral'), gap: tx('Kit Presente'), contexto: tx('Alto giro em datas sazonais'), acao: tx('Trade mkt') },
             ]}
             compact
           />
-          <QlikArea title="Ruptura média · evolução 12m" subtitle="Queda sustentada com alerta antecipado" data={[5.8,5.5,5.2,4.9,4.6,4.3,4.1,3.9,3.7,3.6,3.5,3.4]} labels={['M1','','','M4','','','M7','','','M10','','']} height={230}/>
+          <QlikArea title={tx('Ruptura média · evolução 12m')} subtitle={tx('Queda sustentada com alerta antecipado')} data={[5.8,5.5,5.2,4.9,4.6,4.3,4.1,3.9,3.7,3.6,3.5,3.4]} labels={['M1','','','M4','','','M7','','','M10','','']} height={230}/>
         </div>
       </EcosystemFrame>
     );
@@ -510,29 +506,28 @@ function IndustriaDashboard({ kind }) {
 
   // bi
   return (
-    <QlikFrame title="BI · CONSELHEIRO ESTRATÉGICO DA REDE" subtitle="Consolidado · MTD" tabs={['Sell-in × Sell-out', 'Simulação IA', 'Trade ROI', 'Mapa de Gaps']} activeTab={1}>
+    <QlikFrame title={tx('BI · CONSELHEIRO ESTRATÉGICO DA REDE')} subtitle={tx('Consolidado · MTD')} tabs={[tx('Sell-in × Sell-out'), tx('Simulação IA'), tx('Trade ROI'), tx('Mapa de Gaps')]} activeTab={1}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginBottom: 10 }}>
-        <QlikKPI compact label="Saúde do Canal" value="1,04x" delta="+0,06" trend="down" color={Q.warn}/>
-        <QlikKPI compact label="Assertividade IA" value="91%" delta="+3pp" trend="up" color={Q.pos}/>
-        <QlikKPI compact label="ROI Trade Marketing" value="3,2x" delta="+0,4x" trend="up" color={Q.navy}/>
-        <QlikKPI compact label="Valor Latente · Cross-sell" value="R$ 6,8M" delta="+9%" trend="up" color={Q.navy}/>
+        <QlikKPI compact label={tx('Saúde do Canal')} value="1,04x" delta="+0,06" trend="down" color={Q.warn}/>
+        <QlikKPI compact label={tx('Assertividade IA')} value="91%" delta="+3pp" trend="up" color={Q.pos}/>
+        <QlikKPI compact label={tx('ROI Trade Marketing')} value="3,2x" delta="+0,4x" trend="up" color={Q.navy}/>
+        <QlikKPI compact label={tx('Valor Latente · Cross-sell')} value="R$ 6,8M" delta="+9%" trend="up" color={Q.navy}/>
       </div>
       <div style={{ padding: '10px 14px', marginBottom: 10, background: '#fff4dc', border: `1px solid #f0d9a8`, borderRadius: 10, fontSize: 12.5, color: Q.ink }}>
-        <b style={{ fontFamily: 'Chakra Petch' }}>Sell-in alto com sell-out baixo é efeito chicote:</b> a IA já identificou 4 distribuidores nesse padrão este mês, antes do estoque travar o pedido seguinte.
-      </div>
+        <b style={{ fontFamily: 'Chakra Petch' }}>{tx('Sell-in alto com sell-out baixo é efeito chicote:')}</b> {tx('a IA já identificou 4 distribuidores nesse padrão este mês, antes do estoque travar o pedido seguinte.')}</div>
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 10 }}>
         <QlikHBars
-          title="Índice sell-in × sell-out por distribuidor"
+          title={tx('Índice sell-in × sell-out por distribuidor')}
           rows={[
-            { label: 'Distribuidor Alfa', v: 98, display: '0,98x', color: Q.pos },
-            { label: 'Distribuidor Beta', v: 102, display: '1,02x', color: Q.pos },
-            { label: 'Distribuidor Gama', v: 118, display: '1,18x', color: Q.warn },
-            { label: 'Distribuidor Delta', v: 134, display: '1,34x', color: Q.neg },
-            { label: 'Distribuidor Épsilon', v: 141, display: '1,41x', color: Q.neg },
+            { label: tx('Distribuidor Alfa'), v: 98, display: '0,98x', color: Q.pos },
+            { label: tx('Distribuidor Beta'), v: 102, display: '1,02x', color: Q.pos },
+            { label: tx('Distribuidor Gama'), v: 118, display: '1,18x', color: Q.warn },
+            { label: tx('Distribuidor Delta'), v: 134, display: '1,34x', color: Q.neg },
+            { label: tx('Distribuidor Épsilon'), v: 141, display: '1,41x', color: Q.neg },
           ]}
           max={150}
         />
-        <QlikArea title="Previsão de demanda (IA) × giro real" subtitle="Próx. 30 dias · assertividade 91%" data={[82,78,84,88,92,95,98,104,108,112,118,125]} labels={['D+1','','','','D+15','','','','','','D+30','']} height={230}/>
+        <QlikArea title={tx('Previsão de demanda (IA) × giro real')} subtitle={tx('Próx. 30 dias · assertividade 91%')} data={[82,78,84,88,92,95,98,104,108,112,118,125]} labels={['D+1','','','','D+15','','','','','','D+30','']} height={230}/>
       </div>
     </QlikFrame>
   );
@@ -541,24 +536,21 @@ function IndustriaDashboard({ kind }) {
 
 function IndustriaMap() {
   const fronts = [
-    { c: BU_C.integration, icon: 'link',  step: '01', name: 'Enxergue a rede inteira', flow: 'SEWE Integration',
-      d: 'O sellout, o estoque e a curva de cada distribuidor que vende os seus produtos, produto a produto, em um só painel.' },
-    { c: BU_C.sales, icon: 'store', step: '02', name: 'Venda mais no canal', flow: 'SEWE Sales',
-      d: 'Portal de pedidos, promoções, CRM e carteira de clientes: a rede inteira vendendo no padrão da indústria.' },
-    { c: BU_C.bi, icon: 'brain', step: '03', name: 'Decida com IA', flow: 'SEWE BI + IA',
-      d: 'Onde falta produto, onde sobra estoque e onde há espaço para crescer, com a próxima ação pronta, sem garimpar gráfico.' },
+    { c: BU_C.integration, icon: 'link',  step: '01', name: tx('Enxergue a rede inteira'), flow: 'SEWE Integration',
+      d: tx('O sellout, o estoque e a curva de cada distribuidor que vende os seus produtos, produto a produto, em um só painel.') },
+    { c: BU_C.sales, icon: 'store', step: '02', name: tx('Venda mais no canal'), flow: 'SEWE Sales',
+      d: tx('Portal de pedidos, promoções, CRM e carteira de clientes: a rede inteira vendendo no padrão da indústria.') },
+    { c: BU_C.bi, icon: 'brain', step: '03', name: tx('Decida com IA'), flow: 'SEWE BI + IA',
+      d: tx('Onde falta produto, onde sobra estoque e onde há espaço para crescer, com a próxima ação pronta, sem garimpar gráfico.') },
   ];
   return (
     <section className="section" style={{ background: '#fff' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 44px' }}>
-          <div className="eyebrow">O que você passa a ter</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Três entregas. <span style={{ color: 'var(--navy)' }}>Contrate juntas ou separadas</span>.
+          <div className="eyebrow">{tx('O que você passa a ter')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Três entregas.')} <span style={{ color: 'var(--navy)' }}>{tx('Contrate juntas ou separadas')}</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Cada frente funciona sozinha e entrega valor por conta própria. Juntas, fecham o ciclo da fábrica ao PDV.
-          </p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Cada frente funciona sozinha e entrega valor por conta própria. Juntas, fecham o ciclo da fábrica ao PDV.')}</p>
         </div>
         <div className="im-grid">
           {fronts.map((f, i) => (
@@ -595,45 +587,42 @@ function IndustriaMap() {
 function IndustriaNetworkPanel() {
   const [expanded, setExpanded] = React.useState(0);
   const kpis = [
-    { v: 'R$ 128,4M', l: 'sellout da rede · MTD', t: 'up' },
-    { v: '87,2%', l: 'cobertura de PDV', t: 'up' },
-    { v: '3,4%', l: 'ruptura no canal', t: 'down' },
-    { v: '512', l: 'distribuidores ativos', t: 'up' },
+    { v: 'R$ 128,4M', l: tx('sellout da rede · MTD'), t: 'up' },
+    { v: '87,2%', l: tx('cobertura de PDV'), t: 'up' },
+    { v: '3,4%', l: tx('ruptura no canal'), t: 'down' },
+    { v: '512', l: tx('distribuidores ativos'), t: 'up' },
   ];
   const rows = [
-    { n: 'Distribuidor Alfa',    uf: 'SC', sellout: 'R$ 24,1M', cov: 94, rup: 1.8, w: 100,
-      products: [{ n: 'Ração Premier 15kg', v: 'R$ 6,2M' }, { n: 'Suplemento Linha A', v: 'R$ 4,8M' }, { n: 'Acessório Pet Pro', v: 'R$ 3,1M' }] },
-    { n: 'Distribuidor Beta',    uf: 'RS', sellout: 'R$ 19,7M', cov: 91, rup: 2.2, w: 82,
-      products: [{ n: 'Ração Premier 15kg', v: 'R$ 5,1M' }, { n: 'Shampoo Pet 5L', v: 'R$ 3,4M' }, { n: 'Coleira Antipulgas', v: 'R$ 2,6M' }] },
-    { n: 'Distribuidor Gama',    uf: 'PR', sellout: 'R$ 16,3M', cov: 88, rup: 3.1, w: 68,
-      products: [{ n: 'Ração Felina Adult', v: 'R$ 3,9M' }, { n: 'Vacina Pol. V8', v: 'R$ 2,8M' }, { n: 'Cama Grande', v: 'R$ 1,9M' }] },
-    { n: 'Distribuidor Delta',   uf: 'SC', sellout: 'R$ 12,9M', cov: 85, rup: 3.6, w: 54,
-      products: [{ n: 'Ração Premier 15kg', v: 'R$ 3,2M' }, { n: 'Brinquedo Mordedor', v: 'R$ 1,8M' }, { n: 'Areia Sanitária 4kg', v: 'R$ 1,4M' }] },
-    { n: 'Distribuidor Épsilon', uf: 'SP', sellout: 'R$ 9,4M',  cov: 79, rup: 4.9, w: 39,
-      products: [{ n: 'Ração Premier 15kg', v: 'R$ 2,1M' }, { n: 'Shampoo Pet 5L', v: 'R$ 1,4M' }, { n: 'Coleira Antipulgas', v: 'R$ 0,9M' }] },
-    { n: 'Distribuidor Ômega',   uf: 'MG', sellout: 'R$ 7,1M',  cov: 74, rup: 5.4, w: 29,
-      products: [{ n: 'Ração Premier 15kg', v: 'R$ 1,6M' }, { n: 'Vacina Pol. V8', v: 'R$ 1,1M' }, { n: 'Cama Grande', v: 'R$ 0,7M' }] },
+    { n: tx('Distribuidor Alfa'),    uf: 'SC', sellout: 'R$ 24,1M', cov: 94, rup: 1.8, w: 100,
+      products: [{ n: tx('Ração Premier 15kg'), v: 'R$ 6,2M' }, { n: tx('Suplemento Linha A'), v: 'R$ 4,8M' }, { n: tx('Acessório Pet Pro'), v: 'R$ 3,1M' }] },
+    { n: tx('Distribuidor Beta'),    uf: 'RS', sellout: 'R$ 19,7M', cov: 91, rup: 2.2, w: 82,
+      products: [{ n: tx('Ração Premier 15kg'), v: 'R$ 5,1M' }, { n: tx('Shampoo Pet 5L'), v: 'R$ 3,4M' }, { n: tx('Coleira Antipulgas'), v: 'R$ 2,6M' }] },
+    { n: tx('Distribuidor Gama'),    uf: 'PR', sellout: 'R$ 16,3M', cov: 88, rup: 3.1, w: 68,
+      products: [{ n: tx('Ração Felina Adult'), v: 'R$ 3,9M' }, { n: tx('Vacina Pol. V8'), v: 'R$ 2,8M' }, { n: tx('Cama Grande'), v: 'R$ 1,9M' }] },
+    { n: tx('Distribuidor Delta'),   uf: 'SC', sellout: 'R$ 12,9M', cov: 85, rup: 3.6, w: 54,
+      products: [{ n: tx('Ração Premier 15kg'), v: 'R$ 3,2M' }, { n: tx('Brinquedo Mordedor'), v: 'R$ 1,8M' }, { n: tx('Areia Sanitária 4kg'), v: 'R$ 1,4M' }] },
+    { n: tx('Distribuidor Épsilon'), uf: 'SP', sellout: 'R$ 9,4M',  cov: 79, rup: 4.9, w: 39,
+      products: [{ n: tx('Ração Premier 15kg'), v: 'R$ 2,1M' }, { n: tx('Shampoo Pet 5L'), v: 'R$ 1,4M' }, { n: tx('Coleira Antipulgas'), v: 'R$ 0,9M' }] },
+    { n: tx('Distribuidor Ômega'),   uf: 'MG', sellout: 'R$ 7,1M',  cov: 74, rup: 5.4, w: 29,
+      products: [{ n: tx('Ração Premier 15kg'), v: 'R$ 1,6M' }, { n: tx('Vacina Pol. V8'), v: 'R$ 1,1M' }, { n: tx('Cama Grande'), v: 'R$ 0,7M' }] },
   ];
   return (
     <section className="section" style={{ background: 'linear-gradient(180deg, var(--bg-soft) 0%, #f4f6fb 100%)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 40px' }}>
-          <div className="eyebrow">A rede em um só painel</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            O sellout de cada distribuidor, <span style={{ color: 'var(--navy)' }}>com abertura até o nível de produto</span>.
+          <div className="eyebrow">{tx('A rede em um só painel')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('O sellout de cada distribuidor,')} <span style={{ color: 'var(--navy)' }}>{tx('com abertura até o nível de produto')}</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Um recorte do que a indústria enxerga: quem vende, onde há cobertura e onde a ruptura está custando venda.
-          </p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Um recorte do que a indústria enxerga: quem vende, onde há cobertura e onde a ruptura está custando venda.')}</p>
         </div>
 
         <div className="inp">
           <div className="inp-head">
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <SMark size={22} color="#75e3e4"/>
-              <span style={{ fontFamily: 'var(--ff-display)', fontWeight: 600, fontSize: 14, color: '#fff', letterSpacing: '0.02em' }}>REDE DE DISTRIBUIÇÃO · CONSOLIDADO</span>
+              <span style={{ fontFamily: 'var(--ff-display)', fontWeight: 600, fontSize: 14, color: '#fff', letterSpacing: '0.02em' }}>{tx('REDE DE DISTRIBUIÇÃO · CONSOLIDADO')}</span>
             </div>
-            <span className="inp-live"><span className="inp-dot"/>ABR/2026</span>
+            <span className="inp-live"><span className="inp-dot"/>{tx('ABR/2026')}</span>
           </div>
           <div className="inp-kpis">
             {kpis.map((k, i) => (
@@ -645,7 +634,7 @@ function IndustriaNetworkPanel() {
           </div>
           <div className="inp-table">
             <div className="inp-tr inp-th">
-              <span>Distribuidor</span><span>Sellout MTD</span><span className="inp-hide">Cobertura</span><span>Ruptura</span>
+              <span>{tx('Distribuidor')}</span><span>{tx('Sellout MTD')}</span><span className="inp-hide">{tx('Cobertura')}</span><span>{tx('Ruptura')}</span>
             </div>
             {rows.map((r, i) => (
               <React.Fragment key={i}>
@@ -660,7 +649,7 @@ function IndustriaNetworkPanel() {
               </div>
               {expanded === i && (
                 <div className="inp-drilldown">
-                  <div className="inp-drill-head">Produto a produto · {r.n}</div>
+                  <div className="inp-drill-head">{tx('Produto a produto ·')} {r.n}</div>
                   {r.products.map((p, j) => (
                     <div key={j} className="inp-drill-row"><span>{p.n}</span><span className="tnum">{p.v}</span></div>
                   ))}
@@ -671,6 +660,7 @@ function IndustriaNetworkPanel() {
           </div>
         </div>
       </div>
+      <div className="demo-foot">{tx('dados ilustrativos')}</div>
       <style>{`
         .inp { background: linear-gradient(150deg, #15243d, #0d1a2e); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid rgba(255,255,255,0.08); }
         .inp-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -775,21 +765,21 @@ function IndustriaBI() {
       bg="#fff"
       c={BU_C.bi.color} soft={BU_C.bi.soft} ink={BU_C.bi.ink}
       eyebrow="SEWE BI + IA"
-      title="A IA lê a rede inteira e devolve"
-      hl="a próxima ação"
-      lead="Cruza sellout, estoque e cobertura de todos os distribuidores nos bastidores e mostra onde agir, por região, por canal e por produto, sem você garimpar gráfico."
+      title={tx('A IA lê a rede inteira e devolve')}
+      hl={tx('a próxima ação')}
+      lead={tx('Cruza sellout, estoque e cobertura de todos os distribuidores nos bastidores e mostra onde agir, por região, por canal e por produto, sem você garimpar gráfico.')}
       feats={[
-        { icon: 'alert',    t: 'Ruptura no canal por SKU', d: 'Saiba quais produtos estão faltando em quais PDVs antes de perder a venda.' },
-        { icon: 'target',   t: 'Cobertura e positivação', d: 'Onde a marca está presente, onde está fraca e onde há espaço para crescer.' },
-        { icon: 'boxes',    t: 'Mix ideal por região', d: 'O sortimento certo para cada perfil de PDV, com base no que realmente gira.' },
-        { icon: 'trending', t: 'Previsão de demanda', d: 'Projeção de giro por produto e região para planejar produção e abastecimento.' },
+        { icon: 'alert',    t: tx('Ruptura no canal por SKU'), d: tx('Saiba quais produtos estão faltando em quais PDVs antes de perder a venda.') },
+        { icon: 'target',   t: tx('Cobertura e positivação'), d: tx('Onde a marca está presente, onde está fraca e onde há espaço para crescer.') },
+        { icon: 'boxes',    t: tx('Mix ideal por região'), d: tx('O sortimento certo para cada perfil de PDV, com base no que realmente gira.') },
+        { icon: 'trending', t: tx('Previsão de demanda'), d: tx('Projeção de giro por produto e região para planejar produção e abastecimento.') },
       ]}
       aside={{
         bg: 'linear-gradient(160deg,#15243d,#0d1a2e)',
-        tag: 'RESULTADO NA REDE', tagColor: '#7fe9ea', tagBg: 'rgba(117,227,228,0.14)',
-        metric: '+90%', metricLabel: 'assertividade na reposição da rede',
-        desc: 'Menos ruptura no canal e menos estoque parado, com decisão guiada por dado, não por achismo.',
-        list: ['Decisões totalmente preditivas: antecipe a necessidade de estoque antes que os pedidos parem', 'Prevenção ativa de perdas: a IA detecta anomalias e avisa onde agir imediatamente', 'Ação mastigada para o time: menos relatório abstrato, mais direcionamento prático de venda'],
+        tag: tx('RESULTADO NA REDE'), tagColor: '#7fe9ea', tagBg: 'rgba(117,227,228,0.14)',
+        metric: '+90%', metricLabel: tx('assertividade na reposição da rede'),
+        desc: tx('Menos ruptura no canal e menos estoque parado, com decisão guiada por dado, não por achismo.'),
+        list: [tx('Decisões totalmente preditivas: antecipe a necessidade de estoque antes que os pedidos parem'), tx('Prevenção ativa de perdas: a IA detecta anomalias e avisa onde agir imediatamente'), tx('Ação mastigada para o time: menos relatório abstrato, mais direcionamento prático de venda')],
       }}
     />
   );
@@ -798,22 +788,18 @@ function IndustriaBI() {
 /* Modularidade — contrate tudo ou só uma parte */
 function IndustriaModular() {
   const combos = [
-    { c: BU_C.integration, t: 'Enxergar a rede', d: 'O painel de sellout, estoque e cobertura de cada distribuidor. Visibilidade imediata, sem mexer na operação.', tag: 'PORTA DE ENTRADA' },
-    { c: BU_C.sales, t: 'Enxergar + vender', d: 'A visibilidade da rede com o portal comercial por cima: orçamento, aprovação e CRM rodando no padrão da indústria.', tag: 'MAIS ESCOLHIDO' },
-    { c: BU_C.bi, t: 'Ecossistema completo', d: 'O cérebro por cima de tudo: a IA cruza visibilidade e venda para prever demanda, evitar ruptura e fechar o ciclo.', tag: 'CICLO FECHADO' },
+    { c: BU_C.integration, t: tx('Enxergar a rede'), d: tx('O painel de sellout, estoque e cobertura de cada distribuidor. Visibilidade imediata, sem mexer na operação.'), tag: tx('PORTA DE ENTRADA') },
+    { c: BU_C.sales, t: tx('Enxergar + vender'), d: tx('A visibilidade da rede com o portal comercial por cima: orçamento, aprovação e CRM rodando no padrão da indústria.'), tag: tx('MAIS ESCOLHIDO') },
+    { c: BU_C.bi, t: tx('Ecossistema completo'), d: tx('O cérebro por cima de tudo: a IA cruza visibilidade e venda para prever demanda, evitar ruptura e fechar o ciclo.'), tag: tx('CICLO FECHADO') },
   ];
   return (
     <section className="section" style={{ background: '#fff' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 740, margin: '0 auto 44px' }}>
-          <div className="eyebrow">Modular de verdade</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Comece por onde <span style={{ color: 'var(--navy)' }}>dói mais</span>.
+          <div className="eyebrow">{tx('Modular de verdade')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Comece por onde')} <span style={{ color: 'var(--navy)' }}>{tx('dói mais')}</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Cada entrega funciona sozinha. Contrate só a parte que resolve o seu problema de hoje
-            e amplie quando fizer sentido, sem trocar de plataforma no caminho.
-          </p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Cada entrega funciona sozinha. Contrate só a parte que resolve o seu problema de hoje e amplie quando fizer sentido, sem trocar de plataforma no caminho.')}</p>
         </div>
         <div className="mod-grid">
           {combos.map((m, i) => (
@@ -821,8 +807,7 @@ function IndustriaModular() {
               <div className="mod-tag" style={{ color: m.c.ink, background: m.c.soft }}>{m.tag}</div>
               <div className="mod-t">{m.t}</div>
               <p className="mod-d">{m.d}</p>
-              <a href="#diagnostico" className="mod-cta" style={{ color: m.c.ink }}>
-                Falar sobre este recorte <Icon name="arrow" size={14} stroke={2.2}/>
+              <a href="#diagnostico" className="mod-cta" style={{ color: m.c.ink }}>{tr('cta.primary')} <Icon name="arrow" size={14} stroke={2.2}/>
               </a>
             </div>
           ))}
@@ -846,52 +831,47 @@ function IndustriaModular() {
 function IndustriaDiagnostico() {
   const limites = [
     {
-      n: '01', t: 'Apenas notas emitidas',
-      d: 'A leitura pega só o XML das notas que o distribuidor emitiu. A devolução que o cliente emite de volta não entra na conta.',
-      c: ['Verba e bonificação pagas em duplicidade: o produto é vendido, a devolução não abate e a nova venda é contabilizada de novo.'],
+      n: '01', t: tx('Apenas notas emitidas'),
+      d: tx('A leitura pega só o XML das notas que o distribuidor emitiu. A devolução que o cliente emite de volta não entra na conta.'),
+      c: [tx('Verba e bonificação pagas em duplicidade: o produto é vendido, a devolução não abate e a nova venda é contabilizada de novo.')],
     },
     {
-      n: '02', t: 'Estoque por planilha',
-      d: 'Um retrato parcial: não enxerga transferência entre lojas, item aguardando entrada nem estoque pós-venda. E não separa estoque fiscal de gerencial.',
-      c: ['Visão incorreta do nível de estoque em campo.', 'Sugestão de compra incorreta.', 'Impacto direto nas estratégias comerciais.'],
+      n: '02', t: tx('Estoque por planilha'),
+      d: tx('Um retrato parcial: não enxerga transferência entre lojas, item aguardando entrada nem estoque pós-venda. E não separa estoque fiscal de gerencial.'),
+      c: [tx('Visão incorreta do nível de estoque em campo.'), tx('Sugestão de compra incorreta.'), tx('Impacto direto nas estratégias comerciais.')],
     },
     {
-      n: '03', t: 'Cadastro de produtos',
-      d: 'Cadastros divergentes entre indústria e distribuidor, e produtos de outras marcas processados como se fossem sell-out da sua linha.',
-      c: ['Verba paga sobre produto de outro fabricante.', 'Produto seu que não entra na apuração por cadastro incorreto.'],
+      n: '03', t: tx('Cadastro de produtos'),
+      d: tx('Cadastros divergentes entre indústria e distribuidor, e produtos de outras marcas processados como se fossem sell-out da sua linha.'),
+      c: [tx('Verba paga sobre produto de outro fabricante.'), tx('Produto seu que não entra na apuração por cadastro incorreto.')],
     },
     {
-      n: '04', t: 'Frequência e falhas de atualização',
-      d: 'Indisponibilidade da SEFAZ gera reprocessamento histórico. Nova filial ou alteração sistêmica no distribuidor deixa o estoque defasado.',
-      c: ['A credibilidade da apuração cai.', 'A reunião comercial debate o dado, não o negócio.', 'Análise e estratégia ficam limitadas pela insegurança.'],
+      n: '04', t: tx('Frequência e falhas de atualização'),
+      d: tx('Indisponibilidade da SEFAZ gera reprocessamento histórico. Nova filial ou alteração sistêmica no distribuidor deixa o estoque defasado.'),
+      c: [tx('A credibilidade da apuração cai.'), tx('A reunião comercial debate o dado, não o negócio.'), tx('Análise e estratégia ficam limitadas pela insegurança.')],
     },
   ];
   return (
     <section className="section id-sec">
       <div className="container">
         <div className="id-head reveal">
-          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>Diagnóstico · causa-raiz</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)', color: '#fff' }}>
-            Hoje você enxerga o distribuidor <span style={{ color: 'var(--turquoise-2)' }}>por fora</span>.
+          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>{tx('Diagnóstico · causa-raiz')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)', color: '#fff' }}>{tx('Hoje você enxerga o distribuidor')} <span style={{ color: 'var(--turquoise-2)' }}>{tx('por fora')}</span>.
           </h2>
-          <p className="id-lead">
-            O sell-out chega por relatório, o estoque por planilha e o cadastro não bate.
-            O número existe, mas chega tarde, incompleto e sem ninguém que responda por ele.
-            Não é falta de esforço do parceiro: é limitação do método.
-          </p>
+          <p className="id-lead">{tx('O sell-out chega por relatório, o estoque por planilha e o cadastro não bate. O número existe, mas chega tarde, incompleto e sem ninguém que responda por ele. Não é falta de esforço do parceiro: é limitação do método.')}</p>
         </div>
 
         <div className="id-grid">
           {limites.map((l, i) => (
             <div key={i} className="id-card reveal">
-              <div className="id-n">Limitação {l.n}</div>
+              <div className="id-n">{tx('Limitação')} {l.n}</div>
               <div className="id-t">{l.t}</div>
               <p className="id-d">{l.d}</p>
             </div>
           ))}
         </div>
 
-        <div className="id-cons-h">Consequência</div>
+        <div className="id-cons-h">{tx('Consequência')}</div>
         <div className="id-cons">
           {limites.map((l, i) => (
             <ul key={i} className="id-cons-col reveal">
@@ -903,8 +883,8 @@ function IndustriaDiagnostico() {
         <div className="id-bridge reveal">
           <SMark size={20} color="var(--turquoise-2)"/>
           <div>
-            <b>Por isso o problema não se resolve cobrando mais qualidade do fornecedor atual.</b>
-            <span>A SEWE lê a operação de dentro: direto no ERP do distribuidor, nota a nota, item a item.</span>
+            <b>{tx('Por isso o problema não se resolve cobrando mais qualidade do fornecedor atual.')}</b>
+            <span>{tx('A SEWE lê a operação de dentro: direto no ERP do distribuidor, nota a nota, item a item.')}</span>
           </div>
         </div>
       </div>
@@ -936,22 +916,19 @@ function IndustriaDiagnostico() {
    Responde o "como?" que toda indústria pergunta depois do diagnóstico. */
 function IndustriaConexao() {
   const passos = [
-    { n: '01', t: 'Extração no ERP', d: 'Dados capturados direto na origem, sem intermediário e sem depender de exportação manual do parceiro.' },
-    { n: '02', t: 'Processamento', d: 'Regras de negócio, padronização, limpeza e enriquecimento: cadastro conciliado entre a sua linha e a do distribuidor.' },
-    { n: '03', t: 'Base tratada', d: 'Sell-out e estoque consistentes, item a item, com devolução abatida e estoque fiscal separado do gerencial.' },
-    { n: '04', t: 'Entrega', d: 'API e painel para a indústria, e painel para o distribuidor, lendo exatamente a mesma base.' },
+    { n: '01', t: tx('Extração no ERP'), d: tx('Dados capturados direto na origem, sem intermediário e sem depender de exportação manual do parceiro.') },
+    { n: '02', t: tx('Processamento'), d: tx('Regras de negócio, padronização, limpeza e enriquecimento: cadastro conciliado entre a sua linha e a do distribuidor.') },
+    { n: '03', t: tx('Base tratada'), d: tx('Sell-out e estoque consistentes, item a item, com devolução abatida e estoque fiscal separado do gerencial.') },
+    { n: '04', t: tx('Entrega'), d: tx('API e painel para a indústria, e painel para o distribuidor, lendo exatamente a mesma base.') },
   ];
   return (
     <section className="section" style={{ background: '#fff' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 40px' }}>
-          <div className="eyebrow">Conexão · integração ponto a ponto</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            O ganho só existe quando o dado é <span style={{ color: 'var(--navy)' }}>íntegro do início ao fim</span>.
+          <div className="eyebrow">{tx('Conexão · integração ponto a ponto')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('O ganho só existe quando o dado é')} <span style={{ color: 'var(--navy)' }}>{tx('íntegro do início ao fim')}</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Nenhuma etapa depende de alguém lembrar de exportar uma planilha. A conexão é nossa, do ERP até o painel.
-          </p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Nenhuma etapa depende de alguém lembrar de exportar uma planilha. A conexão é nossa, do ERP até o painel.')}</p>
         </div>
 
         <div className="cx-flow">
@@ -968,11 +945,8 @@ function IndustriaConexao() {
         </div>
 
         <div className="cx-audit reveal">
-          <div className="cx-audit-tag">Auditoria</div>
-          <p>
-            Cada venda é auditável pela captura do XML: <b>nota a nota, item a item</b>.
-            Se a apuração for questionada, existe o documento fiscal por trás dela.
-          </p>
+          <div className="cx-audit-tag">{tx('Auditoria')}</div>
+          <p>{tx('Cada venda é auditável pela captura do XML:')} <b>{tx('nota a nota, item a item')}</b>{tx('. Se a apuração for questionada, existe o documento fiscal por trás dela.')}</p>
         </div>
       </div>
       <style>{`
@@ -997,171 +971,33 @@ function IndustriaConexao() {
 
 /* Mercado potencial: base pública de CNPJs ativos cruzada com a carteira,
    para mostrar onde a marca simplesmente não está. */
-function IndustriaProspeccao() {
-  const filtros = ['UF e cidade', 'CNAE', 'Porte', 'Data de abertura', 'Capital social', 'Já é cliente'];
-  return (
-    <section className="section" style={{ background: '#fff' }}>
-      <div className="container">
-        <div style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto 40px' }}>
-          <div className="eyebrow">Inteligência comercial · mercado potencial</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Quem existe no seu mercado e <span style={{ color: 'var(--navy)' }}>você ainda não atende</span>.
-          </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Cruzamos a base pública de empresas ativas com a carteira da sua rede.
-            O resultado é o mapa de onde a sua marca não chegou, com nome, CNPJ e endereço.
-          </p>
-        </div>
-
-        <div className="pr-panel">
-          <div className="pr-head">
-            <span className="pr-head-l"><SMark size={16} color="var(--turquoise-2)"/> PROSPECÇÃO DE MERCADO</span>
-            <span className="pr-chip">Recorte ilustrativo</span>
-          </div>
-          <div className="pr-body">
-            <div className="pr-kpis">
-              <div className="pr-kpi"><div className="pr-kpi-v tnum">455.052</div><div className="pr-kpi-l">empresas ativas no recorte</div></div>
-              <div className="pr-kpi"><div className="pr-kpi-v tnum">13.264</div><div className="pr-kpi-l">abertas nos últimos 12 meses</div></div>
-              <div className="pr-kpi"><div className="pr-kpi-v tnum">8,4%</div><div className="pr-kpi-l">share de positivação da rede</div></div>
-              <div className="pr-kpi pr-kpi-hl"><div className="pr-kpi-v tnum">417 mil</div><div className="pr-kpi-l">fora da base · mercado endereçável</div></div>
-            </div>
-            <div className="pr-cols">
-              <div className="pr-col">
-                <div className="pr-col-h">Filtre por</div>
-                <div className="pr-chips">{filtros.map(f => <span key={f} className="pr-f">{f}</span>)}</div>
-              </div>
-              <div className="pr-col">
-                <div className="pr-col-h">E responda</div>
-                <ul className="pr-ul">
-                  <li>Em quais cidades existe demanda e a rede não positivou ninguém?</li>
-                  <li>Qual distribuidor tem cobertura ociosa na própria praça?</li>
-                  <li>Quantas empresas do seu CNAE-alvo abriram no trimestre?</li>
-                  <li>Onde vale abrir um novo canal e onde vale reforçar o atual?</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <style>{`
-        .pr-panel { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
-        .pr-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 20px; background: linear-gradient(120deg, #15243d, #0d1a2e); }
-        .pr-head-l { display: inline-flex; align-items: center; gap: 10px; font-family: var(--ff-display); font-weight: 600; font-size: 12.5px; letter-spacing: .1em; color: #fff; }
-        .pr-chip { font-family: var(--ff-mono); font-size: 10px; letter-spacing: .08em; color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; padding: 3px 10px; }
-        .pr-body { padding: 20px; }
-        .pr-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-        .pr-kpi { background: #fff; border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px 18px; }
-        .pr-kpi-hl { border-color: var(--turquoise-2); box-shadow: 0 0 0 1px var(--turquoise-2); }
-        .pr-kpi-v { font-family: var(--ff-display); font-weight: 700; font-size: 26px; line-height: 1; color: var(--navy-900); }
-        .pr-kpi-hl .pr-kpi-v { color: var(--turquoise-ink); }
-        .pr-kpi-l { font-size: 11.5px; color: var(--text-2); margin-top: 8px; line-height: 1.4; }
-        .pr-cols { display: grid; grid-template-columns: 1fr 1.3fr; gap: 20px; margin-top: 18px; padding-top: 18px; border-top: 1px dashed var(--line); }
-        .pr-col-h { font-family: var(--ff-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); margin-bottom: 12px; }
-        .pr-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-        .pr-f { padding: 7px 14px; background: #fff; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--text-2); }
-        .pr-ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-        .pr-ul li { position: relative; padding-left: 20px; font-size: 14.5px; color: var(--text); line-height: 1.5; }
-        .pr-ul li::before { content: ''; position: absolute; left: 0; top: 8px; width: 7px; height: 7px; border-radius: 2px; background: var(--turquoise-2); }
-        @media (max-width: 900px) { .pr-kpis { grid-template-columns: 1fr 1fr; } .pr-cols { grid-template-columns: 1fr; } }
-      `}</style>
-    </section>
-  );
-}
-
 /* A camada de comércio digital: por que a indústria perde o controle da
    experiência exatamente no momento da compra da revenda. */
-function IndustriaCamadaComercio() {
-  const camadas = [
-    {
-      k: 'Camada de experiência', dono: 'A indústria controla', c: '#00a335', soft: 'rgba(0,163,53,0.1)',
-      itens: ['Portfólio', 'Lançamentos', 'Preço', 'Tabelas específicas', 'Campanhas', 'Promoções', 'Segmentação', 'Produtos estratégicos', 'Recomendações'],
-    },
-    {
-      k: 'Camada operacional', dono: 'O distribuidor segue dono', c: '#fd7014', soft: 'rgba(253,112,20,0.1)',
-      itens: ['Estoque', 'Crédito', 'Faturamento', 'Separação', 'Logística', 'Entrega', 'Relacionamento local'],
-    },
-    {
-      k: 'Camada da revenda', dono: 'A revenda passa a ter', c: '#2d436c', soft: 'rgba(45,67,108,0.1)',
-      itens: ['Ambiente único', 'Distribuidores habilitados', 'Estoque', 'Preço e condições', 'Promoções', 'Lançamentos', 'Substitutos', 'Orçamento com precificação própria', 'Acompanhamento do pedido'],
-    },
-  ];
-  return (
-    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
-      <div className="container">
-        <div className="cc-quote reveal">
-          <div className="eyebrow">SEWE Sales · camada de comércio digital</div>
-          <blockquote>
-            A indústria investe em produto, marca, campanhas, canais e geração de demanda.
-            Mas no momento em que a revenda decide comprar, a experiência fica praticamente
-            inteira nas mãos do vendedor do distribuidor.
-          </blockquote>
-          <p className="cc-quote-d">
-            Não é um e-commerce por cima do canal. É uma camada sobre a operação que já existe:
-            a indústria recupera a experiência de compra sem tirar do distribuidor nada do que é dele.
-          </p>
-        </div>
-
-        <div className="cc-stack">
-          {camadas.map((c, i) => (
-            <div key={i} className="cc-row reveal" style={{ '--c': c.c, '--cs': c.soft }}>
-              <div className="cc-rail">
-                <div className="cc-k">{c.k}</div>
-                <div className="cc-dono">{c.dono}</div>
-              </div>
-              <div className="cc-items">
-                {c.itens.map(it => <span key={it} className="cc-it">{it}</span>)}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="cc-foot reveal">Centraliza-se a experiência sem centralizar a operação.</div>
-      </div>
-      <style>{`
-        .cc-quote { max-width: 860px; margin: 0 auto 40px; text-align: center; }
-        .cc-quote blockquote { margin: 18px 0 0; font-family: var(--ff-display); font-weight: 600; font-size: clamp(20px, 2.6vw, 30px); line-height: 1.35; color: var(--navy-900); }
-        .cc-quote-d { font-size: 16px; color: var(--text-2); line-height: 1.65; margin-top: 18px; }
-        .cc-stack { display: grid; gap: 12px; }
-        .cc-row { display: grid; grid-template-columns: 230px 1fr; gap: 20px; align-items: center; background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--c); border-radius: var(--r-lg); padding: 20px 24px; box-shadow: var(--shadow-xs); }
-        .cc-k { font-family: var(--ff-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--c); }
-        .cc-dono { font-family: var(--ff-display); font-weight: 700; font-size: 17px; color: var(--navy-900); margin-top: 6px; line-height: 1.25; }
-        .cc-items { display: flex; flex-wrap: wrap; gap: 8px; }
-        .cc-it { padding: 7px 14px; background: var(--cs); border: 1px solid color-mix(in srgb, var(--c) 22%, transparent); border-radius: 8px; font-size: 13px; color: var(--text); }
-        .cc-foot { text-align: center; font-family: var(--ff-display); font-weight: 700; font-size: clamp(18px, 2vw, 23px); color: var(--navy-900); margin-top: 30px; }
-        @media (max-width: 860px) { .cc-row { grid-template-columns: 1fr; gap: 14px; } }
-      `}</style>
-    </section>
-  );
-}
-
 /* O eixo: as três perguntas que sustentam qualquer decisão de canal,
    e os oito ganhos que aparecem quando elas passam a ter resposta. */
 function IndustriaEixo() {
   const ganhos = [
-    { n: '01', t: 'S&OP com sell-out e estoque', d: 'Dado confiável sobre o que a rede realmente tem e vende. Menos custo operacional, menos desperdício.' },
-    { n: '02', t: 'Promoções otimizadas', d: 'O investimento vai para os produtos e as regiões com potencial real de venda.' },
-    { n: '03', t: 'Agilidade e segurança na decisão', d: 'Decisão estratégica tomada no tempo do mercado, com dado atualizado e confiável.' },
-    { n: '04', t: 'Mais previsibilidade, menos ruptura', d: 'Com o estoque da rede confiável, o impacto de cada estratégia comercial é avaliado com segurança.' },
-    { n: '05', t: 'Fonte única de consulta', d: 'Distribuidor e fábrica olham o mesmo número, com a mesma premissa de cálculo.' },
-    { n: '06', t: 'Desenvolvimento dos distribuidores', d: 'Painéis padronizados: indústria e distribuidores lendo a mesma informação.' },
-    { n: '07', t: 'Política comercial mais forte', d: 'Transparência fortalece a relação e torna a comunicação com a rede mais clara e colaborativa.' },
-    { n: '08', t: 'Remuneração pelo sell-out', d: 'A equipe é remunerada sobre o que saiu de verdade. O foco deixa de ser só vender e passa a ser a efetividade na ponta.' },
+    { n: '01', t: tx('S&OP com sell-out e estoque'), d: tx('Dado confiável sobre o que a rede realmente tem e vende. Menos custo operacional, menos desperdício.') },
+    { n: '02', t: tx('Promoções otimizadas'), d: tx('O investimento vai para os produtos e as regiões com potencial real de venda.') },
+    { n: '03', t: tx('Agilidade e segurança na decisão'), d: tx('Decisão estratégica tomada no tempo do mercado, com dado atualizado e confiável.') },
+    { n: '04', t: tx('Mais previsibilidade, menos ruptura'), d: tx('Com o estoque da rede confiável, o impacto de cada estratégia comercial é avaliado com segurança.') },
+    { n: '05', t: tx('Fonte única de consulta'), d: tx('Distribuidor e fábrica olham o mesmo número, com a mesma premissa de cálculo.') },
+    { n: '06', t: tx('Desenvolvimento dos distribuidores'), d: tx('Painéis padronizados: indústria e distribuidores lendo a mesma informação.') },
+    { n: '07', t: tx('Política comercial mais forte'), d: tx('Transparência fortalece a relação e torna a comunicação com a rede mais clara e colaborativa.') },
+    { n: '08', t: tx('Remuneração pelo sell-out'), d: tx('A equipe é remunerada sobre o que saiu de verdade. O foco deixa de ser só vender e passa a ser a efetividade na ponta.') },
   ];
   return (
     <section className="section ex-sec">
       <div className="container">
         <div className="ex-head reveal">
-          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>Futuro · ecossistema integrado</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)', color: '#fff' }}>
-            O que muda quando a rede inteira <span style={{ color: 'var(--turquoise-2)' }}>fala a mesma língua</span>.
+          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>{tx('Futuro · ecossistema integrado')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)', color: '#fff' }}>{tx('O que muda quando a rede inteira')} <span style={{ color: 'var(--turquoise-2)' }}>{tx('fala a mesma língua')}</span>.
           </h2>
         </div>
 
         <div className="ex-axis reveal">
-          <div className="ex-axis-l">O eixo</div>
-          <p>
-            Resultado só faz sentido quando dá para responder três perguntas:
-            <b> o que aconteceu?</b> <b>o que está sendo feito agora?</b> <b>e para onde isso vai nos levar?</b>
+          <div className="ex-axis-l">{tx('O eixo')}</div>
+          <p>{tx('Resultado só faz sentido quando dá para responder três perguntas:')}<b> {tx('o que aconteceu?')}</b> <b>{tx('o que está sendo feito agora?')}</b> <b>{tx('e para onde isso vai nos levar?')}</b>
           </p>
         </div>
 
@@ -1201,23 +1037,19 @@ function IndustriaEixo() {
    modo de falha conhecido — o ponto ótimo é a interseção dos três. */
 function IndustriaMetodo() {
   const falhas = [
-    { par: 'Processo + Tecnologia', sem: 'sem Pessoas', t: 'Alienação', d: 'Sistema impecável que ninguém usa.' },
-    { par: 'Processo + Pessoas', sem: 'sem Tecnologia', t: 'Frustração', d: 'Time engajado preso em rotina manual que não escala.' },
-    { par: 'Tecnologia + Pessoas', sem: 'sem Processo', t: 'Caos automatizado', d: 'Velocidade em cima de um processo errado.' },
+    { par: tx('Processo + Tecnologia'), sem: tx('sem Pessoas'), t: tx('Alienação'), d: tx('Sistema impecável que ninguém usa.') },
+    { par: tx('Processo + Pessoas'), sem: tx('sem Tecnologia'), t: tx('Frustração'), d: tx('Time engajado preso em rotina manual que não escala.') },
+    { par: tx('Tecnologia + Pessoas'), sem: tx('sem Processo'), t: tx('Caos automatizado'), d: tx('Velocidade em cima de um processo errado.') },
   ];
   return (
     <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
       <div className="container">
         <div className="mt-grid">
           <div>
-            <div className="eyebrow">Método · forma de atuação</div>
-            <h2 style={{ marginTop: 14, fontSize: 'clamp(26px,3.2vw,38px)' }}>
-              O ponto ótimo não é tecnologia. <span style={{ color: 'var(--navy)' }}>É a interseção</span>.
+            <div className="eyebrow">{tx('Método · forma de atuação')}</div>
+            <h2 style={{ marginTop: 14, fontSize: 'clamp(26px,3.2vw,38px)' }}>{tx('O ponto ótimo não é tecnologia.')} <span style={{ color: 'var(--navy)' }}>{tx('É a interseção')}</span>.
             </h2>
-            <p style={{ color: 'var(--text-2)', fontSize: 16.5, marginTop: 16, lineHeight: 1.65 }}>
-              Atuamos nos três eixos ao mesmo tempo. Cada dupla sozinha tem um modo de falha conhecido,
-              e é para onde a maior parte dos projetos de canal escorrega.
-            </p>
+            <p style={{ color: 'var(--text-2)', fontSize: 16.5, marginTop: 16, lineHeight: 1.65 }}>{tx('Atuamos nos três eixos ao mesmo tempo. Cada dupla sozinha tem um modo de falha conhecido, e é para onde a maior parte dos projetos de canal escorrega.')}</p>
             <div className="mt-falhas">
               {falhas.map((f, i) => (
                 <div key={i} className="mt-falha reveal">
@@ -1229,21 +1061,21 @@ function IndustriaMetodo() {
           </div>
 
           <div className="mt-venn reveal">
-            <svg viewBox="0 0 340 320" role="img" aria-label="Diagrama de interseção entre Processo, Tecnologia e Pessoas">
+            <svg viewBox="0 0 340 320" role="img" aria-label={tx('Diagrama de interseção entre Processo, Tecnologia e Pessoas')}>
               <circle cx="122" cy="126" r="98" fill="rgba(45,67,108,0.16)" stroke="rgba(45,67,108,0.4)"/>
               <circle cx="218" cy="126" r="98" fill="rgba(0,163,53,0.16)" stroke="rgba(0,163,53,0.42)"/>
               <circle cx="170" cy="208" r="98" fill="rgba(117,227,228,0.2)" stroke="rgba(14,122,124,0.4)"/>
-              <text x="70" y="118" className="vn-l" textAnchor="middle">PROCESSO</text>
-              <text x="266" y="118" className="vn-l" textAnchor="middle">TECNOLOGIA</text>
-              <text x="170" y="282" className="vn-l" textAnchor="middle">PESSOAS</text>
-              <text x="170" y="88" className="vn-s" textAnchor="middle">Alienação</text>
-              <text x="110" y="199" className="vn-s" textAnchor="middle">Frustração</text>
-              <text x="228" y="191" className="vn-s" textAnchor="middle">Caos</text>
+              <text x="70" y="118" className="vn-l" textAnchor="middle">{tx('PROCESSO')}</text>
+              <text x="266" y="118" className="vn-l" textAnchor="middle">{tx('TECNOLOGIA')}</text>
+              <text x="170" y="282" className="vn-l" textAnchor="middle">{tx('PESSOAS')}</text>
+              <text x="170" y="88" className="vn-s" textAnchor="middle">{tx('Alienação')}</text>
+              <text x="110" y="199" className="vn-s" textAnchor="middle">{tx('Frustração')}</text>
+              <text x="228" y="191" className="vn-s" textAnchor="middle">{tx('Caos')}</text>
               <text x="228" y="204" className="vn-s vn-xs" textAnchor="middle">automatizado</text>
-              <text x="170" y="150" className="vn-c" textAnchor="middle">PONTO</text>
-              <text x="170" y="170" className="vn-c" textAnchor="middle">ÓTIMO</text>
+              <text x="170" y="150" className="vn-c" textAnchor="middle">{tx('PONTO')}</text>
+              <text x="170" y="170" className="vn-c" textAnchor="middle">{tx('ÓTIMO')}</text>
             </svg>
-            <div className="mt-venn-f">Engenharia · sucesso do cliente · plataforma</div>
+            <div className="mt-venn-f">{tx('Engenharia · sucesso do cliente · plataforma')}</div>
           </div>
         </div>
       </div>
@@ -1268,34 +1100,80 @@ function IndustriaMetodo() {
   );
 }
 
+/* As duas ofertas que saíram desta página e ganharam página própria. Ficam como
+   porta de saída, não como mais 300 linhas de argumento no meio do caminho. */
+function IndustriaOutrasOfertas() {
+  const cards = [
+    { href: '/prospeccao', eyebrow: tx('Prospecção de Mercado'),
+      t: tx('O mercado que a sua rede ainda não atende'),
+      d: tx('A base pública de empresas ativas cruzada com a carteira da rede: onde a sua marca não chegou, com nome, CNPJ e endereço.') },
+    { href: '/comercio-digital', eyebrow: tx('Comércio Digital B2B'),
+      t: tx('A revenda comprando no seu padrão'),
+      d: tx('Portfólio, preço e campanha definidos pela indústria; crédito, faturamento e entrega seguem no distribuidor.') },
+  ];
+  return (
+    <section className="section-sm" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line)' }}>
+      <div className="container">
+        <div className="eyebrow" style={{ marginBottom: 20 }}>{tx('Também para a indústria')}</div>
+        <div className="oo-grid">
+          {cards.map(c => (
+            <a key={c.href} href={c.href} className="oo-card card-hover">
+              <div className="oo-eyebrow">{c.eyebrow}</div>
+              <div className="oo-t">{c.t}</div>
+              <p className="oo-d">{c.d}</p>
+              <span className="oo-cta">{tr('cta.secondary')} <Icon name="arrow" size={15} stroke={2}/></span>
+            </a>
+          ))}
+        </div>
+      </div>
+      <style>{`
+        .oo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .oo-card {
+          display: flex; flex-direction: column; background: #fff; text-decoration: none;
+          border: 1px solid var(--line); border-left: 3px solid var(--turquoise-2);
+          border-radius: var(--r-lg); padding: 26px 28px; box-shadow: var(--shadow-sm);
+        }
+        .oo-eyebrow { font-family: var(--ff-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--turquoise-ink); }
+        .oo-t { font-family: var(--ff-display); font-weight: 700; font-size: 21px; color: var(--navy-900); margin-top: 10px; line-height: 1.25; }
+        .oo-d { font-size: 14.5px; color: var(--text-2); line-height: 1.6; margin: 8px 0 0; flex: 1; }
+        .oo-cta { display: inline-flex; align-items: center; gap: 7px; margin-top: 20px; font-family: var(--ff-display); font-weight: 600; font-size: 15px; color: var(--navy-900); }
+        .oo-card:hover .oo-cta { color: var(--turquoise-ink); }
+        @media (max-width: 860px) { .oo-grid { grid-template-columns: 1fr; } }
+      `}</style>
+    </section>
+  );
+}
+
 function IndustriaPage() {
+  useLocale();   // re-renderiza a pagina inteira quando o idioma muda
   useReveal();
   return (
     <>
-      <SiteHeader/>
+      <SiteHeader translated/>
       <PageHero
-        eyebrow="Para a Indústria"
-        title="Enxergue toda a sua rede, da fábrica ao ponto de venda."
-        lead="Quanto cada distribuidor vendeu do seu produto ontem? Onde está faltando? Quais clientes pararam de comprar? A SEWE devolve essas respostas todos os dias. E você contrata só o que precisar."
+        eyebrow={tx('Para a Indústria')}
+        title={tx('Pare de descobrir a ruptura no fechamento do mês.')}
+        lead={tx('Quanto cada distribuidor vendeu do seu produto ontem? Onde está faltando? Quais clientes pararam de comprar? A SEWE devolve essas respostas todos os dias, direto do ERP da sua rede. E você contrata só o que precisar.')}
       >
         <div style={{ marginTop: 28, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <a href="#diagnostico" className="btn btn-primary btn-lg">Falar sobre a rede <Icon name="arrow" size={16} className="chev"/></a>
-          <a href="https://wa.me/5548984704389" className="btn btn-outline btn-lg">WhatsApp</a>
+          <a href="#diagnostico" className="btn btn-primary btn-lg">{tr('cta.primary')} <Icon name="arrow" size={16} className="chev"/></a>
+          <a href="#ecossistema" className="btn btn-outline btn-lg">{tr('cta.secondary')}</a>
         </div>
       </PageHero>
+      <ProofBar/>
       <IndustriaDiagnostico/>
       <IndustriaEcosystem/>
       <IndustriaMap/>
       <IndustriaConexao/>
       <IntegrationSection/>
       <IndustriaNetworkPanel/>
-      <IndustriaProspeccao/>
-      <IndustriaCamadaComercio/>
       <SalesSection audience="industria"/>
       <IndustriaBI/>
       <IndustriaEixo/>
       <IndustriaMetodo/>
       <IndustriaModular/>
+      <IndustriaOutrasOfertas/>
+      <ObjectionBlock/>
       <CTASection/>
       <SiteFooter/>
     </>
@@ -1308,28 +1186,24 @@ function IndustriaPage() {
    gargalo não é modelo — é dado. Fonte: pesquisa Qlik sobre barreiras de adoção. */
 function SolucoesBarreiras() {
   const barreiras = [
-    { pct: '56%', t: 'Qualidade, disponibilidade e acesso ao dado', d: 'O dado existe, mas está espalhado, sujo ou trancado em um sistema que ninguém consulta.' },
-    { pct: '49%', t: 'Integração com os sistemas existentes', d: 'ERP, CRM, planilha e legado que nunca conversaram entre si — e ninguém quer trocar tudo para começar.' },
-    { pct: '47%', t: 'Lacunas de governança, segurança e compliance', d: 'Sem trilha de acesso e sem controle por linha, o dado sensível vira risco antes de virar decisão.' },
+    { pct: '56%', t: tx('Qualidade, disponibilidade e acesso ao dado'), d: tx('O dado existe, mas está espalhado, sujo ou trancado em um sistema que ninguém consulta.') },
+    { pct: '49%', t: tx('Integração com os sistemas existentes'), d: tx('ERP, CRM, planilha e legado que nunca conversaram entre si — e ninguém quer trocar tudo para começar.') },
+    { pct: '47%', t: tx('Lacunas de governança, segurança e compliance'), d: tx('Sem trilha de acesso e sem controle por linha, o dado sensível vira risco antes de virar decisão.') },
   ];
   const armadilhas = [
-    { icon: 'dollar', t: 'Custo de processamento nas alturas', d: 'Cada pergunta do usuário vira uma query cobrada no data warehouse.' },
-    { icon: 'lock',   t: 'Opacidade financeira e lock-in', d: 'Você descobre o custo real depois da fatura, preso a um sistema inflexível.' },
-    { icon: 'link',   t: 'Complexidade de integração', d: 'Mais uma ferramenta para conectar, monitorar e manter de pé.' },
-    { icon: 'boxes',  t: 'Solução apenas parcial', d: 'Resolve um pedaço do problema e deixa o resto para você resolver.' },
+    { icon: 'dollar', t: tx('Custo de processamento nas alturas'), d: tx('Cada pergunta do usuário vira uma query cobrada no data warehouse.') },
+    { icon: 'lock',   t: tx('Opacidade financeira e lock-in'), d: tx('Você descobre o custo real depois da fatura, preso a um sistema inflexível.') },
+    { icon: 'link',   t: tx('Complexidade de integração'), d: tx('Mais uma ferramenta para conectar, monitorar e manter de pé.') },
+    { icon: 'boxes',  t: tx('Solução apenas parcial'), d: tx('Resolve um pedaço do problema e deixa o resto para você resolver.') },
   ];
   return (
     <section className="section sb-sec">
       <div className="container">
         <div className="sb-head reveal">
-          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>O problema real</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)', color: '#fff' }}>
-            A tecnologia não é a <span style={{ color: 'var(--turquoise-2)' }}>maior barreira</span>.
+          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>{tx('O problema real')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)', color: '#fff' }}>{tx('A tecnologia não é a')} <span style={{ color: 'var(--turquoise-2)' }}>{tx('maior barreira')}</span>.
           </h2>
-          <p className="sb-lead">
-            A maior parte das iniciativas de dados e IA não trava no modelo nem na ferramenta.
-            Trava na base: dado que ninguém confia, sistema que não conversa e governança que não existe.
-          </p>
+          <p className="sb-lead">{tx('A maior parte das iniciativas de dados e IA não trava no modelo nem na ferramenta. Trava na base: dado que ninguém confia, sistema que não conversa e governança que não existe.')}</p>
         </div>
 
         <div className="sb-grid">
@@ -1342,13 +1216,13 @@ function SolucoesBarreiras() {
             </div>
           ))}
         </div>
-        <div className="sb-src">Principais barreiras de adoção apontadas por empresas · pesquisa Qlik</div>
+        <div className="sb-src">{tx('Principais barreiras de adoção apontadas por empresas · pesquisa Qlik')}</div>
 
         <div className="sb-trap-head reveal">
           <span className="sb-trap-badge"><Icon name="alert" size={15} stroke={2}/></span>
           <div>
-            <div className="sb-trap-t">E a “solução” costuma trazer o problema seguinte</div>
-            <div className="sb-trap-d">O que mais vemos em empresa que já tentou resolver com ferramenta de prateleira.</div>
+            <div className="sb-trap-t">{tx('E a “solução” costuma trazer o problema seguinte')}</div>
+            <div className="sb-trap-d">{tx('O que mais vemos em empresa que já tentou resolver com ferramenta de prateleira.')}</div>
           </div>
         </div>
         <div className="sb-traps">
@@ -1398,43 +1272,43 @@ function SolucoesCamadas() {
   const [active, setActive] = React.useState(1);
   const camadas = [
     {
-      key: 'trust', badge: 'CONFIANÇA', c: '#2d436c', soft: 'rgba(45,67,108,0.09)',
-      icon: 'shield', label: 'Dado confiável', tagline: 'Trusted Data Products',
-      title: 'Dado no tempo certo, correto e governado.',
-      body: 'Antes de qualquer painel ou agente, o dado precisa ser confiável. Essa camada cuida da entrada: captura, movimenta, trata e certifica a origem, com a engenharia SEWE definindo as regras do seu negócio.',
+      key: 'trust', badge: tx('CONFIANÇA'), c: '#2d436c', soft: 'rgba(45,67,108,0.09)',
+      icon: 'shield', label: tx('Dado confiável'), tagline: 'Trusted Data Products',
+      title: tx('Dado no tempo certo, correto e governado.'),
+      body: tx('Antes de qualquer painel ou agente, o dado precisa ser confiável. Essa camada cuida da entrada: captura, movimenta, trata e certifica a origem, com a engenharia SEWE definindo as regras do seu negócio.'),
       bullets: [
-        'Change Data Capture e replicação em tempo real, sem travar o sistema de origem',
-        'Datasets curados, prontos para uso, governados e ricos em contexto',
-        'Qlik Trust Score: validade e completude medidas e monitoradas continuamente',
-        'Catálogo e linhagem: cada número tem origem rastreável até a fonte',
+        tx('Change Data Capture e replicação em tempo real, sem travar o sistema de origem'),
+        tx('Datasets curados, prontos para uso, governados e ricos em contexto'),
+        tx('Qlik Trust Score: validade e completude medidas e monitoradas continuamente'),
+        tx('Catálogo e linhagem: cada número tem origem rastreável até a fonte'),
       ],
-      metric: '93,4%', metricLabel: 'Trust Score do dataset · validade e completude aferidas',
+      metric: '93,4%', metricLabel: tx('Trust Score do dataset · validade e completude aferidas'),
     },
     {
       key: 'engine', badge: 'CONTEXTO', c: '#0e7a7c', soft: 'rgba(117,227,228,0.2)',
-      icon: 'cpu', label: 'Motor analítico', tagline: 'Analytics Engine',
-      title: 'Inteligência guiada por IA, rica em contexto.',
-      body: 'É o coração da Qlik e o que nenhuma ferramenta SQL entrega: um motor associativo in-memory que guarda todas as relações do seu dado e responde qualquer pergunta na hora, inclusive a pergunta que você ainda não fez.',
+      icon: 'cpu', label: tx('Motor analítico'), tagline: 'Analytics Engine',
+      title: tx('Inteligência guiada por IA, rica em contexto.'),
+      body: tx('É o coração da Qlik e o que nenhuma ferramenta SQL entrega: um motor associativo in-memory que guarda todas as relações do seu dado e responde qualquer pergunta na hora, inclusive a pergunta que você ainda não fez.'),
       bullets: [
-        'Revela padrões, associações e pontos cegos que as outras ferramentas escondem',
-        'Mostra o que É e o que NÃO É: o dado excluído é tão revelador quanto o selecionado',
-        'Cálculo de alta velocidade, preciso e eficiente em custo, mesmo em volume massivo',
-        'Reconhecido como diferencial da Qlik por Gartner e IDC',
+        tx('Revela padrões, associações e pontos cegos que as outras ferramentas escondem'),
+        tx('Mostra o que É e o que NÃO É: o dado excluído é tão revelador quanto o selecionado'),
+        tx('Cálculo de alta velocidade, preciso e eficiente em custo, mesmo em volume massivo'),
+        tx('Reconhecido como diferencial da Qlik por Gartner e IDC'),
       ],
-      metric: '< 2,2s', metricLabel: 'para devolver qualquer mudança de contexto ou filtro',
+      metric: '< 2,2s', metricLabel: tx('para devolver qualquer mudança de contexto ou filtro'),
     },
     {
       key: 'agentic', badge: 'ADAPTABILIDADE', c: '#00a335', soft: 'rgba(0,163,53,0.09)',
-      icon: 'brain', label: 'Experiência agêntica', tagline: 'Agentic Experience',
-      title: 'Seus dados, agentes e plataformas falando a mesma língua.',
-      body: 'A tecnologia muda mais rápido do que o ciclo de um projeto. Essa camada existe para você acompanhar sem trocar de plataforma: o dado governado fica disponível para o assistente, o agente e o sistema que vierem depois.',
+      icon: 'brain', label: tx('Experiência agêntica'), tagline: 'Agentic Experience',
+      title: tx('Seus dados, agentes e plataformas falando a mesma língua.'),
+      body: tx('A tecnologia muda mais rápido do que o ciclo de um projeto. Essa camada existe para você acompanhar sem trocar de plataforma: o dado governado fica disponível para o assistente, o agente e o sistema que vierem depois.'),
       bullets: [
-        'Qualquer dado, em qualquer lugar: nuvem híbrida e ambientes multiplataforma',
-        'Conexão com os seus agentes por padrões de interoperabilidade como MCP',
-        'Agentes que consultam o dado, geram o insight e executam a ação',
-        'IA preditiva e detecção de anomalias avisando antes de o problema aparecer',
+        tx('Qualquer dado, em qualquer lugar: nuvem híbrida e ambientes multiplataforma'),
+        tx('Conexão com os seus agentes por padrões de interoperabilidade como MCP'),
+        tx('Agentes que consultam o dado, geram o insight e executam a ação'),
+        tx('IA preditiva e detecção de anomalias avisando antes de o problema aparecer'),
       ],
-      metric: 'MCP', metricLabel: 'servidor nativo para conectar agentes ao seu dado governado',
+      metric: 'MCP', metricLabel: tx('servidor nativo para conectar agentes ao seu dado governado'),
     },
   ];
   const S = camadas[active];
@@ -1442,14 +1316,10 @@ function SolucoesCamadas() {
     <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 36px' }}>
-          <div className="eyebrow">Como a plataforma resolve</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Três camadas que <span style={{ color: 'var(--navy)' }}>trabalham juntas</span>.
+          <div className="eyebrow">{tx('Como a plataforma resolve')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Três camadas que')} <span style={{ color: 'var(--navy)' }}>{tx('trabalham juntas')}</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Confiança no dado que entra, contexto no cálculo que roda, adaptabilidade na ponta que consome.
-            Tirar uma delas é o motivo pelo qual a maioria dos projetos de dados para no meio.
-          </p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Confiança no dado que entra, contexto no cálculo que roda, adaptabilidade na ponta que consome. Tirar uma delas é o motivo pelo qual a maioria dos projetos de dados para no meio.')}</p>
         </div>
 
         <div className="sc-tabs">
@@ -1484,9 +1354,7 @@ function SolucoesCamadas() {
             <div className="sc-aside-metric">{S.metric}</div>
             <div className="sc-aside-l">{S.metricLabel}</div>
             <div className="sc-aside-foot">
-              <SMark size={16} color="var(--turquoise-2)"/>
-              A camada é da Qlik. A modelagem que faz ela responder ao seu negócio é da SEWE.
-            </div>
+              <SMark size={16} color="var(--turquoise-2)"/>{tx('A camada é da Qlik. A modelagem que faz ela responder ao seu negócio é da SEWE.')}</div>
           </aside>
         </div>
       </div>
@@ -1522,33 +1390,33 @@ function SolucoesCamadas() {
 function SolucoesPortfolio() {
   const linhas = [
     {
-      camada: 'Experiência agêntica', eixo: 'IA', c: '#00a335', soft: 'rgba(0,163,53,0.09)', icon: 'brain',
+      camada: tx('Experiência agêntica'), eixo: 'IA', c: '#00a335', soft: 'rgba(0,163,53,0.09)', icon: 'brain',
       itens: [
-        { t: 'Assistente de IA agêntica', d: 'Pergunte em linguagem natural e receba a resposta com o dado por trás.' },
-        { t: 'Agentes de IA', d: 'Agentes que consultam, cruzam e executam ação no seu fluxo.' },
-        { t: 'IA preditiva', d: 'Previsão de demanda, churn e giro no mesmo modelo de dado.' },
-        { t: 'Detecção de anomalias', d: 'O desvio te procura, você não precisa caçar gráfico.' },
-        { t: 'Automação de fluxos', d: 'Do alerta à ação no ERP, sem passo manual no meio.' },
+        { t: tx('Assistente de IA agêntica'), d: tx('Pergunte em linguagem natural e receba a resposta com o dado por trás.') },
+        { t: tx('Agentes de IA'), d: tx('Agentes que consultam, cruzam e executam ação no seu fluxo.') },
+        { t: tx('IA preditiva'), d: tx('Previsão de demanda, churn e giro no mesmo modelo de dado.') },
+        { t: tx('Detecção de anomalias'), d: tx('O desvio te procura, você não precisa caçar gráfico.') },
+        { t: tx('Automação de fluxos'), d: tx('Do alerta à ação no ERP, sem passo manual no meio.') },
       ],
     },
     {
-      camada: 'Motor analítico', eixo: 'Analytics', c: '#0e7a7c', soft: 'rgba(117,227,228,0.2)', icon: 'chart',
+      camada: tx('Motor analítico'), eixo: 'Analytics', c: '#0e7a7c', soft: 'rgba(117,227,228,0.2)', icon: 'chart',
       itens: [
-        { t: 'Analytics agêntico', d: 'A análise conduzida por IA, com você no controle da pergunta.' },
-        { t: 'Visualizações e dashboards', d: 'Painéis prescritivos construídos do zero para o seu negócio.' },
-        { t: 'Relatórios gerenciados', d: 'Relatório assinado, no formato e no horário que você definir.' },
-        { t: 'Analytics embarcado', d: 'Painel dentro do seu portal ou sistema próprio, via API.' },
-        { t: 'Alertas e colaboração', d: 'Alerta por condição do indicador, direto no celular ou e-mail.' },
+        { t: tx('Analytics agêntico'), d: tx('A análise conduzida por IA, com você no controle da pergunta.') },
+        { t: tx('Visualizações e dashboards'), d: tx('Painéis prescritivos construídos do zero para o seu negócio.') },
+        { t: tx('Relatórios gerenciados'), d: tx('Relatório assinado, no formato e no horário que você definir.') },
+        { t: tx('Analytics embarcado'), d: tx('Painel dentro do seu portal ou sistema próprio, via API.') },
+        { t: tx('Alertas e colaboração'), d: tx('Alerta por condição do indicador, direto no celular ou e-mail.') },
       ],
     },
     {
-      camada: 'Dado confiável', eixo: 'Dados', c: '#2d436c', soft: 'rgba(45,67,108,0.09)', icon: 'boxes',
+      camada: tx('Dado confiável'), eixo: 'Dados', c: '#2d436c', soft: 'rgba(45,67,108,0.09)', icon: 'boxes',
       itens: [
-        { t: 'Change Data Capture', d: 'Só o que mudou, sem varrer a base inteira a cada carga.' },
-        { t: 'Movimentação em tempo real', d: 'Dado da origem ao destino em streaming contínuo.' },
-        { t: 'Transformação de dados', d: 'ETL e regras de negócio modeladas pela engenharia SEWE.' },
-        { t: 'Qualidade de dados', d: 'Validade e completude medidas antes de virar decisão.' },
-        { t: 'Catálogo e linhagem', d: 'De onde veio cada número, quem usa e o que quebra se mudar.' },
+        { t: tx('Change Data Capture'), d: tx('Só o que mudou, sem varrer a base inteira a cada carga.') },
+        { t: tx('Movimentação em tempo real'), d: tx('Dado da origem ao destino em streaming contínuo.') },
+        { t: tx('Transformação de dados'), d: tx('ETL e regras de negócio modeladas pela engenharia SEWE.') },
+        { t: tx('Qualidade de dados'), d: tx('Validade e completude medidas antes de virar decisão.') },
+        { t: tx('Catálogo e linhagem'), d: tx('De onde veio cada número, quem usa e o que quebra se mudar.') },
       ],
     },
   ];
@@ -1557,14 +1425,10 @@ function SolucoesPortfolio() {
     <section className="section" style={{ background: '#fff' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto 40px' }}>
-          <div className="eyebrow">O portfólio completo</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Quinze entregas, <span style={{ color: 'var(--navy)' }}>uma só plataforma</span>.
+          <div className="eyebrow">{tx('O portfólio completo')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Quinze entregas,')} <span style={{ color: 'var(--navy)' }}>{tx('uma só plataforma')}</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Do dado bruto no ERP ao agente que executa a ação. Você contrata o recorte que precisa hoje
-            e cresce dentro da mesma plataforma, sem migração no meio do caminho.
-          </p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Do dado bruto no ERP ao agente que executa a ação. Você contrata o recorte que precisa hoje e cresce dentro da mesma plataforma, sem migração no meio do caminho.')}</p>
         </div>
 
         <div className="pf">
@@ -1586,17 +1450,15 @@ function SolucoesPortfolio() {
             </div>
           ))}
           <div className="pf-gov">
-            <Icon name="shield" size={15} stroke={2}/>
-            Governança, segurança e conformidade atravessando as três camadas · LGPD, SSO e segurança em nível de linha
-          </div>
+            <Icon name="shield" size={15} stroke={2}/>{tx('Governança, segurança e conformidade atravessando as três camadas · LGPD, SSO e segurança em nível de linha')}</div>
         </div>
 
         <div className="pf-stack">
-          <div className="pf-stack-l">Roda sobre o que você já tem</div>
+          <div className="pf-stack-l">{tx('Roda sobre o que você já tem')}</div>
           <div className="pf-stack-chips">
             {stack.map(s => <span key={s} className="pf-chip">{s}</span>)}
           </div>
-          <div className="pf-stack-n">Nuvem híbrida e on-premise também disponíveis. Não trocamos o seu ecossistema — conectamos.</div>
+          <div className="pf-stack-n">{tx('Nuvem híbrida e on-premise também disponíveis. Não trocamos o seu ecossistema — conectamos.')}</div>
         </div>
       </div>
       <style>{`
@@ -1631,55 +1493,51 @@ function SolucoesPortfolio() {
    a query?". Aqui é onde o motor associativo vira argumento de custo. */
 function SolucoesCusto() {
   const linhas = [
-    { q: 'Devolve um resultado limitado', qd: 'A query cacheada guarda a resposta de uma única pergunta já definida.',
-      e: 'Guarda o conjunto de dados inteiro', ed: 'O motor carrega e comprime toda a base com indexação binária.' },
-    { q: 'Só aceita filtro simples', qd: 'Cálculo novo, pergunta inesperada ou dado alterado exige rodar a query de novo.',
-      e: 'Descoberta ilimitada', ed: 'Qualquer pergunta, por mais complexa, é resolvida em memória na hora.' },
-    { q: 'Perde contexto e relações', qd: 'O que não se encaixa no filtro simplesmente some da tela.',
-      e: 'Consciente de contexto', ed: 'Por inferência lógica, o dado associado e o não associado continuam visíveis.' },
+    { q: tx('Devolve um resultado limitado'), qd: tx('A query cacheada guarda a resposta de uma única pergunta já definida.'),
+      e: tx('Guarda o conjunto de dados inteiro'), ed: tx('O motor carrega e comprime toda a base com indexação binária.') },
+    { q: tx('Só aceita filtro simples'), qd: tx('Cálculo novo, pergunta inesperada ou dado alterado exige rodar a query de novo.'),
+      e: tx('Descoberta ilimitada'), ed: tx('Qualquer pergunta, por mais complexa, é resolvida em memória na hora.') },
+    { q: tx('Perde contexto e relações'), qd: tx('O que não se encaixa no filtro simplesmente some da tela.'),
+      e: tx('Consciente de contexto'), ed: tx('Por inferência lógica, o dado associado e o não associado continuam visíveis.') },
   ];
   return (
     <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto 40px' }}>
-          <div className="eyebrow">Custo de operação</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Cada clique do seu time <span style={{ color: 'var(--navy)' }}>não precisa virar fatura</span>.
+          <div className="eyebrow">{tx('Custo de operação')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Cada clique do seu time')} <span style={{ color: 'var(--navy)' }}>{tx('não precisa virar fatura')}</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Em analytics baseado em SQL, toda interação do usuário dispara uma query cobrada no data warehouse.
-            Com motor associativo, a interação acontece em memória e não custa nada.
-          </p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Em analytics baseado em SQL, toda interação do usuário dispara uma query cobrada no data warehouse. Com motor associativo, a interação acontece em memória e não custa nada.')}</p>
         </div>
 
         <div className="cu-duel">
           <div className="cu-side reveal">
-            <div className="cu-side-h">Analytics baseado em SQL</div>
+            <div className="cu-side-h">{tx('Analytics baseado em SQL')}</div>
             <div className="cu-price">$$$</div>
             <div className="cu-flow">
-              {['Usuário clica', 'Query dispara', 'Warehouse processa', 'Fatura sobe'].map((s, i) => (
+              {[tx('Usuário clica'), tx('Query dispara'), tx('Warehouse processa'), tx('Fatura sobe')].map((s, i) => (
                 <div key={i} className="cu-flow-s">{s}</div>
               ))}
             </div>
             <ul className="cu-ul">
-              <li>Uma query para cada pergunta</li>
-              <li>Custo imprevisível no fim do mês</li>
-              <li>Tempo de resposta que oscila com a concorrência de usuários</li>
+              <li>{tx('Uma query para cada pergunta')}</li>
+              <li>{tx('Custo imprevisível no fim do mês')}</li>
+              <li>{tx('Tempo de resposta que oscila com a concorrência de usuários')}</li>
             </ul>
           </div>
           <div className="cu-vs" aria-hidden><Icon name="arrow" size={18} stroke={2.2}/></div>
           <div className="cu-side cu-side-on reveal">
-            <div className="cu-side-h" style={{ color: 'var(--turquoise-2)' }}>Analytics guiado por motor</div>
+            <div className="cu-side-h" style={{ color: 'var(--turquoise-2)' }}>{tx('Analytics guiado por motor')}</div>
             <div className="cu-price cu-price-on">livre</div>
             <div className="cu-flow">
-              {['Usuário clica', 'Motor responde em memória', 'Warehouse em repouso', 'Custo estável'].map((s, i) => (
+              {[tx('Usuário clica'), tx('Motor responde em memória'), tx('Warehouse em repouso'), tx('Custo estável')].map((s, i) => (
                 <div key={i} className="cu-flow-s cu-flow-on">{s}</div>
               ))}
             </div>
             <ul className="cu-ul cu-ul-on">
-              <li>Carga agendada, não uma query por clique</li>
-              <li>Cache binário comprimido da base inteira</li>
-              <li>Resposta previsível mesmo com o time todo dentro</li>
+              <li>{tx('Carga agendada, não uma query por clique')}</li>
+              <li>{tx('Cache binário comprimido da base inteira')}</li>
+              <li>{tx('Resposta previsível mesmo com o time todo dentro')}</li>
             </ul>
           </div>
         </div>
@@ -1688,20 +1546,20 @@ function SolucoesCusto() {
           <div className="cu-q-h">
             <span className="cu-q-mark">?</span>
             <div>
-              <div className="cu-q-t">“Mas eu não posso só cachear a query?”</div>
-              <div className="cu-q-d">Pode — se você quiser fazer sempre a mesma pergunta.</div>
+              <div className="cu-q-t">{tx('“Mas eu não posso só cachear a query?”')}</div>
+              <div className="cu-q-d">{tx('Pode — se você quiser fazer sempre a mesma pergunta.')}</div>
             </div>
           </div>
           <div className="cu-tbl">
-            <div className="cu-tr cu-th"><span>Query SQL cacheada</span><span/><span>Motor associativo Qlik</span></div>
+            <div className="cu-tr cu-th"><span>{tx('Query SQL cacheada')}</span><span/><span>{tx('Motor associativo Qlik')}</span></div>
             {linhas.map((l, i) => (
               <div key={i} className="cu-tr">
-                <span className="cu-cell cu-cell-x" data-lbl="Query SQL cacheada">
+                <span className="cu-cell cu-cell-x" data-lbl={tx('Query SQL cacheada')}>
                   <span className="cu-tag cu-tag-x">✕</span>
                   <span><b>{l.q}</b><em>{l.qd}</em></span>
                 </span>
                 <span className="cu-mid" aria-hidden/>
-                <span className="cu-cell" data-lbl="Motor associativo Qlik">
+                <span className="cu-cell" data-lbl={tx('Motor associativo Qlik')}>
                   <span className="cu-tag cu-tag-o"><Icon name="check" size={11} stroke={3}/></span>
                   <span><b>{l.e}</b><em>{l.ed}</em></span>
                 </span>
@@ -1764,27 +1622,23 @@ function SolucoesCusto() {
    com a fonte visível — é comparativo direto com concorrente. */
 function SolucoesBenchmark() {
   const scores = [
-    { l: 'Produtividade', d: 'quão rápido a sessão de análise se completa, considerando interações e tempo de resposta', qlik: 100, rival: 31 },
-    { l: 'Escalabilidade', d: 'quão rápido as sessões se completam à medida que usuários e volume de dados crescem', qlik: 100, rival: 48 },
+    { l: 'Produtividade', d: tx('quão rápido a sessão de análise se completa, considerando interações e tempo de resposta'), qlik: 100, rival: 31 },
+    { l: 'Escalabilidade', d: tx('quão rápido as sessões se completam à medida que usuários e volume de dados crescem'), qlik: 100, rival: 48 },
   ];
   const kpis = [
-    { v: '3x', l: 'mais rápido no tempo de resposta' },
-    { v: '30%', l: 'menos interações do usuário para chegar à mesma resposta' },
-    { v: '2x', l: 'mais sessões concluídas em escala' },
-    { v: '0%', l: 'de degradação mensurável de performance sob carga' },
+    { v: '3x', l: tx('mais rápido no tempo de resposta') },
+    { v: '30%', l: tx('menos interações do usuário para chegar à mesma resposta') },
+    { v: '2x', l: tx('mais sessões concluídas em escala') },
+    { v: '0%', l: tx('de degradação mensurável de performance sob carga') },
   ];
   return (
     <section className="section" style={{ background: '#fff' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto 40px' }}>
-          <div className="eyebrow">Prova independente</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Não é só a nossa palavra: <span style={{ color: 'var(--navy)' }}>tem benchmark</span>.
+          <div className="eyebrow">{tx('Prova independente')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Não é só a nossa palavra:')} <span style={{ color: 'var(--navy)' }}>{tx('tem benchmark')}</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Em 2025 o instituto BARC conduziu um estudo independente comparando Qlik e Power BI
-            em condições reais de uso, medindo produtividade e escalabilidade.
-          </p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Em 2025 o instituto BARC conduziu um estudo independente comparando Qlik e Power BI em condições reais de uso, medindo produtividade e escalabilidade.')}</p>
         </div>
 
         <div className="bm-scores">
@@ -1818,18 +1672,9 @@ function SolucoesBenchmark() {
         </div>
 
         <div className="bm-note reveal">
-          <p>
-            O estudo apontou performance consistente e previsível do Qlik em todos os níveis de concorrência testados,
-            enquanto o Power BI apresentou tempos de resposta notavelmente inconsistentes sob carga alta de usuários.
-          </p>
-          <p style={{ marginTop: 10 }}>
-            Com IA agêntica em cena, performance deixou de ser detalhe: um único agente pode gerar centenas de consultas
-            e levar a arquitetura ao limite. É por isso que a camada de motor importa tanto quanto a camada de painel.
-          </p>
-          <div className="bm-src">
-            * 100 é o valor de referência estabelecido para o teste, não uma nota máxima.
-            <br/>Fonte: BARC Performance Benchmark 2025 (estudo independente), divulgado pela Qlik.
-          </div>
+          <p>{tx('O estudo apontou performance consistente e previsível do Qlik em todos os níveis de concorrência testados, enquanto o Power BI apresentou tempos de resposta notavelmente inconsistentes sob carga alta de usuários.')}</p>
+          <p style={{ marginTop: 10 }}>{tx('Com IA agêntica em cena, performance deixou de ser detalhe: um único agente pode gerar centenas de consultas e levar a arquitetura ao limite. É por isso que a camada de motor importa tanto quanto a camada de painel.')}</p>
+          <div className="bm-src">{tx('* 100 é o valor de referência estabelecido para o teste, não uma nota máxima.')}<br/>{tx('Fonte: BARC Performance Benchmark 2025 (estudo independente), divulgado pela Qlik.')}</div>
         </div>
       </div>
       <style>{`
@@ -1861,23 +1706,18 @@ function SolucoesBenchmark() {
 
 function SolucoesOfferings() {
   const items = [
-    { icon: 'chart', t: 'Plataforma analytics líder', d: 'Qlik Cloud, AWS ou Azure: ambiente em nuvem flexível, alta performance de processamento, segurança corporativa e licenças de parceiro oficial.' },
-    { icon: 'cpu',   t: 'Dashboards prescritivos', d: 'Painéis construídos do zero para o seu modelo de negócio. Indicadores inteligentes associados a ações imediatas, sem poluição visual.' },
-    { icon: 'link',  t: 'Pipelines de dados automatizados', d: 'Extração, transformação e governança centralizadas. Conectamos qualquer fonte ou ERP e entregamos o dado limpo, sem carregar o seu banco de origem.' },
-    { icon: 'shield', t: 'Governança e segurança absoluta', d: 'Nada de dado sensível solto em máquina de funcionário: desenvolvimento e acesso 100% via browser, em conformidade com a LGPD.' },
+    { icon: 'chart', t: tx('Plataforma analytics líder'), d: tx('Qlik Cloud, AWS ou Azure: ambiente em nuvem flexível, alta performance de processamento, segurança corporativa e licenças de parceiro oficial.') },
+    { icon: 'cpu',   t: tx('Dashboards prescritivos'), d: tx('Painéis construídos do zero para o seu modelo de negócio. Indicadores inteligentes associados a ações imediatas, sem poluição visual.') },
+    { icon: 'link',  t: tx('Pipelines de dados automatizados'), d: tx('Extração, transformação e governança centralizadas. Conectamos qualquer fonte ou ERP e entregamos o dado limpo, sem carregar o seu banco de origem.') },
+    { icon: 'shield', t: tx('Governança e segurança absoluta'), d: tx('Nada de dado sensível solto em máquina de funcionário: desenvolvimento e acesso 100% via browser, em conformidade com a LGPD.') },
   ];
   return (
     <section className="section" style={{ background: '#fff' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 44px' }}>
-          <div className="eyebrow">O que entregamos</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            A engenharia que a sua <span style={{ color: 'var(--navy)' }}>tomada de decisão</span> exige.
-          </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            A plataforma é a Qlik, líder do Gartner. A engenharia que faz ela responder ao seu negócio é a SEWE.
-            Ingestão, transformação e visualização na mesma ponta, para empresas de qualquer setor.
-          </p>
+          <div className="eyebrow">{tx('O que entregamos')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('A engenharia que a sua')} <span style={{ color: 'var(--navy)' }}>{tx('tomada de decisão')}</span> {tx('exige.')}</h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('A plataforma é a Qlik, líder do Gartner. A engenharia que faz ela responder ao seu negócio é a SEWE. Ingestão, transformação e visualização na mesma ponta, para empresas de qualquer setor.')}</p>
         </div>
         <div className="so-grid">
           {items.map((it, i) => (
@@ -1904,38 +1744,35 @@ function SolucoesOfferings() {
 /* TCO: uma plataforma única vs colcha de retalhos */
 function SolucoesPlatform() {
   const patch = [
-    { t: 'Licenças por usuário', rot: -1.5 },
-    { t: 'Serviço de ETL à parte', rot: 1 },
-    { t: 'Data warehouse dedicado', rot: -0.8 },
-    { t: 'Nós de capacidade extra', rot: 1.4 },
-    { t: 'Gateway e servidor local', rot: -1.2 },
+    { t: tx('Licenças por usuário'), rot: -1.5 },
+    { t: tx('Serviço de ETL à parte'), rot: 1 },
+    { t: tx('Data warehouse dedicado'), rot: -0.8 },
+    { t: tx('Nós de capacidade extra'), rot: 1.4 },
+    { t: tx('Gateway e servidor local'), rot: -1.2 },
   ];
   const uni = [
-    { icon: 'link', t: 'Integração e ETL' },
-    { icon: 'boxes', t: 'Armazenamento .qvd comprimido' },
-    { icon: 'chart', t: 'Analytics + IA' },
-    { icon: 'alert', t: 'Alertas, mobile e e-mail' },
+    { icon: 'link', t: tx('Integração e ETL') },
+    { icon: 'boxes', t: tx('Armazenamento .qvd comprimido') },
+    { icon: 'chart', t: tx('Analytics + IA') },
+    { icon: 'alert', t: tx('Alertas, mobile e e-mail') },
   ];
   const proofs = [
-    { v: 'TCO menor', d: 'Um contrato, uma plataforma. Sem colcha de retalhos de serviços de nuvem cobrados à parte.' },
-    { v: 'Bilhões de linhas', d: 'Painéis rápidos mesmo cruzando bilhões de registros, sem assinar nós de servidor caros.' },
-    { v: '100% web', d: 'Desenvolvimento e uso direto no navegador. Zero software pesado instalado em desktop.' },
+    { v: tx('TCO menor'), d: tx('Um contrato, uma plataforma. Sem colcha de retalhos de serviços de nuvem cobrados à parte.') },
+    { v: tx('Bilhões de linhas'), d: tx('Painéis rápidos mesmo cruzando bilhões de registros, sem assinar nós de servidor caros.') },
+    { v: '100% web', d: tx('Desenvolvimento e uso direto no navegador. Zero software pesado instalado em desktop.') },
   ];
   return (
     <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 44px' }}>
-          <div className="eyebrow">TCO · Custo total de propriedade</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Uma plataforma única contra a <span style={{ color: 'var(--navy)' }}>colcha de retalhos</span>.
+          <div className="eyebrow">{tx('TCO · Custo total de propriedade')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Uma plataforma única contra a')} <span style={{ color: 'var(--navy)' }}>{tx('colcha de retalhos')}</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Ferramentas genéricas parecem baratas por usuário, até a conta dos serviços extras chegar.
-          </p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Ferramentas genéricas parecem baratas por usuário, até a conta dos serviços extras chegar.')}</p>
         </div>
         <div className="tco-duel">
           <div className="tco-side reveal">
-            <div className="tco-side-h">BI genérico</div>
+            <div className="tco-side-h">{tx('BI genérico')}</div>
             <div className="tco-patch">
               {patch.map((p, i) => (
                 <div key={i} className="tco-patch-box" style={{ transform: `rotate(${p.rot}deg)` }}>
@@ -1943,7 +1780,7 @@ function SolucoesPlatform() {
                 </div>
               ))}
             </div>
-            <div className="tco-side-f">até 5 serviços cobrados à parte para aguentar volume real</div>
+            <div className="tco-side-f">{tx('até 5 serviços cobrados à parte para aguentar volume real')}</div>
           </div>
           <div className="tco-vs" aria-hidden>vs</div>
           <div className="tco-side tco-side-qlik reveal">
@@ -1955,7 +1792,7 @@ function SolucoesPlatform() {
                 </div>
               ))}
             </div>
-            <div className="tco-side-f" style={{ color: 'rgba(255,255,255,0.65)' }}>tudo nativo, em uma única ponta</div>
+            <div className="tco-side-f" style={{ color: 'rgba(255,255,255,0.65)' }}>{tx('tudo nativo, em uma única ponta')}</div>
           </div>
         </div>
         <div className="tco-proofs">
@@ -1992,6 +1829,8 @@ function SolucoesPlatform() {
 
 /* Demo interativa do motor associativo: verde, branco e cinza */
 function AssocDemo() {
+  // Os dados ficam CRUS (em português): são a chave de associação. A tradução
+  // acontece só na hora de exibir, com tx(). Traduzir a chave quebra o lookup.
   const clients = ['Cliente Alfa', 'Cliente Beta', 'Cliente Gama'];
   const products = ['Linha Premium', 'Linha Standard', 'Serviços', 'Acessórios', 'Manutenção', 'Consumíveis'];
   const bought = {
@@ -2010,44 +1849,44 @@ function AssocDemo() {
     <div className="ad-panel reveal">
       <div className="ad-head">
         <div>
-          <div className="ad-t">Clique em um cliente e veja o motor associativo reagir.</div>
-          <div className="ad-d">O cinza é o segredo: ele mostra o que <b>não</b> aconteceu — as linhas que esse cliente nunca comprou. É aí que mora a próxima venda.</div>
+          <div className="ad-t">{tx('Clique em um cliente e veja o motor associativo reagir.')}</div>
+          <div className="ad-d">{tx('O cinza é o segredo: ele mostra o que')} <b>{tx('não')}</b> {tx('aconteceu — as linhas que esse cliente nunca comprou. É aí que mora a próxima venda.')}</div>
         </div>
         <div className="ad-legend">
-          <span><i className="ad-dot ad-g"></i> selecionado</span>
-          <span><i className="ad-dot ad-w"></i> associado</span>
-          <span><i className="ad-dot ad-x"></i> excluído</span>
+          <span><i className="ad-dot ad-g"></i> {tx('selecionado')}</span>
+          <span><i className="ad-dot ad-w"></i> {tx('associado')}</span>
+          <span><i className="ad-dot ad-x"></i> {tx('excluído')}</span>
         </div>
       </div>
       <div className="ad-row">
-        <span className="ad-lbl">Clientes</span>
+        <span className="ad-lbl">{tx('Clientes')}</span>
         <div className="ad-chips">
           {clients.map(c => (
-            <button key={c} type="button" className={`ad-chip ${sel === c ? 'ad-sel' : ''}`} onClick={() => setSel(c)}>{c}</button>
+            <button key={c} type="button" className={`ad-chip ${sel === c ? 'ad-sel' : ''}`} onClick={() => setSel(c)}>{tx(c)}</button>
           ))}
         </div>
       </div>
       <div className="ad-row">
-        <span className="ad-lbl">Segmentos</span>
+        <span className="ad-lbl">{tx('Segmentos')}</span>
         <div className="ad-chips">
           {segments.map(s => {
             const on = inSegs[sel].includes(s);
             return (
               <span key={s} className={`ad-chip ad-ro ${on ? 'ad-assoc' : 'ad-excl'}`}>
-                {s}{!on && <em>oportunidade</em>}
+                {tx(s)}{!on && <em>{tx('oportunidade')}</em>}
               </span>
             );
           })}
         </div>
       </div>
       <div className="ad-row">
-        <span className="ad-lbl">Linhas de produto</span>
+        <span className="ad-lbl">{tx('Linhas de produto')}</span>
         <div className="ad-chips">
           {products.map(p => {
             const on = bought[sel].includes(p);
             return (
               <span key={p} className={`ad-chip ad-ro ${on ? 'ad-assoc' : 'ad-excl'}`}>
-                {p}{!on && <em>oportunidade</em>}
+                {tx(p)}{!on && <em>{tx('oportunidade')}</em>}
               </span>
             );
           })}
@@ -2082,30 +1921,27 @@ function AssocDemo() {
 /* Qlik por dentro — profundidade técnica */
 function SolucoesTech() {
   const items = [
-    { icon: 'brain', t: 'Motor associativo in-memory', d: 'Sem modelo rígido de entidade-relacionamento: o Qlik indexa todas as relações e você explora em qualquer direção. Inclusive o que NÃO aconteceu: o motor destaca os dados excluídos que as ferramentas SQL escondem.' },
-    { icon: 'link', t: 'Pipelines e cargas incrementais', d: 'Cargas incrementais agendadas e arquivos .qvd comprimidos: histórico preservado, recarga sem pesar a origem e sem obrigar você a montar um data warehouse só para rodar o BI.' },
-    { icon: 'shield', t: 'Segurança em nível de linha', d: 'Section Access nativo: cada usuário enxerga só a filial, a carteira ou o recorte que pode ver. SSO, criptografia e trilha de auditoria.' },
-    { icon: 'alert', t: 'Alertas orientados a dado', d: 'Alertas disparados pela condição do indicador, não por horário, direto no celular. Relatórios assinados chegam por e-mail no ritmo que você definir.' },
-    { icon: 'cpu', t: 'Embedded analytics e APIs', d: 'Dashboards embutidos em portais e sistemas próprios, com APIs REST para automação e integração ao restante do seu ecossistema.' },
-    { icon: 'trending', t: 'IA nativa + camada SEWE', d: 'Inteligência preditiva ativa: anomalias detectadas automaticamente e avisadas no e-mail ou no celular, sem prompts e sem contratar cientista de dados. Previsão de demanda e churn no mesmo modelo.' },
+    { icon: 'brain', t: tx('Motor associativo in-memory'), d: tx('Sem modelo rígido de entidade-relacionamento: o Qlik indexa todas as relações e você explora em qualquer direção. Inclusive o que NÃO aconteceu: o motor destaca os dados excluídos que as ferramentas SQL escondem.') },
+    { icon: 'link', t: tx('Pipelines e cargas incrementais'), d: tx('Cargas incrementais agendadas e arquivos .qvd comprimidos: histórico preservado, recarga sem pesar a origem e sem obrigar você a montar um data warehouse só para rodar o BI.') },
+    { icon: 'shield', t: tx('Segurança em nível de linha'), d: tx('Section Access nativo: cada usuário enxerga só a filial, a carteira ou o recorte que pode ver. SSO, criptografia e trilha de auditoria.') },
+    { icon: 'alert', t: tx('Alertas orientados a dado'), d: tx('Alertas disparados pela condição do indicador, não por horário, direto no celular. Relatórios assinados chegam por e-mail no ritmo que você definir.') },
+    { icon: 'cpu', t: tx('Embedded analytics e APIs'), d: tx('Dashboards embutidos em portais e sistemas próprios, com APIs REST para automação e integração ao restante do seu ecossistema.') },
+    { icon: 'trending', t: tx('IA nativa + camada SEWE'), d: tx('Inteligência preditiva ativa: anomalias detectadas automaticamente e avisadas no e-mail ou no celular, sem prompts e sem contratar cientista de dados. Previsão de demanda e churn no mesmo modelo.') },
   ];
   const flow = [
-    { t: 'ERP e fontes', d: 'Qualquer origem de dados' },
-    { t: 'Engenharia SEWE', d: 'ETL, modelagem, governança' },
-    { t: 'Qlik Cloud', d: 'Analytics em região brasileira' },
-    { t: 'Decisão', d: 'Web, mobile, e-mail e alertas' },
+    { t: tx('ERP e fontes'), d: tx('Qualquer origem de dados') },
+    { t: tx('Engenharia SEWE'), d: tx('ETL, modelagem, governança') },
+    { t: 'Qlik Cloud', d: tx('Analytics em região brasileira') },
+    { t: tx('Decisão'), d: tx('Web, mobile, e-mail e alertas') },
   ];
   return (
     <section className="section" style={{ background: '#fff' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 44px' }}>
-          <div className="eyebrow">Por dentro da tecnologia</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Robustez de plataforma, <span style={{ color: 'var(--navy)' }}>sem caixa-preta</span>.
+          <div className="eyebrow">{tx('Por dentro da tecnologia')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Robustez de plataforma,')} <span style={{ color: 'var(--navy)' }}>{tx('sem caixa-preta')}</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            Por baixo dos dashboards existe uma arquitetura de dados séria. É ela que sustenta decisão confiável em escala.
-          </p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Por baixo dos dashboards existe uma arquitetura de dados séria. É ela que sustenta decisão confiável em escala.')}</p>
         </div>
         <div className="st-flow">
           {flow.map((f, i) => (
@@ -2150,17 +1986,17 @@ function SolucoesTech() {
 /* How we work — 4-step process */
 function SolucoesProcess() {
   const steps = [
-    { n: '01', t: 'Diagnóstico', d: 'Entendemos o desafio, as fontes de dados e o resultado esperado. Sem compromisso.' },
-    { n: '02', t: 'Arquitetura sem limites', d: 'Nossa engenharia desenvolve regras de negócio customizadas, painéis complexos e integrações exclusivas. Se a sua empresa precisa, nós modelamos.' },
-    { n: '03', t: 'Go-live', d: 'Dashboards e IA no ar, com a sua equipe treinada e usando no dia a dia.' },
-    { n: '04', t: 'Squad dedicado ao crescimento', d: 'Seu negócio muda, seus gráficos também. O time SEWE continua criando novas visões, relatórios e ferramentas conforme a operação evolui.' },
+    { n: '01', t: tx('Diagnóstico'), d: tx('Entendemos o desafio, as fontes de dados e o resultado esperado. Sem compromisso.') },
+    { n: '02', t: tx('Arquitetura sem limites'), d: tx('Nossa engenharia desenvolve regras de negócio customizadas, painéis complexos e integrações exclusivas. Se a sua empresa precisa, nós modelamos.') },
+    { n: '03', t: tx('Go-live'), d: tx('Dashboards e IA no ar, com a sua equipe treinada e usando no dia a dia.') },
+    { n: '04', t: tx('Squad dedicado ao crescimento'), d: tx('Seu negócio muda, seus gráficos também. O time SEWE continua criando novas visões, relatórios e ferramentas conforme a operação evolui.') },
   ];
   return (
     <section className="section" style={{ background: 'var(--bg-soft)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 44px' }}>
-          <div className="eyebrow">Como trabalhamos</div>
-          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>Do desafio ao resultado, em quatro passos.</h2>
+          <div className="eyebrow">{tx('Como trabalhamos')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Do desafio ao resultado, em quatro passos.')}</h2>
         </div>
         <div className="sp-grid">
           {steps.map((s, i) => (
@@ -2185,34 +2021,97 @@ function SolucoesProcess() {
   );
 }
 
+/* A camada SEWE: separa o que é plataforma (Qlik, igual para todo mundo) do que
+   é engenharia da SEWE (o que muda o resultado). Sem esta seção a página vende
+   Qlik e o leitor conclui que pode comprar direto. */
+function SolucoesCamadaSewe() {
+  const provas = [
+    { icon: 'brain', t: tx('Regra de negócio modelada, não configurada'),
+      d: tx('Margem líquida por SKU descontando rebate, frete, verba, imposto e devolução. Isso não vem pronto em ferramenta nenhuma: é modelagem, escrita junto com a sua controladoria.') },
+    { icon: 'link', t: tx('O ERP que ninguém quis conectar'),
+      d: tx('Lemos direto na origem, nota a nota, inclusive em ERP legado e banco fechado. A sua TI não precisa abrir caminho para o projeto começar.') },
+    { icon: 'target', t: tx('O indicador que só existe porque alguém entendeu a operação'),
+      d: tx('Positivação por rota, ruptura de Curva A por filial, cobertura ociosa por praça. Nenhum deles vem de fábrica em um BI genérico.') },
+  ];
+  return (
+    <section className="section" style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line)' }}>
+      <div className="container">
+        <div style={{ maxWidth: 780, marginBottom: 40 }}>
+          <div className="eyebrow">{tx('A camada SEWE')}</div>
+          <h2 style={{ marginTop: 14, fontSize: 'clamp(26px,3.4vw,40px)' }}>
+            {tx('O que a Qlik entrega, qualquer parceiro instala.')} <span style={{ color: 'var(--navy)' }}>{tx('A modelagem é nossa.')}</span>
+          </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
+            {tx('A plataforma é a mesma para todo mundo. O que muda o resultado é quem escreve a regra de negócio, conecta o ERP que ninguém conecta e decide qual indicador merece existir.')}
+          </p>
+        </div>
+        <div className="cs-grid">
+          {provas.map((p, i) => (
+            <div key={i} className="cs-card reveal">
+              <span className="cs-icon"><Icon name={p.icon} size={22} stroke={1.7}/></span>
+              <div className="cs-t">{p.t}</div>
+              <p className="cs-d">{p.d}</p>
+            </div>
+          ))}
+        </div>
+        <div className="cs-foot reveal">
+          <Icon name="check" size={14} stroke={3}/>
+          <span>{tx('Squad dedicado: o modelo evolui junto com a operação, sem abrir projeto novo.')}</span>
+        </div>
+      </div>
+      <style>{`
+        .cs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .cs-card {
+          background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--navy-900);
+          border-radius: var(--r-lg); padding: 26px; box-shadow: var(--shadow-sm);
+          display: flex; flex-direction: column;
+        }
+        .cs-icon {
+          width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+          background: rgba(117,227,228,0.16); color: var(--turquoise-ink); margin-bottom: 16px;
+        }
+        .cs-t { font-family: var(--ff-display); font-weight: 700; font-size: 18px; color: var(--navy-900); margin-bottom: 8px; line-height: 1.25; }
+        .cs-d { font-size: 14.5px; color: var(--text-2); line-height: 1.6; margin: 0; }
+        .cs-foot {
+          display: inline-flex; align-items: center; gap: 10px; margin-top: 22px;
+          padding: 12px 18px; border-radius: 999px; background: #fff;
+          border: 1px solid var(--line); box-shadow: var(--shadow-xs);
+          font-size: 14px; color: var(--navy-900); font-weight: 500;
+        }
+        .cs-foot svg { color: var(--turquoise-ink); flex-shrink: 0; }
+        @media (max-width: 900px) { .cs-grid { grid-template-columns: 1fr; } }
+      `}</style>
+    </section>
+  );
+}
+
 function SolucoesPage() {
+  useLocale();   // re-renderiza a pagina inteira quando o idioma muda
   useReveal();
   return (
     <>
-      <SiteHeader/>
+      <SiteHeader translated/>
       <PageHero
-        eyebrow="Plataforma de Dados & IA"
-        title="Dados e IA muito além do BI de prateleira."
-        lead="Para empresas de qualquer setor: a plataforma Qlik de ponta a ponta, do dado bruto ao agente que executa a ação, com a engenharia de dados da SEWE por trás. Dado governado, painel rápido e decisão direto no navegador."
+        eyebrow={tx('Plataforma de Dados & IA')}
+        title={tx('Dados e IA muito além do BI de prateleira.')}
+        lead={tx('Para quem já tem time de dados e não tem tempo de montar plataforma: o Qlik de ponta a ponta, do dado bruto ao agente que executa a ação, com a engenharia de dados da SEWE por trás. Dado governado, painel rápido e decisão direto no navegador.')}
       >
         <div style={{ marginTop: 22, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '7px 16px', borderRadius: 999, background: '#fff', border: '1px solid var(--line)', boxShadow: 'var(--shadow-xs)', fontSize: 12.5, color: 'var(--text-2)', fontWeight: 500 }}>
-            <img src="/assets/qlik-logo.png" alt="Qlik" style={{ height: 15, width: 'auto', display: 'block' }}/>
-            Parceiro oficial Qlik
-          </span>
+            <img src="/assets/qlik-logo.png" alt="Qlik" style={{ height: 15, width: 'auto', display: 'block' }}/>{tx('Parceiro oficial Qlik')}</span>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '7px 16px', borderRadius: 999, background: '#fff', border: '1px solid var(--line)', boxShadow: 'var(--shadow-xs)', fontSize: 12.5, color: 'var(--text-2)', fontWeight: 500 }}>
-            <span style={{ color: 'var(--turquoise-ink)', display: 'inline-flex' }}><Icon name="trophy" size={14} stroke={1.8}/></span>
-            Leader no Gartner® Magic Quadrant™ de Analytics & BI por 16 anos consecutivos (2026)
-          </span>
+            <span style={{ color: 'var(--turquoise-ink)', display: 'inline-flex' }}><Icon name="trophy" size={14} stroke={1.8}/></span>{tx('Leader no Gartner® Magic Quadrant™ de Analytics & BI por 16 anos consecutivos (2026)')}</span>
         </div>
         <div style={{ marginTop: 24, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <a href="#diagnostico" className="btn btn-primary btn-lg">Falar sobre o meu projeto <Icon name="arrow" size={16} className="chev"/></a>
+          <a href="#diagnostico" className="btn btn-primary btn-lg">{tr('cta.primary')} <Icon name="arrow" size={16} className="chev"/></a>
           <a href="https://wa.me/5548984704389" className="btn btn-outline btn-lg">WhatsApp</a>
         </div>
       </PageHero>
+      <ProofBar/>
       <SolucoesBarreiras/>
       <SolucoesOfferings/>
       <SolucoesCamadas/>
+      <SolucoesCamadaSewe/>
       <SolucoesPortfolio/>
       <SolucoesTech/>
       <SolucoesCusto/>
@@ -2220,6 +2119,7 @@ function SolucoesPage() {
       <SolucoesBenchmark/>
       <SolucoesProcess/>
       <DifferentiatorsSection/>
+      <ObjectionBlock/>
       <CTASection/>
       <SiteFooter/>
     </>
@@ -2227,12 +2127,12 @@ function SolucoesPage() {
 }
 
 /* ── mount ───────────────────────────────────────────────── */
-(function mountAudience() {
+SEWE_I18N_READY.then(function mountAudience() {
   const map = { 'industria-root': IndustriaPage, 'solucoes-root': SolucoesPage };
   Object.keys(map).forEach(id => {
     const el = document.getElementById(id);
     if (el) ReactDOM.createRoot(el).render(React.createElement(map[id]));
   });
-})();
+});
 
 Object.assign(window, { IndustriaPage, SolucoesPage });

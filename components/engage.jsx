@@ -88,7 +88,7 @@ function ShareBar({ title }) {
     { nome: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${u}`, Glyph: GlyphFacebook },
     { nome: 'LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${u}`, Glyph: GlyphLinkedin },
     { nome: 'WhatsApp', href: `https://wa.me/?text=${t}%20${u}`, Glyph: GlyphWhatsapp },
-    { nome: 'E-mail', href: `mailto:?subject=${t}&body=${t}%0A%0A${u}`, Glyph: GlyphMail },
+    { nome: tx('E-mail'), href: `mailto:?subject=${t}&body=${t}%0A%0A${u}`, Glyph: GlyphMail },
   ];
 
   const btn = {
@@ -119,11 +119,11 @@ function ShareBar({ title }) {
           <Glyph/>
         </a>
       ))}
-      <button type="button" onClick={copiar} aria-label="Copiar link do artigo" title="Copiar link"
+      <button type="button" onClick={copiar} aria-label={tx('Copiar link do artigo')} title={tx('Copiar link')}
         style={{ ...btn, cursor: 'pointer' }} onMouseEnter={e => hover(e, true)} onMouseLeave={e => hover(e, false)}>
         <Icon name={copiado ? 'check' : 'link'} size={17}/>
       </button>
-      {copiado && <span style={{ fontSize: 13, color: 'var(--turquoise-ink)', fontWeight: 600 }}>Link copiado</span>}
+      {copiado && <span style={{ fontSize: 13, color: 'var(--turquoise-ink)', fontWeight: 600 }}>{tx('Link copiado')}</span>}
     </div>
   );
 }
@@ -150,7 +150,7 @@ function LikeButton({ slug, total, curtido, onToggle }) {
 
   return (
     <button type="button" onClick={clicar} aria-pressed={curtido}
-      aria-label={curtido ? 'Remover curtida' : 'Curtir este artigo'}
+      aria-label={curtido ? 'Remover curtida' : tx('Curtir este artigo')}
       style={{
         display: 'inline-flex', alignItems: 'center', gap: 8, cursor: 'pointer',
         padding: '9px 16px', borderRadius: 99, fontSize: 14, fontWeight: 600,
@@ -188,7 +188,7 @@ function CommentForm({ slug, onNovo }) {
     })
       .then(async r => {
         const json = await r.json().catch(() => ({}));
-        if (!r.ok) throw new Error(json.error || 'Não consegui enviar seu comentário. Tente novamente.');
+        if (!r.ok) throw new Error(json.error || tx('Não consegui enviar seu comentário. Tente novamente.'));
         if (json.comment) onNovo(json.comment);
         setF(VAZIO);
         setPronto(true);
@@ -207,11 +207,9 @@ function CommentForm({ slug, onNovo }) {
   if (pronto) {
     return (
       <div style={{ padding: 20, borderRadius: 14, background: 'var(--bg-soft)', border: '1px solid var(--line)', borderLeft: '3px solid var(--turquoise)' }}>
-        <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 16, color: 'var(--navy-900)' }}>Comentário publicado. Obrigado!</div>
+        <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 16, color: 'var(--navy-900)' }}>{tx('Comentário publicado. Obrigado!')}</div>
         <button type="button" onClick={() => setPronto(false)}
-          style={{ marginTop: 8, background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: 14, fontWeight: 600, color: 'var(--turquoise-ink)' }}>
-          Escrever outro
-        </button>
+          style={{ marginTop: 8, background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: 14, fontWeight: 600, color: 'var(--turquoise-ink)' }}>{tx('Escrever outro')}</button>
       </div>
     );
   }
@@ -219,14 +217,14 @@ function CommentForm({ slug, onNovo }) {
   return (
     <form onSubmit={enviar} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       <div className="cmt-linha" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-        <input style={campo} placeholder="Nome" value={f.first_name} required maxLength={40}
+        <input style={campo} placeholder={tx('Nome')} value={f.first_name} required maxLength={40}
           onChange={e => set('first_name', e.target.value)} onFocus={e => foco(e, true)} onBlur={e => foco(e, false)}/>
         <input style={campo} placeholder="Sobrenome" value={f.last_name} maxLength={40}
           onChange={e => set('last_name', e.target.value)} onFocus={e => foco(e, true)} onBlur={e => foco(e, false)}/>
       </div>
-      <input style={campo} type="email" placeholder="E-mail" value={f.email} required maxLength={160}
+      <input style={campo} type="email" placeholder={tx('E-mail')} value={f.email} required maxLength={160}
         onChange={e => set('email', e.target.value)} onFocus={e => foco(e, true)} onBlur={e => foco(e, false)}/>
-      <textarea style={{ ...campo, minHeight: 120, resize: 'vertical', lineHeight: 1.6 }} placeholder="Comentário"
+      <textarea style={{ ...campo, minHeight: 120, resize: 'vertical', lineHeight: 1.6 }} placeholder={tx('Comentário')}
         value={f.body} required maxLength={2000}
         onChange={e => set('body', e.target.value)} onFocus={e => foco(e, true)} onBlur={e => foco(e, false)}/>
 
@@ -238,11 +236,7 @@ function CommentForm({ slug, onNovo }) {
       <label style={{ display: 'flex', gap: 10, alignItems: 'flex-start', fontSize: 13, color: 'var(--text-2)', lineHeight: 1.6, cursor: 'pointer' }}>
         <input type="checkbox" required checked={f.consent} onChange={e => set('consent', e.target.checked)}
           style={{ marginTop: 3, width: 16, height: 16, accentColor: 'var(--turquoise-ink)', flexShrink: 0 }}/>
-        <span>
-          Autorizo a publicação do meu nome e do meu comentário nesta página e o tratamento dos meus dados pela
-          SEWE Group, nos termos da <a href="/politica-de-privacidade" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>Política de Privacidade</a> e
-          da Lei 13.709/18 (LGPD). Meu e-mail não fica visível no site e posso pedir a exclusão a qualquer momento
-          por <a href="mailto:contato@sewegroup.com.br" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>contato@sewegroup.com.br</a>.
+        <span>{tx('Autorizo a publicação do meu nome e do meu comentário nesta página e o tratamento dos meus dados pela SEWE Group, nos termos da')} <a href="/politica-de-privacidade" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>{tx('Política de Privacidade')}</a> {tx('e da Lei 13.709/18 (LGPD). Meu e-mail não fica visível no site e posso pedir a exclusão a qualquer momento por')} <a href="mailto:contato@sewegroup.com.br" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>contato@sewegroup.com.br</a>.
         </span>
       </label>
 
@@ -323,7 +317,7 @@ function PostEngagement({ slug, title }) {
       {estado === 'ok' && (
         <div style={divisor}>
           <h2 style={{ fontSize: 24, marginBottom: 18 }}>
-            {comentarios.length ? `Comentários (${comentarios.length})` : 'Deixe um comentário'}
+            {comentarios.length ? `Comentários (${comentarios.length})` : tx('Deixe um comentário')}
           </h2>
           <CommentList itens={comentarios}/>
           <CommentForm slug={slug} onNovo={c => setComentarios(prev => [c, ...prev])}/>

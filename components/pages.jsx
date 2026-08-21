@@ -2,10 +2,12 @@
 // Depends on: brand.jsx (Icon), layout.jsx (SiteHeader/SiteFooter/PageHero), blogdata.jsx (SEWE_POSTS).
 // faq.html additionally loads rest.jsx for FAQSection.
 
-const MONTHS = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+// Data no formato do idioma escolhido (pt-BR: "24 de fev. de 2025").
+const DATE_LOCALES = { pt: 'pt-BR', en: 'en-US', es: 'es-ES' };
 function fmtDate(iso) {
   const d = new Date(iso + 'T12:00:00');
-  return `${d.getDate()} de ${MONTHS[d.getMonth()]}. de ${d.getFullYear()}`;
+  const loc = DATE_LOCALES[getLocale()] || 'pt-BR';
+  return d.toLocaleDateString(loc, { day: 'numeric', month: 'short', year: 'numeric' });
 }
 const COVER = {
   premio: { bg: 'linear-gradient(135deg, #1a2844 0%, #2d436c 60%, #0e7a7c 130%)', chip: 'var(--turquoise)' },
@@ -32,11 +34,10 @@ function PostCard({ post }) {
         )}
       </div>
       <div style={{ padding: 22, display: 'flex', flexDirection: 'column', gap: 10, flex: 1 }}>
-        <div style={{ fontSize: 12, color: 'var(--text-3)' }}>{fmtDate(post.date)} · {post.readTime}</div>
+        <div style={{ fontSize: 12, color: 'var(--text-3)' }}>{fmtDate(post.date)} · {tx(post.readTime)}</div>
         <h3 style={{ fontSize: 20, lineHeight: 1.25 }}>{post.title}</h3>
         <p style={{ fontSize: 14, color: 'var(--text-2)', lineHeight: 1.55 }}>{post.excerpt}</p>
-        <span style={{ marginTop: 'auto', fontSize: 13, color: 'var(--turquoise-ink)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-          Ler artigo <Icon name="arrow" size={13}/>
+        <span style={{ marginTop: 'auto', fontSize: 13, color: 'var(--turquoise-ink)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 }}>{tx('Ler artigo')} <Icon name="arrow" size={13}/>
         </span>
       </div>
     </a>
@@ -94,12 +95,13 @@ function PostBlocks({ blocks }) {
 
 // ── Blog index ──
 function BlogIndexPage() {
+  useLocale();   // re-renderiza quando o idioma muda
   const posts = window.SEWE_POSTS || [];
   return (
     <>
       <SiteHeader/>
-      <PageHero eyebrow="Blog SEWE" title="Inteligência de dados, na prática."
-        lead="Artigos sobre gestão de distribuição, capital de giro, ruptura, mix e os bastidores do Prêmio SEWE."/>
+      <PageHero eyebrow={tx('Blog SEWE')} title={tx('Inteligência de dados, na prática.')}
+        lead={tx('Como distribuidor decide melhor: capital de giro, ruptura, mix e reforma tributária, escritos por quem implanta BI em distribuição todo mês.')}/>
       <section className="section" style={{ background: '#fff' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }} className="post-grid">
@@ -116,8 +118,9 @@ function BlogIndexPage() {
 
 // ── Single blog post ──
 function BlogPostPage({ slug }) {
+  useLocale();   // re-renderiza quando o idioma muda
   const post = (window.SEWE_POSTS || []).find(p => p.slug === slug);
-  if (!post) return (<><SiteHeader/><div className="container" style={{ padding: '120px 0', textAlign: 'center' }}><h1>Post não encontrado</h1><p style={{ marginTop: 12 }}><a href="/blog" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>Voltar para o blog</a></p></div><SiteFooter/></>);
+  if (!post) return (<><SiteHeader/><div className="container" style={{ padding: '120px 0', textAlign: 'center' }}><h1>{tx('Post não encontrado')}</h1><p style={{ marginTop: 12 }}><a href="/blog" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>{tx('Voltar para o blog')}</a></p></div><SiteFooter/></>);
   const c = COVER[post.category] || COVER.blog;
   const backHref = post.category === 'premio' ? '/premio' : '/blog';
   const backLabel = post.category === 'premio' ? 'Prêmio SEWE' : 'Blog';
@@ -132,7 +135,7 @@ function BlogPostPage({ slug }) {
           </a>
           <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 12, letterSpacing: '0.12em', color: c.chip, fontWeight: 600, marginTop: 18 }}>{post.cover.tag}</div>
           <h1 style={{ color: '#fff', marginTop: 12, fontSize: 'clamp(30px,4vw,48px)' }}>{post.title}</h1>
-          <div style={{ marginTop: 16, fontSize: 14, color: 'rgba(255,255,255,0.7)' }}>{post.author} · {fmtDate(post.date)} · {post.readTime}</div>
+          <div style={{ marginTop: 16, fontSize: 14, color: 'rgba(255,255,255,0.7)' }}>{post.author} · {fmtDate(post.date)} · {tx(post.readTime)}</div>
         </div>
       </section>
       <article className="section" style={{ background: '#fff' }}>
@@ -145,7 +148,7 @@ function BlogPostPage({ slug }) {
           <PostBlocks blocks={post.blocks}/>
           {post.references && post.references.length > 0 && (
             <div style={{ marginTop: 20, paddingTop: 20, borderTop: '1px solid var(--line)' }}>
-              <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 14, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-3)', marginBottom: 12 }}>Referências</div>
+              <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 14, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-3)', marginBottom: 12 }}>{tx('Referências')}</div>
               <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {post.references.map((r, i) => (
                   <li key={i} style={{ fontSize: 14.5, color: 'var(--text-2)', lineHeight: 1.55 }}>
@@ -167,7 +170,7 @@ function BlogPostPage({ slug }) {
                   ? <img src={a.photo} alt={post.author} style={{ width: 64, height: 64, borderRadius: 99, objectFit: 'cover', flexShrink: 0 }}/>
                   : <div aria-hidden style={{ width: 64, height: 64, borderRadius: 99, flexShrink: 0, display: 'grid', placeItems: 'center', background: 'linear-gradient(135deg, var(--navy-900), var(--turquoise-ink))', color: '#fff', fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 22 }}>{initials}</div>}
                 <div>
-                  <div style={{ fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-3)', fontWeight: 600 }}>Sobre o autor</div>
+                  <div style={{ fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-3)', fontWeight: 600 }}>{tx('Sobre o autor')}</div>
                   <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 18, color: 'var(--navy-900)', marginTop: 4 }}>{post.author}</div>
                   <div style={{ fontSize: 13.5, color: 'var(--turquoise-ink)', fontWeight: 600, marginTop: 2 }}>{a.role}</div>
                   <p style={{ fontSize: 14.5, color: 'var(--text-2)', lineHeight: 1.6, marginTop: 8 }}>{a.bio}</p>
@@ -178,11 +181,11 @@ function BlogPostPage({ slug }) {
           })()}
           <div style={{ marginTop: 24, padding: 24, borderRadius: 16, background: 'var(--bg-soft)', border: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
             <div>
-              <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 18, color: 'var(--navy-900)' }}>Quer esse nível de gestão na sua distribuição?</div>
-              <div style={{ fontSize: 14, color: 'var(--text-2)', marginTop: 4 }}>Agende um diagnóstico gratuito de 30 minutos.</div>
+              <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 18, color: 'var(--navy-900)' }}>{tx('Quer esse nível de gestão na sua distribuição?')}</div>
+              <div style={{ fontSize: 14, color: 'var(--text-2)', marginTop: 4 }}>{tx('Agende um diagnóstico gratuito de 30 minutos.')}</div>
             </div>
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-              <a href="/#agendar" className="btn btn-primary">{(post.cta && post.cta.primary) || 'Agendar Diagnóstico'} <Icon name="arrow" size={16} className="chev"/></a>
+              <a href="/#agendar" className="btn btn-primary">{(post.cta && post.cta.primary) || tr('cta.primary')} <Icon name="arrow" size={16} className="chev"/></a>
               {post.cta && post.cta.secondary && (
                 <a href="https://wa.me/5548984704389" target="_blank" rel="noopener noreferrer" className="btn" style={{ background: '#fff', color: 'var(--navy-900)', border: '1px solid var(--line)' }}>{post.cta.secondary}</a>
               )}
@@ -199,25 +202,26 @@ function BlogPostPage({ slug }) {
 
 // ── Prêmio ──
 function PremioPage() {
+  useLocale();   // re-renderiza quando o idioma muda
   const winners = (window.SEWE_POSTS || []).filter(p => p.category === 'premio');
   const pillars = [
-    { icon: 'boxes',  t: 'Organização',   d: 'Dados unificados e processos claros, a casa em ordem antes de crescer.' },
-    { icon: 'dollar', t: 'Lucratividade', d: 'Crescer com margem saudável, controle de ruptura e mix inteligente.' },
-    { icon: 'trending', t: 'Prosperidade', d: 'Resultado que se distribui: para a operação, o time e os clientes.' },
-    { icon: 'target', t: 'Bons Processos', d: 'Decisão diária guiada por dado, não por achismo nem por planilha.' },
+    { icon: 'boxes',  t: tx('Organização'),   d: tx('Dados unificados e processos claros, a casa em ordem antes de crescer.') },
+    { icon: 'dollar', t: tx('Lucratividade'), d: tx('Crescer com margem saudável, controle de ruptura e mix inteligente.') },
+    { icon: 'trending', t: tx('Prosperidade'), d: tx('Resultado que se distribui: para a operação, o time e os clientes.') },
+    { icon: 'target', t: tx('Bons Processos'), d: tx('Decisão diária guiada por dado, não por achismo nem por planilha.') },
   ];
   const steps = [
-    { n: '01', t: 'Acompanhamento', d: 'Ao longo do ano, os indicadores de cada distribuidor são monitorados na plataforma SEWE.' },
-    { n: '02', t: 'Análise dos pilares', d: 'Avaliamos organização, lucratividade, prosperidade e bons processos com base em dados reais.' },
-    { n: '03', t: 'Reconhecimento', d: 'O distribuidor que mais evoluiu é reconhecido como vencedor do ciclo.' },
+    { n: '01', t: tx('Acompanhamento'), d: tx('Ao longo do ano, os indicadores de cada distribuidor são monitorados na plataforma SEWE.') },
+    { n: '02', t: tx('Análise dos pilares'), d: tx('Avaliamos organização, lucratividade, prosperidade e bons processos com base em dados reais.') },
+    { n: '03', t: tx('Reconhecimento'), d: tx('O distribuidor que mais evoluiu é reconhecido como vencedor do ciclo.') },
   ];
   return (
     <>
       <SiteHeader/>
-      <PageHero eyebrow="Prêmio SEWE" title="Prêmio SEWE de Gestão Inteligente e Prosperidade."
-        lead="Um reconhecimento aos distribuidores que transformam dados em decisões, e decisões em prosperidade.">
+      <PageHero eyebrow="Prêmio SEWE" title={tx('Prêmio SEWE de Gestão Inteligente e Prosperidade.')}
+        lead={tx('Um reconhecimento aos distribuidores que transformam dados em decisões, e decisões em prosperidade.')}>
         <div style={{ marginTop: 24 }}>
-          <a href="#vencedores" className="btn btn-primary">Ver vencedores <Icon name="arrow" size={16} className="chev"/></a>
+          <a href="#vencedores" className="btn btn-primary">{tx('Ver vencedores')} <Icon name="arrow" size={16} className="chev"/></a>
         </div>
       </PageHero>
 
@@ -225,8 +229,8 @@ function PremioPage() {
       <section className="section" style={{ background: '#fff' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 48px' }}>
-            <div className="eyebrow">O que avaliamos</div>
-            <h2 style={{ marginTop: 14 }}>Quatro pilares de uma gestão que prospera.</h2>
+            <div className="eyebrow">{tx('O que avaliamos')}</div>
+            <h2 style={{ marginTop: 14 }}>{tx('Quatro pilares de uma gestão que prospera.')}</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }} className="pillar-grid">
             {pillars.map((p, i) => (
@@ -246,8 +250,8 @@ function PremioPage() {
       <section className="section" style={{ background: 'var(--bg-soft)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 48px' }}>
-            <div className="eyebrow">Como funciona</div>
-            <h2 style={{ marginTop: 14 }}>Do dado ao reconhecimento.</h2>
+            <div className="eyebrow">{tx('Como funciona')}</div>
+            <h2 style={{ marginTop: 14 }}>{tx('Do dado ao reconhecimento.')}</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="pillar-grid">
             {steps.map((s, i) => (
@@ -266,15 +270,30 @@ function PremioPage() {
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 48px' }}>
             <div className="eyebrow">Vencedores</div>
-            <h2 style={{ marginTop: 14 }}>Quem já levou o Prêmio SEWE.</h2>
+            <h2 style={{ marginTop: 14 }}>{tx('Quem já levou o Prêmio SEWE.')}</h2>
           </div>
           {winners.length ? (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }} className="post-grid">
               {winners.map(p => <PostCard key={p.slug} post={p}/>)}
             </div>
           ) : (
-            <p style={{ textAlign: 'center', color: 'var(--text-2)' }}>Os vencedores serão anunciados em breve.</p>
+            <p style={{ textAlign: 'center', color: 'var(--text-2)' }}>{tx('Os vencedores serão anunciados em breve.')}</p>
           )}
+        </div>
+      </section>
+
+      {/* O Prêmio é prova social; aqui ele ganha um pedido de próximo passo. */}
+      <section className="section grain" style={{ background: 'linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 55%, var(--turquoise-ink) 120%)', color: '#fff', textAlign: 'center' }}>
+        <div className="container" style={{ maxWidth: 760 }}>
+          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>{tx('Próximo ciclo')}</div>
+          <h2 style={{ color: '#fff', marginTop: 14 }}>{tx('Quer ser avaliado no próximo Prêmio SEWE?')}</h2>
+          <p style={{ color: 'rgba(255,255,255,0.78)', marginTop: 16, fontSize: 18 }}>
+            {tx('A avaliação começa pelos seus indicadores. Em 30 minutos olhamos a sua operação e mostramos em que ponto dos quatro pilares você está hoje.')}
+          </p>
+          <div style={{ marginTop: 28, display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="/#agendar" className="btn btn-accent btn-lg">{tx('Quero ser avaliado')} <Icon name="arrow" size={16} className="chev"/></a>
+            <a href="/distribuidor" className="btn btn-lg" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>{tr('cta.secondary')}</a>
+          </div>
         </div>
       </section>
       <SiteFooter/>
@@ -285,59 +304,60 @@ function PremioPage() {
 
 // ── Quem Somos (história) ──
 function QuemSomosPage() {
+  useLocale();   // re-renderiza quando o idioma muda
   const timeline = [
-    { y: '2018–2020', t: 'Nasce da operação, não do laboratório', d: 'A SEWE surge de dentro do setor de distribuição, gente que viveu o problema de afogar em dados e passar fome de decisão. O foco desde o início: traduzir dados em ação.' },
-    { y: '2021–2022', t: 'Parceria oficial Qlik + foco no Pet/Vet', d: 'A escolha pela plataforma Qlik consolida a base tecnológica. Os primeiros distribuidores do setor Pet e Veterinário provam o modelo: BI vertical, pronto, com DNA de distribuição.' },
-    { y: '2023–2025', t: 'Expansão de setores e da IA aplicada', d: 'A SEWE chega a indústrias, agro e distribuidores de tecnologia. A inteligência artificial passa a rodar nos bastidores, entregando decisões prontas em vez de mais gráficos.' },
-    { y: 'Hoje', t: 'Referência nacional em dados para distribuição', d: 'São mais de 500 distribuidores e R$ 5 bilhões em faturamento monitorado, com cobertura nacional e um ecossistema completo: BI, Integration e Sales.' },
+    { y: '2018–2020', t: tx('Nasce da operação, não do laboratório'), d: tx('A SEWE surge de dentro do setor de distribuição, gente que viveu o problema de afogar em dados e passar fome de decisão. O foco desde o início: traduzir dados em ação.') },
+    { y: '2021–2022', t: tx('Parceria oficial Qlik + foco no Pet/Vet'), d: tx('A escolha pela plataforma Qlik consolida a base tecnológica. Os primeiros distribuidores do setor Pet e Veterinário provam o modelo: BI vertical, pronto, com DNA de distribuição.') },
+    { y: '2023–2025', t: tx('Expansão de setores e da IA aplicada'), d: tx('A SEWE chega a indústrias, agro e distribuidores de tecnologia. A inteligência artificial passa a rodar nos bastidores, entregando decisões prontas em vez de mais gráficos.') },
+    { y: tx('Hoje'), t: tx('Referência nacional em dados para distribuição'), d: tx('São mais de 500 distribuidores e R$ 5 bilhões em faturamento monitorado, com cobertura nacional e um ecossistema completo: BI, Integration e Sales.') },
   ];
   const vmv = [
-    { k: 'Missão', icon: 'target', theme: 'turq', d: 'Facilitar a vida dos clientes, por meio de uma atuação consultiva e colaborativa que transforma tecnologia em resultados.' },
-    { k: 'Visão', icon: 'zap', theme: 'navy', d: 'Ser reconhecido por nossos clientes como o melhor parceiro estratégico de tecnologia.' },
+    { k: tx('Missão'), icon: 'target', theme: 'turq', d: tx('Facilitar a vida dos clientes, por meio de uma atuação consultiva e colaborativa que transforma tecnologia em resultados.') },
+    { k: tx('Visão'), icon: 'zap', theme: 'navy', d: tx('Ser reconhecido por nossos clientes como o melhor parceiro estratégico de tecnologia.') },
   ];
   const valores = [
-    { k: 'Comprometimento', icon: 'shield',
-      sig: 'Agimos com responsabilidade, propósito e dedicação, buscando sempre o melhor resultado para clientes, equipe e parceiros.',
-      com: 'Cumprimos o que prometemos, cultivamos relações de confiança e buscamos excelência em cada entrega.',
-      imp: 'Clientes que confiam na nossa marca e percebem consistência e credibilidade em tudo o que fazemos.' },
-    { k: 'Eficiência', icon: 'zap',
-      sig: 'Buscamos produtividade e qualidade em tudo o que fazemos, eliminando desperdícios e simplificando processos.',
-      com: 'Planejamos com clareza, executamos com foco e revisamos as práticas para o melhor resultado com o menor esforço.',
-      imp: 'Clientes percebem agilidade, organização e confiança em cada interação com a SEWE.' },
-    { k: 'Entendimento de Negócios', icon: 'search',
-      sig: 'Antes de aplicar tecnologia, compreendemos a essência e os desafios do negócio do cliente, adaptando-nos ao seu contexto.',
-      com: 'Atuamos como consultores: questionando, analisando e traduzindo tecnologia em resultados práticos.',
-      imp: 'Soluções personalizadas, com aderência real e mensurável ao negócio de cada cliente.' },
-    { k: 'Colaboração', icon: 'users',
-      sig: 'Acreditamos que resultados sustentáveis nascem da colaboração entre pessoas, dentro da equipe e com os clientes.',
-      com: 'Compartilhamos conhecimento, ouvimos diferentes perspectivas e trabalhamos de forma integrada e transparente.',
-      imp: 'Um ambiente saudável, com alto engajamento interno e relacionamentos de longo prazo com os clientes.' },
-    { k: 'Inovação Aplicada', icon: 'sparkle',
-      sig: 'Usamos dados, tecnologia e conhecimento para transformar complexidade em simplicidade e informação em valor.',
-      com: 'Incentivamos o aprendizado contínuo, a experimentação e a busca por novas formas de gerar impacto real.',
-      imp: 'Clientes desenvolvem novas capacidades e evoluem continuamente com as nossas soluções.' },
-    { k: 'Resultados Consistentes', icon: 'trophy',
-      sig: 'O que fazemos deve gerar impacto tangível: resultados concretos para os clientes e aprendizado para a equipe.',
-      com: 'Estabelecemos metas claras, medimos desempenho e celebramos conquistas.',
-      imp: 'Resultados sustentáveis e consistentes, que reforçam a nossa credibilidade e propósito.' },
-    { k: 'Desenvolvimento Integrado', icon: 'link',
-      sig: 'Unimos pessoas, processos e tecnologia para o crescimento equilibrado de clientes, colaboradores e parceiros.',
-      com: 'Atuamos como construtores de soluções e conhecimento, com troca constante de experiências e metodologias.',
-      imp: 'Um ambiente de evolução conectada, onde todos prosperam em conjunto.' },
+    { k: tx('Comprometimento'), icon: 'shield',
+      sig: tx('Agimos com responsabilidade, propósito e dedicação, buscando sempre o melhor resultado para clientes, equipe e parceiros.'),
+      com: tx('Cumprimos o que prometemos, cultivamos relações de confiança e buscamos excelência em cada entrega.'),
+      imp: tx('Clientes que confiam na nossa marca e percebem consistência e credibilidade em tudo o que fazemos.') },
+    { k: tx('Eficiência'), icon: 'zap',
+      sig: tx('Buscamos produtividade e qualidade em tudo o que fazemos, eliminando desperdícios e simplificando processos.'),
+      com: tx('Planejamos com clareza, executamos com foco e revisamos as práticas para o melhor resultado com o menor esforço.'),
+      imp: tx('Clientes percebem agilidade, organização e confiança em cada interação com a SEWE.') },
+    { k: tx('Entendimento de Negócios'), icon: 'search',
+      sig: tx('Antes de aplicar tecnologia, compreendemos a essência e os desafios do negócio do cliente, adaptando-nos ao seu contexto.'),
+      com: tx('Atuamos como consultores: questionando, analisando e traduzindo tecnologia em resultados práticos.'),
+      imp: tx('Soluções personalizadas, com aderência real e mensurável ao negócio de cada cliente.') },
+    { k: tx('Colaboração'), icon: 'users',
+      sig: tx('Acreditamos que resultados sustentáveis nascem da colaboração entre pessoas, dentro da equipe e com os clientes.'),
+      com: tx('Compartilhamos conhecimento, ouvimos diferentes perspectivas e trabalhamos de forma integrada e transparente.'),
+      imp: tx('Um ambiente saudável, com alto engajamento interno e relacionamentos de longo prazo com os clientes.') },
+    { k: tx('Inovação Aplicada'), icon: 'sparkle',
+      sig: tx('Usamos dados, tecnologia e conhecimento para transformar complexidade em simplicidade e informação em valor.'),
+      com: tx('Incentivamos o aprendizado contínuo, a experimentação e a busca por novas formas de gerar impacto real.'),
+      imp: tx('Clientes desenvolvem novas capacidades e evoluem continuamente com as nossas soluções.') },
+    { k: tx('Resultados Consistentes'), icon: 'trophy',
+      sig: tx('O que fazemos deve gerar impacto tangível: resultados concretos para os clientes e aprendizado para a equipe.'),
+      com: tx('Estabelecemos metas claras, medimos desempenho e celebramos conquistas.'),
+      imp: tx('Resultados sustentáveis e consistentes, que reforçam a nossa credibilidade e propósito.') },
+    { k: tx('Desenvolvimento Integrado'), icon: 'link',
+      sig: tx('Unimos pessoas, processos e tecnologia para o crescimento equilibrado de clientes, colaboradores e parceiros.'),
+      com: tx('Atuamos como construtores de soluções e conhecimento, com troca constante de experiências e metodologias.'),
+      imp: tx('Um ambiente de evolução conectada, onde todos prosperam em conjunto.') },
   ];
   const [valAtivo, setValAtivo] = React.useState(0);
   const V = valores[valAtivo];
   return (
     <>
-      <SiteHeader/>
-      <PageHero eyebrow="Quem Somos" title="A inteligência de dados que nasceu dentro da distribuição."
-        lead="A SEWE não veio de um laboratório de software. Veio do chão do setor, e por isso fala a língua de quem vive ruptura, curva ABC, positivação e capital de giro."/>
+      <SiteHeader translated/>
+      <PageHero eyebrow={tx('Quem Somos')} title={tx('A inteligência de dados que nasceu dentro da distribuição.')}
+        lead={tx('A SEWE não veio de um laboratório de software. Veio do chão do setor, e por isso fala a língua de quem vive ruptura, curva ABC, positivação e capital de giro.')}/>
 
       {/* Story / timeline */}
       <section className="section" style={{ background: '#fff' }}>
         <div className="container" style={{ maxWidth: 880 }}>
-          <div className="eyebrow">Nossa história</div>
-          <h2 style={{ marginTop: 14, marginBottom: 40 }}>Uma trajetória guiada por dado.</h2>
+          <div className="eyebrow">{tx('Nossa história')}</div>
+          <h2 style={{ marginTop: 14, marginBottom: 40 }}>{tx('Uma trajetória guiada por dado.')}</h2>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {timeline.map((m, i) => (
               <div key={i} style={{ display: 'grid', gridTemplateColumns: '140px 1fr', gap: 28 }} className="tl-row">
@@ -358,18 +378,15 @@ function QuemSomosPage() {
         <div className="container">
           <div className="atua-grid">
             <div>
-              <div className="eyebrow">Onde atuamos</div>
-              <h2 style={{ marginTop: 14 }}>Do Brasil para as Américas.</h2>
-              <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 16, lineHeight: 1.65, maxWidth: 460 }}>
-                Atendemos distribuidores e indústrias em todos os estados do Brasil,
-                com operações internacionais em expansão pelo continente.
-              </p>
+              <div className="eyebrow">{tx('Onde atuamos')}</div>
+              <h2 style={{ marginTop: 14 }}>{tx('Do Brasil para as Américas.')}</h2>
+              <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 16, lineHeight: 1.65, maxWidth: 460 }}>{tx('Atendemos distribuidores e indústrias em todos os estados do Brasil, com operações internacionais em expansão pelo continente.')}</p>
               <ul style={{ listStyle: 'none', padding: 0, margin: '26px 0 0', display: 'grid', gap: 14 }}>
                 {[
-                  { pais: 'Brasil', d: 'Presença em todos os estados' },
-                  { pais: 'Estados Unidos', d: 'Operação internacional · Sewe Integration' },
-                  { pais: 'Chile', d: 'Operação internacional · Sewe Integration' },
-                  { pais: 'Colômbia', d: 'Operação internacional · Sewe Integration' },
+                  { pais: 'Brasil', d: tx('Presença em todos os estados') },
+                  { pais: tx('Estados Unidos'), d: tx('Operação internacional · Sewe Integration') },
+                  { pais: 'Chile', d: tx('Operação internacional · Sewe Integration') },
+                  { pais: tx('Colômbia'), d: tx('Operação internacional · Sewe Integration') },
                 ].map((x, i) => (
                   <li key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
                     <span style={{ marginTop: 5, width: 14, height: 14, borderRadius: 4, background: 'linear-gradient(135deg, #2d436c, #3f7d8c)', flexShrink: 0 }}/>
@@ -381,9 +398,7 @@ function QuemSomosPage() {
                 ))}
               </ul>
               <div style={{ marginTop: 26, display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12.5, color: 'var(--text-3)' }}>
-                <span style={{ width: 11, height: 11, borderRadius: 3, background: 'linear-gradient(135deg, #2d436c, #3f7d8c)' }}/>
-                Países com operação SEWE
-              </div>
+                <span style={{ width: 11, height: 11, borderRadius: 3, background: 'linear-gradient(135deg, #2d436c, #3f7d8c)' }}/>{tx('Países com operação SEWE')}</div>
             </div>
             <div style={{ maxWidth: 480, margin: '0 auto', width: '100%' }}>
               {typeof AmericasMap !== 'undefined' ? <AmericasMap/> : null}
@@ -415,11 +430,9 @@ function QuemSomosPage() {
       <section className="section" style={{ background: 'var(--bg-soft)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 40px' }}>
-            <div className="eyebrow">Nossos valores</div>
-            <h2 style={{ marginTop: 14 }}>O que nos guia, na prática.</h2>
-            <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-              Selecione um valor e veja o que ele significa, como praticamos e o que ele gera para você.
-            </p>
+            <div className="eyebrow">{tx('Nossos valores')}</div>
+            <h2 style={{ marginTop: 14 }}>{tx('O que nos guia, na prática.')}</h2>
+            <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Selecione um valor e veja o que ele significa, como praticamos e o que ele gera para você.')}</p>
           </div>
           <div className="val-grid">
             <div className="val-list">
@@ -435,11 +448,11 @@ function QuemSomosPage() {
               <p className="val-sig">{V.sig}</p>
               <div className="val-detail">
                 <div className="val-block">
-                  <div className="val-block-t">Como praticamos</div>
+                  <div className="val-block-t">{tx('Como praticamos')}</div>
                   <p>{V.com}</p>
                 </div>
                 <div className="val-block">
-                  <div className="val-block-t">O que gera para você</div>
+                  <div className="val-block-t">{tx('O que gera para você')}</div>
                   <p>{V.imp}</p>
                 </div>
               </div>
@@ -480,11 +493,11 @@ function QuemSomosPage() {
       {/* CTA */}
       <section className="section grain" style={{ background: 'linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 60%, var(--turquoise-ink) 130%)', color: '#fff', textAlign: 'center' }}>
         <div className="container" style={{ maxWidth: 720 }}>
-          <h2 style={{ color: '#fff' }}>Vamos transformar sua distribuição?</h2>
-          <p style={{ color: 'rgba(255,255,255,0.78)', marginTop: 16, fontSize: 18 }}>Um diagnóstico gratuito de 30 minutos, com os seus dados, sem compromisso.</p>
+          <h2 style={{ color: '#fff' }}>{tx('Vamos transformar sua distribuição?')}</h2>
+          <p style={{ color: 'rgba(255,255,255,0.78)', marginTop: 16, fontSize: 18 }}>{tx('Um diagnóstico gratuito de 30 minutos, com os seus dados, sem compromisso.')}</p>
           <div style={{ marginTop: 28, display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="/#agendar" className="btn btn-accent btn-lg">Agendar Diagnóstico <Icon name="arrow" size={16} className="chev"/></a>
-            <a href="https://wa.me/5548984704389" className="btn btn-lg" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>Falar no WhatsApp</a>
+            <a href="/#agendar" className="btn btn-accent btn-lg">{tr('cta.primary')} <Icon name="arrow" size={16} className="chev"/></a>
+            <a href="https://wa.me/5548984704389" className="btn btn-lg" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>{tx('Falar no WhatsApp')}</a>
           </div>
         </div>
       </section>
@@ -513,11 +526,12 @@ function QuemSomosPage() {
 
 // ── FAQ (reuses FAQSection from rest.jsx) ──
 function FaqPage() {
+  useLocale();   // re-renderiza quando o idioma muda
   return (
     <>
-      <SiteHeader/>
-      <PageHero eyebrow="Perguntas frequentes" title="O que diretores perguntam antes de assinar."
-        lead="Tudo sobre go-live, ERP, LGPD, parceria Qlik e investimento, direto ao ponto."/>
+      <SiteHeader translated/>
+      <PageHero eyebrow={tx('Perguntas frequentes')} title={tx('O que diretores perguntam antes de assinar.')}
+        lead={tx('Tudo sobre go-live, ERP, LGPD, parceria Qlik e investimento, direto ao ponto.')}/>
       {typeof FAQSection !== 'undefined' ? <FAQSection/> : null}
       <SiteFooter/>
     </>
@@ -526,6 +540,7 @@ function FaqPage() {
 
 /* ── Política de Privacidade ── */
 function PrivacidadePage() {
+  useLocale();   // re-renderiza quando o idioma muda
   const h = { fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 22, color: 'var(--navy-900)', margin: '36px 0 12px' };
   const p = { fontSize: 15.5, color: 'var(--text-2)', lineHeight: 1.7, margin: '0 0 14px' };
   const li = { fontSize: 15.5, color: 'var(--text-2)', lineHeight: 1.7, marginBottom: 8 };
@@ -589,7 +604,7 @@ function PrivacidadePage() {
 }
 
 // ── Mount the right page based on which root exists ──
-(function mountPages() {
+SEWE_I18N_READY.then(function mountPages() {
   const single = { 'quemsomos-root': QuemSomosPage, 'premio-root': PremioPage, 'blog-root': BlogIndexPage, 'faq-root': FaqPage, 'privacidade-root': PrivacidadePage };
   Object.keys(single).forEach(id => {
     const el = document.getElementById(id);
@@ -597,4 +612,4 @@ function PrivacidadePage() {
   });
   const postEl = document.getElementById('post-root');
   if (postEl) ReactDOM.createRoot(postEl).render(React.createElement(BlogPostPage, { slug: postEl.getAttribute('data-slug') }));
-})();
+});

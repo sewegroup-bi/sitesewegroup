@@ -464,40 +464,40 @@ function DistribuidorScene() {
 
   // Pills on the outer margins; ax/ay = anchor point (%) on the matching floor.
   const pills = [
-    { key: 'estrategica', label: 'Gestão Estratégica', icon: 'target',   l: 12, t: 12, ax: 48,   ay: 12.5, items: ['DRE ao vivo', 'KPIs por filial', 'Visão 360°'] },
-    { key: 'suprimentos', label: 'Suprimentos',        icon: 'boxes',    l: 12, t: 42, ax: 30,   ay: 32, items: ['Previsão de ruptura', 'Curva ABC', 'Sugestão de compra'] },
-    { key: 'comercial',   label: 'Comercial',          icon: 'trending', l: 88, t: 18, ax: 72,   ay: 30, items: ['Metas por vendedor', 'Leads inteligentes', 'Reativação de clientes'] },
-    { key: 'financeiro',  label: 'Financeiro',         icon: 'dollar',   l: 92, t: 63, ax: 51.5, ay: 44, items: ['Fluxo de caixa', 'Margem por SKU', 'DRE automatizado'] },
+    { key: 'estrategica', label: tx('Gestão Estratégica'), icon: 'target',   l: 12, t: 12, ax: 48,   ay: 12.5, items: [tx('DRE ao vivo'), tx('KPIs por filial'), tx('Visão 360°')] },
+    { key: 'suprimentos', label: tx('Suprimentos'),        icon: 'boxes',    l: 12, t: 42, ax: 30,   ay: 32, items: [tx('Previsão de ruptura'), tx('Curva ABC'), tx('Sugestão de compra')] },
+    { key: 'comercial',   label: tx('Comercial'),          icon: 'trending', l: 88, t: 18, ax: 72,   ay: 30, items: [tx('Metas por vendedor'), tx('Leads inteligentes'), tx('Reativação de clientes')] },
+    { key: 'financeiro',  label: tx('Financeiro'),         icon: 'dollar',   l: 92, t: 63, ax: 51.5, ay: 44, items: [tx('Fluxo de caixa'), tx('Margem por SKU'), tx('DRE automatizado')] },
   ];
   // Âncora do ecossistema de vendas. Os itens são os módulos compartilhados:
   // no orçamento eles reaparecem em cada suíte, mas o produto é um só — aqui
   // aparecem uma vez, como camada que serve todos os canais.
   const salesLeader = {
     key: 'sales', l: 50, t: 85, ax: 8, ay: 67,
-    items: ['Integração ERP', 'Promoções', 'Alçada de aprovações', 'Incentivos comerciais', 'WorkFlow', 'Propostas comerciais'],
+    items: [tx('Integração ERP'), tx('Promoções'), tx('Alçada de aprovações'), tx('Incentivos comerciais'), 'WorkFlow', tx('Propostas comerciais')],
   };
 
   // Canais de venda em volta do CD: os que atendem o cliente ficam do lado da
   // lojinha; os que atendem a equipe interna, do lado oposto.
   const canais = [
-    { key: 'portal',   label: 'Portal B2B2C',    icon: 'store',     l: 11, t: 58 },
-    { key: 'b2b',      label: 'E-commerce B2B',  icon: 'warehouse', l: 11, t: 68 },
-    { key: 'b2c',      label: 'E-commerce B2C',  icon: 'pkg',       l: 11, t: 78 },
-    { key: 'vendedor', label: 'Força de Vendas', icon: 'users',     l: 89, t: 76 },
+    { key: 'portal',   label: tx('Portal B2B2C'),    icon: 'store',     l: 11, t: 58 },
+    { key: 'b2b',      label: tx('E-commerce B2B'),  icon: 'warehouse', l: 11, t: 68 },
+    { key: 'b2c',      label: tx('E-commerce B2C'),  icon: 'pkg',       l: 11, t: 78 },
+    { key: 'vendedor', label: tx('Força de Vendas'), icon: 'users',     l: 89, t: 76 },
     { key: 'crm',      label: 'CRM',             icon: 'calendar',  l: 89, t: 86 },
   ];
 
   const suiteMsgs = {
-    estrategica: 'Assuma o controle: a operação inteira em uma tela e a decisão do dia já priorizada.',
-    suprimentos: 'Acabe com a ruptura: a IA prevê a demanda e sugere a compra certa antes da falta.',
-    comercial: 'Venda mais com a mesma equipe: o sistema aponta quem reativar e o que ofertar.',
-    financeiro: 'Feche o mês em dias: caixa projetado e margem real por SKU direto do ERP.',
-    sales: 'Cinco canais, uma plataforma: integração, promoções, alçadas, incentivos, workflow e propostas valem para todos, sem contratar duas vezes.',
-    portal: 'Portal de vendas B2B2C: seu cliente consulta produto, preço, estoque e condição comercial e fecha o pedido sozinho.',
-    b2b: 'E-commerce B2B personalizado: loja com carrinho e checkout modernos, para o cliente comprar sem depender de ninguém.',
-    b2c: 'E-commerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço da operação.',
-    vendedor: 'Ambiente do vendedor: carteira, metas, atividades e pedido digitado em campo, já dentro da política comercial.',
-    crm: 'CRM, clientes e atividades: histórico, follow-up e processo comercial estruturado do primeiro contato até o pedido.',
+    estrategica: tx('Assuma o controle: a operação inteira em uma tela e a decisão do dia já priorizada.'),
+    suprimentos: tx('Acabe com a ruptura: a IA prevê a demanda e sugere a compra certa antes da falta.'),
+    comercial: tx('Venda mais com a mesma equipe: o sistema aponta quem reativar e o que ofertar.'),
+    financeiro: tx('Feche o mês em dias: caixa projetado e margem real por SKU direto do ERP.'),
+    sales: tx('Cinco canais, uma plataforma: integração, promoções, alçadas, incentivos, workflow e propostas valem para todos, sem contratar duas vezes.'),
+    portal: tx('Portal de vendas B2B2C: seu cliente consulta produto, preço, estoque e condição comercial e fecha o pedido sozinho.'),
+    b2b: tx('E-commerce B2B personalizado: loja com carrinho e checkout modernos, para o cliente comprar sem depender de ninguém.'),
+    b2c: tx('E-commerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço da operação.'),
+    vendedor: tx('Ambiente do vendedor: carteira, metas, atividades e pedido digitado em campo, já dentro da política comercial.'),
+    crm: tx('CRM, clientes e atividades: histórico, follow-up e processo comercial estruturado do primeiro contato até o pedido.'),
   };
 
   return (
@@ -797,7 +797,7 @@ function DistribuidorScene() {
         onMouseEnter={() => setHover('sales')} onMouseLeave={() => setHover(null)}
         onFocus={() => setHover('sales')} onBlur={() => setHover(null)}
         className="dist-pill dist-pill-sales" style={{ left: salesLeader.l + '%', top: salesLeader.t + '%' }}
-        aria-label="Ver o ecossistema de vendas">
+        aria-label={tx('Ver o ecossistema de vendas')}>
         <span className="dist-pill-ic"><Icon name="store" size={13} stroke={2}></Icon></span>
         <span className="dist-pill-lb">Sewe Sales</span>
         <span className="dist-pill-plus"><Icon name="plus" size={14} stroke={2.2}></Icon></span>
@@ -825,9 +825,8 @@ function DistribuidorScene() {
         onClick={() => scrollToId('sales')}
         onMouseEnter={() => setHover('sales')} onMouseLeave={() => setHover(null)}
         onFocus={() => setHover('sales')} onBlur={() => setHover(null)}
-        aria-label="Ver o ecossistema de vendas">Cliente Distribuidor
-        <span className="dist-pill-drop dist-drop-up" aria-hidden="true">
-          {['Pedido sem vendedor', 'Crédito na hora', 'Recompra em 1 clique'].map((it, i) => (
+        aria-label={tx('Ver o ecossistema de vendas')}>{tx('Cliente Distribuidor')}<span className="dist-pill-drop dist-drop-up" aria-hidden="true">
+          {[tx('Pedido sem vendedor'), tx('Crédito na hora'), tx('Recompra em 1 clique')].map((it, i) => (
             <span key={i} className="dist-pill-item" style={{ transitionDelay: (i * 90) + 'ms' }}>{it}</span>
           ))}
         </span>
@@ -837,7 +836,7 @@ function DistribuidorScene() {
       <div className="dist-msgline" aria-live="polite">
         <span className="dist-msg-chev">›</span>
         <span className="dist-msg-txt" style={{ opacity: hover && suiteMsgs[hover] ? 1 : 0.45 }}>
-          {hover && suiteMsgs[hover] ? suiteMsgs[hover] : 'Passe o mouse sobre uma suíte e veja o que ela faz pela sua operação'}
+          {hover && suiteMsgs[hover] ? suiteMsgs[hover] : tx('Passe o mouse sobre uma suíte e veja o que ela faz pela sua operação')}
         </span>
         <span className="dist-msg-cursor"></span>
       </div>
@@ -1094,72 +1093,74 @@ function DistribuidorScene() {
 
    As coordenadas (l, t) são % da foto. Se a imagem for trocada, é só
    reajustar este array — nada mais depende delas. */
-const DP_AREAS = [
+// Funcao (nao const): tx() precisa ser reavaliado quando o idioma muda.
+const dpAreas = () => [
   // camada de BI: as suítes que leem a operação
-  { key: 'estrategica', kind: 'bi', label: 'Gestão Estratégica', icon: 'target', l: 24, t: 22, up: true,
-    items: ['DRE ao vivo', 'KPIs por filial', 'Visão 360°'],
-    msg: 'Assuma o controle: a operação inteira em uma tela e a decisão do dia já priorizada, sem pedir relatório a ninguém.' },
-  { key: 'suprimentos', kind: 'bi', label: 'Suprimentos', icon: 'boxes', l: 55, t: 20,
-    items: ['Previsão de ruptura', 'Curva ABC', 'Sugestão de compra'],
-    msg: 'Acabe com a ruptura: a IA prevê a demanda por SKU e sugere a compra certa antes de a prateleira esvaziar.' },
-  { key: 'saude', kind: 'bi', label: 'Saúde Estoque', icon: 'shield', l: 36, t: 11,
-    items: ['Cobertura em dias', 'Estoque parado', 'Giro por SKU'],
-    msg: 'Saúde do estoque: cobertura em dias, o que está parado, o que está girando e onde o seu capital ficou preso na prateleira.' },
-  { key: 'produtos', kind: 'bi', label: 'Gestão de Produtos', icon: 'pkg', l: 49, t: 15,
-    items: ['Cadastro padronizado', 'Curva e mix ideal', 'Margem por produto'],
-    msg: 'Gestão de produtos: cadastro padronizado, curva de cada item e margem real por produto, para o mix parar de ser decidido no achismo.' },
+  { key: 'estrategica', kind: 'bi', label: tx('Gestão Estratégica'), icon: 'target', l: 24, t: 22, up: true,
+    items: [tx('DRE ao vivo'), tx('KPIs por filial'), tx('Visão 360°')],
+    msg: tx('Assuma o controle: a operação inteira em uma tela e a decisão do dia já priorizada, sem pedir relatório a ninguém.') },
+  { key: 'suprimentos', kind: 'bi', label: tx('Suprimentos'), icon: 'boxes', l: 55, t: 20,
+    items: [tx('Previsão de ruptura'), tx('Curva ABC'), tx('Sugestão de compra')],
+    msg: tx('Acabe com a ruptura: a IA prevê a demanda por SKU e sugere a compra certa antes de a prateleira esvaziar.') },
+  { key: 'saude', kind: 'bi', label: tx('Saúde Estoque'), icon: 'shield', l: 36, t: 11,
+    items: [tx('Cobertura em dias'), tx('Estoque parado'), tx('Giro por SKU')],
+    msg: tx('Saúde do estoque: cobertura em dias, o que está parado, o que está girando e onde o seu capital ficou preso na prateleira.') },
+  { key: 'produtos', kind: 'bi', label: tx('Gestão de Produtos'), icon: 'pkg', l: 49, t: 15,
+    items: [tx('Cadastro padronizado'), tx('Curva e mix ideal'), tx('Margem por produto')],
+    msg: tx('Gestão de produtos: cadastro padronizado, curva de cada item e margem real por produto, para o mix parar de ser decidido no achismo.') },
   // abre para cima: a estrada acima do caminhão é a única área livre ali
   { key: 'reabastece', kind: 'bi', label: 'Reabastecimento', icon: 'truck', l: 73, t: 20, up: true,
-    items: ['Ponto de pedido por SKU', 'Sugestão automática', 'Prazo do fornecedor'],
-    msg: 'Reabastecimento: ponto de pedido calculado por SKU, sugestão de compra automática e o prazo real de cada fornecedor entrando na conta.' },
-  { key: 'comercial', kind: 'bi', label: 'Comercial', icon: 'trending', l: 19, t: 50,
-    items: ['Metas por vendedor', 'Leads inteligentes', 'Reativação de clientes'],
-    msg: 'Venda mais com a mesma equipe: o sistema aponta quem reativar, o que ofertar e onde a meta está em risco.' },
-  { key: 'financeiro', kind: 'bi', label: 'Financeiro', icon: 'dollar', l: 57, t: 39,
-    items: ['Fluxo de caixa', 'Margem por SKU', 'DRE automatizado'],
-    msg: 'Feche o mês em dias, não em semanas: caixa projetado e margem real por SKU direto do ERP.' },
+    items: [tx('Ponto de pedido por SKU'), tx('Sugestão automática'), tx('Prazo do fornecedor')],
+    msg: tx('Reabastecimento: ponto de pedido calculado por SKU, sugestão de compra automática e o prazo real de cada fornecedor entrando na conta.') },
+  { key: 'comercial', kind: 'bi', label: tx('Comercial'), icon: 'trending', l: 19, t: 50,
+    items: [tx('Metas por vendedor'), tx('Leads inteligentes'), tx('Reativação de clientes')],
+    msg: tx('Venda mais com a mesma equipe: o sistema aponta quem reativar, o que ofertar e onde a meta está em risco.') },
+  { key: 'financeiro', kind: 'bi', label: tx('Financeiro'), icon: 'dollar', l: 57, t: 39,
+    items: [tx('Fluxo de caixa'), tx('Margem por SKU'), tx('DRE automatizado')],
+    msg: tx('Feche o mês em dias, não em semanas: caixa projetado e margem real por SKU direto do ERP.') },
   // abre para cima: para baixo bateria no CRM e no Pós-Venda
-  { key: 'contabil', kind: 'bi', label: 'Contábil', icon: 'bars', l: 67, t: 42, up: true,
-    items: ['Balancete contábil', 'Balanço patrimonial', 'DRE contábil'],
-    msg: 'Contábil: balancete, balanço patrimonial e DRE contábil saindo do mesmo dado da operação, sem esperar o fechamento chegar de fora.' },
+  { key: 'contabil', kind: 'bi', label: tx('Contábil'), icon: 'bars', l: 67, t: 42, up: true,
+    items: [tx('Balancete contábil'), tx('Balanço patrimonial'), tx('DRE contábil')],
+    msg: tx('Contábil: balancete, balanço patrimonial e DRE contábil saindo do mesmo dado da operação, sem esperar o fechamento chegar de fora.') },
 
   // módulos transversais: no orçamento eles se repetem por suíte, aqui cada um
   // aparece uma vez só, ancorado no lugar do CD onde de fato atua
-  { key: 'erp', kind: 'mod', label: 'Integração ERP', icon: 'link', l: 10, t: 33,
-    items: ['Conecta a qualquer ERP', 'Leitura direta na origem', 'Devolve pedido ao sistema'],
-    msg: 'Integração ERP: ligamos a plataforma ao sistema que você já usa, lemos o dado direto na origem e devolvemos pedido e status para dentro do ERP, sem ninguém redigitar nada.' },
-  { key: 'incentivos', kind: 'mod', label: 'Incentivos Comerciais', icon: 'trophy', l: 43, t: 37,
-    items: ['Metas por equipe e vendedor', 'Missões e campanhas internas', 'Premiação apurada no dado'],
-    msg: 'Incentivos comerciais: metas, missões e premiações para direcionar vendedores, representantes e equipes, com a apuração saindo da venda real e não de planilha paralela.' },
-  { key: 'alcada', kind: 'mod', label: 'Alçada de aprovações', icon: 'shield', l: 38, t: 66, up: true,
-    items: ['Regra por cargo e limite', 'Encaminhamento automático', 'Justificativa e rastro'],
-    msg: 'Alçada de aprovações: a exceção comercial sobe sozinha para quem pode decidir, com justificativa registrada e rastro de quem aprovou o quê.' },
+  { key: 'erp', kind: 'mod', label: tx('Integração ERP'), icon: 'link', l: 10, t: 33,
+    items: [tx('Conecta a qualquer ERP'), tx('Leitura direta na origem'), tx('Devolve pedido ao sistema')],
+    msg: tx('Integração ERP: ligamos a plataforma ao sistema que você já usa, lemos o dado direto na origem e devolvemos pedido e status para dentro do ERP, sem ninguém redigitar nada.') },
+  { key: 'incentivos', kind: 'mod', label: tx('Incentivos Comerciais'), icon: 'trophy', l: 43, t: 37,
+    items: [tx('Metas por equipe e vendedor'), tx('Missões e campanhas internas'), tx('Premiação apurada no dado')],
+    msg: tx('Incentivos comerciais: metas, missões e premiações para direcionar vendedores, representantes e equipes, com a apuração saindo da venda real e não de planilha paralela.') },
+  { key: 'alcada', kind: 'mod', label: tx('Alçada de aprovações'), icon: 'shield', l: 38, t: 66, up: true,
+    items: [tx('Regra por cargo e limite'), tx('Encaminhamento automático'), tx('Justificativa e rastro')],
+    msg: tx('Alçada de aprovações: a exceção comercial sobe sozinha para quem pode decidir, com justificativa registrada e rastro de quem aprovou o quê.') },
 
   // camada de vendas: os canais por onde o pedido entra
-  { key: 'vendedor', kind: 'sales', label: 'Força de Vendas', icon: 'users', l: 16, t: 75,
-    items: ['Carteira do vendedor', 'Metas e atividades', 'Pedido digitado em campo', 'Promoções e campanhas'],
-    msg: 'Ambiente do vendedor: carteira, metas, atividades e pedido digitado na rua, já dentro da política comercial da empresa.' },
+  { key: 'vendedor', kind: 'sales', label: tx('Força de Vendas'), icon: 'users', l: 16, t: 75,
+    items: [tx('Carteira do vendedor'), tx('Metas e atividades'), tx('Pedido digitado em campo'), tx('Promoções e campanhas')],
+    msg: tx('Ambiente do vendedor: carteira, metas, atividades e pedido digitado na rua, já dentro da política comercial da empresa.') },
   { key: 'crm', kind: 'sales', label: 'CRM', icon: 'calendar', l: 56.5, t: 59,
-    items: ['Histórico do cliente', 'Follow-up e agenda', 'Carteira e segmentação', 'WorkFlow de processos', 'Propostas comerciais'],
-    msg: 'CRM, clientes e atividades: histórico completo, follow-up no tempo certo, processo estruturado em workflow e a proposta acompanhada até virar pedido.' },
-  { key: 'portal', kind: 'sales', label: 'Portal B2B2C', icon: 'store', l: 86, t: 55,
-    items: ['Produto, preço e estoque', 'Condição comercial', 'Pedido com autonomia', 'Promoções e campanhas'],
-    msg: 'Portal de vendas B2B2C: seu cliente consulta produto, preço, estoque e condição comercial e fecha o pedido sozinho, 24 horas por dia.' },
+    items: [tx('Histórico do cliente'), tx('Follow-up e agenda'), tx('Carteira e segmentação'), tx('WorkFlow de processos'), tx('Propostas comerciais')],
+    msg: tx('CRM, clientes e atividades: histórico completo, follow-up no tempo certo, processo estruturado em workflow e a proposta acompanhada até virar pedido.') },
+  { key: 'portal', kind: 'sales', label: tx('Portal B2B2C'), icon: 'store', l: 86, t: 55,
+    items: [tx('Produto, preço e estoque'), tx('Condição comercial'), tx('Pedido com autonomia'), tx('Promoções e campanhas')],
+    msg: tx('Portal de vendas B2B2C: seu cliente consulta produto, preço, estoque e condição comercial e fecha o pedido sozinho, 24 horas por dia.') },
   // abre para cima: para baixo esbarraria no Portal B2B2C, logo abaixo
-  { key: 'b2b', kind: 'sales', label: 'E-commerce B2B', icon: 'warehouse', l: 80, t: 44, up: true,
-    items: ['Loja personalizada', 'Carrinho e checkout', 'Compra sem intermediário', 'Promoções e campanhas'],
-    msg: 'E-commerce B2B personalizado: loja com experiência moderna, carrinho e checkout, para o cliente comprar sem depender de ninguém.' },
-  { key: 'b2c', kind: 'sales', label: 'E-commerce B2C', icon: 'pkg', l: 78, t: 79,
-    items: ['Loja para o consumidor', 'Mesmo estoque', 'Mesma regra de preço', 'Promoções e campanhas'],
-    msg: 'E-commerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço do resto da operação.' },
-  { key: 'posvenda', kind: 'sales', label: 'Pós-Venda', icon: 'chat', l: 70, t: 64, up: true,
-    items: ['Devolução e troca', 'Chamados de assistência', 'Recompra e reativação'],
-    msg: 'Pós-venda: devolução, troca e chamado de assistência com histórico no mesmo lugar, e o gatilho de recompra saindo do próprio comportamento do cliente.' },
+  { key: 'b2b', kind: 'sales', label: tx('E-commerce B2B'), icon: 'warehouse', l: 80, t: 44, up: true,
+    items: [tx('Loja personalizada'), tx('Carrinho e checkout'), tx('Compra sem intermediário'), tx('Promoções e campanhas')],
+    msg: tx('E-commerce B2B personalizado: loja com experiência moderna, carrinho e checkout, para o cliente comprar sem depender de ninguém.') },
+  { key: 'b2c', kind: 'sales', label: tx('E-commerce B2C'), icon: 'pkg', l: 78, t: 79,
+    items: [tx('Loja para o consumidor'), tx('Mesmo estoque'), tx('Mesma regra de preço'), tx('Promoções e campanhas')],
+    msg: tx('E-commerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço do resto da operação.') },
+  { key: 'posvenda', kind: 'sales', label: tx('Pós-Venda'), icon: 'chat', l: 70, t: 64, up: true,
+    items: [tx('Devolução e troca'), tx('Chamados de assistência'), tx('Recompra e reativação')],
+    msg: tx('Pós-venda: devolução, troca e chamado de assistência com histórico no mesmo lugar, e o gatilho de recompra saindo do próprio comportamento do cliente.') },
 ];
 
 function DistribuidorPhoto() {
   const [hover, setHover] = React.useState(null);
-  const A = DP_AREAS.find(a => a.key === hover) || null;
+  const AREAS = dpAreas();
+  const A = AREAS.find(a => a.key === hover) || null;
 
   const go = (a) => {
     const id = a.kind === 'bi' ? 'suites' : 'sales';
@@ -1179,11 +1180,11 @@ function DistribuidorPhoto() {
           <source srcSet="/assets/distribuidor-cd.webp" type="image/webp"/>
           <img className="dp-img" src="/assets/distribuidor-cd.png" width="1650" height="953"
             fetchpriority="high" decoding="async"
-            alt="Vista aérea de um centro de distribuição: estoque, escritório comercial, sala financeira, recepção, showroom, expedição e frota de vendedores."/>
+            alt={tx('Vista aérea de um centro de distribuição: estoque, escritório comercial, sala financeira, recepção, showroom, expedição e frota de vendedores.')}/>
         </picture>
         <span className="dp-veil" aria-hidden/>
-        <p className="dp-kicker">Especialistas em Soluções para Distribuidores e Atacadistas.</p>
-        {DP_AREAS.map((a, i) => (
+        <p className="dp-kicker">{tx('Especialistas em Soluções para Distribuidores e Atacadistas.')}</p>
+        {AREAS.map((a, i) => (
           <button key={a.key} type="button" onClick={() => go(a)}
             onMouseEnter={() => setHover(a.key)} onMouseLeave={() => setHover(null)}
             onFocus={() => setHover(a.key)} onBlur={() => setHover(null)}
@@ -1205,31 +1206,27 @@ function DistribuidorPhoto() {
         <div className="dp-cta">
           <span className="dp-cta-glow" aria-hidden/>
           <span className="dp-cta-btns">
-            <a href="#diagnostico" className="btn btn-primary btn-lg">
-              Agendar Diagnóstico
-              <Icon name="arrow" size={16} className="chev"/>
+            <a href="#diagnostico" className="btn btn-primary btn-lg">{tr('cta.primary')}<Icon name="arrow" size={16} className="chev"/>
             </a>
-            <a href="#suites" className="btn btn-outline-inverse btn-lg">
-              Ver Suítes em ação
-            </a>
+            <a href="#suites" className="btn btn-outline-inverse btn-lg">{tr('cta.secondary')}</a>
           </span>
-          <span className="dp-cta-note">Resposta em até 4h úteis · Diagnóstico gratuito</span>
+          <span className="dp-cta-note">{tx('Resposta em até 4h úteis · Diagnóstico gratuito')}</span>
         </div>
       </div>
 
       {/* leitura longa: fora do CD, como pediu a referência */}
       <div className="dp-readout" aria-live="polite">
         <span className={'dp-readout-k' + (A ? ' dp-k-' + A.kind : '')}>
-          {A ? A.label : 'Ecossistema completo'}
+          {A ? A.label : tx('Ecossistema completo')}
         </span>
         <p className="dp-readout-t">
-          {A ? A.msg : 'Passe o mouse sobre uma área do centro de distribuição e veja o que a SEWE entrega ali.'}
+          {A ? A.msg : tx('Passe o mouse sobre uma área do centro de distribuição e veja o que a SEWE entrega ali.')}
         </p>
       </div>
 
       {/* mobile: sem balões sobre a foto, as áreas viram cartões */}
       <div className="dp-list">
-        {DP_AREAS.map(a => (
+        {AREAS.map(a => (
           <button key={a.key} type="button" onClick={() => go(a)} className={'dp-card dp-card-' + a.kind}>
             <span className="dp-card-h">
               <span className="dp-pin-ic"><Icon name={a.icon} size={12} stroke={2}/></span>

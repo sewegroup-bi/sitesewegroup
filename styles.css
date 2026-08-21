@@ -323,3 +323,15 @@ p { margin: 0; color: var(--text); text-wrap: pretty; }
   :root { --gutter: 18px; }
   .section { padding: 48px 0; }
 }
+
+/* Selo de painel de demonstração: o número na tela é ilustrativo, não é de cliente. */
+.demo-foot {
+  margin-top: 8px;
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  opacity: 0.8;
+  text-align: right;
+}

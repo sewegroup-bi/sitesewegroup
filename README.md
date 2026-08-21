@@ -33,6 +33,8 @@ Destaques:
 ├── quem-somos.html          # Página: história, missão, visão, valores
 ├── premio.html              # Página: Prêmio SEWE (pilares + vencedores)
 ├── blog.html                # Índice do blog
+├── prospeccao.html          # Oferta: Prospecção de Mercado (indústria)
+├── comercio-digital.html    # Oferta: Comércio Digital B2B (indústria)
 ├── faq.html                 # Página de FAQ
 ├── vencedor-premio-2024.html        # Post (vencedor do Prêmio) — modelo p/ duplicar
 ├── curva-abc-capital-de-giro.html   # Post (artigo de blog) — modelo p/ duplicar
@@ -48,6 +50,7 @@ Destaques:
 │   ├── suites.jsx           # Seção das 4 suítes com tabs e dashboards
 │   ├── rest.jsx             # Maturidade, diferenciais, cases, FAQ, CTA
 │   ├── i18n.jsx            # Idiomas PT/EN/ES: textos, tr(), seletor de bandeirinha
+│   ├── ofertas.jsx         # Páginas /prospeccao e /comercio-digital
 │   ├── instagram.jsx       # Vitrine do Instagram (embed oficial) no fim do blog
 │   ├── blogdata.jsx         # CONTEÚDO de blog e prêmio (array SEWE_POSTS)
 │   ├── pages.jsx            # Páginas: Quem Somos, Prêmio, Blog, Post, FAQ
@@ -75,23 +78,54 @@ Header, Footer e o cabeçalho de página vivem em **`components/layout.jsx`** �
 
 ## Idiomas (PT-BR · EN · ES)
 
-Tudo mora em **`components/i18n.jsx`** — dicionário, função `tr()` e o seletor de
-idioma (só a bandeirinha, no header). Português é o padrão; quem chega com o
-navegador em inglês ou espanhol já cai no idioma dele, e a escolha fica salva no
-`localStorage`. `?lang=en` / `?lang=es` na URL também força o idioma.
+Português é o padrão; quem chega com o navegador em inglês ou espanhol já cai no
+idioma dele, e a escolha fica salva no `localStorage`. `?lang=en` / `?lang=es` na
+URL também força o idioma. O seletor é só a bandeirinha, no header.
 
-**Traduzido hoje:** header, footer, home (posicionamento, escolha de perfil,
-agenda) e a vitrine do Instagram. Nas páginas ainda em português, escolher EN/ES
-mostra uma faixa discreta avisando — é o `<SiteHeader/>` sem a prop `translated`.
+Dois arquivos, com papéis diferentes:
 
-Para traduzir uma página nova:
+| Arquivo | O que guarda | Como se usa |
+|---|---|---|
+| `components/i18n.jsx` | navegação e rótulos curtos compartilhados, por chave | `tr('nav.blog')` |
+| `components/i18n-content.js` | copy das páginas, com a **frase em português como chave** | `tx('Menos ruptura.')` |
 
-1. Crie as chaves em `SEWE_STRINGS` (`components/i18n.jsx`) com `pt`, `en` e `es`.
-2. No componente, chame `useLocale()` e troque o texto fixo por `tr('sua.chave')`.
-3. Quando a página inteira estiver traduzida, passe `translated` no `<SiteHeader/>`
-   dela para a faixa de aviso parar de aparecer.
+`tx()` cai no próprio português quando falta tradução — nunca quebra a página. O
+dicionário de conteúdo (~1.260 frases, 65 KB gzip) é um chunk separado, baixado
+**só quando o visitante escolhe EN/ES**: quem lê em português não paga nada por ele.
 
-Chave sem tradução cai no português — nunca quebra a página.
+**Traduzido:** header, footer, home, Indústria, Distribuidor & Atacado,
+Plataforma de Dados & IA, Prospecção de Mercado, Comércio Digital B2B, Quem Somos,
+FAQ, Prêmio (moldura), Blog (moldura) e a vitrine do Instagram.
+**Segue em português:** os 8 artigos do blog e dos vencedores do Prêmio (título,
+resumo e corpo) e a Política de Privacidade (documento legal em português). Nessas
+páginas aparece uma faixa discreta avisando — é o `<SiteHeader/>` **sem** a prop
+`translated`.
+
+Para traduzir texto novo:
+
+1. Envolva a frase com `tx('...')` no componente.
+2. Acrescente a entrada em `components/i18n-content.js` com `en` e `es`.
+3. Se a página inteira ficar traduzida, passe `translated` no `<SiteHeader/>` dela.
+
+⚠️ **Cuidado com dados de módulo.** `tx()` em `const` de topo de arquivo roda uma
+única vez, antes de o dicionário chegar, e não reage à troca de idioma. Se precisar
+de um array/objeto traduzido fora de componente, transforme em função
+(`const dpAreas = () => [...]`, como em `herodist.jsx` e `ecosystem.jsx`) e chame no
+render. Em `blogdata.jsx` o texto fica cru e a tradução acontece no render
+(`tx(post.readTime)`).
+
+## Convenções de copy (auditoria ago/2026)
+
+Três regras que valem para qualquer texto novo no site:
+
+1. **Dois rótulos de CTA, sem variação.** `tr('cta.primary')` = "Agendar diagnóstico
+   de 30 min", `tr('cta.secondary')` = "Ver como funciona". Nada de inventar um
+   terceiro rótulo — repetição constrói reconhecimento, variação constrói dúvida.
+2. **Prova antes do argumento.** `<ProofBar/>` (em `layout.jsx`) vai logo abaixo do
+   hero em toda página de venda. Os números vêm da mesma fonte da `BragBar`.
+3. **Painel de demonstração leva selo.** Todo painel com número fictício mostra
+   "dados ilustrativos" (`.demo-foot`, `.ecf-foot` ou o rodapé do `QlikFrame`).
+   Número real leva nome do cliente e ano.
 
 ## Instagram no fim do blog
 

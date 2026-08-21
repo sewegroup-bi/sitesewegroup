@@ -26,6 +26,8 @@ const SEWE_STRINGS = {
   'nav.industry':    { pt: 'Indústria',           en: 'Manufacturers',       es: 'Industria' },
   'nav.distributor': { pt: 'Distribuidor & Atacado', en: 'Distribution & Wholesale', es: 'Distribuidor & Mayorista' },
   'nav.platform':    { pt: 'Plataforma de Dados & IA', en: 'Data & AI Platform', es: 'Plataforma de Datos e IA' },
+  'nav.prospecting': { pt: 'Prospecção de Mercado', en: 'Market Prospecting', es: 'Prospección de Mercado' },
+  'nav.commerce':    { pt: 'Comércio Digital B2B',  en: 'B2B Digital Commerce', es: 'Comercio Digital B2B' },
   'nav.content':     { pt: 'Conteúdos',           en: 'Content',             es: 'Contenidos' },
   'nav.blog':        { pt: 'Blog',                en: 'Blog',                es: 'Blog' },
   'nav.award':       { pt: 'Prêmio SEWE',         en: 'SEWE Award',          es: 'Premio SEWE' },
@@ -37,8 +39,8 @@ const SEWE_STRINGS = {
 
   // Aviso de página ainda não traduzida (vazio no PT: a faixa nem aparece)
   'i18n.notice':     { pt: '',
-                       en: 'This page is still available in Portuguese only. Header, footer and the home page are already translated.',
-                       es: 'Esta página aún está disponible solo en portugués. El encabezado, el pie y la página inicial ya están traducidos.' },
+                       en: 'The content on this page — articles and legal text — is published in Portuguese only.',
+                       es: 'El contenido de esta página — artículos y texto legal — se publica solo en portugués.' },
 
   // Footer
   'foot.tagline':    { pt: 'Inteligência de dados para distribuidores e atacadistas. Consultoria + tecnologia + Qlik.',
@@ -61,14 +63,21 @@ const SEWE_STRINGS = {
   'home.h1a':        { pt: 'Dados que viram decisão.', en: 'Data that becomes decision.', es: 'Datos que se vuelven decisión.' },
   'home.h1b':        { pt: 'Decisão que vira',        en: 'Decision that becomes',        es: 'Decisión que se vuelve' },
   'home.h1hl':       { pt: 'margem',                  en: 'margin',                      es: 'margen' },
-  'home.lead':       { pt: 'BI, IA e CRM para distribuidores, atacadistas e indústrias. Escolha o perfil da sua empresa e veja a solução certa para a sua operação.',
-                       en: 'BI, AI and CRM for distributors, wholesalers and manufacturers. Pick your company profile and see the right solution for your operation.',
-                       es: 'BI, IA y CRM para distribuidores, mayoristas e industrias. Elija el perfil de su empresa y vea la solución correcta para su operación.' },
+  'home.lead':       { pt: 'BI, IA e CRM para distribuidores, atacadistas e indústrias.',
+                       en: 'BI, AI and CRM for distributors, wholesalers and manufacturers.',
+                       es: 'BI, IA y CRM para distribuidores, mayoristas e industrias.' },
   'home.scroll':     { pt: 'Ir para a escolha de perfil', en: 'Go to profile selection', es: 'Ir a la selección de perfil' },
 
+  // CTA padrão do site: dois rótulos, repetidos sem variação em todas as páginas.
+  'cta.primary':     { pt: 'Agendar diagnóstico de 30 min', en: 'Book a 30-min assessment', es: 'Agendar diagnóstico de 30 min' },
+  'cta.secondary':   { pt: 'Ver como funciona', en: 'See how it works', es: 'Ver cómo funciona' },
+
   // Home — escolha de perfil
-  'home.pick.eyebrow': { pt: 'Comece aqui · Selecione uma opção', en: 'Start here · Select an option', es: 'Empiece aquí · Seleccione una opción' },
-  'home.pick.title':   { pt: 'Qual o perfil da sua empresa?', en: 'What is your company profile?', es: '¿Cuál es el perfil de su empresa?' },
+  'home.pick.eyebrow': { pt: 'Três operações, três caminhos', en: 'Three operations, three paths', es: 'Tres operaciones, tres caminos' },
+  'home.pick.title':   { pt: 'Por onde você quer começar?', en: 'Where do you want to start?', es: '¿Por dónde quiere empezar?' },
+  'home.pick.lead':    { pt: 'Escolha o perfil da sua empresa e veja a solução certa para a sua operação.',
+                         en: 'Pick your company profile and see the right solution for your operation.',
+                         es: 'Elija el perfil de su empresa y vea la solución correcta para su operación.' },
 
   'home.door1.kicker': { pt: 'Sou indústria', en: 'I am a manufacturer', es: 'Soy industria' },
   'home.door1.title':  { pt: 'Enxergue toda a sua rede', en: 'See your entire network', es: 'Vea toda su red' },
@@ -84,7 +93,7 @@ const SEWE_STRINGS = {
                          es: 'Menos quiebres de stock, más cobertura de pedidos, capital de trabajo libre. BI, IA y Sales a la medida de su operación.' },
   'home.door2.cta':    { pt: 'Ver soluções', en: 'See solutions', es: 'Ver soluciones' },
 
-  'home.door3.kicker': { pt: 'Qualquer setor', en: 'Any industry', es: 'Cualquier sector' },
+  'home.door3.kicker': { pt: 'Já tenho time de dados', en: 'I already have a data team', es: 'Ya tengo equipo de datos' },
   'home.door3.title':  { pt: 'Plataforma de Dados & IA', en: 'Data & AI Platform', es: 'Plataforma de Datos e IA' },
   'home.door3.desc':   { pt: 'Do dado bruto no ERP ao agente que executa a ação: Qlik de ponta a ponta, com a engenharia de dados da SEWE por trás.',
                          en: 'From raw ERP data to the agent that takes action: Qlik end to end, backed by SEWE data engineering.',
@@ -161,10 +170,13 @@ function setLocale(code) {
   SEWE_LOCALE = next;
   try { window.localStorage.setItem(SEWE_LANG_KEY, next); } catch (_) {}
   applyHtmlLang(next);
-  SEWE_LANG_SUBS.forEach(fn => fn(next));
+  const notify = () => SEWE_LANG_SUBS.forEach(fn => fn(next));
+  notify();                                       // navegação troca na hora
+  if (next !== 'pt') loadContentDict().then(notify); // copy troca ao chegar o dicionário
 }
 
-// tr('chave') → texto no idioma atual (cai no pt quando falta tradução)
+// tr('chave') → texto no idioma atual (cai no pt quando falta tradução).
+// Usado na navegação e nos rótulos curtos compartilhados (header, footer, home).
 function tr(key, code) {
   const entry = SEWE_STRINGS[key];
   if (!entry) return key;
@@ -172,19 +184,52 @@ function tr(key, code) {
   return entry[loc] || entry.pt || key;
 }
 
+// ── Copy das páginas: a própria frase em português é a chave ──────────────────
+// tx('Frase em português') → tradução, ou a própria frase quando o idioma é PT
+// (ou quando ainda não existe tradução). O dicionário mora em i18n-content.js e
+// só é baixado se o visitante escolher EN/ES — quem lê em português não paga
+// nada por isso.
+let SEWE_TX = null;
+
+function tx(pt, code) {
+  const loc = code || SEWE_LOCALE;
+  if (loc === 'pt' || !SEWE_TX) return pt;
+  const entry = SEWE_TX[pt];
+  return (entry && entry[loc]) || pt;
+}
+
+let SEWE_TX_PENDING = null;
+function loadContentDict() {
+  if (SEWE_TX) return Promise.resolve();
+  if (!SEWE_TX_PENDING) {
+    SEWE_TX_PENDING = import('./i18n-content.js')
+      .then(m => { SEWE_TX = m.SEWE_TX; })
+      .catch(() => { SEWE_TX = {}; });   // sem dicionário o site fica em PT
+  }
+  return SEWE_TX_PENDING;
+}
+
 // Assina as mudanças de idioma e devolve o código atual.
+// Guarda um contador (não o código): setLocale avisa duas vezes — na hora e de
+// novo quando o dicionário de conteúdo chega — e o React descartaria o segundo
+// aviso se o valor do estado fosse o mesmo.
 function useLocale() {
-  const [code, set] = React.useState(SEWE_LOCALE);
+  const [, bump] = React.useState(0);
   React.useEffect(() => {
-    const fn = next => set(next);
+    const fn = () => bump(n => n + 1);
     SEWE_LANG_SUBS.add(fn);
-    if (SEWE_LOCALE !== code) set(SEWE_LOCALE);
+    fn();   // o idioma pode ter mudado entre o render e o efeito
     return () => SEWE_LANG_SUBS.delete(fn);
   }, []);
-  return code;
+  return SEWE_LOCALE;
 }
 
 applyHtmlLang(SEWE_LOCALE);
+
+// Visitante que já chega em EN/ES: os pontos de montagem (app.jsx, pages.jsx,
+// audience.jsx, distribuidor.jsx) esperam esta promessa antes de renderizar, para
+// a página não aparecer em português e piscar para o outro idioma.
+const SEWE_I18N_READY = SEWE_LOCALE === 'pt' ? Promise.resolve() : loadContentDict();
 
 // ── Bandeirinhas (SVG inline: emoji de bandeira não renderiza no Windows) ─────
 function Flag({ code, size = 21 }) {
@@ -299,4 +344,4 @@ function I18nNotice() {
   );
 }
 
-Object.assign(window, { SEWE_LOCALES, tr, useLocale, getLocale, setLocale, Flag, LangSwitcher, I18nNotice });
+Object.assign(window, { SEWE_LOCALES, SEWE_I18N_READY, tr, tx, useLocale, getLocale, setLocale, Flag, LangSwitcher, I18nNotice });

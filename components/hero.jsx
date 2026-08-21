@@ -3,9 +3,9 @@
 // Hero with Qlik dashboard
 function Hero({ headlineVariant = 0 }) {
   const headlines = [
-    { a: 'Menos ruptura.', b: 'Mais positivação.', c: 'Capital de giro livre.' },
-    { a: 'Decisões prontas', b: 'para distribuidores.', c: 'A IA trabalha nos bastidores.' },
-    { a: 'R$ 5 bilhões', b: 'em faturamento monitorado.', c: '30 dias até o go-live.' },
+    { a: tx('Menos ruptura.'), b: tx('Mais positivação.'), c: tx('Capital de giro livre.') },
+    { a: tx('Decisões prontas'), b: tx('para distribuidores.'), c: tx('A IA trabalha nos bastidores.') },
+    { a: 'R$ 5 bilhões', b: tx('em faturamento monitorado.'), c: '30 dias até o go-live.' },
   ];
   const H = headlines[headlineVariant] || headlines[0];
 
@@ -38,13 +38,13 @@ function Hero({ headlineVariant = 0 }) {
         <div className="reveal in" style={{ display: 'flex', marginBottom: 24 }}>
           <div className="badge badge-outline" style={{ padding: '8px 14px', gap: 12, fontSize: 12, fontWeight: 500, color: 'var(--text)', border: '1px solid var(--line)', flexWrap: 'wrap' }}>
             <span className="dot"/>
-            <span>+500 distribuidores</span>
+            <span>{tx('+500 distribuidores')}</span>
             <span style={{ color: 'var(--line)' }}>·</span>
             <span><b style={{ color: 'var(--navy-900)' }}>R$ 5 Bi</b> monitorados</span>
             <span style={{ color: 'var(--line)' }}>·</span>
             <span>99,8% uptime</span>
             <span style={{ color: 'var(--line)' }}>·</span>
-            <span>Go-live em 30 dias</span>
+            <span>{tx('Go-live em 30 dias')}</span>
           </div>
         </div>
 
@@ -63,18 +63,12 @@ function Hero({ headlineVariant = 0 }) {
           {/* coluna direita: lead no topo e credenciais embaixo, para o bloco
               encostar na base da headline em vez de deixar o canto vazio */}
           <div className="hero-side">
-            <p className="hero-lead">
-              BI sob medida para distribuidores e atacadistas. Go-live em 30 dias.
-              IA invisível que limpa outliers, cruza dados e entrega <b style={{ color: 'var(--navy-900)' }}>decisões prontas</b>, não mais gráficos para interpretar.
-            </p>
+            <p className="hero-lead">{tx('BI e IA sob medida para distribuidores e atacadistas. Em 30 dias no ar, entregando')} <b style={{ color: 'var(--navy-900)' }}>{tx('decisão pronta')}</b>{tx(' — não mais um gráfico para interpretar.')}</p>
             <div className="hero-cred">
               <span className="hero-cred-row">
-                <img src="/assets/qlik-logo.png" alt="Qlik" style={{ height: 15, width: 'auto', display: 'block' }}/>
-                Parceiro oficial Qlik no Brasil
-              </span>
+                <img src="/assets/qlik-logo.png" alt="Qlik" style={{ height: 15, width: 'auto', display: 'block' }}/>{tx('Parceiro oficial Qlik no Brasil')}</span>
               <span className="hero-cred-row">
-                <span className="hero-cred-ic"><Icon name="trophy" size={14} stroke={1.9}/></span>
-                Leader no Gartner<sup>®</sup> Magic Quadrant<sup>™</sup> de Analytics &amp; BI por 16 anos consecutivos
+                <span className="hero-cred-ic"><Icon name="trophy" size={14} stroke={1.9}/></span>{tx('Leader no Gartner')}<sup>®</sup> Magic Quadrant<sup>™</sup> de Analytics &amp; BI por 16 anos consecutivos
               </span>
             </div>
           </div>
@@ -124,21 +118,21 @@ function HeroDashboard() {
 
   return (
     <QlikFrame
-      title="PAINEL COMERCIAL · MULTISEG DISTRIBUIÇÃO"
-      subtitle="MTD · Consolidado · Hoje"
-      tabs={['Visão 360°', 'Faturamento', 'Positivação', 'Ruptura · Curva A', 'Churn', 'Margem']}
+      title={tx('PAINEL COMERCIAL · MULTISEG DISTRIBUIÇÃO')}
+      subtitle={tx('MTD · Consolidado · Hoje')}
+      tabs={[tx('Visão 360°'), tx('Faturamento'), tx('Positivação'), tx('Ruptura · Curva A'), 'Churn', 'Margem']}
       activeTab={0}
       toolbar={<div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-        <span style={{ fontSize: 11, color: 'var(--text-3)' }}>Filial:</span>
-        <span style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', padding: '3px 8px', background: Q.turq, color: Q.navyDk, borderRadius: 3, fontWeight: 600 }}>TODAS (7)</span>
-        <span style={{ fontSize: 11, color: 'var(--text-3)', marginLeft: 8 }}>Período:</span>
-        <span style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', padding: '3px 8px', background: '#fff', border: `1px solid ${Q.line}`, color: Q.ink, borderRadius: 3 }}>ABR/2026</span>
+        <span style={{ fontSize: 11, color: 'var(--text-3)' }}>{tx('Filial:')}</span>
+        <span style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', padding: '3px 8px', background: Q.turq, color: Q.navyDk, borderRadius: 3, fontWeight: 600 }}>{tx('TODAS (7)')}</span>
+        <span style={{ fontSize: 11, color: 'var(--text-3)', marginLeft: 8 }}>{tx('Período:')}</span>
+        <span style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', padding: '3px 8px', background: '#fff', border: `1px solid ${Q.line}`, color: Q.ink, borderRadius: 3 }}>{tx('ABR/2026')}</span>
       </div>}
     >
       {/* Row 1: KPIs */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginBottom: 10 }}>
         <QlikKPI
-          label="Faturamento MTD"
+          label={tx('Faturamento MTD')}
           value="R$ 4.287.310"
           delta="+12,4%"
           trend="up"
@@ -146,7 +140,7 @@ function HeroDashboard() {
           color={Q.navy}
         />
         <QlikKPI
-          label="Positivação"
+          label={tx('Positivação')}
           value="84,2%"
           delta="+3,2pp"
           trend="up"
@@ -154,7 +148,7 @@ function HeroDashboard() {
           spark={<Sparkline data={[76, 78, 77, 80, 81, 82, 84]} color={Q.turq2}/>}
         />
         <QlikKPI
-          label="Ruptura · Curva A"
+          label={tx('Ruptura · Curva A')}
           value="2,1%"
           delta="-0,8pp"
           trend="up"
@@ -162,7 +156,7 @@ function HeroDashboard() {
           spark={<Sparkline data={[3.5, 3.2, 2.9, 2.7, 2.4, 2.3, 2.1]} color={Q.pos} fill="rgba(46,139,87,0.15)"/>}
         />
         <QlikKPI
-          label="Margem Líquida"
+          label={tx('Margem Líquida')}
           value="18,4%"
           delta="+1,1pp"
           trend="up"
@@ -174,8 +168,8 @@ function HeroDashboard() {
       {/* Row 2: combo + filters/side */}
       <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 10, marginBottom: 10 }}>
         <QlikCombo
-          title="Faturamento diário · Meta vs Realizado"
-          subtitle="Em R$ mil · MTD · Todas as filiais"
+          title={tx('Faturamento diário · Meta vs Realizado')}
+          subtitle={tx('Em R$ mil · MTD · Todas as filiais')}
           bars={[142, 156, 148, 162, 170, 158, 175, 182, 168, 190, 195, 210]}
           line={[150, 150, 155, 160, 165, 165, 170, 175, 180, 185, 190, 195]}
           labels={labels}
@@ -183,7 +177,7 @@ function HeroDashboard() {
         />
         <div style={{ display: 'grid', gridTemplateRows: 'auto auto 1fr', gap: 10 }}>
           <div style={{ background: '#fff', border: `1px solid ${Q.line}`, borderRadius: 10, padding: 14 }}>
-            <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 13, color: Q.ink, marginBottom: 10 }}>Curva ABC · Participação</div>
+            <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 13, color: Q.ink, marginBottom: 10 }}>{tx('Curva ABC · Participação')}</div>
             <div style={{ display: 'flex', gap: 4, height: 26, borderRadius: 4, overflow: 'hidden', marginBottom: 8 }}>
               <div style={{ flex: 68, background: Q.navy, position: 'relative' }}>
                 <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', color: '#fff', fontSize: 10, fontFamily: 'JetBrains Mono, monospace', fontWeight: 600 }}>A · 68%</span>
@@ -200,7 +194,7 @@ function HeroDashboard() {
             </div>
           </div>
 
-          <QlikDonut value={84} label="Positivação MTD" sublabel="Meta: 80% · +3,2pp"/>
+          <QlikDonut value={84} label={tx('Positivação MTD')} sublabel={tx('Meta: 80% · +3,2pp')}/>
         </div>
       </div>
 
@@ -210,16 +204,10 @@ function HeroDashboard() {
           <Icon name="sparkle" size={18}/>
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 13, color: Q.ink, marginBottom: 2 }}>
-            Cliente em risco de churn · Curva A
-          </div>
-          <div style={{ fontSize: 11, color: Q.muted, fontFamily: 'JetBrains Mono, monospace', letterSpacing: '0.04em' }}>
-            ÚLTIMA COMPRA: 47 DIAS · LTV R$ 142K · AÇÃO SUGERIDA: CONTATO COMERCIAL HOJE
-          </div>
+          <div style={{ fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 13, color: Q.ink, marginBottom: 2 }}>{tx('Cliente em risco de churn · Curva A')}</div>
+          <div style={{ fontSize: 11, color: Q.muted, fontFamily: 'JetBrains Mono, monospace', letterSpacing: '0.04em' }}>{tx('ÚLTIMA COMPRA: 47 DIAS · LTV R$ 142K · AÇÃO SUGERIDA: CONTATO COMERCIAL HOJE')}</div>
         </div>
-        <button style={{ padding: '8px 14px', borderRadius: 6, background: Q.navy, color: '#fff', fontSize: 12, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }}>
-          Ver no CRM
-          <Icon name="arrow" size={12}/>
+        <button style={{ padding: '8px 14px', borderRadius: 6, background: Q.navy, color: '#fff', fontSize: 12, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }}>{tx('Ver no CRM')}<Icon name="arrow" size={12}/>
         </button>
       </div>
     </QlikFrame>
@@ -240,9 +228,9 @@ function FloatingKPIs() {
           <Icon name="trending" size={18}/>
         </div>
         <div>
-          <div style={{ fontSize: 11, color: 'var(--text-3)', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>DISTRIBUIDOR · HOJE</div>
-          <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 16, color: 'var(--navy-900)' }}>+R$ 382k recuperados</div>
-          <div style={{ fontSize: 11, color: 'var(--text-2)' }}>cross-sell sugerido pela IA</div>
+          <div style={{ fontSize: 11, color: 'var(--text-3)', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>{tx('DISTRIBUIDOR · HOJE')}</div>
+          <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 16, color: 'var(--navy-900)' }}>{tx('+R$ 382k recuperados')}</div>
+          <div style={{ fontSize: 11, color: 'var(--text-2)' }}>{tx('cross-sell sugerido pela IA')}</div>
         </div>
       </div>
 
@@ -257,9 +245,9 @@ function FloatingKPIs() {
           <Icon name="alert" size={18}/>
         </div>
         <div>
-          <div style={{ fontSize: 11, color: 'var(--text-3)', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>RUPTURA DETECTADA</div>
+          <div style={{ fontSize: 11, color: 'var(--text-3)', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>{tx('RUPTURA DETECTADA')}</div>
           <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 16, color: 'var(--navy-900)' }}>17 SKUs · Curva A</div>
-          <div style={{ fontSize: 11, color: 'var(--text-2)' }}>pedido sugerido enviado ao ERP</div>
+          <div style={{ fontSize: 11, color: 'var(--text-2)' }}>{tx('pedido sugerido enviado ao ERP')}</div>
         </div>
       </div>
 

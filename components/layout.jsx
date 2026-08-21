@@ -25,6 +25,8 @@ function SiteHeader({ home = false, translated = false }) {
       { label: tr('nav.industry'),    href: '/industria' },
       { label: tr('nav.distributor'), href: '/distribuidor' },
       { label: tr('nav.platform'),    href: '/solucoes' },
+      { label: tr('nav.prospecting'), href: '/prospeccao' },
+      { label: tr('nav.commerce'),    href: '/comercio-digital' },
     ]},
     { label: tr('nav.content'), children: [
       { label: tr('nav.blog'),  href: '/blog' },
@@ -141,6 +143,67 @@ function SiteHeader({ home = false, translated = false }) {
   );
 }
 
+// ── Faixa de prova ────────────────────────────────────────────────────────────
+// Vai logo abaixo do hero em TODAS as páginas de venda. Os números são os mesmos
+// da BragBar (fonte única de prova); mudou aqui, mudou no site inteiro.
+function ProofBar() {
+  useLocale();
+  const items = [
+    { v: tx('Parceiro oficial Qlik'), d: tx('Leader no Gartner® por 16 anos') },
+    { v: 'R$ 5 Bi+',                  d: tx('em faturamento monitorado') },
+    { v: '500+',                      d: tx('distribuidores atendidos') },
+    { v: tx('30 dias'),               d: tx('até a primeira decisão em produção') },
+  ];
+  return (
+    <section className="pbar">
+      <div className="container pbar-grid">
+        {items.map((it, i) => (
+          <div key={i} className="pbar-item">
+            <span className="pbar-v">{it.v}</span>
+            <span className="pbar-d">{it.d}</span>
+          </div>
+        ))}
+      </div>
+      <style>{`
+        .pbar { background: var(--navy-900); border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .pbar-grid {
+          display: grid; grid-template-columns: repeat(4, 1fr);
+          padding: 0 var(--gutter);
+        }
+        .pbar-item {
+          display: flex; flex-direction: column; gap: 3px; padding: 16px 20px;
+          border-left: 1px solid rgba(255,255,255,0.1);
+        }
+        .pbar-item:first-child { border-left: 0; padding-left: 0; }
+        .pbar-v {
+          font-family: var(--ff-display); font-weight: 700; font-size: 15.5px;
+          color: #fff; letter-spacing: .01em; line-height: 1.2;
+        }
+        .pbar-d { font-size: 12px; color: rgba(255,255,255,0.58); line-height: 1.35; }
+        @media (max-width: 900px) {
+          .pbar-grid { grid-template-columns: 1fr 1fr; }
+          .pbar-item:nth-child(3) { border-left: 0; padding-left: 0; }
+          .pbar-item:nth-child(3), .pbar-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.1); }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+// Selo para painel de demonstração: deixa explícito que o número é ilustrativo.
+function DemoNote({ align = 'right' }) {
+  useLocale();
+  return (
+    <div style={{
+      fontFamily: 'var(--ff-mono)', fontSize: 10.5, letterSpacing: '0.1em',
+      textTransform: 'uppercase', color: 'var(--text-3)', opacity: .75,
+      textAlign: align, marginTop: 8,
+    }}>
+      {tx('dados ilustrativos')}
+    </div>
+  );
+}
+
 // Compact page header for subpages: eyebrow + title + optional lead, on a soft tinted band.
 function PageHero({ eyebrow, title, lead, children }) {
   return (
@@ -217,6 +280,8 @@ function SiteFooter({ home = false }) {
             <a style={col.link} href="/industria" onMouseEnter={onEnter} onMouseLeave={onLeave}>{tr('nav.industry')}</a>
             <a style={col.link} href="/distribuidor" onMouseEnter={onEnter} onMouseLeave={onLeave}>{tr('nav.distributor')}</a>
             <a style={col.link} href="/solucoes" onMouseEnter={onEnter} onMouseLeave={onLeave}>{tr('nav.platform')}</a>
+            <a style={col.link} href="/prospeccao" onMouseEnter={onEnter} onMouseLeave={onLeave}>{tr('nav.prospecting')}</a>
+            <a style={col.link} href="/comercio-digital" onMouseEnter={onEnter} onMouseLeave={onLeave}>{tr('nav.commerce')}</a>
           </div>
           <div>
             <div style={col.title}>{tr('foot.company')}</div>
@@ -254,4 +319,4 @@ function SiteFooter({ home = false }) {
   );
 }
 
-Object.assign(window, { SiteHeader, SiteFooter, PageHero });
+Object.assign(window, { SiteHeader, SiteFooter, PageHero, ProofBar, DemoNote });

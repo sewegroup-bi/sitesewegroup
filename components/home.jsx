@@ -17,6 +17,12 @@ function HomePositioning() {
           <p className="hp-lead">
             {tr('home.lead')}
           </p>
+          <div className="hp-cta">
+            <a href="#agendar" className="btn btn-primary btn-lg">
+              {tr('cta.primary')} <Icon name="arrow" size={16} className="chev"/>
+            </a>
+            <a href="#escolha" className="btn btn-outline btn-lg">{tr('cta.secondary')}</a>
+          </div>
           <a href="#escolha" className="hp-down" aria-label={tr('home.scroll')}>
             <Icon name="arrowDown" size={20} stroke={2}/>
           </a>
@@ -56,6 +62,7 @@ function AudienceChooser() {
           <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
             {tr('home.pick.title')}
           </h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 16.5, marginTop: 12 }}>{tr('home.pick.lead')}</p>
         </div>
 
         <div className="hc-grid">
@@ -152,6 +159,7 @@ function HomeLanding() {
           WebkitMaskImage: 'radial-gradient(ellipse 95% 88% at 55% 34%, black 62%, transparent 96%)' }}/>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <HomePositioning/>
+          <ProofBar/>
           <AudienceChooser/>
           <AgendaSection bg="transparent"/>
         </div>

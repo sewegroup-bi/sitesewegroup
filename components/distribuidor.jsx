@@ -18,11 +18,11 @@ function TweaksPanel({ state, setState, active, onClose }) {
           <Icon name="plus" size={14} style={{ transform: 'rotate(45deg)' }}/>
         </button>
       </div>
-      <div style={{ fontSize: 11, color: 'var(--text-3)', marginBottom: 8, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Operação ao vivo</div>
+      <div style={{ fontSize: 11, color: 'var(--text-3)', marginBottom: 8, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase' }}>{tx('Operação ao vivo')}</div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6 }}>
         {[
           { k: true,  l: 'Animada' },
-          { k: false, l: 'Estática' },
+          { k: false, l: tx('Estática') },
         ].map(o => (
           <button key={String(o.k)} onClick={() => setState({ ...state, ecosystemAnimated: o.k })}
             style={{
@@ -40,8 +40,8 @@ function TweaksPanel({ state, setState, active, onClose }) {
       <div style={{ fontSize: 11, color: 'var(--text-3)', marginTop: 16, marginBottom: 8, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Hero headline</div>
       <div style={{ display: 'grid', gap: 6 }}>
         {[
-          { k: 0, l: 'Menos ruptura. Mais positivação.' },
-          { k: 1, l: 'Decisões prontas para distribuidores.' },
+          { k: 0, l: tx('Menos ruptura. Mais positivação.') },
+          { k: 1, l: tx('Decisões prontas para distribuidores.') },
           { k: 2, l: 'R$ 5Bi monitorados · 30 dias go-live.' },
         ].map(o => (
           <button key={o.k} onClick={() => setState({ ...state, headlineVariant: o.k })}
@@ -61,6 +61,7 @@ function TweaksPanel({ state, setState, active, onClose }) {
 }
 
 function DistribuidorApp() {
+  useLocale();   // re-renderiza a pagina inteira quando o idioma muda
   const DEFAULTS = /*EDITMODE-BEGIN*/{
     "ecosystemAnimated": true,
     "headlineVariant": 0
@@ -96,11 +97,11 @@ function DistribuidorApp() {
 
   return (
     <>
-      <SiteHeader/>
+      <SiteHeader translated/>
       <main>
         <Hero headlineVariant={state.headlineVariant}/>
+        <ProofBar/>
         <LogosStrip/>
-        <BragBar/>
         <EcosystemSection animated={state.ecosystemAnimated}/>
         <SuitesSection/>
         <SalesSection/>
@@ -117,4 +118,4 @@ function DistribuidorApp() {
 }
 
 const __distRoot = document.getElementById('distribuidor-root');
-if (__distRoot) ReactDOM.createRoot(__distRoot).render(<DistribuidorApp/>);
+if (__distRoot) SEWE_I18N_READY.then(() => ReactDOM.createRoot(__distRoot).render(<DistribuidorApp/>));

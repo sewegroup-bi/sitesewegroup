@@ -15,21 +15,21 @@ const BU = {
 function ConnectedEcosystem() {
   const nodes = [
     {
-      k: 'integration', icon: 'link', step: '01', flow: 'Capta os dados',
+      k: 'integration', icon: 'link', step: '01', flow: tx('Capta os dados'),
       title: 'SEWE Integration', color: BU.integration.color, soft: BU.integration.soft,
-      desc: 'Conecta indústria e distribuidor. Traz sellout, estoque e curva de cada ponto da rede para dentro da operação.',
+      desc: tx('Conecta indústria e distribuidor. Traz sellout, estoque e curva de cada ponto da rede para dentro da operação.'),
       href: '#integration',
     },
     {
-      k: 'sales', icon: 'store', step: '02', flow: 'Age no cliente',
+      k: 'sales', icon: 'store', step: '02', flow: tx('Age no cliente'),
       title: 'SEWE Sales', color: BU.sales.color, soft: BU.sales.soft,
-      desc: 'Vira a força de vendas num e-commerce B2B. O cliente do distribuidor compra sozinho, com CRM e regras comerciais.',
+      desc: tx('Vira a força de vendas num e-commerce B2B. O cliente do distribuidor compra sozinho, com CRM e regras comerciais.'),
       href: '#sales',
     },
     {
-      k: 'bi', icon: 'brain', step: '03', flow: 'Fecha o ciclo com decisão',
+      k: 'bi', icon: 'brain', step: '03', flow: tx('Fecha o ciclo com decisão'),
       title: 'SEWE BI', color: BU.bi.color, soft: BU.bi.soft,
-      desc: 'A IA cruza tudo nos bastidores, suprimentos, comercial, financeiro e gestão, e entrega a próxima ação pronta.',
+      desc: tx('A IA cruza tudo nos bastidores, suprimentos, comercial, financeiro e gestão, e entrega a próxima ação pronta.'),
       href: '#suites',
     },
   ];
@@ -38,14 +38,10 @@ function ConnectedEcosystem() {
     <section id="ecossistema" className="section" style={{ background: 'linear-gradient(180deg,#fff 0%, var(--bg-tinted) 100%)', position: 'relative', overflow: 'hidden' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 820, margin: '0 auto 14px' }}>
-          <div className="eyebrow">Um ecossistema, três frentes</div>
-          <h2 style={{ marginTop: 14, marginBottom: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Conectadas em volta do <span style={{ color: 'var(--navy)' }}>distribuidor</span>.
+          <div className="eyebrow">{tx('Um ecossistema, três frentes')}</div>
+          <h2 style={{ marginTop: 14, marginBottom: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Conectadas em volta do')} <span style={{ color: 'var(--navy)' }}>distribuidor</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17 }}>
-            Os dados entram pela Integration, a Sales vende e gera mais dado na ponta, e o BI fecha o ciclo virando tudo em decisão.
-            Um ciclo só, com a SEWE cuidando da engenharia de ponta a ponta.
-          </p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17 }}>{tx('Os dados entram pela Integration, a Sales vende e gera mais dado na ponta, e o BI fecha o ciclo virando tudo em decisão. Um ciclo só, com a SEWE cuidando da engenharia de ponta a ponta.')}</p>
         </div>
 
         <div className="eco3" style={{ position: 'relative', marginTop: 44 }}>
@@ -62,8 +58,7 @@ function ConnectedEcosystem() {
                 <div className="eco3-flow" style={{ color: n.color }}>{n.flow}</div>
                 <div className="eco3-title">{n.title}</div>
                 <p className="eco3-desc">{n.desc}</p>
-                <span className="eco3-cta" style={{ color: n.color }}>
-                  Ver detalhes <Icon name="arrow" size={15} stroke={2}/>
+                <span className="eco3-cta" style={{ color: n.color }}>{tx('Ver detalhes')} <Icon name="arrow" size={15} stroke={2}/>
                 </span>
                 {i < nodes.length - 1 && (
                   <span className="eco3-arrow" aria-hidden><Icon name="arrow" size={18} stroke={2.2}/></span>
@@ -75,10 +70,10 @@ function ConnectedEcosystem() {
           <div className="eco3-base reveal">
             <SMark size={26} color="#2d436c"/>
             <div>
-              <div style={{ fontFamily: 'var(--ff-display)', fontWeight: 700, fontSize: 15, color: 'var(--navy-900)' }}>O distribuidor no centro</div>
-              <div style={{ fontSize: 13, color: 'var(--text-2)' }}>Uma operação, um CRM, uma fonte de verdade, não três ferramentas soltas.</div>
+              <div style={{ fontFamily: 'var(--ff-display)', fontWeight: 700, fontSize: 15, color: 'var(--navy-900)' }}>{tx('O distribuidor no centro')}</div>
+              <div style={{ fontSize: 13, color: 'var(--text-2)' }}>{tx('Uma operação, um CRM, uma fonte de verdade, não três ferramentas soltas.')}</div>
             </div>
-            <a href="#diagnostico" className="btn btn-primary btn-sm" style={{ marginLeft: 'auto' }}>Falar com a SEWE <span className="chev">→</span></a>
+            <a href="#diagnostico" className="btn btn-primary btn-sm" style={{ marginLeft: 'auto' }}>{tr('cta.primary')} <span className="chev">→</span></a>
           </div>
         </div>
       </div>
@@ -122,10 +117,10 @@ function ConnectedEcosystem() {
 function IntegrationSection() {
   const C = BU.integration;
   const feats = [
-    { icon: 'truck',    t: 'Sellout consolidado', d: 'Fim dos relatórios atrasados: consolide vendas e estoques de toda a rede, produto a produto, sem depender de planilha manual.' },
-    { icon: 'warehouse',t: 'Estoque na ponta',    d: 'Enxergue ruptura e excesso no canal antes que virem perda, em toda a rede.' },
-    { icon: 'line',     t: 'Estratégia ponta a ponta', d: 'Decisões baseadas em fatos, não estimativas: direcione o mix, ajuste preço e expanda a cobertura sabendo o que o mercado absorve.' },
-    { icon: 'link',     t: 'Conexão com qualquer ERP', d: 'Zero esforço para a sua TI: a SEWE cuida da integração de forma agnóstica. Sua equipe só recebe o dado pronto e limpo.' },
+    { icon: 'truck',    t: tx('Sellout consolidado'), d: tx('Fim dos relatórios atrasados: consolide vendas e estoques de toda a rede, produto a produto, sem depender de planilha manual.') },
+    { icon: 'warehouse',t: tx('Estoque na ponta'),    d: tx('Enxergue ruptura e excesso no canal antes que virem perda, em toda a rede.') },
+    { icon: 'line',     t: tx('Estratégia ponta a ponta'), d: tx('Decisões baseadas em fatos, não estimativas: direcione o mix, ajuste preço e expanda a cobertura sabendo o que o mercado absorve.') },
+    { icon: 'link',     t: tx('Conexão com qualquer ERP'), d: tx('Zero esforço para a sua TI: a SEWE cuida da integração de forma agnóstica. Sua equipe só recebe o dado pronto e limpo.') },
   ];
   return (
     <section id="integration" className="section" style={{ background: '#fff', position: 'relative', overflow: 'hidden' }}>
@@ -133,15 +128,10 @@ function IntegrationSection() {
         <div className="bu-head reveal">
           <div>
             <div className="bu-eyebrow" style={{ color: C.ink, background: C.soft }}>
-              <SMark size={16} color={C.color}/> SEWE INTEGRATION
-            </div>
-            <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
-              A ponte de dados entre <span style={{ color: C.color }}>indústria e distribuidor</span>.
+              <SMark size={16} color={C.color}/> {tx('SEWE INTEGRATION')}</div>
+            <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>{tx('A ponte de dados entre')} <span style={{ color: C.color }}>{tx('indústria e distribuidor')}</span>.
             </h2>
-            <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 560 }}>
-              A SEWE Integration conecta o ERP dos seus distribuidores à indústria em tempo real, gerando uma via de
-              mão dupla: inteligência estratégica para o seu negócio e eficiência operacional para o seu canal.
-            </p>
+            <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 560 }}>{tx('A SEWE Integration conecta o ERP dos seus distribuidores à indústria em tempo real, gerando uma via de mão dupla: inteligência estratégica para o seu negócio e eficiência operacional para o seu canal.')}</p>
           </div>
         </div>
 
@@ -162,19 +152,15 @@ function IntegrationSection() {
 
           {/* Industry routing door */}
           <aside className="bu-aside reveal" style={{ background: 'linear-gradient(160deg,#0c2f17,#06250f)', '--c': C.color }}>
-            <div className="bu-aside-tag" style={{ color: '#aef0c2', background: 'rgba(0,163,53,0.18)' }}>PARA INDÚSTRIAS</div>
-            <h3 style={{ color: '#fff', fontSize: 24, marginTop: 14, lineHeight: 1.25 }}>Assuma o controle estratégico da sua rede de distribuição.</h3>
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 15, marginTop: 12 }}>
-              Conecte seus distribuidores e acompanhe o sellout real, a cobertura e o giro de cada produto,
-              da fábrica ao ponto de venda.
-            </p>
+            <div className="bu-aside-tag" style={{ color: '#aef0c2', background: 'rgba(0,163,53,0.18)' }}>{tx('PARA INDÚSTRIAS')}</div>
+            <h3 style={{ color: '#fff', fontSize: 24, marginTop: 14, lineHeight: 1.25 }}>{tx('Assuma o controle estratégico da sua rede de distribuição.')}</h3>
+            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 15, marginTop: 12 }}>{tx('Conecte seus distribuidores e acompanhe o sellout real, a cobertura e o giro de cada produto, da fábrica ao ponto de venda.')}</p>
             <ul className="bu-aside-list">
-              {['Sellout por distribuidor e por SKU', 'Cobertura e positivação da rede', 'Ruptura no canal em tempo real'].map((x, i) => (
+              {[tx('Sellout por distribuidor e por SKU'), tx('Cobertura e positivação da rede'), tx('Ruptura no canal em tempo real')].map((x, i) => (
                 <li key={i}><Icon name="check" size={16} stroke={2.4} style={{ color: C.color }}/> {x}</li>
               ))}
             </ul>
-            <a href="#diagnostico" className="bu-aside-btn" style={{ background: C.color }}>
-              Falar sobre a rede <Icon name="arrow" size={16} stroke={2.2}/>
+            <a href="#diagnostico" className="bu-aside-btn" style={{ background: C.color }}>{tr('cta.primary')} <Icon name="arrow" size={16} stroke={2.2}/>
             </a>
           </aside>
         </div>
@@ -198,34 +184,34 @@ function SalesPhone() {
       <div className="sxp-phone">
         <div className="sxp-notch"></div>
         <div className="sxp-topbar">
-          <span className="sxp-logo">SEWE SALES</span>
+          <span className="sxp-logo">{tx('SEWE SALES')}</span>
           <span className="sxp-live">● online</span>
         </div>
 
-        <div className="sxp-mode"><Icon name="store" size={11} stroke={2}/> Visão da revenda</div>
+        <div className="sxp-mode"><Icon name="store" size={11} stroke={2}/> {tx('Visão da revenda')}</div>
         <div className="sxp-product">
           <div className="sxp-thumb" style={{ backgroundImage: 'url(https://picsum.photos/seed/racaosewe/80/80)' }}></div>
           <div className="sxp-pinfo">
-            <div className="sxp-pname">Ração Premier 15kg</div>
+            <div className="sxp-pname">{tx('Ração Premier 15kg')}</div>
             <div className="sxp-pprice">R$ 45,00 <span>un.</span></div>
           </div>
           <div className="sxp-stepper"><span>–</span><b>2</b><span>+</span></div>
         </div>
         <div className="sxp-credit">
-          <div className="sxp-credit-l"><span>Limite disponível</span><b>R$ 12,5K</b></div>
+          <div className="sxp-credit-l"><span>{tx('Limite disponível')}</span><b>R$ 12,5K</b></div>
           <div className="sxp-credit-bar"><i style={{ width: '62%' }}></i></div>
         </div>
 
-        <div className="sxp-divider"><span><Icon name="link" size={11} stroke={2}/> mesmo app</span></div>
+        <div className="sxp-divider"><span><Icon name="link" size={11} stroke={2}/> {tx('mesmo app')}</span></div>
 
-        <div className="sxp-mode"><Icon name="users" size={11} stroke={2}/> Visão do vendedor</div>
+        <div className="sxp-mode"><Icon name="users" size={11} stroke={2}/> {tx('Visão do vendedor')}</div>
         <div className="sxp-meta">
-          <div className="sxp-meta-h"><span>Meta do mês</span><b>82%</b></div>
+          <div className="sxp-meta-h"><span>{tx('Meta do mês')}</span><b>82%</b></div>
           <div className="sxp-meta-bar"><i style={{ width: '82%' }}></i></div>
         </div>
         <div className="sxp-insight">
-          <span className="sxp-insight-tag">Próxima ação</span>
-          <div className="sxp-insight-t">Reativar Pet Center Sul · sem pedido há 34 dias</div>
+          <span className="sxp-insight-tag">{tx('Próxima ação')}</span>
+          <div className="sxp-insight-t">{tx('Reativar Pet Center Sul · sem pedido há 34 dias')}</div>
         </div>
 
         <div className="sxp-tabbar">
@@ -285,11 +271,11 @@ function SalesTabCard({ kind }) {
   const body = {
     ia: (
       <React.Fragment>
-        <div className="sxv-h"><Icon name="sparkle" size={13} stroke={2}/> SEWE IA · BASTIDORES</div>
+        <div className="sxv-h"><Icon name="sparkle" size={13} stroke={2}/> {tx('IA INVISÍVEL · BASTIDORES')}</div>
         {[
-          ['Radar', 'Pet Center Sul esfriando · sem pedido há 34 dias', 'follow-up quente'],
-          ['Oferecer', 'Linha Premium p/ Agro Boa Vista', 'alta afinidade'],
-          ['Meta', 'Carteira Leste em 71% do alvo', 'reforçar rota'],
+          ['Radar', tx('Pet Center Sul esfriando · sem pedido há 34 dias'), tx('follow-up quente')],
+          ['Oferecer', tx('Linha Premium p/ Agro Boa Vista'), tx('alta afinidade')],
+          ['Meta', tx('Carteira Leste em 71% do alvo'), tx('reforçar rota')],
         ].map((r, i) => (
           <div key={i} className="sxv-row">
             <span className="sxv-tag">{r[0]}</span>
@@ -301,70 +287,70 @@ function SalesTabCard({ kind }) {
     ),
     direta: (
       <React.Fragment>
-        <div className="sxv-h"><Icon name="dollar" size={13} stroke={2}/> VENDA DIRETA · PASSO A PASSO</div>
+        <div className="sxv-h"><Icon name="dollar" size={13} stroke={2}/> {tx('VENDA DIRETA · PASSO A PASSO')}</div>
         {[
-          ['Produtos e carrinho', true],
-          ['Serviços e entrega', true],
+          [tx('Produtos e carrinho'), true],
+          [tx('Serviços e entrega'), true],
           ['Pagamento', false],
-          ['Confirmação', false],
+          [tx('Confirmação'), false],
         ].map((s, i) => (
           <div key={i} className={'sxv-step' + (s[1] ? ' done' : '')}>
             <span className="sxv-step-dot">{s[1] ? '✓' : i + 1}</span>{s[0]}
           </div>
         ))}
-        <div className="sxv-foot">desconto dentro do limite da filial ✓</div>
+        <div className="sxv-foot">{tx('desconto dentro do limite da filial ✓')}</div>
       </React.Fragment>
     ),
     carteiras: (
       <React.Fragment>
-        <div className="sxv-h"><Icon name="users" size={13} stroke={2}/> CARTEIRA · KANBAN DE ATIVIDADES</div>
+        <div className="sxv-h"><Icon name="users" size={13} stroke={2}/> {tx('CARTEIRA · KANBAN DE ATIVIDADES')}</div>
         {[
-          ['Visita Agro Boa Vista', true],
-          ['Proposta Pet Center Sul', true],
-          ['Follow-up Mercado União', false],
+          [tx('Visita Agro Boa Vista'), true],
+          [tx('Proposta Pet Center Sul'), true],
+          [tx('Follow-up Mercado União'), false],
         ].map((s, i) => (
           <div key={i} className={'sxv-step' + (s[1] ? ' done' : '')}>
             <span className="sxv-step-dot">{s[1] ? '✓' : i + 1}</span>{s[0]}
           </div>
         ))}
-        <div className="sxv-meter"><span>Meta do mês · gamificação</span><b>82%</b></div>
+        <div className="sxv-meter"><span>{tx('Meta do mês · gamificação')}</span><b>82%</b></div>
         <div className="sxv-bar"><i style={{ width: '82%' }}></i></div>
       </React.Fragment>
     ),
     aprova: (
       <React.Fragment>
-        <div className="sxv-h"><Icon name="shield" size={13} stroke={2}/> FILA DE APROVAÇÕES</div>
+        <div className="sxv-h"><Icon name="shield" size={13} stroke={2}/> {tx('FILA DE APROVAÇÕES')}</div>
         <div className="sxv-row">
           <span className="sxv-tag">14% off</span>
-          <span className="sxv-txt">Pedido #48211 · acima do limite do canal</span>
-          <em className="sxv-note">aguarda gestor</em>
+          <span className="sxv-txt">{tx('Pedido #48211 · acima do limite do canal')}</span>
+          <em className="sxv-note">{tx('aguarda gestor')}</em>
         </div>
         <div className="sxv-row">
           <span className="sxv-tag">Aprovado</span>
-          <span className="sxv-txt">Pedido #48198 · 9% off, dentro da regra</span>
-          <em className="sxv-note">automático</em>
+          <span className="sxv-txt">{tx('Pedido #48198 · 9% off, dentro da regra')}</span>
+          <em className="sxv-note">{tx('automático')}</em>
         </div>
-        <div className="sxv-foot">histórico completo: quem aprovou o quê</div>
+        <div className="sxv-foot">{tx('histórico completo: quem aprovou o quê')}</div>
       </React.Fragment>
     ),
     whats: (
       <React.Fragment>
-        <div className="sxv-h"><Icon name="chat" size={13} stroke={2}/> WHATSAPP OFICIAL · META ✓</div>
-        <div className="sxv-bub">Pedido <b>#48210</b> confirmado ✅ Previsão de entrega: quinta-feira.</div>
-        <div className="sxv-bub">Sua nota fiscal chegou 📄</div>
-        <div className="sxv-bub me">Perfeito, obrigado!</div>
-        <div className="sxv-foot">conversa registrada no CRM</div>
+        <div className="sxv-h"><Icon name="chat" size={13} stroke={2}/> {tx('WHATSAPP OFICIAL · META ✓')}</div>
+        <div className="sxv-bub">Pedido <b>#48210</b> {tx('confirmado ✅ Previsão de entrega: quinta-feira.')}</div>
+        <div className="sxv-bub">{tx('Sua nota fiscal chegou 📄')}</div>
+        <div className="sxv-bub me">{tx('Perfeito, obrigado!')}</div>
+        <div className="sxv-foot">{tx('conversa registrada no CRM')}</div>
       </React.Fragment>
     ),
     bi: (
       <React.Fragment>
-        <div className="sxv-h dark"><Icon name="chart" size={13} stroke={2}/> RELATÓRIOS · TEMPO REAL</div>
+        <div className="sxv-h dark"><Icon name="chart" size={13} stroke={2}/> {tx('RELATÓRIOS · TEMPO REAL')}</div>
         <div className="sxv-kpis">
-          {[['R$ 382k', 'vendas hoje', '▲'], ['R$ 1.8k', 'ticket médio', '▲'], ['12', 'orçamentos a vencer', '!']].map((k, i) => (
+          {[['R$ 382k', tx('vendas hoje'), '▲'], ['R$ 1.8k', tx('ticket médio'), '▲'], ['12', tx('orçamentos a vencer'), '!']].map((k, i) => (
             <div key={i} className="sxv-kpi"><b>{k[0]} <i>{k[2]}</i></b><span>{k[1]}</span></div>
           ))}
         </div>
-        <div className="sxv-foot">o pedido da rua já está no DRE</div>
+        <div className="sxv-foot">{tx('o pedido da rua já está no DRE')}</div>
       </React.Fragment>
     ),
   }[kind];
@@ -414,12 +400,12 @@ function SalesLaptop() {
         </div>
         <div className="sxl-body">
           <div className="sxl-head">
-            <span className="sxl-logo">SEWE SALES · PORTAL</span>
-            <span className="sxl-client">Pet Center Sul</span>
+            <span className="sxl-logo">{tx('SEWE SALES · PORTAL')}</span>
+            <span className="sxl-client">{tx('Pet Center Sul')}</span>
           </div>
           {[
-            ['racaosewe', 'Ração Premier 15kg', 'R$ 45,00', '2'],
-            ['suplemsewe', 'Suplemento Linha A', 'R$ 32,90', '1'],
+            ['racaosewe', tx('Ração Premier 15kg'), 'R$ 45,00', '2'],
+            ['suplemsewe', tx('Suplemento Linha A'), 'R$ 32,90', '1'],
           ].map((p, i) => (
             <div key={i} className="sxl-prod">
               <div className="sxl-thumb" style={{ backgroundImage: 'url(https://picsum.photos/seed/' + p[0] + '/64/64)' }}></div>
@@ -431,12 +417,12 @@ function SalesLaptop() {
             </div>
           ))}
           <div className="sxl-credit">
-            <div className="sxl-credit-l"><span>Limite disponível</span><b>R$ 12,5K</b></div>
+            <div className="sxl-credit-l"><span>{tx('Limite disponível')}</span><b>R$ 12,5K</b></div>
             <div className="sxl-credit-bar"><i style={{ width: '62%' }}></i></div>
           </div>
           <div className="sxl-foot">
-            <span className="sxl-total">Total <b>R$ 122,90</b></span>
-            <span className="sxl-btn">Fechar pedido</span>
+            <span className="sxl-total">{tx('Total')} <b>R$ 122,90</b></span>
+            <span className="sxl-btn">{tx('Fechar pedido')}</span>
           </div>
         </div>
       </div>
@@ -487,86 +473,86 @@ function SalesSection({ audience = 'distribuidor' }) {
   const C = BU.sales;
   const isInd = audience === 'industria';
   const tabs = [
-    { key: 'ia', label: 'Sewe IA', icon: 'sparkle',
-      h: 'A inteligência que trabalha nos bastidores.',
-      d: 'A IA cruza histórico, mix e frequência de compra e entrega a próxima ação pronta, direto no fluxo de quem vende.',
+    { key: 'ia', label: tx('IA invisível'), icon: 'sparkle',
+      h: tx('A inteligência que trabalha nos bastidores.'),
+      d: tx('A IA cruza histórico, mix e frequência de compra e entrega a próxima ação pronta, direto no fluxo de quem vende.'),
       feats: [
-        { icon: 'sparkle', t: 'Radar de clientes esfriando', d: 'Quem parou de comprar aparece com follow-up quente sugerido e o momento certo de agir.' },
-        { icon: 'boxes', t: 'Mix e cross-sell por cliente', d: 'Sugestão do produto certo com base no comportamento de clientes parecidos.' },
-        { icon: 'alert', t: 'Alertas no celular', d: 'O vendedor é avisado na rua: oportunidade, risco de churn e meta em risco.' },
+        { icon: 'sparkle', t: tx('Radar de clientes esfriando'), d: tx('Quem parou de comprar aparece com follow-up quente sugerido e o momento certo de agir.') },
+        { icon: 'boxes', t: tx('Mix e cross-sell por cliente'), d: tx('Sugestão do produto certo com base no comportamento de clientes parecidos.') },
+        { icon: 'alert', t: tx('Alertas no celular'), d: tx('O vendedor é avisado na rua: oportunidade, risco de churn e meta em risco.') },
       ] },
-    { key: 'catalogos', label: 'Catálogos & Preços', icon: 'boxes',
-      h: 'O preço certo para cada cliente, sempre.',
-      d: 'O preço combinado não muda no meio da negociação: catálogo por cliente, markup por filial e proteção pela vigência do orçamento.',
+    { key: 'catalogos', label: tx('Catálogos & Preços'), icon: 'boxes',
+      h: tx('O preço certo para cada cliente, sempre.'),
+      d: tx('O preço combinado não muda no meio da negociação: catálogo por cliente, markup por filial e proteção pela vigência do orçamento.'),
       feats: [
-        { icon: 'boxes', t: 'Catálogo por cliente', d: 'Cada cliente vê o próprio catálogo e as próprias promoções, com precedência sobre o padrão da empresa.' },
-        { icon: 'dollar', t: 'Markup por filial e canal', d: 'Mudou o custo, mudou o preço na hora, em todas as pontas de uma vez.' },
-        { icon: 'lock', t: 'Preço protegido por vigência', d: 'Mudança de tabela não surpreende o cliente no meio do orçamento.' },
+        { icon: 'boxes', t: tx('Catálogo por cliente'), d: tx('Cada cliente vê o próprio catálogo e as próprias promoções, com precedência sobre o padrão da empresa.') },
+        { icon: 'dollar', t: tx('Markup por filial e canal'), d: tx('Mudou o custo, mudou o preço na hora, em todas as pontas de uma vez.') },
+        { icon: 'lock', t: tx('Preço protegido por vigência'), d: tx('Mudança de tabela não surpreende o cliente no meio do orçamento.') },
       ] },
-    { key: 'b2b', label: 'Pedidos B2B', icon: 'store',
-      h: 'Sua rede compra sozinha, você só acompanha.',
-      d: isInd ? 'Seus distribuidores e varejos compram direto no seu portal, no catálogo e preço de cada um. O pedido nasce digitado.' : 'O pedido nasce digitado: ninguém digita o mesmo pedido duas vezes, e nada chega por telefone sem preço nem estoque.',
+    { key: 'b2b', label: tx('Pedidos B2B'), icon: 'store',
+      h: tx('Sua rede compra sozinha, você só acompanha.'),
+      d: isInd ? 'Seus distribuidores e varejos compram direto no seu portal, no catálogo e preço de cada um. O pedido nasce digitado.' : tx('O pedido nasce digitado: ninguém digita o mesmo pedido duas vezes, e nada chega por telefone sem preço nem estoque.'),
       feats: [
-        { icon: 'store', t: 'Portal de compra da rede', d: 'Catálogo, promoções e limite de crédito por revenda, com compra 24/7.' },
-        { icon: 'check', t: 'Fluxo completo', d: 'Carrinho, entrega, pagamento e confirmação num só caminho, sem redigitação.' },
-        { icon: 'link', t: 'Histórico por filial', d: 'Numeração própria por filial e o rastro completo de cada pedido.' },
+        { icon: 'store', t: tx('Portal de compra da rede'), d: tx('Catálogo, promoções e limite de crédito por revenda, com compra 24/7.') },
+        { icon: 'check', t: tx('Fluxo completo'), d: tx('Carrinho, entrega, pagamento e confirmação num só caminho, sem redigitação.') },
+        { icon: 'link', t: tx('Histórico por filial'), d: tx('Numeração própria por filial e o rastro completo de cada pedido.') },
       ] },
-    { key: 'direta', label: 'Venda Direta', icon: 'dollar',
-      h: 'Do orçamento ao pedido aprovado, em seis passos.',
-      d: 'A venda ao cliente final dentro do sistema, com margem controlada: produtos, serviços, entrega e pagamento num passo a passo guiado.',
+    { key: 'direta', label: tx('Venda Direta'), icon: 'dollar',
+      h: tx('Do orçamento ao pedido aprovado, em seis passos.'),
+      d: tx('A venda ao cliente final dentro do sistema, com margem controlada: produtos, serviços, entrega e pagamento num passo a passo guiado.'),
       feats: [
-        { icon: 'check', t: 'Passo a passo guiado', d: 'Produtos, carrinho, serviços, entrega, pagamento e confirmação, sem etapa esquecida.' },
-        { icon: 'shield', t: 'Gestão total do desconto', d: 'Alçadas de desconto por perfil e teto máximo gerenciável, para que nada fuja do controle.' },
-        { icon: 'clock', t: 'Status claros', d: 'Rascunho, aguardando confirmação, aprovado ou perdido: todo mundo sabe onde a venda está.' },
+        { icon: 'check', t: tx('Passo a passo guiado'), d: tx('Produtos, carrinho, serviços, entrega, pagamento e confirmação, sem etapa esquecida.') },
+        { icon: 'shield', t: tx('Gestão total do desconto'), d: tx('Alçadas de desconto por perfil e teto máximo gerenciável, para que nada fuja do controle.') },
+        { icon: 'clock', t: tx('Status claros'), d: tx('Rascunho, aguardando confirmação, aprovado ou perdido: todo mundo sabe onde a venda está.') },
       ] },
-    { key: 'carteiras', label: 'Carteiras & Atividades', icon: 'users',
-      h: 'Cada vendedor com a sua carteira, e motivo para bater meta.',
-      d: 'Carteiras por filial com gamificação de metas e kanban de atividades: a gestão vê o funil inteiro sem pedir relatório a ninguém.',
+    { key: 'carteiras', label: tx('Carteiras & Atividades'), icon: 'users',
+      h: tx('Cada vendedor com a sua carteira, e motivo para bater meta.'),
+      d: tx('Carteiras por filial com gamificação de metas e kanban de atividades: a gestão vê o funil inteiro sem pedir relatório a ninguém.'),
       feats: [
-        { icon: 'users', t: 'Carteira por vendedor', d: 'Cada um enxerga só a própria carteira, com clientes estratégicos marcados.' },
-        { icon: 'trophy', t: 'Gamificação de metas', d: 'Metas, radar de churn e follow-up quente: motivo diário para vender mais.' },
-        { icon: 'calendar', t: 'Kanban com auditoria', d: 'Visitas, tarefas e follow-ups organizados e mensuráveis, com histórico completo.' },
+        { icon: 'users', t: tx('Carteira por vendedor'), d: tx('Cada um enxerga só a própria carteira, com clientes estratégicos marcados.') },
+        { icon: 'trophy', t: tx('Gamificação de metas'), d: tx('Metas, radar de churn e follow-up quente: motivo diário para vender mais.') },
+        { icon: 'calendar', t: tx('Kanban com auditoria'), d: tx('Visitas, tarefas e follow-ups organizados e mensuráveis, com histórico completo.') },
       ] },
-    { key: 'aprova', label: 'Aprovações', icon: 'shield',
-      h: 'A política comercial da empresa, aplicada pelo sistema.',
-      d: 'Desconto combinado no corredor e margem descoberta no fim do mês acabam aqui: a regra da diretoria vale em 100% dos pedidos.',
+    { key: 'aprova', label: tx('Aprovações'), icon: 'shield',
+      h: tx('A política comercial da empresa, aplicada pelo sistema.'),
+      d: tx('Desconto combinado no corredor e margem descoberta no fim do mês acabam aqui: a regra da diretoria vale em 100% dos pedidos.'),
       feats: [
-        { icon: 'shield', t: 'Regras por gatilho', d: 'Desconto acima do limite do canal dispara aprovação automaticamente.' },
-        { icon: 'check', t: 'Fila com justificativa', d: 'Cada aprovação com contexto, justificativa e histórico de quem decidiu o quê.' },
-        { icon: 'users', t: 'Roteamento por papel', d: 'O que é do gestor não passa por cima dele, e o vendedor não trava esperando.' },
+        { icon: 'shield', t: tx('Regras por gatilho'), d: tx('Desconto acima do limite do canal dispara aprovação automaticamente.') },
+        { icon: 'check', t: tx('Fila com justificativa'), d: tx('Cada aprovação com contexto, justificativa e histórico de quem decidiu o quê.') },
+        { icon: 'users', t: tx('Roteamento por papel'), d: tx('O que é do gestor não passa por cima dele, e o vendedor não trava esperando.') },
       ] },
-    { key: 'whats', label: 'WhatsApp Oficial', icon: 'chat',
-      h: 'A conversa onde o seu cliente já está.',
-      d: 'Integração oficial com a API da Meta: confirmações, campanhas e atendimento pelo WhatsApp, com tudo registrado no CRM.',
+    { key: 'whats', label: tx('WhatsApp Oficial'), icon: 'chat',
+      h: tx('A conversa onde o seu cliente já está.'),
+      d: tx('Integração oficial com a API da Meta: confirmações, campanhas e atendimento pelo WhatsApp, com tudo registrado no CRM.'),
       feats: [
-        { icon: 'chat', t: 'API oficial da Meta', d: 'Número verificado e conversas dentro das políticas do WhatsApp, sem risco de bloqueio.' },
-        { icon: 'zap', t: 'Pedido e status automáticos', d: 'Confirmação de pedido, faturamento e entrega chegam ao cliente sem ninguém digitar.' },
-        { icon: 'link', t: 'Registrado no CRM', d: 'Cada conversa vira histórico do cliente: contexto completo para o vendedor e para a gestão.' },
+        { icon: 'chat', t: tx('API oficial da Meta'), d: tx('Número verificado e conversas dentro das políticas do WhatsApp, sem risco de bloqueio.') },
+        { icon: 'zap', t: tx('Pedido e status automáticos'), d: tx('Confirmação de pedido, faturamento e entrega chegam ao cliente sem ninguém digitar.') },
+        { icon: 'link', t: tx('Registrado no CRM'), d: tx('Cada conversa vira histórico do cliente: contexto completo para o vendedor e para a gestão.') },
       ] },
-    { key: 'bi', label: 'Relatórios & BI', icon: 'chart',
-      h: 'Decisão com número, não com impressão.',
-      d: 'KPIs, curva ABC e análise de carteira, e o diferencial Sewe: tudo nativo do BI, com a venda da rua caindo no DRE na hora.',
+    { key: 'bi', label: tx('Relatórios & BI'), icon: 'chart',
+      h: tx('Decisão com número, não com impressão.'),
+      d: tx('KPIs, curva ABC e análise de carteira, e o diferencial Sewe: tudo nativo do BI, com a venda da rua caindo no DRE na hora.'),
       feats: [
-        { icon: 'chart', t: 'KPIs comerciais prontos', d: 'Vendas, clientes ativos, ticket médio e orçamentos a vencer, por vendedor, filial e período.' },
-        { icon: 'boxes', t: 'Curva ABC e carteira', d: 'O que vende, para quem e com que margem, sem montar planilha.' },
-        { icon: 'brain', t: 'Nativo do BI Sewe', d: 'O pedido fechado na rua atualiza margem, DRE e previsão de caixa em tempo real.' },
+        { icon: 'chart', t: tx('KPIs comerciais prontos'), d: tx('Vendas, clientes ativos, ticket médio e orçamentos a vencer, por vendedor, filial e período.') },
+        { icon: 'boxes', t: tx('Curva ABC e carteira'), d: tx('O que vende, para quem e com que margem, sem montar planilha.') },
+        { icon: 'brain', t: tx('Nativo do BI Sewe'), d: tx('O pedido fechado na rua atualiza margem, DRE e previsão de caixa em tempo real.') },
       ] },
   ];
   const facts = [
-    { icon: 'users', t: 'Implantação conduzida de ponta a ponta', d: 'Catálogos, usuários, regras e integração com ERP configurados com o nosso time.' },
-    { icon: 'link', t: 'Venda digital em um único fluxo', d: 'Portal B2B, força de vendas, propostas, pedidos e aprovações na mesma operação.' },
-    { icon: 'shield', t: 'Política comercial aplicada na origem', d: 'Preços, descontos e limites validados antes de o pedido ser confirmado.' },
-    { icon: 'lock', t: 'Cada um vê só o que é seu', d: 'Segregação de dados por operação, aplicada no servidor, com rastreabilidade.' },
-    { icon: 'cpu', t: 'Integrado ao ERP que você já usa', d: 'Digitalize a venda sem trocar o sistema que sustenta a operação.' },
+    { icon: 'users', t: tx('Implantação conduzida de ponta a ponta'), d: tx('Catálogos, usuários, regras e integração com ERP configurados com o nosso time.') },
+    { icon: 'link', t: tx('Venda digital em um único fluxo'), d: tx('Portal B2B, força de vendas, propostas, pedidos e aprovações na mesma operação.') },
+    { icon: 'shield', t: tx('Política comercial aplicada na origem'), d: tx('Preços, descontos e limites validados antes de o pedido ser confirmado.') },
+    { icon: 'lock', t: tx('Cada um vê só o que é seu'), d: tx('Segregação de dados por operação, aplicada no servidor, com rastreabilidade.') },
+    { icon: 'cpu', t: tx('Integrado ao ERP que você já usa'), d: tx('Digitalize a venda sem trocar o sistema que sustenta a operação.') },
   ];
   const [tab, setTab] = React.useState(0);
   const t = tabs[tab];
   const chain = isInd ? [
-    { icon: 'factory', k: 'Indústria + representantes', d: 'define regras e impulsiona' },
-    { icon: 'store',   k: 'Distribuidores e varejos', d: 'compram direto no portal' },
+    { icon: 'factory', k: tx('Indústria + representantes'), d: tx('define regras e impulsiona') },
+    { icon: 'store',   k: tx('Distribuidores e varejos'), d: tx('compram direto no portal') },
   ] : [
-    { icon: 'warehouse', k: 'Distribuidor + vendedor', d: 'gerencia e impulsiona' },
-    { icon: 'store',     k: 'Revenda + cliente final', d: 'compra e recompra' },
+    { icon: 'warehouse', k: tx('Distribuidor + vendedor'), d: tx('gerencia e impulsiona') },
+    { icon: 'store',     k: tx('Revenda + cliente final'), d: tx('compra e recompra') },
   ];
   return (
     <section id="sales" className="section" style={{ background: 'var(--bg-soft)', position: 'relative', overflow: 'hidden' }}>
@@ -574,17 +560,16 @@ function SalesSection({ audience = 'distribuidor' }) {
         <div className="bu-head reveal">
           <div>
             <div className="bu-eyebrow" style={{ color: C.ink, background: C.soft }}>
-              <SMark size={16} color={C.color}/> ECOSSISTEMA COMERCIAL · SEWE SALES
-            </div>
+              <SMark size={16} color={C.color}/> {tx('ECOSSISTEMA COMERCIAL · SEWE SALES')}</div>
             <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>
               {isInd
-                ? <React.Fragment>Sua indústria vendendo para toda a rede: sem redigitação, sem tabela velha, sem <span style={{ color: C.color }}>desconto fora da política</span>.</React.Fragment>
-                : <React.Fragment>Toda a sua operação comercial, da tabela de preço ao pedido aprovado, em <span style={{ color: C.color }}>uma única plataforma</span>.</React.Fragment>}
+                ? <React.Fragment>{tx('Sua indústria vendendo para toda a rede: sem redigitação, sem tabela velha, sem')} <span style={{ color: C.color }}>{tx('desconto fora da política')}</span>.</React.Fragment>
+                : <React.Fragment>{tx('Toda a sua operação comercial, da tabela de preço ao pedido aprovado, em')} <span style={{ color: C.color }}>{tx('uma única plataforma')}</span>.</React.Fragment>}
             </h2>
             <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 700 }}>
               {isInd
-                ? 'Distribuidores e varejos compram direto no seu portal, com o catálogo e o preço de cada um. Seus representantes vendem em campo com carteira, metas e follow-up. Você acompanha tudo em tempo real, com a política comercial garantida em cada venda.'
-                : 'Catálogo e preço por cliente, pedidos B2B, venda direta, carteiras, aprovações, WhatsApp oficial e relatórios, com a política comercial da sua empresa garantida em cada venda. E, por ser Sewe, tudo nativo do BI.'}
+                ? tx('Distribuidores e varejos compram direto no seu portal, com o catálogo e o preço de cada um. Seus representantes vendem em campo com carteira, metas e follow-up. Você acompanha tudo em tempo real, com a política comercial garantida em cada venda.')
+                : tx('Catálogo e preço por cliente, pedidos B2B, venda direta, carteiras, aprovações, WhatsApp oficial e relatórios, com a política comercial da sua empresa garantida em cada venda. E, por ser Sewe, tudo nativo do BI.')}
             </p>
           </div>
         </div>
@@ -601,7 +586,7 @@ function SalesSection({ audience = 'distribuidor' }) {
               {i < chain.length - 1 && <span className="sx-node-link" aria-hidden><Icon name="link" size={16} stroke={2}/></span>}
             </React.Fragment>
           ))}
-          <div className="sx-chain-cap">Sewe Sales conecta os dois</div>
+          <div className="sx-chain-cap">{tx('Sewe Sales conecta os dois')}</div>
         </div>
 
         {/* ecosystem tabs */}
@@ -644,9 +629,9 @@ function SalesSection({ audience = 'distribuidor' }) {
 
         {/* CTAs padronizados */}
         <div className="sx-cta reveal">
-          <a href="/#agendar" className="btn btn-primary btn-lg">Peça uma demonstração</a>
-          <a href="https://wa.me/5548984704389?text=Quero%20falar%20com%20um%20especialista%20sobre%20o%20SEWE%20SALES" className="btn btn-outline btn-lg">Fale com um especialista</a>
-          <div className="sx-cta-micro">Demonstração guiada, sem compromisso e sem cartão de crédito.</div>
+          <a href="/#agendar" className="btn btn-primary btn-lg">{tr('cta.primary')}</a>
+          <a href="https://wa.me/5548984704389?text=Quero%20falar%20com%20um%20especialista%20sobre%20o%20SEWE%20SALES" className="btn btn-outline btn-lg">{tr('cta.secondary')}</a>
+          <div className="sx-cta-micro">{tx('Demonstração guiada, sem compromisso e sem cartão de crédito.')}</div>
         </div>
       </div>
       <BUStyles/>

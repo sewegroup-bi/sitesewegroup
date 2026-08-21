@@ -36,7 +36,7 @@ const SEWE_MAP_PATHS = [
 
 function AmericasMap() {
   return (
-    <svg viewBox= "0 0 560 680" role= "img" aria-label= "Mapa das Américas com os países atendidos pela SEWE em destaque"
+    <svg viewBox= "0 0 560 680" role= "img" aria-label={tx('Mapa das Américas com os países atendidos pela SEWE em destaque')}
       style={{ width: '100%', height: 'auto', display: 'block' }}>
       <defs>
         <linearGradient id= "sewe-map-grad" x1= "0%" y1= "0%" x2= "100%" y2= "100%">

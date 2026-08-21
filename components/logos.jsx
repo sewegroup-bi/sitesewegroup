@@ -2,18 +2,16 @@
 
 function LogosStrip() {
   const clients = [
-    'WMG', 'Eletro Transol', 'Mocelin', 'KGM', 'PetSul', 'Multiseg',
-    'Speed Distribuidora', 'Diamaju', 'CentralPec', 'Route 66',
-    'RealPet', 'Dihol', 'Excelência', 'W&Z',
+    'WMG', tx('Eletro Transol'), 'Mocelin', 'KGM', 'PetSul', 'Multiseg',
+    tx('Speed Distribuidora'), 'Diamaju', 'CentralPec', 'Route 66',
+    'RealPet', 'Dihol', tx('Excelência'), 'W&Z',
   ];
   return (
     <section style={{ padding: '56px 0 24px', background: '#fff', borderTop: '1px solid var(--line-2)' }}>
       <div className="container">
-        <div style={{ textAlign: 'center', fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 600, color: 'var(--text-3)', marginBottom: 28 }}>
-          Distribuidores que confiam na SEWE
-        </div>
+        <div style={{ textAlign: 'center', fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 600, color: 'var(--text-3)', marginBottom: 28 }}>{tx('Distribuidores que confiam na SEWE')}</div>
       </div>
-      <div className="logos-marquee" aria-label="Clientes SEWE">
+      <div className="logos-marquee" aria-label={tx('Clientes SEWE')}>
         <div className="logos-track">
           {[...clients, ...clients].map((name, i) => (
             <span key={i} className="logos-item" aria-hidden={i >= clients.length}>{name}</span>
@@ -51,10 +49,10 @@ function LogosStrip() {
 
 function BragBar() {
   const stats = [
-    { value: 'R$ 5 Bi+', label: 'em faturamento monitorado', detail: 'dados consolidados de 500+ distribuidores' },
-    { value: '500+',     label: 'distribuidores atendidos', detail: 'em Pet, Vet, Agro, Tecnologia e Indústrias' },
-    { value: '99,8%',    label: 'uptime da plataforma',     detail: 'sobre +200 mil acessos mensais' },
-    { value: '30 dias',  label: 'até o go-live',            detail: 'do contrato à primeira decisão em produção' },
+    { value: 'R$ 5 Bi+', label: tx('em faturamento monitorado'), detail: tx('dados consolidados de 500+ distribuidores') },
+    { value: '500+',     label: 'distribuidores atendidos', detail: tx('em Pet, Vet, Agro, Tecnologia e Indústrias') },
+    { value: '99,8%',    label: tx('uptime da plataforma'),     detail: tx('sobre +200 mil acessos mensais') },
+    { value: '30 dias',  label: tx('até o go-live'),            detail: tx('do contrato à primeira decisão em produção') },
   ];
   return (
     <section style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line-2)', borderBottom: '1px solid var(--line-2)', padding: '48px 0' }}>

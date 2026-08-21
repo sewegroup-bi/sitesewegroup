@@ -4,46 +4,48 @@
 // (Gestão Estratégica) and underneath (Financeiro), reading every station.
 // Selecting a suite lights up the part of the operation it plugs into.
 
-const SUITES = {
+// Funcao (nao const): tx() precisa ser reavaliado quando o idioma muda.
+const suitesMap = () => ({
   estrategica: {
-    label: 'Gestão Estratégica', short: '360°', color: '#0e7a7c', icon: 'target',
-    role: 'A camada que lê a operação inteira',
+    label: tx('Gestão Estratégica'), short: '360°', color: '#0e7a7c', icon: 'target',
+    role: tx('A camada que lê a operação inteira'),
     stations: ['fornecedor', 'estoque', 'expedicao', 'vendas', 'cliente'],
-    decision: 'Consolidando 7 filiais · margem, ruptura e positivação em uma só tela',
-    kpis: [{ v: 'R$ 18,4M', l: 'receita MTD' }, { v: '25,4%', l: 'EBITDA' }, { v: '+28%', l: 'YoY' }],
+    decision: tx('Consolidando 7 filiais · margem, ruptura e positivação em uma só tela'),
+    kpis: [{ v: 'R$ 18,4M', l: tx('receita MTD') }, { v: '25,4%', l: 'EBITDA' }, { v: '+28%', l: 'YoY' }],
   },
   suprimentos: {
-    label: 'Suprimentos', short: 'Suprimentos', color: '#2d436c', icon: 'boxes',
-    role: 'Entra na compra e no estoque',
+    label: tx('Suprimentos'), short: tx('Suprimentos'), color: '#2d436c', icon: 'boxes',
+    role: tx('Entra na compra e no estoque'),
     stations: ['fornecedor', 'estoque'],
-    decision: '17 SKUs de Curva A em risco de ruptura → pedido sugerido enviado ao ERP',
-    kpis: [{ v: '-15%', l: 'custos op.' }, { v: '+90%', l: 'assertividade' }, { v: '-20%', l: 'estoque parado' }],
+    decision: tx('17 SKUs de Curva A em risco de ruptura → pedido sugerido enviado ao ERP'),
+    kpis: [{ v: '-15%', l: tx('custos op.') }, { v: '+90%', l: tx('assertividade') }, { v: '-20%', l: tx('estoque parado') }],
   },
   comercial: {
-    label: 'Comercial', short: 'Comercial', color: '#3d5684', icon: 'trending',
-    role: 'Entra na força de vendas e no cliente',
+    label: tx('Comercial'), short: tx('Comercial'), color: '#3d5684', icon: 'trending',
+    role: tx('Entra na força de vendas e no cliente'),
     stations: ['vendas', 'cliente'],
-    decision: 'Cliente Curva A: 47 dias sem comprar → ação enviada ao vendedor agora',
-    kpis: [{ v: '+30%', l: 'reativação' }, { v: '+25%', l: 'LTV' }, { v: '+35%', l: 'produtividade' }],
+    decision: tx('Cliente Curva A: 47 dias sem comprar → ação enviada ao vendedor agora'),
+    kpis: [{ v: '+30%', l: tx('reativação') }, { v: '+25%', l: 'LTV' }, { v: '+35%', l: tx('produtividade') }],
   },
   financeiro: {
-    label: 'Financeiro', short: 'Financeiro', color: '#586580', icon: 'dollar',
-    role: 'Corre por baixo de toda a operação',
+    label: tx('Financeiro'), short: tx('Financeiro'), color: '#586580', icon: 'dollar',
+    role: tx('Corre por baixo de toda a operação'),
     stations: ['fornecedor', 'estoque', 'expedicao', 'vendas', 'cliente'],
-    decision: 'Margem líquida real por SKU já descontando rebate, frete e imposto · DRE ao vivo',
-    kpis: [{ v: '+1,1pp', l: 'margem' }, { v: '2 dias', l: 'até closing' }, { v: '100%', l: 'auditável' }],
+    decision: tx('Margem líquida real por SKU já descontando rebate, frete e imposto · DRE ao vivo'),
+    kpis: [{ v: '+1,1pp', l: tx('margem') }, { v: '2 dias', l: tx('até closing') }, { v: '100%', l: tx('auditável') }],
   },
-};
+});
 
-const STATIONS = [
+// Funcao (nao const): tx() precisa ser reavaliado quando o idioma muda.
+const stations = () => [
   { key: 'fornecedor', label: 'Fornecedores', sub: 'Compra', icon: 'factory',
     stat: { base: 128, suffix: ' pedidos', fmt: 'int' } },
-  { key: 'estoque', label: 'Estoque', sub: 'Armazém', icon: 'warehouse',
+  { key: 'estoque', label: tx('Estoque'), sub: tx('Armazém'), icon: 'warehouse',
     stat: { base: 3482, suffix: ' SKUs', fmt: 'int' } },
-  { key: 'expedicao', label: 'Expedição', sub: 'Logística', icon: 'truck',
-    stat: { base: 96, suffix: '% no prazo', fmt: 'int' } },
-  { key: 'vendas', label: 'Força de Vendas', sub: 'Carteira', icon: 'users',
-    stat: { base: 84, suffix: '% positivação', fmt: 'int' } },
+  { key: 'expedicao', label: tx('Expedição'), sub: tx('Logística'), icon: 'truck',
+    stat: { base: 96, suffix: tx('% no prazo'), fmt: 'int' } },
+  { key: 'vendas', label: tx('Força de Vendas'), sub: 'Carteira', icon: 'users',
+    stat: { base: 84, suffix: tx('% positivação'), fmt: 'int' } },
   { key: 'cliente', label: 'Clientes', sub: 'PDV', icon: 'store',
     stat: { base: 1248, suffix: ' ativos', fmt: 'int' } },
 ];
@@ -72,6 +74,7 @@ function fmtInt(n) { return n.toLocaleString('pt-BR'); }
 
 function EcosystemSection({ animated = true }) {
   const [active, setActive] = React.useState('estrategica');
+  const SUITES = suitesMap();
   const S = SUITES[active];
   const litSet = new Set(S.stations);
 
@@ -79,11 +82,9 @@ function EcosystemSection({ animated = true }) {
     <section id="bi" className="section" style={{ background: 'linear-gradient(180deg, #fff 0%, #f4f6fb 100%)', position: 'relative', overflow: 'hidden' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 840, margin: '0 auto 40px' }}>
-          <div className="eyebrow">SEWE BI · o distribuidor operando</div>
-          <h2 style={{ marginTop: 14, marginBottom: 14 }}>Veja onde cada suíte SEWE <br className="hide-mob"/>se acopla à sua operação.</h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17 }}>
-            Da compra ao PDV, os dados correm pela sua operação em tempo real. A SEWE lê cada estação, decide nos bastidores e devolve a próxima ação para a área certa. Clique numa suíte e veja onde ela entra.
-          </p>
+          <div className="eyebrow">{tx('SEWE BI · o distribuidor operando')}</div>
+          <h2 style={{ marginTop: 14, marginBottom: 14 }}>{tx('Veja onde cada suíte SEWE')} <br className="hide-mob"/>{tx('se acopla à sua operação.')}</h2>
+          <p style={{ color: 'var(--text-2)', fontSize: 17 }}>{tx('Da compra ao PDV, os dados correm pela sua operação em tempo real. A SEWE lê cada estação, decide nos bastidores e devolve a próxima ação para a área certa. Clique numa suíte e veja onde ela entra.')}</p>
         </div>
 
         {/* Suite selector */}
@@ -145,10 +146,10 @@ function StrategicRail({ highlight, animated }) {
   const positiv = useLive(84.2, 0.4, 1, 2000);
   const ruptura = useLive(2.1, 0.12, 1, 2800);
   const items = [
-    { l: 'Faturamento MTD', v: `R$ ${receita}M`, t: 'up' },
-    { l: 'Margem líquida', v: `${margem}%`, t: 'up' },
-    { l: 'Positivação', v: `${positiv}%`, t: 'up' },
-    { l: 'Ruptura · Curva A', v: `${ruptura}%`, t: 'down' },
+    { l: tx('Faturamento MTD'), v: `R$ ${receita}M`, t: 'up' },
+    { l: tx('Margem líquida'), v: `${margem}%`, t: 'up' },
+    { l: tx('Positivação'), v: `${positiv}%`, t: 'up' },
+    { l: tx('Ruptura · Curva A'), v: `${ruptura}%`, t: 'down' },
   ];
   return (
     <div className={'op-rail op-rail-top' + (highlight ? ' is-hot' : '')}>
@@ -157,8 +158,8 @@ function StrategicRail({ highlight, animated }) {
           <Icon name="target" size={15} stroke={2}/>
         </span>
         <div>
-          <div className="op-rail-name">Gestão Estratégica</div>
-          <div className="op-rail-sub">VISÃO 360° · TEMPO REAL</div>
+          <div className="op-rail-name">{tx('Gestão Estratégica')}</div>
+          <div className="op-rail-sub">{tx('VISÃO 360° · TEMPO REAL')}</div>
         </div>
       </div>
       <div className="op-rail-kpis">
@@ -190,7 +191,7 @@ function OperationLine({ litSet, activeColor, active, animated }) {
       </div>
 
       <div className="op-nodes">
-        {STATIONS.map((st, i) => {
+        {stations().map((st, i) => {
           const lit = litSet.has(st.key);
           return <Station key={st.key} st={st} lit={lit} color={activeColor} idx={i} active={active} animated={animated}/>;
         })}
@@ -232,14 +233,14 @@ function FinanceRail({ highlight, animated }) {
           <Icon name="dollar" size={15} stroke={2}/>
         </span>
         <div>
-          <div className="op-rail-name" style={{ color: 'var(--navy-900)' }}>Financeiro</div>
-          <div className="op-rail-sub" style={{ color: 'var(--text-3)' }}>FLUXO QUE CORRE POR BAIXO DA OPERAÇÃO</div>
+          <div className="op-rail-name" style={{ color: 'var(--navy-900)' }}>{tx('Financeiro')}</div>
+          <div className="op-rail-sub" style={{ color: 'var(--text-3)' }}>{tx('FLUXO QUE CORRE POR BAIXO DA OPERAÇÃO')}</div>
         </div>
       </div>
       <div className="op-money-flow">
         <div className="op-money-item"><span className="op-money-v tnum" style={{ color: 'var(--success)' }}>+R$ {entrada}M</span><span className="op-money-l">entradas</span></div>
         <Icon name="arrow" size={14} style={{ color: 'var(--text-3)' }}/>
-        <div className="op-money-item"><span className="op-money-v tnum" style={{ color: 'var(--danger)' }}>−R$ {saida}M</span><span className="op-money-l">saídas</span></div>
+        <div className="op-money-item"><span className="op-money-v tnum" style={{ color: 'var(--danger)' }}>−R$ {saida}M</span><span className="op-money-l">{tx('saídas')}</span></div>
         <Icon name="arrow" size={14} style={{ color: 'var(--text-3)' }}/>
         <div className="op-money-item"><span className="op-money-v tnum" style={{ color: 'var(--navy-900)' }}>R$ {caixa}M</span><span className="op-money-l">caixa projetado</span></div>
       </div>
@@ -256,7 +257,7 @@ function ReadoutConsole({ suite }) {
           <Icon name={suite.icon} size={20} stroke={1.8}/>
         </span>
         <div style={{ minWidth: 0 }}>
-          <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 17, color: 'var(--navy-900)' }}>Suíte {suite.label}</div>
+          <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 17, color: 'var(--navy-900)' }}>{tx('Suíte')} {suite.label}</div>
           <div style={{ fontSize: 12.5, color: 'var(--text-3)' }}>{suite.role}</div>
         </div>
         <div className="op-kpi-chips">

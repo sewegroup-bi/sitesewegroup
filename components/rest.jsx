@@ -2,28 +2,26 @@
 
 function MaturitySection() {
   const levels = [
-    { key: 'SMART',     tag: 'Core',            badge: 'Comece aqui',
-      title: 'Pare de gerir por planilha.',
-      body: 'Dashboards prontos com foco em controle operacional de vendas, finanças e estoque. Sai do Excel em 30 dias.',
-      includes: ['Dashboards de vendas, estoque e financeiro', 'Curva ABC automatizada', 'Positivação e ruptura', 'Suporte consultivo'] },
-    { key: 'SCALE',     tag: 'Expansão',        badge: 'Mais vendido',
-      title: 'Cresça com previsibilidade.',
-      body: 'Adiciona algoritmos de prospecção, projeções financeiras e análises avançadas. Quando o SMART já não basta.',
-      includes: ['Tudo do SMART', 'Projeção financeira · IA', 'Algoritmos de prospecção', 'Alertas de churn · Curva A', 'Consultoria mensal dedicada'] },
-    { key: 'STRATEGIC', tag: 'Alta Performance',badge: 'Premium',
-      title: 'Decisão diária 100% por dado.',
-      body: 'Gestão 360°. DRE automatizado, sugestão de compras via IA e previsibilidade orçamentária. Para o C-Level que decide todo dia.',
-      includes: ['Tudo do SCALE', 'DRE automatizado', 'Sugestão de compras · IA', 'Visão 360° C-Level', 'Simulação de cenários', 'Comitê executivo trimestral'] },
+    { key: 'SMART',     tag: 'Core',            badge: tx('Comece aqui'),
+      title: tx('Pare de gerir por planilha.'),
+      body: tx('Dashboards prontos com foco em controle operacional de vendas, finanças e estoque. Sai do Excel em 30 dias.'),
+      includes: [tx('Dashboards de vendas, estoque e financeiro'), tx('Curva ABC automatizada'), tx('Positivação e ruptura'), tx('Suporte consultivo')] },
+    { key: 'SCALE',     tag: tx('Expansão'),        badge: tx('Mais vendido'),
+      title: tx('Cresça com previsibilidade.'),
+      body: tx('Adiciona algoritmos de prospecção, projeções financeiras e análises avançadas. Quando o SMART já não basta.'),
+      includes: [tx('Tudo do SMART'), tx('Projeção financeira · IA'), tx('Algoritmos de prospecção'), tx('Alertas de churn · Curva A'), tx('Consultoria mensal dedicada')] },
+    { key: 'STRATEGIC', tag: tx('Alta Performance'),badge: 'Premium',
+      title: tx('Decisão diária 100% por dado.'),
+      body: tx('Gestão 360°. DRE automatizado, sugestão de compras via IA e previsibilidade orçamentária. Para o C-Level que decide todo dia.'),
+      includes: [tx('Tudo do SCALE'), tx('DRE automatizado'), tx('Sugestão de compras · IA'), tx('Visão 360° C-Level'), tx('Simulação de cenários'), tx('Comitê executivo trimestral')] },
   ];
   return (
     <section id="maturidade" className="section" style={{ background: 'var(--bg-soft)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 48px' }}>
-          <div className="eyebrow">Níveis de maturidade</div>
+          <div className="eyebrow">{tx('Níveis de maturidade')}</div>
           <h2 style={{ marginTop: 14 }}>SMART · SCALE · STRATEGIC.</h2>
-          <p style={{ color: 'var(--text-2)', marginTop: 14, fontSize: 17 }}>
-            Entre pelo nível certo para o seu momento. Evolua sem trocar de plataforma: o mesmo Qlik, as mesmas suítes, cada vez mais fundo.
-          </p>
+          <p style={{ color: 'var(--text-2)', marginTop: 14, fontSize: 17 }}>{tx('Entre pelo nível certo para o seu momento. Evolua sem trocar de plataforma: o mesmo Qlik, as mesmas suítes, cada vez mais fundo.')}</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="mat-grid">
           {levels.map((l, i) => {
@@ -40,12 +38,9 @@ function MaturitySection() {
                 transform: featured ? 'translateY(-8px)' : 'none',
               }}>
                 {featured && (
-                  <div style={{ position: 'absolute', top: -12, left: 24, background: 'var(--turquoise)', color: 'var(--navy-900)', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', padding: '4px 10px', borderRadius: 999 }}>
-                    MAIS VENDIDO
-                  </div>
+                  <div style={{ position: 'absolute', top: -12, left: 24, background: 'var(--turquoise)', color: 'var(--navy-900)', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', padding: '4px 10px', borderRadius: 999 }}>{tx('MAIS VENDIDO')}</div>
                 )}
-                <div style={{ fontSize: 11, letterSpacing: '0.16em', color: featured ? 'var(--turquoise)' : 'var(--turquoise-ink)', fontWeight: 700, marginBottom: 10 }}>
-                  NÍVEL {l.tag.toUpperCase()}
+                <div style={{ fontSize: 11, letterSpacing: '0.16em', color: featured ? 'var(--turquoise)' : 'var(--turquoise-ink)', fontWeight: 700, marginBottom: 10 }}>{tx('NÍVEL')} {l.tag.toUpperCase()}
                 </div>
                 <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 36, color: featured ? '#fff' : 'var(--navy-900)', letterSpacing: '-0.01em', marginBottom: 6 }}>
                   {l.key}
@@ -64,9 +59,7 @@ function MaturitySection() {
                     </li>
                   ))}
                 </ul>
-                <a href="#diagnostico" className={featured ? 'btn btn-accent' : 'btn btn-outline'} style={{ marginTop: 22, width: '100%', justifyContent: 'center' }}>
-                  Falar com especialista
-                </a>
+                <a href="#diagnostico" className={featured ? 'btn btn-accent' : 'btn btn-outline'} style={{ marginTop: 22, width: '100%', justifyContent: 'center' }}>{tr('cta.primary')}</a>
               </div>
             );
           })}
@@ -84,23 +77,21 @@ function MaturitySection() {
 
 function DifferentiatorsSection() {
   const items = [
-    { icon: 'clock', title: 'Go-live em 30 dias', body: 'Do contrato à primeira decisão em produção. Processo guiado por consultoria, sem projeto longo de BI do zero.' },
-    { icon: 'link', title: 'Integração nativa com ERPs', body: 'Conectores homologados para os principais ERPs do setor. Camada criptografada, sem precisar de time de TI interno.' },
-    { icon: 'brain', title: 'IA invisível', body: 'Roda em background, limpa outliers, cruza dados e entrega decisão pronta. Sem prompts, sem engenharia, sem cientista de dados.' },
-    { icon: 'shield', title: 'Segurança e LGPD', body: 'Dados cifrados em trânsito e repouso, homologação Qlik oficial, auditoria e política de retenção desenhadas por projeto.' },
-    { icon: 'pkg', title: 'DNA de Atacado e Distribuição', body: 'Consultores que falam ruptura, Curva A, positivação, rebate e capital de giro. Não traduzimos o setor, nós somos do setor.' },
-    { icon: 'trophy', title: 'Parceria oficial Qlik', body: 'Platform Partner da Qlik, plataforma de analytics líder global, Leader no Gartner® Magic Quadrant™ de Analytics & BI por 16 anos consecutivos (2026).' },
+    { icon: 'clock', title: tx('Go-live em 30 dias'), body: tx('Do contrato à primeira decisão em produção. Processo guiado por consultoria, sem projeto longo de BI do zero.') },
+    { icon: 'link', title: tx('Integração nativa com ERPs'), body: tx('Conectores homologados para os principais ERPs do setor. Camada criptografada, sem precisar de time de TI interno.') },
+    { icon: 'brain', title: tx('IA invisível'), body: tx('Roda em background, limpa outliers, cruza dados e entrega decisão pronta. Sem prompts, sem engenharia, sem cientista de dados.') },
+    { icon: 'shield', title: tx('Segurança e LGPD'), body: tx('Dados cifrados em trânsito e repouso, homologação Qlik oficial, auditoria e política de retenção desenhadas por projeto.') },
+    { icon: 'pkg', title: tx('DNA de Atacado e Distribuição'), body: tx('Consultores que falam ruptura, Curva A, positivação, rebate e capital de giro. Não traduzimos o setor, nós somos do setor.') },
+    { icon: 'trophy', title: tx('Parceria oficial Qlik'), body: tx('Platform Partner da Qlik, plataforma de analytics líder global, Leader no Gartner® Magic Quadrant™ de Analytics & BI por 16 anos consecutivos (2026).') },
   ];
   return (
     <section id="diferenciais" className="section grain" style={{ background: '#0e1729', color: '#fff', position: 'relative', overflow: 'hidden' }}>
       <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'radial-gradient(800px 400px at 80% 10%, rgba(117,227,228,0.1), transparent 60%)' }}/>
       <div className="container" style={{ position: 'relative' }}>
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 56px' }}>
-          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>Por que SEWE</div>
-          <h2 style={{ marginTop: 14, color: '#fff' }}>Seis razões que nenhum BI genérico oferece.</h2>
-          <p style={{ color: 'rgba(255,255,255,0.66)', marginTop: 14, fontSize: 17 }}>
-            Nós entregamos solução vertical pronta, com DNA de atacado e distribuição e tempo de valor em semanas.
-          </p>
+          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>{tx('Por que SEWE')}</div>
+          <h2 style={{ marginTop: 14, color: '#fff' }}>{tx('Seis razões que nenhum BI genérico oferece.')}</h2>
+          <p style={{ color: 'rgba(255,255,255,0.66)', marginTop: 14, fontSize: 17 }}>{tx('Nós entregamos solução vertical pronta, com DNA de atacado e distribuição e tempo de valor em semanas.')}</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'rgba(255,255,255,0.08)', borderRadius: 16, overflow: 'hidden' }} className="diff-grid">
           {items.map((it, i) => (
@@ -124,19 +115,19 @@ function DifferentiatorsSection() {
 
 function CasesSection() {
   const cases = [
-    { co: 'MOCELIN', metric: '+15–20%', unit: 'de crescimento em vendas', quote: 'Eu associo esse crescimento ao SEWE BI: sem gestão de dados você não tem clareza de onde atacar. O BI hoje é minha principal ferramenta de gestão.', person: 'Neyla', place: 'Mocelin' },
-    { co: 'ELETRANSOL', metric: '−23,9%', unit: 'no churn de clientes', quote: 'Limitada ao ERP, a empresa ficaria parada no tempo. O BI é a nossa tela do cenário, e já projeta desempenho e atingimento de metas para o futuro.', person: 'Elioneis', place: 'Eletransol', href: '/vencedor-premio-2025-eletransol' },
-    { co: 'WMG', metric: '1 tela', unit: 'para decidir o que antes exigia várias fontes', quote: 'As compras ficaram mais assertivas. Antes buscávamos várias informações para decidir; hoje abrimos uma tela e tomamos a decisão.', person: 'Thiago', place: 'WMG' },
+    { co: 'MOCELIN', metric: '+15–20%', unit: tx('de crescimento em vendas'), quote: tx('Eu associo esse crescimento ao SEWE BI: sem gestão de dados você não tem clareza de onde atacar. O BI hoje é minha principal ferramenta de gestão.'), person: 'Neyla', place: 'Mocelin' },
+    { co: 'ELETRANSOL', metric: '−23,9%', unit: tx('no churn de clientes'), quote: tx('Limitada ao ERP, a empresa ficaria parada no tempo. O BI é a nossa tela do cenário, e já projeta desempenho e atingimento de metas para o futuro.'), person: 'Elioneis', place: 'Eletransol', href: '/vencedor-premio-2025-eletransol' },
+    { co: 'WMG', metric: tx('1 tela'), unit: tx('para decidir o que antes exigia várias fontes'), quote: tx('As compras ficaram mais assertivas. Antes buscávamos várias informações para decidir; hoje abrimos uma tela e tomamos a decisão.'), person: 'Thiago', place: 'WMG' },
   ];
   return (
     <section id="cases" className="section" style={{ background: '#fff' }}>
       <div className="container">
         <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, marginBottom: 40 }}>
           <div style={{ maxWidth: 620 }}>
-            <div className="eyebrow">Resultados que saem do papel</div>
-            <h2 style={{ marginTop: 14 }}>Casos reais. Métricas reais.</h2>
+            <div className="eyebrow">{tx('Resultados que saem do papel')}</div>
+            <h2 style={{ marginTop: 14 }}>{tx('Casos reais. Métricas reais.')}</h2>
           </div>
-          <a href="/premio" className="btn btn-outline btn-sm">Ver todos os cases <Icon name="arrow" size={12} className="chev"/></a>
+          <a href="/premio" className="btn btn-outline btn-sm">{tx('Ver todos os cases')} <Icon name="arrow" size={12} className="chev"/></a>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="cases-grid">
           {cases.map((c, i) => (
@@ -154,8 +145,7 @@ function CasesSection() {
                 </div>
               </div>
               {c.href && (
-                <a href={c.href} style={{ marginTop: 4, fontSize: 13, color: 'var(--turquoise-ink)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                  Ler case completo <Icon name="arrow" size={12}/>
+                <a href={c.href} style={{ marginTop: 4, fontSize: 13, color: 'var(--turquoise-ink)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 }}>{tx('Ler case completo')} <Icon name="arrow" size={12}/>
                 </a>
               )}
             </article>
@@ -170,21 +160,21 @@ function CasesSection() {
 function FAQSection() {
   const [open, setOpen] = React.useState(0);
   const qs = [
-    { q: 'Quanto tempo leva para o go-live?', a: 'O processo completo ocorre em até 30 dias a partir da liberação dos acessos ao seu ERP. É um processo guiado pela nossa consultoria, com entregas semanais. Você enxerga valor já no primeiro mês.' },
-    { q: 'Preciso de um time de BI ou TI dedicado?', a: 'Não. A SEWE é responsável pela conexão ao ERP, modelagem dos dados e configuração dos painéis. Sua equipe usa o produto; nós cuidamos da engenharia por trás.' },
-    { q: 'Posso customizar as soluções da SEWE para minha operação específica?', a: 'Sim! Uma das nossas forças é justamente personalizar módulos, dashboards e processos para refletir a realidade da sua empresa. Não entregamos pacotes genéricos, entregamos soluções ajustadas.' },
-    { q: 'O que diferencia a SEWE de outras empresas de BI e consultoria de dados?', a: 'Nosso diferencial está em combinar: um portfólio completo (BI + consultoria + integração + vendas), atendimento nacional, inteligência personalizada e foco em resultados concretos e sustentáveis.' },
-    { q: 'Como funciona a parceria com a Qlik?', a: 'Somos Platform Partner oficial da Qlik no Brasil. Você recebe licenças homologadas, suporte local em português e acesso a todas as capacidades nativas da plataforma, com a camada SEWE de dashboards e IA em cima.' },
-    { q: 'E a LGPD?', a: 'Conformidade end-to-end: criptografia em trânsito e repouso, controle granular de acesso, política de retenção e trilha de auditoria. Documentação de DPIA disponível em até 48h úteis após assinatura de NDA.' },
-    { q: 'Meus dados saem da minha empresa?', a: 'A conexão é direta entre seu ERP e o ambiente Qlik hospedado em região brasileira. Você mantém o controle dos acessos e pode revogar a qualquer momento.' },
-    { q: 'Quanto custa?', a: 'O investimento depende do nível (SMART, SCALE ou STRATEGIC), do número de usuários e de filiais. Agende um diagnóstico gratuito de 30 minutos. Mostramos o ROI estimado com base nos seus dados antes de falar em preço.' },
+    { q: tx('Quanto tempo leva para o go-live?'), a: tx('O processo completo ocorre em até 30 dias a partir da liberação dos acessos ao seu ERP. É um processo guiado pela nossa consultoria, com entregas semanais. Você enxerga valor já no primeiro mês.') },
+    { q: tx('Preciso de um time de BI ou TI dedicado?'), a: tx('Não. A SEWE é responsável pela conexão ao ERP, modelagem dos dados e configuração dos painéis. Sua equipe usa o produto; nós cuidamos da engenharia por trás.') },
+    { q: tx('Posso customizar as soluções da SEWE para minha operação específica?'), a: tx('Sim! Uma das nossas forças é justamente personalizar módulos, dashboards e processos para refletir a realidade da sua empresa. Não entregamos pacotes genéricos, entregamos soluções ajustadas.') },
+    { q: tx('O que diferencia a SEWE de outras empresas de BI e consultoria de dados?'), a: tx('Nosso diferencial está em combinar: um portfólio completo (BI + consultoria + integração + vendas), atendimento nacional, inteligência personalizada e foco em resultados concretos e sustentáveis.') },
+    { q: tx('Como funciona a parceria com a Qlik?'), a: tx('Somos Platform Partner oficial da Qlik no Brasil. Você recebe licenças homologadas, suporte local em português e acesso a todas as capacidades nativas da plataforma, com a camada SEWE de dashboards e IA em cima.') },
+    { q: tx('E a LGPD?'), a: tx('Conformidade end-to-end: criptografia em trânsito e repouso, controle granular de acesso, política de retenção e trilha de auditoria. Documentação de DPIA disponível em até 48h úteis após assinatura de NDA.') },
+    { q: tx('Meus dados saem da minha empresa?'), a: tx('A conexão é direta entre seu ERP e o ambiente Qlik hospedado em região brasileira. Você mantém o controle dos acessos e pode revogar a qualquer momento.') },
+    { q: tx('Quanto custa?'), a: tx('O investimento depende do nível (SMART, SCALE ou STRATEGIC), do número de usuários e de filiais. Agende um diagnóstico gratuito de 30 minutos. Mostramos o ROI estimado com base nos seus dados antes de falar em preço.') },
   ];
   return (
     <section id="faq" className="section" style={{ background: 'var(--bg-soft)' }}>
       <div className="container" style={{ maxWidth: 880 }}>
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
-          <div className="eyebrow">Perguntas frequentes</div>
-          <h2 style={{ marginTop: 14 }}>O que diretores perguntam antes de assinar.</h2>
+          <div className="eyebrow">{tx('Perguntas frequentes')}</div>
+          <h2 style={{ marginTop: 14 }}>{tx('O que diretores perguntam antes de assinar.')}</h2>
         </div>
         <div style={{ background: '#fff', border: '1px solid var(--line)', borderRadius: 16 }}>
           {qs.map((f, i) => {
@@ -210,6 +200,49 @@ function FAQSection() {
           })}
         </div>
       </div>
+    </section>
+  );
+}
+
+// ── Bloco de objeção ─────────────────────────────────────────
+// As três perguntas que travam contrato, no fim das páginas de venda — em vez de
+// ficarem só na FAQ, que só é lida por quem já procurou.
+function ObjectionBlock() {
+  useLocale();
+  const qs = [
+    { q: tx('Quanto custa?'),
+      a: tx('Depende do nível, do número de usuários e de filiais. No diagnóstico gratuito mostramos o ROI estimado com os seus dados antes de falar em preço.') },
+    { q: tx('Preciso de um time de BI ou TI dedicado?'),
+      a: tx('Não. A SEWE cuida da conexão ao ERP, da modelagem e dos painéis. Sua equipe usa o produto; a engenharia é nossa.') },
+    { q: tx('Meus dados saem da minha empresa?'),
+      a: tx('A conexão é direta entre o seu ERP e o ambiente Qlik hospedado em região brasileira. Você controla os acessos e revoga quando quiser.') },
+  ];
+  return (
+    <section className="section-sm" style={{ background: '#fff', borderTop: '1px solid var(--line)' }}>
+      <div className="container">
+        <div className="ob-head">
+          <div className="eyebrow">{tx('Antes de você perguntar')}</div>
+          <a href="/faq" className="ob-link">{tx('Ver todas as perguntas')} <Icon name="arrow" size={13} stroke={2.2}/></a>
+        </div>
+        <div className="ob-grid">
+          {qs.map((f, i) => (
+            <div key={i} className="ob-card">
+              <div className="ob-q">{f.q}</div>
+              <p className="ob-a">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <style>{`
+        .ob-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
+        .ob-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--turquoise-ink); text-decoration: none; }
+        .ob-link:hover { text-decoration: underline; }
+        .ob-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; }
+        .ob-card { background: #fff; padding: 22px 24px; }
+        .ob-q { font-family: var(--ff-display); font-weight: 600; font-size: 16px; color: var(--navy-900); margin-bottom: 8px; }
+        .ob-a { font-size: 14px; color: var(--text-2); line-height: 1.6; margin: 0; }
+        @media (max-width: 900px) { .ob-grid { grid-template-columns: 1fr; } }
+      `}</style>
     </section>
   );
 }
@@ -252,7 +285,7 @@ function submitLead(e) {
   }).then(r => {
     if (!r.ok) throw new Error();
     form.reset();
-    alert('Recebemos seus dados! Nossa equipe entra em contato em breve.');
+    alert(tx('Recebemos seus dados! Nossa equipe entra em contato em breve.'));
   }).catch(() => openWhats()); // CRM fora do ar → lead não se perde
 }
 
@@ -262,15 +295,11 @@ function CTASection() {
       <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'radial-gradient(600px 300px at 80% 100%, rgba(117,227,228,0.2), transparent 70%)' }}/>
       <div className="container cta-grid" style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 48, alignItems: 'center' }}>
         <div>
-          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>Diagnóstico consultivo · Gratuito</div>
-          <h2 style={{ color: '#fff', marginTop: 14, fontSize: 'clamp(32px, 4vw, 52px)' }}>
-            Uma reunião de 30 minutos. Com os seus dados. Sem compromisso.
-          </h2>
-          <p style={{ color: 'rgba(255,255,255,0.78)', marginTop: 18, fontSize: 17, maxWidth: 560 }}>
-            Um diretor SEWE olha sua operação, identifica os 3 vazamentos mais caros em Curva A, ruptura ou margem, e mostra o que mudaria no primeiro mês.
-          </p>
+          <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>{tx('Diagnóstico consultivo · Gratuito')}</div>
+          <h2 style={{ color: '#fff', marginTop: 14, fontSize: 'clamp(32px, 4vw, 52px)' }}>{tx('Uma reunião de 30 minutos. Com os seus dados. Sem compromisso.')}</h2>
+          <p style={{ color: 'rgba(255,255,255,0.78)', marginTop: 18, fontSize: 17, maxWidth: 560 }}>{tx('Um diretor SEWE olha sua operação, identifica os 3 vazamentos mais caros em Curva A, ruptura ou margem, e mostra o que mudaria no primeiro mês.')}</p>
           <ul style={{ listStyle: 'none', padding: 0, margin: '24px 0 32px', display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {['Análise rápida com seu ERP (NDA prévio)', 'Estimativa de ROI em dinheiro real', 'Roteiro de go-live em 30 dias', 'Resposta em até 4h úteis'].map((t, i) => (
+            {[tx('Análise rápida com seu ERP (NDA prévio)'), tx('Estimativa de ROI em dinheiro real'), tx('Roteiro de go-live em 30 dias'), tx('Resposta em até 4h úteis')].map((t, i) => (
               <li key={i} style={{ display: 'flex', gap: 10, alignItems: 'center', color: 'rgba(255,255,255,0.9)' }}>
                 <span style={{ width: 22, height: 22, borderRadius: 99, background: 'var(--turquoise)', color: 'var(--navy-900)', display: 'grid', placeItems: 'center' }}>
                   <Icon name="check" size={12} stroke={3}/>
@@ -282,12 +311,12 @@ function CTASection() {
         </div>
         <form onSubmit={submitLead}
           style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 16, padding: 24, backdropFilter: 'blur(12px)' }}>
-          <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 18, color: '#fff', marginBottom: 6 }}>Peça um diagnóstico</div>
-          <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', marginBottom: 14 }}>Deixe seus dados e a nossa equipe entra em contato.</div>
+          <div style={{ fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 18, color: '#fff', marginBottom: 6 }}>{tx('Peça um diagnóstico')}</div>
+          <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', marginBottom: 14 }}>{tx('Deixe seus dados e a nossa equipe entra em contato.')}</div>
           {[
-            { n: 'Nome', id: 'nome', t: 'text', p: 'Maria Silva' },
-            { n: 'E-mail corporativo', id: 'email', t: 'email', p: 'maria@distribuidora.com.br' },
-            { n: 'Empresa', id: 'empresa', t: 'text', p: 'Distribuidora Sul' },
+            { n: tx('Nome'), id: 'nome', t: 'text', p: tx('Maria Silva') },
+            { n: tx('E-mail corporativo'), id: 'email', t: 'email', p: tx('maria@distribuidora.com.br') },
+            { n: tx('Empresa'), id: 'empresa', t: 'text', p: tx('Distribuidora Sul') },
             { n: 'WhatsApp', id: 'whatsapp', t: 'tel', p: '(48) 90000-0000' },
           ].map(f => (
             <label key={f.n} style={{ display: 'block', marginBottom: 12 }}>
@@ -303,17 +332,12 @@ function CTASection() {
           ))}
           <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"
             style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}/>
-          <button type="submit" className="btn btn-accent btn-lg" style={{ width: '100%', justifyContent: 'center', marginTop: 6 }}>
-            Quero ser contatado <Icon name="arrow" size={16} className="chev"/>
+          <button type="submit" className="btn btn-accent btn-lg" style={{ width: '100%', justifyContent: 'center', marginTop: 6 }}>{tx('Quero ser contatado')} <Icon name="arrow" size={16} className="chev"/>
           </button>
           <a href={`${SEWE_WHATSAPP}?text=${encodeURIComponent('Olá! Quero agendar um diagnóstico com a SEWE.')}`}
             target="_blank" rel="noopener" className="btn btn-outline-inverse"
-            style={{ width: '100%', justifyContent: 'center', marginTop: 10 }}>
-            Prefiro falar no WhatsApp
-          </a>
-          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 10, textAlign: 'center' }}>
-            Seus dados seguem a LGPD. Sem spam, sem vendedor insistente.
-          </div>
+            style={{ width: '100%', justifyContent: 'center', marginTop: 10 }}>{tx('Prefiro falar no WhatsApp')}</a>
+          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 10, textAlign: 'center' }}>{tx('Seus dados seguem a LGPD. Sem spam, sem vendedor insistente.')}</div>
         </form>
       </div>
       <style>{`@media(max-width:960px){.cta-grid{grid-template-columns:1fr !important;}}`}</style>
@@ -379,4 +403,4 @@ function AgendaSection({ bg = '#fff' }) {
   );
 }
 
-Object.assign(window, { MaturitySection, DifferentiatorsSection, CasesSection, FAQSection, CTASection, AgendaSection });
+Object.assign(window, { ObjectionBlock, MaturitySection, DifferentiatorsSection, CasesSection, FAQSection, CTASection, AgendaSection });

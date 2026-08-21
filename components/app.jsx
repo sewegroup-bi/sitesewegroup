@@ -41,4 +41,5 @@ function App() {
 }
 
 const __seweRoot = document.getElementById('sewe-root');
-if (__seweRoot) ReactDOM.createRoot(__seweRoot).render(<App/>);
+// SEWE_I18N_READY: espera o dicionario de idioma (imediato em PT).
+if (__seweRoot) SEWE_I18N_READY.then(() => ReactDOM.createRoot(__seweRoot).render(<App/>));

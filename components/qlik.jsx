@@ -22,14 +22,14 @@ const Q = {
   warn:    '#c27a00',
 };
 
-function QlikFrame({ title = 'PAINEL · COMERCIAL · HOJE', subtitle, time = '14:22', tabs, activeTab = 0, children, toolbar, compact = false, style = {} }) {
+function QlikFrame({ title = tx('PAINEL · COMERCIAL · HOJE'), subtitle, time = '14:22', tabs, activeTab = 0, children, toolbar, compact = false, style = {} }) {
   return (
     <div className="qlik" style={{ ...style }}>
       {/* top chrome: logo + app name + clock */}
       <div className="qlik-head" style={{ background: Q.navy, color: '#fff', borderBottom: 'none', gap: 10, padding: '10px 14px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{ width: 22, height: 22, background: Q.turq, borderRadius: 4, display: 'grid', placeItems: 'center', color: Q.navyDk, fontFamily: 'Chakra Petch', fontWeight: 700, fontSize: 13 }}>S</div>
-          <div style={{ fontFamily: 'Chakra Petch, sans-serif', fontWeight: 600, fontSize: 12, letterSpacing: '0.12em' }}>SEWE · INTELLIGENCE</div>
+          <div style={{ fontFamily: 'Chakra Petch, sans-serif', fontWeight: 600, fontSize: 12, letterSpacing: '0.12em' }}>{tx('SEWE · INTELLIGENCE')}</div>
         </div>
         <div style={{ flex: 1 }}/>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: 'rgba(255,255,255,0.72)', fontFamily: 'JetBrains Mono, monospace' }}>
@@ -59,6 +59,15 @@ function QlikFrame({ title = 'PAINEL · COMERCIAL · HOJE', subtitle, time = '14
 
       <div style={{ padding: compact ? 12 : 16, background: Q.bgSoft }}>
         {children}
+      </div>
+
+      {/* deixa explícito que o número na tela é de demonstração, não de cliente */}
+      <div style={{
+        padding: '7px 14px', background: '#fff', borderTop: `1px solid ${Q.line}`,
+        fontFamily: 'JetBrains Mono, monospace', fontSize: 10, letterSpacing: '0.1em',
+        textTransform: 'uppercase', color: Q.muted, textAlign: 'right',
+      }}>
+        {tx('dados ilustrativos')}
       </div>
     </div>
   );
