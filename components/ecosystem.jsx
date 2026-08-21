@@ -87,7 +87,7 @@ function EcosystemSection({ animated = true }) {
             <SMark size={16} color="var(--turquoise-ink)"/> {tx('Sewe BI')}
           </div>
           <h2 style={{ marginTop: 14, marginBottom: 14 }}>{tx('Veja onde cada suíte SEWE')} <br className="hide-mob"/>{tx('se acopla à sua operação.')}</h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17 }}>{tx('Da compra ao PDV, os dados correm pela sua operação em tempo real. A SEWE lê cada estação, decide nos bastidores e devolve a próxima ação para a área certa. Clique numa suíte e veja onde ela entra.')}</p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17 }}>{tx('Da compra ao PDV, o dado corre em tempo real. A SEWE lê cada estação e devolve a próxima ação para a área certa. Clique numa suíte e veja onde ela entra.')}</p>
         </div>
 
         {/* Suite selector */}

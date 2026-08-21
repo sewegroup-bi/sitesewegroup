@@ -981,7 +981,7 @@ function IndustriaPage() {
       <PageHero
         eyebrow={tx('Para a Indústria')}
         title={tx('Pare de descobrir a ruptura no fechamento do mês.')}
-        lead={tx('Quanto cada distribuidor vendeu do seu produto ontem? Onde está faltando? Quais clientes pararam de comprar? A SEWE devolve essas respostas todos os dias, direto do ERP da sua rede. E você contrata só o que precisar.')}
+        lead={tx('Quanto cada distribuidor vendeu ontem? Onde está faltando? Quem parou de comprar? A SEWE responde isso todos os dias, direto do ERP da sua rede.')}
       >
         <div style={{ marginTop: 28, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <a href="#diagnostico" className="btn btn-primary btn-lg">{tr('cta.primary')} <Icon name="arrow" size={16} className="chev"/></a>
@@ -1028,7 +1028,7 @@ function SolucoesBarreiras() {
           <div className="eyebrow" style={{ color: 'var(--turquoise)' }}>{tx('O problema real')}</div>
           <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)', color: '#fff' }}>{tx('A tecnologia não é a')} <span style={{ color: 'var(--turquoise-2)' }}>{tx('maior barreira')}</span>.
           </h2>
-          <p className="sb-lead">{tx('A maior parte das iniciativas de dados e IA não trava no modelo nem na ferramenta. Trava na base: dado que ninguém confia, sistema que não conversa e governança que não existe.')}</p>
+          <p className="sb-lead">{tx('Iniciativa de dados não trava no modelo nem na ferramenta. Trava na base: dado que ninguém confia, sistema que não conversa, governança que não existe.')}</p>
         </div>
 
         <div className="sb-grid">
@@ -1144,7 +1144,7 @@ function SolucoesCamadas() {
           <div className="eyebrow">{tx('Como a plataforma resolve')}</div>
           <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Três camadas que')} <span style={{ color: 'var(--navy)' }}>{tx('trabalham juntas')}</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Confiança no dado que entra, contexto no cálculo que roda, adaptabilidade na ponta que consome. Tirar uma delas é o motivo pelo qual a maioria dos projetos de dados para no meio.')}</p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>{tx('Confiança no dado que entra, contexto no cálculo, adaptabilidade na ponta. Tirar uma delas é onde a maioria dos projetos de dados para.')}</p>
         </div>
 
         <div className="sc-tabs">
@@ -1815,7 +1815,7 @@ function SolucoesCamadaSewe() {
             {tx('A Qlik é a melhor plataforma do mercado.')} <span style={{ color: 'var(--navy)' }}>{tx('E fica melhor ainda modelada por quem conhece a sua operação.')}</span>
           </h2>
           <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14 }}>
-            {tx('Líder do Gartner há 16 anos, com um motor associativo que nenhuma ferramenta SQL alcança: a base é excelente. O que transforma essa base em resultado é a camada de engenharia por cima dela — quem escreve a regra de negócio, conecta o ERP e define qual indicador merece existir.')}
+            {tx('A base é excelente: líder do Gartner há 16 anos, com um motor associativo que nenhuma ferramenta SQL alcança. O que vira resultado é a engenharia por cima dela.')}
           </p>
         </div>
         <div className="cs-grid">
@@ -1867,7 +1867,7 @@ function SolucoesPage() {
       <PageHero
         eyebrow={tx('Plataforma de Dados & IA')}
         title={tx('Dados e IA muito além do BI de prateleira.')}
-        lead={tx('Para quem já tem time de dados e não tem tempo de montar plataforma: o Qlik de ponta a ponta, do dado bruto ao agente que executa a ação, com a engenharia de dados da SEWE por trás. Dado governado, painel rápido e decisão direto no navegador.')}
+        lead={tx('Para quem já tem time de dados e não tem tempo de montar plataforma: o Qlik do dado bruto ao agente que executa a ação, com a engenharia da SEWE por trás.')}
       >
         <div style={{ marginTop: 22, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '7px 16px', borderRadius: 999, background: '#fff', border: '1px solid var(--line)', boxShadow: 'var(--shadow-xs)', fontSize: 12.5, color: 'var(--text-2)', fontWeight: 500 }}>

@@ -41,7 +41,7 @@ function ConnectedEcosystem() {
           <div className="eyebrow">{tx('Um ecossistema, três frentes')}</div>
           <h2 style={{ marginTop: 14, marginBottom: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>{tx('Conectadas em volta do')} <span style={{ color: 'var(--navy)' }}>distribuidor</span>.
           </h2>
-          <p style={{ color: 'var(--text-2)', fontSize: 17 }}>{tx('Os dados entram pela Integration, a Sales vende e gera mais dado na ponta, e o BI fecha o ciclo virando tudo em decisão. Um ciclo só, com a SEWE cuidando da engenharia de ponta a ponta.')}</p>
+          <p style={{ color: 'var(--text-2)', fontSize: 17 }}>{tx('O dado entra pela Integration, a Sales vende e gera mais dado na ponta, o BI vira tudo em decisão. Um ciclo só, com a engenharia por conta da SEWE.')}</p>
         </div>
 
         <div className="eco3" style={{ position: 'relative', marginTop: 44 }}>
@@ -131,7 +131,7 @@ function IntegrationSection() {
               <SMark size={16} color={C.color}/> {tx('Sewe Integration')}</div>
             <h2 style={{ marginTop: 16, fontSize: 'clamp(26px,3.2vw,38px)' }}>{tx('A ponte de dados entre')} <span style={{ color: C.color }}>{tx('indústria e distribuidor')}</span>.
             </h2>
-            <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 560 }}>{tx('A SEWE Integration conecta o ERP dos seus distribuidores à indústria em tempo real, gerando uma via de mão dupla: inteligência estratégica para o seu negócio e eficiência operacional para o seu canal.')}</p>
+            <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 560 }}>{tx('Conecta o ERP dos seus distribuidores à indústria em tempo real: inteligência estratégica para você, eficiência operacional para o canal.')}</p>
           </div>
         </div>
 
@@ -568,7 +568,7 @@ function SalesSection({ audience = 'distribuidor' }) {
             </h2>
             <p style={{ color: 'var(--text-2)', fontSize: 17, marginTop: 14, maxWidth: 700 }}>
               {isInd
-                ? tx('Distribuidores e varejos compram direto no seu portal, com o catálogo e o preço de cada um. Seus representantes vendem em campo com carteira, metas e follow-up. Você acompanha tudo em tempo real, com a política comercial garantida em cada venda.')
+                ? tx('Distribuidores e varejos compram no seu portal, cada um com o seu catálogo e o seu preço. Seus representantes vendem em campo — e a política comercial vale em toda venda.')
                 : tx('Catálogo e preço por cliente, pedidos B2B, venda direta, carteiras, aprovações, WhatsApp oficial e relatórios, com a política comercial da sua empresa garantida em cada venda. E, por ser Sewe, tudo nativo do BI.')}
             </p>
           </div>
