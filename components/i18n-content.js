@@ -21,6 +21,7 @@ export const SEWE_TX = {
   'Todos conectados, direto': { en: 'All connected, directly', es: 'Todos conectados, directo' },
   'Escolha uma frente e veja o recorte da cadeia que ela entrega para a indústria.': { en: 'Pick a front and see the slice of the chain it delivers to the manufacturer.', es: 'Elija un frente y vea la parte de la cadena que entrega a la industria.' },
   'AO VIVO': { en: 'LIVE', es: 'EN VIVO' },
+  'HOJE': { en: 'TODAY', es: 'HOY' },
   'HOJE · 14:22': { en: 'TODAY · 14:22', es: 'HOY · 14:22' },
   'ABR/2026': { en: 'APR/2026', es: 'ABR/2026' },
   'SEWE · ECOSSISTEMA': { en: 'SEWE · ECOSYSTEM', es: 'SEWE · ECOSISTEMA' },
@@ -653,7 +654,6 @@ export const SEWE_TX = {
   // ══ SEÇÕES COMPARTILHADAS (rest.jsx): maturidade, diferenciais, cases, FAQ, CTA ══
   // Níveis de maturidade
   'Níveis de maturidade': { en: 'Maturity levels', es: 'Niveles de madurez' },
-  'Entre pelo nível certo para o seu momento. Evolua sem trocar de plataforma: o mesmo Qlik, as mesmas suítes, cada vez mais fundo.': { en: 'Start at the right level for where you are. Move up without switching platforms: the same Qlik, the same suites, going deeper each time.', es: 'Entre por el nivel correcto para su momento. Evolucione sin cambiar de plataforma: el mismo Qlik, las mismas suites, cada vez más a fondo.' },
   'Comece aqui': { en: 'Start here', es: 'Empiece aquí' },
   'Pare de gerir por planilha.': { en: 'Stop managing by spreadsheet.', es: 'Deje de gestionar por hoja de cálculo.' },
   'Dashboards prontos com foco em controle operacional de vendas, finanças e estoque. Sai do Excel em 30 dias.': { en: 'Ready-made dashboards focused on operational control of sales, finance and inventory. Out of Excel in 30 days.', es: 'Dashboards listos enfocados en el control operativo de ventas, finanzas e inventario. Sale de Excel en 30 días.' },
@@ -697,7 +697,6 @@ export const SEWE_TX = {
   'DNA de Atacado e Distribuição': { en: 'Wholesale and distribution DNA', es: 'ADN de mayorista y distribución' },
   'Consultores que falam ruptura, Curva A, positivação, rebate e capital de giro. Não traduzimos o setor, nós somos do setor.': { en: 'Consultants who speak stockouts, A items, order coverage, rebates and working capital. We do not translate the industry, we are the industry.', es: 'Consultores que hablan quiebres de stock, Curva A, positivación, rebate y capital de trabajo. No traducimos el sector, somos del sector.' },
   'Parceria oficial Qlik': { en: 'Official Qlik partnership', es: 'Alianza oficial Qlik' },
-  'Platform Partner da Qlik, plataforma de analytics líder global, Leader no Gartner® Magic Quadrant™ de Analytics & BI por 16 anos consecutivos (2026).': { en: 'Qlik Platform Partner, the global leading analytics platform, Leader in the Gartner® Magic Quadrant™ for Analytics & BI for 16 consecutive years (2026).', es: 'Platform Partner de Qlik, plataforma de analytics líder global, Leader en el Gartner® Magic Quadrant™ de Analytics & BI por 16 años consecutivos (2026).' },
 
   // Cases
   'Resultados que saem do papel': { en: 'Results that leave the slide deck', es: 'Resultados que salen del papel' },
@@ -723,14 +722,12 @@ export const SEWE_TX = {
   'Sim! Uma das nossas forças é justamente personalizar módulos, dashboards e processos para refletir a realidade da sua empresa. Não entregamos pacotes genéricos, entregamos soluções ajustadas.': { en: 'Yes. One of our strengths is exactly that: customising modules, dashboards and processes to reflect the reality of your company. We do not ship generic packages, we ship tailored solutions.', es: '¡Sí! Una de nuestras fortalezas es justamente personalizar módulos, dashboards y procesos para reflejar la realidad de su empresa. No entregamos paquetes genéricos, entregamos soluciones ajustadas.' },
   'O que diferencia a SEWE de outras empresas de BI e consultoria de dados?': { en: 'What sets SEWE apart from other BI and data consulting firms?', es: '¿Qué diferencia a SEWE de otras empresas de BI y consultoría de datos?' },
   'Nosso diferencial está em combinar: um portfólio completo (BI + consultoria + integração + vendas), atendimento nacional, inteligência personalizada e foco em resultados concretos e sustentáveis.': { en: 'Our edge is the combination: a complete portfolio (BI + consulting + integration + sales), nationwide service, customised intelligence and a focus on concrete, sustainable results.', es: 'Nuestro diferencial está en combinar: un portafolio completo (BI + consultoría + integración + ventas), atención nacional, inteligencia personalizada y foco en resultados concretos y sostenibles.' },
-  'Como funciona a parceria com a Qlik?': { en: 'How does the Qlik partnership work?', es: '¿Cómo funciona la alianza con Qlik?' },
-  'Somos Platform Partner oficial da Qlik no Brasil. Você recebe licenças homologadas, suporte local em português e acesso a todas as capacidades nativas da plataforma, com a camada SEWE de dashboards e IA em cima.': { en: 'We are an official Qlik Platform Partner in Brazil. You get certified licences, local support and access to every native capability of the platform, with the SEWE layer of dashboards and AI on top.', es: 'Somos Platform Partner oficial de Qlik en Brasil. Usted recibe licencias homologadas, soporte local y acceso a todas las capacidades nativas de la plataforma, con la capa SEWE de dashboards e IA encima.' },
   'E a LGPD?': { en: 'What about data protection law?', es: '¿Y la protección de datos?' },
   'Conformidade end-to-end: criptografia em trânsito e repouso, controle granular de acesso, política de retenção e trilha de auditoria. Documentação de DPIA disponível em até 48h úteis após assinatura de NDA.': { en: 'End-to-end compliance: encryption in transit and at rest, granular access control, a retention policy and an audit trail. DPIA documentation available within 48 business hours of signing an NDA.', es: 'Conformidad end-to-end: cifrado en tránsito y en reposo, control granular de acceso, política de retención y traza de auditoría. Documentación de DPIA disponible en hasta 48h hábiles tras la firma del NDA.' },
   'Meus dados saem da minha empresa?': { en: 'Does my data leave my company?', es: '¿Mis datos salen de mi empresa?' },
   'A conexão é direta entre seu ERP e o ambiente Qlik hospedado em região brasileira. Você mantém o controle dos acessos e pode revogar a qualquer momento.': { en: 'The connection is direct between your ERP and the Qlik environment hosted in Brazil. You keep control of access and can revoke it at any time.', es: 'La conexión es directa entre su ERP y el entorno Qlik alojado en región brasileña. Usted mantiene el control de los accesos y puede revocarlos en cualquier momento.' },
   'Quanto custa?': { en: 'How much does it cost?', es: '¿Cuánto cuesta?' },
-  'O investimento depende do nível (SMART, SCALE ou STRATEGIC), do número de usuários e de filiais. Agende um diagnóstico gratuito de 30 minutos. Mostramos o ROI estimado com base nos seus dados antes de falar em preço.': { en: 'The investment depends on the level (SMART, SCALE or STRATEGIC), the number of users and the number of branches. Book a free 30-minute assessment. We show the estimated ROI based on your data before talking price.', es: 'La inversión depende del nivel (SMART, SCALE o STRATEGIC), del número de usuarios y de sucursales. Agende un diagnóstico gratuito de 30 minutos. Mostramos el ROI estimado con base en sus datos antes de hablar de precio.' },
+  'O investimento depende da suíte, do nível (Smart, Scale ou Strategic), dos add-ons e da quantidade de usuários. Agende um diagnóstico gratuito de 30 minutos. Mostramos o ROI estimado com base nos seus dados antes de falar em preço.': { en: 'The investment depends on the suite, the level (Smart, Scale or Strategic), the add-ons and the number of users. Book a free 30-minute assessment. We show the estimated ROI based on your data before talking price.', es: 'La inversión depende de la suite, del nivel (Smart, Scale o Strategic), de los add-ons y de la cantidad de usuarios. Agende un diagnóstico gratuito de 30 minutos. Mostramos el ROI estimado con base en sus datos antes de hablar de precio.' },
 
   // CTA / formulário
   'Diagnóstico consultivo · Gratuito': { en: 'Advisory assessment · Free', es: 'Diagnóstico consultivo · Gratuito' },
@@ -1130,7 +1127,6 @@ export const SEWE_TX = {
   'Pós-venda: devolução, troca e chamado de assistência com histórico no mesmo lugar, e o gatilho de recompra saindo do próprio comportamento do cliente.': { en: 'After-sales: returns, exchanges and support tickets with history in one place, and the reorder trigger coming from the customer own behaviour.', es: 'Posventa: devolución, cambio y ticket de asistencia con historial en el mismo lugar, y el disparador de recompra saliendo del propio comportamiento del cliente.' },
 
   // As quatro suítes (suites.jsx)
-  'As quatro suítes': { en: 'The four suites', es: 'Las cuatro suites' },
   'Dashboards Qlik Sense prontos para sua operação.': { en: 'Qlik Sense dashboards ready for your operation.', es: 'Dashboards Qlik Sense listos para su operación.' },
   'Mesma plataforma que movimenta os dados globais da Volvo, Samsung e Accenture. Aqui, skinada com a identidade SEWE e pré-configurada para distribuidor brasileiro.': { en: 'The same platform that moves global data for Volvo, Samsung and Accenture. Here, skinned with the SEWE identity and pre-configured for Brazilian distribution.', es: 'La misma plataforma que mueve los datos globales de Volvo, Samsung y Accenture. Aquí, con la identidad SEWE y preconfigurada para el distribuidor brasileño.' },
   'Uma tela. Quatro áreas. Zero ruído.': { en: 'One screen. Four areas. Zero noise.', es: 'Una pantalla. Cuatro áreas. Cero ruido.' },
@@ -1166,6 +1162,60 @@ export const SEWE_TX = {
   'Margem líquida real por SKU, cliente e rota': { en: 'Real net margin by SKU, customer and route', es: 'Margen neto real por SKU, cliente y ruta' },
   'Previsão de inadimplência por padrão de pagamento': { en: 'Default forecast by payment pattern', es: 'Pronóstico de mora por patrón de pago' },
   'Conciliação automática de rebate e verba': { en: 'Automatic reconciliation of rebates and trade funds', es: 'Conciliación automática de rebate y fondos' },
+
+  // Suíte Pós-Venda (5ª suíte, nome do catálogo)
+  'As cinco suítes': { en: 'The five suites', es: 'Las cinco suites' },
+  'Gestão': { en: 'Management', es: 'Gestión' },
+  'GESTÃO · VISÃO 360° · C-LEVEL': { en: 'MANAGEMENT · 360° VIEW · C-LEVEL', es: 'GESTIÓN · VISIÓN 360° · C-LEVEL' },
+  'O que acontece depois da entrega.': { en: 'What happens after delivery.', es: 'Lo que pasa después de la entrega.' },
+  'Devolução, troca e assistência param de virar prejuízo silencioso.': { en: 'Returns, exchanges and support stop turning into silent losses.', es: 'Devolución, cambio y asistencia dejan de volverse pérdida silenciosa.' },
+  'O pós-venda costuma viver em planilha e caixa de e-mail. Aqui ele fica no mesmo dado da venda: quanto volta, de quem, por qual motivo, e quanto disso já era evitável.': { en: 'After-sales usually lives in a spreadsheet and an inbox. Here it sits on the same data as the sale: how much comes back, from whom, for which reason, and how much of it was avoidable.', es: 'La posventa suele vivir en una hoja de cálculo y una bandeja de correo. Aquí queda en el mismo dato de la venta: cuánto vuelve, de quién, por qué motivo, y cuánto de eso era evitable.' },
+  'devolução por erro de pedido': { en: 'returns from order errors', es: 'devoluciones por error de pedido' },
+  'para fechar um chamado': { en: 'to close a ticket', es: 'para cerrar un ticket' },
+  'recompra pós-atendimento': { en: 'repurchase after support', es: 'recompra posatención' },
+  'Motivo de devolução por cliente, produto e vendedor': { en: 'Return reason by customer, product and rep', es: 'Motivo de devolución por cliente, producto y vendedor' },
+  'Chamado de assistência com prazo e responsável na tela': { en: 'Support tickets with deadline and owner on screen', es: 'Ticket de asistencia con plazo y responsable en pantalla' },
+  'Custo real da devolução abatido na margem do pedido': { en: 'Real cost of the return deducted from the order margin', es: 'Costo real de la devolución descontado del margen del pedido' },
+  'Gatilho de recompra a partir do próprio atendimento': { en: 'Repurchase trigger coming from the support interaction itself', es: 'Disparador de recompra a partir de la propia atención' },
+  'PÓS-VENDA · DEVOLUÇÃO · ASSISTÊNCIA': { en: 'AFTER-SALES · RETURNS · SUPPORT', es: 'POSVENTA · DEVOLUCIÓN · ASISTENCIA' },
+  'MTD · Todas as filiais': { en: 'MTD · All branches', es: 'MTD · Todas las sucursales' },
+  'Desempenho': { en: 'Performance', es: 'Desempeño' },
+  'Relatórios': { en: 'Reports', es: 'Informes' },
+  'Taxa de Devolução': { en: 'Return rate', es: 'Tasa de devolución' },
+  'Custo da Devolução': { en: 'Cost of returns', es: 'Costo de la devolución' },
+  'Chamados Abertos': { en: 'Open tickets', es: 'Tickets abiertos' },
+  'Tempo de Fechamento': { en: 'Time to close', es: 'Tiempo de cierre' },
+  'Devolução · evolução 12m': { en: 'Returns · 12-month trend', es: 'Devolución · evolución 12m' },
+  '% sobre faturamento': { en: '% of revenue', es: '% sobre facturación' },
+  'Motivo da devolução': { en: 'Return reason', es: 'Motivo de la devolución' },
+  'Erro no pedido': { en: 'Order error', es: 'Error en el pedido' },
+  'Produto avariado': { en: 'Damaged product', es: 'Producto averiado' },
+  'Fora do prazo': { en: 'Late delivery', es: 'Fuera de plazo' },
+  'Divergência de preço': { en: 'Price mismatch', es: 'Divergencia de precio' },
+  'Outros': { en: 'Other', es: 'Otros' },
+  'Chamados de assistência em aberto (top 5)': { en: 'Open support tickets (top 5)', es: 'Tickets de asistencia abiertos (top 5)' },
+  'Dias em aberto': { en: 'Days open', es: 'Días abiertos' },
+  'Responsável': { en: 'Owner', es: 'Responsable' },
+  'Troca': { en: 'Exchange', es: 'Cambio' },
+  'Devolução': { en: 'Return', es: 'Devolución' },
+  'Assistência': { en: 'Support', es: 'Asistencia' },
+  'Estourado': { en: 'Breached', es: 'Vencido' },
+  'No prazo': { en: 'On time', es: 'En plazo' },
+
+  // Níveis: cada suíte tem os três (a calculadora cobra nível por suíte)
+  'Cada suíte tem os três níveis, e você escolhe um por suíte: Comercial no Strategic, Suprimentos no Smart, e assim por diante. Sobe área por área, sem trocar de plataforma.': { en: 'Every suite has all three levels, and you pick one per suite: Sales on Strategic, Supply on Smart, and so on. You move up area by area, without switching platforms.', es: 'Cada suite tiene los tres niveles, y usted elige uno por suite: Comercial en Strategic, Suministros en Smart, y así. Sube área por área, sin cambiar de plataforma.' },
+
+  // FAQ · Sewe Sales
+  'O Sewe Sales substitui o meu ERP?': { en: 'Does Sewe Sales replace my ERP?', es: '¿Sewe Sales reemplaza mi ERP?' },
+  'Não. Ele roda por cima do ERP que você já usa: lê o dado na origem e devolve pedido e status para dentro dele. Crédito, faturamento, separação e entrega continuam no seu sistema.': { en: 'No. It runs on top of the ERP you already use: it reads the data at the source and pushes orders and statuses back into it. Credit, invoicing, picking and delivery stay in your system.', es: 'No. Corre por encima del ERP que usted ya usa: lee el dato en el origen y devuelve pedido y estado dentro de él. Crédito, facturación, preparación y entrega siguen en su sistema.' },
+  'Meu cliente consegue comprar sozinho?': { en: 'Can my customer buy on their own?', es: '¿Mi cliente puede comprar solo?' },
+  'Sim. No Portal de Vendas B2B2C ele consulta produto, preço, estoque e a condição comercial dele e fecha o pedido 24 horas por dia, sem depender do vendedor. Quem prefere atendimento continua sendo atendido pela força de vendas, no mesmo sistema.': { en: 'Yes. In the B2B2C Sales Portal they check product, price, stock and their own terms and close the order 24 hours a day, without depending on a rep. Whoever prefers to be served still is, by the sales force, in the same system.', es: 'Sí. En el Portal de Ventas B2B2C consulta producto, precio, stock y su condición comercial y cierra el pedido 24 horas al día, sin depender del vendedor. Quien prefiere atención sigue siendo atendido por la fuerza de ventas, en el mismo sistema.' },
+  'A minha política comercial continua valendo?': { en: 'Does my commercial policy still hold?', es: '¿Mi política comercial sigue valiendo?' },
+  'Sim, e é aplicada na origem: catálogo e preço por cliente, markup por filial, teto de desconto por perfil e aprovação automática do que sai da regra. O pedido não é confirmado fora da política.': { en: 'Yes, and it is enforced at the source: catalogue and price per customer, markup per branch, discount ceiling per profile and automatic approval for whatever falls outside the rule. The order is not confirmed outside policy.', es: 'Sí, y se aplica en el origen: catálogo y precio por cliente, markup por sucursal, techo de descuento por perfil y aprobación automática de lo que sale de la regla. El pedido no se confirma fuera de la política.' },
+  'O WhatsApp é o oficial?': { en: 'Is the WhatsApp the official one?', es: '¿El WhatsApp es el oficial?' },
+  'Sim. A SEWE é certificada pela Meta para integrar a API do WhatsApp Business: número verificado, conversas dentro da política da plataforma e cada conversa registrada no histórico do cliente.': { en: 'Yes. SEWE is certified by Meta to integrate the WhatsApp Business API: verified number, conversations within platform policy and every conversation recorded in the customer history.', es: 'Sí. SEWE está certificada por Meta para integrar la API de WhatsApp Business: número verificado, conversaciones dentro de la política de la plataforma y cada conversación registrada en el historial del cliente.' },
+  'Tudo sobre go-live, ERP, Sewe Sales, LGPD e investimento, direto ao ponto.': { en: 'Everything about go-live, ERP, Sewe Sales, data protection and investment, straight to the point.', es: 'Todo sobre go-live, ERP, Sewe Sales, protección de datos e inversión, directo al punto.' },
+  'Parceiro oficial da Qlik, plataforma de analytics líder global, Leader no Gartner® Magic Quadrant™ de Analytics & BI por 16 anos consecutivos (2026).': { en: 'Official Qlik partner, the global leading analytics platform, Leader in the Gartner® Magic Quadrant™ for Analytics & BI for 16 consecutive years (2026).', es: 'Partner oficial de Qlik, plataforma de analytics líder global, Leader en el Gartner® Magic Quadrant™ de Analytics & BI por 16 años consecutivos (2026).' },
 
   // Painéis das suítes
   'SUPRIMENTOS · CURVA ABC · RUPTURA': { en: 'SUPPLY · ABC ANALYSIS · STOCKOUTS', es: 'SUMINISTROS · CURVA ABC · QUIEBRE' },
@@ -1205,7 +1255,6 @@ export const SEWE_TX = {
   'Projeção · IA 94% assert.': { en: 'Projection · AI 94% acc.', es: 'Proyección · IA 94% prec.' },
   'Fluxo de Caixa': { en: 'Cash flow', es: 'Flujo de caja' },
   'vs Mês Ant.': { en: 'vs prev. month', es: 'vs mes ant.' },
-  'GESTÃO ESTRATÉGICA · VISÃO 360° · C-LEVEL': { en: 'STRATEGIC MANAGEMENT · 360° VIEW · C-LEVEL', es: 'GESTIÓN ESTRATÉGICA · VISIÓN 360° · C-LEVEL' },
   'Consolidado · 7 filiais · MTD': { en: 'Consolidated · 7 branches · MTD', es: 'Consolidado · 7 sucursales · MTD' },
   'Faturamento Líquido': { en: 'Net revenue', es: 'Facturación neta' },
   'Ciclo de Caixa': { en: 'Cash cycle', es: 'Ciclo de caja' },
@@ -1342,7 +1391,6 @@ export const SEWE_TX = {
   'Voltar para o blog': { en: 'Back to the blog', es: 'Volver al blog' },
   'Referências': { en: 'References', es: 'Referencias' },
   'Sobre o autor': { en: 'About the author', es: 'Sobre el autor' },
-  'Tudo sobre go-live, ERP, LGPD, parceria Qlik e investimento, direto ao ponto.': { en: 'Everything about go-live, ERP, data protection, the Qlik partnership and investment, straight to the point.', es: 'Todo sobre go-live, ERP, protección de datos, alianza Qlik e inversión, directo al punto.' },
 
   // Engajamento do blog (curtir / comentar)
   'Curtir este artigo': { en: 'Like this article', es: 'Me gusta este artículo' },
@@ -1404,7 +1452,7 @@ export const SEWE_TX = {
   // Bloco de objeção (rest.jsx)
   'Antes de você perguntar': { en: 'Before you ask', es: 'Antes de que pregunte' },
   'Ver todas as perguntas': { en: 'See all questions', es: 'Ver todas las preguntas' },
-  'Depende do nível, do número de usuários e de filiais. No diagnóstico gratuito mostramos o ROI estimado com os seus dados antes de falar em preço.': { en: 'It depends on the level, the number of users and branches. In the free assessment we show the estimated ROI on your own data before talking price.', es: 'Depende del nivel, del número de usuarios y de sucursales. En el diagnóstico gratuito mostramos el ROI estimado con sus datos antes de hablar de precio.' },
+  'Depende da suíte, do nível e da quantidade de usuários. No diagnóstico gratuito mostramos o ROI estimado com os seus dados antes de falar em preço.': { en: 'It depends on the suite, the level and the number of users. In the free assessment we show the estimated ROI on your own data before talking price.', es: 'Depende de la suite, del nivel y de la cantidad de usuarios. En el diagnóstico gratuito mostramos el ROI estimado con sus datos antes de hablar de precio.' },
   'Não. A SEWE cuida da conexão ao ERP, da modelagem e dos painéis. Sua equipe usa o produto; a engenharia é nossa.': { en: 'No. SEWE handles the ERP connection, the modelling and the dashboards. Your team uses the product; the engineering is ours.', es: 'No. SEWE cuida la conexión al ERP, el modelado y los paneles. Su equipo usa el producto; la ingeniería es nuestra.' },
   'A conexão é direta entre o seu ERP e o ambiente Qlik hospedado em região brasileira. Você controla os acessos e revoga quando quiser.': { en: 'The connection is direct between your ERP and the Qlik environment hosted in Brazil. You control access and revoke it whenever you want.', es: 'La conexión es directa entre su ERP y el entorno Qlik alojado en región brasileña. Usted controla los accesos y los revoca cuando quiera.' },
 

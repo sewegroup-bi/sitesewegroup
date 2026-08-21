@@ -464,7 +464,7 @@ function DistribuidorScene() {
 
   // Pills on the outer margins; ax/ay = anchor point (%) on the matching floor.
   const pills = [
-    { key: 'estrategica', label: tx('Gestão Estratégica'), icon: 'target',   l: 12, t: 12, ax: 48,   ay: 12.5, items: [tx('DRE ao vivo'), tx('KPIs por filial'), tx('Visão 360°')] },
+    { key: 'estrategica', label: tx('Gestão'), icon: 'target',   l: 12, t: 12, ax: 48,   ay: 12.5, items: [tx('DRE ao vivo'), tx('KPIs por filial'), tx('Visão 360°')] },
     { key: 'suprimentos', label: tx('Suprimentos'),        icon: 'boxes',    l: 12, t: 42, ax: 30,   ay: 32, items: [tx('Previsão de ruptura'), tx('Curva ABC'), tx('Sugestão de compra')] },
     { key: 'comercial',   label: tx('Comercial'),          icon: 'trending', l: 88, t: 18, ax: 72,   ay: 30, items: [tx('Metas por vendedor'), tx('Leads inteligentes'), tx('Reativação de clientes')] },
     { key: 'financeiro',  label: tx('Financeiro'),         icon: 'dollar',   l: 92, t: 63, ax: 51.5, ay: 44, items: [tx('Fluxo de caixa'), tx('Margem por SKU'), tx('DRE automatizado')] },
@@ -1096,7 +1096,7 @@ function DistribuidorScene() {
 // Funcao (nao const): tx() precisa ser reavaliado quando o idioma muda.
 const dpAreas = () => [
   // camada de BI: as suítes que leem a operação
-  { key: 'estrategica', kind: 'bi', label: tx('Gestão Estratégica'), icon: 'target', l: 24, t: 22, up: true,
+  { key: 'estrategica', kind: 'bi', label: tx('Gestão'), icon: 'target', l: 24, t: 22, up: true,
     items: [tx('DRE ao vivo'), tx('KPIs por filial'), tx('Visão 360°')],
     msg: tx('Assuma o controle: a operação inteira em uma tela e a decisão do dia já priorizada, sem pedir relatório a ninguém.') },
   // l: 62 (era 55) — em 55 o painel aberto de "Gestão de Produtos" cobria esta pílula

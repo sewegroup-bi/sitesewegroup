@@ -7,7 +7,7 @@ function SuitesSection() {
   const suites = [
     {
       key: 'estrategica',
-      label: tx('Gestão Estratégica'),
+      label: tx('Gestão'),
       icon: 'target',
       tagline: tx('Uma tela. Quatro áreas. Zero ruído.'),
       title: tx('A visão 360° para quem toma a decisão difícil.'),
@@ -69,6 +69,22 @@ function SuitesSection() {
       ],
       dashboard: 'financeiro',
     },
+    {
+      key: 'posvenda',
+      label: tx('Pós-Venda'),
+      icon: 'chat',
+      tagline: tx('O que acontece depois da entrega.'),
+      title: tx('Devolução, troca e assistência param de virar prejuízo silencioso.'),
+      body: tx('O pós-venda costuma viver em planilha e caixa de e-mail. Aqui ele fica no mesmo dado da venda: quanto volta, de quem, por qual motivo, e quanto disso já era evitável.'),
+      kpis: [{ v: '-28%', l: tx('devolução por erro de pedido') }, { v: '1,8 dia', l: tx('para fechar um chamado') }, { v: '+22%', l: tx('recompra pós-atendimento') }],
+      bullets: [
+        tx('Motivo de devolução por cliente, produto e vendedor'),
+        tx('Chamado de assistência com prazo e responsável na tela'),
+        tx('Custo real da devolução abatido na margem do pedido'),
+        tx('Gatilho de recompra a partir do próprio atendimento'),
+      ],
+      dashboard: 'posvenda',
+    },
   ];
 
   // Selection coming from the hero's interactive distributor scene
@@ -87,7 +103,7 @@ function SuitesSection() {
     <section id="suites" className="section" style={{ background: '#fff', borderTop: '1px solid var(--line-2)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 40px' }}>
-          <div className="eyebrow">{tx('As quatro suítes')}</div>
+          <div className="eyebrow">{tx('As cinco suítes')}</div>
           <h2 style={{ marginTop: 14 }}>{tx('Dashboards Qlik Sense prontos para sua operação.')}</h2>
           <p style={{ color: 'var(--text-2)', marginTop: 14, fontSize: 17 }}>{tx('Mesma plataforma que movimenta os dados globais da Volvo, Samsung e Accenture. Aqui, skinada com a identidade SEWE e pré-configurada para distribuidor brasileiro.')}</p>
         </div>
@@ -311,9 +327,52 @@ function SuiteDashboard({ kind }) {
     );
   }
 
+  if (kind === 'posvenda') {
+    return (
+      <QlikFrame title={tx('PÓS-VENDA · DEVOLUÇÃO · ASSISTÊNCIA')} subtitle={tx('MTD · Todas as filiais')} tabs={[tx('Visão geral'), tx('Desempenho'), tx('Relatórios')]} activeTab={1}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginBottom: 10 }}>
+          <QlikKPI compact label={tx('Taxa de Devolução')} value="1,9%" delta="-0,6pp" trend="up" color={Q.pos}/>
+          <QlikKPI compact label={tx('Custo da Devolução')} value="R$ 214k" delta="-18%" trend="up" color={Q.pos}/>
+          <QlikKPI compact label={tx('Chamados Abertos')} value="38" delta="-11" trend="up" color={Q.navy}/>
+          <QlikKPI compact label={tx('Tempo de Fechamento')} value="1,8 dia" delta="-0,7" trend="up" color={Q.navy}/>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
+          <QlikArea title={tx('Devolução · evolução 12m')} subtitle={tx('% sobre faturamento')} data={[3.1,2.9,2.8,2.7,2.5,2.6,2.4,2.2,2.1,2.0,2.0,1.9]} labels={['Jan','','Mar','','Mai','','Jul','','Set','','Nov','']} height={150}/>
+          <QlikHBars title={tx('Motivo da devolução')} rows={[
+            { label: tx('Erro no pedido'),        v: 34, display: '34%' },
+            { label: tx('Produto avariado'),      v: 26, display: '26%' },
+            { label: tx('Fora do prazo'),         v: 19, display: '19%' },
+            { label: tx('Divergência de preço'),  v: 13, display: '13%' },
+            { label: tx('Outros'),                v: 8,  display: '8%'  },
+          ]} max={40} color={Q.turq2}/>
+        </div>
+        <QlikTable
+          title={tx('Chamados de assistência em aberto (top 5)')}
+          columns={[
+            { key: 'cli',  label: 'Cliente' },
+            { key: 'tipo', label: 'Tipo' },
+            { key: 'dias', label: tx('Dias em aberto'), align: 'right', mono: true },
+            { key: 'resp', label: tx('Responsável') },
+            { key: 'sla',  label: 'SLA', align: 'center', render: (v) => (
+              <span style={{ padding: '2px 8px', borderRadius: 4, background: v === 'Estourado' ? '#fde7e7' : '#fff4dc', color: v === 'Estourado' ? Q.neg : Q.warn, fontSize: 10, fontWeight: 700, letterSpacing: '0.06em' }}>{v.toUpperCase()}</span>
+            )},
+          ]}
+          rows={[
+            { cli: tx('Agrocenter Sul'),   tipo: tx('Troca'),       dias: 6, resp: tx('Assistência'), sla: tx('Estourado') },
+            { cli: tx('Pet House Oeste'),  tipo: tx('Devolução'),   dias: 4, resp: tx('Comercial'),   sla: tx('Estourado') },
+            { cli: tx('Multiagro Norte'),  tipo: tx('Assistência'), dias: 3, resp: tx('Assistência'), sla: tx('No prazo') },
+            { cli: tx('Vetclin Distrib.'), tipo: tx('Troca'),       dias: 2, resp: tx('Logística'),   sla: tx('No prazo') },
+            { cli: tx('Distribuidora Sul'), tipo: tx('Devolução'),  dias: 1, resp: tx('Comercial'),   sla: tx('No prazo') },
+          ]}
+          compact
+        />
+      </QlikFrame>
+    );
+  }
+
   // estrategica
   return (
-    <QlikFrame title={tx('GESTÃO ESTRATÉGICA · VISÃO 360° · C-LEVEL')} subtitle={tx('Consolidado · 7 filiais · MTD')} tabs={[tx('Visão 360°'), tx('Comparativo YoY'), tx('Simulação'), 'Benchmark']} activeTab={0}>
+    <QlikFrame title={tx('GESTÃO · VISÃO 360° · C-LEVEL')} subtitle={tx('Consolidado · 7 filiais · MTD')} tabs={[tx('Visão 360°'), tx('Comparativo YoY'), tx('Simulação'), 'Benchmark']} activeTab={0}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginBottom: 10 }}>
         <QlikKPI compact label={tx('Faturamento Líquido')} value="R$ 18,4M" delta="+14%" trend="up" color={Q.navy} spark={<Sparkline data={[12,13,14,15,16,17,18]}/>}/>
         <QlikKPI compact label="EBITDA" value="25,4%" delta="+2,1pp" trend="up" color={Q.navy} spark={<Sparkline data={[22,22.5,23,23.5,24.1,25,25.4]}/>}/>

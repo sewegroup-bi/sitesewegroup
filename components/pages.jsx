@@ -531,7 +531,7 @@ function FaqPage() {
     <>
       <SiteHeader translated/>
       <PageHero eyebrow={tx('Perguntas frequentes')} title={tx('O que diretores perguntam antes de assinar.')}
-        lead={tx('Tudo sobre go-live, ERP, LGPD, parceria Qlik e investimento, direto ao ponto.')}/>
+        lead={tx('Tudo sobre go-live, ERP, Sewe Sales, LGPD e investimento, direto ao ponto.')}/>
       {typeof FAQSection !== 'undefined' ? <FAQSection/> : null}
       <SiteFooter/>
     </>

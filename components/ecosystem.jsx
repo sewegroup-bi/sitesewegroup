@@ -7,7 +7,7 @@
 // Funcao (nao const): tx() precisa ser reavaliado quando o idioma muda.
 const suitesMap = () => ({
   estrategica: {
-    label: tx('Gestão Estratégica'), short: '360°', color: '#0e7a7c', icon: 'target',
+    label: tx('Gestão'), short: '360°', color: '#0e7a7c', icon: 'target',
     role: tx('A camada que lê a operação inteira'),
     stations: ['fornecedor', 'estoque', 'expedicao', 'vendas', 'cliente'],
     decision: tx('Consolidando 7 filiais · margem, ruptura e positivação em uma só tela'),
@@ -161,7 +161,7 @@ function StrategicRail({ highlight, animated }) {
           <Icon name="target" size={15} stroke={2}/>
         </span>
         <div>
-          <div className="op-rail-name">{tx('Gestão Estratégica')}</div>
+          <div className="op-rail-name">{tx('Gestão')}</div>
           <div className="op-rail-sub">{tx('VISÃO 360° · TEMPO REAL')}</div>
         </div>
       </div>

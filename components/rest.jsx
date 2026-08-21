@@ -21,7 +21,7 @@ function MaturitySection() {
         <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 48px' }}>
           <div className="eyebrow">{tx('Níveis de maturidade')}</div>
           <h2 style={{ marginTop: 14 }}>SMART · SCALE · STRATEGIC.</h2>
-          <p style={{ color: 'var(--text-2)', marginTop: 14, fontSize: 17 }}>{tx('Entre pelo nível certo para o seu momento. Evolua sem trocar de plataforma: o mesmo Qlik, as mesmas suítes, cada vez mais fundo.')}</p>
+          <p style={{ color: 'var(--text-2)', marginTop: 14, fontSize: 17 }}>{tx('Cada suíte tem os três níveis, e você escolhe um por suíte: Comercial no Strategic, Suprimentos no Smart, e assim por diante. Sobe área por área, sem trocar de plataforma.')}</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="mat-grid">
           {levels.map((l, i) => {
@@ -82,7 +82,7 @@ function DifferentiatorsSection() {
     { icon: 'brain', title: tx('IA invisível'), body: tx('Roda em background, limpa outliers, cruza dados e entrega decisão pronta. Sem prompts, sem engenharia, sem cientista de dados.') },
     { icon: 'shield', title: tx('Segurança e LGPD'), body: tx('Dados cifrados em trânsito e repouso, homologação Qlik oficial, auditoria e política de retenção desenhadas por projeto.') },
     { icon: 'pkg', title: tx('DNA de Atacado e Distribuição'), body: tx('Consultores que falam ruptura, Curva A, positivação, rebate e capital de giro. Não traduzimos o setor, nós somos do setor.') },
-    { icon: 'trophy', title: tx('Parceria oficial Qlik'), body: tx('Platform Partner da Qlik, plataforma de analytics líder global, Leader no Gartner® Magic Quadrant™ de Analytics & BI por 16 anos consecutivos (2026).') },
+    { icon: 'trophy', title: tx('Parceria oficial Qlik'), body: tx('Parceiro oficial da Qlik, plataforma de analytics líder global, Leader no Gartner® Magic Quadrant™ de Analytics & BI por 16 anos consecutivos (2026).') },
   ];
   return (
     <section id="diferenciais" className="section grain" style={{ background: '#0e1729', color: '#fff', position: 'relative', overflow: 'hidden' }}>
@@ -164,10 +164,13 @@ function FAQSection() {
     { q: tx('Preciso de um time de BI ou TI dedicado?'), a: tx('Não. A SEWE é responsável pela conexão ao ERP, modelagem dos dados e configuração dos painéis. Sua equipe usa o produto; nós cuidamos da engenharia por trás.') },
     { q: tx('Posso customizar as soluções da SEWE para minha operação específica?'), a: tx('Sim! Uma das nossas forças é justamente personalizar módulos, dashboards e processos para refletir a realidade da sua empresa. Não entregamos pacotes genéricos, entregamos soluções ajustadas.') },
     { q: tx('O que diferencia a SEWE de outras empresas de BI e consultoria de dados?'), a: tx('Nosso diferencial está em combinar: um portfólio completo (BI + consultoria + integração + vendas), atendimento nacional, inteligência personalizada e foco em resultados concretos e sustentáveis.') },
-    { q: tx('Como funciona a parceria com a Qlik?'), a: tx('Somos Platform Partner oficial da Qlik no Brasil. Você recebe licenças homologadas, suporte local em português e acesso a todas as capacidades nativas da plataforma, com a camada SEWE de dashboards e IA em cima.') },
+    { q: tx('O Sewe Sales substitui o meu ERP?'), a: tx('Não. Ele roda por cima do ERP que você já usa: lê o dado na origem e devolve pedido e status para dentro dele. Crédito, faturamento, separação e entrega continuam no seu sistema.') },
+    { q: tx('Meu cliente consegue comprar sozinho?'), a: tx('Sim. No Portal de Vendas B2B2C ele consulta produto, preço, estoque e a condição comercial dele e fecha o pedido 24 horas por dia, sem depender do vendedor. Quem prefere atendimento continua sendo atendido pela força de vendas, no mesmo sistema.') },
+    { q: tx('A minha política comercial continua valendo?'), a: tx('Sim, e é aplicada na origem: catálogo e preço por cliente, markup por filial, teto de desconto por perfil e aprovação automática do que sai da regra. O pedido não é confirmado fora da política.') },
+    { q: tx('O WhatsApp é o oficial?'), a: tx('Sim. A SEWE é certificada pela Meta para integrar a API do WhatsApp Business: número verificado, conversas dentro da política da plataforma e cada conversa registrada no histórico do cliente.') },
     { q: tx('E a LGPD?'), a: tx('Conformidade end-to-end: criptografia em trânsito e repouso, controle granular de acesso, política de retenção e trilha de auditoria. Documentação de DPIA disponível em até 48h úteis após assinatura de NDA.') },
     { q: tx('Meus dados saem da minha empresa?'), a: tx('A conexão é direta entre seu ERP e o ambiente Qlik hospedado em região brasileira. Você mantém o controle dos acessos e pode revogar a qualquer momento.') },
-    { q: tx('Quanto custa?'), a: tx('O investimento depende do nível (SMART, SCALE ou STRATEGIC), do número de usuários e de filiais. Agende um diagnóstico gratuito de 30 minutos. Mostramos o ROI estimado com base nos seus dados antes de falar em preço.') },
+    { q: tx('Quanto custa?'), a: tx('O investimento depende da suíte, do nível (Smart, Scale ou Strategic), dos add-ons e da quantidade de usuários. Agende um diagnóstico gratuito de 30 minutos. Mostramos o ROI estimado com base nos seus dados antes de falar em preço.') },
   ];
   return (
     <section id="faq" className="section" style={{ background: 'var(--bg-soft)' }}>
@@ -211,7 +214,7 @@ function ObjectionBlock() {
   useLocale();
   const qs = [
     { q: tx('Quanto custa?'),
-      a: tx('Depende do nível, do número de usuários e de filiais. No diagnóstico gratuito mostramos o ROI estimado com os seus dados antes de falar em preço.') },
+      a: tx('Depende da suíte, do nível e da quantidade de usuários. No diagnóstico gratuito mostramos o ROI estimado com os seus dados antes de falar em preço.') },
     { q: tx('Preciso de um time de BI ou TI dedicado?'),
       a: tx('Não. A SEWE cuida da conexão ao ERP, da modelagem e dos painéis. Sua equipe usa o produto; a engenharia é nossa.') },
     { q: tx('Meus dados saem da minha empresa?'),

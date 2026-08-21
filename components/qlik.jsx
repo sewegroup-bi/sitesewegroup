@@ -33,7 +33,7 @@ function QlikFrame({ title = tx('PAINEL · COMERCIAL · HOJE'), subtitle, time =
         </div>
         <div style={{ flex: 1 }}/>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: 'rgba(255,255,255,0.72)', fontFamily: 'JetBrains Mono, monospace' }}>
-          <span>HOJE · {time}</span>
+          <span>{tx('HOJE')} · {time}</span>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
             <span style={{ width: 6, height: 6, borderRadius: 99, background: Q.turq, boxShadow: `0 0 0 3px rgba(117,227,228,0.25)` }}/>
             LIVE
