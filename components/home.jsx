@@ -6,18 +6,18 @@
 const WA = 'https://wa.me/5548984704389';
 
 function HomePositioning() {
+  useLocale();
   return (
     <section className="hp" style={{ position: 'relative' }}>
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="hp-copy reveal in">
           <h1 className="display hp-h1">
-            Dados que viram decisão.<br/>Decisão que vira <span className="hp-hl">margem</span>.
+            {tr('home.h1a')}<br/>{tr('home.h1b')} <span className="hp-hl">{tr('home.h1hl')}</span>.
           </h1>
           <p className="hp-lead">
-            BI, IA e CRM para distribuidores, atacadistas e indústrias.
-            Escolha o perfil da sua empresa e veja a solução certa para a sua operação.
+            {tr('home.lead')}
           </p>
-          <a href="#escolha" className="hp-down" aria-label="Ir para a escolha de perfil">
+          <a href="#escolha" className="hp-down" aria-label={tr('home.scroll')}>
             <Icon name="arrowDown" size={20} stroke={2}/>
           </a>
         </div>
@@ -27,33 +27,34 @@ function HomePositioning() {
 }
 
 function AudienceChooser() {
+  useLocale();
   const doors = [
     {
-      icon: 'factory', kicker: 'Sou indústria', accent: '#00a335', soft: 'rgba(0,163,53,0.10)',
-      title: 'Enxergue toda a sua rede',
-      desc: 'Do sellout ao PDV: Integration, Sales e BI conectando fábrica, distribuidor e revenda em um só mapa.',
-      cta: 'Ver o ecossistema', href: '/industria',
+      icon: 'factory', kicker: tr('home.door1.kicker'), accent: '#00a335', soft: 'rgba(0,163,53,0.10)',
+      title: tr('home.door1.title'),
+      desc: tr('home.door1.desc'),
+      cta: tr('home.door1.cta'), href: '/industria',
     },
     {
-      icon: 'warehouse', kicker: 'Sou distribuidor ou atacadista', accent: '#fd7014', soft: 'rgba(253,112,20,0.10)',
-      title: 'Decida com o dado na mão',
-      desc: 'Menos ruptura, mais positivação, capital de giro livre. BI, IA e Sales sob medida para a sua operação.',
-      cta: 'Ver soluções', href: '/distribuidor',
+      icon: 'warehouse', kicker: tr('home.door2.kicker'), accent: '#fd7014', soft: 'rgba(253,112,20,0.10)',
+      title: tr('home.door2.title'),
+      desc: tr('home.door2.desc'),
+      cta: tr('home.door2.cta'), href: '/distribuidor',
     },
     {
-      icon: 'cpu', kicker: 'Qualquer setor', accent: 'var(--turquoise-2)', soft: 'rgba(117,227,228,0.28)',
-      title: 'Plataforma de Dados & IA',
-      desc: 'Do dado bruto no ERP ao agente que executa a ação: Qlik de ponta a ponta, com a engenharia de dados da SEWE por trás.',
-      cta: 'Ver a plataforma', href: '/solucoes',
+      icon: 'cpu', kicker: tr('home.door3.kicker'), accent: 'var(--turquoise-2)', soft: 'rgba(117,227,228,0.28)',
+      title: tr('home.door3.title'),
+      desc: tr('home.door3.desc'),
+      cta: tr('home.door3.cta'), href: '/solucoes',
     },
   ];
   return (
     <section id="escolha" className="section" style={{ position: 'relative', paddingTop: 'clamp(16px, 2vw, 28px)', paddingBottom: 'clamp(16px, 2vw, 28px)' }}>
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 44px' }}>
-          <div className="eyebrow">Comece aqui · Selecione uma opção</div>
+          <div className="eyebrow">{tr('home.pick.eyebrow')}</div>
           <h2 style={{ marginTop: 14, fontSize: 'clamp(28px,3.6vw,42px)' }}>
-            Qual o perfil da sua empresa?
+            {tr('home.pick.title')}
           </h2>
         </div>
 

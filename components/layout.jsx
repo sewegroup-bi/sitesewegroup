@@ -7,7 +7,10 @@ const WHATSAPP = 'https://wa.me/5548984704389';
 // hash link that works from any page: on the home use "#x", elsewhere "index.html#x"
 function navHref(home, hash) { return home ? hash : '/' + hash; }
 
-function SiteHeader({ home = false }) {
+// `translated`: passe true nas páginas já traduzidas (hoje: a home). Nas outras,
+// escolher EN/ES mostra uma faixa avisando que o conteúdo ainda está em PT.
+function SiteHeader({ home = false, translated = false }) {
+  useLocale();
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   React.useEffect(() => {
@@ -17,23 +20,24 @@ function SiteHeader({ home = false }) {
   }, []);
 
   const links = [
-    { label: 'Início', href: '/' },
-    { label: 'Soluções', children: [
-      { label: 'Indústria',          href: '/industria' },
-      { label: 'Distribuidor & Atacado', href: '/distribuidor' },
-      { label: 'Plataforma de Dados & IA', href: '/solucoes' },
+    { label: tr('nav.home'), href: '/' },
+    { label: tr('nav.solutions'), children: [
+      { label: tr('nav.industry'),    href: '/industria' },
+      { label: tr('nav.distributor'), href: '/distribuidor' },
+      { label: tr('nav.platform'),    href: '/solucoes' },
     ]},
-    { label: 'Conteúdos', children: [
-      { label: 'Blog',        href: '/blog' },
-      { label: 'Prêmio SEWE', href: '/premio' },
+    { label: tr('nav.content'), children: [
+      { label: tr('nav.blog'),  href: '/blog' },
+      { label: tr('nav.award'), href: '/premio' },
     ]},
-    { label: 'Quem Somos', href: '/quem-somos' },
-    { label: 'FAQ',        href: '/faq' },
+    { label: tr('nav.about'), href: '/quem-somos' },
+    { label: tr('nav.faq'),   href: '/faq' },
   ];
 
   const curPage = (typeof window !== 'undefined' ? (window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/') : '/');
 
   return (
+    <>
     <header style={{
       position: 'sticky', top: 0, zIndex: 50,
       background: scrolled ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.85)',
@@ -74,14 +78,15 @@ function SiteHeader({ home = false }) {
             );
           })}
         </nav>
+        <LangSwitcher/>
         <a href={WHATSAPP} className="nav-desktop" style={{
           fontSize: 14, fontWeight: 600, color: 'var(--navy)', padding: '9px 20px',
           border: '1.5px solid var(--navy)', borderRadius: 99, transition: 'all .15s ease', whiteSpace: 'nowrap',
         }} onMouseEnter={e => { e.currentTarget.style.background = 'var(--navy)'; e.currentTarget.style.color = '#fff'; }}
            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--navy)'; }}>
-          Fale Conosco
+          {tr('nav.contact')}
         </a>
-        <button onClick={() => setOpen(v => !v)} className="nav-mobile" aria-label="Menu"
+        <button onClick={() => setOpen(v => !v)} className="nav-mobile" aria-label={tr('nav.menu')}
           style={{ width: 40, height: 40, borderRadius: 8, border: '1px solid var(--line)', display: 'none', alignItems: 'center', justifyContent: 'center' }}>
           <Icon name={open ? 'minus' : 'bars'} size={18}/>
         </button>
@@ -99,7 +104,7 @@ function SiteHeader({ home = false }) {
             ) : (
               <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{ padding: '12px 8px', borderBottom: '1px solid var(--line-2)', fontSize: 15, color: 'var(--navy-900)' }}>{l.label}</a>
             ))}
-            <a href={WHATSAPP} onClick={() => setOpen(false)} style={{ padding: '12px 8px', fontSize: 15, fontWeight: 600, color: 'var(--navy)' }}>Fale Conosco</a>
+            <a href={WHATSAPP} onClick={() => setOpen(false)} style={{ padding: '12px 8px', fontSize: 15, fontWeight: 600, color: 'var(--navy)' }}>{tr('nav.contact')}</a>
           </div>
         </div>
       )}
@@ -131,6 +136,8 @@ function SiteHeader({ home = false }) {
         @media (min-width: 1041px) { .nav-mobile-panel { display: none !important; } }
       `}</style>
     </header>
+    {!translated && <I18nNotice/>}
+    </>
   );
 }
 
@@ -156,6 +163,7 @@ function PageHero({ eyebrow, title, lead, children }) {
 }
 
 function SiteFooter({ home = false }) {
+  useLocale();
   const col = {
     title: { fontFamily: 'Chakra Petch', fontWeight: 600, fontSize: 12, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.9)', textTransform: 'uppercase', marginBottom: 14 },
     link:  { display: 'block', fontSize: 13, color: 'rgba(255,255,255,0.62)', padding: '6px 0', transition: 'color .15s ease' },
@@ -176,13 +184,13 @@ function SiteFooter({ home = false }) {
               </span>
             </span>
             <p style={{ color: 'rgba(255,255,255,0.56)', marginTop: 16, fontSize: 14, lineHeight: 1.6, maxWidth: 320 }}>
-              Inteligência de dados para distribuidores e atacadistas. Consultoria + tecnologia + Qlik.
+              {tr('foot.tagline')}
             </p>
             <div style={{ display: 'flex', gap: 10, marginTop: 18 }}>
               <a href="https://www.qlik.com/pt-br" target="_blank" rel="noopener" style={{ padding: '6px 12px', borderRadius: 6, background: 'rgba(117,227,228,0.1)', color: 'var(--turquoise)', fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', border: '1px solid rgba(117,227,228,0.2)', textDecoration: 'none', transition: 'background .2s ease, border-color .2s ease' }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(117,227,228,0.2)'; e.currentTarget.style.borderColor = 'rgba(117,227,228,0.45)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(117,227,228,0.1)'; e.currentTarget.style.borderColor = 'rgba(117,227,228,0.2)'; }}>
-                PARCEIRO OFICIAL QLIK
+                {tr('foot.qlik')}
               </a>
             </div>
             <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
@@ -205,34 +213,34 @@ function SiteFooter({ home = false }) {
             </div>
           </div>
           <div>
-            <div style={col.title}>Soluções</div>
-            <a style={col.link} href="/industria" onMouseEnter={onEnter} onMouseLeave={onLeave}>Indústria</a>
-            <a style={col.link} href="/distribuidor" onMouseEnter={onEnter} onMouseLeave={onLeave}>Distribuidor & Atacado</a>
-            <a style={col.link} href="/solucoes" onMouseEnter={onEnter} onMouseLeave={onLeave}>Plataforma de Dados & IA</a>
+            <div style={col.title}>{tr('foot.solutions')}</div>
+            <a style={col.link} href="/industria" onMouseEnter={onEnter} onMouseLeave={onLeave}>{tr('nav.industry')}</a>
+            <a style={col.link} href="/distribuidor" onMouseEnter={onEnter} onMouseLeave={onLeave}>{tr('nav.distributor')}</a>
+            <a style={col.link} href="/solucoes" onMouseEnter={onEnter} onMouseLeave={onLeave}>{tr('nav.platform')}</a>
           </div>
           <div>
-            <div style={col.title}>Empresa</div>
-            <a style={col.link} href="/quem-somos" onMouseEnter={onEnter} onMouseLeave={onLeave}>Quem Somos</a>
-            <a style={col.link} href="/premio" onMouseEnter={onEnter} onMouseLeave={onLeave}>Prêmio SEWE</a>
-            <a style={col.link} href="/blog" onMouseEnter={onEnter} onMouseLeave={onLeave}>Blog</a>
-            <a style={col.link} href="/faq" onMouseEnter={onEnter} onMouseLeave={onLeave}>FAQ</a>
-            <a style={col.link} href="https://sewecrm.com/indicacao.html" target="_blank" rel="noopener" onMouseEnter={onEnter} onMouseLeave={onLeave}>Indique e Ganhe</a>
+            <div style={col.title}>{tr('foot.company')}</div>
+            <a style={col.link} href="/quem-somos" onMouseEnter={onEnter} onMouseLeave={onLeave}>{tr('nav.about')}</a>
+            <a style={col.link} href="/premio" onMouseEnter={onEnter} onMouseLeave={onLeave}>{tr('nav.award')}</a>
+            <a style={col.link} href="/blog" onMouseEnter={onEnter} onMouseLeave={onLeave}>{tr('nav.blog')}</a>
+            <a style={col.link} href="/faq" onMouseEnter={onEnter} onMouseLeave={onLeave}>{tr('nav.faq')}</a>
+            <a style={col.link} href="https://sewecrm.com/indicacao.html" target="_blank" rel="noopener" onMouseEnter={onEnter} onMouseLeave={onLeave}>{tr('foot.referral')}</a>
           </div>
           <div>
-            <div style={col.title}>Contato</div>
+            <div style={col.title}>{tr('foot.contact')}</div>
             <a style={col.link} href={WHATSAPP} onMouseEnter={onEnter} onMouseLeave={onLeave}>WhatsApp · (48) 98470-4389</a>
             <a style={col.link} href="mailto:contato@sewegroup.com.br" onMouseEnter={onEnter} onMouseLeave={onLeave}>contato@sewegroup.com.br</a>
-            <div style={{ ...col.link, color: 'rgba(255,255,255,0.5)' }}>Florianópolis · SC · Brasil</div>
-            <div style={{ ...col.link, color: 'rgba(255,255,255,0.5)' }}>Atendimento: seg-sex · 9h-18h</div>
+            <div style={{ ...col.link, color: 'rgba(255,255,255,0.5)' }}>{tr('foot.city')}</div>
+            <div style={{ ...col.link, color: 'rgba(255,255,255,0.5)' }}>{tr('foot.hours')}</div>
           </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px 0 36px', flexWrap: 'wrap', gap: 12 }}>
           <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.42)' }}>
-            © 2026 SEWE Group · Todos os direitos reservados
+            {tr('foot.rights')}
           </div>
           <div style={{ display: 'flex', gap: 18, fontSize: 12, color: 'rgba(255,255,255,0.42)' }}>
-            <a href="/politica-de-privacidade" className="foot-legal">Política de Privacidade</a>
-            <a href="/politica-de-privacidade#lgpd" className="foot-legal">LGPD</a>
+            <a href="/politica-de-privacidade" className="foot-legal">{tr('foot.privacy')}</a>
+            <a href="/politica-de-privacidade#lgpd" className="foot-legal">{tr('foot.lgpd')}</a>
           </div>
         </div>
       </div>

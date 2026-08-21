@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <SiteHeader home/>
+      <SiteHeader home translated/>
       <main>
         <HomeLanding/>
       </main>

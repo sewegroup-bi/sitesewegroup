@@ -330,6 +330,7 @@ function Footer_DEPRECATED() {
 const SEWE_AGENDA_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2yIYuW6dqFpPDvnfnUMcYwXjTQxw7v6PyBYRMXHJ0j6NH3WxHeXDwASsHWi2_udeUbjPMbu0Kw';
 
 function AgendaSection({ bg = '#fff' }) {
+  useLocale();
   // Perf: só monta o iframe do Google Agenda quando a seção se aproxima da viewport
   const agendaRef = React.useRef(null);
   const [agendaLoad, setAgendaLoad] = React.useState(false);
@@ -347,32 +348,31 @@ function AgendaSection({ bg = '#fff' }) {
     <section className="section" style={{ background: bg, paddingTop: 'clamp(28px, 3.5vw, 48px)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 36px' }}>
-          <div className="eyebrow">Sessão estratégica</div>
-          <h2 style={{ marginTop: 14 }}>Agende uma sessão estratégica de diagnóstico.</h2>
+          <div className="eyebrow">{tr('agenda.eyebrow')}</div>
+          <h2 style={{ marginTop: 14 }}>{tr('agenda.title')}</h2>
           <p style={{ color: 'var(--text-2)', marginTop: 14, fontSize: 17 }}>
-            Escolha o melhor horário na agenda abaixo. Conversa online, pelo Google Meet,
-            com um especialista SEWE sobre o potencial da sua operação.
+            {tr('agenda.lead')}
           </p>
         </div>
         <div id="agendar" ref={agendaRef} style={{ maxWidth: 920, margin: '0 auto', border: '1px solid var(--line)', borderRadius: 16, overflow: 'hidden', boxShadow: 'var(--shadow-md)', scrollMarginTop: 90 }}>
           {agendaLoad ? (
             <iframe
               src={`${SEWE_AGENDA_URL}?gv=true`}
-              title="Agendar demonstração · SEWE Group"
+              title={tr('agenda.iframe')}
               style={{ border: 0, width: '100%', height: 1000, display: 'block' }}
               loading="lazy"
             />
           ) : (
             <div style={{ width: '100%', height: 1000, display: 'grid', placeItems: 'center', background: 'var(--bg-soft, #f6f8fb)' }}>
               <div style={{ textAlign: 'center', color: 'var(--text-3)', fontSize: 14 }}>
-                Carregando agenda…
+                {tr('agenda.loading')}
               </div>
             </div>
           )}
         </div>
         <div style={{ textAlign: 'center', marginTop: 14, fontSize: 13, color: 'var(--text-3)' }}>
-          Não achou horário? <a href={SEWE_AGENDA_URL} target="_blank" rel="noopener" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>Abra a agenda completa</a> ou
-          {' '}<a href={`${SEWE_WHATSAPP}?text=${encodeURIComponent('Olá! Quero agendar uma sessão estratégica com a SEWE.')}`} target="_blank" rel="noopener" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>chame no WhatsApp</a>.
+          {tr('agenda.nofit')} <a href={SEWE_AGENDA_URL} target="_blank" rel="noopener" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>{tr('agenda.full')}</a> {tr('agenda.or')}
+          {' '}<a href={`${SEWE_WHATSAPP}?text=${encodeURIComponent(tr('agenda.wamsg'))}`} target="_blank" rel="noopener" style={{ color: 'var(--turquoise-ink)', fontWeight: 600 }}>{tr('agenda.wa')}</a>.
         </div>
       </div>
     </section>

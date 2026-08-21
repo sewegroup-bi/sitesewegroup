@@ -47,6 +47,8 @@ Destaques:
 │   ├── bus.jsx              # Ecossistema conectado + Integration + Sales
 │   ├── suites.jsx           # Seção das 4 suítes com tabs e dashboards
 │   ├── rest.jsx             # Maturidade, diferenciais, cases, FAQ, CTA
+│   ├── i18n.jsx            # Idiomas PT/EN/ES: textos, tr(), seletor de bandeirinha
+│   ├── instagram.jsx       # Vitrine do Instagram (embed oficial) no fim do blog
 │   ├── blogdata.jsx         # CONTEÚDO de blog e prêmio (array SEWE_POSTS)
 │   ├── pages.jsx            # Páginas: Quem Somos, Prêmio, Blog, Post, FAQ
 │   └── app.jsx              # Composição raiz da home + painel de Tweaks
@@ -68,6 +70,35 @@ Header, Footer e o cabeçalho de página vivem em **`components/layout.jsx`** �
 2. **Duplique** um arquivo de post (ex.: `vencedor-premio-2024.html`), renomeie para
    `<slug>.html` e troque o `data-slug` para o slug da nova entrada.
 3. `git add . && git commit && git push`. Pronto — aparece no Blog e no Prêmio.
+
+---
+
+## Idiomas (PT-BR · EN · ES)
+
+Tudo mora em **`components/i18n.jsx`** — dicionário, função `tr()` e o seletor de
+idioma (só a bandeirinha, no header). Português é o padrão; quem chega com o
+navegador em inglês ou espanhol já cai no idioma dele, e a escolha fica salva no
+`localStorage`. `?lang=en` / `?lang=es` na URL também força o idioma.
+
+**Traduzido hoje:** header, footer, home (posicionamento, escolha de perfil,
+agenda) e a vitrine do Instagram. Nas páginas ainda em português, escolher EN/ES
+mostra uma faixa discreta avisando — é o `<SiteHeader/>` sem a prop `translated`.
+
+Para traduzir uma página nova:
+
+1. Crie as chaves em `SEWE_STRINGS` (`components/i18n.jsx`) com `pt`, `en` e `es`.
+2. No componente, chame `useLocale()` e troque o texto fixo por `tr('sua.chave')`.
+3. Quando a página inteira estiver traduzida, passe `translated` no `<SiteHeader/>`
+   dela para a faixa de aviso parar de aparecer.
+
+Chave sem tradução cai no português — nunca quebra a página.
+
+## Instagram no fim do blog
+
+**`components/instagram.jsx`** renderiza os posts pelo **embed oficial do
+Instagram** (sem token, sem API). Para atualizar: no Instagram, abra o post →
+`...` → *Copiar link* e cole em `SEWE_IG_POSTS` (o mais recente em cima).
+O script do Instagram só é baixado quando o visitante rola até a seção.
 
 ---
 

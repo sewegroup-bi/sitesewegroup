@@ -107,6 +107,7 @@ function BlogIndexPage() {
           </div>
         </div>
       </section>
+      <InstagramSection/>
       <SiteFooter/>
       <style>{`@media(max-width:960px){.post-grid{grid-template-columns:1fr 1fr !important;}}@media(max-width:640px){.post-grid{grid-template-columns:1fr !important;}}`}</style>
     </>
@@ -559,6 +560,7 @@ function PrivacidadePage() {
 
           <h2 style={h}>3. Com quem compartilhamos</h2>
           <p style={p}>Seus dados não são vendidos. Eles são processados por fornecedores que sustentam a nossa operação, contratados sob obrigações de confidencialidade e segurança: infraestrutura de banco de dados (Supabase), agenda e e-mail (Google) e ferramenta de mensagens (WhatsApp/Meta), podendo haver transferência internacional para países com grau de proteção adequado ou mediante salvaguardas contratuais.</p>
+          <p style={p}>Algumas páginas exibem <b>conteúdo incorporado de terceiros</b> — a agenda de reuniões do Google e as publicações do nosso perfil do Instagram (Meta), no fim do blog. Esse conteúdo é carregado somente quando você rola até ele e, ao ser carregado, o provedor recebe dados técnicos da sua navegação (como endereço IP e cookies próprios do serviço), conforme a política de privacidade do respectivo provedor. A SEWE Group não recebe nem armazena esses dados.</p>
 
           <h2 style={h}>4. Por quanto tempo guardamos</h2>
           <p style={p}>Mantemos os dados de contato comercial enquanto durar o relacionamento ou a tratativa, e os eliminamos ou anonimizamos quando deixarem de ser necessários, salvo obrigação legal de retenção.</p>
