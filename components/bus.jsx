@@ -523,9 +523,9 @@ function SalesSection({ audience = 'distribuidor' }) {
       ] },
     { key: 'whats', label: tx('WhatsApp Oficial'), icon: 'chat',
       h: tx('A conversa onde o seu cliente já está.'),
-      d: tx('Integração oficial com a API da Meta: confirmações, campanhas e atendimento pelo WhatsApp, com tudo registrado no CRM.'),
+      d: tx('A SEWE é certificada oficialmente pela Meta para desenvolver e integrar soluções de automação e comunicação: confirmações, campanhas e atendimento pelo WhatsApp, com tudo registrado no CRM.'),
       feats: [
-        { icon: 'chat', t: tx('API oficial da Meta'), d: tx('Número verificado e conversas dentro das políticas do WhatsApp, sem risco de bloqueio.') },
+        { icon: 'chat', t: tx('Provedor oficial Meta'), d: tx('Certificação da Meta para integrar a API do WhatsApp Business: número verificado, conversas dentro da política e sem risco de bloqueio.') },
         { icon: 'zap', t: tx('Pedido e status automáticos'), d: tx('Confirmação de pedido, faturamento e entrega chegam ao cliente sem ninguém digitar.') },
         { icon: 'link', t: tx('Registrado no CRM'), d: tx('Cada conversa vira histórico do cliente: contexto completo para o vendedor e para a gestão.') },
       ] },

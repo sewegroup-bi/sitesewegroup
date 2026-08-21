@@ -255,7 +255,15 @@ function SiteFooter({ home = false }) {
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(117,227,228,0.1)'; e.currentTarget.style.borderColor = 'rgba(117,227,228,0.2)'; }}>
                 {tr('foot.qlik')}
               </a>
+              {/* Credencial Meta: empresa certificada para desenvolver e integrar
+                  soluções de automação e comunicação (WhatsApp Business API). */}
+              <span title={tr('foot.metaFull')} style={{ padding: '6px 12px', borderRadius: 6, background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.82)', fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', border: '1px solid rgba(255,255,255,0.16)', whiteSpace: 'nowrap' }}>
+                {tr('foot.meta')}
+              </span>
             </div>
+            <p style={{ color: 'rgba(255,255,255,0.42)', marginTop: 12, fontSize: 12, lineHeight: 1.55, maxWidth: 340 }}>
+              {tr('foot.metaFull')}
+            </p>
             <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
               {[
                 { label: 'YouTube', href: 'https://www.youtube.com/@sewegroup',

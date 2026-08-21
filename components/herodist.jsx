@@ -474,17 +474,17 @@ function DistribuidorScene() {
   // aparecem uma vez, como camada que serve todos os canais.
   const salesLeader = {
     key: 'sales', l: 50, t: 85, ax: 8, ay: 67,
-    items: [tx('Integração ERP'), tx('Promoções'), tx('Alçada de aprovações'), tx('Incentivos comerciais'), 'WorkFlow', tx('Propostas comerciais')],
+    items: [tx('Integração ERP'), tx('Promoções'), tx('Alçada de Aprovações'), tx('Incentivos comerciais'), 'WorkFlow', tx('Propostas comerciais')],
   };
 
   // Canais de venda em volta do CD: os que atendem o cliente ficam do lado da
   // lojinha; os que atendem a equipe interna, do lado oposto.
   const canais = [
-    { key: 'portal',   label: tx('Portal B2B2C'),    icon: 'store',     l: 11, t: 58 },
-    { key: 'b2b',      label: tx('E-commerce B2B'),  icon: 'warehouse', l: 11, t: 68 },
-    { key: 'b2c',      label: tx('E-commerce B2C'),  icon: 'pkg',       l: 11, t: 78 },
-    { key: 'vendedor', label: tx('Força de Vendas'), icon: 'users',     l: 89, t: 76 },
-    { key: 'crm',      label: 'CRM',             icon: 'calendar',  l: 89, t: 86 },
+    { key: 'portal',   label: tx('Portal de Vendas B2B2C'),    icon: 'store',     l: 11, t: 58 },
+    { key: 'b2b',      label: tx('Ecommerce Personalizado B2B'),  icon: 'warehouse', l: 11, t: 68 },
+    { key: 'b2c',      label: tx('Ecommerce B2C'),  icon: 'pkg',       l: 11, t: 78 },
+    { key: 'vendedor', label: tx('Força de Vendas e Gestão de Campo'), icon: 'users',     l: 89, t: 76 },
+    { key: 'crm',      label: tx('CRM, Clientes e Atividades'),             icon: 'calendar',  l: 89, t: 86 },
   ];
 
   const suiteMsgs = {
@@ -494,8 +494,8 @@ function DistribuidorScene() {
     financeiro: tx('Feche o mês em dias: caixa projetado e margem real por SKU direto do ERP.'),
     sales: tx('Cinco canais, uma plataforma: integração, promoções, alçadas, incentivos, workflow e propostas valem para todos, sem contratar duas vezes.'),
     portal: tx('Portal de vendas B2B2C: seu cliente consulta produto, preço, estoque e condição comercial e fecha o pedido sozinho.'),
-    b2b: tx('E-commerce B2B personalizado: loja com carrinho e checkout modernos, para o cliente comprar sem depender de ninguém.'),
-    b2c: tx('E-commerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço da operação.'),
+    b2b: tx('Ecommerce Personalizado B2B: loja com carrinho e checkout modernos, para o cliente comprar sem depender de ninguém.'),
+    b2c: tx('Ecommerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço da operação.'),
     vendedor: tx('Ambiente do vendedor: carteira, metas, atividades e pedido digitado em campo, já dentro da política comercial.'),
     crm: tx('CRM, clientes e atividades: histórico, follow-up e processo comercial estruturado do primeiro contato até o pedido.'),
   };
@@ -1110,7 +1110,7 @@ const dpAreas = () => [
     items: [tx('Cadastro padronizado'), tx('Curva e mix ideal'), tx('Margem por produto')],
     msg: tx('Gestão de produtos: cadastro padronizado, curva de cada item e margem real por produto, para o mix parar de ser decidido no achismo.') },
   // abre para cima: a estrada acima do caminhão é a única área livre ali
-  { key: 'reabastece', kind: 'bi', label: 'Reabastecimento', icon: 'truck', l: 73, t: 20, up: true,
+  { key: 'reabastece', kind: 'bi', label: tx('Reabastecimento'), icon: 'truck', l: 73, t: 20, up: true,
     items: [tx('Ponto de pedido por SKU'), tx('Sugestão automática'), tx('Prazo do fornecedor')],
     msg: tx('Reabastecimento: ponto de pedido calculado por SKU, sugestão de compra automática e o prazo real de cada fornecedor entrando na conta.') },
   { key: 'comercial', kind: 'bi', label: tx('Comercial'), icon: 'trending', l: 19, t: 50,
@@ -1132,28 +1132,30 @@ const dpAreas = () => [
   { key: 'incentivos', kind: 'mod', label: tx('Incentivos Comerciais'), icon: 'trophy', l: 43, t: 37,
     items: [tx('Metas por equipe e vendedor'), tx('Missões e campanhas internas'), tx('Premiação apurada no dado')],
     msg: tx('Incentivos comerciais: metas, missões e premiações para direcionar vendedores, representantes e equipes, com a apuração saindo da venda real e não de planilha paralela.') },
-  { key: 'alcada', kind: 'mod', label: tx('Alçada de aprovações'), icon: 'shield', l: 38, t: 66, up: true,
+  { key: 'alcada', kind: 'mod', label: tx('Alçada de Aprovações'), icon: 'shield', l: 38, t: 66, up: true,
     items: [tx('Regra por cargo e limite'), tx('Encaminhamento automático'), tx('Justificativa e rastro')],
-    msg: tx('Alçada de aprovações: a exceção comercial sobe sozinha para quem pode decidir, com justificativa registrada e rastro de quem aprovou o quê.') },
+    msg: tx('Alçada de Aprovações: a exceção comercial sobe sozinha para quem pode decidir, com justificativa registrada e rastro de quem aprovou o quê.') },
 
   // camada de vendas: os canais por onde o pedido entra
-  { key: 'vendedor', kind: 'sales', label: tx('Força de Vendas'), icon: 'users', l: 16, t: 75,
+  { key: 'vendedor', kind: 'sales', label: tx('Força de Vendas e Gestão de Campo'), icon: 'users', l: 16, t: 75,
     items: [tx('Carteira do vendedor'), tx('Metas e atividades'), tx('Pedido digitado em campo'), tx('Promoções e campanhas')],
     msg: tx('Ambiente do vendedor: carteira, metas, atividades e pedido digitado na rua, já dentro da política comercial da empresa.') },
-  { key: 'crm', kind: 'sales', label: 'CRM', icon: 'calendar', l: 56.5, t: 59,
+  { key: 'crm', kind: 'sales', label: tx('CRM, Clientes e Atividades'), icon: 'calendar', l: 56.5, t: 59,
     items: [tx('Histórico do cliente'), tx('Follow-up e agenda'), tx('Carteira e segmentação'), tx('WorkFlow de processos'), tx('Propostas comerciais')],
     msg: tx('CRM, clientes e atividades: histórico completo, follow-up no tempo certo, processo estruturado em workflow e a proposta acompanhada até virar pedido.') },
-  { key: 'portal', kind: 'sales', label: tx('Portal B2B2C'), icon: 'store', l: 86, t: 55,
+  { key: 'portal', kind: 'sales', label: tx('Portal de Vendas B2B2C'), icon: 'store', l: 86, t: 55,
     items: [tx('Produto, preço e estoque'), tx('Condição comercial'), tx('Pedido com autonomia'), tx('Promoções e campanhas')],
     msg: tx('Portal de vendas B2B2C: seu cliente consulta produto, preço, estoque e condição comercial e fecha o pedido sozinho, 24 horas por dia.') },
   // abre para cima: para baixo esbarraria no Portal B2B2C, logo abaixo
-  { key: 'b2b', kind: 'sales', label: tx('E-commerce B2B'), icon: 'warehouse', l: 80, t: 44, up: true,
+  { key: 'b2b', kind: 'sales', label: tx('Ecommerce Personalizado B2B'), icon: 'warehouse', l: 82, t: 44, up: true,
     items: [tx('Loja personalizada'), tx('Carrinho e checkout'), tx('Compra sem intermediário'), tx('Promoções e campanhas')],
-    msg: tx('E-commerce B2B personalizado: loja com experiência moderna, carrinho e checkout, para o cliente comprar sem depender de ninguém.') },
-  { key: 'b2c', kind: 'sales', label: tx('E-commerce B2C'), icon: 'pkg', l: 78, t: 79,
+    msg: tx('Ecommerce Personalizado B2B: loja com experiência moderna, carrinho e checkout, para o cliente comprar sem depender de ninguém.') },
+  { key: 'b2c', kind: 'sales', label: tx('Ecommerce B2C'), icon: 'pkg', l: 78, t: 79,
     items: [tx('Loja para o consumidor'), tx('Mesmo estoque'), tx('Mesma regra de preço'), tx('Promoções e campanhas')],
-    msg: tx('E-commerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço do resto da operação.') },
-  { key: 'posvenda', kind: 'sales', label: tx('Pós-Venda'), icon: 'chat', l: 70, t: 64, up: true,
+    msg: tx('Ecommerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço do resto da operação.') },
+  // l/t: 55/84 (era 70/64) — os nomes do catálogo alargaram as pílulas e o painel
+  // do Pós-Venda passou a cobrir a de CRM, Clientes e Atividades
+  { key: 'posvenda', kind: 'bi', label: tx('Pós-Venda'), icon: 'chat', l: 55, t: 84, up: true,
     items: [tx('Devolução e troca'), tx('Chamados de assistência'), tx('Recompra e reativação')],
     msg: tx('Pós-venda: devolução, troca e chamado de assistência com histórico no mesmo lugar, e o gatilho de recompra saindo do próprio comportamento do cliente.') },
 ];
