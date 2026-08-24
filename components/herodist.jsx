@@ -1103,14 +1103,14 @@ const dpAreas = () => [
   { key: 'suprimentos', kind: 'bi', label: tx('Suprimentos'), icon: 'boxes', l: 62, t: 20,
     items: [tx('Previsão de ruptura'), tx('Curva ABC'), tx('Sugestão de compra')],
     msg: tx('Acabe com a ruptura: a IA prevê a demanda por SKU e sugere a compra certa antes de a prateleira esvaziar.') },
-  { key: 'saude', kind: 'bi', label: tx('Saúde Estoque'), icon: 'shield', l: 36, t: 11,
+  { key: 'saude', kind: 'bi', label: tx('Saúde Estoque'), icon: 'shield', l: 35, t: 14,
     items: [tx('Cobertura em dias'), tx('Estoque parado'), tx('Giro por SKU')],
     msg: tx('Saúde do estoque: cobertura em dias, o que está parado, o que está girando e onde o seu capital ficou preso na prateleira.') },
-  { key: 'produtos', kind: 'bi', label: tx('Gestão de Produtos'), icon: 'pkg', l: 49, t: 15,
+  { key: 'produtos', kind: 'bi', label: tx('Gestão de Produtos'), icon: 'pkg', l: 51, t: 15,
     items: [tx('Cadastro padronizado'), tx('Curva e mix ideal'), tx('Margem por produto')],
     msg: tx('Gestão de produtos: cadastro padronizado, curva de cada item e margem real por produto, para o mix parar de ser decidido no achismo.') },
   // abre para cima: a estrada acima do caminhão é a única área livre ali
-  { key: 'reabastece', kind: 'bi', label: tx('Reabastecimento'), icon: 'truck', l: 73, t: 20, up: true,
+  { key: 'reabastece', kind: 'bi', label: tx('Reabastecimento'), icon: 'truck', l: 76, t: 20, up: true,
     items: [tx('Ponto de pedido por SKU'), tx('Sugestão automática'), tx('Prazo do fornecedor')],
     msg: tx('Reabastecimento: ponto de pedido calculado por SKU, sugestão de compra automática e o prazo real de cada fornecedor entrando na conta.') },
   { key: 'comercial', kind: 'bi', label: tx('Comercial'), icon: 'trending', l: 19, t: 50,
@@ -1150,12 +1150,12 @@ const dpAreas = () => [
   { key: 'b2b', kind: 'sales', label: tx('Ecommerce Personalizado B2B'), icon: 'warehouse', l: 82, t: 44, up: true,
     items: [tx('Loja personalizada'), tx('Carrinho e checkout'), tx('Compra sem intermediário'), tx('Promoções e campanhas')],
     msg: tx('Ecommerce Personalizado B2B: loja com experiência moderna, carrinho e checkout, para o cliente comprar sem depender de ninguém.') },
-  { key: 'b2c', kind: 'sales', label: tx('Ecommerce B2C'), icon: 'pkg', l: 78, t: 79,
+  { key: 'b2c', kind: 'sales', label: tx('Ecommerce B2C'), icon: 'pkg', l: 79, t: 79,
     items: [tx('Loja para o consumidor'), tx('Mesmo estoque'), tx('Mesma regra de preço'), tx('Promoções e campanhas')],
     msg: tx('Ecommerce B2C: sua loja para o consumidor final, no mesmo estoque e na mesma regra de preço do resto da operação.') },
-  // l/t: 55/84 (era 70/64) — os nomes do catálogo alargaram as pílulas e o painel
-  // do Pós-Venda passou a cobrir a de CRM, Clientes e Atividades
-  { key: 'posvenda', kind: 'bi', label: tx('Pós-Venda'), icon: 'chat', l: 55, t: 84, up: true,
+  // canto inferior direito, abrindo para cima: é o único vão que sobra depois dos
+  // 16 outros balões, do bloco de CTA da foto (x 346-878, y 594-672) e do kicker
+  { key: 'posvenda', kind: 'bi', label: tx('Pós-Venda'), icon: 'chat', l: 92, t: 87, up: true,
     items: [tx('Devolução e troca'), tx('Chamados de assistência'), tx('Recompra e reativação')],
     msg: tx('Pós-venda: devolução, troca e chamado de assistência com histórico no mesmo lugar, e o gatilho de recompra saindo do próprio comportamento do cliente.') },
 ];
@@ -1178,34 +1178,39 @@ function DistribuidorPhoto() {
   return (
     <div className="dp-wrap">
       <div className="dp-stage">
-        {/* LCP da página: webp de 302 KB no lugar do png de 3 MB, com o png de reserva */}
-        <picture>
-          <source srcSet="/assets/distribuidor-cd.webp" type="image/webp"/>
-          <img className="dp-img" src="/assets/distribuidor-cd.png" width="1650" height="953"
-            fetchpriority="high" decoding="async"
-            alt={tx('Vista aérea de um centro de distribuição: estoque, escritório comercial, sala financeira, recepção, showroom, expedição e frota de vendedores.')}/>
-        </picture>
-        <span className="dp-veil" aria-hidden/>
-        <p className="dp-kicker">{tx('Especialistas em Soluções para Distribuidores e Atacadistas.')}</p>
-        {AREAS.map((a, i) => (
-          <button key={a.key} type="button" onClick={() => go(a)}
-            onMouseEnter={() => setHover(a.key)} onMouseLeave={() => setHover(null)}
-            onFocus={() => setHover(a.key)} onBlur={() => setHover(null)}
-            className={'dp-pin dp-pin-' + a.kind + (hover === a.key ? ' is-on' : '')}
-            style={{ left: a.l + '%', top: a.t + '%', '--pd': (i * 0.24).toFixed(2) + 's' }}
-            aria-label={'Ver ' + a.label}>
-            <span className="dp-pin-ic"><Icon name={a.icon} size={12} stroke={2}/></span>
-            <span className="dp-pin-lb">{a.label}</span>
-            <span className={'dp-drop' + (a.up ? ' dp-drop-up' : '')} aria-hidden="true">
-              {a.items.map((it, i) => (
-                <span key={i} className="dp-drop-i" style={{ transitionDelay: (i * 70) + 'ms' }}>{it}</span>
-              ))}
-            </span>
-          </button>
-        ))}
+        {/* moldura da foto: as pílulas sao posicionadas em % dela, nao do palco.
+            Abaixo de 1100px o CTA sai da foto e vira bloco em fluxo — se as
+            pílulas medissem o palco, o palco cresceria e t:87% cairia no CTA. */}
+        <div className="dp-photo">
+          {/* LCP da página: webp de 302 KB no lugar do png de 3 MB, com o png de reserva */}
+          <picture>
+            <source srcSet="/assets/distribuidor-cd.webp" type="image/webp"/>
+            <img className="dp-img" src="/assets/distribuidor-cd.png" width="1650" height="953"
+              fetchpriority="high" decoding="async"
+              alt={tx('Vista aérea de um centro de distribuição: estoque, escritório comercial, sala financeira, recepção, showroom, expedição e frota de vendedores.')}/>
+          </picture>
+          <span className="dp-veil" aria-hidden/>
+          <p className="dp-kicker">{tx('Especialistas em Soluções para Distribuidores e Atacadistas.')}</p>
+          {AREAS.map((a, i) => (
+            <button key={a.key} type="button" onClick={() => go(a)}
+              onMouseEnter={() => setHover(a.key)} onMouseLeave={() => setHover(null)}
+              onFocus={() => setHover(a.key)} onBlur={() => setHover(null)}
+              className={'dp-pin dp-pin-' + a.kind + (hover === a.key ? ' is-on' : '')}
+              style={{ left: a.l + '%', top: a.t + '%', '--pd': (i * 0.24).toFixed(2) + 's' }}
+              aria-label={'Ver ' + a.label}>
+              <span className="dp-pin-ic"><Icon name={a.icon} size={12} stroke={2}/></span>
+              <span className="dp-pin-lb">{a.label}</span>
+              <span className={'dp-drop' + (a.up ? ' dp-drop-up' : '')} aria-hidden="true">
+                {a.items.map((it, i) => (
+                  <span key={i} className="dp-drop-i" style={{ transitionDelay: (i * 70) + 'ms' }}>{it}</span>
+                ))}
+              </span>
+            </button>
+          ))}
+        </div>
 
         {/* CTAs sobre o estacionamento, na faixa vazia do rodapé da foto.
-            Abaixo de 860px saem da imagem e viram bloco normal. */}
+            Abaixo de 1100px saem da imagem e viram bloco normal. */}
         <div className="dp-cta">
           <span className="dp-cta-glow" aria-hidden/>
           <span className="dp-cta-btns">
@@ -1245,6 +1250,7 @@ function DistribuidorPhoto() {
         /* sem overflow:hidden aqui: no mobile o bloco de CTA sai da foto e
            precisa renderizar abaixo dela. O raio vai na própria imagem. */
         .dp-stage { position: relative; line-height: 0; }
+        .dp-photo { position: relative; line-height: 0; }
         .dp-img { display: block; width: 100%; height: auto; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); }
         /* véu: dá contraste para os balões brancos e escurece o rodapé,
            onde ficam os botões */
@@ -1284,7 +1290,10 @@ function DistribuidorPhoto() {
           cursor: pointer; z-index: 3; line-height: 1.2;
           transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
         }
-        .dp-pin:hover, .dp-pin:focus-visible { transform: translate(-50%, calc(-50% - 3px)); background: #fff; z-index: 6; }
+        .dp-pin:hover, .dp-pin:focus-visible { transform: translate(-50%, calc(-50% - 3px)); background: #fff; }
+        /* aberto/hover acima de tudo, inclusive do .dp-cta (7): o painel e um popover
+           e nao pode ficar atras de um irmao posterior no DOM nem do bloco de CTA */
+        .dp-pin:hover, .dp-pin:focus-visible, .dp-pin.is-on { z-index: 8; }
         /* pulso fraco, escalonado por balão para não piscarem todos juntos.
            Para no hover, para não competir com o estado ativo. */
         .dp-pin::after {
@@ -1359,13 +1368,15 @@ function DistribuidorPhoto() {
           .dp-cta .btn-outline-inverse { border-color: var(--line); }
           .dp-cta-note { color: var(--text-3); text-shadow: none; white-space: normal; text-align: center; }
         }
-        @media (max-width: 860px) {
-          /* nove balões sobre uma foto de 340px viram sopa: viram cartões */
+        /* 1024px e o menor viewport em que os 17 balões caberam sem sobreposição
+           (foto de 968px). Abaixo disso as pílulas se tocam: viram cartões. */
+        @media (max-width: 1023px) {
           .dp-pin, .dp-veil { display: none; }
           .dp-list { display: grid; }
           .dp-readout { display: none; }
-          /* a frase sai de dentro da foto e volta a ser texto, acima dela */
-          .dp-stage { display: flex; flex-direction: column; }
+          /* a frase sai de dentro da foto e volta a ser texto, acima dela.
+             O flex vai na moldura, que e quem contem a imagem e o kicker. */
+          .dp-photo { display: flex; flex-direction: column; }
           .dp-kicker { position: static; order: -1; max-width: none; margin: 0 0 14px;
             color: var(--navy-700); text-shadow: none; font-size: 15px; }
         }
