@@ -29,6 +29,39 @@ window.SEWE_AUTHORS = {
 
 window.SEWE_POSTS = [
   {
+    slug: 'informacao-e-poder-distribuicao',
+    category: 'blog',
+    title: 'Informação é poder: inteligência de dados na distribuição',
+    date: '2026-09-05',
+    readTime: '6 min de leitura',
+    author: 'Alex de Souza',
+    excerpt: 'Da CIA à KGB, quem domina a informação primeiro domina o jogo. Na distribuição, a sua vantagem competitiva são os dados da operação. Veja como usá-los.',
+    cover: { tag: 'GESTÃO · INTELIGÊNCIA DE DADOS · ESTRATÉGIA', metric: 'BI', metricLabel: 'a sua agência de inteligência' },
+    cta: { primary: 'Agendar Diagnóstico de Inteligência de Dados', secondary: 'Falar com um Especialista' },
+    blocks: [
+      { type: 'lead', text: 'A história provou: quem domina a informação antes de todo mundo domina o jogo. George H. W. Bush e Vladimir Putin não chegaram ao topo por sorte. Antes do poder, ambos passaram por escolas de inteligência, a CIA e a KGB, onde aprenderam a transformar dados dispersos em vantagem estratégica. No mercado de hoje, a sua distribuidora joga a mesma partida, e a sua agência de inteligência são os dados da própria operação.' },
+      { type: 'h', text: 'O tabuleiro da CIA e a disciplina da KGB' },
+      { type: 'p', text: 'Bush pai foi diretor da CIA antes de chegar à presidência dos Estados Unidos: teve o mapa do xadrez global em mãos antes dos outros players. Putin construiu sua ascensão depois de anos na KGB, onde mapear vulnerabilidades e oportunidades virou método. O padrão comum não é o cargo, é o domínio da informação estruturada. Quem lê os sinais primeiro decide primeiro, e decide melhor.' },
+      { type: 'h', text: 'Dados brutos são ruído. Informação é munição.' },
+      { type: 'p', text: 'Ter dados não é ter inteligência. O ERP da sua distribuidora acumula milhões de registros de estoque, vendas, positivação e financeiro, mas dado bruto, sem estrutura e sem leitura, é apenas ruído. Inteligência é o que sobra quando você organiza esse volume, cruza as variáveis certas e enxerga o sinal antes do concorrente. É a diferença entre reagir ao mês fechado e antecipar o próximo movimento.' },
+      { type: 'h', text: 'A sua distribuidora é o novo campo de batalha' },
+      { type: 'p', text: 'A inteligência mais valiosa da sua operação não está em um relatório de mercado pago: está nos seus próprios dados de estoque e vendas. Quem opera sem BI joga no escuro, decide por instinto e deixa o lucro preso no processo. Quem estrutura esses dados enxerga onde ganha e onde perde dinheiro, todos os dias. Três perguntas que a sua operação precisa responder em tempo real:' },
+      { type: 'list', items: [
+        'Onde o seu capital de giro está parado, entre curva ABC e aging de estoque.',
+        'Quais clientes estão esfriando antes de virarem churn, e por quê.',
+        'Qual mix e qual margem sustentam de verdade o resultado, e quais só dão volume.',
+      ]},
+      { type: 'callout', text: 'Informação estruturada é munição. Na disputa por mercado, vence quem interpreta os sinais primeiro, não quem acumula mais relatórios.' },
+      { type: 'h', text: 'A SEWE é a sua agência de inteligência privada' },
+      { type: 'p', text: 'É esse o papel da SEWE Group: transformar o caos do seu ERP em vantagem competitiva. Estruturamos os seus dados, entregamos inteligência aplicada à distribuição, sobre a plataforma Qlik, e recuperamos o lucro que ficava retido no processo. Não é mais um painel para você configurar; é decisão pronta para agir, do estoque à diretoria.' },
+      { type: 'quote', text: 'Você não precisa de mais um dashboard. Precisa de inteligência: dado estruturado que vira decisão antes do concorrente. É isso que devolve o lucro que estava preso na operação.', who: 'Alex de Souza · Diretor Comercial, SEWE Group' },
+    ],
+    references: [
+      { source: 'Encyclopaedia Britannica', label: 'George H. W. Bush', url: 'https://www.britannica.com/biography/George-H-W-Bush', note: 'Diretor da CIA (1976-77) antes da vice-presidência e da presidência dos EUA.' },
+      { source: 'Encyclopaedia Britannica', label: 'Vladimir Putin', url: 'https://www.britannica.com/biography/Vladimir-Putin', note: 'Ex-oficial da KGB antes da ascensão política na Rússia.' },
+    ],
+  },
+  {
     slug: 'qlik-cloud-ia-governanca-distribuicao',
     category: 'blog',
     title: 'Qlik Cloud: IA e governança de dados na distribuição',
