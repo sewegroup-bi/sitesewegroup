@@ -32,6 +32,7 @@ function blocksHtml(blocks){
     if(b.type==='p')    return `      <p>${esc(b.text)}</p>`;
     if(b.type==='list') return `      <ul>\n${b.items.map(it=>`        <li>${esc(it)}</li>`).join('\n')}\n      </ul>`;
     if(b.type==='metrics') return `      <ul class="post-metrics">\n${b.items.map(m=>`        <li><strong>${esc(m.value)}</strong> ${esc(m.label)}</li>`).join('\n')}\n      </ul>`;
+    if(b.type==='image') return `      <figure style="margin:8px 0;">\n        <img src="${escAttr(b.src)}" alt="${escAttr(b.alt||'')}" loading="lazy" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line);display:block;"/>${b.caption?`\n        <figcaption style="font-size:13px;color:var(--text-3);margin-top:8px;text-align:center;">${esc(b.caption)}</figcaption>`:''}\n      </figure>`;
     if(b.type==='callout') return `      <div class="post-callout" style="padding:18px 22px;background:var(--bg-soft);border:1px solid var(--line);border-left:3px solid var(--turquoise);border-radius:14px;margin:4px 0;"><p style="font-size:18.5px;line-height:1.6;color:var(--navy-900);font-weight:500;margin:0;">${esc(b.text)}</p></div>`;
     if(b.type==='stat') return `      <p class="post-stat"><strong>${esc(b.value)}</strong> ${esc(b.label)}</p>`;
     if(b.type==='quote') return `      <blockquote>\n        <p>&ldquo;${esc(b.text)}&rdquo;</p>${b.who?`\n        <footer>${esc(b.who)}</footer>`:''}\n      </blockquote>`;
